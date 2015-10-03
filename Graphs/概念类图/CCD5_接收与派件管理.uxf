@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>27</x>
+      <y>36</y>
+      <w>360</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>CCD 接件与派件管理</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>45</x>
+      <y>162</y>
+      <w>81</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>营业厅业务员
+--
+姓名
+工号
+密码</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>117</x>
+      <y>90</y>
+      <w>135</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+填写</panel_attributes>
+    <additional_attributes>10.0;130.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>117</x>
+      <y>198</y>
+      <w>144</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+填写</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>234</x>
+      <y>45</y>
+      <w>108</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>到达单
+--
+货物到达状态
+托运订单条形码号
+目的地
+到达日期
+中转单编号
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>243</x>
+      <y>261</y>
+      <w>90</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>派件单
+--
+派送员工工号
+到达日期
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>27</x>
+      <y>36</y>
+      <w>459</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>CCD 收款单建立</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>117</x>
+      <y>153</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+填写</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>279</x>
+      <y>117</y>
+      <w>135</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>收款单
+--
+收款日期
+快递员的工号
+收款金额
+所有快递订单条形码号
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>45</x>
+      <y>135</y>
+      <w>81</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>营业厅业务员
+--
+姓名
+工号
+密码</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
