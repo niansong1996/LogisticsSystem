@@ -215,7 +215,7 @@ m2=1
       <w>690</w>
       <h>320</h>
     </coordinates>
-    <panel_attributes>CCD 制定城市距离</panel_attributes>
+    <panel_attributes>CCD20_制定城市距离</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

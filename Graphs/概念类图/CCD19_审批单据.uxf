@@ -383,7 +383,7 @@ m2=0..*
       <w>790</w>
       <h>410</h>
     </coordinates>
-    <panel_attributes>CCD 审批单据</panel_attributes>
+    <panel_attributes>CCD19_审批单据</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

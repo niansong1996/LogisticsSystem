@@ -198,7 +198,7 @@ m2=0..*
       <w>560</w>
       <h>330</h>
     </coordinates>
-    <panel_attributes>CCD 查询系统日志</panel_attributes>
+    <panel_attributes>CCD17_查询系统日志</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
