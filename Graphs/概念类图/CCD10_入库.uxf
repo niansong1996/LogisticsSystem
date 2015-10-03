@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>160</y>
+      <w>110</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>仓库管理人员
+--
+工号
+姓名
+密码</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>70</x>
+      <y>60</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>CCD入库
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>330</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>库存分区
+--
+各分区大小
+各分区位置范围
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>150</y>
+      <w>110</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>入库单
+--
+快递编号
+区号
+排号
+架号
+位号
+入库日期
+快递目的地
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>530</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>库存信息
+--
+总库存数量
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>230</y>
+      <w>110</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>出库单
+--
+快递单号
+汽运编号
+目的地
+出库日期
+装运形式
+中转单编号
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>180</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+填写</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

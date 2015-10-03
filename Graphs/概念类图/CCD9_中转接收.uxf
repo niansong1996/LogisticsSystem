@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>120</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>中转中心业务员
+--
+工号
+姓名
+密码</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>100</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>中转单
+--
+中转中心编号
+到达日期
+中转单编号
+出发地
+货物到达状态</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>140</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+填写</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>40</x>
+      <y>30</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>CCD中转接收
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
