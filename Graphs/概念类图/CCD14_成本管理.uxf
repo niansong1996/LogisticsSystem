@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>60</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>财务人员
+--
+工号
+姓名
+密码</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>100</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+更改，查看</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>130</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>租金
+--
+金额
+年份</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.InteractionFrame</type>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>670</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>CCD_14 成本管理</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>100</y>
+      <w>200</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+更改，查看</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>240</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>运费
+--
+运费标准</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>100</y>
+      <w>200</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+查看</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>370</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>工资付款单
+--
+总金额
+付款条目
+付款日期</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>100</y>
+      <w>150</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+使用</panel_attributes>
+    <additional_attributes>10.0;310.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>70</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>工资策略
+--
+工资
+提成
+奖励</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>90</y>
+      <w>420</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+更改</panel_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>480</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>成本收益表
+--
+开始日期
+截至日期
+总收入
+总支出</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>100</y>
+      <w>210</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+查看，选择导出</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;430.0</additional_attributes>
+  </element>
+</diagram>
