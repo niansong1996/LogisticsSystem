@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>505</x>
+      <y>100</y>
+      <w>85</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>
+--
+Java RMI
+
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>245</x>
+      <y>185</y>
+      <w>620</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>
+--
+dataservice
+
+
+
+
+
+
+
+
+
+
+
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>310</x>
+      <y>335</y>
+      <w>495</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>
+--
+
+data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>855</x>
+      <y>320</y>
+      <w>30</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>
+--
+po
+
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>215</x>
+      <y>80</y>
+      <w>695</w>
+      <h>375</h>
+    </coordinates>
+    <panel_attributes>pkg</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>255</x>
+      <y>225</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+transportdataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>325</x>
+      <y>225</y>
+      <w>75</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+warehousedataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>405</x>
+      <y>225</y>
+      <w>75</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+personneldataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>485</x>
+      <y>225</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+financedataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>555</x>
+      <y>225</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+userdataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>625</x>
+      <y>225</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+departmentdataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>710</x>
+      <y>225</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+listdataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>780</x>
+      <y>225</y>
+      <w>65</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+logdataservice
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>320</x>
+      <y>375</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+transportdata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>380</x>
+      <y>375</y>
+      <w>55</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+warehousedata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>445</x>
+      <y>375</y>
+      <w>55</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+personneldata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>510</x>
+      <y>375</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+financedata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>570</x>
+      <y>375</y>
+      <w>45</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+userdata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>625</x>
+      <y>375</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+departmentdata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>695</x>
+      <y>375</y>
+      <w>45</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+listdata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>750</x>
+      <y>375</y>
+      <w>45</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+--
+logdata
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>140</y>
+      <w>260</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>500.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>140</y>
+      <w>195</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>370.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>435</x>
+      <y>140</y>
+      <w>120</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>140</y>
+      <w>50</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>545</x>
+      <y>140</y>
+      <w>55</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>140</y>
+      <w>130</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>140</y>
+      <w>200</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;380.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>140</y>
+      <w>265</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;510.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>250</y>
+      <w>75</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>345</x>
+      <y>250</y>
+      <w>75</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>435</x>
+      <y>250</y>
+      <w>50</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>250</y>
+      <w>35</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>250</y>
+      <w>20</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>655</x>
+      <y>250</y>
+      <w>25</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>715</x>
+      <y>250</y>
+      <w>40</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>250</y>
+      <w>50</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>815</x>
+      <y>290</y>
+      <w>50</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>350</y>
+      <w>65</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+</diagram>
