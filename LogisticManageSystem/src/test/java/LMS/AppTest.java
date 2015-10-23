@@ -1,4 +1,4 @@
-package org.server;
+package LMS;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
