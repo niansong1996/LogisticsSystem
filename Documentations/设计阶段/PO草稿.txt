@@ -18,6 +18,7 @@ paymentPo（付款单）
 freightPo（运费）
 earningsPo（成本收益表）
 accountPo（账户）
+InitialInforPO（期初建账信息）
 listPo（单据）
 cityPo（城市）
 priceStrategyPo（运费策略）
