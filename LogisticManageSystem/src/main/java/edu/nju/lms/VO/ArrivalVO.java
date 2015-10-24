@@ -1,4 +1,4 @@
-package edu.nju.lms.PO;
+package edu.nju.lms.VO;
 
 import java.util.Calendar;
 
@@ -6,9 +6,9 @@ import edu.nju.lms.data.ArrivalState;
 
 /**
  *@author tj
- *@date 2015��10��24��
+ *@date 2015年10月24日
  */
-public class ArrivalPO extends ListPO{
+public class ArrivalVO extends ListVO{
 	private ArrivalState arrivalState;
 	private long expressNum;
 	private String destination;
@@ -18,7 +18,7 @@ public class ArrivalPO extends ListPO{
 	//optional  中转中心编号,只有在中转中心到达时才有 
     private long transitNum;
 	
-	public ArrivalPO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, Calendar arrivalDate) {
+	public ArrivalVO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, Calendar arrivalDate) {
 		super(id);
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
@@ -27,7 +27,7 @@ public class ArrivalPO extends ListPO{
 		this.arrivalDate = arrivalDate;
 	}
 	
-	public ArrivalPO(long id, long expressNum, String destination,String setOut,
+	public ArrivalVO(long id, long expressNum, String destination,String setOut,
 			Calendar arrivalDate,
 			long shipmentNum) {
 		super(id);
@@ -38,7 +38,7 @@ public class ArrivalPO extends ListPO{
 		this.arrivalDate = arrivalDate;
 
 	}
-	public ArrivalPO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, 
+	public ArrivalVO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, 
 			Calendar arrivalDate,long transitNum) {
 		super(id);
 		this.arrivalState = arrivalState;
@@ -48,7 +48,7 @@ public class ArrivalPO extends ListPO{
 		this.arrivalDate = arrivalDate;
 		this.transitNum = transitNum;
 	}
-	public ArrivalPO(long id, long expressNum, String destination,String setOut, Calendar arrivalDate,long shipmentNum
+	public ArrivalVO(long id, long expressNum, String destination,String setOut, Calendar arrivalDate,long shipmentNum
 			,long transitNum) {
 		super(id);
 		this.arrivalState = ArrivalState.COMPLETE;
@@ -113,7 +113,6 @@ public class ArrivalPO extends ListPO{
 	public void setTransitNum(long transitNum) {
 		this.transitNum = transitNum;
 	}
-	
 	
 	
 }

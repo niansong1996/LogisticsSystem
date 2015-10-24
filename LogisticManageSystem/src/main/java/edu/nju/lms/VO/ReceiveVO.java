@@ -15,6 +15,7 @@ public class ReceiveVO extends ListVO {
 	public ReceiveVO(long id, long expressNum) {
 		super(id);
 		this.expressNum = expressNum;
+		this.type = ListType.RECEIVE;
 	}
 	public String getReceiverName() {
 		return receiverName;

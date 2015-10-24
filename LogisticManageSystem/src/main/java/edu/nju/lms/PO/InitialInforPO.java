@@ -6,13 +6,13 @@ import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.PersonType;
 
 public class InitialInforPO {
-	private ArrayList<DepartmentType> departments;
-	private ArrayList<PersonType> personnel;
+	private ArrayList<DepartmentPO> departments;
+	private ArrayList<PersonnelPO> personnel;
 	private ArrayList<Long> cars;
 	private ArrayList<WarehousePO> warehouses;
 	private ArrayList<AccountPO> accounts;
 	
-	public InitialInforPO(ArrayList<DepartmentType> departments, ArrayList<PersonType> personnel, ArrayList<Long> cars,
+	public InitialInforPO(ArrayList<DepartmentPO> departments, ArrayList<PersonnelPO> personnel, ArrayList<Long> cars,
 			ArrayList<WarehousePO> warehouses, ArrayList<AccountPO> accounts) {
 		super();
 		this.departments = departments;
@@ -22,19 +22,19 @@ public class InitialInforPO {
 		this.accounts = accounts;
 	}
 
-	public ArrayList<DepartmentType> getDepartments() {
+	public ArrayList<DepartmentPO> getDepartments() {
 		return departments;
 	}
 
-	public void setDepartments(ArrayList<DepartmentType> departments) {
+	public void setDepartments(ArrayList<DepartmentPO> departments) {
 		this.departments = departments;
 	}
 
-	public ArrayList<PersonType> getPersonnel() {
+	public ArrayList<PersonnelPO> getPersonnel() {
 		return personnel;
 	}
 
-	public void setPersonnel(ArrayList<PersonType> personnel) {
+	public void setPersonnel(ArrayList<PersonnelPO> personnel) {
 		this.personnel = personnel;
 	}
 

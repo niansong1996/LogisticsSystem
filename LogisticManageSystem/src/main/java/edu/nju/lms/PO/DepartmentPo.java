@@ -6,12 +6,12 @@ import edu.nju.lms.data.DepartmentType;
  *@author tj
  *@date 2015年10月24日
  */
-public class DepartmentPo {
+public class DepartmentPO {
 	private DepartmentType type;
 	private long departmentNum;
 	private CityPO location;
 	
-	public DepartmentPo(DepartmentType type, long departmentNum, CityPO location) {
+	public DepartmentPO(DepartmentType type, long departmentNum, CityPO location) {
 		super();
 		this.type = type;
 		this.departmentNum = departmentNum;

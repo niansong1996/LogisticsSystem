@@ -6,11 +6,11 @@ import java.util.Calendar;
  *@author tj
  *@date 2015年10月24日
  */
-public class ReceivePo extends ListPO {
+public class ReceivePO extends ListPO {
 	private String receiverName;
 	private Calendar receiveTime;
 	private long expressNum;
-	public ReceivePo(long id,String receiverName, Calendar receiveTime,long expressNum) {
+	public ReceivePO(long id,String receiverName, Calendar receiveTime,long expressNum) {
 		super(id);
 		this.receiverName = receiverName;
 		this.receiveTime = receiveTime;

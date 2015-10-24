@@ -18,7 +18,7 @@ public class CommodityPO {
 	private DispatchPO dispatch;
 	private CheckinPO checkin;
 	private CheckoutPO checkout;
-	private ReceivePo Receive;
+	private ReceivePO Receive;
 	
 	public CommodityPO(SendPO send){
 		this.id = send.getExpressNum();
@@ -73,11 +73,11 @@ public class CommodityPO {
 		this.checkout = checkout;
 	}
 
-	public ReceivePo getReceive() {
+	public ReceivePO getReceive() {
 		return Receive;
 	}
 
-	public void setReceive(ReceivePo receive) {
+	public void setReceive(ReceivePO receive) {
 		Receive = receive;
 	}
 	

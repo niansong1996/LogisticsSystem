@@ -8,12 +8,14 @@ public class PaymentPO extends ListPO {
 	private PaymentType paymentType;
 	private Calendar payTime;
 	private AccountPO account;
-	
-	public PaymentPO(long id,PaymentType paymentType, Calendar payTime, AccountPO account) {
+	private double amount;
+	public PaymentPO(long id,PaymentType paymentType, Calendar payTime, AccountPO account,
+			double amount) {
 		super(id);
 		this.paymentType = paymentType;
 		this.payTime = payTime;
 		this.account = account;
+		this.amount = amount;
 	}
 
 	public PaymentType getPaymentType() {
@@ -38,6 +40,14 @@ public class PaymentPO extends ListPO {
 
 	public void setAccount(AccountPO account) {
 		this.account = account;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	
 	
