@@ -1,4 +1,4 @@
-package LMS;
+package edu.nju.lms.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
