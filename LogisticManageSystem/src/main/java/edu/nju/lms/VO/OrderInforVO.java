@@ -8,7 +8,7 @@ import edu.nju.lms.data.ShipState;
  *@author tj
  *@date 2015年10月24日
  */
-public class OrderInforVO {
+public class OrderInforVO  {
 	private ShipState shipState;
 	//每个字符串包含时间+空格+xx营业厅或xx中转中心
 	private ArrayList<String> track;

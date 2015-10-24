@@ -11,11 +11,10 @@ public class ListVO {
 	protected long id;
 	protected ListState state;
 	protected ListType type;
-	public ListVO(long id,ListType type) {
+	public ListVO(long id) {
 		super();
 		this.id = id;
 		this.state = ListState.WAITING;
-		this.type = type;
 	}
 	public long getId() {
 		return id;
@@ -31,9 +30,6 @@ public class ListVO {
 	}
 	public ListType getType() {
 		return type;
-	}
-	public void setType(ListType type) {
-		this.type = type;
 	}
 	
 }
