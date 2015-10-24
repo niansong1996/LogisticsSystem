@@ -1,4 +1,7 @@
 package edu.nju.lms.PO;
+
+import edu.nju.lms.data.ShipState;
+
 /**
  *@author tj
  *@date ����5:12:31
@@ -6,7 +9,7 @@ package edu.nju.lms.PO;
 public class CommodityPO {
 	// commodity number
 	private long id;
-	
+	private ShipState shipState;
 
 	//sender list
 	private SendPO send;
@@ -86,4 +89,13 @@ public class CommodityPO {
 		this.id = id;
 	}
 
+	public ShipState getShipState() {
+		return shipState;
+	}
+
+	public void setShipState(ShipState shipState) {
+		this.shipState = shipState;
+	}
+
+	
 }
