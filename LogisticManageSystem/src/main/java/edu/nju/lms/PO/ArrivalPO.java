@@ -8,7 +8,7 @@ import edu.nju.lms.data.ArrivalState;
  *@author tj
  *@date 2015��10��24��
  */
-public class ArrivalPO {
+public class ArrivalPO extends ListPO{
 	private ArrivalState arrivalState;
 	private long expressNum;
 	private String destination;
@@ -16,9 +16,9 @@ public class ArrivalPO {
 	//��ת�����
 	private long shipmentNum;
 	
-	public ArrivalPO(ArrivalState arrivalState, long expressNum, String destination, Calendar arrivalDate,
+	public ArrivalPO(long id,ArrivalState arrivalState, long expressNum, String destination, Calendar arrivalDate,
 			long shipmentNum) {
-		super();
+		super(id);
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
 		this.destination = destination;
@@ -26,14 +26,22 @@ public class ArrivalPO {
 		this.shipmentNum = shipmentNum;
 	}
 	
-	public ArrivalPO( long expressNum, String destination, Calendar arrivalDate,
+	public ArrivalPO(long id, long expressNum, String destination, Calendar arrivalDate,
 			long shipmentNum) {
-		super();
+		super(id);
 		this.arrivalState = ArrivalState.COMPLETE;
 		this.expressNum = expressNum;
 		this.destination = destination;
 		this.arrivalDate = arrivalDate;
 		this.shipmentNum = shipmentNum;
+	}
+    
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public ArrivalState getArrivalState() {

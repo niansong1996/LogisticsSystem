@@ -7,14 +7,14 @@ import java.util.Calendar;
  *@author tj
  *@date 2015年10月24日
  */
-public class ReceiptPO {
+public class ReceiptPO extends ListPO {
 	private Calendar receiptDate;
 	private double amount;
 	private long courierNum;
 	private ArrayList<Long> expressNums;
 	
-	public ReceiptPO(Calendar receiptDate, double amount, long courierNum, ArrayList<Long> expressNums) {
-		super();
+	public ReceiptPO(long id,Calendar receiptDate, double amount, long courierNum, ArrayList<Long> expressNums) {
+		super(id);
 		this.receiptDate = receiptDate;
 		this.amount = amount;
 		this.courierNum = courierNum;

@@ -3,8 +3,14 @@ package edu.nju.lms.PO;
 import edu.nju.lms.data.ListState;
 
 public class ListPO {
-	private long id;
-	private ListState state;
+	protected long id;
+	protected ListState state;
+	
+	public ListPO(long id) {
+		super();
+		this.id = id;
+		this.state = ListState.WAITING;
+	}
 	public long getId() {
 		return id;
 	}

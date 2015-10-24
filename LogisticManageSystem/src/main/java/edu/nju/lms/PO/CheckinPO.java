@@ -8,18 +8,26 @@ import java.util.Map;
  *@date 2015年10月24日
  */
 
-public class CheckinPO {
+public class CheckinPO extends ListPO {
 	//every express's location
 	private Map<Long,Location> expresses;
 	private Calendar checkinDate;
 	//every express's destination
 	private Map<Long,String> exDestination;
 	
-	public CheckinPO(Map<Long, Location> expresses, Calendar checkinDate, Map<Long, String> exDestination) {
-		super();
+	public CheckinPO(long id,Map<Long, Location> expresses, Calendar checkinDate, Map<Long, String> exDestination) {
+		super(id);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
 		this.exDestination = exDestination;
+	}
+    
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Map<Long, Location> getExpresses() {

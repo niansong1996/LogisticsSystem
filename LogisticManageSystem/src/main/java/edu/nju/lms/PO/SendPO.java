@@ -10,7 +10,9 @@ import edu.nju.lms.data.TransportMode;
  *@author tj
  *@date ����5:12:31
  */
-public class SendPO {
+public class SendPO extends ListPO {
+	//the express's number
+	private long expressNum;
 	//base information of sender and receiver
 	private ArrayList<String> baseInfor;
 	public static enum SendBaseInfor{
@@ -34,10 +36,11 @@ public class SendPO {
 	private int time;
 	
 	//construct function
-	public SendPO(ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, int time) {
-		super();
-		this.baseInfor=baseInfor;
+		super(id);
+		this.expressNum = expressNum;
+		this.baseInfor = baseInfor;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -48,8 +51,9 @@ public class SendPO {
 		this.time = time;
 	}
 	//override to input more conveniently
-	public SendPO(ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
-		super();
+	public SendPO(long expressNum, long id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
+		super(id);
+		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = 1;
 		this.weight = weight;
@@ -60,9 +64,10 @@ public class SendPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+	public SendPO(long expressNum,long id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, int time) {
-		super();
+		super(id);
+		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = 1;
 		this.weight = weight;
@@ -73,8 +78,9 @@ public class SendPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
-		super();
+	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
+		super(id);
+		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
 		this.weight = weight;
@@ -85,9 +91,9 @@ public class SendPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType,  double price, int time) {
-		super();
+		super(id);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
 		this.weight = weight;

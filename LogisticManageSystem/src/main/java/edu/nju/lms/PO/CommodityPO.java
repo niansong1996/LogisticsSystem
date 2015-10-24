@@ -5,7 +5,7 @@ package edu.nju.lms.PO;
  */
 public class CommodityPO {
 	// commodity number
-	private long expressNum;
+	private long id;
 	//sender list
 	private SendPO send;
 	private LoadPO load;
