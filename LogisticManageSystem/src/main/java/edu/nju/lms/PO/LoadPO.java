@@ -1,27 +1,26 @@
-package po;
-
+package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  *@author tj
- *@date ÏÂÎç5:12:31
+ *@date ï¿½ï¿½ï¿½ï¿½5:12:31
  */
 public class LoadPO {
 	//load type
 	private LoadType loadType;
-	//×°³µÈÕÆÚ
+	//×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private Calendar loadDate;
-	//ÓªÒµÌü±àºÅ
+	//ÓªÒµï¿½ï¿½ï¿½ï¿½ï¿½
 	private long businessHallNum;
-	//ÆûÔË±àºÅ
+	//ï¿½ï¿½ï¿½Ë±ï¿½ï¿½
 	private long motorNum;
-	//µ½´ïÖÐ×ªÖÐÐÄ»òÓªÒµÌü
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Ä»ï¿½ÓªÒµï¿½ï¿½
 	private CityPO destiCity;
 	private long destiBusinessHall;
 	private long vehicleNum;
 	private long driverNum;
-	//±¾´Î×°ÏäËùÓÐ¶©µ¥ÌõÐÎÂë
+	//ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private ArrayList<Long> commodityNums;
 	
 	private double freight;
@@ -36,7 +35,7 @@ public class LoadPO {
 		this.destiCity = destiCity;
 		this.destiBusinessHall = destiBusinessHall;
 		this.vehicleNum = vehicleNum;
-		//¼à×°Ô±¡¢ÑºÔËÔ±¡¢Ë¾»ú¶¼µ±³Édriver 
+		//ï¿½ï¿½×°Ô±ï¿½ï¿½Ñºï¿½ï¿½Ô±ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½driver 
 		this.driverNum = driverNum;
 		this.commodityNums = commodityNums;
 		this.freight = freight;

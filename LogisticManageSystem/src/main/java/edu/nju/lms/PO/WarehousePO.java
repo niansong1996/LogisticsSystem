@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package edu.nju.lms.PO;
+
+import java.util.Map;
 
 /**
  *@author tj
@@ -7,6 +9,5 @@ import java.util.ArrayList;
 public class WarehousePO {
 	//警戒线的值
 	private double cordon;
-	private ArrayList<Long> expressNums;
 	
 }

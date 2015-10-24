@@ -1,7 +1,7 @@
-package po;
+package edu.nju.lms.PO;
 /**
  *@author tj
- *@date 2015Äê10ÔÂ23ÈÕ
+ *@date 2015ï¿½ï¿½10ï¿½ï¿½23ï¿½ï¿½
  */
 public enum LoadType {
 AIRPLANE,TRAIN,CAR

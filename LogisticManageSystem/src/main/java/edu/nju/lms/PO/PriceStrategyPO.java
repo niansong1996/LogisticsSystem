@@ -1,4 +1,4 @@
-
+package edu.nju.lms.PO;
 public class PriceStrategyPO {
 	private double standard;
 	private double express;

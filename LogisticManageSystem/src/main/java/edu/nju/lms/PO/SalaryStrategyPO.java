@@ -1,4 +1,4 @@
-
+package edu.nju.lms.PO;
 public class SalaryStrategyPO {
 	private PersonType type;
 	private int basic;

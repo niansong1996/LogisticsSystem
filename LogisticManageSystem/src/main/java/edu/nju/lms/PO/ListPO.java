@@ -1,4 +1,4 @@
-
+package edu.nju.lms.PO;
 public class ListPO {
 	private long id;
 	private ListState state;

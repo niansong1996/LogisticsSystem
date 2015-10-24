@@ -1,14 +1,14 @@
-package po;
+package edu.nju.lms.PO;
 
 import java.util.ArrayList;
 
 /**
  *@author tj
- *@date 2015Äê10ÔÂ23ÈÕ
+ *@date 2015ï¿½ï¿½10ï¿½ï¿½23ï¿½ï¿½
  */
 public class CityPO {
 	private String name;
-	//³ÇÊÐ¶ÔÓ¦µÄÖÐ×ªÖÐÐÄ±àºÅ
+	//ï¿½ï¿½ï¿½Ð¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Ä±ï¿½ï¿½
 	private long cityNum;
 	//the business halls' numbers that belongs to the city
 	private ArrayList<Long> businessNums;

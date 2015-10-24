@@ -1,11 +1,11 @@
-package po;
+package edu.nju.lms.PO;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  *@author tj
- *@date обнГ5:12:31
+ *@date О©╫О©╫О©╫О©╫5:12:31
  */
 public class SendPO {
 	//base information of sender and receiver

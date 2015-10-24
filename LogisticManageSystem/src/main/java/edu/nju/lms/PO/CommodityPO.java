@@ -1,7 +1,7 @@
-package po;
+package edu.nju.lms.PO;
 /**
  *@author tj
- *@date обнГ5:12:31
+ *@date О©╫О©╫О©╫О©╫5:12:31
  */
 public class CommodityPO {
 	// commodity number

@@ -1,17 +1,17 @@
-package po;
+package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
 /**
  *@author tj
- *@date 2015Äê10ÔÂ24ÈÕ
+ *@date 2015ï¿½ï¿½10ï¿½ï¿½24ï¿½ï¿½
  */
 public class ArrivalPO {
 	private ArrivalState arrivalState;
 	private long expressNum;
 	private String destination;
 	private Calendar arrivalDate;
-	//ÖÐ×ªµ¥±àºÅ
+	//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½
 	private long shipmentNum;
 	
 	public ArrivalPO(ArrivalState arrivalState, long expressNum, String destination, Calendar arrivalDate,

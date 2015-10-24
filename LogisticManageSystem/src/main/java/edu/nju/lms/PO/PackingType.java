@@ -1,10 +1,10 @@
-package po;
+package edu.nju.lms.PO;
 /**
  *@author tj
- *@date ÏÂÎç5:12:31
+ *@date ï¿½ï¿½ï¿½ï¿½5:12:31
  */
 public enum PackingType {
-	//Ö½Ïä£¬Ä¾Ïä£¬¿ìµÝ´ü
+	//Ö½ï¿½ä£¬Ä¾ï¿½ä£¬ï¿½ï¿½Ý´ï¿½
 CARTON,WOODENBOX,BAG
 	
 }
