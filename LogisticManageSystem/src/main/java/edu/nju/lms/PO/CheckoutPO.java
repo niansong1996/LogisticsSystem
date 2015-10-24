@@ -9,7 +9,7 @@ import edu.nju.lms.data.PartitionType;
  *@author tj
  *@date 2015年10月24日
  */
-public class CheckoutPO {
+public class CheckoutPO extends ListPO {
 	private ArrayList<Long> expressNums;
 	private Calendar checkoutDate;
 	private CityPO destination;
@@ -17,15 +17,23 @@ public class CheckoutPO {
 	private long arrivalNum;
 	private long motorNum;
 	
-	public CheckoutPO(ArrayList<Long> expressNums, Calendar checkoutDate, CityPO destination, PartitionType loadType,
+	public CheckoutPO(long id,ArrayList<Long> expressNums, Calendar checkoutDate, CityPO destination, PartitionType loadType,
 			long arrivalNum, long motorNum) {
-		super();
+		super(id);
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
 		this.destination = destination;
 		this.loadType = loadType;
 		this.arrivalNum = arrivalNum;
 		this.motorNum = motorNum;
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public ArrayList<Long> getExpressNums() {

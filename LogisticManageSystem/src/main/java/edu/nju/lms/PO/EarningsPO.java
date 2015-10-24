@@ -2,14 +2,14 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
-public class EarningsPO {
+public class EarningsPO extends ListPO{
 	private double earnings;
 	private double payment;
 	private double profit;
 	private Calendar date;
-	
-	public EarningsPO(double earnings, double payment, Calendar date) {
-		super();
+	private long id;
+	public EarningsPO(long id,double earnings, double payment, Calendar date) {
+		super(id);
 		this.earnings = earnings;
 		this.payment = payment;
 		this.profit = earnings-payment;
@@ -44,6 +44,18 @@ public class EarningsPO {
 
 	public void setDate(Calendar date) {
 		this.date = date;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setProfit(double profit) {
+		this.profit = profit;
 	}
 	
 	

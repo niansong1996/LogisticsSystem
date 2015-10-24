@@ -4,13 +4,13 @@ import java.util.Calendar;
 
 import edu.nju.lms.data.PaymentType;
 
-public class PaymentPO {
+public class PaymentPO extends ListPO {
 	private PaymentType paymentType;
 	private Calendar payTime;
 	private AccountPO account;
 	
-	public PaymentPO(PaymentType paymentType, Calendar payTime, AccountPO account) {
-		super();
+	public PaymentPO(long id,PaymentType paymentType, Calendar payTime, AccountPO account) {
+		super(id);
 		this.paymentType = paymentType;
 		this.payTime = payTime;
 		this.account = account;

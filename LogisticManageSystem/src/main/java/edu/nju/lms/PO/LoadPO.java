@@ -8,7 +8,7 @@ import edu.nju.lms.data.LoadType;
  *@author tj
  *@date ����5:12:31
  */
-public class LoadPO {
+public class LoadPO extends ListPO{
 	//load type
 	private LoadType loadType;
 	//װ������
@@ -27,9 +27,9 @@ public class LoadPO {
 	
 	private double freight;
 
-	public LoadPO(LoadType loadType,Calendar loadDate, long businessHallNum, long motorNum, CityPO destiCity, long destiBusinessHall,
+	public LoadPO(long id,LoadType loadType,Calendar loadDate, long businessHallNum, long motorNum, CityPO destiCity, long destiBusinessHall,
 			long vehicleNum, long driverNum, ArrayList<Long> commodityNums, double freight) {
-		super();
+		super(id);
 		this.loadType = loadType;
 		this.loadDate = loadDate;
 		this.businessHallNum = businessHallNum;
