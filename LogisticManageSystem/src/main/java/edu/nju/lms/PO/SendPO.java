@@ -50,6 +50,12 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
+	public long getExpressNum() {
+		return expressNum;
+	}
+	public void setExpressNum(long expressNum) {
+		this.expressNum = expressNum;
+	}
 	//override to input more conveniently
 	public SendPO(long expressNum, long id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
 		super(id);

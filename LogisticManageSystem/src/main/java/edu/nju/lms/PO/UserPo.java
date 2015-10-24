@@ -6,12 +6,12 @@ import edu.nju.lms.data.PersonType;
  *@author tj
  *@date 2015年10月24日
  */
-public class UserPo {
+public class UserPO {
 	private long userName;
 	private String password;
 	private PersonType power;
 	
-	public UserPo(long userName, String password, PersonType power) {
+	public UserPO(long userName, String password, PersonType power) {
 		super();
 		this.userName = userName;
 		this.password = password;

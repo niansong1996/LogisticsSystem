@@ -6,6 +6,8 @@ package edu.nju.lms.PO;
 public class CommodityPO {
 	// commodity number
 	private long id;
+	
+
 	//sender list
 	private SendPO send;
 	private LoadPO load;
@@ -16,7 +18,7 @@ public class CommodityPO {
 	private ReceivePo Receive;
 	
 	public CommodityPO(SendPO send){
-		this.expressNum = send.get();
+		this.id = send.getExpressNum();
 		this.send = send;
 	}
 
@@ -76,6 +78,12 @@ public class CommodityPO {
 		Receive = receive;
 	}
 	
-	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 }
