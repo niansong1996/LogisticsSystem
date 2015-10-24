@@ -1,4 +1,4 @@
-package edu.nju.lms.network.Client;
+package edu.nju.lms.network.client;
 
 public class Client {
 
