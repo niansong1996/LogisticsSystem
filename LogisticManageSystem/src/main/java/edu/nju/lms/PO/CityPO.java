@@ -7,17 +7,27 @@ import java.util.ArrayList;
  *@date 2015��10��23��
  */
 public class CityPO {
+	private long id;
 	private String name;
 	//���ж�Ӧ����ת���ı��
 	private long cityNum;
 	//the business halls' numbers that belongs to the city
 	private ArrayList<Long> businessNums;
 	
-	public CityPO(String name, long cityNum, ArrayList<Long> businessNums) {
+	public CityPO(long id,String name, long cityNum, ArrayList<Long> businessNums) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.cityNum = cityNum;
 		this.businessNums = businessNums;
+	}
+    
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
