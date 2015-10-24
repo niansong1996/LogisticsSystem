@@ -2,6 +2,9 @@ package edu.nju.lms.PO;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.data.DepartmentType;
+import edu.nju.lms.data.PersonType;
+
 public class InitialInforPO {
 	private ArrayList<DepartmentType> departments;
 	private ArrayList<PersonType> personnel;

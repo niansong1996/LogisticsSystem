@@ -3,6 +3,8 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.PartitionType;
+
 /**
  *@author tj
  *@date 2015年10月24日

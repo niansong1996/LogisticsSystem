@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.LoadType;
+
 /**
  *@author tj
  *@date ����5:12:31

@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.ArrivalState;
+
 /**
  *@author tj
  *@date 2015��10��24��

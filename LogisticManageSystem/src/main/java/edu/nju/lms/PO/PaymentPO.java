@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.PaymentType;
+
 public class PaymentPO {
 	private PaymentType paymentType;
 	private Calendar payTime;

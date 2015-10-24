@@ -1,4 +1,4 @@
-package edu.nju.lms.PO;
+package edu.nju.lms.data;
 public enum ListState {
 	PASS,DENY,WAITING
 }

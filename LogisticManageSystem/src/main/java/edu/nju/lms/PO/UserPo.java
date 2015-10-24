@@ -1,4 +1,7 @@
 package edu.nju.lms.PO;
+
+import edu.nju.lms.data.PersonType;
+
 /**
  *@author tj
  *@date 2015年10月24日
