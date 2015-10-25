@@ -6,7 +6,7 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface DepartmentService {
+public interface DepartmentDataService {
 	
 	public ResultMessage addDepartment(DepartmentPO Department) throws RemoteException;
 	public DepartmentPO findDepartment(String id) throws RemoteException;
