@@ -17,7 +17,7 @@ public interface PersonnelblService {
 	 * @param id
 	 * @return {@link PersonnelVO}
 	 */
-	public PersonnelPO findPersonInfo(String id);
+	public PersonnelVO findPersonInfo(String id);
 	
 	/**
 	 * find a {@link PersonnelPO} by id and then delete it
