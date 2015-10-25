@@ -34,7 +34,7 @@ public interface FinancePaymentDataService {
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deletePayment(long id) throws RemoteException;
+	public ResultMessage deletePayment(String id) throws RemoteException;
 	
 	/**
 	 * @param Payment

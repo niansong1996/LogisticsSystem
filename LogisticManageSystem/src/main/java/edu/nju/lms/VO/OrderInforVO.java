@@ -12,9 +12,9 @@ public class OrderInforVO  {
 	private ShipState shipState;
 	//每个字符串包含时间+空格+xx营业厅或xx中转中心
 	private ArrayList<String> track;
-	private long expressNum;
+	private String expressNum;
 	
-	public OrderInforVO(ShipState shipState, ArrayList<String> track, long expressNum) {
+	public OrderInforVO(ShipState shipState, ArrayList<String> track, String expressNum) {
 		super();
 		this.shipState = shipState;
 		this.track = track;
@@ -37,11 +37,11 @@ public class OrderInforVO  {
 		this.track = track;
 	}
 
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
 
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 	

@@ -7,7 +7,8 @@ import edu.nju.lms.data.TransportMode;
 
 public class SendVO extends ListVO{
 
-	private long expressNum;
+	//kuaidihao
+	private String expressNum;
 	private TransportMode mode;
 	private PackingType packingType;
 	
@@ -25,10 +26,10 @@ public class SendVO extends ListVO{
 	}
 
 	private double price;
-	private int time;
+	private double time;
 	
-	public SendVO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, int time) {
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+			PackingType packingType, TransportMode mode, double price, double time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
@@ -41,7 +42,7 @@ public class SendVO extends ListVO{
 		this.price = price;
 		this.time = time;
 	}
-	public SendVO(long expressNum, long id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
+	public SendVO(String expressNum, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -54,8 +55,8 @@ public class SendVO extends ListVO{
 		this.price = price;
 		this.time = time;
 	}
-	public SendVO(long expressNum,long id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, int time) {
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+			PackingType packingType, TransportMode mode, double price, double time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -68,7 +69,7 @@ public class SendVO extends ListVO{
 		this.price = price;
 		this.time = time;
 	}
-	public SendVO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -81,8 +82,8 @@ public class SendVO extends ListVO{
 		this.price = price;
 		this.time = time;
 	}
-	public SendVO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType,  double price, int time) {
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+			PackingType packingType,  double price, double time) {
 		super(id);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
@@ -94,10 +95,10 @@ public class SendVO extends ListVO{
 		this.price = price;
 		this.time = time;
 	}
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 	public TransportMode getMode() {
@@ -148,10 +149,10 @@ public class SendVO extends ListVO{
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getTime() {
+	public double getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	

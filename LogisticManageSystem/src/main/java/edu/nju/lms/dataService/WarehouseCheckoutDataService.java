@@ -24,14 +24,14 @@ public interface WarehouseCheckoutDataService {
 	 * @throws RemoteException
 	 * @see CheckoutPO
 	 */
-	public CheckoutPO findCheckout(long id) throws RemoteException;
+	public CheckoutPO findCheckout(String id) throws RemoteException;
 	
 	/**
 	 * @param id
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteCheckout(long id) throws RemoteException;
+	public ResultMessage deleteCheckout(String id) throws RemoteException;
 	
 	/**
 	 * @param checkout

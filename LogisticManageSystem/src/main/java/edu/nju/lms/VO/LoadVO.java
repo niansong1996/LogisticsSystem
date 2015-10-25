@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class LoadVO extends ListVO{
-	private Calendar loadDate;
-	private long businessHallNum;
-	private long motorNum;
-	
-	private long destiBusinessHall;
-	private long vehicleNum;
-	private long driverNum;
-	private ArrayList<Long> commodityNums;
+	private String loadDate;
+	//current businesshall
+	private String businessHallNum;
+	//qiyunbianhao
+	private String motorNum;
+	//destiny businesshall
+	private String destiBusinessHall;
+	//cheliangdaihao
+	private String vehicleNum;
+	private String driverNum;
+	private ArrayList<String> commodityNums;
 	
 	private double freight;
 	
-	public LoadVO(long id, Calendar loadDate, long businessHallNum,
-			long motorNum, long destiBusinessHall,
-			long vehicleNum, long driverNum, ArrayList<Long> commodityNums,
+	public LoadVO(String id, String loadDate, String businessHallNum,
+			String motorNum, String destiBusinessHall,
+			String vehicleNum, String driverNum, ArrayList<String> commodityNums,
 			double freight) {
 		super(id);
 		this.loadDate = loadDate;
@@ -30,59 +33,59 @@ public class LoadVO extends ListVO{
 		this.freight = freight;
 	}
 
-	public Calendar getLoadDate() {
+	public String getLoadDate() {
 		return loadDate;
 	}
 
-	public void setLoadDate(Calendar loadDate) {
+	public void setLoadDate(String loadDate) {
 		this.loadDate = loadDate;
 	}
 
-	public long getBusinessHallNum() {
+	public String getBusinessHallNum() {
 		return businessHallNum;
 	}
 
-	public void setBusinessHallNum(long businessHallNum) {
+	public void setBusinessHallNum(String businessHallNum) {
 		this.businessHallNum = businessHallNum;
 	}
 
-	public long getMotorNum() {
+	public String getMotorNum() {
 		return motorNum;
 	}
 
-	public void setMotorNum(long motorNum) {
+	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
 
-	public long getDestiBusinessHall() {
+	public String getDestiBusinessHall() {
 		return destiBusinessHall;
 	}
 
-	public void setDestiBusinessHall(long destiBusinessHall) {
+	public void setDestiBusinessHall(String destiBusinessHall) {
 		this.destiBusinessHall = destiBusinessHall;
 	}
 
-	public long getVehicleNum() {
+	public String getVehicleNum() {
 		return vehicleNum;
 	}
 
-	public void setVehicleNum(long vehicleNum) {
+	public void setVehicleNum(String vehicleNum) {
 		this.vehicleNum = vehicleNum;
 	}
 
-	public long getDriverNum() {
+	public String getDriverNum() {
 		return driverNum;
 	}
 
-	public void setDriverNum(long driverNum) {
+	public void setDriverNum(String driverNum) {
 		this.driverNum = driverNum;
 	}
 
-	public ArrayList<Long> getCommodityNums() {
+	public ArrayList<String> getCommodityNums() {
 		return commodityNums;
 	}
 
-	public void setCommodityNums(ArrayList<Long> commodityNums) {
+	public void setCommodityNums(ArrayList<String> commodityNums) {
 		this.commodityNums = commodityNums;
 	}
 

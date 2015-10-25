@@ -33,14 +33,14 @@ public interface FinanceAccountDataService {
 	 * @throws RemoteException
 	 * @see AccountPO
 	 */
-	public AccountPO findAccount(long id) throws RemoteException;
-	
+	public AccountPO findAccount(String id) throws RemoteException;
+
 	/**
 	 * @param id
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteAccount(long id) throws RemoteException;
+	public ResultMessage deleteAccount(String id) throws RemoteException;
 	
 	/**
 	 * @param Account

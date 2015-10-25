@@ -1,20 +1,23 @@
 package edu.nju.lms.VO;
 
 public class VehicleVO {
+	/**
+	 *plateNum is chepaihao,vehicleNum is cheliangdaihao 
+	 */
 	private String plateNum;
-	private long vehicleNum;
+	private String vehicleNum;
 	private int serviceYears;
 	
-	public VehicleVO(long vehicleNum, String plateNum, int serviceYears) {
+	public VehicleVO(String vehicleNum, String plateNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;
 		this.serviceYears = serviceYears;
 	}
-	public long getVehicleNum() {
+	public String getVehicleNum() {
 		return vehicleNum;
 	}
-	public void setVehicleNum(long vehicleNum) {
+	public void setVehicleNum(String vehicleNum) {
 		this.vehicleNum = vehicleNum;
 	}
 	public String getPlateNum() {

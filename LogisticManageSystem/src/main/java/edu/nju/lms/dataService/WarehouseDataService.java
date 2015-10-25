@@ -22,14 +22,14 @@ public interface WarehouseDataService {
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public WarehousePO findWarehouse(long id) throws RemoteException;
+	public WarehousePO findWarehouse(String id) throws RemoteException;
 	
 	/**
 	 * @param id
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteWarehouse(long id) throws RemoteException;
+	public ResultMessage deleteWarehouse(String id) throws RemoteException;
 	
 	/**
 	 * @param warehouse

@@ -24,14 +24,14 @@ public interface WarehouseCheckinDataService {
 	 * @throws RemoteException
 	 * @see CheckinPO
 	 */
-	public CheckinPO findCheckin(long id) throws RemoteException;
+	public CheckinPO findCheckin(String id) throws RemoteException;
 	
 	/**
 	 * @param id
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteCheckin(long id) throws RemoteException;
+	public ResultMessage deleteCheckin(String id) throws RemoteException;
 	
 	/**
 	 * @param checkin

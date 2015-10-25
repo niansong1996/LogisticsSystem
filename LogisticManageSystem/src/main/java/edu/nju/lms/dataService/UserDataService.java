@@ -25,7 +25,7 @@ public interface UserDataService {
 	 * @return UserPO
 	 * @throws RemoteException
 	 */
-	public UserPO findUser(long id) throws RemoteException;
+	public UserPO findUser(String id) throws RemoteException;
 	
 	/**
 	 * delete the info of a user
@@ -33,7 +33,7 @@ public interface UserDataService {
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteUser(long id) throws RemoteException;
+	public ResultMessage deleteUser(String id) throws RemoteException;
 	
 	/**
 	 * update the info of a user

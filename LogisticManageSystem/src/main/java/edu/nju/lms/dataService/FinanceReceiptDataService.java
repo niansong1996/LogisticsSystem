@@ -32,7 +32,7 @@ public interface FinanceReceiptDataService {
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteReceipt(long id) throws RemoteException;
+	public ResultMessage deleteReceipt(String id) throws RemoteException;
 	
 	/**
 	 * @param ReceiptPO

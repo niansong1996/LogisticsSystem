@@ -3,16 +3,29 @@ package edu.nju.lms.VO;
 import java.util.ArrayList;
 import java.util.Map;
 
+import edu.nju.lms.PO.CheckinPO;
+import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.PO.Location;
 import edu.nju.lms.data.Partition;
 
 public class WarehouseVO {
 
-	//按时间时间段显示还没写,感觉有的还有问题
+	private ArrayList<CheckinPO> checkInlists;
+	private ArrayList<CheckoutPO> checkOutlists;
 	private double cordon;
 	private  ArrayList<Partition> partitionInfor;
 	private Map<Long,Location> expressNums;
 	
+	public WarehouseVO(ArrayList<CheckinPO> checkInlists,
+			ArrayList<CheckoutPO> checkOutlists, double cordon,
+			ArrayList<Partition> partitionInfor, Map<Long, Location> expressNums) {
+		super();
+		this.checkInlists = checkInlists;
+		this.checkOutlists = checkOutlists;
+		this.cordon = cordon;
+		this.partitionInfor = partitionInfor;
+		this.expressNums = expressNums;
+	}
 	
 	public double getCordon() {
 		return cordon;
@@ -31,6 +44,18 @@ public class WarehouseVO {
 	}
 	public void setExpressNums(Map<Long, Location> expressNums) {
 		this.expressNums = expressNums;
+	}
+	public ArrayList<CheckinPO> getCheckInlists() {
+		return checkInlists;
+	}
+	public void setCheckInlists(ArrayList<CheckinPO> checkInlists) {
+		this.checkInlists = checkInlists;
+	}
+	public ArrayList<CheckoutPO> getCheckOutlists() {
+		return checkOutlists;
+	}
+	public void setCheckOutlists(ArrayList<CheckoutPO> checkOutlists) {
+		this.checkOutlists = checkOutlists;
 	}
 	
 	

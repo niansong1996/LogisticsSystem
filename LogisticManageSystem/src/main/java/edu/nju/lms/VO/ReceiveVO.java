@@ -10,9 +10,9 @@ import edu.nju.lms.data.ListType;
  */
 public class ReceiveVO extends ListVO {
 	private String receiverName;
-	private Calendar receiveTime;
-	private long expressNum;
-	public ReceiveVO(long id, long expressNum) {
+	private String receiveTime;
+	private String expressNum;
+	public ReceiveVO(String id, String expressNum) {
 		super(id);
 		this.expressNum = expressNum;
 		this.type = ListType.RECEIVE;
@@ -23,16 +23,16 @@ public class ReceiveVO extends ListVO {
 	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
 	}
-	public Calendar getReceiveTime() {
+	public String getReceiveTime() {
 		return receiveTime;
 	}
-	public void setReceiveTime(Calendar receiveTime) {
+	public void setReceiveTime(String receiveTime) {
 		this.receiveTime = receiveTime;
 	}
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 

@@ -7,11 +7,11 @@ package edu.nju.lms.VO;
  */
 public class SalaryStrategyVO {
 	private String type;
-	private int basic;
+	private double basic;
 	private int perTime;
-	private int bonus;
+	private double bonus;
 	
-	public SalaryStrategyVO(String type,  int basic, int perTime, int bonus) {
+	public SalaryStrategyVO(String type,  double basic, int perTime, double bonus) {
 		super();
 		this.type = type;
 		this.basic = basic;
@@ -24,10 +24,10 @@ public class SalaryStrategyVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getBasic() {
+	public double getBasic() {
 		return basic;
 	}
-	public void setBasic(int basic) {
+	public void setBasic(double basic) {
 		this.basic = basic;
 	}
 	public int getPerTime() {
@@ -36,10 +36,10 @@ public class SalaryStrategyVO {
 	public void setPerTime(int perTime) {
 		this.perTime = perTime;
 	}
-	public int getBonus() {
+	public double getBonus() {
 		return bonus;
 	}
-	public void setBonus(int bonus) {
+	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
 	

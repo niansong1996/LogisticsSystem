@@ -11,26 +11,28 @@ import edu.nju.lms.data.LoadType;
  *@date 2015年10月24日
  */
 public class TransportVO extends ListVO{
-	//load type
+		//load type
 		private LoadType loadType;
-		//װ������
-		private Calendar loadDate;
-		//Ӫҵ�����
-		private long businessHallNum;
-		//���˱��
-		private long motorNum;
-		//������ת���Ļ�Ӫҵ��
+		//load date
+		private String loadDate;
+		//the number of yingyeting
+		private String businessHallNum;
+		//qiyunbianhao
+		private String motorNum;
+		//destiny
 		private CityPO destiCity;
-		private long destiBusinessHall;
-		private long vehicleNum;
-		private long driverNum;
-		//����װ�����ж���������
-		private ArrayList<Long> commodityNums;
+		//the number of destiny businesshall
+		private String destiBusinessHall;
+		//cheliangdaihao
+		private String vehicleNum;
+		private String driverNum;
+		//kuaidibianhao
+		private ArrayList<String> commodityNums;
 		
 		private double freight;
 
-		public TransportVO(long id,LoadType loadType,Calendar loadDate, long businessHallNum, long motorNum, CityPO destiCity, long destiBusinessHall,
-				long vehicleNum, long driverNum, ArrayList<Long> commodityNums, double freight) {
+		public TransportVO(String id,LoadType loadType,String loadDate, String businessHallNum, String motorNum, CityPO destiCity, String destiBusinessHall,
+				String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
 			super(id);
 			this.loadType = loadType;
 			this.loadDate = loadDate;
@@ -38,8 +40,7 @@ public class TransportVO extends ListVO{
 			this.motorNum = motorNum;
 			this.destiCity = destiCity;
 			this.destiBusinessHall = destiBusinessHall;
-			this.vehicleNum = vehicleNum;
-			//��װԱ��Ѻ��Ա��˾��������driver 
+			this.vehicleNum = vehicleNum; 
 			this.driverNum = driverNum;
 			this.commodityNums = commodityNums;
 			this.freight = freight;
@@ -50,27 +51,27 @@ public class TransportVO extends ListVO{
 	    public void setLoadType (LoadType loadType){
 	    	this.loadType =  loadType;
 	    }
-		public Calendar getLoadDate() {
+		public String getLoadDate() {
 			return loadDate;
 		}
 
-		public void setLoadDate(Calendar loadDate) {
+		public void setLoadDate(String loadDate) {
 			this.loadDate = loadDate;
 		}
 
-		public long getBusinessHallNum() {
+		public String getBusinessHallNum() {
 			return businessHallNum;
 		}
 
-		public void setBusinessHallNum(long businessHallNum) {
+		public void setBusinessHallNum(String businessHallNum) {
 			this.businessHallNum = businessHallNum;
 		}
 
-		public long getMotorNum() {
+		public String getMotorNum() {
 			return motorNum;
 		}
 
-		public void setMotorNum(long motorNum) {
+		public void setMotorNum(String motorNum) {
 			this.motorNum = motorNum;
 		}
 
@@ -82,35 +83,35 @@ public class TransportVO extends ListVO{
 			this.destiCity = destiCity;
 		}
 
-		public long getDestiBusinessHall() {
+		public String getDestiBusinessHall() {
 			return destiBusinessHall;
 		}
 
-		public void setDestiBusinessHall(long destiBusinessHall) {
+		public void setDestiBusinessHall(String destiBusinessHall) {
 			this.destiBusinessHall = destiBusinessHall;
 		}
 
-		public long getVehicleNum() {
+		public String getVehicleNum() {
 			return vehicleNum;
 		}
 
-		public void setVehicleNum(long vehicleNum) {
+		public void setVehicleNum(String vehicleNum) {
 			this.vehicleNum = vehicleNum;
 		}
 
-		public long getDriverNum() {
+		public String getDriverNum() {
 			return driverNum;
 		}
 
-		public void setDriverNum(long driverNum) {
+		public void setDriverNum(String driverNum) {
 			this.driverNum = driverNum;
 		}
 
-		public ArrayList<Long> getCommodityNums() {
+		public ArrayList<String> getCommodityNums() {
 			return commodityNums;
 		}
 
-		public void setCommodityNums(ArrayList<Long> commodityNums) {
+		public void setCommodityNums(ArrayList<String> commodityNums) {
 			this.commodityNums = commodityNums;
 		}
 
