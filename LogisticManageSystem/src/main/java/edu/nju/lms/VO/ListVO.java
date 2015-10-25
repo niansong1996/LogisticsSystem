@@ -8,18 +8,18 @@ import edu.nju.lms.data.ListType;
  *@date 2015年10月24日
  */
 public class ListVO {
-	protected long id;
+	protected String id;
 	protected ListState state;
 	protected ListType type;
-	public ListVO(long id) {
+	public ListVO(String id) {
 		super();
 		this.id = id;
 		this.state = ListState.WAITING;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public ListState getState() {

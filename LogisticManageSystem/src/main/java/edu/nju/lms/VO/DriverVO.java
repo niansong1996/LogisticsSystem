@@ -1,23 +1,21 @@
 package edu.nju.lms.VO;
 
-import java.util.Calendar;
-
 /**
  *@author tj
  *@date 2015年10月24日
  */
 public class DriverVO {
-	private long driverNum;
+	private String driverNum;
 	private String driverName;
-	private Calendar birth;
-	private long idNum;
-	private long phoneNum;
+	private String birth;
+	private String idNum;
+	private String phoneNum;
 	//0表示男，1表示女
 	private int sex;
 	//行驶证期限
-	private Calendar drivingLimit;
-	public DriverVO(long driverNum, String driverName, Calendar birth, long idNum, long phoneNum, int sex,
-			Calendar drivingLimit) {
+	private String drivingLimit;
+	public DriverVO(String driverNum, String driverName, String birth, String idNum, String phoneNum, int sex,
+			String drivingLimit) {
 		super();
 		this.driverNum = driverNum;
 		this.driverName = driverName;
@@ -27,10 +25,10 @@ public class DriverVO {
 		this.sex = sex;
 		this.drivingLimit = drivingLimit;
 	}
-	public long getDriverNum() {
+	public String getDriverNum() {
 		return driverNum;
 	}
-	public void setDriverNum(long driverNum) {
+	public void setDriverNum(String driverNum) {
 		this.driverNum = driverNum;
 	}
 	public String getDriverName() {
@@ -39,22 +37,22 @@ public class DriverVO {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
-	public Calendar getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Calendar birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public long getIdNum() {
+	public String getIdNum() {
 		return idNum;
 	}
-	public void setIdNum(long idNum) {
+	public void setIdNum(String idNum) {
 		this.idNum = idNum;
 	}
-	public long getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
-	public void setPhoneNum(long phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	public int getSex() {
@@ -63,10 +61,10 @@ public class DriverVO {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public Calendar getDrivingLimit() {
+	public String getDrivingLimit() {
 		return drivingLimit;
 	}
-	public void setDrivingLimit(Calendar drivingLimit) {
+	public void setDrivingLimit(String drivingLimit) {
 		this.drivingLimit = drivingLimit;
 	}
 }

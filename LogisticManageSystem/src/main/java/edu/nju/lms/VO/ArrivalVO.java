@@ -10,15 +10,15 @@ import edu.nju.lms.data.ArrivalState;
  */
 public class ArrivalVO extends ListVO{
 	private ArrivalState arrivalState;
-	private long expressNum;
+	private String expressNum;
 	private String destination;
 	//出发地 
 	private String setOut;
-	private Calendar arrivalDate;
+	private String arrivalDate;
 	//optional  中转中心编号,只有在中转中心到达时才有 
-    private long transitNum;
+    private String transitNum;
 	
-	public ArrivalVO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, Calendar arrivalDate) {
+	public ArrivalVO(String id,ArrivalState arrivalState, String expressNum, String destination,String setOut, String arrivalDate) {
 		super(id);
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
@@ -27,8 +27,8 @@ public class ArrivalVO extends ListVO{
 		this.arrivalDate = arrivalDate;
 	}
 	
-	public ArrivalVO(long id, long expressNum, String destination,String setOut,
-			Calendar arrivalDate,
+	public ArrivalVO(String id, String expressNum, String destination,String setOut,
+			String arrivalDate,
 			long shipmentNum) {
 		super(id);
 		this.arrivalState = ArrivalState.COMPLETE;
@@ -38,8 +38,8 @@ public class ArrivalVO extends ListVO{
 		this.arrivalDate = arrivalDate;
 
 	}
-	public ArrivalVO(long id,ArrivalState arrivalState, long expressNum, String destination,String setOut, 
-			Calendar arrivalDate,long transitNum) {
+	public ArrivalVO(String id,ArrivalState arrivalState, String expressNum, String destination,String setOut, 
+			String arrivalDate,String transitNum) {
 		super(id);
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
@@ -48,8 +48,8 @@ public class ArrivalVO extends ListVO{
 		this.arrivalDate = arrivalDate;
 		this.transitNum = transitNum;
 	}
-	public ArrivalVO(long id, long expressNum, String destination,String setOut, Calendar arrivalDate,long shipmentNum
-			,long transitNum) {
+	public ArrivalVO(String id, String expressNum, String destination,String setOut, String arrivalDate,long shipmentNum
+			,String transitNum) {
 		super(id);
 		this.arrivalState = ArrivalState.COMPLETE;
 		this.expressNum = expressNum;
@@ -58,11 +58,11 @@ public class ArrivalVO extends ListVO{
 		this.arrivalDate = arrivalDate;
 		this.transitNum = transitNum;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -74,11 +74,11 @@ public class ArrivalVO extends ListVO{
 		this.arrivalState = arrivalState;
 	}
 
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
 
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 
@@ -90,11 +90,11 @@ public class ArrivalVO extends ListVO{
 		this.destination = destination;
 	}
 
-	public Calendar getArrivalDate() {
+	public String getArrivalDate() {
 		return arrivalDate;
 	}
 
-	public void setArrivalDate(Calendar arrivalDate) {
+	public void setArrivalDate(String arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
 
@@ -106,11 +106,11 @@ public class ArrivalVO extends ListVO{
 		this.setOut = setOut;
 	}
 
-	public long getTransitNum() {
+	public String getTransitNum() {
 		return transitNum;
 	}
 
-	public void setTransitNum(long transitNum) {
+	public void setTransitNum(String transitNum) {
 		this.transitNum = transitNum;
 	}
 	

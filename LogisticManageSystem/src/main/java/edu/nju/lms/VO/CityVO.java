@@ -7,26 +7,25 @@ import java.util.ArrayList;
  *@date 2015年10月25日
  */
 public class CityVO {
-	private long id;
+	private String id;
 	private String name;
 	//���ж�Ӧ����ת���ı��
-	private long cityNum;
+	private String cityNum;
 	//the business halls' numbers that belongs to the city
-	private ArrayList<Long> businessNums;
+	private ArrayList<String> businessNums;
 	
-	public CityVO(long id,String name, long cityNum, ArrayList<Long> businessNums) {
-		super();
+	public CityVO(String id,String name, String cityNum, ArrayList<String> businessNums) {
 		this.id = id;
 		this.name = name;
 		this.cityNum = cityNum;
 		this.businessNums = businessNums;
 	}
     
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -38,19 +37,19 @@ public class CityVO {
 		this.name = name;
 	}
 
-	public long getCityNum() {
+	public String getCityNum() {
 		return cityNum;
 	}
 
-	public void setCityNum(long cityNum) {
+	public void setCityNum(String cityNum) {
 		this.cityNum = cityNum;
 	}
 
-	public ArrayList<Long> getBusinessNums() {
+	public ArrayList<String> getBusinessNums() {
 		return businessNums;
 	}
 
-	public void setBusinessNums(ArrayList<Long> businessNums) {
+	public void setBusinessNums(ArrayList<String> businessNums) {
 		this.businessNums = businessNums;
 	}
 	

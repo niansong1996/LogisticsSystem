@@ -10,9 +10,9 @@ public class EarningVO {
 	private double payment;
 	private double profit;
 	private String date;
-	private long id;
+	private String id;
 	public EarningVO(double earnings, double payment,
-			double profit, String date, long id) {
+			double profit, String date, String id) {
 		this.earnings = earnings;
 		this.payment = payment;
 		this.profit = profit;
@@ -43,10 +43,10 @@ public class EarningVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

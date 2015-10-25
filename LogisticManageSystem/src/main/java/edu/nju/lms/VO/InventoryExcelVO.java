@@ -1,5 +1,6 @@
 package edu.nju.lms.VO;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
@@ -11,40 +12,56 @@ import edu.nju.lms.PO.Location;
  */
 public class InventoryExcelVO {
 	
-	private Map<Long,Location> expressNums;
-	private Map<Long,Calendar> checkinTime;
-	private Map<Long,String> destination;
 	
-	public InventoryExcelVO(Map<Long, Location> expressNums, Map<Long, Calendar> checkinTime,
-			Map<Long, String> destination) {
+	private ArrayList<String> expressNums;
+	
+	private ArrayList<String> checkinTime;
+	
+	private ArrayList<String> destination;
+	
+	private ArrayList<String> id;
+
+	
+	
+	public InventoryExcelVO(ArrayList<String> expressNums, ArrayList<String> checkinTime, ArrayList<String> destination,
+			ArrayList<String> id) {
 		super();
 		this.expressNums = expressNums;
 		this.checkinTime = checkinTime;
 		this.destination = destination;
+		this.id = id;
 	}
 
-	public Map<Long, Location> getExpressNums() {
+	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}
 
-	public void setExpressNums(Map<Long, Location> expressNums) {
+	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
 
-	public Map<Long, Calendar> getCheckinTime() {
+	public ArrayList<String> getCheckinTime() {
 		return checkinTime;
 	}
 
-	public void setCheckinTime(Map<Long, Calendar> checkinTime) {
+	public void setCheckinTime(ArrayList<String> checkinTime) {
 		this.checkinTime = checkinTime;
 	}
 
-	public Map<Long, String> getDestination() {
+	public ArrayList<String> getDestination() {
 		return destination;
 	}
 
-	public void setDestination(Map<Long, String> destination) {
+	public void setDestination(ArrayList<String> destination) {
 		this.destination = destination;
+	}
+
+	public ArrayList<String> getId() {
+		return id;
+	}
+
+	public void setId(ArrayList<String> id) {
+		this.id = id;
 	}
 	
 	

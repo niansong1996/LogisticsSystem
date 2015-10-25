@@ -7,18 +7,24 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.data.PartitionType;
 
 public class CheckoutVO extends ListVO{
-	private ArrayList<Long> expressNums;
-	private Calendar checkoutDate;
-	private CityPO destination;
+	private ArrayList<String> expressNums;
+	private String checkoutDate;
+	private String destination;
 	private PartitionType loadType;
-	private long arrivalNum;
-	private long motorNum;
+	/**
+	 * arrival list id
+	 */
+	private String arrivalNum;
+	/**
+	 * qi yun bian hao 
+	 */
+	private String motorNum;
 	
 	
 	
-	public CheckoutVO(long id,ArrayList<Long> expressNums, Calendar checkoutDate,
-			CityPO destination, PartitionType loadType, long arrivalNum,
-			long motorNum) {
+	public CheckoutVO(String id,ArrayList<String> expressNums, String checkoutDate,
+			String destination, PartitionType loadType, String arrivalNum,
+			String motorNum) {
 		super(id);
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
@@ -27,22 +33,22 @@ public class CheckoutVO extends ListVO{
 		this.arrivalNum = arrivalNum;
 		this.motorNum = motorNum;
 	}
-	public ArrayList<Long> getExpressNums() {
+	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}
-	public void setExpressNums(ArrayList<Long> expressNums) {
+	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
-	public Calendar getCheckoutDate() {
+	public String getCheckoutDate() {
 		return checkoutDate;
 	}
-	public void setCheckoutDate(Calendar checkoutDate) {
+	public void setCheckoutDate(String checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
-	public CityPO getDestination() {
+	public String getDestination() {
 		return destination;
 	}
-	public void setDestination(CityPO destination) {
+	public void setDestination(String destination) {
 		this.destination = destination;
 	}
 	public PartitionType getLoadType() {
@@ -51,16 +57,16 @@ public class CheckoutVO extends ListVO{
 	public void setLoadType(PartitionType loadType) {
 		this.loadType = loadType;
 	}
-	public long getArrivalNum() {
+	public String getArrivalNum() {
 		return arrivalNum;
 	}
-	public void setArrivalNum(long arrivalNum) {
+	public void setArrivalNum(String arrivalNum) {
 		this.arrivalNum = arrivalNum;
 	}
-	public long getMotorNum() {
+	public String getMotorNum() {
 		return motorNum;
 	}
-	public void setMotorNum(long motorNum) {
+	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
 	

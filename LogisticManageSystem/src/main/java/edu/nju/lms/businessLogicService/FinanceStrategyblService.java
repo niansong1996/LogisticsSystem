@@ -1,5 +1,7 @@
-package edu.nju.lms.VO;
+package edu.nju.lms.businessLogicService;
 
+import edu.nju.lms.VO.PriceStrategyVO;
+import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.data.ResultMessage;
 
 /**
