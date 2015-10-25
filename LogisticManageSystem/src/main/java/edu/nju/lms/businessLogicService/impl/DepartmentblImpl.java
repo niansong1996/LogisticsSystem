@@ -41,7 +41,7 @@ public class DepartmentblImpl implements DepartmentblService {
 
 	public CityVO findCity(String id) {
 		// TODO Auto-generated method stub
-		return new CityVO(id, "XuZhou", 051, new ArrayList<String>());
+		return new CityVO(id,"XuZhou","025",new ArrayList<String>());
 	}
 
 }

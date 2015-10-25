@@ -1,29 +1,33 @@
 package edu.nju.lms.businessLogicService.impl;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.businessLogicService.WarehouseOpblService;
+import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 
 public class WareHouseOpblImpl implements WarehouseOpblService {
 
-	public CheckinVO createCheckinList(CheckinVO baseMessage, long warehouseNum) {
-		return null;
+	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
+		return new CheckinVO("1234567990",new String[20],"2015/4/6",new String[20]);
 	}
 
-	public ResultMessage saveCheckinList(CheckinVO checkinList, long warehouseNum) {
+	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true,null);
 	}
 
-	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, long warehouseNum) {
+	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
 		// TODO Auto-generated method stub
-		return null;
+		return new CheckoutVO("0124567890",new ArrayList<String>(),"2015/8/21","Peking",PartitionType.CAR,
+				"1234567895","5789412560");
 	}
 
-	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, long warehouseNum) {
+	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true,null);
 	}
 
 }

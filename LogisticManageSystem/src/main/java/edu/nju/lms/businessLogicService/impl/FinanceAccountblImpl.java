@@ -16,24 +16,24 @@ public class FinanceAccountblImpl implements FinanceAccountblService {
 		return new ResultMessage(true,null);
 	}
 
-	public AccountVO showAccount(long id) {
+	public AccountVO showAccount(String id) {
 		// TODO Auto-generated method stub
-	    return null;
+	    return new AccountVO("工商银行",100000);
 	}
 
-	public ResultMessage deleteAccount(long id) {
+	public ResultMessage deleteAccount(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true,null);
 	}
 
 	public ResultMessage updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true,null);
 	}
 
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true,null);
 	}
 
 }
