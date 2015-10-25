@@ -3,6 +3,7 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Map;
 
+import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 
 /**
@@ -78,59 +79,5 @@ public class WarehousePO {
 
 	public void setPartitionInfor(ArrayList<Partition> partitionInfor) {
 		this.partitionInfor = partitionInfor;
-	}
-
-
-
-	//分区信息
-	class Partition{
-		//分区大小
-		int capacity;
-		int startRow;
-		int endRow;
-		PartitionType type;
-		
-		public Partition(int capacity, int startRow, int endRow,PartitionType type) {
-			super();
-			this.capacity = capacity;
-			this.startRow = startRow;
-			this.endRow = endRow;
-			this.type = type;
-		}
-
-		public int getCapacity() {
-			return capacity;
-		}
-
-		public void setCapacity(int capacity) {
-			this.capacity = capacity;
-		}
-
-		public int getStartRow() {
-			return startRow;
-		}
-
-		public void setStartRow(int startRow) {
-			this.startRow = startRow;
-		}
-
-		public int getEndRow() {
-			return endRow;
-		}
-
-		public void setEndRow(int endRow) {
-			this.endRow = endRow;
-		}
-
-		public PartitionType getType() {
-			return type;
-		}
-
-		public void setType(PartitionType type) {
-			this.type = type;
-		}
-		
-		
-
 	}
 }
