@@ -19,17 +19,17 @@ public class InventoryExcelVO {
 	
 	private ArrayList<String> destination;
 	
-	private ArrayList<String> id;
+	private ArrayList<String> location;
 
 	
 	
 	public InventoryExcelVO(ArrayList<String> expressNums, ArrayList<String> checkinTime, ArrayList<String> destination,
-			ArrayList<String> id) {
+			ArrayList<String> location) {
 		super();
 		this.expressNums = expressNums;
 		this.checkinTime = checkinTime;
 		this.destination = destination;
-		this.id = id;
+		this.location = location;
 	}
 
 	public ArrayList<String> getExpressNums() {
@@ -56,12 +56,12 @@ public class InventoryExcelVO {
 		this.destination = destination;
 	}
 
-	public ArrayList<String> getId() {
-		return id;
+	public ArrayList<String> getLocation() {
+		return location;
 	}
 
-	public void setId(ArrayList<String> id) {
-		this.id = id;
+	public void setLocation(ArrayList<String> location) {
+		this.location = location;
 	}
 	
 	

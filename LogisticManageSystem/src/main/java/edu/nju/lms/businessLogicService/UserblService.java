@@ -17,7 +17,7 @@ public interface UserblService {
 	 * @param id
 	 * @return {@link UserVO}
 	 */
-	public UserPO findUserInfo(String id);
+	public UserVO findUserInfo(String id);
 	
 	/**
 	 * find a {@link UserPO} by id and then delete it
