@@ -8,9 +8,9 @@ import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.TransportListService;
+import edu.nju.lms.dataService.TransportListDataService;
 
-public class TransportListDataImpl {
+public class TransportListDataImpl implements TransportListDataService {
 
 	public ResultMessage addSend(SendPO send) throws RemoteException {
 		return new ResultMessage(true, "");

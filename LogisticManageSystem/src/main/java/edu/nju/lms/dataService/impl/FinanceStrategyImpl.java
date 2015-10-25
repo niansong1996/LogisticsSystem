@@ -6,9 +6,9 @@ import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.FinanceStrategy;
+import edu.nju.lms.dataService.FinanceStrategyDataService;
 
-public class FinanceStrategyImpl implements FinanceStrategy{
+public class FinanceStrategyImpl implements FinanceStrategyDataService{
 
 	public ResultMessage addPriceStrategy(PriceStrategyPO PriceStrategy)
 			throws RemoteException {
