@@ -4,12 +4,12 @@ import edu.nju.lms.data.PersonType;
 
 public class SalaryStrategyPO {
 	private PersonType type;
-	private int basic;
+	private double basic;
 	private int perTime;
-	private int bonus;
+	private double bonus;
 	
-	public SalaryStrategyPO(PersonType type, int basic, 
-			int pertime,int bonus) {
+	public SalaryStrategyPO(PersonType type, double basic, 
+			int pertime,double bonus) {
 		this.type = type;
 		this.basic = basic;
 		this.perTime = pertime;
@@ -24,11 +24,11 @@ public class SalaryStrategyPO {
 		this.type = type;
 	}
 
-	public int getBasic() {
+	public double getBasic() {
 		return basic;
 	}
 
-	public void setBasic(int basic) {
+	public void setBasic(double basic) {
 		this.basic = basic;
 	}
 
@@ -40,11 +40,11 @@ public class SalaryStrategyPO {
 		this.perTime = perTime;
 	}
 
-	public int getBonus() {
+	public double getBonus() {
 		return bonus;
 	}
 
-	public void setBonus(int bonus) {
+	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
 	
