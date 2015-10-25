@@ -11,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  * 2015/10/25
  */
-public interface FinanceStrategy {
+public interface FinanceStrategyDataService {
 	/**
 	 * @param PriceStrategy
 	 * @return ResultMessage

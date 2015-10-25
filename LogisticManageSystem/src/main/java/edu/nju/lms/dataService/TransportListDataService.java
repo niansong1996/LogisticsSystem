@@ -9,7 +9,7 @@ import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface TransportListService {
+public interface TransportListDataService {
 	
 	public ResultMessage addSend(SendPO send) throws RemoteException;
 	public ResultMessage deleteSend(String id) throws RemoteException;

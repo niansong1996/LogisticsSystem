@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface TransportCommdityService {
+public interface TransportCommdityDataService {
 	
 	public ResultMessage addCommodity(CommodityPO commodity) throws RemoteException;
 	public CommodityPO findCommodity(String id) throws RemoteException;

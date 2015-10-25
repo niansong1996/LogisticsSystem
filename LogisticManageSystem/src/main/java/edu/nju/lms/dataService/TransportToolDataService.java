@@ -6,7 +6,7 @@ import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.VehiclePO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface TransportToolService {
+public interface TransportToolDataService {
 	
 	public ResultMessage addVehicle(VehiclePO vehicle) throws RemoteException;
 	public VehiclePO findVehicle(String id) throws RemoteException;

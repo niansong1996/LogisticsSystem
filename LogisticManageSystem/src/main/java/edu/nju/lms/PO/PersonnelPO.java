@@ -1,4 +1,7 @@
 package edu.nju.lms.PO;
+
+import edu.nju.lms.data.PersonType;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -6,10 +9,10 @@ package edu.nju.lms.PO;
 public class PersonnelPO {
 	private String name;
 	private String departmentNum;
-	private PersonnelPO duty;
+	private PersonType duty;
 	private double salary;
 	
-	public PersonnelPO(String name, String departmentNum, PersonnelPO duty, double salary) {
+	public PersonnelPO(String name, String departmentNum, PersonType duty, double salary) {
 		super();
 		this.name = name;
 		this.departmentNum = departmentNum;
@@ -33,11 +36,11 @@ public class PersonnelPO {
 		this.departmentNum = departmentNum;
 	}
 
-	public PersonnelPO getDuty() {
+	public PersonType getDuty() {
 		return duty;
 	}
 
-	public void setDuty(PersonnelPO duty) {
+	public void setDuty(PersonType duty) {
 		this.duty = duty;
 	}
 

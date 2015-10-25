@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface PersonnelService {
+public interface PersonnelDataService {
 	
 	public ResultMessage addPersonnel(PersonnelPO personnel) throws RemoteException;
 	public PersonnelPO findPersonnel(String id) throws RemoteException;
