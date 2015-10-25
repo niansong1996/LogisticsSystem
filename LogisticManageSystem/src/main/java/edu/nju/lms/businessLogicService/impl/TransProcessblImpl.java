@@ -39,33 +39,27 @@ public class TransProcessblImpl implements TransProcessblService {
 	}
 
 	public ResultMessage saveLoadList(LoadVO loadList) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true, "");
 	}
 
 	public ArrivalVO createArrivalList(ArrivalState state, String orderNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrivalVO("0000000000", ArrivalState.COMPLETE, "0000000000", "北京", "南京", "0000000000");
 	}
 
 	public ResultMessage saveArrivalList(ArrivalVO arrivalList) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(false, "");
 	}
 
 	public DispatchVO createDispatchList(String courierNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return new DispatchVO("0000000000", "zhangsan", "2015/01/04", "0000000000");
 	}
 
 	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true, "");
 	}
 
 	public ResultMessage saveTransportList(TransportVO transportInfor) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResultMessage(true, "");
 	}
 
 }
