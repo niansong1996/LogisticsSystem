@@ -4,17 +4,22 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
+import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.PO.InitialInforPO;
+import edu.nju.lms.PO.PersonnelPO;
+import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 
 public class FinanceAccountDataImpl implements FinanceAccountDataService{
 
-	public ResultMessage addInitialInfo(InitialInforPO InitialInfo)
-			throws RemoteException {
-		
-		ArrayList<InitialInforPO> list=new ArrayList<InitialInforPO>();
-		list.add(InitialInfo);
+	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException {
+		ArrayList<DepartmentPO> departments=new ArrayList<DepartmentPO>();
+		ArrayList<PersonnelPO> personnel=new ArrayList<PersonnelPO>();
+		ArrayList<String> cars=new ArrayList<String>();
+		ArrayList<WarehousePO> warehouses=new ArrayList<WarehousePO>();
+		ArrayList<AccountPO> accounts=new ArrayList<AccountPO>();
+		InitialInforPO po=new InitialInforPO(departments,personnel,cars,warehouses,accounts);
 		
 		return new ResultMessage(true,"");
 	}
