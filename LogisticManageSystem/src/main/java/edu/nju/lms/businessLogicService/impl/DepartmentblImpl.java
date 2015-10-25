@@ -41,6 +41,8 @@ public class DepartmentblImpl implements DepartmentblService {
 
 	public CityVO findCity(String id) {
 		// TODO Auto-generated method stub
+		ArrayList<String> businessNums = new ArrayList<String>();
+		businessNums.add("025457963126");
 		return new CityVO(id,"XuZhou","025",new ArrayList<String>());
 	}
 

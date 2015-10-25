@@ -23,7 +23,7 @@ public interface FinanceReceiptblService {
 	 */
 	public ArrayList<ReceiptVO>  showReceiptVO (Calendar date, String department);
 	
-	public long getReceiptSum(Calendar date);
+	public double getReceiptSum(Calendar date);
 	
 	public ArrayList<ReceiptVO>  showReceiptList (Calendar date);
 	

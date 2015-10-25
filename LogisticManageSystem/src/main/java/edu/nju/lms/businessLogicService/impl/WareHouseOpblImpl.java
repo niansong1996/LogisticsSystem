@@ -11,7 +11,9 @@ import edu.nju.lms.data.ResultMessage;
 public class WareHouseOpblImpl implements WarehouseOpblService {
 
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
-		return new CheckinVO("1234567990",new String[20],"2015/4/6",new String[20]);
+		String[] expresses = {"124567895"};
+		String[] exDestination = {"Shanghai"};
+		return new CheckinVO("1234567990",expresses,"2015/4/6",exDestination);
 	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
@@ -21,7 +23,9 @@ public class WareHouseOpblImpl implements WarehouseOpblService {
 
 	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
 		// TODO Auto-generated method stub
-		return new CheckoutVO("0124567890",new ArrayList<String>(),"2015/8/21","Peking",PartitionType.CAR,
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("145875610");
+		return new CheckoutVO("0124567890",expressNums,"2015/8/21","Peking",PartitionType.CAR,
 				"1234567895","5789412560");
 	}
 
