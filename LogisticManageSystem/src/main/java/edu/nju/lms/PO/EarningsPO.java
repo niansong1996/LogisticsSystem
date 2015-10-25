@@ -7,8 +7,8 @@ public class EarningsPO extends ListPO{
 	private double payment;
 	private double profit;
 	private Calendar date;
-	private long id;
-	public EarningsPO(long id,double earnings, double payment, Calendar date) {
+	private String id;
+	public EarningsPO(String id,double earnings, double payment, Calendar date) {
 		super(id);
 		this.earnings = earnings;
 		this.payment = payment;
@@ -46,11 +46,11 @@ public class EarningsPO extends ListPO{
 		this.date = date;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

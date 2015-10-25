@@ -11,7 +11,12 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年10月25日
  */
 public interface LogblService {
-	//查找该时间段内的操作记录
+	/**
+	 * to find the operation record within the period of time
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
 	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end);
 
 	public ResultMessage addLog(OperationVO op);

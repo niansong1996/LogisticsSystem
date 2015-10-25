@@ -15,8 +15,13 @@ public interface FinanceReceiptblService {
 	public ReceiptVO createReceipt(ReceiptVO debit);
 	
 	public ResultMessage saveReceipt(ReceiptVO debit);
-	
-	public ArrayList<ReceiptVO>  showReceiptVO (Calendar date, long department);
+	/**
+	 * 
+	 * @param date
+	 * @param department number
+	 * @return
+	 */
+	public ArrayList<ReceiptVO>  showReceiptVO (Calendar date, String department);
 	
 	public long getReceiptSum(Calendar date);
 	

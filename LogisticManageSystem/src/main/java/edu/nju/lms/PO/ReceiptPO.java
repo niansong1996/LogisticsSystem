@@ -10,10 +10,10 @@ import java.util.Calendar;
 public class ReceiptPO extends ListPO {
 	private Calendar receiptDate;
 	private double amount;
-	private long courierNum;
-	private ArrayList<Long> expressNums;
+	private String courierNum;
+	private ArrayList<String> expressNums;
 	
-	public ReceiptPO(long id,Calendar receiptDate, double amount, long courierNum, ArrayList<Long> expressNums) {
+	public ReceiptPO(String id,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
 		super(id);
 		this.receiptDate = receiptDate;
 		this.amount = amount;
@@ -37,19 +37,19 @@ public class ReceiptPO extends ListPO {
 		this.amount = amount;
 	}
 
-	public long getCourierNum() {
+	public String getCourierNum() {
 		return courierNum;
 	}
 
-	public void setCourierNum(long courierNum) {
+	public void setCourierNum(String courierNum) {
 		this.courierNum = courierNum;
 	}
 
-	public ArrayList<Long> getExpressNums() {
+	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}
 
-	public void setExpressNums(ArrayList<Long> expressNums) {
+	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
 	

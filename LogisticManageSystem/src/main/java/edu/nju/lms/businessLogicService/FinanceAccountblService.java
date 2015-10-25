@@ -12,9 +12,9 @@ public interface FinanceAccountblService {
 	// add show delete change 
 	public ResultMessage addAccount(AccountVO account);
 	
-	public AccountVO showAccount(long id);
+	public AccountVO showAccount(String id);
 	
-	public ResultMessage deleteAccount(long id);
+	public ResultMessage deleteAccount(String id);
 	
 	public ResultMessage updateAccount(AccountVO account);
 	

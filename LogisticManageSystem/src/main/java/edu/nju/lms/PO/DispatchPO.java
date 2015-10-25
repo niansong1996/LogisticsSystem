@@ -6,30 +6,33 @@ import java.util.Calendar;
  *@date 2015年10月24日
  */
 public class DispatchPO extends ListPO{
-	private long dispatchPerson;
+	/**
+	 * the number of the dispatch person
+	 */
+	private String dispatchPerson;
 	private Calendar arrivalDate;
-	private long expressNum;
+	private String expressNum;
 	
-	public DispatchPO(long id,long dispatchPerson, Calendar arrivalDate, long expressNum) {
+	public DispatchPO(String id,String dispatchPerson, Calendar arrivalDate, String expressNum) {
 		super(id);
 		this.dispatchPerson = dispatchPerson;
 		this.arrivalDate = arrivalDate;
 		this.expressNum = expressNum;
 	}
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public long getDispatchPerson() {
+	public String getDispatchPerson() {
 		return dispatchPerson;
 	}
 
-	public void setDispatchPerson(long dispatchPerson) {
+	public void setDispatchPerson(String dispatchPerson) {
 		this.dispatchPerson = dispatchPerson;
 	}
 
@@ -41,11 +44,11 @@ public class DispatchPO extends ListPO{
 		this.arrivalDate = arrivalDate;
 	}
 
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
 
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 	

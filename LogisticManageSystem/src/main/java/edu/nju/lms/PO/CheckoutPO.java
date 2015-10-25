@@ -10,15 +10,21 @@ import edu.nju.lms.data.PartitionType;
  *@date 2015年10月24日
  */
 public class CheckoutPO extends ListPO {
-	private ArrayList<Long> expressNums;
+	private ArrayList<String> expressNums;
 	private Calendar checkoutDate;
 	private CityPO destination;
 	private PartitionType loadType;
-	private long arrivalNum;
-	private long motorNum;
+	/**
+	 * the number of arrival list
+	 */
+	private String arrivalNum;
+	/**
+	 * 汽运单编号
+	 */
+	private String motorNum;
 	
-	public CheckoutPO(long id,ArrayList<Long> expressNums, Calendar checkoutDate, CityPO destination, PartitionType loadType,
-			long arrivalNum, long motorNum) {
+	public CheckoutPO(String id,ArrayList<String> expressNums, Calendar checkoutDate, CityPO destination, PartitionType loadType,
+			String arrivalNum, String motorNum) {
 		super(id);
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
@@ -28,19 +34,19 @@ public class CheckoutPO extends ListPO {
 		this.motorNum = motorNum;
 	}
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public ArrayList<Long> getExpressNums() {
+	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}
 
-	public void setExpressNums(ArrayList<Long> expressNums) {
+	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
 
@@ -68,19 +74,19 @@ public class CheckoutPO extends ListPO {
 		this.loadType = loadType;
 	}
 
-	public long getArrivalNum() {
+	public String getArrivalNum() {
 		return arrivalNum;
 	}
 
-	public void setArrivalNum(long arrivalNum) {
+	public void setArrivalNum(String arrivalNum) {
 		this.arrivalNum = arrivalNum;
 	}
 
-	public long getMotorNum() {
+	public String getMotorNum() {
 		return motorNum;
 	}
 
-	public void setMotorNum(long motorNum) {
+	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
 	

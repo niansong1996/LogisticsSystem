@@ -8,11 +8,14 @@ import edu.nju.lms.data.PersonType;
 public class InitialInforPO {
 	private ArrayList<DepartmentPO> departments;
 	private ArrayList<PersonnelPO> personnel;
-	private ArrayList<Long> cars;
+	/**
+	 * the list restores the car's plate number
+	 */
+	private ArrayList<String> cars;
 	private ArrayList<WarehousePO> warehouses;
 	private ArrayList<AccountPO> accounts;
 	
-	public InitialInforPO(ArrayList<DepartmentPO> departments, ArrayList<PersonnelPO> personnel, ArrayList<Long> cars,
+	public InitialInforPO(ArrayList<DepartmentPO> departments, ArrayList<PersonnelPO> personnel, ArrayList<String> cars,
 			ArrayList<WarehousePO> warehouses, ArrayList<AccountPO> accounts) {
 		super();
 		this.departments = departments;
@@ -38,11 +41,11 @@ public class InitialInforPO {
 		this.personnel = personnel;
 	}
 
-	public ArrayList<Long> getCars() {
+	public ArrayList<String> getCars() {
 		return cars;
 	}
 
-	public void setCars(ArrayList<Long> cars) {
+	public void setCars(ArrayList<String> cars) {
 		this.cars = cars;
 	}
 

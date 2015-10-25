@@ -17,7 +17,7 @@ public interface WarehouseOpblService {
 	 * @param warehouseNum
 	 * @return completed checkinVO
 	 */
-	public CheckinVO createCheckinList(CheckinVO baseMessage,long warehouseNum);
+	public CheckinVO createCheckinList(CheckinVO baseMessage,String warehouseNum);
 	
 	/**
 	 * save {@link CheckinVO}
@@ -25,7 +25,7 @@ public interface WarehouseOpblService {
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage saveCheckinList(CheckinVO checkinList, long warehouseNum);
+	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum);
 	
 	/**
 	 * create {@link CheckoutVO}
@@ -33,7 +33,7 @@ public interface WarehouseOpblService {
 	 * @param warehouseNum
 	 * @return completed {@link CheckoutVO}
 	 */
-	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, long warehouseNum);
+	public CheckoutVO createCheckoutList(CheckoutVO baseMessage,String warehouseNum);
 	
 	/**
 	 * save {@link CheckoutVO}
@@ -41,7 +41,7 @@ public interface WarehouseOpblService {
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, long warehouseNum);
+	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum);
 	
 	
 

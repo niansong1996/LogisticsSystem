@@ -11,16 +11,20 @@ import edu.nju.lms.data.PartitionType;
  *@date 2015年10月24日
  */
 public class WarehousePO {
-	//警戒线的值
+	/**
+	 * the value of the warning line
+	 */
 	private double cordon;
-	//key is the express's number, object is its location
-	private Map<Long,Location> expressNums;
+	/**
+	 * key is the express's number, object is its location
+	 */
+	private Map<String,Location> expressNums;
 	private ArrayList<CheckinPO> checkInlists;
 	private ArrayList<CheckoutPO> checkOutlists;
 	private ArrayList<Partition> partitionInfor;
 	
 	
-	public WarehousePO(double cordon, Map<Long,Location> expressNums, ArrayList<CheckinPO> checkInlists,
+	public WarehousePO(double cordon, Map<String,Location> expressNums, ArrayList<CheckinPO> checkInlists,
 			ArrayList<CheckoutPO> checkOutlists, ArrayList<Partition> partitionInfor) {
 		super();
 		this.cordon = cordon;
@@ -41,12 +45,12 @@ public class WarehousePO {
 	}
 
 
-	public Map<Long,Location> getExpressNums() {
+	public Map<String,Location> getExpressNums() {
 		return expressNums;
 	}
 
 
-	public void setExpressNums(Map<Long,Location> expressNums) {
+	public void setExpressNums(Map<String,Location> expressNums) {
 		this.expressNums = expressNums;
 	}
 

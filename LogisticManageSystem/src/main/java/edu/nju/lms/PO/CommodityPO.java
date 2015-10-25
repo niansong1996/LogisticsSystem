@@ -8,7 +8,7 @@ import edu.nju.lms.data.ShipState;
  */
 public class CommodityPO {
 	// commodity number
-	private long id;
+	private String id;
 	private ShipState shipState;
 
 	//sender list
@@ -81,11 +81,11 @@ public class CommodityPO {
 		Receive = receive;
 	}
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

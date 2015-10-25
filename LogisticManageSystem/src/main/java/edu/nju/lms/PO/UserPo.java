@@ -7,20 +7,20 @@ import edu.nju.lms.data.PersonType;
  *@date 2015年10月24日
  */
 public class UserPO {
-	private long userName;
+	private String userName;
 	private String password;
 	private PersonType power;
 	
-	public UserPO(long userName, String password, PersonType power) {
+	public UserPO(String userName, String password, PersonType power) {
 		super();
 		this.userName = userName;
 		this.password = password;
 		this.power = power;
 	}
-	public long getUserName() {
+	public String getUserName() {
 		return userName;
 	}
-	public void setUserName(long userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 	public String getPassword() {

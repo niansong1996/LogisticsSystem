@@ -5,11 +5,11 @@ package edu.nju.lms.PO;
  */
 public class PersonnelPO {
 	private String name;
-	private Long departmentNum;
+	private String departmentNum;
 	private PersonnelPO duty;
 	private double salary;
 	
-	public PersonnelPO(String name, Long departmentNum, PersonnelPO duty, double salary) {
+	public PersonnelPO(String name, String departmentNum, PersonnelPO duty, double salary) {
 		super();
 		this.name = name;
 		this.departmentNum = departmentNum;
@@ -25,11 +25,11 @@ public class PersonnelPO {
 		this.name = name;
 	}
 
-	public Long getDepartmentNum() {
+	public String getDepartmentNum() {
 		return departmentNum;
 	}
 
-	public void setDepartmentNum(Long departmentNum) {
+	public void setDepartmentNum(String departmentNum) {
 		this.departmentNum = departmentNum;
 	}
 

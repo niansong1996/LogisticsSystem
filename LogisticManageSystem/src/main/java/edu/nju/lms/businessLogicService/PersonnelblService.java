@@ -17,7 +17,7 @@ public interface PersonnelblService {
 	 * @param id
 	 * @return {@link PersonnelVO}
 	 */
-	public PersonnelPO findPersonInfo(long id);
+	public PersonnelPO findPersonInfo(String id);
 	
 	/**
 	 * find a {@link PersonnelPO} by id and then delete it
@@ -25,7 +25,7 @@ public interface PersonnelblService {
 	 * @return {@link ResultMessage}
 	 * @see #findPersonInfo(long)
 	 */
-	public ResultMessage deletePersonnel(long id);
+	public ResultMessage deletePersonnel(String id);
 	
 	/**
 	 * find a {@link PersonnelPO} by id, then replace it using {@link PersonnelVO}

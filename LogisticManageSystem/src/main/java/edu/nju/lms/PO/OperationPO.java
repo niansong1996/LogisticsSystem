@@ -10,9 +10,9 @@ public class OperationPO {
 	//备注
 	private String explain;
 	private Calendar time;
-	private long user;
+	private String user;
 	
-	public OperationPO(String explain, Calendar time, long user) {
+	public OperationPO(String explain, Calendar time, String user) {
 		super();
 		this.explain = explain;
 		this.time = time;
@@ -35,11 +35,11 @@ public class OperationPO {
 		this.time = time;
 	}
 
-	public long getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(long user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
     

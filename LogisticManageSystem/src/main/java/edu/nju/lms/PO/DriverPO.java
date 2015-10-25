@@ -6,16 +6,21 @@ import java.util.Calendar;
  *@date 2015年10月24日
  */
 public class DriverPO {
-	private long driverNum;
+	private String driverNum;
 	private String driverName;
 	private Calendar birth;
-	private long idNum;
-	private long phoneNum;
-	//0表示男，1表示女
+	/**
+	 * identification card number of the driver
+	 */
+	private String idNum;
+	private String phoneNum;
+	/**
+	 * 0: male ; 1: female
+	 */
 	private int sex;
 	//行驶证期限
 	private Calendar drivingLimit;
-	public DriverPO(long driverNum, String driverName, Calendar birth, long idNum, long phoneNum, int sex,
+	public DriverPO(String driverNum, String driverName, Calendar birth, String idNum, String phoneNum, int sex,
 			Calendar drivingLimit) {
 		super();
 		this.driverNum = driverNum;
@@ -26,10 +31,10 @@ public class DriverPO {
 		this.sex = sex;
 		this.drivingLimit = drivingLimit;
 	}
-	public long getDriverNum() {
+	public String getDriverNum() {
 		return driverNum;
 	}
-	public void setDriverNum(long driverNum) {
+	public void setDriverNum(String driverNum) {
 		this.driverNum = driverNum;
 	}
 	public String getDriverName() {
@@ -44,16 +49,16 @@ public class DriverPO {
 	public void setBirth(Calendar birth) {
 		this.birth = birth;
 	}
-	public long getIdNum() {
+	public String getIdNum() {
 		return idNum;
 	}
-	public void setIdNum(long idNum) {
+	public void setIdNum(String idNum) {
 		this.idNum = idNum;
 	}
-	public long getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
-	public void setPhoneNum(long phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	public int getSex() {

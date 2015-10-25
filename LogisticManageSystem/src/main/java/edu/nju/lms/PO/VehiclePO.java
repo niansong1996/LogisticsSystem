@@ -4,23 +4,29 @@ package edu.nju.lms.PO;
  *@date 2015年10月24日
  */
 public class VehiclePO {
-	//车辆代号
-	private long vehicleNum;
-	//车牌号
+	/**
+	 * car's dai hao
+	 */
+	private String vehicleNum;
+	/**
+	 * plate number
+	 */
 	private String plateNum;
-	//服役时间
+	/**
+	 * fu yi time
+	 */
 	private int serviceYears;
 	
-	public VehiclePO(long vehicleNum, String plateNum, int serviceYears) {
+	public VehiclePO(String vehicleNum, String plateNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;
 		this.serviceYears = serviceYears;
 	}
-	public long getVehicleNum() {
+	public String getVehicleNum() {
 		return vehicleNum;
 	}
-	public void setVehicleNum(long vehicleNum) {
+	public void setVehicleNum(String vehicleNum) {
 		this.vehicleNum = vehicleNum;
 	}
 	public String getPlateNum() {

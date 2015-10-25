@@ -9,8 +9,8 @@ import java.util.Calendar;
 public class ReceivePO extends ListPO {
 	private String receiverName;
 	private Calendar receiveTime;
-	private long expressNum;
-	public ReceivePO(long id,String receiverName, Calendar receiveTime,long expressNum) {
+	private String expressNum;
+	public ReceivePO(String id,String receiverName, Calendar receiveTime,String expressNum) {
 		super(id);
 		this.receiverName = receiverName;
 		this.receiveTime = receiveTime;
@@ -28,10 +28,10 @@ public class ReceivePO extends ListPO {
 	public void setReceiveTime(Calendar receiveTime) {
 		this.receiveTime = receiveTime;
 	}
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 	

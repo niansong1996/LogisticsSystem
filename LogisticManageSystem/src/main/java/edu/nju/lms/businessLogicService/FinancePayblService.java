@@ -25,7 +25,7 @@ public interface FinancePayblService {
 	public ResultMessage saveFreight(FreightVO freight);
 	
 	//salary payment
-	public PersonnelVO showSalary(long person);
+	public PersonnelVO showSalary(String person);
 	
 	//return the salary payment list in this month
 	public SalaryVO showSalarySum(int year, int month);

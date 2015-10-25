@@ -8,10 +8,10 @@ import edu.nju.lms.data.DepartmentType;
  */
 public class DepartmentPO {
 	private DepartmentType type;
-	private long departmentNum;
+	private String departmentNum;
 	private CityPO location;
 	
-	public DepartmentPO(DepartmentType type, long departmentNum, CityPO location) {
+	public DepartmentPO(DepartmentType type, String departmentNum, CityPO location) {
 		super();
 		this.type = type;
 		this.departmentNum = departmentNum;
@@ -23,10 +23,10 @@ public class DepartmentPO {
 	public void setType(DepartmentType type) {
 		this.type = type;
 	}
-	public long getDepartmentNum() {
+	public String getDepartmentNum() {
 		return departmentNum;
 	}
-	public void setDepartmentNum(long departmentNum) {
+	public void setDepartmentNum(String departmentNum) {
 		this.departmentNum = departmentNum;
 	}
 	public CityPO getLocation() {

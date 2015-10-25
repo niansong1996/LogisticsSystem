@@ -10,9 +10,16 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年10月25日
  */
 public interface ListblService {
-	//查找是否存在未被审批的单据，返回所有未被审批的单据的引用
+	/**
+	 *  to find if there exist list that has'nt checked
+	 * @return
+	 */
 	public ArrayList<ListVO>  getListInfo();
-	//根据id查找List，并修改相应的数据
+	/**
+	 * use id to find List，and change the data
+	 * @param List
+	 * @return
+	 */
 	public ResultMessage changeList(ListVO List);
 	
 }

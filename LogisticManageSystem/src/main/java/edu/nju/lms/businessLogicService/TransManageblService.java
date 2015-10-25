@@ -33,7 +33,7 @@ public interface TransManageblService {
 	 * @return {@link ResultMessage}
 	 * @see ResultMessage
 	 */
-	public ResultMessage deleteVehicle(long vehicleNum);
+	public ResultMessage deleteVehicle(String vehicleNum);
 	
 	/**
 	 * find a vehicle by id, replace it using the parameter
@@ -49,7 +49,7 @@ public interface TransManageblService {
 	 * @param vehicleNum:long
 	 * @return {@link VehicleVO}
 	 */
-	public VehicleVO findVehicle(long vehicleNum);
+	public VehicleVO findVehicle(String vehicleNum);
 	
 	/**
 	 * complete the information of a {@link DriverVO}
@@ -73,7 +73,7 @@ public interface TransManageblService {
 	 * @return {@link ResultMessage}
 	 * @see ResultMessage
 	 */
-	public ResultMessage deleteDriver(long driverNum);
+	public ResultMessage deleteDriver(String driverNum);
 	
 	/**
 	 * find a driver by id, replace it using the parameter
@@ -89,7 +89,7 @@ public interface TransManageblService {
 	 * @param driverNum:long
 	 * @return {@link DriverVO}
 	 */
-	public DriverVO findDriver(long vehicleNum);
+	public DriverVO findDriver(String vehicleNum);
 	
 	
 }

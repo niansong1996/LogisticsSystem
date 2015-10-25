@@ -9,32 +9,36 @@ import java.util.Map;
  */
 
 public class CheckinPO extends ListPO {
-	//every express's location
-	private Map<Long,Location> expresses;
+	/**
+	 * every express's location:express number and its location in the warehouse
+	 */
+	private Map<String,Location> expresses;
 	private Calendar checkinDate;
-	//every express's destination
-	private Map<Long,String> exDestination;
+	/**
+	 * every express's destination :express number , destination name
+	 */
+	private Map<String,String> exDestination;
 	
-	public CheckinPO(long id,Map<Long, Location> expresses, Calendar checkinDate, Map<Long, String> exDestination) {
+	public CheckinPO(String id,Map<String, Location> expresses, Calendar checkinDate, Map<String, String> exDestination) {
 		super(id);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
 		this.exDestination = exDestination;
 	}
     
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Map<Long, Location> getExpresses() {
+	public Map<String, Location> getExpresses() {
 		return expresses;
 	}
 
-	public void setExpresses(Map<Long, Location> expresses) {
+	public void setExpresses(Map<String, Location> expresses) {
 		this.expresses = expresses;
 	}
 
@@ -46,11 +50,11 @@ public class CheckinPO extends ListPO {
 		this.checkinDate = checkinDate;
 	}
 
-	public Map<Long, String> getExDestination() {
+	public Map<String, String> getExDestination() {
 		return exDestination;
 	}
 
-	public void setExDestination(Map<Long, String> exDestination) {
+	public void setExDestination(Map<String, String> exDestination) {
 		this.exDestination = exDestination;
 	}
 	

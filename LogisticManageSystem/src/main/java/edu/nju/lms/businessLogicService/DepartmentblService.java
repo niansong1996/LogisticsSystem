@@ -10,9 +10,9 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface DepartmentblService {
 	
-	public DepartmentVO getDepartInfo(long id);
+	public DepartmentVO getDepartInfo(String id);
 	
-	public ResultMessage deleteDepartment(long id);
+	public ResultMessage deleteDepartment(String id);
 	
 	public ResultMessage updateDepartment(DepartmentVO Department);
 	
@@ -20,7 +20,7 @@ public interface DepartmentblService {
 	
 	public ResultMessage addCity(CityVO city);
 	
-	public CityVO findCity(long id);
+	public CityVO findCity(String id);
 	
 	
 }

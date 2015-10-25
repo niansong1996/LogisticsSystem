@@ -14,21 +14,23 @@ public class LoadPO extends ListPO{
 	//װ������
 	private Calendar loadDate;
 	//Ӫҵ�����
-	private long businessHallNum;
+	private String businessHallNum;
 	//���˱��
-	private long motorNum;
+	private String motorNum;
 	//������ת���Ļ�Ӫҵ��
 	private CityPO destiCity;
-	private long destiBusinessHall;
-	private long vehicleNum;
-	private long driverNum;
-	//����װ�����ж���������
-	private ArrayList<Long> commodityNums;
+	private String destiBusinessHall;
+	private String vehicleNum;
+	private String driverNum;
+	/**
+	 * the number of the commodities
+	 */
+	private ArrayList<String> commodityNums;
 	
 	private double freight;
 
-	public LoadPO(long id,LoadType loadType,Calendar loadDate, long businessHallNum, long motorNum, CityPO destiCity, long destiBusinessHall,
-			long vehicleNum, long driverNum, ArrayList<Long> commodityNums, double freight) {
+	public LoadPO(String id,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, CityPO destiCity, String destiBusinessHall,
+			String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
 		super(id);
 		this.loadType = loadType;
 		this.loadDate = loadDate;
@@ -37,7 +39,6 @@ public class LoadPO extends ListPO{
 		this.destiCity = destiCity;
 		this.destiBusinessHall = destiBusinessHall;
 		this.vehicleNum = vehicleNum;
-		//��װԱ��Ѻ��Ա��˾��������driver 
 		this.driverNum = driverNum;
 		this.commodityNums = commodityNums;
 		this.freight = freight;
@@ -56,19 +57,19 @@ public class LoadPO extends ListPO{
 		this.loadDate = loadDate;
 	}
 
-	public long getBusinessHallNum() {
+	public String getBusinessHallNum() {
 		return businessHallNum;
 	}
 
-	public void setBusinessHallNum(long businessHallNum) {
+	public void setBusinessHallNum(String businessHallNum) {
 		this.businessHallNum = businessHallNum;
 	}
 
-	public long getMotorNum() {
+	public String getMotorNum() {
 		return motorNum;
 	}
 
-	public void setMotorNum(long motorNum) {
+	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
 
@@ -80,35 +81,35 @@ public class LoadPO extends ListPO{
 		this.destiCity = destiCity;
 	}
 
-	public long getDestiBusinessHall() {
+	public String getDestiBusinessHall() {
 		return destiBusinessHall;
 	}
 
-	public void setDestiBusinessHall(long destiBusinessHall) {
+	public void setDestiBusinessHall(String destiBusinessHall) {
 		this.destiBusinessHall = destiBusinessHall;
 	}
 
-	public long getVehicleNum() {
+	public String getVehicleNum() {
 		return vehicleNum;
 	}
 
-	public void setVehicleNum(long vehicleNum) {
+	public void setVehicleNum(String vehicleNum) {
 		this.vehicleNum = vehicleNum;
 	}
 
-	public long getDriverNum() {
+	public String getDriverNum() {
 		return driverNum;
 	}
 
-	public void setDriverNum(long driverNum) {
+	public void setDriverNum(String driverNum) {
 		this.driverNum = driverNum;
 	}
 
-	public ArrayList<Long> getCommodityNums() {
+	public ArrayList<String> getCommodityNums() {
 		return commodityNums;
 	}
 
-	public void setCommodityNums(ArrayList<Long> commodityNums) {
+	public void setCommodityNums(ArrayList<String> commodityNums) {
 		this.commodityNums = commodityNums;
 	}
 

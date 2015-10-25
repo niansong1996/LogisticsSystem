@@ -12,7 +12,7 @@ import edu.nju.lms.data.TransportMode;
  */
 public class SendPO extends ListPO {
 	//the express's number
-	private long expressNum;
+	private String expressNum;
 	//base information of sender and receiver
 	private ArrayList<String> baseInfor;
 	public static enum SendBaseInfor{
@@ -22,21 +22,31 @@ public class SendPO extends ListPO {
 		RECEIVERNAME,RECEIVERADDRESS,RECEIVERCOMPANY,RECEIVERPHONE,RECEIVERTELE
 	}
 	
-	//goods' information
+	/**
+	 * goods' information
+	 */
 	private int initialNum;
-	private double weight; //kg
-	private double volume;//m3
+	/**
+	 * kg
+	 */
+	private double weight; 
+	/**
+	 * m3
+	 */
+	private double volume;
 	private String goodsName;
-	//packing 
+	
 	private PackingType packingType;
 	//transporting mode
 	private TransportMode mode;
-	//price and days needed
+	/**
+	 * price and days will needed
+	 */
 	private double price;
 	private int time;
 	
 	//construct function
-	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, int time) {
 		super(id);
 		this.expressNum = expressNum;
@@ -50,14 +60,14 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public long getExpressNum() {
+	public String getExpressNum() {
 		return expressNum;
 	}
-	public void setExpressNum(long expressNum) {
+	public void setExpressNum(String expressNum) {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(long expressNum, long id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
+	public SendPO(String expressNum, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -70,7 +80,7 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(long expressNum,long id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, int time) {
 		super(id);
 		this.expressNum = expressNum;
@@ -84,7 +94,7 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
+	public SendPO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -97,7 +107,7 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(long expressNum,long id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType,  double price, int time) {
 		super(id);
 		this.baseInfor=baseInfor;

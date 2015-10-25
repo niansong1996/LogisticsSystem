@@ -22,7 +22,7 @@ public interface WareHouseManageblService {
 	 * @return {@link InventoryExcelVO}
 	 */
 	public InventoryExcelVO checkWarehouseInfor(Calendar start,
-			Calendar end, long warehouseNum);
+			Calendar end, String warehouseNum);
 
 	/**
 	 * export an excel file using {@link InventoryExcelVO}
@@ -30,22 +30,22 @@ public interface WareHouseManageblService {
 	 * @param wareHouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage exportExcel(InventoryExcelVO excel, long wareHouseNum);
+	public ResultMessage exportExcel(InventoryExcelVO excel, String wareHouseNum);
 	
 	/**
-	 * set the cordon of the warehouse
+	 * set the warning line of the warehouse
 	 * @param cordon
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage setCordon(double cordon, long warehouseNum);
+	public ResultMessage setCordon(double cordon, String warehouseNum);
 	
 	/**
 	 * show {@link PartitionVO} information of the warehouse
 	 * @param warehouseNum
 	 * @return {@link PartitionVO}
 	 */
-	public PartitionVO showPartition(long warehouseNum);
+	public PartitionVO showPartition(String warehouseNum);
 	
 	/**
 	 * find a {@link WarehousePO} by id, change its partition info 
@@ -54,7 +54,7 @@ public interface WareHouseManageblService {
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage modifyPartition(PartitionVO modified,long warehouseNum );
+	public ResultMessage modifyPartition(PartitionVO modified,String warehouseNum );
 	
 	/**
 	 * innitialize a {@link WarehousePO} 
@@ -64,5 +64,5 @@ public interface WareHouseManageblService {
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage initialize (PartitionVO partition, double cordon, long warehouseNum);
+	public ResultMessage initialize (PartitionVO partition, double cordon, String warehouseNum);
 }

@@ -26,7 +26,7 @@ public interface TransProcessblService {
 	 * @return OrderInforVO: state and track information of the commodity
 	 * @see OrderInforVO 
 	 */
-	public OrderInforVO checkOrderInfor(long orderNum);
+	public OrderInforVO checkOrderInfor(String orderNum);
 	
 	/**
 	 * complete the {@link SendVO}
@@ -68,7 +68,7 @@ public interface TransProcessblService {
 	 * @see ArrivalVO 
 	 * @see ArrivalState
 	 */
-	public ArrivalVO createArrivalList(ArrivalState state,long orderNum);
+	public ArrivalVO createArrivalList(ArrivalState state,String orderNum);
 	
 	/**
 	 * save {@link ArrivalVO}
@@ -85,7 +85,7 @@ public interface TransProcessblService {
 	 * @return completed {@link DispatchVO}
 	 * @see DispatchVO
 	 */
-	public DispatchVO createDispatchList(long courierNum);
+	public DispatchVO createDispatchList(String courierNum);
 	
 	/**
 	 * save {@link DispatchVO}

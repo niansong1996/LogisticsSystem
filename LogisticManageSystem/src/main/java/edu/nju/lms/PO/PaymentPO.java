@@ -9,7 +9,7 @@ public class PaymentPO extends ListPO {
 	private Calendar payTime;
 	private AccountPO account;
 	private double amount;
-	public PaymentPO(long id,PaymentType paymentType, Calendar payTime, AccountPO account,
+	public PaymentPO(String id,PaymentType paymentType, Calendar payTime, AccountPO account,
 			double amount) {
 		super(id);
 		this.paymentType = paymentType;
