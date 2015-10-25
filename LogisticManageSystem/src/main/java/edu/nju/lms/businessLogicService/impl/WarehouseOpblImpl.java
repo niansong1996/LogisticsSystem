@@ -8,7 +8,7 @@ import edu.nju.lms.businessLogicService.WarehouseOpblService;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 
-public class WareHouseOpblImpl implements WarehouseOpblService {
+public class WarehouseOpblImpl implements WarehouseOpblService {
 
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		String[] expresses = {"124567895"};

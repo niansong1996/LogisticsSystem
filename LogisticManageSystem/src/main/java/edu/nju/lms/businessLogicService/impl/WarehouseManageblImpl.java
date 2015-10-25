@@ -10,7 +10,7 @@ import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 
-public class WareHouseManageblImpl implements WareHouseManageblService{
+public class WarehouseManageblImpl implements WareHouseManageblService{
 
 	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
 		ArrayList<String> expressNums = new ArrayList<String>();
