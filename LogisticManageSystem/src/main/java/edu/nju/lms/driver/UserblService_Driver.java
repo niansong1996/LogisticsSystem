@@ -14,21 +14,21 @@ import edu.nju.lms.dataService.impl.UserDataImpl;
  */
 public class UserblService_Driver {
 	public void drive(UserblService userbl){
-		ResultMessage result = userbl.addUser(new UserVO("010101","123456",PersonType.MANAGER));
+		ResultMessage result = userbl.addUser(new UserVO("0101010101","123456",PersonType.MANAGER));
 		if(result.isSuccess()){
 			System.out.println("Add success\n");
 		}else{
 			System.out.println("Failue!");
 		}
 		
-		ResultMessage result2 = userbl.addUser(new UserVO("010101","123456",PersonType.MANAGER));
+		ResultMessage result2 = userbl.addUser(new UserVO("0101010101","123456",PersonType.MANAGER));
 		if(result2.isSuccess()){
 			System.out.println("Add success\n");
 		}else{
 			System.out.println("Failue!"+result2.getErrorMessage());
 		}
 		
-		UserVO user = userbl.findUserInfo("00101");
+		UserVO user = userbl.findUserInfo("0101010101");
 		if(user==null){
 			System.out.println("not found!!");
 		}
@@ -36,7 +36,7 @@ public class UserblService_Driver {
 			System.out.println("Find success\n");
 		}
 		
-		result = userbl.updateUser(new UserVO("00101","123456",PersonType.COURIER));
+		result = userbl.updateUser(new UserVO("0101010101","123456",PersonType.COURIER));
 		if(result.isSuccess()){
 			System.out.println("Update success\n");
 		}else{
@@ -44,7 +44,7 @@ public class UserblService_Driver {
 		}
 		
 		
-		result = userbl.deleteUser("010101");
+		result = userbl.deleteUser("0101010101");
 		if(result.isSuccess()){
 			System.out.println("Delte success\n");
 		}else{

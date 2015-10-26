@@ -19,7 +19,7 @@ public interface TransportListDataService {
 	public ResultMessage deleteArrival(String id) throws RemoteException;
 	public ResultMessage addDispatch(DispatchPO Recieve) throws RemoteException;
 	public ResultMessage deleteDispatch(String id) throws RemoteException;
-	public ResultMessage addRecieve(ReceivePO recieve) throws RemoteException;
-	public ResultMessage deleteRecieve(String id) throws RemoteException;
+	public ResultMessage addReceive(ReceivePO recieve) throws RemoteException;
+	public ResultMessage deleteReceive(String id) throws RemoteException;
 	
 }
