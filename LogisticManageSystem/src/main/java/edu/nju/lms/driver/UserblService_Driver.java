@@ -32,7 +32,7 @@ public class UserblService_Driver {
 			System.out.println("Failue!");
 		}
 	}
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		UserblService_Driver driver = new UserblService_Driver();
 		UserblService userbl = new UserblImpl();
 		driver.drive(userbl);

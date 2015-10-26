@@ -1,5 +1,7 @@
 package edu.nju.lms.main;
 
+import edu.nju.lms.presentation.MainFrame;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        MainFrame frame = new MainFrame();
+        
     }
 }
