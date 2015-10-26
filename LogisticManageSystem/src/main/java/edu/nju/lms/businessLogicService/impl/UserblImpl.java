@@ -23,20 +23,30 @@ public class UserblImpl implements UserblService{
 	
 	public UserVO findUserInfo(String id) {
 		UserPO userPO = null;
-		UserVO user = null;
+		UserVO user = new UserVO("", "", null);
+		if(!idCheck(id).isSuccess()) {
+			user.setUserName(idCheck(id).getErrorMessage());
+		}
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			user.setUserName("网络未连接");
+			return user;
 		}
 		if (userPO != null) {
 			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
+		} else {
+			user.setUserName("未找到该人员");
 		}
 		return user;
 	}
 
 	public ResultMessage deleteUser(String id) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
+		ResultMessage  result = idCheck(id);
+		if(!result.isSuccess()) {
+			return result;
+		}
+		result = new ResultMessage(false, "网络未连接");
 		try {
 			result = dataService.deleteUser(id);
 		} catch (RemoteException e) {
@@ -46,7 +56,15 @@ public class UserblImpl implements UserblService{
 	}
 
 	public ResultMessage updateUser(UserVO user) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
+		ResultMessage  result = idCheck(user.getUserName());
+		if(!result.isSuccess()) {
+			return result;
+		}
+		result = passwordCheck(user.getPassword());
+		if(!result.isSuccess()) {
+			return result;
+		}
+		result = new ResultMessage(false, "网络未连接");
 		UserPO userPO = new UserPO(user.getUserName(), user.getPassword(), user.getPower());
 		try {
 			result = dataService.updateUser(userPO);
@@ -57,7 +75,15 @@ public class UserblImpl implements UserblService{
 	}
 
 	public ResultMessage addUser(UserVO User) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
+		ResultMessage result = idCheck(User.getUserName());
+		if(!result.isSuccess()) {
+			return result;
+		}
+		result = passwordCheck(User.getPassword());
+		if(!result.isSuccess()) {
+			return result;
+		}
+		result = new ResultMessage(false, "网络未连接");
 		UserPO userPO = new UserPO(User.getUserName(), User.getPassword(), User.getPower());
 		try {
 			result = dataService.addUser(userPO);
@@ -74,5 +100,42 @@ public class UserblImpl implements UserblService{
 	public void setDataService(UserDataService dataService) {
 		this.dataService = dataService;
 	}
+	
+	private ResultMessage idCheck(String id) {
+		ResultMessage result = new ResultMessage(true, "");
+		if(id.length()!=10) {
+			result.setSuccess(false);
+			result.setErrorMessage("输入的位数不正确");
+			return result;
+		}
+		for(int i = 0; i < id.length(); i++) {
+			if(id.charAt(i)<='0'||id.charAt(i)>='9') {
+				result.setSuccess(false);
+				result.setErrorMessage("输入的格式不正确");
+				return result;
+			}
+		}
+		return result;
+	}
+	
+	private ResultMessage passwordCheck(String password) {
+		ResultMessage result = new ResultMessage(true, "");
+		if(password.length()<6){
+			result.setSuccess(false);
+			result.setErrorMessage("位数太少");
+		} else if (password.length()>9) {
+			result.setSuccess(false);
+			result.setErrorMessage("位数太多");
+		}
+		for(int i = 0; i < password.length(); i++) {
+			char test = password.charAt(i);
+			if(!((test>='0'&&test<='9')||(test>='a'&&test<='z')||(test>='A'&&test<='Z'))) {
+				result.setSuccess(false);
+				result.setErrorMessage("请不要出现除字母或数字以外的字符");
+			}
+		}
+		return result;
+	}
+	
 
 }
