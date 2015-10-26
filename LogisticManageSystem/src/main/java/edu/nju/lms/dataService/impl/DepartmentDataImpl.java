@@ -2,144 +2,108 @@ package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Iterator;
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
-import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
 public class DepartmentDataImpl implements DepartmentDataService{
+	
+	ArrayList<DepartmentPO> departmentList = new ArrayList<DepartmentPO>();
+	ArrayList<CityPO> cityList = new ArrayList<CityPO>(); 
+	
+	public DepartmentDataImpl(){
+		//TODO Read the Serialized files
+	}
 
-	public ResultMessage addDepartment(DepartmentPO Department) throws RemoteException {
-		
-		List<DepartmentPO> department=new ArrayList<DepartmentPO>();
-		department.add(Department);
-		
-		return new ResultMessage(true,"");
+	public ResultMessage addDepartment(DepartmentPO department) throws RemoteException {
+		if(findDepartment(department.getDepartmentNum()).equals(null)){
+			this.departmentList.add(department);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"The department already exists!");
+		}
 	}
 
 	public DepartmentPO findDepartment(String id) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		DepartmentPO department=new DepartmentPO(DepartmentType.BUSINESSHALL,"0250000",city);
-		
-		if(id.equals("0250000")){
-			return department;
-		}else{
-			return null;
+		DepartmentPO result = null;
+		Iterator<DepartmentPO> it = departmentList.iterator();
+		while(it.hasNext()){
+			DepartmentPO next = it.next();
+			if(next.getDepartmentNum()==id){
+				result = next;
+				break;
+			}
 		}
+		return result;
 	}
 
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		DepartmentPO department=new DepartmentPO(DepartmentType.BUSINESSHALL,"0250000",city);
-		ArrayList<DepartmentPO> po=new ArrayList<DepartmentPO>();
-		po.add(department);
-		
-		if(id.length()!=7){
-			return new ResultMessage(false,"Wrong format!");
-		}else{
-			if(id.equals("0250000")){
-				po.remove(0);
-				return new ResultMessage(true,"");
-			}else{
-				return new ResultMessage(false,"no such department!");
-			}
+		DepartmentPO department = findDepartment(id);
+		if(!department.equals(null)){
+			departmentList.remove(department);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the department!");
 		}
 	}
 
-	public ResultMessage updateDepartment(DepartmentPO Department) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		DepartmentPO department=new DepartmentPO(DepartmentType.BUSINESSHALL,"0250000",city);
-		ArrayList<DepartmentPO> po=new ArrayList<DepartmentPO>();
-		po.add(department);
-
-		if(Department.getDepartmentNum().equals("0250000")){
-			po.remove(0);
-			po.add(Department);
-			return new ResultMessage(true,"");
-		}else{
-			return new ResultMessage(false,"no such department!");
+	public ResultMessage updateDepartment(DepartmentPO department) throws RemoteException {
+		DepartmentPO tempDepartment = findDepartment(department.getDepartmentNum());
+		if(!tempDepartment.equals(null)){
+			tempDepartment = department;
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the department!");
 		}
 	}
 
-	public ResultMessage addCity(CityPO City) throws RemoteException {
-		
-		List<CityPO> city=new ArrayList<CityPO>();
-		city.add(City);
-		return new ResultMessage(true,"");
+	public ResultMessage addCity(CityPO city) throws RemoteException {
+		if(findCity(city.getId()).equals(null)){
+			this.cityList.add(city);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"The city already exists!");
+		}
 	}
 
 	public CityPO findCity(String id) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		
-		if(id.equals("025")){
-			return city;
-		}else{
-			return null;
+		CityPO result = null;
+		Iterator<CityPO> it = cityList.iterator();
+		while(it.hasNext()){
+			CityPO next = it.next();
+			if(next.getId()==id){
+				result = next;
+				break;
+			}
 		}
+		return result;
 	}
 
 	public ResultMessage deleteCity(String id) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		ArrayList<CityPO> po=new ArrayList<CityPO>();
-		po.add(city);
-		
-		if(id.length()!=3){
-			return new ResultMessage(false,"Wrong format!");
-		}else{
-			if(id.equals("025")){
-				po.remove(0);
-				return new ResultMessage(true,"");
-			}else{
-				return new ResultMessage(false,"no such city!");
-			}
+		CityPO city = findCity(id);
+		if(!city.equals(null)){
+			cityList.remove(city);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the city!");
 		}
 	}
 
-	public ResultMessage updateCity(CityPO City) throws RemoteException {
-		
-		ArrayList<String> businessNums=new ArrayList<String>();
-		businessNums.add("0101010101");
-		ArrayList<Double> distance=new ArrayList<Double>();
-		distance.add(100.0);
-		CityPO city=new CityPO("025","Nanjing",businessNums,distance);
-		ArrayList<CityPO> po=new ArrayList<CityPO>();
-		po.add(city);
-
-		if(City.getId().equals("025")){
-			po.remove(0);
-			po.add(City);
-			return new ResultMessage(true,"");
-		}else{
-			return new ResultMessage(false,"no such city!");
+	public ResultMessage updateCity(CityPO city) throws RemoteException {
+		CityPO tempCity = findCity(city.getId());
+		if(!tempCity.equals(null)){
+			tempCity = city;
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the city!");
 		}
 	}
-
 }

@@ -16,7 +16,6 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public ResultMessage addUser(UserPO user) throws RemoteException {
-		// TODO Auto-generated method stub
 		if(findUser(user.getUserName()).equals(null)){
 			this.userList.add(user);
 			return new ResultMessage(true,null);
@@ -27,7 +26,6 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public UserPO findUser(String id) throws RemoteException {
-		// TODO Auto-generated method stub
 		UserPO result = null;
 		Iterator<UserPO> it = userList.iterator();
 		while(it.hasNext()){
