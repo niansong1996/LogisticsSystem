@@ -8,6 +8,11 @@ import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 
+/**
+ * 
+ * @author Cui
+ * 2015-10-26 09:46:03
+ */
 public class UserblImpl implements UserblService{
 	
 	private UserDataService dataService = null;
@@ -15,15 +20,18 @@ public class UserblImpl implements UserblService{
 	public UserblImpl(UserDataService service) {
 		setDataService(service);
 	}
-
+	
 	public UserVO findUserInfo(String id) {
 		UserPO userPO = null;
+		UserVO user = null;
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		UserVO user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
+		if (userPO != null) {
+			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
+		}
 		return user;
 	}
 

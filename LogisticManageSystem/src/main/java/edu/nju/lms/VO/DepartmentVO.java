@@ -1,5 +1,7 @@
 package edu.nju.lms.VO;
 
+import edu.nju.lms.data.DepartmentType;
+
 /**
  * show department info
  * @author Cui
@@ -10,27 +12,27 @@ public class DepartmentVO {
 	/**
 	 * type: business or transcicenter
 	 */
-	private String type;
+	private DepartmentType type;
 	/**
 	 * id
 	 */
 	private String departmentNum;
 	/**
-	 * name of city
+	 * id of city
 	 */
 	private String location;
 	
-	public DepartmentVO(String type, String departmentNum, String location) {
+	public DepartmentVO(DepartmentType type, String departmentNum, String location) {
 		this.type = type;
 		this.departmentNum = departmentNum;
 		this.location = location;
 	}
 
-	public String getType() {
+	public DepartmentType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(DepartmentType type) {
 		this.type = type;
 	}
 

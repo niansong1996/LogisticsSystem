@@ -13,14 +13,20 @@ public class CityVO {
 	private String cityNum;
 	//the business halls' numbers that belongs to the city
 	private ArrayList<String> businessNums;
-	
-	public CityVO(String id,String name, String cityNum, ArrayList<String> businessNums) {
+	/**
+	 * restore the distance between other cities
+	 */
+	private ArrayList<Double> distance;
+    
+	public CityVO(String id, String name, String cityNum, 
+			ArrayList<String> businessNums, ArrayList<Double> distance) {
 		this.id = id;
 		this.name = name;
 		this.cityNum = cityNum;
 		this.businessNums = businessNums;
+		this.distance = distance;
 	}
-    
+
 	public String getId() {
 		return id;
 	}
@@ -51,6 +57,14 @@ public class CityVO {
 
 	public void setBusinessNums(ArrayList<String> businessNums) {
 		this.businessNums = businessNums;
+	}
+
+	public ArrayList<Double> getDistance() {
+		return distance;
+	}
+
+	public void setDistance(ArrayList<Double> distance) {
+		this.distance = distance;
 	}
 	
 }
