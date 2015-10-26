@@ -35,7 +35,7 @@ public class UserDataImpl implements UserDataService{
 		Iterator<UserPO> it = userList.iterator();
 		while(it.hasNext()){
 			UserPO next = it.next();
-			if(next.getUserName()==id){
+			if(next.getUserName().equals(id)){
 				result = next;
 				break;
 			}

@@ -70,8 +70,10 @@ public class AdminPanel extends JPanel{
 
 			public void actionPerformed(ActionEvent e) {
 				String name=jtfName.getText();
-				//UserVO user=userbl.findUserInfo(name);
-				UserVO user = new UserVO("0000000001", "123456", PersonType.ADMINISTRATOR);
+				//System.out.println(name);
+				UserVO user=userbl.findUserInfo(name);
+				//System.out.println(user.getUserName());
+				//UserVO user = new UserVO("0000000001", "123456", PersonType.ADMINISTRATOR);
 				Vector<String> userInfo = new Vector<String>();
 				userInfo.add(user.getUserName());
 				userInfo.add(user.getPassword());
