@@ -7,15 +7,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import edu.nju.lms.businessLogicService.UserblService;
+
 /**
  *@author tj
  *@date 2015年10月25日
  */
 public class MainFrame {
-
+	private UserblService userbl;
 	private JFrame mainFrame;
 	private ManagerPanel manager;
-	public MainFrame(){
+	public MainFrame(UserblService userbl){
+	   this.userbl = userbl;
        initComponents();
        setParameters();
 	   mainFrame.setVisible(true);
@@ -23,7 +26,7 @@ public class MainFrame {
 	
 	private void initComponents(){
 		mainFrame = new JFrame();
-		manager = new ManagerPanel();
+		manager = new ManagerPanel(userbl);
 	}
 	
 	private void setParameters(){

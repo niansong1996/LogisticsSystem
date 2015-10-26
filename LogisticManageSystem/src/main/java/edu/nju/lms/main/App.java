@@ -1,5 +1,9 @@
 package edu.nju.lms.main;
 
+import edu.nju.lms.businessLogicService.UserblService;
+import edu.nju.lms.businessLogicService.impl.UserblImpl;
+import edu.nju.lms.dataService.UserDataService;
+import edu.nju.lms.dataService.impl.UserDataImpl;
 import edu.nju.lms.presentation.MainFrame;
 
 /**
@@ -10,7 +14,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        MainFrame frame = new MainFrame();
-        
+        UserDataService userData = new UserDataImpl();
+        UserblService userbl = new UserblImpl(userData);
+        MainFrame frame = new MainFrame(userbl);
     }
 }
