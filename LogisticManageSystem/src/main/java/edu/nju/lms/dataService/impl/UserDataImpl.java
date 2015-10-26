@@ -60,4 +60,13 @@ public class UserDataImpl implements UserDataService{
 		}
 	}
 
+	public ArrayList<UserPO> getAllUser() throws RemoteException {
+		ArrayList<UserPO> result = new ArrayList<UserPO>();
+		Iterator<UserPO> it1 = userList.iterator();
+		while(it1.hasNext()){
+			result.add(it1.next());
+		}
+		return result;
+	}
+
 }

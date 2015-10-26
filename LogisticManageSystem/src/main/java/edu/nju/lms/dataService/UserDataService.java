@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.ResultMessage;
@@ -42,4 +43,12 @@ public interface UserDataService {
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateUser(UserPO user) throws RemoteException;
+	
+	/**
+	 * get all users
+	 * @param user
+	 * @return ResultMessage
+	 * @throws RemoteException
+	 */
+	public ArrayList<UserPO> getAllUser() throws RemoteException;
 }
