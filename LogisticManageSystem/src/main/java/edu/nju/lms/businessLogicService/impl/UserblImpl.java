@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.VO.UserVO;
@@ -109,7 +110,7 @@ public class UserblImpl implements UserblService{
 			return result;
 		}
 		for(int i = 0; i < id.length(); i++) {
-			if(id.charAt(i)<='0'||id.charAt(i)>='9') {
+			if(id.charAt(i)<'0'||id.charAt(i)>'9') {
 				result.setSuccess(false);
 				result.setErrorMessage("输入的格式不正确");
 				return result;
@@ -135,6 +136,21 @@ public class UserblImpl implements UserblService{
 			}
 		}
 		return result;
+	}
+
+	public ArrayList<UserVO> findAllUser() {
+		ArrayList<UserPO> users = null;
+		try {
+			users = dataService.getAllUser();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
+		for(UserPO user: users) {
+			UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
+			usersVO.add(userVO);
+		}
+		return usersVO;
 	}
 	
 

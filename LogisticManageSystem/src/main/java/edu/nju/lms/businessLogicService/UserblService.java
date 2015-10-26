@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.data.ResultMessage;
@@ -40,4 +42,10 @@ public interface UserblService {
 	 * @return {@link ResultMessage}
 	 */
 	public ResultMessage addUser(UserVO User);
+	
+	/**
+	 * get all the user info
+	 * @return {@link ArrayList}
+	 */
+	public ArrayList<UserVO> findAllUser();
 }

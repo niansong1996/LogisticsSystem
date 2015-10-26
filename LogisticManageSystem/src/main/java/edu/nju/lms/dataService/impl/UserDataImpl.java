@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import edu.nju.lms.PO.UserPO;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 
@@ -13,6 +14,10 @@ public class UserDataImpl implements UserDataService{
 
 	public UserDataImpl(){
 		//TODO Read Serialized-files
+		UserPO user = new UserPO("0000000000","123456",PersonType.ADMINISTRATOR);
+		UserPO user1 = new UserPO("0000000000","123456",PersonType.ADMINISTRATOR);
+		userList.add(user1);
+		userList.add(user);
 	}
 
 	public ResultMessage addUser(UserPO user) throws RemoteException {

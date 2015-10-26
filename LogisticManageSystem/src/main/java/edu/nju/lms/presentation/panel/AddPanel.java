@@ -16,6 +16,8 @@ import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.UserblImpl;
 import edu.nju.lms.data.PersonType;
+import edu.nju.lms.presentation.MainFrame;
+import edu.nju.lms.data.ResultMessage;
 
 /**
  *@author tj
@@ -31,8 +33,11 @@ public class AddPanel extends JPanel implements ActionListener{
 	private JButton cancel;
 	private JLabel nameLabel;
 	private JLabel passLabel;
-	public AddPanel(UserblService userbl){
+	private AdminPanel admin;
+	private int operation;
+	public AddPanel(UserblService userbl,int operation){
 		this.userbl = userbl;
+		this.operation = 0;
 		initialize();
 		addComponents();
 		power.addItemListener(new ComboListener());
@@ -73,6 +78,7 @@ public class AddPanel extends JPanel implements ActionListener{
 		 */
 		confirm.addActionListener(new ConfirmListener());
 		cancel.addActionListener(this);
+		repaint();
 	}
 	class ComboListener implements ItemListener{
 
@@ -103,24 +109,42 @@ public class AddPanel extends JPanel implements ActionListener{
 	class ConfirmListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			String name = userName.getText();
-			String pass = password.getText();
-			if(name.equals("")||pass.equals("")){
-				JOptionPane.showMessageDialog(null, "信息不完整！");  
-			}else{
-				UserVO user = new UserVO(name,pass,type);
-				userbl.addUser(user);
-				JOptionPane.showMessageDialog(null, "添加成功！");  
-				userName.setText("");
-				password.setText("");
-			}
 			
+				String name = userName.getText();
+				String pass = password.getText();
+				if(name.equals("")||pass.equals("")){
+					JOptionPane.showMessageDialog(null, "信息不完整！");  
+				}else{
+					UserVO user = new UserVO(name,pass,type);
+					if(operation==0){
+						ResultMessage result = userbl.addUser(user);
+						if(result.isSuccess()){
+							JOptionPane.showMessageDialog(null, "添加成功！");  
+							userName.setText("");
+							password.setText("");
+						}else{
+							JOptionPane.showMessageDialog(null, result);  
+						}
+					}else if(operation==1){
+						ResultMessage result = userbl.updateUser(user);
+						if(result.isSuccess()){
+							JOptionPane.showMessageDialog(null, "修改成功！");  
+							userName.setText("");
+							password.setText("");
+						}else{
+							JOptionPane.showMessageDialog(null, result);  
+						}
+					}
+				}
+		
 		}
 		
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		admin=new AdminPanel(userbl);
 		this.setVisible(false);	
+		MainFrame.mainFrame.setContentPane(admin);
 	}
 	
 }
