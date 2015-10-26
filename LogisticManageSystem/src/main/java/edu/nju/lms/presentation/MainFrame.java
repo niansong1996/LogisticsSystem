@@ -27,13 +27,19 @@ public class MainFrame {
 	}
 	
 	private void setParameters(){
+		int width = 1080;
+		int height= 720;
 		mainFrame
 		.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		mainFrame.setResizable(false);
-		mainFrame.setSize(1024, 768);
+		mainFrame.setSize(width, height);
+		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+				.getScreenSize();
+		
+		mainFrame.setLocation((screenSize.width - width) / 2,(screenSize.height-height)/2);
 		
 		manager.setBounds(0,0,mainFrame.getWidth(),mainFrame.getHeight());
-		mainFrame.add(manager);
+		mainFrame.getContentPane().add(manager);
 	}
 	
 }
