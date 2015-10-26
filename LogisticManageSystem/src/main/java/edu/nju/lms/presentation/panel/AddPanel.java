@@ -34,6 +34,7 @@ public class AddPanel extends JPanel implements ActionListener{
 	private JLabel nameLabel;
 	private JLabel passLabel;
 	private AdminPanel admin;
+	
 	private int operation;
 	public AddPanel(UserblService userbl,int operation){
 		this.userbl = userbl;
