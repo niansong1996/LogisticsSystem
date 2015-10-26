@@ -38,7 +38,7 @@ public class AddPanel extends JPanel implements ActionListener{
 	private int operation;
 	public AddPanel(UserblService userbl,int operation){
 		this.userbl = userbl;
-		this.operation = 0;
+		this.operation = operation;
 		initialize();
 		addComponents();
 		power.addItemListener(new ComboListener());
@@ -124,7 +124,7 @@ public class AddPanel extends JPanel implements ActionListener{
 							userName.setText("");
 							password.setText("");
 						}else{
-							JOptionPane.showMessageDialog(null, result);  
+							JOptionPane.showMessageDialog(null, result.getErrorMessage());  
 						}
 					}else if(operation==1){
 						ResultMessage result = userbl.updateUser(user);
@@ -133,7 +133,7 @@ public class AddPanel extends JPanel implements ActionListener{
 							userName.setText("");
 							password.setText("");
 						}else{
-							JOptionPane.showMessageDialog(null, result);  
+							JOptionPane.showMessageDialog(null, result.getErrorMessage());  
 						}
 					}
 				}

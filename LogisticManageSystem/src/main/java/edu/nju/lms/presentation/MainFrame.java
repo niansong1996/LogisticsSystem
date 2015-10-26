@@ -3,6 +3,7 @@ package edu.nju.lms.presentation;
 import javax.swing.JFrame;
 
 import edu.nju.lms.businessLogicService.UserblService;
+import edu.nju.lms.presentation.panel.AddPanel;
 import edu.nju.lms.presentation.panel.AdminPanel;
 
 /**
@@ -13,16 +14,19 @@ public class MainFrame {
 	private UserblService userbl;
 	public static JFrame mainFrame;
 	private AdminPanel admin;
+	public static AddPanel addPanel;
 	public MainFrame(UserblService userbl){
 	   this.userbl = userbl;
        initComponents();
        setParameters();
 	   mainFrame.setVisible(true);
+	   mainFrame.setLayout(null);
 	}
 	
 	private void initComponents(){
 		mainFrame = new JFrame();
 		admin=new AdminPanel(userbl);
+		addPanel = new AddPanel(userbl,1);
 	}
 	
 	private void setParameters(){

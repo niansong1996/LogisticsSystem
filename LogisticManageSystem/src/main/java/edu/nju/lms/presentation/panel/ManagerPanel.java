@@ -22,7 +22,7 @@ public class ManagerPanel extends JPanel{
 		 back = new ImageIcon("pictures/back.jpg").getImage();
 		 this.setLayout(null);
 		 addPanel = new AddPanel(userbl,1);
-		 tablePanel = new TablePanel(userbl,addPanel);
+		 tablePanel = new TablePanel(userbl);
 		 addPanel.setVisible(false);
 		 this.add(tablePanel);
 		 this.add(addPanel);

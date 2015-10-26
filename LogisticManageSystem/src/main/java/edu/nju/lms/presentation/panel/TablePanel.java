@@ -43,10 +43,9 @@ public class TablePanel extends JPanel implements ActionListener{
 	private JButton updateButton;
 	private JButton deleteButton;
 	private JPanel buttonPanel;
-	private AddPanel addPanel;
-	public TablePanel(UserblService userbl , AddPanel addPanel){
+	
+	public TablePanel(UserblService userbl){
 		this.userbl = userbl;
-		this.addPanel = addPanel;
 		initialize();
 		showUsers();
 	}
@@ -134,7 +133,8 @@ public class TablePanel extends JPanel implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("update")){
-			addPanel.setVisible(true);
+			MainFrame.addPanel.setVisible(true);
+			MainFrame.mainFrame.setContentPane(MainFrame.addPanel);
 		    MainFrame.mainFrame.repaint();
 		}else if(e.getActionCommand().equals("delete")){
 			String id =(String) table.getValueAt(table.getSelectedRow(),0);
