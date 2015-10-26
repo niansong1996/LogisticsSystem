@@ -16,7 +16,7 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public ResultMessage addUser(UserPO user) throws RemoteException {
-		if(findUser(user.getUserName()).equals(null)){
+		if(findUser(user.getUserName())==null){
 			this.userList.add(user);
 			return new ResultMessage(true,null);
 		}
@@ -39,9 +39,8 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public ResultMessage deleteUser(String id) throws RemoteException {
-		// TODO Auto-generated method stub
 		UserPO user = findUser(id);
-		if(!user.equals(null)){
+		if(!(user==null)){
 			userList.remove(user);
 			return new ResultMessage(true,null);
 		}
@@ -51,9 +50,8 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public ResultMessage updateUser(UserPO user) throws RemoteException {
-		// TODO Auto-generated method stub
 		UserPO tempUser = findUser(user.getUserName());
-		if(!tempUser.equals(null)){
+		if(!(tempUser==null)){
 			tempUser = user;
 			return new ResultMessage(true,null);
 		}

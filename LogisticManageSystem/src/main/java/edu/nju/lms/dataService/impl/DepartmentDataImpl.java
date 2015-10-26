@@ -18,7 +18,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	}
 
 	public ResultMessage addDepartment(DepartmentPO department) throws RemoteException {
-		if(findDepartment(department.getDepartmentNum()).equals(null)){
+		if(findDepartment(department.getDepartmentNum())==null){
 			this.departmentList.add(department);
 			return new ResultMessage(true,null);
 		}
@@ -42,7 +42,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
 		DepartmentPO department = findDepartment(id);
-		if(!department.equals(null)){
+		if(!(department==null)){
 			departmentList.remove(department);
 			return new ResultMessage(true,null);
 		}
@@ -63,7 +63,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	}
 
 	public ResultMessage addCity(CityPO city) throws RemoteException {
-		if(findCity(city.getId()).equals(null)){
+		if((findCity(city.getId())==null)){
 			this.cityList.add(city);
 			return new ResultMessage(true,null);
 		}
@@ -87,7 +87,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 
 	public ResultMessage deleteCity(String id) throws RemoteException {
 		CityPO city = findCity(id);
-		if(!city.equals(null)){
+		if(!(city==null)){
 			cityList.remove(city);
 			return new ResultMessage(true,null);
 		}
@@ -98,7 +98,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 
 	public ResultMessage updateCity(CityPO city) throws RemoteException {
 		CityPO tempCity = findCity(city.getId());
-		if(!tempCity.equals(null)){
+		if(!(tempCity==null)){
 			tempCity = city;
 			return new ResultMessage(true,null);
 		}

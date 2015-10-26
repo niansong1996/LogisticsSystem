@@ -20,14 +20,30 @@ public class UserblService_Driver {
 		}else{
 			System.out.println("Failue!");
 		}
-		UserVO user = userbl.findUserInfo("010101");
-		System.out.println(user.getUserName());
-		result = userbl.updateUser(new UserVO("010101","123456",PersonType.COURIER));
+		
+		ResultMessage result2 = userbl.addUser(new UserVO("010101","123456",PersonType.MANAGER));
+		if(result2.isSuccess()){
+			System.out.println("Add success\n");
+		}else{
+			System.out.println("Failue!"+result2.getErrorMessage());
+		}
+		
+		UserVO user = userbl.findUserInfo("00101");
+		if(user==null){
+			System.out.println("not found!!");
+		}
+		else{
+			System.out.println("Find success\n");
+		}
+		
+		result = userbl.updateUser(new UserVO("00101","123456",PersonType.COURIER));
 		if(result.isSuccess()){
 			System.out.println("Update success\n");
 		}else{
-			System.out.println("Failue!");
+			System.out.println("Failue!"+result.getErrorMessage());
 		}
+		
+		
 		result = userbl.deleteUser("010101");
 		if(result.isSuccess()){
 			System.out.println("Delte success\n");
