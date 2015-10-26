@@ -2,6 +2,7 @@ package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.DepartmentPO;
@@ -15,8 +16,13 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 	
 	
 	private ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
+	private ArrayList<AccountPO> accountList=new ArrayList<AccountPO>();
 
+	public FinanceAccountDataImpl(){
+		
+	}
 	
+	//TODO
 	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException {
 		ArrayList<DepartmentPO> departments=new ArrayList<DepartmentPO>();
 		ArrayList<PersonnelPO> personnel=new ArrayList<PersonnelPO>();
@@ -29,41 +35,49 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 	}
 
 	public ResultMessage addAccount(AccountPO Account) throws RemoteException {
-		
-		ArrayList<AccountPO> list=new ArrayList<AccountPO>();
-		list.add(Account);
-		
-		return new ResultMessage(true,"");
+		if(findAccount(Account.getName())==null){
+			this.accountList.add(Account);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"The account already exists!");
+		}
+
 	}
 
 	public AccountPO findAccount(String id) throws RemoteException {
-		
-		AccountPO account=new AccountPO("bank of China",2000000.0);
-		if(id.equals(account.getName())){
-			return account;
-		}else{
-			return null;
+		AccountPO result = null;
+		Iterator<AccountPO> it = accountList.iterator();
+		while(it.hasNext()){
+			AccountPO next = it.next();
+			if(next.getName()==id){
+				result = next;
+				break;
+			}
 		}
+		return result;
 	}
 
 	public ResultMessage deleteAccount(String id) throws RemoteException {
-		
-		AccountPO account=new AccountPO("bank of China",2000000.0);
-		if(id.equals(account.getName())){
-			return new ResultMessage(true,"");
-		}else{
-			return new ResultMessage(false,"no such account!");
+		AccountPO Account = findAccount(id);
+		if(!(Account==null)){
+			accountList.remove(Account);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the account!");
 		}
 	}
 
 	public ResultMessage updateAccount(AccountPO Account) throws RemoteException {
-		
-		AccountPO account=new AccountPO("bank of China",2000000.0);
-		if(Account.getName().equals(account.getName())){
-			account=Account;
-			return new ResultMessage(true,"");
-		}else{
-			return new ResultMessage(false,"no such account!");
+		AccountPO tempAccount = findAccount(Account.getName());
+		if(!tempAccount.equals(null)){
+			accountList.remove(findAccount(Account.getName()));
+			accountList.add(Account);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the department!");
 		}
 	}
 
