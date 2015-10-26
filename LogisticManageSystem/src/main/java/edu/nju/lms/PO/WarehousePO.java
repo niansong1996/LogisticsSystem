@@ -18,23 +18,34 @@ public class WarehousePO {
 	/**
 	 * key is the express's number, object is its location
 	 */
+	private String id;
 	private Map<String,Location> expressNums;
 	private ArrayList<CheckinPO> checkInlists;
 	private ArrayList<CheckoutPO> checkOutlists;
 	private ArrayList<Partition> partitionInfor;
 	
-	
-	public WarehousePO(double cordon, Map<String,Location> expressNums, ArrayList<CheckinPO> checkInlists,
+	public WarehousePO(double cordon, String id, Map<String, Location> expressNums, ArrayList<CheckinPO> checkInlists,
 			ArrayList<CheckoutPO> checkOutlists, ArrayList<Partition> partitionInfor) {
 		super();
 		this.cordon = cordon;
+		this.id = id;
 		this.expressNums = expressNums;
 		this.checkInlists = checkInlists;
 		this.checkOutlists = checkOutlists;
 		this.partitionInfor = partitionInfor;
 	}
 
-    
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
 	public double getCordon() {
 		return cordon;
 	}
