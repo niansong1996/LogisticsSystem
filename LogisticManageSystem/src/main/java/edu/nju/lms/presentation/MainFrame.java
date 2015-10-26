@@ -1,11 +1,6 @@
 package edu.nju.lms.presentation;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.presentation.panel.AdminPanel;
@@ -27,7 +22,7 @@ public class MainFrame {
 	
 	private void initComponents(){
 		mainFrame = new JFrame();
-		admin = new AdminPanel(userbl);
+		admin=new AdminPanel(userbl);
 	}
 	
 	private void setParameters(){
@@ -41,6 +36,7 @@ public class MainFrame {
 				.getScreenSize();
 		
 		mainFrame.setLocation((screenSize.width - width) / 2,(screenSize.height-height)/2);
+		
 		
 		admin.setBounds(0,0,mainFrame.getWidth(),mainFrame.getHeight());
 		mainFrame.getContentPane().add(admin);

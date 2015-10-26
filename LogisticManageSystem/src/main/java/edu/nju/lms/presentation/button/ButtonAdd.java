@@ -1,30 +1,28 @@
 package edu.nju.lms.presentation.button;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import edu.nju.lms.presentation.panel.AddPanel;
+
 public class ButtonAdd extends JPanel implements MouseListener{
-	private boolean isIn;
-	private Image btnAdd;
-	private Image btnAdd1;
+	private boolean isIn=false;
+	private AddPanel addPanel;
 	
 	public ButtonAdd(int x,int y) {
-		this.setLayout(null);
-		this.setBounds(x, y, 100, 50);
-		btnAdd=new ImageIcon("picture/add.png").getImage();
-		btnAdd1=new ImageIcon("picture/add1.png").getImage();
+		this.setBounds(x,y,110, 23);
+		
 	}
 
 	public void paintComponent(Graphics g){
 		if(isIn){
-			g.drawImage(btnAdd, 0,0,this.getWidth(),this.getHeight(), this);
+			g.drawImage(new ImageIcon("pictures/add.png").getImage(), 0,0,this.getWidth(),this.getHeight(), this);
 		}else{
-			g.drawImage(btnAdd1,0,0, this.getWidth(), this.getHeight(), this);
+			g.drawImage(new ImageIcon("pictures/add1.png").getImage(),0,0, this.getWidth(), this.getHeight(), this);
 		}
 	}
 	public void mouseClicked(MouseEvent e) {

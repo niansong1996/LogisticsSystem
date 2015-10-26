@@ -9,15 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class ButtonFind extends JPanel implements MouseListener{
-	private boolean isIn;
+	private boolean isIn=false;
 	private Image btnFind;
 	private Image btnFind1;
 	
 	public ButtonFind(int x,int y) {
-		this.setLayout(null);
-		this.setBounds(x, y, 200, 100);
-		btnFind=new ImageIcon("picture/find.png").getImage();
-		btnFind1=new ImageIcon("picture/find1.png").getImage();
+		this.setBounds(x,y,110, 23);
+		btnFind=new ImageIcon("pictures/find.png").getImage();
+		btnFind1=new ImageIcon("pictures/find1.png").getImage();
 	}
 
 	public void paintComponent(Graphics g){
