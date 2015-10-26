@@ -110,7 +110,7 @@ public class UserblImpl implements UserblService{
 			return result;
 		}
 		for(int i = 0; i < id.length(); i++) {
-			if(id.charAt(i)<='0'||id.charAt(i)>='9') {
+			if(id.charAt(i)<'0'||id.charAt(i)>'9') {
 				result.setSuccess(false);
 				result.setErrorMessage("输入的格式不正确");
 				return result;
