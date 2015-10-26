@@ -3,15 +3,18 @@ package edu.nju.lms.presentation.panel;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
+import edu.nju.lms.data.PersonType;
 
 public class AdminPanel extends JPanel{
 	private UserblService userbl;
@@ -20,15 +23,17 @@ public class AdminPanel extends JPanel{
 	private JButton btnFind;
 	private JLabel jlName;
 	private JTextField jtfName;
-	
+	private TablePanel tablePanel;
 	public AdminPanel(UserblService userbl){
 		this.userbl=userbl;
-		addPanel=new AddPanel(userbl);
+		addPanel=new AddPanel(userbl,0);
+		tablePanel = new TablePanel(userbl, addPanel);
 		this.setLayout(null);
-		
+		tablePanel.setBounds(390, 100,650,500);
 		this.addBtnAdd();
 		this.addBtnFind();
 		this.addComponents();
+		this.add(tablePanel);
 	}
 	
 	public void addComponents(){	
@@ -65,10 +70,16 @@ public class AdminPanel extends JPanel{
 		btnFind.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				String name=jtfName.getText();
-				UserVO user=userbl.findUserInfo(name);
-				//TODO
+				//UserVO user=userbl.findUserInfo(name);
+				UserVO user = new UserVO("0000000001", "123456", PersonType.ADMINISTRATOR);
+				Vector<String> userInfo = new Vector<String>();
+				userInfo.add(user.getUserName());
+				userInfo.add(user.getPassword());
+				userInfo.add(user.getPower().toString());
+				DefaultTableModel userListModel = tablePanel.getUserListModel();
+				userListModel.setRowCount(0);
+				userListModel.addRow(userInfo);
 			}
 			
 		});
