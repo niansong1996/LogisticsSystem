@@ -3,6 +3,7 @@ package edu.nju.lms.presentation.panel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -68,11 +69,11 @@ public class TablePanel extends JPanel implements ActionListener{
 		vData = new Vector<UserVO>();
 		//模型
 		userListModel = new DefaultTableModel(vData, vColumns);
-		userListModel.addTableModelListener(new TableModelListener(){
-
-			public void tableChanged(TableModelEvent e) {
-				int row = e.getFirstRow();
-				int column = e.getColumn();
+//		userListModel.addTableModelListener(new TableModelListener(){
+//
+//			public void tableChanged(TableModelEvent e) {
+//				int row = e.getFirstRow();
+//				int column = e.getColumn();
 				
 //				TableModel model = (TableModel)e.getSource();
 //		        String columnName = model.getColumnName(column);
@@ -93,13 +94,13 @@ public class TablePanel extends JPanel implements ActionListener{
 //					JOptionPane.showMessageDialog(null, result.getErrorMessage());  
 //				}
 				
-			}
-			
-		});
+//			}
+//			
+//		});
 		//表格
 		table = new JTable(userListModel){
 			public boolean isCellEditable(int row, int column){
-				return true;
+				return false;
 			}
 		};
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -119,18 +120,22 @@ public class TablePanel extends JPanel implements ActionListener{
 	}
 	
 	public void showUsers(){
-		UserVO user = new UserVO("00000","123",PersonType.ADMINISTRATOR);
-		Vector<String> userInfo = new Vector<String>();
-		userInfo.add(user.getUserName());
-		userInfo.add(user.getPassword());
-		userInfo.add(user.getPower().toString());
-		userListModel.addRow(userInfo);
+		ArrayList<UserVO> users = userbl.findAllUser();
+		if(users.isEmpty()){
+			return;
+		}
+		for(UserVO user:users){
+			Vector<String> userInfo = new Vector<String>();
+			userInfo.add(user.getUserName());
+			userInfo.add(user.getPassword());
+			userInfo.add(user.getPower().toString());
+			userListModel.addRow(userInfo);
+		}
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("update")){
 			addPanel.setVisible(true);
 			repaint();
-			System.out.println("heard!");
 		}else if(e.getActionCommand().equals("delete")){
 			String id =(String) table.getValueAt(table.getSelectedRow(),0);
 			ResultMessage result = userbl.deleteUser(id);
@@ -140,6 +145,8 @@ public class TablePanel extends JPanel implements ActionListener{
 				JOptionPane.showMessageDialog(null,result.getErrorMessage());  
 			}
 		}
+		showUsers();
+		repaint();
 		
 	}
 	public PersonType str2vo(String s){
@@ -160,6 +167,12 @@ public class TablePanel extends JPanel implements ActionListener{
 			 type = PersonType.COURIER;
 		 }
 		 return type;
+	}
+	public DefaultTableModel getUserListModel() {
+		return userListModel;
+	}
+	public void setUserListModel(DefaultTableModel userListModel) {
+		this.userListModel = userListModel;
 	}
 	
 }
