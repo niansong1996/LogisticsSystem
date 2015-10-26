@@ -1,5 +1,7 @@
 package edu.nju.lms.VO;
 
+import edu.nju.lms.data.PersonType;
+
 /**
  * show the info of a user
  * @author Cui
@@ -8,9 +10,9 @@ package edu.nju.lms.VO;
 public class UserVO {
 	private String userName;
 	private String password;
-	private String power;
+	private PersonType power;
 	
-	public UserVO(String userName, String password, String power) {
+	public UserVO(String userName, String password, PersonType power) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -28,10 +30,10 @@ public class UserVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getPower() {
+	public PersonType getPower() {
 		return power;
 	}
-	public void setPower(String power) {
+	public void setPower(PersonType power) {
 		this.power = power;
 	}
 	

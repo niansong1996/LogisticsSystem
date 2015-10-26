@@ -3,7 +3,10 @@ package edu.nju.lms.driver;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.UserblImpl;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.UserDataService;
+import edu.nju.lms.dataService.impl.UserDataImpl;
 
 /**
  *@author tj
@@ -19,13 +22,13 @@ public class UserblService_Driver {
 		}else{
 			System.out.println("Failue!");
 		}
-		result = userbl.addUser(new UserVO("du","0","manager"));
+		result = userbl.addUser(new UserVO("du","0",PersonType.MANAGER));
 		if(result.isSuccess()){
 			System.out.println("Add success\n");
 		}else{
 			System.out.println("Failue!");
 		}
-		result = userbl.updateUser(new UserVO("du","0","manager"));
+		result = userbl.updateUser(new UserVO("du","0",PersonType.MANAGER));
 		if(result.isSuccess()){
 			System.out.println("Update success\n");
 		}else{
@@ -33,8 +36,9 @@ public class UserblService_Driver {
 		}
 	}
 	public static void main1(String[] args) {
+		UserDataService service = new UserDataImpl();
 		UserblService_Driver driver = new UserblService_Driver();
-		UserblService userbl = new UserblImpl();
+		UserblService userbl = new UserblImpl(service);
 		driver.drive(userbl);
 
 	}
