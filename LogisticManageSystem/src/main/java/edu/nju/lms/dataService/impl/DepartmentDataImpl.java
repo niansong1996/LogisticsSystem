@@ -10,8 +10,8 @@ import edu.nju.lms.dataService.DepartmentDataService;
 
 public class DepartmentDataImpl implements DepartmentDataService{
 	
-	ArrayList<DepartmentPO> departmentList = new ArrayList<DepartmentPO>();
-	ArrayList<CityPO> cityList = new ArrayList<CityPO>(); 
+	private ArrayList<DepartmentPO> departmentList = new ArrayList<DepartmentPO>();
+	private ArrayList<CityPO> cityList = new ArrayList<CityPO>(); 
 	
 	public DepartmentDataImpl(){
 		//TODO Read the Serialized files

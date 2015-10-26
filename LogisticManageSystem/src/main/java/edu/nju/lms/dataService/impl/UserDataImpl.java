@@ -9,7 +9,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 
 public class UserDataImpl implements UserDataService{
-	ArrayList<UserPO> userList = new ArrayList<UserPO>();
+	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
 	public UserDataImpl(){
 		//TODO Read Serialized-files

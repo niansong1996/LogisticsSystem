@@ -12,7 +12,11 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 
 public class FinanceAccountDataImpl implements FinanceAccountDataService{
+	
+	
+	private ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
 
+	
 	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException {
 		ArrayList<DepartmentPO> departments=new ArrayList<DepartmentPO>();
 		ArrayList<PersonnelPO> personnel=new ArrayList<PersonnelPO>();
