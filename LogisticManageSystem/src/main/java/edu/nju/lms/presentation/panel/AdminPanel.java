@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.presentation.button.ButtonAdd;
 import edu.nju.lms.presentation.button.ButtonFind;
 
@@ -13,8 +14,10 @@ public class AdminPanel extends JPanel{
 	private Image admin;
 	private ButtonAdd btnAdd;
 	private ButtonFind btnFind;
-
-	public AdminPanel(){
+	private UserblService userbl;
+	private AddPanel addPanel;
+	public AdminPanel(UserblService userbl){
+		this.userbl = userbl;
 		this.setLayout(null);
 		admin = new ImageIcon("pictures/admin.png").getImage();
 		btnAdd=new ButtonAdd(100,100);

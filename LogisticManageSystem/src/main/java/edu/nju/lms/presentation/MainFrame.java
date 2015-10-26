@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import edu.nju.lms.businessLogicService.UserblService;
+import edu.nju.lms.presentation.panel.AdminPanel;
 
 /**
  *@author tj
@@ -16,7 +17,7 @@ import edu.nju.lms.businessLogicService.UserblService;
 public class MainFrame {
 	private UserblService userbl;
 	private JFrame mainFrame;
-	private ManagerPanel manager;
+	private AdminPanel admin;
 	public MainFrame(UserblService userbl){
 	   this.userbl = userbl;
        initComponents();
@@ -26,7 +27,7 @@ public class MainFrame {
 	
 	private void initComponents(){
 		mainFrame = new JFrame();
-		manager = new ManagerPanel(userbl);
+		admin = new AdminPanel(userbl);
 	}
 	
 	private void setParameters(){
@@ -41,8 +42,8 @@ public class MainFrame {
 		
 		mainFrame.setLocation((screenSize.width - width) / 2,(screenSize.height-height)/2);
 		
-		manager.setBounds(0,0,mainFrame.getWidth(),mainFrame.getHeight());
-		mainFrame.getContentPane().add(manager);
+		admin.setBounds(0,0,mainFrame.getWidth(),mainFrame.getHeight());
+		mainFrame.getContentPane().add(admin);
 	}
 	
 }
