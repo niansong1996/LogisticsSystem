@@ -14,28 +14,29 @@ import edu.nju.lms.dataService.impl.UserDataImpl;
  */
 public class UserblService_Driver {
 	public void drive(UserblService userbl){
-		UserVO user = userbl.findUserInfo("010101");
-		System.out.println(user.getUserName());
-		ResultMessage result = userbl.deleteUser("0000000000");
-		if(result.isSuccess()){
-			System.out.println("Delte success\n");
-		}else{
-			System.out.println("Failue!");
-		}
-		result = userbl.addUser(new UserVO("du","0",PersonType.MANAGER));
+		ResultMessage result = userbl.addUser(new UserVO("010101","123456",PersonType.MANAGER));
 		if(result.isSuccess()){
 			System.out.println("Add success\n");
 		}else{
 			System.out.println("Failue!");
 		}
-		result = userbl.updateUser(new UserVO("du","0",PersonType.MANAGER));
+		UserVO user = userbl.findUserInfo("010101");
+		System.out.println(user.getUserName());
+		result = userbl.updateUser(new UserVO("010101","123456",PersonType.COURIER));
 		if(result.isSuccess()){
 			System.out.println("Update success\n");
 		}else{
 			System.out.println("Failue!");
 		}
+		result = userbl.deleteUser("010101");
+		if(result.isSuccess()){
+			System.out.println("Delte success\n");
+		}else{
+			System.out.println("Failue!");
+		}
+		
 	}
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		UserDataService service = new UserDataImpl();
 		UserblService_Driver driver = new UserblService_Driver();
 		UserblService userbl = new UserblImpl(service);
