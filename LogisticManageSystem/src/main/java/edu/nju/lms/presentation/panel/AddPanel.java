@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation;
+package edu.nju.lms.presentation.panel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
