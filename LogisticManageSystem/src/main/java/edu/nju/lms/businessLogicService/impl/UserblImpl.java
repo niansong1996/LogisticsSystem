@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.VO.UserVO;
@@ -135,6 +136,21 @@ public class UserblImpl implements UserblService{
 			}
 		}
 		return result;
+	}
+
+	public ArrayList<UserVO> findAllUser() {
+		ArrayList<UserPO> users = null;
+		try {
+			users = dataService.getAllUser();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
+		for(UserPO user: users) {
+			UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
+			usersVO.add(userVO);
+		}
+		return usersVO;
 	}
 	
 
