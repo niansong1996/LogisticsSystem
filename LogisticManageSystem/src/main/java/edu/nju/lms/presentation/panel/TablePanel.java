@@ -135,17 +135,17 @@ public class TablePanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("update")){
 			addPanel.setVisible(true);
-			repaint();
+		    MainFrame.mainFrame.repaint();
 		}else if(e.getActionCommand().equals("delete")){
 			String id =(String) table.getValueAt(table.getSelectedRow(),0);
 			ResultMessage result = userbl.deleteUser(id);
+			userListModel.removeRow(table.getSelectedRow());
 			if(result.isSuccess()){
 				JOptionPane.showMessageDialog(null, "删除成功！");  
 			}else{
 				JOptionPane.showMessageDialog(null,result.getErrorMessage());  
 			}
 		}
-		showUsers();
 		repaint();
 		
 	}

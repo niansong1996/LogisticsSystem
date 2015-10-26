@@ -23,9 +23,10 @@ public class ManagerPanel extends JPanel{
 		 this.setLayout(null);
 		 addPanel = new AddPanel(userbl,1);
 		 tablePanel = new TablePanel(userbl,addPanel);
-		 this.add(addPanel);
 		 addPanel.setVisible(false);
 		 this.add(tablePanel);
+		 this.add(addPanel);
+
 	}
 	public void paintComponent(Graphics g){
 		g.drawImage(back, 0, 0, this.getWidth(),this.getHeight(),null);
