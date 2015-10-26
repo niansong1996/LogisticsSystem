@@ -11,7 +11,7 @@ import edu.nju.lms.presentation.panel.AdminPanel;
  */
 public class MainFrame {
 	private UserblService userbl;
-	private JFrame mainFrame;
+	public static JFrame mainFrame;
 	private AdminPanel admin;
 	public MainFrame(UserblService userbl){
 	   this.userbl = userbl;

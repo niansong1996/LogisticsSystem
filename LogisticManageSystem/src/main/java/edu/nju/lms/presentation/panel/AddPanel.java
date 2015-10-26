@@ -16,6 +16,7 @@ import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.UserblImpl;
 import edu.nju.lms.data.PersonType;
+import edu.nju.lms.presentation.MainFrame;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -32,6 +33,8 @@ public class AddPanel extends JPanel implements ActionListener{
 	private JButton cancel;
 	private JLabel nameLabel;
 	private JLabel passLabel;
+	private AdminPanel admin;
+	
 	private int operation;
 	public AddPanel(UserblService userbl,int operation){
 		this.userbl = userbl;
@@ -76,6 +79,7 @@ public class AddPanel extends JPanel implements ActionListener{
 		 */
 		confirm.addActionListener(new ConfirmListener());
 		cancel.addActionListener(this);
+		repaint();
 	}
 	class ComboListener implements ItemListener{
 
@@ -139,7 +143,9 @@ public class AddPanel extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		admin=new AdminPanel(userbl);
 		this.setVisible(false);	
+		MainFrame.mainFrame.setContentPane(admin);
 	}
 	
 }

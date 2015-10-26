@@ -14,7 +14,11 @@ import javax.swing.table.DefaultTableModel;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
+<<<<<<< HEAD
 import edu.nju.lms.data.PersonType;
+=======
+import edu.nju.lms.presentation.MainFrame;
+>>>>>>> origin/master
 
 public class AdminPanel extends JPanel{
 	private UserblService userbl;
@@ -27,9 +31,13 @@ public class AdminPanel extends JPanel{
 	public AdminPanel(UserblService userbl){
 		this.userbl=userbl;
 		addPanel=new AddPanel(userbl,0);
+<<<<<<< HEAD
 		tablePanel = new TablePanel(userbl, addPanel);
 		this.setLayout(null);
 		tablePanel.setBounds(390, 100,650,500);
+=======
+		this.setLayout(null);
+>>>>>>> origin/master
 		this.addBtnAdd();
 		this.addBtnFind();
 		this.addComponents();
@@ -54,9 +62,7 @@ public class AdminPanel extends JPanel{
 		btnAdd.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO
-				//addPanel.setVisible(true);
-				add(addPanel);
+				MainFrame.mainFrame.setContentPane(addPanel);
 				repaint();
 			}
 		});
