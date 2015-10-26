@@ -28,7 +28,7 @@ public class AdminPanel extends JPanel{
 	public AdminPanel(UserblService userbl){
 		this.userbl=userbl;
 		addPanel=new AddPanel(userbl,0);
-		tablePanel = new TablePanel(userbl, addPanel);
+		tablePanel = new TablePanel(userbl);
 		this.setLayout(null);
 		tablePanel.setBounds(390, 100,650,500);
 		this.addBtnAdd();

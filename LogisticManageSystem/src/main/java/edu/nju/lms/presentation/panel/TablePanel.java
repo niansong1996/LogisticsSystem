@@ -136,6 +136,8 @@ public class TablePanel extends JPanel implements ActionListener{
 			MainFrame.addPanel.setVisible(true);
 			MainFrame.mainFrame.setContentPane(MainFrame.addPanel);
 		    MainFrame.mainFrame.repaint();
+		    showUsers();
+		    repaint();
 		}else if(e.getActionCommand().equals("delete")){
 			String id =(String) table.getValueAt(table.getSelectedRow(),0);
 			ResultMessage result = userbl.deleteUser(id);

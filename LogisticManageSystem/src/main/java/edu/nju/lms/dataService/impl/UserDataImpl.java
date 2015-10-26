@@ -57,7 +57,8 @@ public class UserDataImpl implements UserDataService{
 	public ResultMessage updateUser(UserPO user) throws RemoteException {
 		UserPO tempUser = findUser(user.getUserName());
 		if(!(tempUser==null)){
-			tempUser = user;
+			deleteUser(tempUser.getUserName());
+			addUser(user);
 			return new ResultMessage(true,null);
 		}
 		else{
