@@ -5,7 +5,6 @@ import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.businessLogicService.impl.DepartmentblImpl;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
-import edu.nju.lms.dataService.impl.DepartmentDataImpl;
 
 public class DepartmentblService_Driver {
 	public void drive(DepartmentblService service) {
@@ -22,10 +21,10 @@ public class DepartmentblService_Driver {
 	}
 	
 	public static void main(String[] args) {
-		DepartmentDataService service = new DepartmentDataImpl();
-		DepartmentblService departmentService = new DepartmentblImpl(service);
-		DepartmentblService_Driver driver = new DepartmentblService_Driver();
-		driver.drive(departmentService);
+//		DepartmentDataService service = new DepartmentDataImpl();
+//		DepartmentblService departmentService = new DepartmentblImpl(service);
+//		DepartmentblService_Driver driver = new DepartmentblService_Driver();
+//		driver.drive(departmentService);
 	}
 
 }

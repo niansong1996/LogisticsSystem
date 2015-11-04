@@ -6,7 +6,6 @@ import edu.nju.lms.businessLogicService.impl.UserblImpl;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
-import edu.nju.lms.dataService.impl.UserDataImpl;
 
 /**
  *@author tj
@@ -53,10 +52,10 @@ public class UserblService_Driver {
 		
 	}
 	public static void main(String[] args) {
-		UserDataService service = new UserDataImpl();
-		UserblService_Driver driver = new UserblService_Driver();
-		UserblService userbl = new UserblImpl(service);
-		driver.drive(userbl);
+//		UserDataService service = new UserDataImpl();
+//		UserblService_Driver driver = new UserblService_Driver();
+//		UserblService userbl = new UserblImpl(service);
+//		driver.drive(userbl);
 
 	}
 }
