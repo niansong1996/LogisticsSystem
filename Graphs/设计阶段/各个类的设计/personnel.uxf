@@ -188,7 +188,7 @@ dataservice.PersonnelDataService
       <w>100</w>
       <h>140</h>
     </coordinates>
-    <panel_attributes>1</panel_attributes>
+    <panel_attributes>n</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -205,7 +205,7 @@ dataservice.PersonnelDataService
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>820</x>
+      <x>830</x>
       <y>220</y>
       <w>180</w>
       <h>30</h>
