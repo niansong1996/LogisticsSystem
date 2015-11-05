@@ -136,7 +136,7 @@ bg=red</panel_attributes>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:WarehousePO_
+    <panel_attributes>_:Database_
 bg=white</panel_attributes>
     <additional_attributes/>
   </element>
@@ -241,7 +241,7 @@ bg=red</panel_attributes>
       <h>30</h>
     </coordinates>
     <panel_attributes>_:ExpressItemInfo_
-bg=red</panel_attributes>
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
