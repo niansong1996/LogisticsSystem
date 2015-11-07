@@ -46,6 +46,7 @@ businessLogicService.LogblService
       <h>40</h>
     </coordinates>
     <panel_attributes>businessLogicService.LogblImpl
+bg=blue
 </panel_attributes>
     <additional_attributes/>
   </element>

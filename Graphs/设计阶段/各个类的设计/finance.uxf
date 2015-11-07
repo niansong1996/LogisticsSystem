@@ -35,6 +35,7 @@ businessLogicService.FinanceblService
       <h>28</h>
     </coordinates>
     <panel_attributes>businessLogicService.FinanceblImpl
+bg=blue
 </panel_attributes>
     <additional_attributes/>
   </element>
