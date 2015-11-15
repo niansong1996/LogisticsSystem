@@ -2,18 +2,23 @@ package edu.nju.lms.businessLogicService.impl.warehouse;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.PO.CheckinPO;
+import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
-import edu.nju.lms.businessLogicService.WarehouseOpblService;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 
-public class WarehouseOpblImpl implements WarehouseOpblService {
-
+public class WarehouseOpblImpl {
+	private ListInfo listInfo;
+	private LogInfo logInfo;
+	private CheckinPO checkinPO;
+	private CheckoutPO checkoutPO;
+	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		String[] expresses = {"124567895"};
 		String[] exDestination = {"Shanghai"};
-		return new CheckinVO("1234567990",expresses,"2015/4/6",exDestination);
+		return new CheckinVO("1234567990",null,"2015/4/6",null);
 	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {

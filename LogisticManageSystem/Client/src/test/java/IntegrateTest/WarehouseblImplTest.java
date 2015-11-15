@@ -1,0 +1,167 @@
+package IntegrateTest;
+
+import static org.junit.Assert.*;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.junit.Test;
+
+import edu.nju.lms.PO.CommodityPO;
+import edu.nju.lms.VO.CheckinVO;
+import edu.nju.lms.VO.CheckoutVO;
+import edu.nju.lms.VO.InventoryExcelVO;
+import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseManageblImpl;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseOpblImpl;
+import edu.nju.lms.data.Partition;
+import edu.nju.lms.data.PartitionType;
+import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.TransportCommdityDataService;
+
+/**
+ *@author tj
+ *@date 2015年11月15日
+ */
+public class WarehouseblImplTest {
+	WarehouseManageblImpl manage = new WarehouseManageblImpl();
+	WarehouseOpblImpl operation = new WarehouseOpblImpl();
+	@Test
+	public void testCheckWarehouseInfor() {
+		Calendar start = Calendar.getInstance();
+		start.setTime(new Date(110,1,26));
+		Calendar end = Calendar.getInstance();
+		end.setTime(new Date(110,1,28));
+		String warehouseNum = "025000";
+		InventoryExcelVO re = manage.checkWarehouseInfor(start, end, warehouseNum);
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("1458756100");
+		CheckinVO checkin = new CheckinVO(null,expressNums,"2015/8/21", null);
+		operation.createCheckinList(checkin, warehouseNum);
+		InventoryExcelVO test = null;
+		assertEquals(test,re);
+	
+	}
+
+	@Test
+	public void testExportExcel() {
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("4596125893");
+		ArrayList<String> checkinTime = new ArrayList<String>();
+		checkinTime.add("2015/2/18");
+		ArrayList<String> destination = new ArrayList<String>();
+		destination.add("南京");
+		ArrayList<String> location = new ArrayList<String>();
+		location.add("航空区2排3架5位");
+		
+		InventoryExcelVO excel = new InventoryExcelVO(expressNums, checkinTime, destination, location);
+		
+		String wareHouseNum = "025000";
+		ResultMessage re = manage.exportExcel(excel, wareHouseNum);
+		assertEquals(true,re.isSuccess());
+	}
+
+	@Test
+	public void testSetCordon() {
+		String warehouseNum = "025000";
+		ResultMessage re1 = manage.setCordon(0.25, warehouseNum);
+		ResultMessage re2 = manage.setCordon(100, warehouseNum);
+		assertEquals(true,re1.isSuccess());
+		assertEquals(false,re2.isSuccess());
+	}
+
+	@Test
+	public void testShowPartition() {
+		ArrayList<Partition> partition = new ArrayList<Partition>();
+		Partition partition1 = new Partition(1000, 1, 200, PartitionType.AIRPLANE);
+		Partition partition2 = new Partition(1000, 201, 400, PartitionType.CAR);
+		Partition partition3 = new Partition(1000, 401, 600, PartitionType.FLEXIBLE);
+		Partition partition4 = new Partition(1000, 601, 800, PartitionType.TRAIN);
+		partition.add(partition1);
+		partition.add(partition2);
+		partition.add(partition3);
+		partition.add(partition4);
+		PartitionVO partitionVO = new PartitionVO(partition);
+		manage.initialize(partitionVO, 0.25, "025000");
+		PartitionVO test = manage.showPartition("025000");
+		boolean is_same = test.equals(partitionVO);
+		assertEquals(true,is_same);
+		
+	}
+
+	@Test
+	public void testModifyPartition() {
+		ArrayList<Partition> partition = new ArrayList<Partition>();
+		Partition partition1 = new Partition(1000, 1, 200, PartitionType.AIRPLANE);
+		Partition partition2 = new Partition(1000, 201, 400, PartitionType.CAR);
+		Partition partition3 = new Partition(1000, 401, 600, PartitionType.FLEXIBLE);
+		Partition partition4 = new Partition(1000, 601, 800, PartitionType.TRAIN);
+		partition.add(partition1);
+		partition.add(partition2);
+		partition.add(partition3);
+		partition.add(partition4);
+		PartitionVO partitionVO = new PartitionVO(partition);
+		ResultMessage re = manage.modifyPartition(partitionVO, "025000");
+		assertEquals(true,re.isSuccess());
+	}
+
+	@Test
+	public void testInitialize() {
+		ArrayList<Partition> partition = new ArrayList<Partition>();
+		Partition partition1 = new Partition(1000, 1, 200, PartitionType.AIRPLANE);
+		Partition partition2 = new Partition(1000, 201, 400, PartitionType.CAR);
+		Partition partition3 = new Partition(1000, 401, 600, PartitionType.FLEXIBLE);
+		Partition partition4 = new Partition(1000, 601, 800, PartitionType.TRAIN);
+		partition.add(partition1);
+		partition.add(partition2);
+		partition.add(partition3);
+		partition.add(partition4);
+		PartitionVO partitionVO = new PartitionVO(partition);
+		ResultMessage re = manage.initialize(partitionVO, 0.25, "025000");
+		assertEquals(true,re.isSuccess());
+	}
+	
+	@Test
+	public void testCreateCheckinList() throws RemoteException{
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("1458756100");
+		CheckinVO checkin = new CheckinVO(null,expressNums,"2015/8/21", null);
+		CheckinVO re = operation.createCheckinList(checkin, "025000");
+		//TODO
+//		TransportCommdityDataImpl help = TransportCommdityDataImpl();
+//		CommodityPO express = help.findCommodity(re.getId());
+//		assertEquals(express.getCheckin(),re.getExDestination());
+	}
+	
+	@Test
+	public void testSaveCheckinList(){
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("1458756100");
+		ArrayList<String> exDestination = new ArrayList<String>();
+		exDestination.add("NanJing");
+		CheckinVO checkin = new CheckinVO("025000",expressNums,"2015/8/21", exDestination);
+		ResultMessage re = operation.saveCheckinList(checkin, "025000");
+		assertEquals(true,re.isSuccess());
+	}
+	
+	@Test
+	public void testCreateCheckoutList(){
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("145875610");
+		CheckoutVO checkout = new CheckoutVO("025000",expressNums,"2015/8/21","Peking",PartitionType.CAR,
+				"1234567895","5789412560");
+		//TODO
+	}
+	
+	@Test
+	public void testSaveCheckoutList(){
+		ArrayList<String> expressNums = new ArrayList<String>();
+		expressNums.add("1458756100");
+		CheckoutVO checkout = new CheckoutVO("025000",expressNums,"2015/8/21","Peking",PartitionType.CAR,
+				"1234567895","5789412560");
+		ResultMessage result = operation.saveCheckoutList(checkout, "025000");
+		assertEquals(true,result.isSuccess());
+	}
+}

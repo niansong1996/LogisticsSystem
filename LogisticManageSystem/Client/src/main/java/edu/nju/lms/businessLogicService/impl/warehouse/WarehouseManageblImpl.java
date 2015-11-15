@@ -5,13 +5,16 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
-import edu.nju.lms.businessLogicService.WareHouseManageblService;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 
-public class WarehouseManageblImpl implements WareHouseManageblService{
-
+public class WarehouseManageblImpl {
+	private ExpressList expressList;
+	private Partition airline;
+	private Partition train;
+	private Partition car;
+	private Partition flexible;
 	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
 		ArrayList<String> expressNums = new ArrayList<String>();
 		expressNums.add("0000000000");
