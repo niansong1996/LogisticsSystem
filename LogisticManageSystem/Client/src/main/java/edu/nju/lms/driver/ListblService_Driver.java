@@ -24,9 +24,9 @@ public class ListblService_Driver {
 		System.out.println(listInfor.get(0).getId());
 	}
 	public static void main5(String[] args) {
-		ListblService_Driver d = new ListblService_Driver();
-		ListblService listbl = new ListblImpl();
-		d.drive(listbl);
+//		ListblService_Driver d = new ListblService_Driver();
+//		ListblService listbl = new ListblImpl();
+//		d.drive(listbl);
 
 	}
 

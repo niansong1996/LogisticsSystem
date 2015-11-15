@@ -15,7 +15,7 @@ import edu.nju.lms.dataService.DepartmentDataService;
  *@author tj
  *@date 2015年10月25日
  */
-public class DepartmentblImpl implements DepartmentblService {
+public class DepartmentblImpl{
 	DepartmentDataService service = null;
 
 	public DepartmentblImpl(DepartmentDataService service) {

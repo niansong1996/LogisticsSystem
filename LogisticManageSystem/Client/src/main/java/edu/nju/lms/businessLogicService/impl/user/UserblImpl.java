@@ -14,7 +14,7 @@ import edu.nju.lms.dataService.UserDataService;
  * @author Cui
  * 2015-10-26 09:46:03
  */
-public class UserblImpl implements UserblService{
+public class UserblImpl{
 	
 	private UserDataService dataService = null;
 	
