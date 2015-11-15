@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.LogblService;
+import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.log.LogblImpl;
 import edu.nju.lms.data.ResultMessage;
 
@@ -24,7 +25,7 @@ public class LogblService_Driver {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LogblService logblService=new LogblImpl();
+		LogblService logblService=new LogController();
 		LogblService_Driver driver=new LogblService_Driver();
 		driver.drive(logblService);
 	}

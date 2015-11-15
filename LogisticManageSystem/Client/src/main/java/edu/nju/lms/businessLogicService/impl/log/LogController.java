@@ -7,20 +7,16 @@ import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.LogblService;
 import edu.nju.lms.data.ResultMessage;
 
-/**
- *@author tj
- *@date 2015年10月25日
- */
-public class LogblImpl {
+public class LogController implements LogblService{
 
+	LogblImpl log;
+	
 	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end) {
-		ArrayList<OperationVO> log = new ArrayList<OperationVO>();
-		log.add(new OperationVO("add check out list","2015/5/12","57635963"));
-		return log;
+		return log.getLogInfo(begin, end);
 	}
 
 	public ResultMessage addLog(OperationVO op) {
-		return new ResultMessage(true,null);
+		return log.addLog(op);
 	}
 
 }

@@ -4,9 +4,12 @@ import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.TransportToolDataService;
 
-public class TransManageblImply implements TransManageblService{
+public class TransManageblImpl implements TransManageblService{
 
+	TransportToolDataService tool;
+	
 	public VehicleVO addVehicle(VehicleVO plateNum) {
 		return new VehicleVO("0000000000", "苏F216FU", 10);
 	}

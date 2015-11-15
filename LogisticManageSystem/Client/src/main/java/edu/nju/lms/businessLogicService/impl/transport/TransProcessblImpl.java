@@ -12,9 +12,13 @@ import edu.nju.lms.businessLogicService.TransProcessblService;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.ShipState;
+import edu.nju.lms.dataService.TransportCommdityDataService;
+import edu.nju.lms.dataService.TransportListDataService;
+import edu.nju.lms.dataService.TransportToolDataService;
 
 public class TransProcessblImpl implements TransProcessblService {
-
+	TransportCommdityDataService commodity;
+	TransportListDataService list;
 	public OrderInforVO checkOrderInfor(String orderNum) {
 		ArrayList<String> track = new ArrayList<String>();
 		track.add("2015/01/01 8:00 : 快递员已收件");
