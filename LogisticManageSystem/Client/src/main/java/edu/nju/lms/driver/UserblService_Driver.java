@@ -2,7 +2,7 @@ package edu.nju.lms.driver;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
-import edu.nju.lms.businessLogicService.impl.UserblImpl;
+import edu.nju.lms.businessLogicService.impl.user.UserblImpl;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;

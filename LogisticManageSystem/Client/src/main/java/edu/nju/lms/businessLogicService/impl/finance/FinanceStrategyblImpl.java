@@ -1,4 +1,4 @@
-package edu.nju.lms.businessLogicService.impl;
+package edu.nju.lms.businessLogicService.impl.finance;
 
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;

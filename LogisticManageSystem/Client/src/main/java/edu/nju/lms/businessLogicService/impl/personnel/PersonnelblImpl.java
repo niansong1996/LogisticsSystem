@@ -1,4 +1,4 @@
-package edu.nju.lms.businessLogicService.impl;
+package edu.nju.lms.businessLogicService.impl.personnel;
 
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;

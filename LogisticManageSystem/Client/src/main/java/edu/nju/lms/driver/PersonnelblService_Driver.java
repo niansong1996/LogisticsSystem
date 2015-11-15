@@ -1,7 +1,7 @@
 package edu.nju.lms.driver;
 
 import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.businessLogicService.impl.PersonnelblImpl;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelblImpl;
 
 public class PersonnelblService_Driver {
 	public static void main(String[] args){

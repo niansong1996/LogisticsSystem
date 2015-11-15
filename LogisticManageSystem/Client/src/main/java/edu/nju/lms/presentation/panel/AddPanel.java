@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
-import edu.nju.lms.businessLogicService.impl.UserblImpl;
+import edu.nju.lms.businessLogicService.impl.user.UserblImpl;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.MainFrame;
 import edu.nju.lms.data.ResultMessage;

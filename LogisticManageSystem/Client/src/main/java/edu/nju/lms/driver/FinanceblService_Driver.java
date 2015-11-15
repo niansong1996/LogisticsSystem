@@ -13,9 +13,9 @@ import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
-import edu.nju.lms.businessLogicService.impl.FinancePayblImpl;
-import edu.nju.lms.businessLogicService.impl.FinanceReceiptblImpl;
-import edu.nju.lms.businessLogicService.impl.FinanceStrategyblImpl;
+import edu.nju.lms.businessLogicService.impl.finance.FinancePayblImpl;
+import edu.nju.lms.businessLogicService.impl.finance.FinanceReceiptblImpl;
+import edu.nju.lms.businessLogicService.impl.finance.FinanceStrategyblImpl;
 import edu.nju.lms.data.ResultMessage;
 
 public class FinanceblService_Driver {

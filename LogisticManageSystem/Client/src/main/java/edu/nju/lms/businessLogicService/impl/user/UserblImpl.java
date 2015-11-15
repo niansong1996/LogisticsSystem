@@ -1,4 +1,4 @@
-package edu.nju.lms.businessLogicService.impl;
+package edu.nju.lms.businessLogicService.impl.user;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

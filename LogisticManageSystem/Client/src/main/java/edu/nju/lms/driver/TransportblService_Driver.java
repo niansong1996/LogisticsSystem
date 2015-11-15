@@ -10,8 +10,8 @@ import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
-import edu.nju.lms.businessLogicService.impl.TransManageblImply;
-import edu.nju.lms.businessLogicService.impl.TransProcessblImpl;
+import edu.nju.lms.businessLogicService.impl.transport.TransManageblImply;
+import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ResultMessage;
 

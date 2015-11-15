@@ -1,7 +1,7 @@
 package edu.nju.lms.main;
 
 import edu.nju.lms.businessLogicService.UserblService;
-import edu.nju.lms.businessLogicService.impl.UserblImpl;
+import edu.nju.lms.businessLogicService.impl.user.UserblImpl;
 import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.presentation.MainFrame;
 

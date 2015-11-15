@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.LogblService;
-import edu.nju.lms.businessLogicService.impl.LogblImpl;
+import edu.nju.lms.businessLogicService.impl.log.LogblImpl;
 import edu.nju.lms.data.ResultMessage;
 
 public class LogblService_Driver {

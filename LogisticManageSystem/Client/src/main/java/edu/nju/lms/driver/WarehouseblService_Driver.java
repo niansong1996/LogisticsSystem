@@ -7,8 +7,8 @@ import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
-import edu.nju.lms.businessLogicService.impl.WarehouseManageblImpl;
-import edu.nju.lms.businessLogicService.impl.WarehouseOpblImpl;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseManageblImpl;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseOpblImpl;
 import edu.nju.lms.data.PartitionType;
 
 public class WarehouseblService_Driver {

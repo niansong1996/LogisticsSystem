@@ -2,7 +2,7 @@ package edu.nju.lms.driver;
 
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogicService.DepartmentblService;
-import edu.nju.lms.businessLogicService.impl.DepartmentblImpl;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentblImpl;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 

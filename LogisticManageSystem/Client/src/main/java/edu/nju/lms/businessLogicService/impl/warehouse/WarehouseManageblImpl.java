@@ -1,4 +1,4 @@
-package edu.nju.lms.businessLogicService.impl;
+package edu.nju.lms.businessLogicService.impl.warehouse;
 
 import java.util.ArrayList;
 import java.util.Calendar;
