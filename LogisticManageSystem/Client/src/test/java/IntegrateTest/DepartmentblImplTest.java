@@ -22,6 +22,8 @@ import edu.nju.lms.data.ResultMessage;
 public class DepartmentblImplTest {
 
 	DepartmentController departmentController=new DepartmentController();
+	DepartmentVO department1=new DepartmentVO(DepartmentType.BUSINESSHALL,"025123","025");
+	DepartmentVO department2=new DepartmentVO(DepartmentType.TRANSITCENTER,"025023","025");
 	
 	@Test
 	public void test() {
@@ -30,9 +32,6 @@ public class DepartmentblImplTest {
 	
 	@Test
 	public void testAddDepartment(){
-		DepartmentVO department1=new DepartmentVO(DepartmentType.BUSINESSHALL,"025123","025");
-		DepartmentVO department2=new DepartmentVO(DepartmentType.TRANSITCENTER,"025023","025");
-		
 		ResultMessage addResult1=departmentController.addDepartment(department1);
 		ResultMessage addResult2=departmentController.addDepartment(department2);
 		ResultMessage addResult3=departmentController.addDepartment(department1);
@@ -44,7 +43,9 @@ public class DepartmentblImplTest {
 	
 	@Test
 	public void testDeleteDepartment(){
-		ResultMessage deleteResult1=departmentController.deleteDepartment("025023");
+		departmentController.addDepartment(department1);
+		
+		ResultMessage deleteResult1=departmentController.deleteDepartment("025123");
 		ResultMessage deleteResult2=departmentController.deleteDepartment("025000");
 		
 		Assert.assertEquals(true, deleteResult1.isSuccess());
@@ -53,10 +54,12 @@ public class DepartmentblImplTest {
 
 	@Test
 	public void testUpdateDepartment(){
-		DepartmentVO department1=new DepartmentVO(DepartmentType.BUSINESSHALL,"025121","025");
-		DepartmentVO department2=new DepartmentVO(DepartmentType.BUSINESSHALL,"001121","001");
-		ResultMessage updateResult1=departmentController.updateDepartment(department1);
-		ResultMessage updateResult2=departmentController.updateDepartment(department2);
+		departmentController.addDepartment(department1);
+		
+		DepartmentVO department3=new DepartmentVO(DepartmentType.BUSINESSHALL,"025121","025");
+		DepartmentVO department4=new DepartmentVO(DepartmentType.BUSINESSHALL,"001121","001");
+		ResultMessage updateResult1=departmentController.updateDepartment(department3);
+		ResultMessage updateResult2=departmentController.updateDepartment(department4);
 		
 		Assert.assertEquals(true, updateResult1.isSuccess());
 		Assert.assertEquals("未找到城市", updateResult2.getErrorMessage());
@@ -64,8 +67,14 @@ public class DepartmentblImplTest {
 	
 	@Test
 	public void testGetDepartInfo(){
-		DepartmentVO department=departmentController.getDepartInfo("025121");
-		System.out.println(department.getType()+" "+department.getDepartmentNum()+" "+department.getLocation());
+		departmentController.addDepartment(department1);
+		
+		DepartmentVO department3=departmentController.getDepartInfo("025123");
+		DepartmentVO department4=departmentController.getDepartInfo("025000");
+		
+		Assert.assertEquals(DepartmentType.BUSINESSHALL, department3.getType());
+		//TODO
+		Assert.assertEquals("未找到机构", department4.getDepartmentNum());
 	}
 	
 	@Test
@@ -84,12 +93,19 @@ public class DepartmentblImplTest {
 		
 		Assert.assertEquals(true, cityResult1.isSuccess());
 		Assert.assertEquals(true, cityResult2.isSuccess());
-		//TODO
-		Assert.assertEquals("城市已存在", cityResult3.getErrorMessage());
+		Assert.assertEquals(false, cityResult3.isSuccess());
 	}
 	
 	@Test
 	public void testFindCity(){
+		ArrayList<String> businessNums=new ArrayList<String>();
+		businessNums.add("025617");
+		ArrayList<Double> distance=new ArrayList<Double>();
+		distance.add(1234.5);
+		
+		CityVO city1=new CityVO("025","Nanjing",businessNums,distance);
+		departmentController.addCity(city1);
+		
 		CityVO city3=departmentController.findCity("025");
 		Assert.assertEquals("Nanjing", city3.getName());
 		
