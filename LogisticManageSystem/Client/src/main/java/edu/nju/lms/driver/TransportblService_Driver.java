@@ -44,7 +44,7 @@ public class TransportblService_Driver {
 		ResultMessage result3 = process.saveArrivalList(arrival);
 		System.out.println("saveArrivalList:"+result3.isSuccess());
 		
-		DispatchVO dispatch = process.createDispatchList("010101");
+		DispatchVO dispatch = process.createDispatchList("010101", "niansong");
 		System.out.println("createDispatchList:"+dispatch.getDispatchPerson());
 		
 		ResultMessage result4 = process.saveDispatchList(dispatch);

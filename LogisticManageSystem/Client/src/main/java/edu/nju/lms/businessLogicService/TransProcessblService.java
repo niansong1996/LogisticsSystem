@@ -81,11 +81,11 @@ public interface TransProcessblService {
 	
 	/**
 	 * create {@link DispatchVO}
-	 * @param courierNum: long
+	 * @param courierNum: String
 	 * @return completed {@link DispatchVO}
 	 * @see DispatchVO
 	 */
-	public DispatchVO createDispatchList(String courierNum);
+	public DispatchVO createDispatchList(String courierNum, String DispatchPerson);
 	
 	/**
 	 * save {@link DispatchVO}
@@ -104,4 +104,5 @@ public interface TransProcessblService {
 	 * @see TransportVO
 	 */
 	public ResultMessage saveTransportList(TransportVO transportInfor);
+	
 }

@@ -54,7 +54,7 @@ public class TransProcessblImpl implements TransProcessblService {
 		return new ResultMessage(false, "");
 	}
 
-	public DispatchVO createDispatchList(String courierNum) {
+	public DispatchVO createDispatchList(String courierNum,String dispatchperson) {
 		return new DispatchVO("0000000000", "zhangsan", "2015/01/04", "0000000000");
 	}
 

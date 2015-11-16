@@ -46,8 +46,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return process.saveArrivalList(arrivalList);
 	}
 
-	public DispatchVO createDispatchList(String courierNum) {
-		return process.createDispatchList(courierNum);
+	public DispatchVO createDispatchList(String courierNum, String dispatchperson) {
+		return process.createDispatchList(courierNum, dispatchperson);
 	}
 
 	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
