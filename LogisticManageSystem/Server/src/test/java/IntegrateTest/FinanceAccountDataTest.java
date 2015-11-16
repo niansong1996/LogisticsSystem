@@ -34,16 +34,19 @@ public class FinanceAccountDataTest {
 	}
 	@Test
 	public void testDeleteAccount() throws RemoteException{
+		financeAccountData.addAccount(accountPo1);
 		Assert.assertEquals(success, financeAccountData.deleteAccount(accountPo1.getName()));
 		Assert.assertEquals(fail2, financeAccountData.deleteAccount(accountPo1.getName()));
 	}
 	@Test 
 	public void testUpadtaAccout() throws RemoteException{
+		financeAccountData.addAccount(accountPo2);
 		Assert.assertEquals(fail2, financeAccountData.updateAccount(accountPo1));
 		Assert.assertEquals(success, financeAccountData.updateAccount(accountPo2));
 	}
 	@Test
 	public void testFindAccount() throws RemoteException{
+		financeAccountData.addAccount(accountPo2);
 		Assert.assertEquals(success,financeAccountData.findAccount(accountPo2.getName()));
 		Assert.assertEquals(null,financeAccountData.findAccount(accountPo1.getName()));
 	}

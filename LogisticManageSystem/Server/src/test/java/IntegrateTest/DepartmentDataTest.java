@@ -34,17 +34,20 @@ public class DepartmentDataTest {
 	}
 	@Test
 	public void testDeleteDepartment() throws RemoteException{
+		departmentData.addDepartment(departmentPo1);
 		Assert.assertEquals(success, departmentData.deleteDepartment(departmentPo1.getDepartmentNum()));
 		Assert.assertEquals(fail2, departmentPo1.getDepartmentNum());
 	}
 	@Test
 	public void testFindDepartment() throws RemoteException{
+		departmentData.addDepartment(departmentPo2);
 		Assert.assertEquals(success, departmentData.findDepartment(departmentPo2.getDepartmentNum()));
 		Assert.assertEquals(null, departmentData.findDepartment(departmentPo1.getDepartmentNum()));
 		
 	}
 	@Test
 	public void testUpdateDepartment() throws RemoteException{
+		departmentData.addDepartment(departmentPo2);
 		Assert.assertEquals(success,departmentData.updateDepartment(departmentPo2));
 		Assert.assertEquals(fail2, departmentData.updateDepartment(departmentPo1));
 	}
@@ -56,17 +59,20 @@ public class DepartmentDataTest {
 	}
 	@Test
 	public void testDeleteCity() throws RemoteException{
+		departmentData.addCity(cityPo1);
 		Assert.assertEquals(success, departmentData.deleteCity(cityPo1.getId()));
 		Assert.assertEquals(fail2, cityPo1.getId());
 	}
 	@Test
 	public void testFindCity() throws RemoteException{
+		departmentData.addCity(cityPo2);
 		Assert.assertEquals(success, departmentData.findCity(cityPo2.getId()));
 		Assert.assertEquals(null, departmentData.findCity(cityPo1.getId()));
 		
 	}
 	@Test
 	public void testUpdateCity() throws RemoteException{
+		departmentData.addCity(cityPo2);
 		Assert.assertEquals(success,departmentData.updateCity(cityPo2));
 		Assert.assertEquals(fail2, departmentData.updateCity(cityPo1));
 	}

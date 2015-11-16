@@ -29,6 +29,14 @@ public interface FinanceReceiptDataService {
 	
 	/**
 	 * @param id
+	 * @return ReceiptPO
+	 * @throws RemoteException
+	 * @see ReceiptPO
+	 */
+	public ReceiptPO findReceipt(String id) throws RemoteException;
+	
+	/**
+	 * @param id
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */

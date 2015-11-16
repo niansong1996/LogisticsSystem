@@ -34,6 +34,12 @@ public interface FinancePaymentDataService {
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
+	public PaymentPO findPayment(String id) throws RemoteException;
+	/**
+	 * @param id
+	 * @return ResultMessage
+	 * @throws RemoteException
+	 */
 	public ResultMessage deletePayment(String id) throws RemoteException;
 	
 	/**
