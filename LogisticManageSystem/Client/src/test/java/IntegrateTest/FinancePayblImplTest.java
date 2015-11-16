@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.nju.lms.VO.EarningVO;
+import edu.nju.lms.VO.FreightVO;
+import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinancePayblImpl;
 import edu.nju.lms.data.ResultMessage;
 
@@ -15,33 +18,32 @@ public class FinancePayblImplTest {
 	FinancePayblImpl paybl = new FinancePayblImpl();
 	@Test
 	public void testcreateRent() {
-		ResultMessage re = paybl.createRent(15555, 2015);
+		RentVO re = paybl.createRent(15555, 2015);
+		RentVO test = new RentVO(15555, 2015);
+		boolean is_same = re.equals(test);
+		assertEquals(true,is_same);
 	}
 
 	@Test
 	public void testSaveRent() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testShowFreight() {
-		fail("Not yet implemented");
+		RentVO test = new RentVO(15555, 2015);
+		ResultMessage re = paybl.saveRent(test);
+		assertEquals(true,re.isSuccess());
 	}
 
 	@Test
 	public void testUpdateFreight() {
-		fail("Not yet implemented");
+		assertEquals(true,paybl.updateFreight(20).isSuccess());
 	}
 
 	@Test
 	public void testSaveFreight() {
-		fail("Not yet implemented");
+		FreightVO f = new FreightVO("2015/8/21","1574444577786456",259,null);
+		ResultMessage re = paybl.saveFreight(f);
+		assertEquals(true,re.isSuccess());
 	}
 
-	@Test
-	public void testShowSalary() {
-		fail("Not yet implemented");
-	}
+	
 
 	@Test
 	public void testShowSalarySum() {
@@ -55,7 +57,9 @@ public class FinancePayblImplTest {
 
 	@Test
 	public void testExportEarning() {
-		fail("Not yet implemented");
+		EarningVO e = new EarningVO(1544,100,1444,"2015/8/21","1025897856");
+		boolean re = paybl.exportEarning(e);
+		assertEquals(true,re);
 	}
 
 }

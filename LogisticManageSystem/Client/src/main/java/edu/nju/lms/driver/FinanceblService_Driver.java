@@ -82,7 +82,7 @@ public class FinanceblService_Driver {
 		ArrayList<ReceiptVO> list=financeReceipt.showReceiptList(null);
 		System.out.println(list);
 		
-		RentVO rentVO = financePay.showRent(2530, 253);
+		RentVO rentVO = financePay.createRent(2530, 253);
 		System.out.println(rentVO.getAmount());
 		
 		result = financePay.saveRent(null);
