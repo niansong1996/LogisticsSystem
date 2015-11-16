@@ -16,7 +16,7 @@ import junit.framework.Assert;
  *@date 2015年11月16日
  */
 public class FinanceAccountblImplTest {
-	FinanceAccountblImpl accountbl;
+	FinanceAccountblImpl accountbl = new FinanceAccountblImpl();
 	@Test
 	public void testAddAccount() {
 		AccountVO a = new AccountVO("1256975631269789",25455);

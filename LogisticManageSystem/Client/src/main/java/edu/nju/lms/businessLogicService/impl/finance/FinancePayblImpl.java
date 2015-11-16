@@ -59,4 +59,9 @@ public class FinancePayblImpl implements FinancePayblService {
 		return true;
 	}
 
+	public ResultMessage createSalary(SalaryVO salaryVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

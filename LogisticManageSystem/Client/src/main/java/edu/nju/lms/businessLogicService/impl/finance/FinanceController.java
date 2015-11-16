@@ -106,4 +106,8 @@ public class FinanceController
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		return accountf.addInitialInfo(initial);
 	}
+
+	public ResultMessage createSalary(SalaryVO salaryVO) {
+		return pay.createSalary(salaryVO);
+	}
 }

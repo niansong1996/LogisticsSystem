@@ -36,5 +36,5 @@ public interface FinancePayblService {
 	//export earning list as excel
 	public boolean exportEarning(EarningVO earnings);
 	
-	
+	public ResultMessage createSalary(SalaryVO salaryVO);
 }
