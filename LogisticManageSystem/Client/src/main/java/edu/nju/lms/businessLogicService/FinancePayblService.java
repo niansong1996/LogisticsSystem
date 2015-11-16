@@ -13,7 +13,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface FinancePayblService {
 	//rent payment
-	public RentVO showRent(int sum, int year);
+	public RentVO createRent(int sum, int year);
 	
 	public ResultMessage saveRent(RentVO rent);
 	

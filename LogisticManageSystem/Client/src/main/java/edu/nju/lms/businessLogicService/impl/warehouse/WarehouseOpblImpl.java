@@ -14,7 +14,7 @@ public class WarehouseOpblImpl {
 	private LogInfo logInfo;
 	private CheckinPO checkinPO;
 	private CheckoutPO checkoutPO;
-	
+	private ExpressList expressList;
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		String[] expresses = {"124567895"};
 		String[] exDestination = {"Shanghai"};
@@ -39,4 +39,28 @@ public class WarehouseOpblImpl {
 		return new ResultMessage(true,null);
 	}
 
+	public ListInfo getListInfo() {
+		return listInfo;
+	}
+
+	public void setListInfo(ListInfo listInfo) {
+		this.listInfo = listInfo;
+	}
+
+	public LogInfo getLogInfo() {
+		return logInfo;
+	}
+
+	public void setLogInfo(LogInfo logInfo) {
+		this.logInfo = logInfo;
+	}
+
+	public ExpressList getExpressList() {
+		return expressList;
+	}
+
+	public void setExpressList(ExpressList expressList) {
+		this.expressList = expressList;
+	}
+	
 }

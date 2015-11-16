@@ -25,6 +25,8 @@ import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommdityDataService;
+import mockObject.MockExpressItemInfo;
+import mockObject.MockExpressList;
 
 /**
  *@author tj
@@ -34,20 +36,27 @@ public class WarehouseblImplTest {
 	WarehouseManageblImpl manage = new WarehouseManageblImpl();
 	WarehouseOpblImpl operation = new WarehouseOpblImpl();
 	TransProcessblImpl trans = new TransProcessblImpl();
+	MockExpressList expressList = new MockExpressList();
+	
 	@Test
 	public void testCheckWarehouseInfor() {
 		Calendar start = Calendar.getInstance();
-		start.setTime(new Date(110,1,26));
+		start.set(2015,7,26);
 		Calendar end = Calendar.getInstance();
-		end.setTime(new Date(110,1,28));
+		end.set(2015,8,28);
 		String warehouseNum = "025000";
 		InventoryExcelVO re = manage.checkWarehouseInfor(start, end, warehouseNum);
 		ArrayList<String> expressNums = new ArrayList<String>();
 		expressNums.add("1458756100");
 		CheckinVO checkin = new CheckinVO(null,null,expressNums,"2015/8/21", null);
 		operation.createCheckinList(checkin, warehouseNum);
-		InventoryExcelVO test = null;
-		assertEquals(test,re);
+		Calendar s = Calendar.getInstance();
+		s.set(2015,8,21);
+		MockExpressItemInfo item1 = new MockExpressItemInfo("1458756100",s,"NanJing",new Location(PartitionType.AIRPLANE,2,2));
+		expressList.addExpress(item1);
+		manage.setExpressList(expressList);
+		
+		assertEquals(expressNums,re.getExpressNums());
 	
 	}
 

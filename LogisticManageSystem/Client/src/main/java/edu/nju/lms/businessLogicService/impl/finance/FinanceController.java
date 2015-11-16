@@ -67,8 +67,8 @@ public class FinanceController
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
 		return receipt.showReceiptList(date);
 	}
-	public RentVO showRent(int sum, int year) {
-		return pay.showRent(sum, year);
+	public RentVO createRent(int sum, int year) {
+		return pay.createRent(sum, year);
 	}
 	public ResultMessage saveRent(RentVO rent) {
 		return pay.saveRent(rent);
@@ -102,9 +102,6 @@ public class FinanceController
 	}
 	public ResultMessage deleteAccount(String id) {
 		return accountf.deleteAccount(id);
-	}
-	public ResultMessage updateAccount(AccountVO account) {
-		return accountf.updateAccount(account);
 	}
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		return accountf.addInitialInfo(initial);

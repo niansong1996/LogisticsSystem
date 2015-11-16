@@ -60,4 +60,12 @@ public class WarehouseManageblImpl {
 		return new ResultMessage(true, "");
 	}
 
+	public ExpressList getExpressList() {
+		return expressList;
+	}
+
+	public void setExpressList(ExpressList expressList) {
+		this.expressList = expressList;
+	}
+	
 }

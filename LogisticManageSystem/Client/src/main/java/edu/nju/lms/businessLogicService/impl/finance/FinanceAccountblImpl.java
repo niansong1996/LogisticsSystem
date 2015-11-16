@@ -18,15 +18,10 @@ public class FinanceAccountblImpl implements FinanceAccountblService {
 
 	public AccountVO showAccount(String id) {
 		// TODO Auto-generated method stub
-	    return new AccountVO("工商银行",100000);
+	    return new AccountVO("1256975631269789",100000);
 	}
 
 	public ResultMessage deleteAccount(String id) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
-	}
-
-	public ResultMessage updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		return new ResultMessage(true,null);
 	}

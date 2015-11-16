@@ -14,7 +14,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public class FinancePayblImpl implements FinancePayblService {
 
-	public RentVO showRent(int sum, int year) {
+	public RentVO createRent(int sum, int year) {
 		// TODO Auto-generated method stub
 		return new RentVO(52630,1);
 	}
@@ -41,7 +41,7 @@ public class FinancePayblImpl implements FinancePayblService {
 
 	public PersonnelVO showSalary(String person) {
 		// TODO Auto-generated method stub
-		return new PersonnelVO("du","521679210","manager",52600,0,5000);
+		return new PersonnelVO("du","568","521679210","manager",52600,0,5000);
 	}
 
 	public SalaryVO showSalarySum(int year, int month) {

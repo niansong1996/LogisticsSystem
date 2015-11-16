@@ -1,22 +1,25 @@
-package edu.nju.lms.businessLogicService.impl.warehouse;
+package mockObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.businessLogicService.impl.warehouse.ExpressItemInfo;
+import edu.nju.lms.businessLogicService.impl.warehouse.ExpressList;
+
 /**
  *@author tj
- *@date 2015年11月15日
+ *@date 2015年11月16日
  */
-public class ExpressList {
+public class MockExpressList extends ExpressList{
 	private ArrayList<ExpressItemInfo>  expresses;
-	public ExpressList(){
+	public MockExpressList(){
 		expresses = new ArrayList<ExpressItemInfo>();
 	}
 	/**
 	 * when add a check in list, add an express information object into the list
 	 * @param expressNum
 	 */
-	public void addExpress(ExpressItemInfo ei){
+	public void addExpress(MockExpressItemInfo ei){
 		
 	}
 	/**
@@ -53,5 +56,4 @@ public class ExpressList {
 	public int showInventory(){
 		return 0;
 	}
-	 
 }

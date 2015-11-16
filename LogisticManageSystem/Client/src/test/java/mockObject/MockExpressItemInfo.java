@@ -1,4 +1,4 @@
-package edu.nju.lms.businessLogicService.impl.warehouse;
+package mockObject;
 
 import java.util.Calendar;
 
@@ -7,9 +7,9 @@ import edu.nju.lms.PO.Location;
 
 /**
  *@author tj
- *@date 2015年11月15日
+ *@date 2015年11月16日
  */
-public class ExpressItemInfo {
+public class MockExpressItemInfo {
 	/**
 	 * 快递单号
 	 */
@@ -27,7 +27,7 @@ public class ExpressItemInfo {
 
 	private CommodityPO expressPO;
 	
-	public ExpressItemInfo(String expressNum, Calendar checkInTime, String destination, Location location) {
+	public MockExpressItemInfo(String expressNum, Calendar checkInTime, String destination, Location location) {
 		super();
 		this.expressNum = expressNum;
 		this.checkInTime = checkInTime;
@@ -66,6 +66,5 @@ public class ExpressItemInfo {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	
 	
 }

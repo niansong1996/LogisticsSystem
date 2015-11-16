@@ -6,19 +6,19 @@ package edu.nju.lms.VO;
  * 2015-10-24 23:16:19
  */
 public class AccountVO {
-	private String name;
+	private String id;
 	private double amount;
 	
-	public AccountVO(String name, double amount) {
+	public AccountVO(String id, double amount) {
 		super();
-		this.name = name;
+		this.id = id;
 		this.amount = amount;
 	}
-	public String getName() {
-		return name;
+	public String getID() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setID(String id) {
+		this.id = id;
 	}
 	public double getAmount() {
 		return amount;

@@ -16,8 +16,6 @@ public interface FinanceAccountblService {
 	
 	public ResultMessage deleteAccount(String id);
 	
-	public ResultMessage updateAccount(AccountVO account);
-	
 	//initial account,including the company's initial financial information
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial);

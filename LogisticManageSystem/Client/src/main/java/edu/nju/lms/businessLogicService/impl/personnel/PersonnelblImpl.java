@@ -9,7 +9,7 @@ import edu.nju.lms.data.ResultMessage;
  *@author tj
  *@date 2015年10月25日
  */
-public class PersonnelblImpl implements PersonnelblService {
+public class PersonnelblImpl  {
 	LogInfo log;
 	PersonnelPO personnel;
 	public PersonnelVO findPersonInfo(String id) {
