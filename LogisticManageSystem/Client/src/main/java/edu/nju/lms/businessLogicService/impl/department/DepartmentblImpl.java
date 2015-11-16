@@ -87,8 +87,8 @@ public class DepartmentblImpl{
 
 	public CityVO findCity(String id) {
 		ArrayList<String> businessNums = new ArrayList<String>();
-		businessNums.add("025457963126");
-		return new CityVO(id,"XuZhou","025",businessNums,null);
+		businessNums.add("025457");
+		return new CityVO(id,"XuZhou",businessNums,null);
 	}
 
 }

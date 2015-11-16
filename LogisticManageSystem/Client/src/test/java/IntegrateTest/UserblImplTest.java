@@ -80,9 +80,10 @@ public class UserblImplTest {
 	@Test
 	public void testFindAllUser(){
 		ArrayList<UserVO> list=userController.findAllUser();
-		
+		System.out.println("**********start testing**********");
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getUserName()+" "+list.get(i).getPassword()+" "+list.get(i).getPower());
 		}
+		System.out.println("**********end testing**********");
 	}
 }
