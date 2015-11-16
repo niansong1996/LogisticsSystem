@@ -10,10 +10,11 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年10月25日
  */
 public class PersonnelblImpl implements PersonnelblService {
-
+	LogInfo log;
+	PersonnelPO personnel;
 	public PersonnelVO findPersonInfo(String id) {
 		// TODO Auto-generated method stub
-		return new PersonnelVO("du","000000000","manager",54120,0,5000);
+		return new PersonnelVO("du","125","000000000","manager",54120,0,5000);
 	}
 
 	public ResultMessage deletePersonnel(String id) {

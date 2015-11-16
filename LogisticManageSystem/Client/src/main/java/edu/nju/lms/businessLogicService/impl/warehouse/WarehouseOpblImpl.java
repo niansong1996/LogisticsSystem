@@ -18,7 +18,7 @@ public class WarehouseOpblImpl {
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		String[] expresses = {"124567895"};
 		String[] exDestination = {"Shanghai"};
-		return new CheckinVO("1234567990",null,"2015/4/6",null);
+		return new CheckinVO("1234567990",null,null,"2015/4/6",null);
 	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {

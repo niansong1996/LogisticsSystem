@@ -2,6 +2,8 @@ package edu.nju.lms.VO;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.PO.Location;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -16,12 +18,14 @@ public class CheckinVO extends ListVO{
 		 * id+destination
 		 */
 		private ArrayList<String> exDestination;
+		private Location location;
 		
-		public CheckinVO(String id,ArrayList<String>expresses, String checkinDate, ArrayList<String> exDestination) {
+		public CheckinVO(String id,Location location,ArrayList<String>expresses, String checkinDate, ArrayList<String> exDestination) {
 			super(id);
 			this.expresses = expresses;
 			this.checkinDate = checkinDate;
 			this.exDestination = exDestination;
+			this.location = location;
 		}
 	    
 		public String getId() {
@@ -54,6 +58,14 @@ public class CheckinVO extends ListVO{
 
 		public void setExDestination(ArrayList<String> exDestination) {
 			this.exDestination = exDestination;
+		}
+
+		public Location getLocation() {
+			return location;
+		}
+
+		public void setLocation(Location location) {
+			this.location = location;
 		}
 
 	

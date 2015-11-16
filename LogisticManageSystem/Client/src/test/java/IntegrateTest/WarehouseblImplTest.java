@@ -10,12 +10,17 @@ import java.util.Date;
 import org.junit.Test;
 
 import edu.nju.lms.PO.CommodityPO;
+import edu.nju.lms.PO.Location;
+import edu.nju.lms.PO.SendPO;
+import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseManageblImpl;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseOpblImpl;
+import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
@@ -28,6 +33,7 @@ import edu.nju.lms.dataService.TransportCommdityDataService;
 public class WarehouseblImplTest {
 	WarehouseManageblImpl manage = new WarehouseManageblImpl();
 	WarehouseOpblImpl operation = new WarehouseOpblImpl();
+	TransProcessblImpl trans = new TransProcessblImpl();
 	@Test
 	public void testCheckWarehouseInfor() {
 		Calendar start = Calendar.getInstance();
@@ -38,7 +44,7 @@ public class WarehouseblImplTest {
 		InventoryExcelVO re = manage.checkWarehouseInfor(start, end, warehouseNum);
 		ArrayList<String> expressNums = new ArrayList<String>();
 		expressNums.add("1458756100");
-		CheckinVO checkin = new CheckinVO(null,expressNums,"2015/8/21", null);
+		CheckinVO checkin = new CheckinVO(null,null,expressNums,"2015/8/21", null);
 		operation.createCheckinList(checkin, warehouseNum);
 		InventoryExcelVO test = null;
 		assertEquals(test,re);
@@ -124,15 +130,18 @@ public class WarehouseblImplTest {
 	}
 	
 	@Test
-	public void testCreateCheckinList() throws RemoteException{
+	public void testCreateCheckinList(){
 		ArrayList<String> expressNums = new ArrayList<String>();
 		expressNums.add("1458756100");
-		CheckinVO checkin = new CheckinVO(null,expressNums,"2015/8/21", null);
+		Location l = new Location(PartitionType.AIRPLANE,32,2);
+		CheckinVO checkin = new CheckinVO(null,l,expressNums,"2015/8/21", null);
 		CheckinVO re = operation.createCheckinList(checkin, "025000");
-		//TODO
-//		TransportCommdityDataImpl help = TransportCommdityDataImpl();
-//		CommodityPO express = help.findCommodity(re.getId());
-//		assertEquals(express.getCheckin(),re.getExDestination());
+		ArrayList<String>baseInfo = new ArrayList<String>();
+		baseInfo.add("lily");
+		baseInfo.add("南京大学仙林校区");
+		SendPO s = new SendPO("1458756100","0289630156",baseInfo,0,0,"goods",0,3);
+		CommodityPO c = new CommodityPO(s);
+		assertEquals("南京大学仙林校区",re.getExDestination());
 	}
 	
 	@Test
@@ -141,7 +150,8 @@ public class WarehouseblImplTest {
 		expressNums.add("1458756100");
 		ArrayList<String> exDestination = new ArrayList<String>();
 		exDestination.add("NanJing");
-		CheckinVO checkin = new CheckinVO("025000",expressNums,"2015/8/21", exDestination);
+		Location l = new Location(PartitionType.AIRPLANE,32,2);
+		CheckinVO checkin = new CheckinVO("025000",l,expressNums,"2015/8/21", exDestination);
 		ResultMessage re = operation.saveCheckinList(checkin, "025000");
 		assertEquals(true,re.isSuccess());
 	}
@@ -149,10 +159,13 @@ public class WarehouseblImplTest {
 	@Test
 	public void testCreateCheckoutList(){
 		ArrayList<String> expressNums = new ArrayList<String>();
-		expressNums.add("145875610");
-		CheckoutVO checkout = new CheckoutVO("025000",expressNums,"2015/8/21","Peking",PartitionType.CAR,
+		expressNums.add("1458756100");
+		CheckoutVO checkout = new CheckoutVO("025000",expressNums,"2015/8/21","Peking",null,
 				"1234567895","5789412560");
-		//TODO
+		CheckoutVO test = operation.createCheckoutList(checkout, "025000");
+		ArrivalVO arrival = trans.createArrivalList(ArrivalState.COMPLETE, "1458756100");
+		trans.saveArrivalList(arrival);
+		assertEquals(test.getArrivalNum(),arrival.getTransitNum());
 	}
 	
 	@Test
