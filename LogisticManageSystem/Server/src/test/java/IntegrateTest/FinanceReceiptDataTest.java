@@ -41,13 +41,15 @@ public class FinanceReceiptDataTest {
 	}
 	@Test
 	public void testFindReceipt_name() throws RemoteException{
-		
+		financeReceiptData.addReceipt(receipt2);
+		Assert.assertEquals(receipt2, financeReceiptData.findReceipt(receipt2.getId()));
+		Assert.assertEquals(null, financeReceiptData.findReceipt(receipt1.getId()));
 		
 	}
 	@Test
 	public void testFindReceipt_time() throws RemoteException{
 		financeReceiptData.addReceipt(receipt2);
-		Assert.assertEquals(success, financeReceiptData.findReceipt(cal2));
+		Assert.assertEquals(receipt2, financeReceiptData.findReceipt(cal2));
 		Assert.assertEquals(null, financeReceiptData.findReceipt(cal1));
 	}
 	@Test

@@ -47,7 +47,7 @@ public class FinanceAccountDataTest {
 	@Test
 	public void testFindAccount() throws RemoteException{
 		financeAccountData.addAccount(accountPo2);
-		Assert.assertEquals(success,financeAccountData.findAccount(accountPo2.getName()));
+		Assert.assertEquals(accountPo2,financeAccountData.findAccount(accountPo2.getName()));
 		Assert.assertEquals(null,financeAccountData.findAccount(accountPo1.getName()));
 	}
 }

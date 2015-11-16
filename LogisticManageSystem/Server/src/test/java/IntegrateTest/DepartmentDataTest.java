@@ -41,7 +41,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testFindDepartment() throws RemoteException{
 		departmentData.addDepartment(departmentPo2);
-		Assert.assertEquals(success, departmentData.findDepartment(departmentPo2.getDepartmentNum()));
+		Assert.assertEquals(departmentPo2, departmentData.findDepartment(departmentPo2.getDepartmentNum()));
 		Assert.assertEquals(null, departmentData.findDepartment(departmentPo1.getDepartmentNum()));
 		
 	}
@@ -66,7 +66,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testFindCity() throws RemoteException{
 		departmentData.addCity(cityPo2);
-		Assert.assertEquals(success, departmentData.findCity(cityPo2.getId()));
+		Assert.assertEquals(cityPo2, departmentData.findCity(cityPo2.getId()));
 		Assert.assertEquals(null, departmentData.findCity(cityPo1.getId()));
 		
 	}

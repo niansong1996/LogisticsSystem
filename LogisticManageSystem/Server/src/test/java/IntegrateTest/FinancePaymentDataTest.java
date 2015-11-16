@@ -49,13 +49,13 @@ public class FinancePaymentDataTest {
 	@Test
 	public void testFindPayment_num() throws RemoteException{
 		financePaymentData.addPayment(paymentPo2);
-		Assert.assertEquals(success, financePaymentData.findPayment(paymentPo1.getId()));
+		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(paymentPo2.getId()));
 		Assert.assertEquals(null, financePaymentData.findPayment(paymentPo1.getId()));
 	}
 	@Test 
 	public void testFindPayment_time() throws RemoteException{
 		financePaymentData.addPayment(paymentPo2);
-		Assert.assertEquals(success, financePaymentData.findPayment(cal2));
+		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2));
 		Assert.assertEquals(null, financePaymentData.findPayment(cal1));
 	}
 	@Test
