@@ -8,6 +8,8 @@ import edu.nju.lms.data.ResultMessage;
 
 public class UserController implements UserblService{
 
+	UserblImpl user;
+	
 	public UserVO findUserInfo(String id) {
 		// TODO Auto-generated method stub
 		return null;

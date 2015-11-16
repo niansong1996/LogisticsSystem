@@ -8,6 +8,8 @@ import edu.nju.lms.data.ResultMessage;
 
 public class ListController implements ListblService{
 
+	ListblImpl list;
+	
 	public ArrayList<ListVO> getListInfo() {
 		// TODO Auto-generated method stub
 		return null;

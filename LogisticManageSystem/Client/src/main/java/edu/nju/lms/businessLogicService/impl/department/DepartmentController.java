@@ -7,6 +7,8 @@ import edu.nju.lms.data.ResultMessage;
 
 public class DepartmentController implements DepartmentblService{
 
+	DepartmentblImpl department;
+	
 	public DepartmentVO getDepartInfo(String id) {
 		// TODO Auto-generated method stub
 		return null;
