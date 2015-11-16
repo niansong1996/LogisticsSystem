@@ -28,7 +28,7 @@ import edu.nju.lms.dataService.TransportCommdityDataService;
  *@author tj
  *@date 2015年10月25日
  */
-public class TransportCommdityDataImpl implements TransportCommdityDataService {
+public class TransportCommodityDataImpl implements TransportCommdityDataService {
 
 	public ResultMessage addCommodity(CommodityPO commodity) throws RemoteException {
 		// TODO Auto-generated method stub
