@@ -27,5 +27,16 @@ public class AccountVO {
 		this.amount = amount;
 	}
 	
-
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		AccountVO account = (AccountVO) o;
+		if(!(id.equals(account.id)&&Math.abs(amount-account.amount)<=0.01)){
+			return false;
+		}
+		return true;
+	}
+	
 }

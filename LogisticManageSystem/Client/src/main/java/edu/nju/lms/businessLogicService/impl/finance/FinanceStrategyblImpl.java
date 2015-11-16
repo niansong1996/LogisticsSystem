@@ -32,7 +32,7 @@ public class FinanceStrategyblImpl implements FinanceStrategyblService {
 	}
 
 	public SalaryStrategyVO findSalaryStrategy() {
-		// TODO Auto-generated method stub
+		// TODO Error!!!!!!!!!!!!!!!!!!!!
 		return new SalaryStrategyVO("manager",5000,0,5000);
 	}
 
