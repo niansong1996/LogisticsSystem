@@ -2,6 +2,9 @@ package edu.nju.lms.PO;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.AccountVO;
+import edu.nju.lms.VO.CityVO;
+
 /**
  *@author tj
  *@date 2015��10��23��
@@ -58,6 +61,17 @@ public class CityPO {
 	public void setDistance(ArrayList<Double> distance) {
 		this.distance = distance;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountPO)) {
+			return false;
+		}
+		CityPO city = (CityPO) o;
+		if(!(id.equals(city.id)&&name.equals(city.name))){
+			return false;
+		}
+		return true;
+	}
 	
 }

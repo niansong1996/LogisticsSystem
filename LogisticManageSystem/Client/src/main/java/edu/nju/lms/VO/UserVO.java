@@ -36,6 +36,17 @@ public class UserVO {
 	public void setPower(PersonType power) {
 		this.power = power;
 	}
-	
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		UserVO user = (UserVO) o;
+		if(!(userName.equals(user.userName)&&password.equals(user.password)&&
+				power==user.power)){
+			return false;
+		}
+		return true;
+	}
 
 }

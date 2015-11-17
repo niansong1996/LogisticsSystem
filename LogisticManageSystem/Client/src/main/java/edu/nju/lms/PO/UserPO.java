@@ -1,5 +1,6 @@
 package edu.nju.lms.PO;
 
+import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.data.PersonType;
 
 /**
@@ -35,6 +36,17 @@ public class UserPO {
 	public void setPower(PersonType power) {
 		this.power = power;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		UserPO user = (UserPO) o;
+		if(!(userName.equals(user.userName)&&password.equals(user.password)&&power==user.power)){
+			return false;
+		}
+		return true;
+	}
 	
 }

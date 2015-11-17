@@ -55,5 +55,15 @@ public class CityVO {
 	public void setDistance(ArrayList<Double> distance) {
 		this.distance = distance;
 	}
-	
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		CityVO city = (CityVO) o;
+		if(!(id.equals(city.id)&&name.equals(city.name))){
+			return false;
+		}
+		return true;
+	}
 }

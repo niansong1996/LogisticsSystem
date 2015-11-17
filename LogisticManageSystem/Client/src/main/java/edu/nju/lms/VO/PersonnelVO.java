@@ -72,6 +72,19 @@ public class PersonnelVO {
 		this.department = department;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		PersonnelVO person = (PersonnelVO) o;
+		if(!(id.equals(person.id)&&name.equals(person.name)&&department.equals(department)
+				&&duty.equals(person.duty)&&Math.abs(salary-person.salary)<=0.01&&
+				Math.abs(perTime-person.perTime)<=0.01&&Math.abs(bonus-person.bonus)<=0.01)){
+			return false;
+		}
+		return true;
+	}
 	
 
 }
