@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation>
+	<Frame name = "MainFrame"  width = "1080" height = "720">
+		<mainPanel name = "MainPanel">
+		</mainPanel>
+	</Frame>
+</presentation>
