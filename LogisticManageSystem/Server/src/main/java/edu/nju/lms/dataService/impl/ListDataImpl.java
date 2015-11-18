@@ -11,7 +11,6 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.ListDataService;
 
 public class ListDataImpl implements ListDataService{
-
 	public List<ListPO> findList(Calendar begin, Calendar end) throws RemoteException {
 		
 		List<ListPO> list=new ArrayList<ListPO>();
