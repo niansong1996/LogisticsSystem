@@ -6,15 +6,16 @@ package edu.nju.lms.VO;
  * 2015-10-24 23:03:41
  */
 public class PersonnelVO {
-	
+	private String id;
 	private String name;
 	private String department;
 	private String duty;
 	private double salary;
 	private double perTime;
 	private double bonus;
-	public PersonnelVO(String name, String departmentNum, String duty, 
+	public PersonnelVO(String id,String name, String departmentNum, String duty, 
 			double salary, double perTime, double bonus) {
+		this.id = id;
 		this.name = name;
 		this.department = departmentNum;
 		this.duty = duty;
@@ -58,7 +59,32 @@ public class PersonnelVO {
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		PersonnelVO person = (PersonnelVO) o;
+		if(!(id.equals(person.id)&&name.equals(person.name)&&department.equals(department)
+				&&duty.equals(person.duty)&&Math.abs(salary-person.salary)<=0.01&&
+				Math.abs(perTime-person.perTime)<=0.01&&Math.abs(bonus-person.bonus)<=0.01)){
+			return false;
+		}
+		return true;
+	}
 	
 
 }

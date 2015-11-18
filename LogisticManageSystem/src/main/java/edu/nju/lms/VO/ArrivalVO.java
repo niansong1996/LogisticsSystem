@@ -114,5 +114,13 @@ public class ArrivalVO extends ListVO{
 		this.transitNum = transitNum;
 	}
 	
-	
+//	@Override
+//	public boolean equals(Object o) {
+//		if(!(o instanceof ArrivalVO)) {
+//			return false;
+//		}
+//		ArrivalVO arrival = (ArrivalVO) o;
+//		return true;
+//	}
+		
 }

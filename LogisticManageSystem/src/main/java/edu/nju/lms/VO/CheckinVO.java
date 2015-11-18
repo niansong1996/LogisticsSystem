@@ -1,5 +1,9 @@
 package edu.nju.lms.VO;
 
+import java.util.ArrayList;
+
+import edu.nju.lms.PO.Location;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -8,17 +12,20 @@ public class CheckinVO extends ListVO{
 	    /**
 	     * id+location
 	     */
-		private String[] expresses;
+		private ArrayList<String> expresses;
 		private String checkinDate;
 		/**
 		 * id+destination
 		 */
-		private String[] exDestination;
-		public CheckinVO(String id,String[] expresses, String checkinDate, String[] exDestination) {
+		private ArrayList<String> exDestination;
+		private Location location;
+		
+		public CheckinVO(String id,Location location,ArrayList<String>expresses, String checkinDate, ArrayList<String> exDestination) {
 			super(id);
 			this.expresses = expresses;
 			this.checkinDate = checkinDate;
 			this.exDestination = exDestination;
+			this.location = location;
 		}
 	    
 		public String getId() {
@@ -29,11 +36,11 @@ public class CheckinVO extends ListVO{
 			this.id = id;
 		}
 
-		public String[] getExpresses() {
+		public ArrayList<String> getExpresses() {
 			return expresses;
 		}
 
-		public void setExpresses(String[] expresses) {
+		public void setExpresses(ArrayList<String> expresses) {
 			this.expresses = expresses;
 		}
 
@@ -45,12 +52,20 @@ public class CheckinVO extends ListVO{
 			this.checkinDate = checkinDate;
 		}
 
-		public String[] getExDestination() {
+		public ArrayList<String> getExDestination() {
 			return exDestination;
 		}
 
-		public void setExDestination(String[] exDestination) {
+		public void setExDestination(ArrayList<String> exDestination) {
 			this.exDestination = exDestination;
+		}
+
+		public Location getLocation() {
+			return location;
+		}
+
+		public void setLocation(Location location) {
+			this.location = location;
 		}
 
 	

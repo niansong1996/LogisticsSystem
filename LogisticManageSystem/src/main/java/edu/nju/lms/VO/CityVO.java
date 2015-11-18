@@ -9,8 +9,6 @@ import java.util.ArrayList;
 public class CityVO {
 	private String id;
 	private String name;
-	//���ж�Ӧ����ת���ı��
-	private String cityNum;
 	//the business halls' numbers that belongs to the city
 	private ArrayList<String> businessNums;
 	/**
@@ -18,11 +16,10 @@ public class CityVO {
 	 */
 	private ArrayList<Double> distance;
     
-	public CityVO(String id, String name, String cityNum, 
+	public CityVO(String id, String name,
 			ArrayList<String> businessNums, ArrayList<Double> distance) {
 		this.id = id;
 		this.name = name;
-		this.cityNum = cityNum;
 		this.businessNums = businessNums;
 		this.distance = distance;
 	}
@@ -43,14 +40,6 @@ public class CityVO {
 		this.name = name;
 	}
 
-	public String getCityNum() {
-		return cityNum;
-	}
-
-	public void setCityNum(String cityNum) {
-		this.cityNum = cityNum;
-	}
-
 	public ArrayList<String> getBusinessNums() {
 		return businessNums;
 	}
@@ -66,5 +55,15 @@ public class CityVO {
 	public void setDistance(ArrayList<Double> distance) {
 		this.distance = distance;
 	}
-	
+	@Override
+	public boolean equals(Object o) {
+		if(! (o instanceof AccountVO)) {
+			return false;
+		}
+		CityVO city = (CityVO) o;
+		if(!(id.equals(city.id)&&name.equals(city.name))){
+			return false;
+		}
+		return true;
+	}
 }

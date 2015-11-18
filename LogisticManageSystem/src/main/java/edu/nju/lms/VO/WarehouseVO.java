@@ -9,17 +9,18 @@ import edu.nju.lms.PO.Location;
 import edu.nju.lms.data.Partition;
 
 public class WarehouseVO {
-
+	private String id;
 	private ArrayList<CheckinPO> checkInlists;
 	private ArrayList<CheckoutPO> checkOutlists;
 	private double cordon;
 	private  ArrayList<Partition> partitionInfor;
 	private Map<Long,Location> expressNums;
 	
-	public WarehouseVO(ArrayList<CheckinPO> checkInlists,
+	public WarehouseVO(String id,ArrayList<CheckinPO> checkInlists,
 			ArrayList<CheckoutPO> checkOutlists, double cordon,
 			ArrayList<Partition> partitionInfor, Map<Long, Location> expressNums) {
 		super();
+		this.id = id;
 		this.checkInlists = checkInlists;
 		this.checkOutlists = checkOutlists;
 		this.cordon = cordon;
@@ -58,5 +59,12 @@ public class WarehouseVO {
 		this.checkOutlists = checkOutlists;
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }

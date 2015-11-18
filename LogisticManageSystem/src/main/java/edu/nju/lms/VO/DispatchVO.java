@@ -46,7 +46,5 @@ public class DispatchVO extends ListVO{
 		this.expressNum = expressNum;
 	}
 	
-	
-	
 
 }
