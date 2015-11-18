@@ -53,7 +53,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 
 	public ResultMessage updateDepartment(DepartmentPO department) throws RemoteException {
 		DepartmentPO tempDepartment = findDepartment(department.getDepartmentNum());
-		if(!tempDepartment.equals(null)){
+		if(tempDepartment!=null){
 			departmentList.remove(findDepartment(department.getDepartmentNum()));
 			departmentList.add(department);
 			return new ResultMessage(true,null);

@@ -71,13 +71,13 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 
 	public ResultMessage updateAccount(AccountPO Account) throws RemoteException {
 		AccountPO tempAccount = findAccount(Account.getName());
-		if(!tempAccount.equals(null)){
+		if(tempAccount!=null){
 			accountList.remove(findAccount(Account.getName()));
 			accountList.add(Account);
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"Could not find the department!");
+			return new ResultMessage(false,"Could not find the account!");
 		}
 	}
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+	<VALUE>
+		<ERROR1101><CODE>1101</CODE><INFO>The department already exists!</INFO></ERROR1101>
+		<ERROR1102><CODE>1102</CODE><INFO>Could not find the department!</INFO></ERROR1102>
+		<ERROR1201><CODE>1201</CODE><INFO>The city already exists!</INFO></ERROR1201>
+		<ERROR1101><CODE>1202</CODE><INFO>Could not find the city!</INFO></ERROR1101>
+		</VALUE>
+</CONFIG> 

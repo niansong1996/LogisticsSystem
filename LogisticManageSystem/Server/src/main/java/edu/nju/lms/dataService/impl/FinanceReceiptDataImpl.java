@@ -70,7 +70,7 @@ public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
 			throws RemoteException {
 		
 		ReceiptPO tempReceipt = findReceipt(Receipt.getId());
-		if(!tempReceipt.equals(null)){
+		if(tempReceipt!=null){
 			ReceiptList.remove(findReceipt(Receipt.getId()));
 			ReceiptList.add(Receipt);
 			tempReceipt = Receipt;

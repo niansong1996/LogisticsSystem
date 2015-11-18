@@ -27,7 +27,7 @@ public class FinancePaymentDataImpl implements FinancePaymentDataService{
 	}
 
 	public List<PaymentPO> findPayment(Calendar date) throws RemoteException {
-		ArrayList<PaymentPO> result=null;
+		ArrayList<PaymentPO> result = new ArrayList<PaymentPO>();
 		Iterator<PaymentPO> it = paymentList.iterator();
 		while(it.hasNext()){
 			PaymentPO next = it.next();
@@ -66,7 +66,7 @@ public class FinancePaymentDataImpl implements FinancePaymentDataService{
 	public ResultMessage updatePayment(PaymentPO Payment)
 			throws RemoteException {
 		PaymentPO tempPayment = findPayment(Payment.getId());
-		if(!tempPayment.equals(null)){
+		if(tempPayment!=null){
 			paymentList.remove(findPayment(Payment.getId()));
 			paymentList.add(Payment);
 			return new ResultMessage(true,null);
