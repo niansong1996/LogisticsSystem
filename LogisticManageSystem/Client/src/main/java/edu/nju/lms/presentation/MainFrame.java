@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
+import edu.nju.lms.presentation.config.PanelConfig;
 
 /**
  *@author tj cuihao
@@ -34,6 +35,16 @@ public class MainFrame extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screenSize.width - config.getWidth()) / 2,(screenSize.height-config.getHeight())/2);
 		setVisible(true);
+	}
+	
+	public void changeTo(String panel) {
+		ConfigReader reader = new ConfigReader();
+		PanelConfig panelConfig = reader.readPanel(panel);
+		MainPanel mainPanel = new MainPanel(panelConfig);
+		getContentPane().setVisible(false);
+		getContentPane().add(mainPanel);
+		getContentPane().setVisible(true);
+		repaint();
 	}
 	
 }

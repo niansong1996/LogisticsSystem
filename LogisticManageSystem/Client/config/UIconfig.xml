@@ -2,10 +2,7 @@
 <presentation>
 	<Frame name = "MainFrame" class = "edu.nju.lms.presentation.MainFrame" width = "1080" height = "720">
 		<mainPanel name = "MainPanel" class = "edu.nju.lms.presentation.MainPanel" width = "1080" height = "720">
-			<component name="infor" class = "edu.nju.lms.presentation.Component" x="340" y="515" w="284" h="37"></component>
-			<unit>
-			
-			</unit>
+			<component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"></component>
 		</mainPanel>
 	</Frame>
 </presentation>

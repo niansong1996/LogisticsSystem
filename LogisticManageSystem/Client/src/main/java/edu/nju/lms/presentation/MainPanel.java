@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation;
 
+import java.awt.Graphics;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
@@ -39,4 +40,12 @@ public class MainPanel extends JPanel{
 			}
 		}
 	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		for(Component com: components) {
+			com.createComponent(g);
+		}
+	}
+	
 }
