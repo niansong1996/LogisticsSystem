@@ -10,7 +10,7 @@ import edu.nju.lms.presentation.Component;
 /**
  * configure info of a panel, including all the component configures
  * @author cuihao
- * 2015-11-18 00:18:16
+ * 2015-11-18 14:33:21
  */
 public class PanelConfig {
 
@@ -31,17 +31,25 @@ public class PanelConfig {
 	 */
 	private int y;
 	/**
-	 * picture configure info of this panel a panel will show its picture
+	 * picture configure info of this panel. A panel will show its picture
 	 * according to {@link Component}
 	 * 
 	 * @see Component
 	 */
-	private ArrayList<Component> components;
+	private ArrayList<ComponentConfig> components;
+	/**
+	 * component configure info of this panel
+	 * components are buttons, labels, tables, etc
+	 * these components are created by the element in {@link UnitConfig}
+	 * @see UnitConfig
+	 */
+	private ArrayList<UnitConfig> units;
 
 	public PanelConfig(Element panel) {
 		width = Integer.parseInt(panel.attributeValue("width"));
 		height = Integer.parseInt(panel.attributeValue("height"));
-		initializeComponents(getComponentConfigures(panel));
+		setComponents(getComponentConfigures(panel));
+		setUnits(getUnitConfigures(panel));
 	}
 
 	private ArrayList<ComponentConfig> getComponentConfigures(Element panel) {
@@ -54,14 +62,16 @@ public class PanelConfig {
 		return configs;
 	}
 
-	private void initializeComponents(ArrayList<ComponentConfig> configs) {
-		components = new ArrayList<Component>(configs.size());
-		for (ComponentConfig config:configs) {
-			Component c = new Component(config.getX(), config.getY(), config.getW(), config.getH(), config.getName());
-			components.add(c);
+	private ArrayList<UnitConfig> getUnitConfigures(Element panel) {
+		List<Element> elements = panel.elements("unit");
+		ArrayList<UnitConfig> configs = new ArrayList<UnitConfig>(elements.size());
+		for (Element component : elements) {
+			UnitConfig config = new UnitConfig(component);
+			configs.add(config);
 		}
+		return configs;
 	}
-
+	
 	public int getWidth() {
 		return width;
 	}
@@ -76,14 +86,6 @@ public class PanelConfig {
 
 	public void setHeight(int height) {
 		this.height = height;
-	}
-
-	public ArrayList<Component> getComponents() {
-		return components;
-	}
-
-	public void setComponents(ArrayList<Component> components) {
-		this.components = components;
 	}
 
 	public int getX() {
@@ -102,4 +104,25 @@ public class PanelConfig {
 		this.y = y;
 	}
 
+	public ArrayList<ComponentConfig> getComponents() {
+		return components;
+	}
+
+	public void setComponents(ArrayList<ComponentConfig> components) {
+		this.components = components;
+	}
+
+	public ArrayList<UnitConfig> getUnits() {
+		return units;
+	}
+
+	public void setUnits(ArrayList<UnitConfig> units) {
+		this.units = units;
+	}
+	
+//	public static void main(String[] args) {
+//		ConfigReader reader = new ConfigReader();
+//		PanelConfig config = reader.readPanel("MainPanel");
+//		System.out.println(config.getComponents().get(0).getX());
+//	}
 }

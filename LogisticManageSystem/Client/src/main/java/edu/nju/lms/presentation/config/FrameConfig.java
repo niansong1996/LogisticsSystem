@@ -16,7 +16,7 @@ public class FrameConfig {
 	 * height of a window
 	 */
 	private int height;
-
+	private String name;
 	public int getWidth() {
 		return width;
 	}
@@ -28,6 +28,15 @@ public class FrameConfig {
 	public FrameConfig(Element frame) {
 		this.width = Integer.parseInt(frame.attributeValue("width"));
 		this.height = Integer.parseInt(frame.attributeValue("height"));
+		this.name = frame.attributeValue("name");
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

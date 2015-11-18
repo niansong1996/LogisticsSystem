@@ -1,49 +1,39 @@
 package edu.nju.lms.presentation;
 
-import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-import edu.nju.lms.businessLogicService.UserblService;
-import edu.nju.lms.presentation.panel.AddPanel;
-import edu.nju.lms.presentation.panel.AdminPanel;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import edu.nju.lms.presentation.config.ConfigReader;
+import edu.nju.lms.presentation.config.FrameConfig;
 
 /**
- *@author tj
- *@date 2015年10月25日
+ *@author tj cuihao
+ *@date 2015-11-18 14:34:59
  */
-public class MainFrame {
-	private UserblService userbl;
-	public static JFrame mainFrame;
-	private AdminPanel admin;
-	public static AddPanel addPanel;
-	public MainFrame(UserblService userbl){
-	   this.userbl = userbl;
-       initComponents();
-       setParameters();
-	   mainFrame.setVisible(true);
-	   mainFrame.setLayout(null);
+public class MainFrame extends JFrame{
+	FrameConfig config;
+	public MainFrame() {
+		initialize();
 	}
-	
-	private void initComponents(){
-		mainFrame = new JFrame();
-		admin=new AdminPanel(userbl);
-		addPanel = new AddPanel(userbl,1);
+	public MainFrame(String panelName) {
+		initialize();
 	}
-	
-	private void setParameters(){
-		int width = 1080;
-		int height= 720;
-		mainFrame
-		.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		mainFrame.setResizable(false);
-		mainFrame.setSize(width, height);
-		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
-				.getScreenSize();
+	private void initialize() {
+		ConfigReader reader = new ConfigReader();
+		config = reader.readFrame("MainFrame");
 		
-		mainFrame.setLocation((screenSize.width - width) / 2,(screenSize.height-height)/2);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
+		setSize(config.getWidth(),config.getHeight());
 		
-		
-		admin.setBounds(0,0,mainFrame.getWidth(),mainFrame.getHeight());
-		mainFrame.getContentPane().add(admin);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((screenSize.width - config.getWidth()) / 2,(screenSize.height-config.getHeight())/2);
+		setVisible(true);
 	}
 	
 }
