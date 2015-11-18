@@ -10,6 +10,7 @@ import org.dom4j.Element;
  */
 public class ComponentConfig {
 	private String name;
+	private String className;
 	private int x;
 	private int y;
 	private int w;
@@ -20,6 +21,7 @@ public class ComponentConfig {
 		this.y = Integer.parseInt(component.attributeValue("y"));
 		this.w = Integer.parseInt(component.attributeValue("w"));
 		this.h = Integer.parseInt(component.attributeValue("h"));
+		this.className = component.attributeValue("class");
 	}
 	public String getName() {
 		return name;
@@ -35,5 +37,11 @@ public class ComponentConfig {
 	}
 	public int getH() {
 		return h;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
 	}
 }

@@ -19,12 +19,14 @@ public class Component {
 	private int height;
 	private String path="pictures/";
 	private String name;
-	public Component(int x,int y,int width,int height,String name){
+	private String className;
+	public Component(int x,int y,int width,int height,String name,String className){
 		this.x=x;
 		this.y=y;
 		this.width=width;
 		this.height=height;
 		this.name=name;
+		this.className = className;
 		path=path+name+".png";
 	}
 	public void createComponent(Graphics g){
@@ -71,6 +73,12 @@ public class Component {
 	}
 	public void setPath(String path){
 		this.path=path;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
 	}
 
 }
