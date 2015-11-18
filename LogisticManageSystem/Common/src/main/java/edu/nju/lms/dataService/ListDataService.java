@@ -24,6 +24,13 @@ public interface ListDataService {
 	
 	/**
 	 * @param id
+	 * @return a listpo
+	 * @throws RemoteException
+	 */
+	public ListPO findList(String id) throws RemoteException;
+	
+	/**
+	 * @param id
 	 * @param state
 	 * @return ResultMessage
 	 * @throws RemoteException

@@ -12,14 +12,6 @@ import edu.nju.lms.dataService.UserDataService;
 public class UserDataImpl implements UserDataService{
 	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
-	public UserDataImpl(){
-		//TODO Read Serialized-files
-		UserPO user = new UserPO("0000000000","123456",PersonType.ADMINISTRATOR);
-		UserPO user1 = new UserPO("0000000000","123456",PersonType.ADMINISTRATOR);
-		userList.add(user1);
-		userList.add(user);
-	}
-
 	public ResultMessage addUser(UserPO user) throws RemoteException {
 		if(findUser(user.getUserName())==null){
 			this.userList.add(user);

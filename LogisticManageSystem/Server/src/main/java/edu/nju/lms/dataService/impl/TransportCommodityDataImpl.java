@@ -2,56 +2,65 @@ package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
-import edu.nju.lms.PO.ArrivalPO;
-import edu.nju.lms.PO.CheckinPO;
-import edu.nju.lms.PO.CheckoutPO;
-import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.CommodityPO;
-import edu.nju.lms.PO.DispatchPO;
-import edu.nju.lms.PO.LoadPO;
-import edu.nju.lms.PO.Location;
-import edu.nju.lms.PO.ReceivePO;
-import edu.nju.lms.PO.SendPO;
-import edu.nju.lms.VO.SendVO;
-import edu.nju.lms.data.ArrivalState;
-import edu.nju.lms.data.LoadType;
-import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
-
 import edu.nju.lms.dataService.TransportCommdityDataService;
 
 /**
- *@author tj
- *@date 2015年10月25日
+ * @author oppalu
+ * 2015/11/18
+ *
  */
 public class TransportCommodityDataImpl implements TransportCommdityDataService {
+	
+	private ArrayList<CommodityPO> commodityList = new ArrayList<CommodityPO>();
 
 	public ResultMessage addCommodity(CommodityPO commodity) throws RemoteException {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+		if(findCommodity(commodity.getId())==null){
+			this.commodityList.add(commodity);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"The commodity already exists!");
+		}
 	}
 
 	public CommodityPO findCommodity(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-	
-		ArrayList<String> baseInfo = new ArrayList<String>();
-		baseInfo.add("du");
-	
-		return new CommodityPO(new SendPO("0000000000", "0000000000", baseInfo, 1, 1, "goods", 23, 1));
+		CommodityPO result = null;
+		Iterator<CommodityPO> it = commodityList.iterator();
+		while(it.hasNext()){
+			CommodityPO next = it.next();
+			if(next.getId().equals(id)){
+				result = next;
+				break;
+			}
+		}
+		return result;
 	}
 
 	public ResultMessage deleteCommodity(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		CommodityPO commodity=findCommodity(id);
+		if(!(commodity==null)){
+			commodityList.remove(commodity);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the commodity!");
+		}
 	}
 
 	public ResultMessage updateCommodity(CommodityPO commodity) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		CommodityPO tempCommodity = findCommodity(commodity.getId());
+		if(!(tempCommodity==null)){
+			deleteCommodity(tempCommodity.getId());
+			addCommodity(commodity);
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the commodity!");
+		}
 	}
 
 }
