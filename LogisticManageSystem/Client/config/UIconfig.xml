@@ -3,6 +3,7 @@
 	<Frame name = "MainFrame" class = "edu.nju.lms.presentation.MainFrame" width = "1080" height = "720">
 		<mainPanel name = "MainPanel" class = "edu.nju.lms.presentation.MainPanel" width = "1080" height = "720">
 			<component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"></component>
+			<unit name ="signIn" class = "edu.nju.lms.presentation.button.MainButton" x="500" y="300" w="200" h="100" type="1"></unit>
 		</mainPanel>
 	</Frame>
 </presentation>
