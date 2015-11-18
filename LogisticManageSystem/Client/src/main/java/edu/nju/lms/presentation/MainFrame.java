@@ -3,11 +3,7 @@ package edu.nju.lms.presentation;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
@@ -37,10 +33,10 @@ public class MainFrame extends JFrame{
 		setVisible(true);
 	}
 	
-	public void changeTo(String panel) {
+	public void changeTo(String panel,UIController controller) {
 		ConfigReader reader = new ConfigReader();
 		PanelConfig panelConfig = reader.readPanel(panel);
-		MainPanel mainPanel = new MainPanel(panelConfig);
+		MainPanel mainPanel = new MainPanel(panelConfig,controller);
 		getContentPane().setVisible(false);
 		getContentPane().add(mainPanel);
 		getContentPane().setVisible(true);

@@ -17,8 +17,11 @@ public class UIController {
 	private TransportController transportController;
 	private UserController userController;
 	private WarehouseController warehouseController;
+	public UIController() {
+		frame = new MainFrame();
+	}
 	public void changeTo(String panel){
-		frame.changeTo(panel);
+		frame.changeTo(panel,this);
 	}
 	public MainFrame getFrame() {
 		return frame;
