@@ -14,7 +14,7 @@ public class UItest {
 		PanelConfig panelConfig = reader.readPanel("MainPanel");
 		MainPanel mainPanel = new MainPanel(panelConfig,ui);
 		ui.getFrame().getContentPane().add(mainPanel);
-		mainPanel.setVisible(true);
+		ui.getFrame().setVisible(true);
 	}
 	public static void main(String[] args) {
 		UItest test = new UItest();
