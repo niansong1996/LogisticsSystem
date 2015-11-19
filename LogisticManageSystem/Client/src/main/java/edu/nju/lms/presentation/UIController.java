@@ -18,6 +18,7 @@ public class UIController {
 	private UserController userController;
 	private WarehouseController warehouseController;
 	public UIController() {
+		userController = new UserController();
 		frame = new MainFrame();
 	}
 	public void changeTo(String panel){
@@ -71,5 +72,7 @@ public class UIController {
 	public void setWarehouseController(WarehouseController warehouseController) {
 		this.warehouseController = warehouseController;
 	}
-	
+	public void createDepartmentController(){
+		departmentController = new DepartmentController();
+	}
 }

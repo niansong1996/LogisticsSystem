@@ -24,31 +24,33 @@ public class SignInButtonListener extends ButtonListener {
 	}
 	
 	public void mouseReleased(MouseEvent e) {
-		JTextField n = (JTextField) units.get(0);
-		JTextField p = (JTextField)units.get(1);
+		JTextField n = (JTextField) units.get(1);
+		JTextField p = (JTextField)units.get(2);
 		String name = n.getText();
 		String password = n.getText();
 		n.setText("");
 		p.setText("");
-		
-		UserVO info = userController.findUserInfo(name);
-		if(info==null){
-			JOptionPane.showMessageDialog(null, "不存在此用户！");
-		}
-		if(info.getPassword().equals(password)){
-			switch(info.getPower()){
-				case MANAGER:break;
-				case FINANCIAL_ADVANCED:break;
-				case FINANCIAL_NORMAL:break;
-				case ADMINISTRATOR:break;
-				case COUNTER_INTERMEDIATE:break;
-				case COUNTER_BUSSINESS:break;
-				case WAREHOUSE:break;
-				case COURIER:break;
-					
-			}
-		}else{
-			JOptionPane.showMessageDialog(null, "密码错误！");
-		}
+		controller.createDepartmentController();
+		controller.changeTo("ManagerPanel");
+//		UserVO info = userController.findUserInfo(name);
+//		if(info==null){
+//			JOptionPane.showMessageDialog(null, "不存在此用户！");
+//		}else if(info.getPassword().equals(password)){
+//			switch(info.getPower()){
+//				case MANAGER:
+//					controller.createDepartmentController();
+//					controller.changeTo("ManagerPanel");break;
+//				case FINANCIAL_ADVANCED:break;
+//				case FINANCIAL_NORMAL:break;
+//				case ADMINISTRATOR:break;
+//				case COUNTER_INTERMEDIATE:break;
+//				case COUNTER_BUSSINESS:break;
+//				case WAREHOUSE:break;
+//				case COURIER:break;
+//					
+//			}
+//		}else{
+//			JOptionPane.showMessageDialog(null, "密码错误！");
+//		}
 	}
 }
