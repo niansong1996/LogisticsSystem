@@ -42,6 +42,7 @@ public class MainPanel extends JPanel{
 		this.controller = controller;
 		this.config = config;
 		units = new ArrayList<java.awt.Component>();
+		setLayout(null);
 		createComponents();
 		createUnits();
 	}
@@ -69,6 +70,7 @@ public class MainPanel extends JPanel{
 				java.awt.Component com;
 				Constructor<?> ctr = myUnit.getConstructor(Element.class);
 				com = (java.awt.Component) ctr.newInstance(unit.getElement());
+				com.setBounds(unit.getX(), unit.getY(), unit.getW(), unit.getH());
 				add(com);
 				units.add(com);
 				if(unit.getElement().attributeValue("type").equals("1")){

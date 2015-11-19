@@ -39,11 +39,11 @@ public class ButtonListener implements MouseListener{
 
 	public void mouseEntered(MouseEvent e) {
 		button.setIn(true);
-		
+		button.repaint();
 	}
 
 	public void mouseExited(MouseEvent e) {
 		button.setIn(false);
-		
+		button.repaint();
 	}
 }
