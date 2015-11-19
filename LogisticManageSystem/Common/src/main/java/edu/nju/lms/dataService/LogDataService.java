@@ -1,8 +1,8 @@
 package edu.nju.lms.dataService;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import edu.nju.lms.PO.OperationPO;
 import edu.nju.lms.data.ResultMessage;
@@ -27,5 +27,5 @@ public interface LogDataService {
 	 * @throws RemoteException
 	 * @see OperationPO
 	 */
-	public List<OperationPO> findOperation(Calendar begin, Calendar end) throws RemoteException;
+	public ArrayList<OperationPO> findOperation(Calendar begin, Calendar end) throws RemoteException;
 }

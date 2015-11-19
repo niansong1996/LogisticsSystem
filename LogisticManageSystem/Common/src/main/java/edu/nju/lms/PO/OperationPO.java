@@ -1,6 +1,5 @@
 package edu.nju.lms.PO;
 
-import java.util.Calendar;
 
 /**
  *@author tj
@@ -9,10 +8,10 @@ import java.util.Calendar;
 public class OperationPO {
 	//备注
 	private String explain;
-	private Calendar time;
+	private String time;
 	private String user;
 	
-	public OperationPO(String explain, Calendar time, String user) {
+	public OperationPO(String time,String user,String explain) {
 		super();
 		this.explain = explain;
 		this.time = time;
@@ -27,11 +26,11 @@ public class OperationPO {
 		this.explain = explain;
 	}
 
-	public Calendar getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Calendar time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

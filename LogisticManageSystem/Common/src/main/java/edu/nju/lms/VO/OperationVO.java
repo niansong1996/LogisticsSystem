@@ -10,7 +10,7 @@ public class OperationVO {
 	private String explain;
 	private String time;
 	private String user;
-	public OperationVO(String explain, String time, String user) {
+	public OperationVO(String time,String user,String explain) {
 		this.explain = explain;
 		this.time = time;
 		this.user = user;

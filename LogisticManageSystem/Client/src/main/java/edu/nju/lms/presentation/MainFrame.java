@@ -22,8 +22,7 @@ public class MainFrame extends JFrame{
 		this.panelName = panelName;
 		initialize();
 	}
-	private void initialize() {
-		System.out.println("initialize");
+	private void initialize() { 
 		ConfigReader reader = new ConfigReader();
 		config = reader.readFrame("MainFrame");
 		
@@ -33,7 +32,6 @@ public class MainFrame extends JFrame{
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screenSize.width - config.getWidth()) / 2,(screenSize.height-config.getHeight())/2);
-		setVisible(true);
 	}
 	
 	public void changeTo(String panel,UIController controller) {

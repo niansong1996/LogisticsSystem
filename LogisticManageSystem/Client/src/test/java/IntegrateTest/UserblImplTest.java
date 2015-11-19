@@ -9,19 +9,16 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import edu.nju.lms.VO.UserVO;
-import edu.nju.lms.businessLogicService.impl.user.UserController;
+import edu.nju.lms.businessLogicService.impl.user.UserblImpl;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.UserDataService;
 
-/**
- * 
- * @author oppalu
- * 2015/11/15
- *
- */
 public class UserblImplTest {
 
-	private UserController userController=new UserController();
+	//TODO
+	private UserDataService userData;
+	private UserblImpl userController=new UserblImpl(userData);
 	
 	@Test
 	public void test() {
@@ -79,7 +76,7 @@ public class UserblImplTest {
 		Assert.assertEquals("oppalu37", user2.getPassword());
 		
 		UserVO user3=userController.findUserInfo("1000000020");
-		Assert.assertEquals("未找到该人员", user3.getUserName());
+		Assert.assertEquals(null, user3.getUserName());
 		
 	}
 	

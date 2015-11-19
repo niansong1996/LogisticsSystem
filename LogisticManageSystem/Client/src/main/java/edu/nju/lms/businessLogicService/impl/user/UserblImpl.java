@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.VO.UserVO;
-import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 
@@ -19,25 +18,26 @@ public class UserblImpl{
 	private UserDataService dataService = null;
 	
 	public UserblImpl(UserDataService service) {
-		setDataService(service);
+		this.setDataService(service);
 	}
 	
 	public UserVO findUserInfo(String id) {
 		UserPO userPO = null;
 		UserVO user = new UserVO("", "", null);
 		if(!idCheck(id).isSuccess()) {
-			user.setUserName(idCheck(id).getErrorMessage());
+			//user.setUserName(idCheck(id).getErrorMessage());
+			user.setUserName(null);
 		}
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
-			user.setUserName("网络未连接");
+			//user.setUserName("网络未连接");
 			return user;
 		}
 		if (userPO != null) {
 			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
 		} else {
-			user.setUserName("未找到该人员");
+			user.setUserName(null);
 		}
 		return user;
 	}
@@ -93,14 +93,6 @@ public class UserblImpl{
 		}
 		return result;
 	}
-
-	public UserDataService getDataService() {
-		return dataService;
-	}
-
-	public void setDataService(UserDataService dataService) {
-		this.dataService = dataService;
-	}
 	
 	private ResultMessage idCheck(String id) {
 		ResultMessage result = new ResultMessage(true, "");
@@ -153,5 +145,11 @@ public class UserblImpl{
 		return usersVO;
 	}
 	
+	public UserDataService getDataService() {
+		return dataService;
+	}
 
+	public void setDataService(UserDataService dataService) {
+		this.dataService = dataService;
+	}
 }
