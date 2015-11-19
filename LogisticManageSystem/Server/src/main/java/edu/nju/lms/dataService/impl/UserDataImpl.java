@@ -17,10 +17,11 @@ import edu.nju.lms.sql.JDBC;
 import edu.nju.lms.sql.POGenerator;
 
 public class UserDataImpl extends UnicastRemoteObject implements UserDataService{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3487505568096355509L;
 	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
 

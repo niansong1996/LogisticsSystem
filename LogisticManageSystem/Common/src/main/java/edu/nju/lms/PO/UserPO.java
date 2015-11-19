@@ -1,12 +1,18 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
+
 import edu.nju.lms.data.PersonType;
 
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class UserPO {
+public class UserPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7803240290729659545L;
 	private String userName;
 	private String password;
 	private PersonType power;
