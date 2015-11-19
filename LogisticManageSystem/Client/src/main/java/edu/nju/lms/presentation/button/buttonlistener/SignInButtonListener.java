@@ -32,25 +32,26 @@ public class SignInButtonListener extends ButtonListener {
 		p.setText("");
 		controller.createDepartmentController();
 		controller.changeTo("ManagerPanel");
-//		UserVO info = userController.findUserInfo(name);
-//		if(info==null){
-//			JOptionPane.showMessageDialog(null, "不存在此用户！");
-//		}else if(info.getPassword().equals(password)){
-//			switch(info.getPower()){
-//				case MANAGER:
-//					controller.createDepartmentController();
-//					controller.changeTo("ManagerPanel");break;
-//				case FINANCIAL_ADVANCED:break;
-//				case FINANCIAL_NORMAL:break;
-//				case ADMINISTRATOR:break;
-//				case COUNTER_INTERMEDIATE:break;
-//				case COUNTER_BUSSINESS:break;
-//				case WAREHOUSE:break;
-//				case COURIER:break;
-//					
-//			}
-//		}else{
-//			JOptionPane.showMessageDialog(null, "密码错误！");
-//		}
+		UserVO info = userController.findUserInfo(name);
+		if(info==null){
+			JOptionPane.showMessageDialog(null, "不存在此用户！");
+		}else if(info.getPassword().equals(password)){
+			controller.setLogID(name);
+			switch(info.getPower()){
+				case MANAGER:
+					controller.createDepartmentController();
+					controller.changeTo("ManagerPanel");break;
+				case FINANCIAL_ADVANCED:break;
+				case FINANCIAL_NORMAL:break;
+				case ADMINISTRATOR:break;
+				case COUNTER_INTERMEDIATE:break;
+				case COUNTER_BUSSINESS:break;
+				case WAREHOUSE:break;
+				case COURIER:break;
+					
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "密码错误！");
+		}
 	}
 }

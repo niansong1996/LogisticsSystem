@@ -75,4 +75,7 @@ public class UIController {
 	public void createDepartmentController(){
 		departmentController = new DepartmentController();
 	}
+	public void setLogID(String id){
+		userController.setID(id);
+	}
 }
