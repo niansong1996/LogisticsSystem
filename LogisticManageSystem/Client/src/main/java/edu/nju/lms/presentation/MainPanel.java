@@ -68,15 +68,14 @@ public class MainPanel extends JPanel{
 			try {
 				Class<?> myUnit = Class.forName(unit.getClassName());
 				java.awt.Component com;
-				Constructor<?> ctr = myUnit.getConstructor(Element.class);
-				com = (java.awt.Component) ctr.newInstance(unit.getElement());
-				com.setBounds(unit.getX(), unit.getY(), unit.getW(), unit.getH());
+				Constructor<?> ctr = myUnit.getConstructor(Element.class, UIController.class);
+				com = (java.awt.Component) ctr.newInstance(unit.getElement(),controller);
 				add(com);
 				units.add(com);
 				if(unit.getElement().attributeValue("type").equals("1")){
-					Class<?> listenner = Class.forName("edu.nju.lms.presentation.button.buttonlistener."+unit.getName()+"ButtonListener");
+					Class<?> listenner = Class.forName(unit.getElement().attributeValue("listenname"));
 					MouseListener mouseListener;
-					Constructor<?> ct = listenner.getConstructor(ArrayList.class,UIController.class,MainButton.class);
+					Constructor<?> ct = listenner.getConstructor(ArrayList.class,UIController.class, Component.class);
 					mouseListener = (MouseListener) ct.newInstance(units,controller,com);
 					com.addMouseListener(mouseListener);
 				}

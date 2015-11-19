@@ -2,11 +2,12 @@ package edu.nju.lms.presentation.button;
 
 import java.awt.Graphics;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.dom4j.Element;
+
+import edu.nju.lms.presentation.UIController;
 
 /**
  *@author tj
@@ -19,12 +20,13 @@ public class MainButton extends JLabel{
 	private int w;
 	private String name;
 	private boolean isIn;
-	public MainButton(Element button){
+	public MainButton(Element button,UIController controller){
 		w = Integer.parseInt(button.attributeValue("w"));
 		h = Integer.parseInt(button.attributeValue("h"));
 		x = Integer.parseInt(button.attributeValue("x"));
 		y = Integer.parseInt(button.attributeValue("y"));
 		name =button.attributeValue("name");
+		setBounds(x,y,w,h);
 	}
 	
 	public void paintComponent(Graphics g){

@@ -6,6 +6,9 @@
 			<component name="username" class = "edu.nju.lms.presentation.Component" x="500" y="300" w="225" h="73"/>
 			<component name="password" class = "edu.nju.lms.presentation.Component" x="500" y="400" w="225" h="73"/>
 			<unit name ="SignIn" class = "edu.nju.lms.presentation.button.MainButton" x="500" y="420" w="150" h="32" type="1"/>
+			<unit name ="MainTable" class = "edu.nju.lms.presentation.panel.MainTable" x="0" y="0" w="250" h="100" type  ="0">
+				<attributes col ="3" row ="10" dataType = "姓名，密码，权限"/>
+			</unit>
 		</mainPanel>
 	</Frame>
 </presentation>
