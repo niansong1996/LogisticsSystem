@@ -1,12 +1,17 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *@author tj
  *@date 2015��10��23��
  */
-public class CityPO {
+public class CityPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5052194559400755176L;
 	private String id;
 	private String name;
 	/**

@@ -9,8 +9,8 @@ import edu.nju.lms.data.ArrivalState;
  *@date 2015��10��24��
  */
 public class ArrivalPO extends ListPO{
-	private ArrivalState arrivalState;
 	private String expressNum;
+	private ArrivalState arrivalState;
 	private String destination;
 	//出发地 
 	private String setOut;
