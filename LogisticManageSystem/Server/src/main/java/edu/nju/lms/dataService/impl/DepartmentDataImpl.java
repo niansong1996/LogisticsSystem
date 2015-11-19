@@ -14,7 +14,7 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	private ArrayList<CityPO> cityList = new ArrayList<CityPO>(); 
 	
 	public DepartmentDataImpl(){
-		//TODO Read the Serialized files
+		
 	}
 
 	public ResultMessage addDepartment(DepartmentPO department) throws RemoteException {

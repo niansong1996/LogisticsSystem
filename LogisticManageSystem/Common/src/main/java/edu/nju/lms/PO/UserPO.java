@@ -17,6 +17,12 @@ public class UserPO {
 		this.password = password;
 		this.power = power;
 	}
+	public UserPO(String userName, String password, String power) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.power = PersonType.valueOf(power);
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -35,6 +41,18 @@ public class UserPO {
 	public void setPower(PersonType power) {
 		this.power = power;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		//TODO not consider the comparation of PersonType
+		if(this.userName.equals(((UserPO)object).getUserName())&&
+				this.password.equals(((UserPO)object).getPassword())
+				){
+			return true;
+		}
+		else{
+			return false;
+		}
+			
+	}
 	
 }

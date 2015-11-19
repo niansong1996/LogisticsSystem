@@ -1,20 +1,31 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import com.mysql.jdbc.exceptions.MySQLDataException;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
+import edu.nju.lms.sql.JDBC;
+import edu.nju.lms.sql.POGenerator;
 
 public class UserDataImpl implements UserDataService{
 	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
+
+	public UserDataImpl(){
+
+	}
 	public ResultMessage addUser(UserPO user) throws RemoteException {
+
 		if(findUser(user.getUserName())==null){
-			this.userList.add(user);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(user, user.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -23,22 +34,21 @@ public class UserDataImpl implements UserDataService{
 	}
 
 	public UserPO findUser(String id) throws RemoteException {
-		UserPO result = null;
-		Iterator<UserPO> it = userList.iterator();
-		while(it.hasNext()){
-			UserPO next = it.next();
-			if(next.getUserName().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		UserPO user = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from userpo where userName = "+id);
+		try{
+		if(!result.wasNull())
+			user = (UserPO)POGenerator.generateObject(result, UserPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return user;
 	}
 
 	public ResultMessage deleteUser(String id) throws RemoteException {
 		UserPO user = findUser(id);
 		if(!(user==null)){
-			userList.remove(user);
+			JDBC.ExecuteData("delete from userpo where userName = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -49,8 +59,7 @@ public class UserDataImpl implements UserDataService{
 	public ResultMessage updateUser(UserPO user) throws RemoteException {
 		UserPO tempUser = findUser(user.getUserName());
 		if(!(tempUser==null)){
-			deleteUser(tempUser.getUserName());
-			addUser(user);
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(user, user.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
