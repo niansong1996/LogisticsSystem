@@ -14,7 +14,13 @@ public class Demo {
 		UserPO userPo2 = new UserPO("7364534263","876567",PersonType.ADMINISTRATOR);
 		UserPO userPo3 = null;
 		JDBC jdbc = new JDBC("","","");
-		UserDataImpl userData = new UserDataImpl();
+		UserDataImpl userData = null;
+		try {
+			userData = new UserDataImpl();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			userData.addUser(userPo2);
 			userData.addUser(userPo1);

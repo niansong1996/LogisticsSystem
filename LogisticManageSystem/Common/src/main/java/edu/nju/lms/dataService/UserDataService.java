@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  *2015/10/25
  */
-public interface UserDataService {
+public interface UserDataService extends Remote{
 	/**
 	 * add a user
 	 * @param user

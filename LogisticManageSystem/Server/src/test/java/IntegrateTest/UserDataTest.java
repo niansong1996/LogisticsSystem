@@ -13,7 +13,7 @@ import edu.nju.lms.dataService.impl.UserDataImpl;
 import edu.nju.lms.sql.JDBC;
 
 public class UserDataTest {
-	UserDataService userData = new UserDataImpl();
+	UserDataService userData;
 	ResultMessage success = new ResultMessage(true,null);
 	ResultMessage fail11 = new ResultMessage(false,"The user already exists!");
 	ResultMessage fail12 = new ResultMessage(false,"Could not find the user!");
@@ -23,7 +23,8 @@ public class UserDataTest {
 	
 	@Test
 	public void testAddUser() throws RemoteException{
-		JDBC jdbc = new JDBC("","","");
+		userData = new UserDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table userpo");
 		Assert.assertEquals(success,userData.addUser(userPo1));
 		Assert.assertEquals(fail11,userData.addUser(userPo1));
@@ -31,7 +32,8 @@ public class UserDataTest {
 	}
 	@Test
 	public void testDeleteUser() throws RemoteException{
-		JDBC jdbc = new JDBC("","","");
+		userData = new UserDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table userpo");
 		userData.addUser(userPo1);
 		Assert.assertEquals(success, userData.deleteUser(userPo1.getUserName()));
@@ -39,7 +41,8 @@ public class UserDataTest {
 	}
 	@Test
 	public void testFindUser() throws RemoteException{
-		JDBC jdbc = new JDBC("","","");
+		userData = new UserDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table userpo");
 		userData.addUser(userPo2);
 		Assert.assertEquals(userPo2, userData.findUser(userPo2.getUserName()));
@@ -48,7 +51,8 @@ public class UserDataTest {
 	}
 	@Test
 	public void testUpdateUser() throws RemoteException{
-		JDBC jdbc = new JDBC("","","");
+		userData = new UserDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table userpo");
 		userData.addUser(userPo2);
 		Assert.assertEquals(success,userData.updateUser(userPo2));
