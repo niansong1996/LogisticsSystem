@@ -1,6 +1,12 @@
 package edu.nju.lms.data;
 
-public class ResultMessage{
+import java.io.Serializable;
+
+public class ResultMessage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4731092890367678593L;
 	boolean success;
 	String errorMessage;
 

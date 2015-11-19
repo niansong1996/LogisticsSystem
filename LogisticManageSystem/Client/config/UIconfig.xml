@@ -3,12 +3,18 @@
 	<Frame name = "MainFrame" class = "edu.nju.lms.presentation.MainFrame" width = "1080" height = "720">
 		<mainPanel name = "MainPanel" class = "edu.nju.lms.presentation.MainPanel" width = "1080" height = "720">
 			<component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
-			<component name="username" class = "edu.nju.lms.presentation.Component" x="500" y="300" w="225" h="73"/>
-			<component name="password" class = "edu.nju.lms.presentation.Component" x="500" y="400" w="225" h="73"/>
-			<unit name ="SignIn" class = "edu.nju.lms.presentation.button.MainButton" x="500" y="420" w="150" h="32" type="1"/>
-			<unit name ="MainTable" class = "edu.nju.lms.presentation.panel.MainTable" x="0" y="0" w="250" h="100" type  ="0">
-				<attributes col ="3" row ="10" dataType = "姓名，密码，权限"/>
-			</unit>
+			<component name="username" class = "edu.nju.lms.presentation.Component" x="400" y="220" w="78" h="25"/>
+			<component name="password" class = "edu.nju.lms.presentation.Component" x="400" y="360" w="78" h="25"/>
+			<unit name ="SignIn" class = "edu.nju.lms.presentation.button.MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="edu.nju.lms.presentation.button.buttonlistener.SignInButtonListener"/>
+			<unit name ="userName" class = "edu.nju.lms.presentation.MyTextField" x="495" y="220" w="150" h="32" type="0"/>
+			<unit name ="password" class = "edu.nju.lms.presentation.MyPasswordField" x="495" y="360" w="150" h="32" type="0"/>
 		</mainPanel>
+		<managerPanel name="ManagerPanel" class="edu.nju.lms.presentation.MainPanel" width ="1080" height="720">
+		    <component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
+		    <unit name ="PersonnelManage" class = "edu.nju.lms.presentation.button.MainButton" x="500" y="300" w="197" h="47" type="1" listenerName="edu.nju.lms.presentation.button.buttonlistener.PersonnelManageButtonListener"/>
+		</managerPanel>
+		<personnelManagePanel name="PersonnelManagePanel" class="edu.nju.lms.presentation.MainPanel" width="1080" height="720">
+		     <component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
+		</personnelManagePanel>
 	</Frame>
 </presentation>

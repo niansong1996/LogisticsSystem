@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,11 +16,16 @@ import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.sql.JDBC;
 import edu.nju.lms.sql.POGenerator;
 
-public class UserDataImpl implements UserDataService{
+public class UserDataImpl extends UnicastRemoteObject implements UserDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3487505568096355509L;
 	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
 
-	public UserDataImpl(){
+	public UserDataImpl()throws RemoteException{
 
 	}
 	public ResultMessage addUser(UserPO user) throws RemoteException {

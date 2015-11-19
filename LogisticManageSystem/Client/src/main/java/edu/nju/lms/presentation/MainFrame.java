@@ -39,8 +39,8 @@ public class MainFrame extends JFrame{
 		PanelConfig panelConfig = reader.readPanel(panel);
 		MainPanel mainPanel = new MainPanel(panelConfig,controller);
 		getContentPane().setVisible(false);
-		getContentPane().add(mainPanel);
-		getContentPane().setVisible(true);
+		setContentPane(mainPanel);
+		mainPanel.setVisible(true);
 		repaint();
 	}
 	

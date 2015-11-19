@@ -18,7 +18,9 @@ public class UserController implements UserblService{
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	String time = sdf.format(new Date());
 	OperationVO op=null;
-	
+	public UserController(){
+		
+	}
 	public UserController(String id){
 		this.logID=id;
 	}
@@ -64,6 +66,9 @@ public class UserController implements UserblService{
 		op=new OperationVO(time,logID,"查看所有用户的信息");
 		logController.addLog(op);
 		return result;
+	}
+	public void setID(String id){
+		this.logID = id;
 	}
 
 }
