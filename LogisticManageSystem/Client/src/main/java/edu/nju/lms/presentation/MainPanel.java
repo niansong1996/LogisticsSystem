@@ -38,6 +38,8 @@ public class MainPanel extends JPanel{
 	 */
 	private UIController controller;
 	
+	public static final String packageName = "edu.nju.lms.presentation.";
+	
 	public MainPanel(PanelConfig config, UIController controller) {
 		this.controller = controller;
 		this.config = config;
@@ -66,14 +68,14 @@ public class MainPanel extends JPanel{
 	private void createUnits() {
 		for (UnitConfig unit : config.getUnits()) {
 			try {
-				Class<?> myUnit = Class.forName(unit.getClassName());
+				Class<?> myUnit = Class.forName(packageName+unit.getClassName());
 				java.awt.Component com;
 				Constructor<?> ctr = myUnit.getConstructor(Element.class, UIController.class);
 				com = (java.awt.Component) ctr.newInstance(unit.getElement(),controller);
 				add(com);
 				units.add(com);
 				if(unit.getElement().attributeValue("type").equals("1")){
-					Class<?> listenner = Class.forName(unit.getElement().attributeValue("listenerName"));
+					Class<?> listenner = Class.forName(packageName+unit.getElement().attributeValue("listenerName"));
 					MouseListener mouseListener;
 					Constructor<?> ct = listenner.getConstructor(ArrayList.class,UIController.class, java.awt.Component.class);
 					mouseListener = (MouseListener) ct.newInstance(units,controller,com);

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <presentation>
-	<Frame name = "MainFrame" class = "edu.nju.lms.presentation.MainFrame" width = "1080" height = "720">
-		<mainPanel name = "MainPanel" class = "edu.nju.lms.presentation.MainPanel" width = "1080" height = "720">
-			<component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
-			<component name="username" class = "edu.nju.lms.presentation.Component" x="400" y="220" w="78" h="25"/>
-			<component name="password" class = "edu.nju.lms.presentation.Component" x="400" y="360" w="78" h="25"/>
-			<unit name ="SignIn" class = "edu.nju.lms.presentation.button.MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="edu.nju.lms.presentation.button.buttonlistener.SignInButtonListener"/>
-			<unit name ="userName" class = "edu.nju.lms.presentation.MyTextField" x="495" y="220" w="150" h="32" type="0"/>
-			<unit name ="password" class = "edu.nju.lms.presentation.MyPasswordField" x="495" y="360" w="150" h="32" type="0"/>
+	<Frame name = "MainFrame" class = "MainFrame" width = "1080" height = "720">
+		<mainPanel name = "MainPanel" class = "MainPanel" width = "1080" height = "720">
+			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="username" class = "Component" x="400" y="220" w="78" h="25"/>
+			<component name="password" class = "Component" x="400" y="360" w="78" h="25"/>
+			<unit name ="SignIn" class = "button.MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="button.buttonlistener.SignInButtonListener"/>
+			<unit name ="userName" class = "MyTextField" x="495" y="220" w="150" h="32" type="0"/>
+			<unit name ="password" class = "MyPasswordField" x="495" y="360" w="150" h="32" type="0"/>
 		</mainPanel>
-		<managerPanel name="ManagerPanel" class="edu.nju.lms.presentation.MainPanel" width ="1080" height="720">
-		    <component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="PersonnelManage" class = "edu.nju.lms.presentation.button.MainButton" x="500" y="300" w="197" h="47" type="1" listenerName="edu.nju.lms.presentation.button.buttonlistener.PersonnelManageButtonListener"/>
+		<managerPanel name="ManagerPanel" class="MainPanel" width ="1080" height="720">
+		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <unit name ="PersonnelManage" class = "button.MainButton" x="500" y="300" w="197" h="47" type="1" listenerName="button.buttonlistener.PersonnelManageButtonListener"/>
 		</managerPanel>
-		<personnelManagePanel name="PersonnelManagePanel" class="edu.nju.lms.presentation.MainPanel" width="1080" height="720">
-		     <component name="background" class = "edu.nju.lms.presentation.Component" x="0" y="0" w="1080" h="720"/>
+		<personnelManagePanel name="PersonnelManagePanel" class="MainPanel" width="1080" height="720">
+		     <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
 		</personnelManagePanel>
 	</Frame>
 </presentation>
