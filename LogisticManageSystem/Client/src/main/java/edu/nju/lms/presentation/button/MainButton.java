@@ -1,9 +1,7 @@
 package edu.nju.lms.presentation.button;
 
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.lang.reflect.Constructor;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -22,8 +20,8 @@ public class MainButton extends JLabel{
 	private String name;
 	private boolean isIn;
 	public MainButton(Element button){
-		w = Integer.parseInt(button.attributeValue("width"));
-		h = Integer.parseInt(button.attributeValue("height"));
+		w = Integer.parseInt(button.attributeValue("w"));
+		h = Integer.parseInt(button.attributeValue("h"));
 		x = Integer.parseInt(button.attributeValue("x"));
 		y = Integer.parseInt(button.attributeValue("y"));
 		name =button.attributeValue("name");

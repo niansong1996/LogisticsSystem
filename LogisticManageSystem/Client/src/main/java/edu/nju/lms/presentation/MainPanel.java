@@ -6,7 +6,8 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
-import javax.swing.text.Element;
+
+import org.dom4j.Element;
 
 import edu.nju.lms.presentation.button.MainButton;
 import edu.nju.lms.presentation.config.ComponentConfig;
@@ -36,9 +37,11 @@ public class MainPanel extends JPanel{
 	 * @see UIController
 	 */
 	private UIController controller;
+	
 	public MainPanel(PanelConfig config, UIController controller) {
 		this.controller = controller;
 		this.config = config;
+		units = new ArrayList<java.awt.Component>();
 		createComponents();
 		createUnits();
 	}
@@ -69,7 +72,7 @@ public class MainPanel extends JPanel{
 				add(com);
 				units.add(com);
 				if(unit.getElement().attributeValue("type").equals("1")){
-					Class<?> listenner = Class.forName(unit.getName()+"Listenner");
+					Class<?> listenner = Class.forName("edu.nju.lms.presentation.button.buttonlistener."+unit.getName()+"ButtonListener");
 					MouseListener mouseListener;
 					Constructor<?> ct = listenner.getConstructor(ArrayList.class,UIController.class,MainButton.class);
 					mouseListener = (MouseListener) ct.newInstance(units,controller,com);

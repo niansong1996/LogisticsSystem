@@ -14,13 +14,16 @@ import edu.nju.lms.presentation.config.PanelConfig;
  */
 public class MainFrame extends JFrame{
 	FrameConfig config;
+	String panelName ;
 	public MainFrame() {
 		initialize();
 	}
 	public MainFrame(String panelName) {
+		this.panelName = panelName;
 		initialize();
 	}
 	private void initialize() {
+		System.out.println("initialize");
 		ConfigReader reader = new ConfigReader();
 		config = reader.readFrame("MainFrame");
 		
