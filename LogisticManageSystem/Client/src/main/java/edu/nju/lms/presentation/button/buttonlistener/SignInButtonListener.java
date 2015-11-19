@@ -18,7 +18,7 @@ import edu.nju.lms.presentation.button.MainButton;
  */
 public class SignInButtonListener extends ButtonListener {
 	UserController userController;
-	public SignInButtonListener(ArrayList<Component> units, UIController controller, MainButton button) {
+	public SignInButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		userController = controller.getUserController();
 	}

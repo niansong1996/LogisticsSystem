@@ -14,7 +14,7 @@ public class MyPasswordField extends JPasswordField{
 	private int y;
 	private int h;
 	private int w;
-	public MyPasswordField(Element text){
+	public MyPasswordField(Element text, UIController controller){
 		w = Integer.parseInt(text.attributeValue("w"));
 		h = Integer.parseInt(text.attributeValue("h"));
 		x = Integer.parseInt(text.attributeValue("x"));

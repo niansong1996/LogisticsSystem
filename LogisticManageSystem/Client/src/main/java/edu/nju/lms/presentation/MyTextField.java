@@ -13,7 +13,7 @@ public class MyTextField extends JTextField {
 	private int y;
 	private int h;
 	private int w;
-	public MyTextField(Element text){
+	public MyTextField(Element text, UIController controller){
 		w = Integer.parseInt(text.attributeValue("w"));
 		h = Integer.parseInt(text.attributeValue("h"));
 		x = Integer.parseInt(text.attributeValue("x"));
