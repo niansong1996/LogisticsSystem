@@ -22,8 +22,7 @@ public class MainFrame extends JFrame{
 		this.panelName = panelName;
 		initialize();
 	}
-	private void initialize() {
-		System.out.println("initialize");
+	private void initialize() { 
 		ConfigReader reader = new ConfigReader();
 		config = reader.readFrame("MainFrame");
 		
