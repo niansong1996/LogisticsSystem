@@ -1,35 +1,34 @@
 package edu.nju.lms.businessLogicService.impl.personnel;
 
-import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.businessLogicService.PersonnelblService;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.PersonnelDataService;
 
 /**
- *@author tj
- *@date 2015年10月25日
+ *@author oppalu
+ *@date 2015/11/20
  */
 public class PersonnelblImpl  {
-	LogInfo log;
-	PersonnelPO personnel;
+	private PersonnelDataService service=null;
+	
+	public PersonnelblImpl(PersonnelDataService service){
+		this.service=service;
+	}
+	
 	public PersonnelVO findPersonInfo(String id) {
-		// TODO Auto-generated method stub
-		return new PersonnelVO("du","125","000000000","manager",54120,0,5000);
+		return null;
 	}
 
 	public ResultMessage deletePersonnel(String id) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+		return new ResultMessage(true,"");
 	}
 
 	public ResultMessage updatePersonnel(PersonnelVO Personnel) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+		return new ResultMessage(true,"");
 	}
 
 	public ResultMessage addPersonnel(PersonnelVO Personnel) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+		return new ResultMessage(true,"");
 	}
 
 }

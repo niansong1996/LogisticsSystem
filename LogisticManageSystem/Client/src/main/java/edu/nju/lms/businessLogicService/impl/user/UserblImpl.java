@@ -31,13 +31,9 @@ public class UserblImpl{
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
-			//user.setUserName("网络未连接");
-			return user;
 		}
 		if (userPO != null) {
 			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
-		} else {
-			user.setUserName(null);
 		}
 		return user;
 	}

@@ -1,13 +1,11 @@
 package edu.nju.lms.businessLogicService.impl.department;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
@@ -23,24 +21,23 @@ public class DepartmentblImpl{
 	}
 	
 	public DepartmentVO getDepartInfo(String id) {
-		DepartmentPO department = null;
-		DepartmentVO vo = null;
+		DepartmentPO departmentPO = null;
+		DepartmentVO result=new DepartmentVO(null,"","");
 		try {
-			department = service.findDepartment(id);
+			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		if(department!=null) {
-			vo = new DepartmentVO(department.getType(), 
-					department.getDepartmentNum(), department.getLocation().getName());
+		if(departmentPO!=null) {
+			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation().getId());
 		}
-		return vo;
+		return result;
 	}
 
 	public ResultMessage deleteDepartment(String id) {
 		ResultMessage message = new ResultMessage(false, "网络未连接");
 		try {
-			message = service.deleteCity(id);
+			message=service.deleteDepartment(id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -56,8 +53,7 @@ public class DepartmentblImpl{
 			if(city == null) {
 				return new ResultMessage(false, "未找到城市");
 			} else {
-				departmentPO = new DepartmentPO(department.getType(), 
-						department.getDepartmentNum(), city);
+				departmentPO = new DepartmentPO(department.getType(), department.getDepartmentNum(), city);
 				message = service.updateDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {}
@@ -82,13 +78,28 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage addCity(CityVO city) {
-		return new ResultMessage(true,null);
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
+		try {
+			result=service.addCity(cityPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public CityVO findCity(String id) {
-		ArrayList<String> businessNums = new ArrayList<String>();
-		businessNums.add("025457");
-		return new CityVO(id,"XuZhou",businessNums,null);
+		CityPO cityPO=null;
+		CityVO city=new CityVO("","",null,null);
+		try {
+			cityPO=service.findCity(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(cityPO.getId()!=null){
+			city=new CityVO(cityPO.getId(),cityPO.getName(),cityPO.getBusinessNums(),cityPO.getDistance());
+		}
+		return city;
 	}
 
 }
