@@ -41,6 +41,7 @@ public class MainTable extends JPanel{
 		this.element = element;
 		this.controller = controller;
 		setOpaque(false);
+		setLayout(null);
 		setBounds(Integer.parseInt(element.attributeValue("x")),Integer.parseInt(element.attributeValue("y")),
 				Integer.parseInt(element.attributeValue("w")),Integer.parseInt(element.attributeValue("h")));
 		initializeTable();
@@ -73,6 +74,7 @@ public class MainTable extends JPanel{
 		RowSorter<javax.swing.table.TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
         table.setRowSorter(sorter);
         setOpaque();
+        scrollpane.setBounds(2,2,this.getWidth()-2,this.getHeight()-2);
 		add(scrollpane);
 	}
 	
@@ -100,7 +102,7 @@ public class MainTable extends JPanel{
          * table header opaque
          */
         JTableHeader header = table.getTableHeader();
-        header.setPreferredSize(new Dimension(30, 26));   
+        header.setPreferredSize(new Dimension(30, 20));   
         header.setOpaque(false);
         header.getTable().setOpaque(false);
         header.setDefaultRenderer(render);  
