@@ -1,11 +1,16 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class OperationPO {
+public class OperationPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8886437067330282800L;
 	//备注
 	private String explain;
 	private String time;

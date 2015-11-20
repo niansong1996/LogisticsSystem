@@ -1,9 +1,16 @@
 package edu.nju.lms.PO;
+
+import java.io.Serializable;
+
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class VehiclePO {
+public class VehiclePO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5891429209039094359L;
 	/**
 	 * car's dai hao
 	 */

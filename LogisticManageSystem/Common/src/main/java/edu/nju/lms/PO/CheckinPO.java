@@ -8,7 +8,11 @@ import java.util.Map;
  *@date 2015年10月24日
  */
 
-public class CheckinPO extends ListPO {
+public class CheckinPO extends ListPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 979646609984022653L;
 	/**
 	 * every express's location:express number and its location in the warehouse
 	 */

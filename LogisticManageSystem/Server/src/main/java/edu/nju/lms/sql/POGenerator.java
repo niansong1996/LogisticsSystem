@@ -15,12 +15,38 @@ public class POGenerator {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		String superClass[] = cls.getSuperclass().getName().split("\\.");
+		String lastPkg = superClass[superClass.length-1];
+		try {
+			if(isList(cls)){
+				result = generateListObject(cls,rs);
+			}else if(isContainer(cls)){
+				result = generateContainerObject(cls,rs);
+			}else{
+				result = generateDataObject(cls,rs);
+			}
+			
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public static Object generateDataObject(Class<?> cls,ResultSet rs) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SQLException{
+		Object result = null;
 		Constructor<?> cons[] = cls.getConstructors();  
 		Constructor<?> constructor = cons[1];
 		int paraNum = constructor.getParameterCount();
-		try {
+		
 			if(rs.next())
-				
 				switch(paraNum){
 				case 1: result = constructor.newInstance(rs.getString(2));break;
 				case 2: result = constructor.newInstance(rs.getString(2),rs.getString(3));break;
@@ -28,22 +54,45 @@ public class POGenerator {
 				case 4: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));break;
 				case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
 				}
-		} catch (SQLException e) {
+			return result;
+	}
+	
+	
+	public static Object generateListObject(Class<?> cls,ResultSet rs){
+		return null;
+	}
+	
+	public static Object generateContainerObject(Class<?> cls,ResultSet rs){
+		return null;
+	}
+	public static boolean isList(Class<?> cls){
+		String superClass[] = cls.getSuperclass().getName().split("\\.");
+		String lastPkg = superClass[superClass.length-1];
+		if(lastPkg.equals("ListPO")) return true;
+		return false;
+	}
+	public static boolean isContainer(Class<?> cls){
+		Field[] field = cls.getDeclaredFields();
+		try {
+		for (int j = 1; j < field.length; j++) {
+//			Class<?> type = field[j].getType();   field[j].getName() +
+
+				Field fd1 = cls.getDeclaredField(field[j].getName());
+				fd1.setAccessible(true);
+				Class<?> type = field[j].getType();
+				if(type.getSuperclass().getSuperclass().getName()
+						.equals("java.util.AbstractCollection")){
+				return true;	
+				}
+		}
+		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result;
+		return false;
 	}
 	
 	public static String generateUpdateOp(Object object ,String className){

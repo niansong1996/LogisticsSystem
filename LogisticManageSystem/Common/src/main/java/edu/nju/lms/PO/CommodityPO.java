@@ -1,12 +1,18 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
+
 import edu.nju.lms.data.ShipState;
 
 /**
  *@author tj
  *@date ����5:12:31
  */
-public class CommodityPO {
+public class CommodityPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3226666377697831921L;
 	// commodity number
 	private String id;
 	private ShipState shipState;

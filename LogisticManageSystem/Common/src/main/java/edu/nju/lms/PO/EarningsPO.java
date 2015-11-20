@@ -2,7 +2,11 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
-public class EarningsPO extends ListPO{
+public class EarningsPO extends ListPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2314846105977404899L;
 	private double earnings;
 	private double payment;
 	private double profit;

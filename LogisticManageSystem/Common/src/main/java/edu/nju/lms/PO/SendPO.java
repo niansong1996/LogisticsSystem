@@ -1,7 +1,6 @@
 package edu.nju.lms.PO;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.TransportMode;
@@ -11,6 +10,10 @@ import edu.nju.lms.data.TransportMode;
  *@date ����5:12:31
  */
 public class SendPO extends ListPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7648258119493841934L;
 	//the express's number
 	private String expressNum;
 	//base information of sender and receiver

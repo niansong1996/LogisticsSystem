@@ -1,8 +1,14 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
+
 import edu.nju.lms.data.PersonType;
 
-public class SalaryStrategyPO {
+public class SalaryStrategyPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3617529261196612698L;
 	private PersonType type;
 	private double basic;
 	private int perTime;

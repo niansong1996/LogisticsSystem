@@ -1,16 +1,20 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
 import edu.nju.lms.data.Partition;
-import edu.nju.lms.data.PartitionType;
 
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class WarehousePO {
+public class WarehousePO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8491739151910976896L;
 	/**
 	 * the value of the warning line
 	 */

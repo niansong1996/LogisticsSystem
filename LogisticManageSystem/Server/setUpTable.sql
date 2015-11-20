@@ -3,8 +3,8 @@ use lms;
 create table acccountpo
 (
 id int unsigned not null auto_increment primary key,
-name varchar(12) not null,
-double amount not null
+name varchar(25) not null,
+amount double not null
 );
 create table arrivalpo
 (

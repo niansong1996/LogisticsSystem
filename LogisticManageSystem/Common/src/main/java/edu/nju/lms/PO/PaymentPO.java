@@ -5,6 +5,10 @@ import java.util.Calendar;
 import edu.nju.lms.data.PaymentType;
 
 public class PaymentPO extends ListPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2852405640506195901L;
 	private PaymentType paymentType;
 	private Calendar payTime;
 	private AccountPO account;

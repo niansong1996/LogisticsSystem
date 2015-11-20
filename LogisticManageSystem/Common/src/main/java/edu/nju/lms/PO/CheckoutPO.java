@@ -9,7 +9,11 @@ import edu.nju.lms.data.PartitionType;
  *@author tj
  *@date 2015年10月24日
  */
-public class CheckoutPO extends ListPO {
+public class CheckoutPO extends ListPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6939485649504767770L;
 	private ArrayList<String> expressNums;
 	private Calendar checkoutDate;
 	private CityPO destination;

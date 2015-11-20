@@ -1,8 +1,13 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InitialInforPO {
+public class InitialInforPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8979310777332153793L;
 	private ArrayList<DepartmentPO> departments;
 	private ArrayList<PersonnelPO> personnel;
 	/**

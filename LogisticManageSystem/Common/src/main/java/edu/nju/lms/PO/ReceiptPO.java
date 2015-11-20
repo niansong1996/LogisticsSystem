@@ -8,6 +8,10 @@ import java.util.Calendar;
  *@date 2015年10月24日
  */
 public class ReceiptPO extends ListPO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6546369664824813665L;
 	private Calendar receiptDate;
 	private double amount;
 	private String courierNum;

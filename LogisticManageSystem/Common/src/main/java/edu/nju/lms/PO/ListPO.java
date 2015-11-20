@@ -1,8 +1,15 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
+
 import edu.nju.lms.data.ListState;
 
-public class ListPO {
+public abstract class ListPO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5697602870723648981L;
 	protected String id;
 	protected ListState state;
 	

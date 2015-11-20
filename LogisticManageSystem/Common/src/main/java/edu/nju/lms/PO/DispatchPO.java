@@ -1,4 +1,5 @@
 package edu.nju.lms.PO;
+
 import java.util.Calendar;
 
 /**
@@ -6,6 +7,10 @@ import java.util.Calendar;
  *@date 2015年10月24日
  */
 public class DispatchPO extends ListPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5857067316347963554L;
 	/**
 	 * the number of the dispatch person
 	 */

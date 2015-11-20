@@ -1,5 +1,12 @@
 package edu.nju.lms.PO;
-public class PriceStrategyPO {
+
+import java.io.Serializable;
+
+public class PriceStrategyPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1361752431077831590L;
 	private double standard;
 	private double express;
 	private double economic;

@@ -1,4 +1,5 @@
 package edu.nju.lms.PO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -8,7 +9,11 @@ import edu.nju.lms.data.LoadType;
  *@author tj
  *@date ����5:12:31
  */
-public class LoadPO extends ListPO{
+public class LoadPO extends ListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3139589123765485431L;
 	//load type
 	private LoadType loadType;
 	//װ������

@@ -1,11 +1,16 @@
 package edu.nju.lms.PO;
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class DriverPO {
+public class DriverPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1501603914228742144L;
 	private String driverNum;
 	private String driverName;
 	private Calendar birth;

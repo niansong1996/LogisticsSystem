@@ -6,7 +6,11 @@ import java.util.Calendar;
  *@author tj
  *@date 2015年10月24日
  */
-public class ReceivePO extends ListPO {
+public class ReceivePO extends ListPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3682064715190520949L;
 	private String receiverName;
 	private Calendar receiveTime;
 	private String expressNum;
