@@ -23,10 +23,7 @@ public class UserTableModel implements TableModel{
 	private ArrayList<UserVO> users = new ArrayList<UserVO>();
 	
 	public UserTableModel(Element element, UIController controller) {
-		//TODO
-		//users = controller.getUserController().findAllUser();
-		UserVO user = new UserVO("cui", "000000", PersonType.MANAGER);
-		users.add(user);
+		users = controller.getUserController().findAllUser();
 	}
 
 	public void addTableModelListener(TableModelListener l) {
@@ -66,7 +63,7 @@ public class UserTableModel implements TableModel{
 	}
 
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return true;
+		return columnIndex==0?false:true;
 	}
 
 	public void removeTableModelListener(TableModelListener l) {

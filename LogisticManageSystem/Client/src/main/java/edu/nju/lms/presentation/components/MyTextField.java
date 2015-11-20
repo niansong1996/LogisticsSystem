@@ -26,5 +26,6 @@ public class MyTextField extends JTextField {
 		setBounds(x,y,w,h);
 		setOpaque(false);
 		setBorder(new EmptyBorder(0, 0, 0, 0));
+		setFont(new Font("微软雅黑", Font.ITALIC, 23));
 	}
 }

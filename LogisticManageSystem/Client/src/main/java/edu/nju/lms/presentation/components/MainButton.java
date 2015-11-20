@@ -1,12 +1,16 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
 
 /**

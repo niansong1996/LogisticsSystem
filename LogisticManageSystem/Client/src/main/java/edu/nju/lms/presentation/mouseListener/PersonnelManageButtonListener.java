@@ -13,12 +13,11 @@ import edu.nju.lms.presentation.components.MainButton;
  */
 public class PersonnelManageButtonListener extends ButtonListener {
 
-	public PersonnelManageButtonListener(ArrayList<Component> units, UIController controller, MainButton button) {
+	public PersonnelManageButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 	}
 	
 	public void mouseReleased(MouseEvent e) {
 		controller.changeTo("PersonnelManagePanel");
-		
 	}
 }
