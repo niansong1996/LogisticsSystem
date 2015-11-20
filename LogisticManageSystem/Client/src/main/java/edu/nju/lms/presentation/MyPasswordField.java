@@ -19,6 +19,7 @@ public class MyPasswordField extends JPasswordField{
 		h = Integer.parseInt(text.attributeValue("h"));
 		x = Integer.parseInt(text.attributeValue("x"));
 		y = Integer.parseInt(text.attributeValue("y"));
+		setBounds(x,y,w,h);
 	}
 
 

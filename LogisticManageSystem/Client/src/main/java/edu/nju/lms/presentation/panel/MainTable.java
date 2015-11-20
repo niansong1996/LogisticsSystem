@@ -1,5 +1,7 @@
 package edu.nju.lms.presentation.panel;
 
+import java.lang.reflect.Constructor;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -10,13 +12,14 @@ import javax.swing.table.TableRowSorter;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
 
 /**
  * General table class
  * @author cuihao
  * 2015-11-20 00:44:01
- * test xml file: <unit name ="mainTable" class = "panel.MainTable" x="0" y="0" w="500" h="500" type="0" dataType = "UserVO" rw = "20" cw = "40"/>
+ * test xml file: <unit name ="mainTable" class = "panel.MainTable" x="0" y="0" w="500" h="500" type="0" dataType = "UserVO" rw = "20" cw = "40" model = "panel.UserTableModel"/>
  */
 public class MainTable extends JPanel{
 	private JTable table;
@@ -40,12 +43,20 @@ public class MainTable extends JPanel{
 	}
 	
 	/**
-	 * create {@link TableModel} according to type
+	 * create {@link TableModel} according to model name
 	 * create instance of {@link JTable} using TableModel and add it to the panel
+	 * 
 	 */
 	private void initializeTable() {
-		if(element.attributeValue("dataType").equals("UserVO")){
-			model = new UserTableModel(element, controller);
+		/**
+		 * create new instance of my TableModel
+		 */
+		try {
+			Class<?> myModel = Class.forName(MainPanel.packageName+element.attributeValue("model"));
+			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class);
+			model = (TableModel) ctr.newInstance(element, controller);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		table = new JTable(model);
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
