@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.Component;
+import edu.nju.lms.presentation.components.Component;
 
 /**
  * configure info of a panel, including all the component configures

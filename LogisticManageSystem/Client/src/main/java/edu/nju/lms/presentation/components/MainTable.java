@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation.panel;
+package edu.nju.lms.presentation.components;
 
 import java.awt.Dimension;
 import java.lang.reflect.Constructor;
@@ -57,7 +57,7 @@ public class MainTable extends JPanel{
 		 * create new instance of my TableModel
 		 */
 		try {
-			Class<?> myModel = Class.forName(MainPanel.packageName+element.attributeValue("model"));
+			Class<?> myModel = Class.forName(MainPanel.packageName+"tableModel."+element.attributeValue("model"));
 			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class);
 			model = (TableModel) ctr.newInstance(element, controller);
 		} catch (Exception e) {

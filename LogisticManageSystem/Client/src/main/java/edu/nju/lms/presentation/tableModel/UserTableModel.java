@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation.panel;
+package edu.nju.lms.presentation.tableModel;
 
 import java.util.ArrayList;
 

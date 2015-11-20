@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation.button.buttonlistener;
+package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
 import java.awt.event.MouseEvent;
@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.button.MainButton;
+import edu.nju.lms.presentation.components.MainButton;
 
 /**
  *@author tj

@@ -5,13 +5,13 @@
 			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="username" class = "Component" x="400" y="220" w="78" h="25"/>
 			<component name="password" class = "Component" x="400" y="360" w="78" h="25"/>
-			<unit name ="SignIn" class = "button.MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="button.buttonlistener.SignInButtonListener"/>
+			<unit name ="SignIn" class = "MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="mouseListener.SignInButtonListener"/>
 			<unit name ="userName" class = "MyTextField" x="495" y="220" w="150" h="32" type="0"/>
 			<unit name ="password" class = "MyPasswordField" x="495" y="360" w="150" h="32" type="0"/>
 		</mainPanel>
 		<managerPanel name="ManagerPanel" class="MainPanel" width ="1080" height="720">
 		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="PersonnelManage" class = "button.MainButton" x="500" y="300" w="197" h="47" type="1" listenerName="button.buttonlistener.PersonnelManageButtonListener"/>
+		    <unit name ="PersonnelManage" class = "MainButton" x="500" y="300" w="197" h="47" type="1" listenerName="mouseListener.PersonnelManageButtonListener"/>
 		</managerPanel>
 		<personnelManagePanel name="PersonnelManagePanel" class="MainPanel" width="1080" height="720">
 		     <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>

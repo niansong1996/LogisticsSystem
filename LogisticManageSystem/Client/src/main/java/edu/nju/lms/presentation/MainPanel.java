@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.button.MainButton;
+import edu.nju.lms.presentation.components.Component;
+import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.config.ComponentConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
 import edu.nju.lms.presentation.config.UnitConfig;
@@ -68,7 +69,7 @@ public class MainPanel extends JPanel{
 	private void createUnits() {
 		for (UnitConfig unit : config.getUnits()) {
 			try {
-				Class<?> myUnit = Class.forName(packageName+unit.getClassName());
+				Class<?> myUnit = Class.forName(packageName+"components."+unit.getClassName());
 				java.awt.Component com;
 				Constructor<?> ctr = myUnit.getConstructor(Element.class, UIController.class);
 				com = (java.awt.Component) ctr.newInstance(unit.getElement(),controller);
