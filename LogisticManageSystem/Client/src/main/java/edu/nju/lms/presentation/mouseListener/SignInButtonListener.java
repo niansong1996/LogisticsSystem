@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 
@@ -37,9 +38,9 @@ public class SignInButtonListener extends ButtonListener {
 			JOptionPane.showMessageDialog(null, "不存在此用户！");
 		}else if(info.getPassword().equals(password)){
 			controller.setLogID(name);
+			controller.initialize(info.getPower());
 			switch(info.getPower()){
-				case MANAGER:
-					controller.createDepartmentController();
+				case MANAGER:		
 					controller.changeTo("ManagerPanel");break;
 				case FINANCIAL_ADVANCED:break;
 				case FINANCIAL_NORMAL:break;

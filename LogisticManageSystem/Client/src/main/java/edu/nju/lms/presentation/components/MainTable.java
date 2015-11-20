@@ -12,6 +12,7 @@ import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -46,6 +47,7 @@ public class MainTable extends JPanel{
 				Integer.parseInt(element.attributeValue("w")),Integer.parseInt(element.attributeValue("h")));
 		initializeTable();
 		setWidth(element.attributeValue("cw"), element.attributeValue("rw"));
+		ATextField text = new ATextField(this);
 	}
 	
 	/**
@@ -140,6 +142,9 @@ public class MainTable extends JPanel{
 
 	public void setModel(TableModel model) {
 		this.model = model;
+	}
+	public TableColumnModel getColumnModel(){
+		return table.getColumnModel();
 	}
 	
 }
