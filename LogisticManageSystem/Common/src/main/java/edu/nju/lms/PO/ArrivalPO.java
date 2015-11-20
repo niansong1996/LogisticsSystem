@@ -1,5 +1,6 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import edu.nju.lms.data.ArrivalState;
@@ -8,7 +9,11 @@ import edu.nju.lms.data.ArrivalState;
  *@author tj
  *@date 2015��10��24��
  */
-public class ArrivalPO extends ListPO{
+public class ArrivalPO extends ListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5411187468179303952L;
 	private String expressNum;
 	private ArrivalState arrivalState;
 	private String destination;

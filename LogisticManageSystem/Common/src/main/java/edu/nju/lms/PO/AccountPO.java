@@ -1,7 +1,13 @@
 package edu.nju.lms.PO;
 
-public class AccountPO {
-	private String name;
+import java.io.Serializable;
+
+public class AccountPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2920275357062710781L;
+	private String name;//unique identifier
 	private double amount;
 	public AccountPO(String name, double amount) {
 		this.name = name;
