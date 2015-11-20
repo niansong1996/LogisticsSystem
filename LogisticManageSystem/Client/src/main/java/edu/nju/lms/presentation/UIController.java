@@ -4,9 +4,11 @@ import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.PersonType;
 
 public class UIController {
 	private MainFrame frame;
@@ -17,12 +19,37 @@ public class UIController {
 	private TransportController transportController;
 	private UserController userController;
 	private WarehouseController warehouseController;
+	private PersonnelController personnelController;
 	public UIController() {
 		userController = new UserController();
+		logController = new LogController();
 		frame = new MainFrame();
 	}
 	public void changeTo(String panel){
 		frame.changeTo(panel,this);
+	}
+	/**
+	 * initialize controller according to {@link PersonType}
+	 * @param type
+	 */
+	public void initialize(PersonType type){
+		switch(type){
+		case ADMINISTRATOR:break;
+		case COUNTER_INTERMEDIATE:
+			warehouseController = new WarehouseController();
+		case COUNTER_BUSSINESS:
+		case COURIER:
+			transportController = new TransportController();
+			break;
+		case MANAGER:
+			personnelController = new PersonnelController();
+			departmentController = new DepartmentController();
+			listController = new ListController();
+		case FINANCIAL_ADVANCED:
+		case FINANCIAL_NORMAL:
+			financeController = new FinanceController();
+			break;
+		}
 	}
 	public MainFrame getFrame() {
 		return frame;
@@ -77,5 +104,11 @@ public class UIController {
 	}
 	public void setLogID(String id){
 		userController.setID(id);
+	}
+	public PersonnelController getPersonnelController() {
+		return personnelController;
+	}
+	public void setPersonnelController(PersonnelController personnelController) {
+		this.personnelController = personnelController;
 	}
 }

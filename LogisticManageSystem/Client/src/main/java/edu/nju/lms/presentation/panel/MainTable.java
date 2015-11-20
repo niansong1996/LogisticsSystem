@@ -1,12 +1,17 @@
 package edu.nju.lms.presentation.panel;
 
+import java.awt.Dimension;
 import java.lang.reflect.Constructor;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowSorter;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -61,14 +66,49 @@ public class MainTable extends JPanel{
 		table = new JTable(model);
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFillsViewportHeight(true);
-		scrollpane = new JScrollPane(table);
 		/**
 		 * sort method
 		 * when click the column, data will be sorted
 		 */
 		RowSorter<javax.swing.table.TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
         table.setRowSorter(sorter);
+        setOpaque();
 		add(scrollpane);
+	}
+	
+	/**
+	 * set opaque of the table
+	 */
+	private void setOpaque(){
+		/**
+		 * set JScrollpane
+		 */
+		scrollpane = new JScrollPane();  
+        scrollpane.getViewport().setOpaque(false);
+        scrollpane.setOpaque(false);
+        scrollpane.setViewportView(table); 
+        scrollpane.setColumnHeaderView(table.getTableHeader()); 
+        scrollpane.getColumnHeader().setOpaque(false);
+        /**
+         * set table
+         */
+        table.setOpaque(false);  
+        DefaultTableCellRenderer render = new DefaultTableCellRenderer();   
+        render.setOpaque(false);
+        table.setDefaultRenderer(Object.class,render);
+        /**
+         * table header opaque
+         */
+        JTableHeader header = table.getTableHeader();
+        header.setPreferredSize(new Dimension(30, 26));   
+        header.setOpaque(false);
+        header.getTable().setOpaque(false);
+        header.setDefaultRenderer(render);  
+        TableCellRenderer headerRenderer = header.getDefaultRenderer();   
+        if (headerRenderer instanceof JLabel) {  
+            ((JLabel) headerRenderer).setHorizontalAlignment(JLabel.CENTER);   
+            ((JLabel) headerRenderer).setOpaque(false);   
+        } 
 	}
 	
 	/**
