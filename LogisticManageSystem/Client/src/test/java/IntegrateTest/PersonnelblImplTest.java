@@ -13,7 +13,7 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年11月16日
  */
 public class PersonnelblImplTest {
-	PersonnelblImpl personbl = new PersonnelblImpl();
+	PersonnelblImpl personbl /*= new PersonnelblImpl()*/;
 	@Test
 	public void testFindPersonInfo() {
 		PersonnelVO person = new PersonnelVO("0251007111","lily","025000","营业厅业务员",0,0,0);

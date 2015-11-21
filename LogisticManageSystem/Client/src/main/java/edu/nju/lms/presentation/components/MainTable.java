@@ -47,7 +47,7 @@ public class MainTable extends JPanel{
 				Integer.parseInt(element.attributeValue("w")),Integer.parseInt(element.attributeValue("h")));
 		initializeTable();
 		setWidth(element.attributeValue("cw"), element.attributeValue("rw"));
-		ATextField text = new ATextField(this);
+		new ATextField(this);
 	}
 	
 	/**

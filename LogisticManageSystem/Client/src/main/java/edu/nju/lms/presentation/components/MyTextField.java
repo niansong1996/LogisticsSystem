@@ -65,10 +65,8 @@ public class MyTextField extends JTextField {
 		try {
 			img = ImageIO.read(new FileInputStream("pictures/textfield.png"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Rectangle rect = new Rectangle(0, 0, img.getWidth(null), img.getHeight(null));
