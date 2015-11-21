@@ -11,9 +11,9 @@ public class PaymentPO extends ListPO {
 	private static final long serialVersionUID = 2852405640506195901L;
 	private PaymentType paymentType;
 	private Calendar payTime;
-	private AccountPO account;
+	private String account;
 	private double amount;
-	public PaymentPO(String id,PaymentType paymentType, Calendar payTime, AccountPO account,
+	public PaymentPO(String id,PaymentType paymentType, Calendar payTime, String account,
 			double amount) {
 		super(id);
 		this.paymentType = paymentType;
@@ -38,11 +38,11 @@ public class PaymentPO extends ListPO {
 		this.payTime = payTime;
 	}
 
-	public AccountPO getAccount() {
+	public String getAccount() {
 		return account;
 	}
 
-	public void setAccount(AccountPO account) {
+	public void setAccount(String account) {
 		this.account = account;
 	}
 

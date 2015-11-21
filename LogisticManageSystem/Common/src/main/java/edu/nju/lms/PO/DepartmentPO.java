@@ -15,9 +15,9 @@ public class DepartmentPO implements Serializable{
 	private static final long serialVersionUID = 6377542916069618722L;
 	private String departmentNum;
 	private DepartmentType type;
-	private CityPO location;
+	private String location;
 	
-	public DepartmentPO(DepartmentType type, String departmentNum, CityPO location) {
+	public DepartmentPO(DepartmentType type, String departmentNum, String location) {
 		super();
 		this.type = type;
 		this.departmentNum = departmentNum;
@@ -35,10 +35,10 @@ public class DepartmentPO implements Serializable{
 	public void setDepartmentNum(String departmentNum) {
 		this.departmentNum = departmentNum;
 	}
-	public CityPO getLocation() {
+	public String getLocation() {
 		return location;
 	}
-	public void setLocation(CityPO location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 	

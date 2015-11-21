@@ -23,13 +23,13 @@ public class WarehousePO implements Serializable{
 	 * key is the express's number, object is its location
 	 */
 	private String id;
-	private Map<String,Location> expressNums;
-	private ArrayList<CheckinPO> checkInlists;
-	private ArrayList<CheckoutPO> checkOutlists;
+	private ArrayList<String> expressNums;
+	private ArrayList<String> checkInlists;
+	private ArrayList<String> checkOutlists;
 	private ArrayList<Partition> partitionInfor;
 	
-	public WarehousePO(double cordon, String id, Map<String, Location> expressNums, ArrayList<CheckinPO> checkInlists,
-			ArrayList<CheckoutPO> checkOutlists, ArrayList<Partition> partitionInfor) {
+	public WarehousePO(double cordon, String id, ArrayList<String> expressNums, ArrayList<String> checkInlists,
+			ArrayList<String> checkOutlists, ArrayList<Partition> partitionInfor) {
 		super();
 		this.cordon = cordon;
 		this.id = id;
@@ -60,32 +60,32 @@ public class WarehousePO implements Serializable{
 	}
 
 
-	public Map<String,Location> getExpressNums() {
+	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}
 
 
-	public void setExpressNums(Map<String,Location> expressNums) {
+	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
 
 
-	public ArrayList<CheckinPO> getCheckInlists() {
+	public ArrayList<String> getCheckInlists() {
 		return checkInlists;
 	}
 
 
-	public void setCheckInlists(ArrayList<CheckinPO> checkInlists) {
+	public void setCheckInlists(ArrayList<String> checkInlists) {
 		this.checkInlists = checkInlists;
 	}
 
 
-	public ArrayList<CheckoutPO> getCheckOutlists() {
+	public ArrayList<String> getCheckOutlists() {
 		return checkOutlists;
 	}
 
 
-	public void setCheckOutlists(ArrayList<CheckoutPO> checkOutlists) {
+	public void setCheckOutlists(ArrayList<String> checkOutlists) {
 		this.checkOutlists = checkOutlists;
 	}
     

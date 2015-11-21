@@ -18,7 +18,7 @@ public class LoadPO extends ListPO {
 	//���˱��
 	private String motorNum;
 	//������ת���Ļ�Ӫҵ��
-	private CityPO destiCity;
+	private String destiCity;
 	private String destiBusinessHall;
 	private String vehicleNum;
 	private String driverNum;
@@ -29,7 +29,7 @@ public class LoadPO extends ListPO {
 	
 	private double freight;
 
-	public LoadPO(String id,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, CityPO destiCity, String destiBusinessHall,
+	public LoadPO(String id,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
 			String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
 		super(id);
 		this.loadType = loadType;
@@ -73,11 +73,11 @@ public class LoadPO extends ListPO {
 		this.motorNum = motorNum;
 	}
 
-	public CityPO getDestiCity() {
+	public String getDestiCity() {
 		return destiCity;
 	}
 
-	public void setDestiCity(CityPO destiCity) {
+	public void setDestiCity(String destiCity) {
 		this.destiCity = destiCity;
 	}
 

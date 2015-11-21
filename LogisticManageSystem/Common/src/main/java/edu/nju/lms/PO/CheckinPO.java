@@ -1,5 +1,6 @@
 package edu.nju.lms.PO;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
@@ -14,16 +15,16 @@ public class CheckinPO extends ListPO{
 	 */
 	private static final long serialVersionUID = 979646609984022653L;
 	/**
-	 * every express's location:express number and its location in the warehouse
+	 * every express's location:express number 
 	 */
-	private Map<String,Location> expresses;
+	private ArrayList<String> expresses;
 	private Calendar checkinDate;
 	/**
 	 * every express's destination :express number , destination name
 	 */
 	private Map<String,String> exDestination;
 	
-	public CheckinPO(String id,Map<String, Location> expresses, Calendar checkinDate, Map<String, String> exDestination) {
+	public CheckinPO(String id,ArrayList<String> expresses, Calendar checkinDate, Map<String, String> exDestination) {
 		super(id);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
@@ -38,11 +39,11 @@ public class CheckinPO extends ListPO{
 		this.id = id;
 	}
 
-	public Map<String, Location> getExpresses() {
+	public ArrayList<String> getExpresses() {
 		return expresses;
 	}
 
-	public void setExpresses(Map<String, Location> expresses) {
+	public void setExpresses(ArrayList<String> expresses) {
 		this.expresses = expresses;
 	}
 

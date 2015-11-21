@@ -16,7 +16,7 @@ public class CheckoutPO extends ListPO{
 	private static final long serialVersionUID = -6939485649504767770L;
 	private ArrayList<String> expressNums;
 	private Calendar checkoutDate;
-	private CityPO destination;
+	private String destination;//demonstrated by the citypo's id
 	private PartitionType loadType;
 	/**
 	 * the number of arrival list
@@ -27,7 +27,7 @@ public class CheckoutPO extends ListPO{
 	 */
 	private String motorNum;
 	
-	public CheckoutPO(String id,ArrayList<String> expressNums, Calendar checkoutDate, CityPO destination, PartitionType loadType,
+	public CheckoutPO(String id,ArrayList<String> expressNums, Calendar checkoutDate, String destination, PartitionType loadType,
 			String arrivalNum, String motorNum) {
 		super(id);
 		this.expressNums = expressNums;
@@ -62,11 +62,11 @@ public class CheckoutPO extends ListPO{
 		this.checkoutDate = checkoutDate;
 	}
 
-	public CityPO getDestination() {
+	public String getDestination() {
 		return destination;
 	}
 
-	public void setDestination(CityPO destination) {
+	public void setDestination(String destination) {
 		this.destination = destination;
 	}
 

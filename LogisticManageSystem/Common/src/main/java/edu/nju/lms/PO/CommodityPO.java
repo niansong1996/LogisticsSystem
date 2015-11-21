@@ -8,6 +8,8 @@ import edu.nju.lms.data.ShipState;
  *@author tj
  *@date ����5:12:31
  */
+
+//TODO the member variables need to be switched to be their ids 
 public class CommodityPO implements Serializable{
 	/**
 	 * 
