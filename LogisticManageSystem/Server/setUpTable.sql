@@ -1,10 +1,11 @@
 create database lms;
 use lms;
-create table acccountpo
+create table accountpo
 (
 id int unsigned not null auto_increment primary key,
 name varchar(25) not null,
-amount double not null
+amount double not null,
+assert varchar(10) not null
 );
 create table arrivalpo
 (

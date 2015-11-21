@@ -17,18 +17,19 @@ public class UserPO implements Serializable{
 	private String password;
 	private PersonType power;
 	
-	public UserPO(String userName, String password, PersonType power) {
-		super();
-		this.userName = userName;
-		this.password = password;
-		this.power = power;
-	}
 	public UserPO(String userName, String password, String power) {
 		super();
 		this.userName = userName;
 		this.password = password;
 		this.power = PersonType.valueOf(power);
 	}
+	public UserPO(String userName, String password, PersonType power) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.power = power;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}

@@ -43,7 +43,7 @@ public class POGenerator {
 	public static Object generateDataObject(Class<?> cls,ResultSet rs) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SQLException{
 		Object result = null;
 		Constructor<?> cons[] = cls.getConstructors();  
-		Constructor<?> constructor = cons[1];
+		Constructor<?> constructor = cons[0];
 		int paraNum = constructor.getParameterCount();
 		
 			if(rs.next())
@@ -141,9 +141,6 @@ public class POGenerator {
 	
 	
 	public static String generateInsertOp(Object object ,String className){
-//		System.out.println(className);
-		
-// "insert into userpo value(NULL,\""+user.getUserName()+"\",\""+user.getPassword(+"\",\""+user.getPower()+"\");"
 		String[] classSatter = className.split("\\.");
 		String poName = classSatter[classSatter.length-1];
 		String result = "insert into "+poName+" value(NULL";
@@ -152,13 +149,10 @@ public class POGenerator {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(object.getClass().getName());
 		Field[] field = object.getClass().getDeclaredFields();
 		try {
 			
 		for (int j = 1; j < field.length; j++) {
-//			Class<?> type = field[j].getType();   field[j].getName() +
-
 				Field fd1 = object.getClass().getDeclaredField(field[j].getName());
 				fd1.setAccessible(true);
 				result += ", \""+ fd1.get(object)+"\"";
