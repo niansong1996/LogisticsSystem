@@ -1,12 +1,13 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface DepartmentDataService {
+public interface DepartmentDataService extends Remote{
 	
 	public ResultMessage addDepartment(DepartmentPO Department) throws RemoteException;
 	public DepartmentPO findDepartment(String id) throws RemoteException;

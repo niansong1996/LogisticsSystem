@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.CheckinPO;
@@ -10,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  * 2015/10/25
  */
-public interface WarehouseCheckinDataService {
+public interface WarehouseCheckinDataService extends Remote{
 	/**
 	 * @param checkin
 	 * @return ResultMessage

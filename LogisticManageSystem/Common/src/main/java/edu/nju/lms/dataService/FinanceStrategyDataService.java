@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.PriceStrategyPO;
@@ -11,7 +12,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  * 2015/10/25
  */
-public interface FinanceStrategyDataService {
+public interface FinanceStrategyDataService extends Remote{
 	/**
 	 * @param PriceStrategy
 	 * @return ResultMessage

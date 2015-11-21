@@ -28,7 +28,9 @@ public class PersonnelblImpl  {
 	}
 
 	public ResultMessage addPersonnel(PersonnelVO Personnel) {
-		return new ResultMessage(true,"");
+		ResultMessage result=new ResultMessage(false,"");
+		
+		return result;
 	}
 
 }

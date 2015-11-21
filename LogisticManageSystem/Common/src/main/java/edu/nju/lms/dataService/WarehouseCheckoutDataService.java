@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.CheckoutPO;
@@ -10,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author user
  *
  */
-public interface WarehouseCheckoutDataService {
+public interface WarehouseCheckoutDataService extends Remote{
 	/**
 	 * @param checkout
 	 * @return ResultMessage
