@@ -1,6 +1,9 @@
 package edu.nju.lms.dataService.impl;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,15 +11,22 @@ import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.PO.InitialInforPO;
 import edu.nju.lms.PO.PersonnelPO;
+import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
+import edu.nju.lms.sql.JDBC;
+import edu.nju.lms.sql.POGenerator;
 
-public class FinanceAccountDataImpl implements FinanceAccountDataService{
+public class FinanceAccountDataImpl implements FinanceAccountDataService, Serializable{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2168651171849205562L;
 	private ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
-	private ArrayList<AccountPO> accountList=new ArrayList<AccountPO>();
+	private ArrayList<String> accountList=new ArrayList<String>();
 
 	public FinanceAccountDataImpl(){
 		
@@ -24,19 +34,14 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 	
 	//TODO
 	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException {
-		ArrayList<DepartmentPO> departments=new ArrayList<DepartmentPO>();
-		ArrayList<PersonnelPO> personnel=new ArrayList<PersonnelPO>();
-		ArrayList<String> cars=new ArrayList<String>();
-		ArrayList<WarehousePO> warehouses=new ArrayList<WarehousePO>();
-		ArrayList<AccountPO> accounts=new ArrayList<AccountPO>();
-		InitialInforPO po=new InitialInforPO(departments,personnel,cars,warehouses,accounts);
+		return null;
 		
-		return new ResultMessage(true,"");
 	}
 
-	public ResultMessage addAccount(AccountPO Account) throws RemoteException {
-		if(findAccount(Account.getName())==null){
-			this.accountList.add(Account);
+	public ResultMessage addAccount(AccountPO account) throws RemoteException {
+
+		if(findAccount(account.getName())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(account, account.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -46,22 +51,21 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 	}
 
 	public AccountPO findAccount(String id) throws RemoteException {
-		AccountPO result = null;
-		Iterator<AccountPO> it = accountList.iterator();
-		while(it.hasNext()){
-			AccountPO next = it.next();
-			if(next.getName()==id){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		AccountPO account = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from accountpo where name = "+id);
+		try{
+		if(!result.wasNull())
+			account = (AccountPO)POGenerator.generateObject(result, AccountPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return account;
 	}
 
 	public ResultMessage deleteAccount(String id) throws RemoteException {
-		AccountPO Account = findAccount(id);
-		if(!(Account==null)){
-			accountList.remove(Account);
+		AccountPO account = findAccount(id);
+		if(!(account==null)){
+			JDBC.ExecuteData("delete from accountpo where name = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -69,11 +73,10 @@ public class FinanceAccountDataImpl implements FinanceAccountDataService{
 		}
 	}
 
-	public ResultMessage updateAccount(AccountPO Account) throws RemoteException {
-		AccountPO tempAccount = findAccount(Account.getName());
-		if(tempAccount!=null){
-			accountList.remove(findAccount(Account.getName()));
-			accountList.add(Account);
+	public ResultMessage updateAccount(AccountPO account) throws RemoteException {
+		AccountPO tempAccount = findAccount(account.getName());
+		if(!(tempAccount==null)){
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(account, account.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{

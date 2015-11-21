@@ -29,7 +29,7 @@ public class DepartmentblImpl{
 			e.printStackTrace();
 		}
 		if(departmentPO!=null) {
-			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation().getId());
+			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
 		}
 		return result;
 	}
@@ -53,7 +53,7 @@ public class DepartmentblImpl{
 			if(city == null) {
 				return new ResultMessage(false, "未找到城市");
 			} else {
-				departmentPO = new DepartmentPO(department.getType(), department.getDepartmentNum(), city);
+				departmentPO = new DepartmentPO(department.getType(), department.getDepartmentNum(), city.getId());
 				message = service.updateDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {}
@@ -70,7 +70,7 @@ public class DepartmentblImpl{
 				return new ResultMessage(false, "未找到城市");
 			} else {
 				departmentPO = new DepartmentPO(department.getType(), 
-						department.getDepartmentNum(), city);
+						department.getDepartmentNum(), city.getId());
 				message = service.addDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {}

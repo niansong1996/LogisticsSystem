@@ -27,8 +27,8 @@ public class DepartmentDataTest {
 	
 	CityPO cityPo1 = new CityPO("0250","Nanjing",businessNums,distance);
 	CityPO cityPo2 = new CityPO("0210","Shanghai",businessNums,distance);
-	DepartmentPO departmentPo1 = new DepartmentPO(DepartmentType.BUSINESSHALL,"025010234",cityPo1);
-	DepartmentPO departmentPo2 = new DepartmentPO(DepartmentType.BUSINESSHALL,"025010235",cityPo2);
+	DepartmentPO departmentPo1 = new DepartmentPO(DepartmentType.BUSINESSHALL,"025010234",cityPo1.getId());
+	DepartmentPO departmentPo2 = new DepartmentPO(DepartmentType.BUSINESSHALL,"025010235",cityPo2.getId());
 	@Test
 	public void testAddDepartment() throws RemoteException{
 		Assert.assertEquals(success,departmentData.addDepartment(departmentPo1));

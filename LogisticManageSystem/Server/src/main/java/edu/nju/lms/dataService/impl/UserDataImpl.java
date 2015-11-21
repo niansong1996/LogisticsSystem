@@ -22,7 +22,6 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	 * 
 	 */
 	private static final long serialVersionUID = 3487505568096355509L;
-	private ArrayList<UserPO> userList = new ArrayList<UserPO>();
 
 
 	public UserDataImpl()throws RemoteException{
@@ -74,12 +73,19 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	}
 
 	public ArrayList<UserPO> getAllUser() throws RemoteException {
-		ArrayList<UserPO> result = new ArrayList<UserPO>();
-		Iterator<UserPO> it1 = userList.iterator();
-		while(it1.hasNext()){
-			result.add(it1.next());
-		}
-		return result;
+		ArrayList<UserPO> userList = new ArrayList<UserPO>();
+		for(int i=1;;i++){
+		ResultSet result = JDBC.ExecuteQuery("select * from userpo where id = "+i+";");
+		try{
+		if(!result.wasNull()){
+			UserPO user = (UserPO)POGenerator.generateObject(result, UserPO.class.getName());
+			userList.add(user);
+		}else break;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+	}
+		return userList;
 	}
 
 }
