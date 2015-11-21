@@ -104,7 +104,7 @@ public class MainTable extends JPanel{
          * table header opaque
          */
         JTableHeader header = table.getTableHeader();
-        header.setPreferredSize(new Dimension(30, 20));   
+        header.setPreferredSize(new Dimension(30, 30));   
         header.setOpaque(false);
         header.getTable().setOpaque(false);
         header.setDefaultRenderer(render);  

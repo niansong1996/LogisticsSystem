@@ -3,11 +3,20 @@
 	<Frame name = "MainFrame" class = "MainFrame" width = "1080" height = "720">
 		<mainPanel name = "MainPanel" class = "MainPanel" width = "1080" height = "720">
 			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
-			<component name="username" class = "Component" x="400" y="220" w="78" h="25"/>
-			<component name="password" class = "Component" x="400" y="360" w="78" h="25"/>
-			<unit name ="SignIn" class = "MainButton" x="465" y="500" w="150" h="32" type="1" listenerName="mouseListener.SignInButtonListener"/>
-			<unit name ="userName" class = "MyTextField" x="495" y="220" w="168" h="23" type="0"/>
-			<unit name ="password" class = "MyPasswordField" x="495" y="360" w="168" h="23" type="0"/>
+			<component name="username" class = "Component" x="620" y="270" w="78" h="25"/>
+			<component name="password" class = "Component" x="620" y="360" w="78" h="25"/>
+			<component name="loginback" class = "Component" x="560" y="120" w="400" h="500"/>
+			<unit name ="SignIn" class = "MainButton" x="685" y="500" w="150" h="32" type="1" listenerName="SignInButtonListener"/>
+			<unit name ="userName" class = "MyTextField" x="715" y="270" w="168" h="23" type="0"/>
+			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="168" h="23" type="0"/>
+			<unit name ="loginButton" class = "MainButton" x="560" y="60" w="100" h="60" type="1" listenerName="LogInListener"/>
+			<unit name ="inquireButton" class = "MainButton" x="660" y="60" w="100" h="60" type="0"/>
+		</mainPanel>
+		<mainPanel name = "InquirePanel" class = "MainPanel" width = "1080" height = "720">
+			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="loginback" class = "Component" x="560" y="120" w="400" h="500"/>
+			<unit name ="loginButton" class = "MainButton" x="560" y="60" w="100" h="60" type="0"/>
+			<unit name ="inquireButton" class = "MainButton" x="660" y="60" w="100" h="60" type="1" listenerName="InquireListener"/>
 		</mainPanel>
 		<managerPanel name="ManagerPanel" class="MainPanel" width ="1080" height="720">
 		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
