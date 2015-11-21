@@ -1,18 +1,12 @@
 package edu.nju.lms.PO;
 
-import java.io.Serializable;
-
 import edu.nju.lms.data.PartitionType;
 
 /**
  *@author tj
  *@date 2015年10月24日
  */
-public class Location implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1458086638498867870L;
+public class Location {
 	//partition number
 	private PartitionType partitionNum;
 	//排号

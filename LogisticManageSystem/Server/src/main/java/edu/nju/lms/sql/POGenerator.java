@@ -74,15 +74,17 @@ public class POGenerator {
 	public static boolean isContainer(Class<?> cls){
 		Field[] field = cls.getDeclaredFields();
 		try {
-		for (int j = 1; j < field.length; j++) {
-//			Class<?> type = field[j].getType();   field[j].getName() +
-
+		for (int j = 0; j < field.length; j++) {
 				Field fd1 = cls.getDeclaredField(field[j].getName());
 				fd1.setAccessible(true);
 				Class<?> type = field[j].getType();
+				try{
 				if(type.getSuperclass().getSuperclass().getName()
 						.equals("java.util.AbstractCollection")){
 				return true;	
+				}
+				}catch(NullPointerException e){
+					continue;
 				}
 		}
 		} catch (NoSuchFieldException e) {
