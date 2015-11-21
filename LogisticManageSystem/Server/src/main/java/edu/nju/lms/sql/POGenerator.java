@@ -66,9 +66,7 @@ public class POGenerator {
 		return null;
 	}
 	public static boolean isList(Class<?> cls){
-		String superClass[] = cls.getSuperclass().getName().split("\\.");
-		String lastPkg = superClass[superClass.length-1];
-		if(lastPkg.equals("ListPO")) return true;
+		if(cls.getSimpleName().equals("ListPO")) return true;
 		return false;
 	}
 	public static boolean isContainer(Class<?> cls){
@@ -79,8 +77,8 @@ public class POGenerator {
 				fd1.setAccessible(true);
 				Class<?> type = field[j].getType();
 				try{
-				if(type.getSuperclass().getSuperclass().getName()
-						.equals("java.util.AbstractCollection")){
+				if(type.getSuperclass().getSuperclass().getSimpleName()
+						.equals("AbstractCollection")){
 				return true;	
 				}
 				}catch(NullPointerException e){
