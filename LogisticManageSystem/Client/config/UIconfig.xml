@@ -18,19 +18,26 @@
 			<unit name ="loginButton" class = "MainButton" x="560" y="60" w="100" h="60" type="0"/>
 			<unit name ="inquireButton" class = "MainButton" x="660" y="60" w="100" h="60" type="1" listenerName="InquireListener"/>
 		</mainPanel>
-		<managerPanel name="ManagerPanel" class="MainPanel" width ="1080" height="720">
+		<mainPanel name="ManagerPanel" class="MainPanel" width ="1080" height="720">
 		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="PersonnelManage" class = "MainButton" x="200" y="100" w="128" h="128" type="1" listenerName="mouseListener.PersonnelManageButtonListener"/>
-		</managerPanel>
-		<personnelManagePanel name="PersonnelManagePanel" class="MainPanel" width="1080" height="720">
+		    <unit name ="PersonnelManage" class = "MainButton" x="200" y="100" w="128" h="128" type="1" listenerName="PersonnelManageButtonListener"/>
+		</mainPanel>
+		<mainPanel name="PersonnelManagePanel" class="MainPanel" width="1080" height="720">
 		     <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="PersonnelManage" class = "Component" x="30" y="20" w="98" h="23"/>
 		     <unit name ="mainTable" class = "MainTable" x="100" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "UserTableModel"/>
-		     <unit name ="addPerson" class = "MainButton" x="50" y="60" w="150" h="32" type="1" listenerName="mouseListener.AddPersonButtonListener"/>
-		     <unit name ="delete" class = "MainButton" x="600" y="600" w="150" h="32" type="1" listenerName="mouseListener.DeletePersonButtonListener"/>
-		     <unit name ="save" class = "MainButton" x="780" y="600" w="150" h="32" type="1" listenerName="mouseListener.SavePersonButtonListener"/>
-		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="mouseListener.FindPersonButtonListener"/>
+		     <unit name ="addPerson" class = "MainButton" x="50" y="60" w="150" h="32" type="1" listenerName="AddPersonButtonListener"/>
+		     <unit name ="delete" class = "MainButton" x="600" y="600" w="150" h="32" type="1" listenerName="DeletePersonButtonListener"/>
+		     <unit name ="save" class = "MainButton" x="780" y="600" w="150" h="32" type="1" listenerName="SavePersonButtonListener"/>
+		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
-		</personnelManagePanel>
+		     <myPanel name="AddPersonPanel" class="MainPanel" width="500" height="300">
+		         <component name="loginback" class = "Component" x="0" y="0" w="500" h="300"/>
+		         <component name="personName" class = "Component" x="50" y="50" w="78" h="19"/>
+		         <component name="personDuty" class = "Component" x="50" y="50" w="78" h="19"/>
+		         <component name="institution" class = "Component" x="50" y="50" w="78" h="19"/>
+		         <component name="salary" class = "Component" x="50" y="50" w="78" h="19"/>
+		     </myPanel>
+		</mainPanel>
 	</Frame>
 </presentation>

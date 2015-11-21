@@ -44,12 +44,16 @@ public class PanelConfig {
 	 * @see UnitConfig
 	 */
 	private ArrayList<UnitConfig> units;
-
+	
+	private ArrayList<PanelConfig> panels;
+	private Element element;
 	public PanelConfig(Element panel) {
+		this.element = panel;
 		width = Integer.parseInt(panel.attributeValue("width"));
 		height = Integer.parseInt(panel.attributeValue("height"));
 		setComponents(getComponentConfigures(panel));
 		setUnits(getUnitConfigures(panel));
+		setPanels(getPanelConfigures(panel));
 	}
 
 	private ArrayList<ComponentConfig> getComponentConfigures(Element panel) {
@@ -72,6 +76,15 @@ public class PanelConfig {
 		return configs;
 	}
 	
+	private ArrayList<PanelConfig> getPanelConfigures(Element panel) {
+		List<Element> elements = panel.elements("myPanel");
+		ArrayList<PanelConfig> configs = new ArrayList<PanelConfig>(elements.size());
+		for (Element component : elements) {
+			PanelConfig config = new PanelConfig(component);
+			configs.add(config);
+		}
+		return configs;
+	}
 	public int getWidth() {
 		return width;
 	}
@@ -118,6 +131,18 @@ public class PanelConfig {
 
 	public void setUnits(ArrayList<UnitConfig> units) {
 		this.units = units;
+	}
+
+	public ArrayList<PanelConfig> getPanels() {
+		return panels;
+	}
+
+	public void setPanels(ArrayList<PanelConfig> panels) {
+		this.panels = panels;
+	}
+
+	public Element getElement() {
+		return element;
 	}
 	
 //	public static void main(String[] args) {

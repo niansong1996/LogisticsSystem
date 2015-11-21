@@ -15,6 +15,7 @@ import edu.nju.lms.presentation.config.PanelConfig;
 public class MainFrame extends JFrame{
 	FrameConfig config;
 	String panelName ;
+	MainPanel panel;
 	public MainFrame() {
 		initialize();
 	}
@@ -38,10 +39,17 @@ public class MainFrame extends JFrame{
 		ConfigReader reader = new ConfigReader();
 		PanelConfig panelConfig = reader.readPanel(panel);
 		MainPanel mainPanel = new MainPanel(panelConfig,controller);
+		this.panel = mainPanel;
 		getContentPane().setVisible(false);
 		setContentPane(mainPanel);
 		mainPanel.setVisible(true);
 		repaint();
+	}
+	public MainPanel getPanel() {
+		return panel;
+	}
+	public void setPanel(MainPanel panel) {
+		this.panel = panel;
 	}
 	
 }
