@@ -1,11 +1,11 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.businessLogicService.impl.personnel.PersonnelblImpl;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -13,7 +13,7 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年11月16日
  */
 public class PersonnelblImplTest {
-	PersonnelblImpl personbl = new PersonnelblImpl();
+	PersonnelController personbl=new PersonnelController();
 	@Test
 	public void testFindPersonInfo() {
 		PersonnelVO person = new PersonnelVO("0251007111","lily","025000","营业厅业务员",0,0,0);

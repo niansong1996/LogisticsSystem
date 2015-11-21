@@ -25,7 +25,6 @@ public class UserblImpl{
 		UserPO userPO = null;
 		UserVO user = new UserVO("", "", null);
 		if(!idCheck(id).isSuccess()) {
-			//user.setUserName(idCheck(id).getErrorMessage());
 			user.setUserName(null);
 		}
 		try {
@@ -47,7 +46,6 @@ public class UserblImpl{
 		try {
 			result = dataService.deleteUser(id);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		return result;
 	}
@@ -66,7 +64,6 @@ public class UserblImpl{
 		try {
 			result = dataService.updateUser(userPO);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		return result;
 	}
@@ -85,7 +82,6 @@ public class UserblImpl{
 		try {
 			result = dataService.addUser(userPO);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		return result;
 	}
@@ -131,7 +127,6 @@ public class UserblImpl{
 		try {
 			users = dataService.getAllUser();
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
 		for(UserPO user: users) {
