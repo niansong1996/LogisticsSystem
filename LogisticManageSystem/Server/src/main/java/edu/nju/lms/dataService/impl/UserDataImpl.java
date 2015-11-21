@@ -5,12 +5,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import com.mysql.jdbc.exceptions.MySQLDataException;
 
 import edu.nju.lms.PO.UserPO;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.sql.JDBC;

@@ -9,6 +9,10 @@ public class AccountPO implements Serializable{
 	private static final long serialVersionUID = -2920275357062710781L;
 	private String name;//unique identifier
 	private double amount;
+	public AccountPO(String name, String amount) {
+		this.name = name;
+		this.amount = Double.parseDouble(amount);
+	}
 	public AccountPO(String name, double amount) {
 		this.name = name;
 		this.amount = amount;
@@ -25,12 +29,15 @@ public class AccountPO implements Serializable{
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public void addAmount(int add) {
-		assert add>=0;
-		amount += add;
-	}
-	public void minusAmount(int minus) {
-		assert minus>=0;
-		amount -= minus;
+	@Override
+	public boolean equals(Object object){
+		if(this.name.equals(((AccountPO)object).getName())&&
+				this.amount==((AccountPO)object).getAmount())
+				{
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

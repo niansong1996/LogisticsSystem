@@ -36,7 +36,7 @@ public class JDBC {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			if(!conn.isClosed()) System.out.println("Succeeded connecting to the Database!");
-			Statement statement = conn.createStatement();
+//			Statement statement = conn.createStatement();
 			/*
 			String sql = "select * from person";	         
 

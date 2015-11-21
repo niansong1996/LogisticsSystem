@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.WarehousePO;
@@ -9,7 +10,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  * 2015/10/25
  */
-public interface WarehouseDataService {
+public interface WarehouseDataService extends Remote{
 	/**
 	 * @param warehouse
 	 * @return ResultMessage

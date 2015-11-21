@@ -26,7 +26,6 @@ public class DepartmentblImpl{
 		try {
 			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		if(departmentPO!=null) {
 			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
@@ -39,7 +38,6 @@ public class DepartmentblImpl{
 		try {
 			message=service.deleteDepartment(id);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		return message;
 	}
@@ -56,7 +54,8 @@ public class DepartmentblImpl{
 				departmentPO = new DepartmentPO(department.getType(), department.getDepartmentNum(), city.getId());
 				message = service.updateDepartment(departmentPO);
 			}
-		} catch (RemoteException e) {}
+		} catch (RemoteException e) {
+		}
 		return message;
 	}
 
@@ -73,7 +72,8 @@ public class DepartmentblImpl{
 						department.getDepartmentNum(), city.getId());
 				message = service.addDepartment(departmentPO);
 			}
-		} catch (RemoteException e) {}
+		} catch (RemoteException e) {
+		}
 		return message;
 	}
 
@@ -83,7 +83,6 @@ public class DepartmentblImpl{
 		try {
 			result=service.addCity(cityPO);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		return result;
 	}
@@ -94,7 +93,6 @@ public class DepartmentblImpl{
 		try {
 			cityPO=service.findCity(id);
 		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		if(cityPO.getId()!=null){
 			city=new CityVO(cityPO.getId(),cityPO.getName(),cityPO.getBusinessNums(),cityPO.getDistance());

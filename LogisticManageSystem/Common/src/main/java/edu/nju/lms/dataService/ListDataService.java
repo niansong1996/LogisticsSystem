@@ -1,4 +1,5 @@
 package edu.nju.lms.dataService;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.List;
@@ -12,7 +13,7 @@ import edu.nju.lms.data.ResultMessage;
  *2015/10/25
  */
 
-public interface ListDataService {
+public interface ListDataService extends Remote{
 	/**
 	 * @param begin
 	 * @param end

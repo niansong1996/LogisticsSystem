@@ -30,18 +30,18 @@ public class ATextField extends AbstractCellEditor implements TableCellEditor, T
 		}
 	}
 
-	public Object getCellEditorValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
-		return myText ;
+		return (Component) table.getValueAt(row, column) ;
 	}
 
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-		return myText;
+		//return (Component) table.getValueAt(row, column) ;
+		return new MyTextField();
+	}
+
+	public Object getCellEditorValue() {
+		return table.getTable().getEditorComponent();
 	}
 
 }

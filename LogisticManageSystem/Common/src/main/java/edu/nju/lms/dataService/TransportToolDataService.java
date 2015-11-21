@@ -1,12 +1,13 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.VehiclePO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface TransportToolDataService {
+public interface TransportToolDataService extends Remote{
 	
 	public ResultMessage addVehicle(VehiclePO vehicle) throws RemoteException;
 	public VehiclePO findVehicle(String id) throws RemoteException;
