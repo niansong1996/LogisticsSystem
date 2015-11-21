@@ -1,25 +1,31 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
+import edu.nju.lms.sql.JDBC;
+import edu.nju.lms.sql.POGenerator;
 
-public class DepartmentDataImpl implements DepartmentDataService{
+public class DepartmentDataImpl extends UnicastRemoteObject implements DepartmentDataService{
 	
-	private ArrayList<DepartmentPO> departmentList = new ArrayList<DepartmentPO>();
-	private ArrayList<CityPO> cityList = new ArrayList<CityPO>(); 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8887872359871144508L;
 	
-	public DepartmentDataImpl(){
+	public DepartmentDataImpl() throws RemoteException{
 		
 	}
 
 	public ResultMessage addDepartment(DepartmentPO department) throws RemoteException {
 		if(findDepartment(department.getDepartmentNum())==null){
-			this.departmentList.add(department);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(department, department.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -28,22 +34,20 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	}
 
 	public DepartmentPO findDepartment(String id) throws RemoteException {
-		DepartmentPO result = null;
-		Iterator<DepartmentPO> it = departmentList.iterator();
-		while(it.hasNext()){
-			DepartmentPO next = it.next();
-			if(next.getDepartmentNum()==id){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
+		DepartmentPO department = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo where departmentNum = "+id);
+		try{
+		if(!result.wasNull())
+			department = (DepartmentPO)POGenerator.generateObject(result, DepartmentPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return department;	}
 
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
 		DepartmentPO department = findDepartment(id);
 		if(!(department==null)){
-			departmentList.remove(department);
+			JDBC.ExecuteData("delete from departmentpo where departmentNum = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -53,9 +57,8 @@ public class DepartmentDataImpl implements DepartmentDataService{
 
 	public ResultMessage updateDepartment(DepartmentPO department) throws RemoteException {
 		DepartmentPO tempDepartment = findDepartment(department.getDepartmentNum());
-		if(tempDepartment!=null){
-			departmentList.remove(findDepartment(department.getDepartmentNum()));
-			departmentList.add(department);
+		if(!(tempDepartment==null)){
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(department, department.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -64,32 +67,32 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	}
 
 	public ResultMessage addCity(CityPO city) throws RemoteException {
-		if((findCity(city.getId())==null)){
-			this.cityList.add(city);
+		if(findCity(city.getName())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(city, city.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
 			return new ResultMessage(false,"The city already exists!");
 		}
+
 	}
 
 	public CityPO findCity(String id) throws RemoteException {
-		CityPO result = null;
-		Iterator<CityPO> it = cityList.iterator();
-		while(it.hasNext()){
-			CityPO next = it.next();
-			if(next.getId()==id){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		CityPO city = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from citypo where id = "+id);
+		try{
+		if(!result.wasNull())
+			city = (CityPO)POGenerator.generateObject(result, CityPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return city;
 	}
 
 	public ResultMessage deleteCity(String id) throws RemoteException {
 		CityPO city = findCity(id);
 		if(!(city==null)){
-			cityList.remove(city);
+			JDBC.ExecuteData("delete from citypo where id = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -98,9 +101,9 @@ public class DepartmentDataImpl implements DepartmentDataService{
 	}
 
 	public ResultMessage updateCity(CityPO city) throws RemoteException {
-		CityPO tempCity = findCity(city.getId());
+		CityPO tempCity = findCity(city.getName());
 		if(!(tempCity==null)){
-			tempCity = city;
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(city, city.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
