@@ -2,10 +2,9 @@ package edu.nju.lms.dataService.impl;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.DepartmentPO;
@@ -18,17 +17,15 @@ import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.sql.JDBC;
 import edu.nju.lms.sql.POGenerator;
 
-public class FinanceAccountDataImpl implements FinanceAccountDataService, Serializable{
+public class FinanceAccountDataImpl extends UnicastRemoteObject implements FinanceAccountDataService, Serializable{
 	
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2168651171849205562L;
-	private ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
-	private ArrayList<String> accountList=new ArrayList<String>();
 
-	public FinanceAccountDataImpl(){
+	public FinanceAccountDataImpl() throws RemoteException{
 		
 	}
 	

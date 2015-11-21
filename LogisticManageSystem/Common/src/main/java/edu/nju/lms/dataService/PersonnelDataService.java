@@ -1,11 +1,12 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface PersonnelDataService {
+public interface PersonnelDataService extends Remote{
 	
 	public ResultMessage addPersonnel(PersonnelPO personnel) throws RemoteException;
 	public PersonnelPO findPersonnel(String id) throws RemoteException;

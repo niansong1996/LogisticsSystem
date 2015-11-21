@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.AccountPO;
@@ -11,7 +12,7 @@ import edu.nju.lms.data.ResultMessage;
  * @author oppa
  * 2015/10/25
  */
-public interface FinanceAccountDataService {
+public interface FinanceAccountDataService extends Remote{
 	/**
 	 * initial the info of the company's initial financial
 	 * @param InitialInfo

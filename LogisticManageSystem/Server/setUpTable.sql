@@ -4,8 +4,7 @@ create table accountpo
 (
 id int unsigned not null auto_increment primary key,
 name varchar(25) not null,
-amount double not null,
-assert varchar(10) not null
+amount double not null
 );
 create table arrivalpo
 (

@@ -1,5 +1,6 @@
 package edu.nju.lms.dataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.ArrivalPO;
@@ -9,7 +10,7 @@ import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
 
-public interface TransportListDataService {
+public interface TransportListDataService extends Remote{
 	
 	public ResultMessage addSend(SendPO send) throws RemoteException;
 	public ResultMessage deleteSend(String id) throws RemoteException;
