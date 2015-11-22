@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.config.PanelConfig;
 
 /**
  *@author tj
@@ -19,7 +20,6 @@ public class AddPersonButtonListener extends ButtonListener{
 
 	public void mouseReleased(MouseEvent e) {
 		MainPanel mainPanel = controller.getFrame().getPanel();
-		System.out.println(mainPanel.getName());
 		mainPanel.createPanels("AddPersonPanel");
 		mainPanel.repaint();
 	}

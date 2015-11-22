@@ -49,8 +49,8 @@ public class PanelConfig {
 	private Element element;
 	public PanelConfig(Element panel) {
 		this.element = panel;
-		width = Integer.parseInt(panel.attributeValue("width"));
-		height = Integer.parseInt(panel.attributeValue("height"));
+		width = Integer.parseInt(panel.attributeValue("w"));
+		height = Integer.parseInt(panel.attributeValue("h"));
 		setComponents(getComponentConfigures(panel));
 		setUnits(getUnitConfigures(panel));
 		setPanels(getPanelConfigures(panel));

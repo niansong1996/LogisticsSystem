@@ -39,7 +39,7 @@ public class MainFrame extends JFrame{
 		ConfigReader reader = new ConfigReader();
 		PanelConfig panelConfig = reader.readPanel(panel);
 		MainPanel mainPanel = new MainPanel(panelConfig,controller);
-		this.panel = mainPanel;
+		setPanel(mainPanel);
 		getContentPane().setVisible(false);
 		setContentPane(mainPanel);
 		mainPanel.setVisible(true);
