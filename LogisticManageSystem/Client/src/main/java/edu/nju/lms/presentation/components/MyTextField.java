@@ -36,6 +36,7 @@ public class MyTextField extends JTextField {
 		x = Integer.parseInt(text.attributeValue("x"));
 		y = Integer.parseInt(text.attributeValue("y"));
 		setBounds(x, y, w, h);
+		this.setFocusable(true);;
 		drawPic();
 	}
 

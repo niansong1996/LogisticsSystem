@@ -41,12 +41,21 @@ public class MainPanel extends JPanel {
 	private UIController controller;
 
 	public static final String packageName = "edu.nju.lms.presentation.";
-
+	private int x;
+	private int y;
+	private int h;
+	private int w;
 	public MainPanel(PanelConfig config, UIController controller) {
 		this.controller = controller;
 		this.config = config;
 		units = new ArrayList<java.awt.Component>();
 		setLayout(null);
+		Element button = config.getElement();
+		w = Integer.parseInt(button.attributeValue("w"));
+		h = Integer.parseInt(button.attributeValue("h"));
+		x = Integer.parseInt(button.attributeValue("x"));
+		y = Integer.parseInt(button.attributeValue("y"));
+		setBounds(x,y,w,h);
 		createComponents();
 		createUnits();
 	}
