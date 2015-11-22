@@ -19,8 +19,6 @@ public class AddPersonButtonListener extends ButtonListener{
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		MainPanel mainPanel = controller.getFrame().getPanel();
-		mainPanel.createPanels("AddPersonPanel");
-		mainPanel.repaint();
+		controller.changeTo("AddPersonPanel");
 	}
 }
