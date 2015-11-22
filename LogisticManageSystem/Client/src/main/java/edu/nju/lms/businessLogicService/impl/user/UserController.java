@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.UserblService;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 public class UserController implements UserblService{
@@ -25,8 +24,8 @@ public class UserController implements UserblService{
 			//logController=new LogController();
 	    }    
 	    catch (Exception e){
-	    	System.out.println("网络未连接！");
-	    	System.exit(0);;
+	    	System.out.println("网络未连接");
+	    	System.exit(0);
 	    }
 	}
 	public UserController(String id){
@@ -83,11 +82,4 @@ public class UserController implements UserblService{
 	public void setID(String id){
 		this.logID = id;
 	}
-	
-//	public static void main(String[] args){
-//		UserController controller=new UserController();
-//		ResultMessage a=controller.deleteUser("1000000037");
-//		System.out.println(a.isSuccess());
-//	}
-
 }

@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.data.ResultMessage;
@@ -17,7 +19,7 @@ public interface PersonnelblService {
 	 * @param id
 	 * @return {@link PersonnelVO}
 	 */
-	public PersonnelVO findPersonInfo(String id);
+	public ArrayList<PersonnelVO> findPersonInfo(String id);
 	
 	/**
 	 * find a {@link PersonnelPO} by id and then delete it
@@ -40,5 +42,4 @@ public interface PersonnelblService {
 	 * @return {@link ResultMessage}
 	 */
 	public ResultMessage addPersonnel(PersonnelVO Personnel);
-
 }

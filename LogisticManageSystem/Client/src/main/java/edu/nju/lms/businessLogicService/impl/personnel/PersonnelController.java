@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService.impl.personnel;
 
 import java.rmi.Naming;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import edu.nju.lms.VO.OperationVO;
@@ -39,8 +40,8 @@ public class PersonnelController implements PersonnelblService{
 		this.logID=id;
 	}
 	
-	public PersonnelVO findPersonInfo(String id) {
-		PersonnelVO result=personbl.findPersonInfo(id);
+	public ArrayList<PersonnelVO> findPersonInfo(String id) {
+		 ArrayList<PersonnelVO> result=personbl.findPersonInfo(id);
 //		if(result.getId()!=null){
 //			time=sdf.format(new Date());
 //			op=new OperationVO(time,logID,"查询员工"+id+"的信息");
@@ -78,5 +79,4 @@ public class PersonnelController implements PersonnelblService{
 //		}
 		return result;
 	}
-
 }

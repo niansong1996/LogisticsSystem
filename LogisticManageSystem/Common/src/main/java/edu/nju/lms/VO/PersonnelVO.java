@@ -1,5 +1,7 @@
 package edu.nju.lms.VO;
 
+import edu.nju.lms.data.PersonType;
+
 /**
  * basic info of a person
  * @author Cui
@@ -9,11 +11,11 @@ public class PersonnelVO {
 	private String id;
 	private String name;
 	private String department;
-	private String duty;
+	private PersonType duty;
 	private double salary;
 	private double perTime;
 	private double bonus;
-	public PersonnelVO(String id,String name, String departmentNum, String duty, 
+	public PersonnelVO(String id,String name, String departmentNum, PersonType duty, 
 			double salary, double perTime, double bonus) {
 		this.id = id;
 		this.name = name;
@@ -22,6 +24,13 @@ public class PersonnelVO {
 		this.salary = salary;
 		this.perTime = perTime;
 		this.bonus = bonus;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -35,10 +44,10 @@ public class PersonnelVO {
 	public void setDepartmentNum(String departmentNum) {
 		this.department = departmentNum;
 	}
-	public String getDuty() {
+	public PersonType getDuty() {
 		return duty;
 	}
-	public void setDuty(String duty) {
+	public void setDuty(PersonType duty) {
 		this.duty = duty;
 	}
 	public double getSalary() {
@@ -58,18 +67,6 @@ public class PersonnelVO {
 	}
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setDepartment(String department) {
-		this.department = department;
 	}
 	
 	@Override
