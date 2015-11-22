@@ -24,7 +24,7 @@ public class ATextField extends AbstractCellEditor implements TableCellEditor, T
 		myText = new MyTextField();
 		this.table = table;
 		TableColumnModel columnModel = table.getColumnModel();
-		for (int i = 1; i < 4; i++) {
+		for (int i = 0; i < columnModel.getColumnCount(); i++) {
 			columnModel.getColumn(i).setCellRenderer(this);
 			columnModel.getColumn(i).setCellEditor(this);
 		}
@@ -36,8 +36,8 @@ public class ATextField extends AbstractCellEditor implements TableCellEditor, T
 	}
 
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-		//return (Component) table.getValueAt(row, column) ;
-		return new MyTextField();
+		return (Component) table.getValueAt(row, column) ;
+		//return new MyTextField();
 	}
 
 	public Object getCellEditorValue() {

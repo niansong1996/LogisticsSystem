@@ -42,7 +42,9 @@ public class MyTextField extends JTextField {
 	public MyTextField(String text) {
 		super();
 		setText(text);
+		setHorizontalAlignment(JTextField.CENTER);
 		drawPic();
+		setFont(new Font("微软雅黑", Font.BOLD, 18));
 	}
 	public MyTextField(){
 		super();

@@ -1,11 +1,9 @@
 package edu.nju.lms.presentation.tableModel;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.swing.JComboBox;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 import org.dom4j.Element;
@@ -13,8 +11,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.components.ATextField;
-import edu.nju.lms.presentation.components.MainTable;
+import edu.nju.lms.presentation.components.MyCombox;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
@@ -25,7 +22,7 @@ import edu.nju.lms.presentation.components.MyTextField;
  *
  */
 public class UserTableModel implements TableModel {
-	private Class[] cellType = { String.class, MyTextField.class, MyTextField.class, JComboBox.class };
+	private Class[] cellType = { String.class, MyTextField.class, MyTextField.class, MyCombox.class };
 	private ArrayList<UserVO> users = new ArrayList<UserVO>();
 
 	public UserTableModel(Element element, UIController controller) {
@@ -75,16 +72,16 @@ public class UserTableModel implements TableModel {
 		case 2:
 			return new MyTextField(user.getPassword());
 		case 3:
-			JComboBox<String> com = new JComboBox<String>();
-			com.addItem(PersonType.ADMINISTRATOR.toString());
-			com.addItem(PersonType.COUNTER_BUSSINESS.toString());
-			com.addItem(PersonType.COUNTER_INTERMEDIATE.toString());
-			com.addItem(PersonType.COURIER.toString());
-			com.addItem(PersonType.FINANCIAL_ADVANCED.toString());
-			com.addItem(PersonType.FINANCIAL_NORMAL.toString());
-			com.addItem(PersonType.MANAGER.toString());
-			com.addItem(PersonType.WAREHOUSE.toString());
-			com.setSelectedItem(user.getPower().toString());
+			MyCombox<PersonType> com = new MyCombox<PersonType>();
+			com.addItem(PersonType.ADMINISTRATOR);
+			com.addItem(PersonType.COUNTER_BUSSINESS);
+			com.addItem(PersonType.COUNTER_INTERMEDIATE);
+			com.addItem(PersonType.COURIER);
+			com.addItem(PersonType.FINANCIAL_ADVANCED);
+			com.addItem(PersonType.FINANCIAL_NORMAL);
+			com.addItem(PersonType.MANAGER);
+			com.addItem(PersonType.WAREHOUSE);
+			com.setSelectedItem(user.getPower());
 			return com;
 		}
 		return null;
@@ -98,13 +95,14 @@ public class UserTableModel implements TableModel {
 	}
 
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		String change;
+		String change = "";
+		PersonType type  = null;
 		if(columnIndex<=2){
 			MyTextField text = (MyTextField) aValue;
 			change = text.getText();
 		}else{
-			JComboBox<String> com = (JComboBox<String>) aValue;
-			change = com.getSelectedItem().toString();
+			JComboBox<PersonType> com = (JComboBox<PersonType>) aValue;
+			type = (PersonType) com.getSelectedItem();
 		}
 		UserVO user = users.get(rowIndex);
 		switch (columnIndex) {
@@ -114,7 +112,8 @@ public class UserTableModel implements TableModel {
 		case 2:
 			user.setPassword(change);
 			break;
-		// TODO
+		case 3:
+			user.setPower(type);
 		}
 
 	}
