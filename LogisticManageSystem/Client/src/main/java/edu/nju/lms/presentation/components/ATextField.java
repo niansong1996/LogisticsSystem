@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.AbstractCellEditor;
@@ -32,7 +33,8 @@ public class ATextField extends AbstractCellEditor implements TableCellEditor, T
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
-		return (Component) table.getValueAt(row, column) ;
+		Component c = (Component) table.getValueAt(row, column);
+		return c ;
 	}
 
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {

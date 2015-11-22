@@ -61,14 +61,15 @@ public class MainTable extends JPanel{
 		 */
 		try {
 			Class<?> myModel = Class.forName(MainPanel.packageName+"tableModel."+element.attributeValue("model"));
-			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class);
-			model = (TableModel) ctr.newInstance(element, controller);
+			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class,this.getClass());
+			model = (TableModel) ctr.newInstance(element, controller, this);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		table = new JTable(model);
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFillsViewportHeight(true);
+		table.setShowVerticalLines(false);
 		/**
 		 * sort method
 		 * when click the column, data will be sorted

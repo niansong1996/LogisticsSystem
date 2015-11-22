@@ -11,6 +11,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MainTable;
 import edu.nju.lms.presentation.components.MyCombox;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -25,7 +26,7 @@ public class UserTableModel implements TableModel {
 	private Class[] cellType = { String.class, MyTextField.class, MyTextField.class, MyCombox.class };
 	private ArrayList<UserVO> users = new ArrayList<UserVO>();
 
-	public UserTableModel(Element element, UIController controller) {
+	public UserTableModel(Element element, UIController controller, MainTable table) {
 		UserVO us1 = new UserVO("000", "555", PersonType.ADMINISTRATOR);
 		UserVO us2 = new UserVO("000", "12345", PersonType.COUNTER_BUSSINESS);
 		users.add(us1);

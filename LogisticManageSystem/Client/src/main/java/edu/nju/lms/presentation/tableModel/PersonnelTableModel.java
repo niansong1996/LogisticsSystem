@@ -1,15 +1,20 @@
 package edu.nju.lms.presentation.tableModel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MainTable;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
@@ -19,23 +24,29 @@ import edu.nju.lms.presentation.components.MyTextField;
  */
 public class PersonnelTableModel implements TableModel{
 	ArrayList<PersonnelVO> personnel = new ArrayList<PersonnelVO>();
-	private String[] name = {"编号","姓名","机构","职务","基本","计次","提成"};
-	public PersonnelTableModel(Element element, UIController controller) {
+	MainTable table = null;
+	private String[] name = {"编号","姓名","机构","职务","基本","计次","提成",""};
+	public PersonnelTableModel(Element element, UIController controller, MainTable table) {
+		super();
 		PersonnelVO p1 = new PersonnelVO("123", "cuiods", "01", "总经理", 20000, 0, 100000);
 		PersonnelVO p2 = new PersonnelVO("124", "tj", "01", "总经理", 20000, 0, 100000);
 		personnel.add(p1);
 		personnel.add(p2);
+		this.table = table;
 	}
 
 	public void addTableModelListener(TableModelListener l) {
 	}
 
 	public Class<?> getColumnClass(int columnIndex) {
+		if(columnIndex==7) {
+			return JButton.class;
+		}
 		return MyTextField.class;
 	}
 
 	public int getColumnCount() {
-		return 7;
+		return 8;
 	}
 
 	public String getColumnName(int columnIndex) {
@@ -46,7 +57,17 @@ public class PersonnelTableModel implements TableModel{
 		return personnel.size();
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex) {
+	public Object getValueAt(final int rowIndex, int columnIndex) {
+		if(columnIndex==7){
+			JButton button = new JButton("删除");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					personnel.remove(table.getTable().getSelectedRow());
+					table.repaint();
+				}
+			});
+			return button;
+		}
 		PersonnelVO p = personnel.get(rowIndex);
 		Field[] fields = p.getClass().getDeclaredFields();
 		Field current = fields[columnIndex];
@@ -77,6 +98,11 @@ public class PersonnelTableModel implements TableModel{
 	}
 
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		if(columnIndex==7){
+			table.remove((JButton)aValue);
+			//table.repaint();
+			return;
+		}
 		MyTextField text = (MyTextField) aValue;
 		String change = text.getText();
 		PersonnelVO personnelVO = personnel.get(rowIndex);
