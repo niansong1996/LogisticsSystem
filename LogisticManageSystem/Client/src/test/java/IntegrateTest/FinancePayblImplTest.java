@@ -17,7 +17,7 @@ import junit.framework.Assert;
  *@date 2015年11月16日
  */
 public class FinancePayblImplTest {
-	FinancePayblImpl paybl = new FinancePayblImpl();
+	FinancePayblImpl paybl/* = new FinancePayblImpl()*/;
 	@Test
 	public void testcreateRent() {
 		RentVO re = paybl.createRent(15555, 2015);

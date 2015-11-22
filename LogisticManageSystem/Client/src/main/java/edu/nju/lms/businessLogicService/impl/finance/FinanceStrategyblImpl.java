@@ -2,15 +2,20 @@ package edu.nju.lms.businessLogicService.impl.finance;
 
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
-import edu.nju.lms.businessLogicService.FinanceStrategyblService;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.FinanceStrategyDataService;
 
 /**
  *@author tj
  *@date 2015年10月25日
  */
-public class FinanceStrategyblImpl implements FinanceStrategyblService {
+public class FinanceStrategyblImpl{
 
+	private FinanceStrategyDataService service;
+	
+	public FinanceStrategyblImpl(FinanceStrategyDataService service){
+		this.service=service;
+	}
 	public ResultMessage addPriceStrategy(PriceStrategyVO priceStrategy) {
 		// TODO Auto-generated method stub
 		return new ResultMessage(true,null);

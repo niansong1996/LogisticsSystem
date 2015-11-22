@@ -92,4 +92,10 @@ public class DepartmentController implements DepartmentblService{
 		return result;
 	}
 	
+	public static void main(String[] args){
+		DepartmentController x=new DepartmentController();
+		CityVO a=new CityVO("025","Nanjing",null,null);
+		x.addCity(a);
+	}
+	
 }

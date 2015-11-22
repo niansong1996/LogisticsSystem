@@ -19,11 +19,10 @@ import edu.nju.lms.businessLogicService.impl.finance.FinanceStrategyblImpl;
 import edu.nju.lms.data.ResultMessage;
 
 public class FinanceblService_Driver {
-	
 	public static void main(String[] args) {
-		FinancePayblService financePay=new FinancePayblImpl();
-		FinanceReceiptblService financeReceipt=new FinanceReceiptblImpl();
-		FinanceStrategyblService financeStrategy=new FinanceStrategyblImpl();
+		FinancePayblService financePay=null/*=new FinancePayblImpl()*/;
+		FinanceReceiptblService financeReceipt=null;/*=new FinanceReceiptblImpl()*/;
+		FinanceStrategyblService financeStrategy=null;/*=new FinanceStrategyblImpl()*/;
 		
 		ResultMessage result;
 		PriceStrategyVO priceStrategy=new PriceStrategyVO(10.1,20.1,30.1);

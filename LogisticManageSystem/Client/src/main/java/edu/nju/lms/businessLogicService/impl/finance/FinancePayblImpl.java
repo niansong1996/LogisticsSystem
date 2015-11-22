@@ -6,14 +6,20 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.FinancePayblService;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.FinancePaymentDataService;
 
 /**
  *@author tj
  *@date 2015年10月25日
  */
-public class FinancePayblImpl implements FinancePayblService {
+public class FinancePayblImpl{
+	
+	private FinancePaymentDataService service;
+	
+	public FinancePayblImpl(FinancePaymentDataService service){
+		this.service=service;
+	}
 
 	public RentVO createRent(int sum, int year) {
 		// TODO Auto-generated method stub

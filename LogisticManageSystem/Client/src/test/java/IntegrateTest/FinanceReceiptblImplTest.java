@@ -17,7 +17,7 @@ import junit.framework.Assert;
  *@date 2015年11月16日
  */
 public class FinanceReceiptblImplTest {
-	FinanceReceiptblImpl receiptbl = new FinanceReceiptblImpl();
+	FinanceReceiptblImpl receiptbl/* = new FinanceReceiptblImpl()*/;
 	@Test
 	public void testCreateReceipt() {
 		ArrayList<String> expressNums = new ArrayList<String>();

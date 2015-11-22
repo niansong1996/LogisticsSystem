@@ -118,22 +118,24 @@ public class PersonnelblImpl  {
 		}
 	}
 	public String changeToVO(PersonType duty){
-		if(duty.equals(PersonType.ADMINISTRATOR)){
+		switch(duty){
+		case ADMINISTRATOR:
 			return "管理员";
-		}else if(duty.equals(PersonType.MANAGER)){
+		case MANAGER:
 			return "总经理";
-		}else if(duty.equals(PersonType.FINANCIAL_NORMAL)){
+		case FINANCIAL_NORMAL:
 			return "普通财务人员";
-		}else if(duty.equals(PersonType.FINANCIAL_ADVANCED)){
+		case FINANCIAL_ADVANCED:
 			return "高级财务人员";
-		}else if(duty.equals(PersonType.WAREHOUSE)){
+		case WAREHOUSE:
 			return "中转中心仓库管理人员";
-		}else if(duty.equals(PersonType.COUNTER_INTERMEDIATE)){
+		case COUNTER_INTERMEDIATE:
 			return "中转中心业务员";
-		}else if(duty.equals(PersonType.COUNTER_BUSSINESS)){
+		case COUNTER_BUSSINESS:
 			return "营业厅业务员";
-		}else{
+		case COURIER:
 			return "快递员";
 		}
+		return null;
 	}
 }

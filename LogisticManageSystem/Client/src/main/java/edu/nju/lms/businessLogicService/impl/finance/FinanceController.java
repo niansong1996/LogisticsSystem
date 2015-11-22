@@ -1,5 +1,6 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
+import java.rmi.Naming;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -18,6 +19,10 @@ import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.FinanceAccountDataService;
+import edu.nju.lms.dataService.FinancePaymentDataService;
+import edu.nju.lms.dataService.FinanceReceiptDataService;
+import edu.nju.lms.dataService.FinanceStrategyDataService;
 
 public class FinanceController
 		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
@@ -26,7 +31,38 @@ public class FinanceController
 	FinancePayblImpl pay;
 	FinanceReceiptblImpl receipt;
 	FinanceStrategyblImpl strategy;
-
+	
+	FinanceAccountDataService accountData;
+	FinancePaymentDataService payData;
+	FinanceReceiptDataService receiptData;
+	FinanceStrategyDataService strategyData;
+	
+	private String logID;
+	
+//	LogController logController;
+//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//	String time="";
+//	OperationVO op=null;
+	
+	public FinanceController(){
+		try {
+			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
+			accountf=new FinanceAccountblImpl(accountData);
+//			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
+//			pay=new FinancePayblImpl(payData);
+//			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
+//			receipt=new FinanceReceiptblImpl(receiptData);
+//			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
+//			strategy=new FinanceStrategyblImpl(strategyData);
+			//logController=new LogController();
+		} catch (Exception e) {
+			System.out.println("网络未连接");
+	    	System.exit(0);
+		}
+	}
+	public FinanceController(String id){
+		this.logID=id;
+	}
 	public ResultMessage addPriceStrategy(PriceStrategyVO priceStrategy) {
 		return strategy.addPriceStrategy(priceStrategy);
 	}
@@ -94,20 +130,38 @@ public class FinanceController
 	public boolean exportEarning(EarningVO earnings) {
 		return pay.exportEarning(earnings);
 	}
+	
 	public ResultMessage addAccount(AccountVO account) {
 		return accountf.addAccount(account);
 	}
+	
 	public AccountVO showAccount(String id) {
 		return accountf.showAccount(id);
 	}
+	
 	public ResultMessage deleteAccount(String id) {
 		return accountf.deleteAccount(id);
 	}
+	
+	public ResultMessage updateAccount(AccountVO account) {
+		return accountf.updateAccount(account);
+	}
+	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		return accountf.addInitialInfo(initial);
 	}
 
 	public ResultMessage createSalary(SalaryVO salaryVO) {
 		return pay.createSalary(salaryVO);
+	}
+	
+	public static void main(String[] args){
+		FinanceController demo=new FinanceController();
+		AccountVO a1=new AccountVO("6225887941959874",12345);
+		demo.addAccount(a1);
+		AccountVO a2=new AccountVO("6225887941959874",156789);
+		ResultMessage c=demo.updateAccount(a2);
+		System.out.println(c.isSuccess());
+		
 	}
 }

@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.ReceiptVO;
-import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.FinanceReceiptDataService;
 
 /**
  *@author tj
  *@date 2015年10月25日
  */
-public class FinanceReceiptblImpl implements FinanceReceiptblService {
+public class FinanceReceiptblImpl{
+	private FinanceReceiptDataService service;
+	
+	public FinanceReceiptblImpl(FinanceReceiptDataService service){
+		this.service=service;
+	}
 
 	public ReceiptVO createReceipt(ReceiptVO debit) {
 		// TODO Auto-generated method stub

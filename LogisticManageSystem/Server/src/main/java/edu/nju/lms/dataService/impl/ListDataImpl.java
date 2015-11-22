@@ -26,7 +26,6 @@ public class ListDataImpl implements ListDataService{
 		while(it.hasNext()){
 			ListPO l=it.next();
 			//TODO
-			//has problems
 		}
 		return result;
 	}
