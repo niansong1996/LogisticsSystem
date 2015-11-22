@@ -83,7 +83,7 @@ public class PersonnelTableModel implements TableModel{
 		switch(columnIndex){
 		case 0: personnelVO.setId(change); break;
 		case 1: personnelVO.setName(change); break;
-		case 2: personnelVO.setDepartment(change); break;
+		case 2: personnelVO.setDepartmentNum(change); break;
 		case 3: personnelVO.setDuty(change);break;
 		case 4: personnelVO.setSalary(Double.parseDouble(change)); break;
 		case 5: personnelVO.setPerTime(Double.parseDouble(change)); break;

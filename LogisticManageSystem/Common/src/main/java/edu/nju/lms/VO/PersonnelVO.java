@@ -11,11 +11,11 @@ public class PersonnelVO {
 	private String id;
 	private String name;
 	private String department;
-	private PersonType duty;
+	private String duty;
 	private double salary;
 	private double perTime;
 	private double bonus;
-	public PersonnelVO(String id,String name, String departmentNum, PersonType duty, 
+	public PersonnelVO(String id,String name, String departmentNum, String duty, 
 			double salary, double perTime, double bonus) {
 		this.id = id;
 		this.name = name;
@@ -44,10 +44,10 @@ public class PersonnelVO {
 	public void setDepartmentNum(String departmentNum) {
 		this.department = departmentNum;
 	}
-	public PersonType getDuty() {
+	public String getDuty() {
 		return duty;
 	}
-	public void setDuty(PersonType duty) {
+	public void setDuty(String duty) {
 		this.duty = duty;
 	}
 	public double getSalary() {

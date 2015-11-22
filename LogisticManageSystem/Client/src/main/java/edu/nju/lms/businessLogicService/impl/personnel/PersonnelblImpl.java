@@ -3,10 +3,9 @@ package edu.nju.lms.businessLogicService.impl.personnel;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import edu.nju.lms.PO.CityPO;
-import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.PersonnelDataService;
 
@@ -31,7 +30,7 @@ public class PersonnelblImpl  {
 			try {
 				PersonnelPO personPO=service.findPersonnel(id);
 				PersonnelVO person=new PersonnelVO(personPO.getId(),personPO.getName(),personPO.getDepartmentNum(),
-						personPO.getDuty(),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
+						changeToVO(personPO.getDuty()),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
 				result.add(person);
 			} catch (RemoteException e) {
 				// TODO
@@ -65,7 +64,7 @@ public class PersonnelblImpl  {
 		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personPO=null;
 		personPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),Personnel.getDepartmentNum(),
-				Personnel.getDuty(),Personnel.getSalary(),Personnel.getPerTime(),Personnel.getBonus());
+				changeToPO(Personnel.getDuty()),Personnel.getSalary(),Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.updatePersonnel(personPO);
 		} catch (RemoteException e) {
@@ -81,7 +80,7 @@ public class PersonnelblImpl  {
 		}
 		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personnelPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),
-				Personnel.getDepartmentNum(),Personnel.getDuty(),Personnel.getSalary(),
+				Personnel.getDepartmentNum(),changeToPO(Personnel.getDuty()),Personnel.getSalary(),
 				Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.addPersonnel(personnelPO);
@@ -97,5 +96,44 @@ public class PersonnelblImpl  {
 			result.setErrorMessage("输入的位数不正确！");
 		}
 		return result;
+	}
+	
+	public PersonType changeToPO(String duty){
+		if(duty.equals("管理员")){
+			return PersonType.ADMINISTRATOR;
+		}else if(duty.equals("总经理")){
+			return PersonType.MANAGER;
+		}else if(duty.equals("普通财务人员")){
+			return PersonType.FINANCIAL_NORMAL;
+		}else if(duty.equals("高级财务人员")){
+			return PersonType.FINANCIAL_ADVANCED;
+		}else if(duty.equals("中转中心仓库管理人员")){
+			return PersonType.WAREHOUSE;
+		}else if(duty.equals("中转中心业务员")){
+			return PersonType.COUNTER_INTERMEDIATE;
+		}else if(duty.equals("营业厅业务员")){
+			return PersonType.COUNTER_BUSSINESS;
+		}else{
+			return PersonType.COURIER;
+		}
+	}
+	public String changeToVO(PersonType duty){
+		if(duty.equals(PersonType.ADMINISTRATOR)){
+			return "管理员";
+		}else if(duty.equals(PersonType.MANAGER)){
+			return "总经理";
+		}else if(duty.equals(PersonType.FINANCIAL_NORMAL)){
+			return "普通财务人员";
+		}else if(duty.equals(PersonType.FINANCIAL_ADVANCED)){
+			return "高级财务人员";
+		}else if(duty.equals(PersonType.WAREHOUSE)){
+			return "中转中心仓库管理人员";
+		}else if(duty.equals(PersonType.COUNTER_INTERMEDIATE)){
+			return "中转中心业务员";
+		}else if(duty.equals(PersonType.COUNTER_BUSSINESS)){
+			return "营业厅业务员";
+		}else{
+			return "快递员";
+		}
 	}
 }

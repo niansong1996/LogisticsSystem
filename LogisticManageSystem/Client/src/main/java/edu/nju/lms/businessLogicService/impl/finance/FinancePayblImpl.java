@@ -42,7 +42,7 @@ public class FinancePayblImpl implements FinancePayblService {
 
 	public PersonnelVO showSalary(String person) {
 		// TODO Auto-generated method stub
-		return new PersonnelVO("du","568","521679210",PersonType.MANAGER,52600,0,5000);
+		return new PersonnelVO("du","568","521679210","总经理",52600,0,5000);
 	}
 
 	public SalaryVO showSalarySum(int year, int month) {

@@ -1,6 +1,8 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -20,9 +22,9 @@ public class PersonnelblImplTest {
 	public void testFindPersonInfo() {
 		PersonnelVO person = new PersonnelVO("0251007111","lily","025000","营业厅业务员",0,0,0);
 		personbl.addPersonnel(person);
-		PersonnelVO result = personbl.findPersonInfo("0251007111");
-		assertEquals(result.getDepartmentNum(),"025000");
-		assertEquals(result.getName(),"lily");
+		ArrayList<PersonnelVO> result = personbl.findPersonInfo("0251007111");
+		assertEquals(result.get(0).getDepartmentNum(),"025000");
+		assertEquals(result.get(0).getName(),"lily");
 	}
 
 	@Test
