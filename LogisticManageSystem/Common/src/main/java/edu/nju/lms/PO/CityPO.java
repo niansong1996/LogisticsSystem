@@ -22,7 +22,24 @@ public class CityPO implements Serializable{
 	 * the business halls' numbers that belongs to the city
 	 */
 	private ArrayList<String> businessNums;
-	
+
+	public CityPO(String id,String name, String businessNums,String distance) {
+		this.distance = new ArrayList<Double>();
+		this.businessNums = new ArrayList<String>();
+		this.id = id;
+		this.name = name;
+		String distanceTmp = distance.replace("[", "").replace("]", "");
+		String businessNumsTmp = businessNums.replace("[", "").replace("]", "");
+		if(!distanceTmp.equals("")){
+			String distanceTmpArray[] = distanceTmp.split(", ");
+			for(String tmp : distanceTmpArray) this.distance.add(Double.parseDouble(tmp));
+		}
+		if(!businessNumsTmp.equals("")){
+		String businessNumsTmpArray[] = businessNumsTmp.split(", ");
+		for(String tmp : businessNumsTmpArray) this.businessNums.add(tmp);
+		}
+	}
+
 	public CityPO(String id,String name, ArrayList<String> businessNums,ArrayList<Double> distance) {
 		super();
 		this.id = id;
@@ -30,7 +47,7 @@ public class CityPO implements Serializable{
 		this.distance = distance;
 		this.businessNums = businessNums;
 	}
-    
+
 	public String getId() {
 		return id;
 	}
@@ -63,6 +80,6 @@ public class CityPO implements Serializable{
 	public void setDistance(ArrayList<Double> distance) {
 		this.distance = distance;
 	}
-	
-	
+
+
 }

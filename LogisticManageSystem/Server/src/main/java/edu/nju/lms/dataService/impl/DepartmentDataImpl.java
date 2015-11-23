@@ -35,7 +35,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 
 	public DepartmentPO findDepartment(String id) throws RemoteException {
 		DepartmentPO department = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo where departmentNum = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo where departmentNum = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			department = (DepartmentPO)POGenerator.generateObject(result, DepartmentPO.class.getName());
@@ -67,7 +67,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public ResultMessage addCity(CityPO city) throws RemoteException {
-		if(findCity(city.getName())==null){
+		if(findCity(city.getId())==null){ 
 			JDBC.ExecuteData(POGenerator.generateInsertOp(city, city.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
@@ -79,7 +79,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 
 	public CityPO findCity(String id) throws RemoteException {
 		CityPO city = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from citypo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from citypo where id = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			city = (CityPO)POGenerator.generateObject(result, CityPO.class.getName());
@@ -92,7 +92,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	public ResultMessage deleteCity(String id) throws RemoteException {
 		CityPO city = findCity(id);
 		if(!(city==null)){
-			JDBC.ExecuteData("delete from citypo where id = "+id+";");
+			JDBC.ExecuteData("delete from citypo where id = \""+id+"\";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -101,7 +101,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public ResultMessage updateCity(CityPO city) throws RemoteException {
-		CityPO tempCity = findCity(city.getName());
+		CityPO tempCity = findCity(city.getId());
 		if(!(tempCity==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(city, city.getClass().getName()));
 			return new ResultMessage(true,null);

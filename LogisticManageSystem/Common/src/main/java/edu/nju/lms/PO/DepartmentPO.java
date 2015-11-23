@@ -17,6 +17,13 @@ public class DepartmentPO implements Serializable{
 	private DepartmentType type;
 	private String location;
 	
+	public DepartmentPO(String departmentNum,String type,String location) {
+		super();
+		this.type = DepartmentType.valueOf(type);
+		this.departmentNum = departmentNum;
+		this.location = location;
+	}
+	
 	public DepartmentPO(DepartmentType type, String departmentNum, String location) {
 		super();
 		this.type = type;

@@ -14,7 +14,7 @@ public class POGenerator {
 			cls = Class.forName(className);
 			if(isList(cls)){
 				result = generateListObject(cls,rs);
-			}else if(isContainer(cls)){
+			}else if(false){
 				result = generateContainerObject(cls,rs);
 			}else{
 				result = generateDataObject(cls,rs);

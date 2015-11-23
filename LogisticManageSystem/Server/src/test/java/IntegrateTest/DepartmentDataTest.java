@@ -72,7 +72,7 @@ public class DepartmentDataTest {
 		Assert.assertEquals(success,departmentData.updateDepartment(departmentPo2));
 		Assert.assertEquals(fail12, departmentData.updateDepartment(departmentPo1));
 	}
-	@Test
+//	@Test
 	public void testAddCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -82,7 +82,7 @@ public class DepartmentDataTest {
 		Assert.assertEquals(fail21,departmentData.addCity(cityPo1));
 		Assert.assertEquals(success, departmentData.addCity(cityPo2));
 	}
-	@Test
+//	@Test
 	public void testDeleteCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -92,7 +92,7 @@ public class DepartmentDataTest {
 		Assert.assertEquals(success, departmentData.deleteCity(cityPo1.getId()));
 		Assert.assertEquals(fail22, departmentData.deleteCity(cityPo1.getId()));
 	}
-	@Test
+//	@Test
 	public void testFindCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -103,7 +103,7 @@ public class DepartmentDataTest {
 		Assert.assertEquals(null, departmentData.findCity(cityPo1.getId()));
 		
 	}
-	@Test
+//	@Test
 	public void testUpdateCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
