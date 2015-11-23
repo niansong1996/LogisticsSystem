@@ -20,7 +20,14 @@
 		</mainPanel>
 		<mainPanel name="ManagerPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="PersonnelManage" class = "MainButton" x="200" y="100" w="128" h="128" type="1" listenerName="PersonnelManageButtonListener"/>
+		    <unit name ="PersonnelManage" class = "MainButton" x="360" y="310" w="256" h="257" type="1" listenerName="PersonnelManageButtonListener"/>
+		    <unit name ="checkList" class = "MainButton" x="100" y="440" w="258" h="128" type="0"/>
+		    <unit name ="InstitutionManage" class = "MainButton" x="360" y="50" w="256" h="257" type="0"/>
+		    <unit name ="log" class = "MainButton" x="100" y="180" w="128" h="128" type="0"/>
+		    <unit name ="receiptList" class = "MainButton" x="230" y="180" w="128" h="128" type="0"/>
+		    <unit name ="addCity" class = "MainButton" x="100" y="50" w="258" h="128" type="0"/>
+		    <unit name ="freightStrategy" class = "MainButton" x="230" y="310" w="128" h="128" type="0"/>
+		    <unit name ="salaryStrategy" class = "MainButton" x="100" y="310" w="128" h="128" type="0"/>
 		</mainPanel>
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>

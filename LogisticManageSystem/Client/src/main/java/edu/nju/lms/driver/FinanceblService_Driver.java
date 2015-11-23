@@ -66,15 +66,15 @@ public class FinanceblService_Driver {
 		ReceiptVO receipt=financeReceipt.createReceipt(null);
 		System.out.println(receipt);
 		
-		result=financeReceipt.saveReceipt(null);
+//		result=financeReceipt.saveReceipt(null);
 		if(result==new ResultMessage(true,"")){
 			System.out.println("save successfully!");
 		}else{
 			System.out.println(result.getErrorMessage());
 		}
 		
-		ArrayList<ReceiptVO> arr=financeReceipt.showReceiptVO(null, null);
-		System.out.println(arr);
+//		ArrayList<ReceiptVO> arr=financeReceipt.showReceiptVO(null, null);
+//		System.out.println(arr);
 				
 		System.out.println(financeReceipt.getReceiptSum(null));
 		
