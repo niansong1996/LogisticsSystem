@@ -88,18 +88,24 @@ public class POGenerator {
 		try {
 
 			for (int j = 1; j < field.length; j++) {
-				if(j!=0) result+=", ";
+				if(j!=1) result+=", ";
 				Field fd1 = object.getClass().getDeclaredField(field[j].getName());
 				fd1.setAccessible(true);
-				result += field[j].getName()+"=\""+ fd1.get(object)+"\" ";
+				if(fd1.getType().getSimpleName().equals("double"))
+					result += field[j].getName()+"="+ fd1.get(object)+" ";
+				else if(fd1.getType().getSimpleName().equals("integer"))
+					result += field[j].getName()+"="+ fd1.get(object)+" ";
+				else
+					result += field[j].getName()+"=\""+ fd1.get(object)+"\" ";
 			}
-			Field fd2 = object.getClass().getDeclaredField(field[0].getName());
+			Field fd2 = object.getClass().getDeclaredField(field[1].getName());
 			fd2.setAccessible(true);
-			result+="where "+field[0].getName()+"=\""+fd2.get(object)+"\";";
+			result+="where "+field[1].getName()+"=\""+fd2.get(object)+"\";";
 		} catch (Exception e) {
 			System.out.println("Get field elements failed!!!");
 			e.printStackTrace();
 		}
+//		System.out.println(result);
 		return result;
 	}
 
@@ -123,7 +129,7 @@ public class POGenerator {
 			for (int j = 1; j < field.length; j++) {
 				Field fd1 = object.getClass().getDeclaredField(field[j].getName());
 				fd1.setAccessible(true);
-//				System.out.println("type is :"+fd1.getType().getSimpleName());
+				//				System.out.println("type is :"+fd1.getType().getSimpleName());
 				if(fd1.getType().getSimpleName().equals("double"))
 					result += ", "+ fd1.get(object)+"";
 				else if(fd1.getType().getSimpleName().equals("integer"))
@@ -135,7 +141,7 @@ public class POGenerator {
 		} catch (Exception e) {
 			System.out.println("Get field elements failed!!!");
 		}
-//		System.out.println(result);
+		//		System.out.println(result);
 		return result;
 	}
 }
