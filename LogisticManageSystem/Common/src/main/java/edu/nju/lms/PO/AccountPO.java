@@ -26,9 +26,6 @@ public class AccountPO implements Serializable{
 	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
 	@Override
 	public boolean equals(Object object){
 		if(this.name.equals(((AccountPO)object).getName())&&

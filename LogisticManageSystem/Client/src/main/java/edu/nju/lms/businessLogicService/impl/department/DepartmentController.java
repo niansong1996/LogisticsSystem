@@ -1,10 +1,12 @@
 package edu.nju.lms.businessLogicService.impl.department;
 
 import java.rmi.Naming;
+import java.util.ArrayList;
 
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogicService.DepartmentblService;
+import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
@@ -92,10 +94,16 @@ public class DepartmentController implements DepartmentblService{
 		return result;
 	}
 	
-	public static void main(String[] args){
-		DepartmentController x=new DepartmentController();
-		CityVO a=new CityVO("025","Nanjing",null,null);
-		x.addCity(a);
-	}
-	
+//	public static void main(String[] args){
+//		DepartmentController x=new DepartmentController();
+//		ArrayList<String> a1=new ArrayList<String>();
+//		a1.add("025101");
+//		ArrayList<Double> a2=new ArrayList<Double>();
+//		a2.add(12345.0);
+//		CityVO a=new CityVO("025","Nanjing",a1,a2);
+//		DepartmentVO depart=new DepartmentVO(DepartmentType.BUSINESSHALL,"025101","025");
+//		ResultMessage result=x.addDepartment(depart);
+//		System.out.println(result.isSuccess());
+//	}
+
 }

@@ -1,8 +1,11 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
+import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
@@ -18,39 +21,117 @@ public class FinanceReceiptblImpl{
 		this.service=service;
 	}
 
+	/**
+	 * TODO
+	 */
 	public ReceiptVO createReceipt(ReceiptVO debit) {
-		// TODO Auto-generated method stub
-		ArrayList<String> expressNums = new ArrayList<String>();
-		expressNums.add("789631561");
-		return new ReceiptVO("1245789630","2015/02/04",250,"2014567890",expressNums);
+		return debit;
 	}
 
-	public ResultMessage saveReceipt(ReceiptVO debit) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+	public ResultMessage addReceipt(ReceiptVO debit) {
+		ResultMessage result=idCheck(debit.getId());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
+		String[] time=debit.getReceiptDate().split("/");
+		Calendar c=Calendar.getInstance();
+		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
+		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		try {
+			result=service.addReceipt(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		return result;
 	}
 
-	public ArrayList<ReceiptVO> showReceiptVO(Calendar date, String department) {
-		// TODO Auto-generated method stub
-		ArrayList<ReceiptVO> receipts = new ArrayList<ReceiptVO>();
-		ArrayList<String> expressNums = new ArrayList<String>();
-		expressNums.add("567952149");
-		receipts.add(new ReceiptVO("879630126","2015/6/8",526,"789632184",expressNums));
-		return receipts;
+	public ResultMessage deleteReceipt(String id) {
+		ResultMessage result=idCheck(id);
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
+		try {
+			result=service.deleteReceipt(id);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		return result;
 	}
 
-	public double getReceiptSum(Calendar date) {
-		// TODO Auto-generated method stub
-		return 520;
+	public ResultMessage updateReceipt(ReceiptVO debit) {
+		ResultMessage result=idCheck(debit.getId());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
+		String[] time=debit.getReceiptDate().split("/");
+		Calendar c=Calendar.getInstance();
+		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
+		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		try {
+			result=service.updateReceipt(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		return result;
+	}
+
+	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department) {
+		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
+		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
+		try {
+			listPO=service.findReceipt(date, department);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(ReceiptPO po : listPO){
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			String time=sdf.format(po.getReceiptDate());
+			ReceiptVO temp=new ReceiptVO(po.getId(),time,po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			listVO.add(temp);
+		}
+		return listVO;
 	}
 
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
-		// TODO Auto-generated method stub
-		ArrayList<ReceiptVO> receipts = new ArrayList<ReceiptVO>();
-		ArrayList<String> expressNums = new ArrayList<String>();
-		expressNums.add("567952149");
-		receipts.add(new ReceiptVO("879630126","2015/6/8",526,"789632184",expressNums));
-		return receipts;
+		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
+		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
+		try {
+			listPO=service.findReceipt(date);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(ReceiptPO po : listPO){
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			String time=sdf.format(po.getReceiptDate());
+			ReceiptVO temp=new ReceiptVO(po.getId(),time,po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			listVO.add(temp);
+		}
+		return listVO;
 	}
 
+	public double getReceiptSum(Calendar date) {
+		ArrayList<ReceiptVO> listVO=showReceiptList(date);
+		double sum=0;
+		for(ReceiptVO vo : listVO){
+			sum+=vo.getMoney();
+		}
+		return sum;
+	}
+
+	public ResultMessage idCheck(String id){
+		ResultMessage result=new ResultMessage(true,"");
+		if(id.length()!=10){
+			result.setSuccess(false);
+			result.setErrorMessage("输入编号位数不正确！");
+			return result;
+		}
+		if(!(id.substring(0, 2).equals("08"))){
+			result.setSuccess(false);
+			result.setErrorMessage("输入编号格式不正确！");
+		}
+		return result;
+	}
 }

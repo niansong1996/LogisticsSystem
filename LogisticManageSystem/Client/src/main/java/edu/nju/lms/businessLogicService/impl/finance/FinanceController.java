@@ -48,12 +48,12 @@ public class FinanceController
 		try {
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
 			accountf=new FinanceAccountblImpl(accountData);
-//			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
-//			pay=new FinancePayblImpl(payData);
-//			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
-//			receipt=new FinanceReceiptblImpl(receiptData);
-//			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
-//			strategy=new FinanceStrategyblImpl(strategyData);
+			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
+			pay=new FinancePayblImpl(payData);
+			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
+			receipt=new FinanceReceiptblImpl(receiptData);
+			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
+			strategy=new FinanceStrategyblImpl(strategyData);
 			//logController=new LogController();
 		} catch (Exception e) {
 			System.out.println("网络未连接");
@@ -87,22 +87,6 @@ public class FinanceController
 		return strategy.updateSalaryStrategy(salaryStrategy);
 	}
 
-	public ReceiptVO createReceipt(ReceiptVO debit) {
-		return receipt.createReceipt(debit);
-	}
-
-	public ResultMessage saveReceipt(ReceiptVO debit) {
-		return receipt.saveReceipt(debit);
-	}
-	public ArrayList<ReceiptVO> showReceiptVO(Calendar date, String department) {
-		return receipt.showReceiptVO(date, department);
-	}
-	public double getReceiptSum(Calendar date) {
-		return receipt.getReceiptSum(date);
-	}
-	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
-		return receipt.showReceiptList(date);
-	}
 	public RentVO createRent(int sum, int year) {
 		return pay.createRent(sum, year);
 	}
@@ -154,14 +138,26 @@ public class FinanceController
 	public ResultMessage createSalary(SalaryVO salaryVO) {
 		return pay.createSalary(salaryVO);
 	}
-	
-	public static void main(String[] args){
-		FinanceController demo=new FinanceController();
-		AccountVO a1=new AccountVO("6225887941959874",12345);
-		demo.addAccount(a1);
-		AccountVO a2=new AccountVO("6225887941959874",156789);
-		ResultMessage c=demo.updateAccount(a2);
-		System.out.println(c.isSuccess());
-		
+	public ReceiptVO createReceipt(ReceiptVO debit) {
+		return receipt.createReceipt(debit);
 	}
+	public ResultMessage addReceipt(ReceiptVO debit) {
+		return receipt.addReceipt(debit);
+	}
+	public ResultMessage deleteReceipt(String id) {
+		return receipt.deleteReceipt(id);
+	}
+	public ResultMessage updateReceipt(ReceiptVO debit) {
+		return receipt.updateReceipt(debit);
+	}
+	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department) {
+		return receipt.showReceiptList(date, department);
+	}
+	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
+		return receipt.showReceiptList(date);
+	}
+	public double getReceiptSum(Calendar date) {
+		return receipt.getReceiptSum(date);
+	}
+	
 }

@@ -98,6 +98,19 @@ public class PersonnelblImpl  {
 		return result;
 	}
 	
+	public ResultMessage updatePerTime(String id,double amount){
+		ResultMessage result=new ResultMessage(false,"");
+		ArrayList<PersonnelVO> list=findPersonInfo(id);
+		PersonnelVO temp=list.get(0);
+		if(temp!=null){
+			Double currentAmount=temp.getPerTime();
+			amount+=currentAmount;
+			temp.setPerTime(amount);
+			result=updatePersonnel(temp);
+		}
+		return result;
+	}
+	
 	public PersonType changeToPO(String duty){
 		if(duty.equals("管理员")){
 			return PersonType.ADMINISTRATOR;

@@ -42,4 +42,10 @@ public interface PersonnelblService {
 	 * @return {@link ResultMessage}
 	 */
 	public ResultMessage addPersonnel(PersonnelVO Personnel);
+	
+	/**
+	 * update the money for courier when a receipt is created
+	 */
+	public ResultMessage updatePerTimes(String id,double amount);
 }
+
