@@ -8,14 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.MainPanel;
@@ -74,8 +71,6 @@ public class MainTable extends JPanel{
 		 * sort method
 		 * when click the column, data will be sorted
 		 */
-		RowSorter<javax.swing.table.TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
-        table.setRowSorter(sorter);
         setOpaque();
         scrollpane.setBounds(2,2,this.getWidth()-2,this.getHeight()-2);
 		add(scrollpane);
