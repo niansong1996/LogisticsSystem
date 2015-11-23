@@ -29,7 +29,7 @@ public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
 		}
 	}
 
-	public List<ReceiptPO> findReceipt(Calendar date) throws RemoteException {
+	public ArrayList<ReceiptPO> findReceipt(Calendar date) throws RemoteException {
 		ArrayList<ReceiptPO> result=null;
 		Iterator<ReceiptPO> it = ReceiptList.iterator();
 		while(it.hasNext()){
@@ -79,6 +79,12 @@ public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
 		else{
 			return new ResultMessage(false,"Could not find the receipt!");
 		}
+	}
+
+	public ArrayList<ReceiptPO> findReceipt(Calendar date, String department)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

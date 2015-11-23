@@ -54,7 +54,7 @@ public class FinanceStrategyImpl implements FinanceStrategyDataService{
 			return new ResultMessage(true,"The salary strategy already exists");
 	}
 
-	public SalaryStrategyPO findSalaryStrategy() throws RemoteException {
+	public SalaryStrategyPO findSalaryStrategy(PersonType type) throws RemoteException {
 		return this.salaryStrategy;
 	}
 

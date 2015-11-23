@@ -43,12 +43,6 @@ public class ReceiptVO extends ListVO{
 		this.amount = amount;
 	}
 
-	public double getMoney() {
-		return amount;
-	}
-	public void setMoney(double money) {
-		this.amount = money;
-	}
 	public ArrayList<String> getExpressNums() {
 		return expressNums;
 	}

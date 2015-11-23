@@ -63,6 +63,7 @@ public class FinanceController
 	public FinanceController(String id){
 		this.logID=id;
 	}
+	
 	public ResultMessage addPriceStrategy(PriceStrategyVO priceStrategy) {
 		return strategy.addPriceStrategy(priceStrategy);
 	}
@@ -79,8 +80,8 @@ public class FinanceController
 		return strategy.addSalaryStrategy(salaryStrategy);
 	}
 
-	public SalaryStrategyVO findSalaryStrategy() {
-		return strategy.findSalaryStrategy();
+	public SalaryStrategyVO findSalaryStrategy(String type) {
+		return strategy.findSalaryStrategy(type);
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
@@ -158,6 +159,9 @@ public class FinanceController
 	}
 	public double getReceiptSum(Calendar date) {
 		return receipt.getReceiptSum(date);
+	}
+	public ResultMessage checkComplete(ReceiptVO debit) {
+		return receipt.checkComplete(debit);
 	}
 	
 }

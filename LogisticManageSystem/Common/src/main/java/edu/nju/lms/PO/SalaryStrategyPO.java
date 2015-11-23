@@ -11,11 +11,11 @@ public class SalaryStrategyPO implements Serializable{
 	private static final long serialVersionUID = 3617529261196612698L;
 	private PersonType type;
 	private double basic;
-	private int perTime;
+	private double perTime;
 	private double bonus;
 	
 	public SalaryStrategyPO(PersonType type, double basic, 
-			int pertime,double bonus) {
+			double pertime,double bonus) {
 		this.type = type;
 		this.basic = basic;
 		this.perTime = pertime;
@@ -38,11 +38,11 @@ public class SalaryStrategyPO implements Serializable{
 		this.basic = basic;
 	}
 
-	public int getPerTime() {
+	public double getPerTime() {
 		return perTime;
 	}
 
-	public void setPerTime(int perTime) {
+	public void setPerTime(double perTime) {
 		this.perTime = perTime;
 	}
 

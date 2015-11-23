@@ -18,7 +18,7 @@ public interface FinanceStrategyblService {
 	//薪水策略
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy);
 	
-	public SalaryStrategyVO findSalaryStrategy();
+	public SalaryStrategyVO findSalaryStrategy(String type);
 	
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy);
 }

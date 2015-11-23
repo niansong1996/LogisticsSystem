@@ -8,10 +8,11 @@ package edu.nju.lms.VO;
 public class SalaryStrategyVO {
 	private String type;
 	private double basic;
-	private int perTime;
+	//我觉得这里应该是确定运一次给多少钱
+	private double perTime;
 	private double bonus;
 	
-	public SalaryStrategyVO(String type,  double basic, int perTime, double bonus) {
+	public SalaryStrategyVO(String type,  double basic, double perTime, double bonus) {
 		super();
 		this.type = type;
 		this.basic = basic;
@@ -30,10 +31,10 @@ public class SalaryStrategyVO {
 	public void setBasic(double basic) {
 		this.basic = basic;
 	}
-	public int getPerTime() {
+	public double getPerTime() {
 		return perTime;
 	}
-	public void setPerTime(int perTime) {
+	public void setPerTime(double perTime) {
 		this.perTime = perTime;
 	}
 	public double getBonus() {

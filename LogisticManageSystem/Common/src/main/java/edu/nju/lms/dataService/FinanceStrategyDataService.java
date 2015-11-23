@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -52,7 +53,7 @@ public interface FinanceStrategyDataService extends Remote{
 	 * @throws RemoteException
 	 * @see SalaryStrategyPO
 	 */
-	public SalaryStrategyPO findSalaryStrategy() throws RemoteException;
+	public SalaryStrategyPO findSalaryStrategy(PersonType type) throws RemoteException;
 	
 	/**
 	 * @return ResultMessage

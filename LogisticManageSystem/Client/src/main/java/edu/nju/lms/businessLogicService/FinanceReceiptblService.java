@@ -26,4 +26,6 @@ public interface FinanceReceiptblService {
 	
 	public double getReceiptSum(Calendar date);
 	
+	public ResultMessage checkComplete(ReceiptVO debit);
+	
 }
