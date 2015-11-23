@@ -5,6 +5,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 public class POGenerator {
 	public static Object generateObject(ResultSet rs,String className){
@@ -12,13 +17,7 @@ public class POGenerator {
 		Object result = null;
 		try {
 			cls = Class.forName(className);
-			if(isList(cls)){
-				result = generateListObject(cls,rs);
-			}else if(false){
-				result = generateContainerObject(cls,rs);
-			}else{
-				result = generateDataObject(cls,rs);
-			}
+			result = generateDataObject(cls,rs);
 
 		} catch (Exception e) {
 			System.out.println("Generate PO failed!!");
@@ -44,15 +43,37 @@ public class POGenerator {
 	}
 
 
-	public static Object generateListObject(Class<?> cls,ResultSet rs){
-		return null;
+	public static void generateMultiObject(List list,ResultSet rs, String className){
+		Class<?> cls = null;
+		try {
+			cls = Class.forName(className);
+			Object result = null;
+			Constructor<?> cons[] = cls.getConstructors();  
+			Constructor<?> constructor = cons[0];
+			int paraNum = constructor.getParameterCount();
+
+			while(rs.next()){
+				switch(paraNum){
+				case 1: result = constructor.newInstance(rs.getString(2));break;
+				case 2: result = constructor.newInstance(rs.getString(2),rs.getString(3));break;
+				case 3: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4));break;
+				case 4: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));break;
+				case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
+				}
+			list.add(cls.cast(result));
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Generate PO failed!!");
+			e.printStackTrace();
+		}
 	}
 
 	public static Object generateContainerObject(Class<?> cls,ResultSet rs){
 		return null;
 	}
 	public static boolean isList(Class<?> cls){
-		if(cls.getSimpleName().equals("ListPO")) return true;
+		if(cls.getSuperclass().getSimpleName().equals("ListPO")) return true;
 		return false;
 	}
 	public static boolean isContainer(Class<?> cls){
@@ -87,6 +108,14 @@ public class POGenerator {
 		Field[] field = object.getClass().getDeclaredFields();
 		try {
 
+			if(isList(object.getClass())){
+				Field[] fatherField = object.getClass().getFields();
+				Field fd1;
+				fd1 = object.getClass().getField(fatherField[0].getName());
+				fd1.setAccessible(true);
+				result += fd1.getName()+"=\""+ fd1.get(object)+"\" ,";
+			}
+
 			for (int j = 1; j < field.length; j++) {
 				if(j!=1) result+=", ";
 				Field fd1 = object.getClass().getDeclaredField(field[j].getName());
@@ -95,17 +124,23 @@ public class POGenerator {
 					result += field[j].getName()+"="+ fd1.get(object)+" ";
 				else if(fd1.getType().getSimpleName().equals("integer"))
 					result += field[j].getName()+"="+ fd1.get(object)+" ";
+				else if(fd1.getType().getSimpleName().equals("Calendar"))
+					result += field[j].getName()+"=\""+ Cal2String((Calendar)fd1.get(object)) +"\" ";
 				else
 					result += field[j].getName()+"=\""+ fd1.get(object)+"\" ";
 			}
 			Field fd2 = object.getClass().getDeclaredField(field[1].getName());
+			if(isList(object.getClass())){
+				Field[] fatherField = object.getClass().getFields();
+				fd2 = object.getClass().getField(fatherField[0].getName());
+			}
 			fd2.setAccessible(true);
-			result+="where "+field[1].getName()+"=\""+fd2.get(object)+"\";";
+			result+="where "+fd2.getName()+"=\""+fd2.get(object)+"\";";
 		} catch (Exception e) {
 			System.out.println("Get field elements failed!!!");
 			e.printStackTrace();
 		}
-//		System.out.println(result);
+		//	System.out.println(result);
 		return result;
 	}
 
@@ -119,17 +154,31 @@ public class POGenerator {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+
+
 		Field[] field = object.getClass().getDeclaredFields();
+
+
+
 		try {
+
+			if(isList(object.getClass())){
+				Field[] fatherField = object.getClass().getFields();
+				Field fd1;
+				fd1 = object.getClass().getField(fatherField[0].getName());
+				fd1.setAccessible(true);
+				result += ", \""+ fd1.get(object)+"\"";
+			}
 
 			for (int j = 1; j < field.length; j++) {
 				Field fd1 = object.getClass().getDeclaredField(field[j].getName());
 				fd1.setAccessible(true);
-				//				System.out.println("type is :"+fd1.getType().getSimpleName());
 				if(fd1.getType().getSimpleName().equals("double"))
 					result += ", "+ fd1.get(object)+"";
 				else if(fd1.getType().getSimpleName().equals("integer"))
 					result += ", "+ fd1.get(object)+"";
+				else if(fd1.getType().getSimpleName().equals("Calendar"))
+					result += ",\""+ Cal2String((Calendar)fd1.get(object))+"\"";
 				else
 					result += ", \""+ fd1.get(object)+"\"";
 			}
@@ -137,7 +186,18 @@ public class POGenerator {
 		} catch (Exception e) {
 			System.out.println("Get field elements failed!!!");
 		}
-		//		System.out.println(result);
+		//	System.out.println(result);
 		return result;
 	}
+
+	public static String Cal2String(Object cal){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return sdf.format(((Calendar)cal).getTime());
+	}
+
+	public static <T> T[] concat(T[] first, T[] second) {
+		T[] result = Arrays.copyOf(first, first.length + second.length);
+		System.arraycopy(second, 0, result, first.length, second.length);
+		return result;
+	}         
 }

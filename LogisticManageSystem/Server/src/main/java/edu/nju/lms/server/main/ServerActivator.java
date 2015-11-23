@@ -5,9 +5,11 @@ import java.rmi.registry.LocateRegistry;
 
 import edu.nju.lms.dataService.DepartmentDataService;
 import edu.nju.lms.dataService.FinanceAccountDataService;
+import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.dataService.impl.DepartmentDataImpl;
 import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
+import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
 import edu.nju.lms.dataService.impl.UserDataImpl;
 import edu.nju.lms.sql.JDBC;
 
@@ -28,10 +30,12 @@ public class ServerActivator
 	         UserDataService userDataService = new UserDataImpl();  
 	         FinanceAccountDataService financeAccountDataService = new FinanceAccountDataImpl();
 	         DepartmentDataService departmentDataService = new DepartmentDataImpl();
+	         FinancePaymentDataService financePaymentDataService = new FinancePaymentDataImpl();
 	              
 	         Naming.rebind("UserDataService", userDataService);
 	         Naming.rebind("FinanceAccountDataService", financeAccountDataService);
 	         Naming.rebind("DepartmentDataService", departmentDataService);
+	         Naming.rebind("FinancePaymentDataService", financePaymentDataService);
 	             
 	         //如果要把实例注册到另一台启动了RMI注册服务的机器上    
 	         //Naming.rebind("//192.168.1.105:1099/Hello",hello);    
