@@ -110,10 +110,6 @@ public class POGenerator {
 	}
 
 
-
-
-
-
 	public static String generateInsertOp(Object object ,String className){
 		String[] classSatter = className.split("\\.");
 		String poName = classSatter[classSatter.length-1];
