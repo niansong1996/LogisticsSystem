@@ -33,6 +33,10 @@ public class MainButton extends JLabel{
 		setBounds(x,y,w,h);
 	}
 	
+	public MainButton(String name){
+		this.name = name;
+	}
+	
 	public void paintComponent(Graphics g){
 		String path = "";
 		if(isIn){

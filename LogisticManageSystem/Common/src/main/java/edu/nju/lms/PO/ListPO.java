@@ -10,7 +10,7 @@ public abstract class ListPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5697602870723648981L;
-	protected String id;
+	public String id;
 	protected ListState state;
 	
 	public ListPO(String id) {

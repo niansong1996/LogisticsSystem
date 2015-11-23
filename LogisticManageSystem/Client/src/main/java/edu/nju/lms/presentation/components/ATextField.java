@@ -39,7 +39,6 @@ public class ATextField extends AbstractCellEditor implements TableCellEditor, T
 
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		return (Component) table.getValueAt(row, column) ;
-		//return new MyTextField();
 	}
 
 	public Object getCellEditorValue() {

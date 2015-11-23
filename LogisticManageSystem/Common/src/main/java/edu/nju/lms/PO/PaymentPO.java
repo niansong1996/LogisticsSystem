@@ -1,6 +1,9 @@
 package edu.nju.lms.PO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import edu.nju.lms.data.PaymentType;
 
@@ -13,6 +16,20 @@ public class PaymentPO extends ListPO {
 	private Calendar payTime;
 	private String account;
 	private double amount;
+	
+	public PaymentPO(String id,String paymentType, String payTime, String account,
+			String amount) {
+		super(id);
+		this.paymentType = PaymentType.valueOf(paymentType);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		this.payTime = Calendar.getInstance();
+		try {
+			this.payTime.setTime(sdf.parse(payTime));
+		} catch (ParseException e) {System.out.println("parse failed!!!");}
+		this.account = account;
+		this.amount = Double.parseDouble(amount);
+	}
+	
 	public PaymentPO(String id,PaymentType paymentType, Calendar payTime, String account,
 			double amount) {
 		super(id);
@@ -54,5 +71,17 @@ public class PaymentPO extends ListPO {
 		this.amount = amount;
 	}
 	
+	@Override
+	public boolean equals(Object object){
+		PaymentPO payment = (PaymentPO)object;
+		if(this.paymentType==payment.paymentType)
+			if(this.payTime.getTime().getYear()==payment.payTime.getTime().getYear())
+				if(this.payTime.getTime().getMonth()==payment.payTime.getTime().getMonth())
+					if(this.payTime.getTime().getDay()==payment.payTime.getTime().getDay())
+				if(this.account.equals(payment.account))
+					if(this.amount==payment.amount)
+						return true;
+		return false;
+	}
 	
 }

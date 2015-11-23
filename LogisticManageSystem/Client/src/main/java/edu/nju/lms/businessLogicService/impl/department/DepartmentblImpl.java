@@ -94,12 +94,8 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage addCity(CityVO city) {
-		ResultMessage result=idCheck(city.getId());
-		if(!result.isSuccess()){
-			return result;
-		}
+		ResultMessage result=new ResultMessage(false,"网络未连接");
 		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.addCity(cityPO);
 		} catch (RemoteException e) {

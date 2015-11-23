@@ -36,3 +36,12 @@ userName varchar(12) not null unique,
 password varchar(12) not null,
 power varchar(20) not null
 );
+create table paymentpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+paymentType varchar(20) not null,
+payTime datetime not null,
+account varchar(20) not null,
+amount double not null
+);

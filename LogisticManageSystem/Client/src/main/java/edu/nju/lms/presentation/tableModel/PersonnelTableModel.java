@@ -2,18 +2,20 @@ package edu.nju.lms.presentation.tableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MainTable;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -40,7 +42,7 @@ public class PersonnelTableModel implements TableModel{
 
 	public Class<?> getColumnClass(int columnIndex) {
 		if(columnIndex==7) {
-			return JButton.class;
+			return MainButton.class;
 		}
 		return MyTextField.class;
 	}
@@ -59,11 +61,19 @@ public class PersonnelTableModel implements TableModel{
 
 	public Object getValueAt(final int rowIndex, int columnIndex) {
 		if(columnIndex==7){
-			JButton button = new JButton("删除");
-			button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			MainButton button = new MainButton("delete");
+			button.addMouseListener(new MouseListener() {
+				public void mouseReleased(MouseEvent e) {
 					personnel.remove(table.getTable().getSelectedRow());
 					table.repaint();
+				}
+				public void mousePressed(MouseEvent e) {
+				}
+				public void mouseExited(MouseEvent e) {
+				}
+				public void mouseEntered(MouseEvent e) {	
+				}
+				public void mouseClicked(MouseEvent e) {
 				}
 			});
 			return button;
@@ -99,8 +109,8 @@ public class PersonnelTableModel implements TableModel{
 
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		if(columnIndex==7){
-			table.remove((JButton)aValue);
-			//table.repaint();
+			table.remove((MainButton)aValue);
+			table.repaint();
 			return;
 		}
 		MyTextField text = (MyTextField) aValue;

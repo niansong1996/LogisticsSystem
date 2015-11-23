@@ -2,8 +2,8 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.data.ResultMessage;
@@ -13,40 +13,15 @@ import edu.nju.lms.data.ResultMessage;
  * 2015/10/25
  */
 public interface FinanceReceiptDataService extends Remote{
-	/**
-	 * @param ReceiptPO
-	 * @return ResultMessage
-	 * @throws RemoteException
-	 */
+	
 	public ResultMessage addReceipt(ReceiptPO Receipt) throws RemoteException;
-	
-	/**
-	 * @param date
-	 * @return a list of ReceiptPO
-	 * @throws RemoteException
-	 * @see ReceiptPO
-	 */
-	public List<ReceiptPO> findReceipt(Calendar date) throws RemoteException;
-	
-	/**
-	 * @param id
-	 * @return ReceiptPO
-	 * @throws RemoteException
-	 * @see ReceiptPO
-	 */
-	public ReceiptPO findReceipt(String id) throws RemoteException;
-	
-	/**
-	 * @param id
-	 * @return ResultMessage
-	 * @throws RemoteException
-	 */
+
 	public ResultMessage deleteReceipt(String id) throws RemoteException;
 	
-	/**
-	 * @param ReceiptPO
-	 * @return ResultMessage
-	 * @throws RemoteException
-	 */
 	public ResultMessage updateReceipt(ReceiptPO Receipt) throws RemoteException;
+	
+	public ArrayList<ReceiptPO> findReceipt(Calendar date) throws RemoteException;
+	
+	public ArrayList<ReceiptPO> findReceipt(Calendar date,String department) throws RemoteException;
+	
 }

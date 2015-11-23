@@ -10,11 +10,13 @@ import edu.nju.lms.PO.PaymentPO;
 import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinancePaymentDataService;
+import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
 import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
+import edu.nju.lms.sql.JDBC;
 import junit.framework.Assert;
 
 public class FinancePaymentDataTest {
-	public FinancePaymentDataService financePaymentData = new FinancePaymentDataImpl();
+	public FinancePaymentDataService financePaymentData;
 	Calendar cal1 = Calendar.getInstance();
 	Calendar cal2 = Calendar.getInstance();
 	public AccountPO accountPo1 = new AccountPO("6225887941959874",1212343.5);
@@ -36,30 +38,45 @@ public class FinancePaymentDataTest {
 	
 	@Test
 	public void testAddPayment() throws RemoteException{
+		financePaymentData = new FinancePaymentDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table paymentpo");
 		Assert.assertEquals(success,financePaymentData.addPayment(paymentPo1));
 		Assert.assertEquals(fail1, financePaymentData.addPayment(paymentPo1));
 		Assert.assertEquals(success, financePaymentData.addPayment(paymentPo2));
 	}
 	@Test
 	public void testDeletePayment() throws RemoteException{
+		financePaymentData = new FinancePaymentDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo1);
 		Assert.assertEquals(success, financePaymentData.deletePayment(paymentPo1.getId()));
 		Assert.assertEquals(fail2, financePaymentData.deletePayment(paymentPo1.getId()));
 	}
 	@Test
 	public void testFindPayment_num() throws RemoteException{
+		financePaymentData = new FinancePaymentDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(paymentPo2.getId()));
 		Assert.assertEquals(null, financePaymentData.findPayment(paymentPo1.getId()));
 	}
 	@Test 
 	public void testFindPayment_time() throws RemoteException{
+		financePaymentData = new FinancePaymentDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2));
 		Assert.assertEquals(null, financePaymentData.findPayment(cal1));
 	}
 	@Test
 	public void testUpdatePayment() throws RemoteException{
+		financePaymentData = new FinancePaymentDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(success, financePaymentData.updatePayment(paymentPo2));
 		Assert.assertEquals(fail2, financePaymentData.updatePayment(paymentPo1));

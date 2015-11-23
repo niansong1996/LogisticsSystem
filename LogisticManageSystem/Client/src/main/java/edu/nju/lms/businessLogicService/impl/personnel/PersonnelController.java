@@ -79,4 +79,7 @@ public class PersonnelController implements PersonnelblService{
 //		}
 		return result;
 	}
+	public ResultMessage updatePerTimes(String id, double amount) {
+		return personbl.updatePerTime(id, amount);
+	}
 }
