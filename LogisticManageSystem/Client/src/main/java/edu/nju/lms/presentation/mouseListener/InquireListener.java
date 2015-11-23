@@ -15,7 +15,7 @@ public class InquireListener extends ButtonListener{
 	
 	public void mouseEntered(MouseEvent e) {
 		button.setIn(true);
-		controller.changeTo("MainPanel");
+		controller.changeTo("InquirePanel");
 		button.repaint();
 	}
 

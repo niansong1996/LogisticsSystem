@@ -74,8 +74,8 @@ public class MainTable extends JPanel{
 		 * sort method
 		 * when click the column, data will be sorted
 		 */
-		RowSorter<javax.swing.table.TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
-        table.setRowSorter(sorter);
+//		RowSorter<javax.swing.table.TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
+//        table.setRowSorter(sorter);
         setOpaque();
         scrollpane.setBounds(2,2,this.getWidth()-2,this.getHeight()-2);
 		add(scrollpane);

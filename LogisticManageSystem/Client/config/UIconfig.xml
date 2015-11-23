@@ -2,24 +2,24 @@
 <presentation>
 	<Frame name = "MainFrame" class = "MainFrame" width = "1080" height = "720">
 		<mainPanel name = "MainPanel" class = "MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="username" class = "Component" x="620" y="270" w="78" h="25"/>
 			<component name="password" class = "Component" x="620" y="360" w="78" h="25"/>
-			<component name="loginback" class = "Component" x="560" y="120" w="400" h="500"/>
+			<component name="loginback1" class = "Component" x="560" y="120" w="400" h="500"/>
 			<unit name ="SignIn" class = "MainButton" x="685" y="500" w="150" h="32" type="1" listenerName="SignInButtonListener"/>
 			<unit name ="userName" class = "MyTextField" x="715" y="270" w="168" h="23" type="0"/>
 			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="168" h="23" type="0"/>
-			<unit name ="loginButton" class = "MainButton" x="560" y="60" w="100" h="60" type="1" listenerName="LogInListener"/>
-			<unit name ="inquireButton" class = "MainButton" x="660" y="60" w="100" h="60" type="0"/>
+			<unit name ="loginButton" class = "MainButton" x="565" y="130" w="195" h="44" type="0"/>
+			<unit name ="inquireButton1" class = "MainButton" x="760" y="130" w="195" h="44" type="1" listenerName="InquireListener"/>
 		</mainPanel>
 		<mainPanel name = "InquirePanel" class = "MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
-			<component name="loginback" class = "Component" x="560" y="120" w="400" h="500"/>
-			<unit name ="loginButton" class = "MainButton" x="560" y="60" w="100" h="60" type="0"/>
-			<unit name ="inquireButton" class = "MainButton" x="660" y="60" w="100" h="60" type="1" listenerName="InquireListener"/>
+			<component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="loginback1" class = "Component" x="560" y="120" w="400" h="500"/>
+			<unit name ="loginButton1" class = "MainButton" x="565" y="130" w="195" h="44" type="1" listenerName="LogInListener"/>
+			<unit name ="inquireButton" class = "MainButton" x="760" y="130" w="195" h="44" type="0"/>
 		</mainPanel>
 		<mainPanel name="ManagerPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <unit name ="PersonnelManage" class = "MainButton" x="200" y="100" w="128" h="128" type="1" listenerName="PersonnelManageButtonListener"/>
 		</mainPanel>
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
@@ -49,4 +49,5 @@
 		    <unit name ="cancel" class = "MainButton" x="220" y="400" w="75" h="16" type="1" listenerName="CancelAddListener"/>
 		</mainPanel>
 	</Frame>
-</presentation>
+	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
+</presentation> 

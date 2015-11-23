@@ -15,7 +15,7 @@ public class LogInListener extends ButtonListener{
 	
 	public void mouseEntered(MouseEvent e) {
 		button.setIn(true);
-		controller.changeTo("InquirePanel");
+		controller.changeTo("MainPanel");
 		button.repaint();
 	}
 

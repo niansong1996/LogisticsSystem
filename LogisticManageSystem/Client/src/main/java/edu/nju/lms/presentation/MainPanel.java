@@ -45,6 +45,7 @@ public class MainPanel extends JPanel {
 	private int y;
 	private int h;
 	private int w;
+	private String name;
 	public MainPanel(PanelConfig config, UIController controller) {
 		this.controller = controller;
 		this.config = config;
@@ -55,6 +56,7 @@ public class MainPanel extends JPanel {
 		h = Integer.parseInt(button.attributeValue("h"));
 		x = Integer.parseInt(button.attributeValue("x"));
 		y = Integer.parseInt(button.attributeValue("y"));
+		name = button.attributeValue("name");
 		setBounds(x,y,w,h);
 		createComponents();
 		createUnits();
@@ -142,5 +144,10 @@ public class MainPanel extends JPanel {
 
 	public void setUnits(ArrayList<java.awt.Component> units) {
 		this.units = units;
-	}	
+	}
+
+	public String getName() {
+		return name;
+	}
+	
 }
