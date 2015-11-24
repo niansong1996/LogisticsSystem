@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.DepartmentDataService;
-import edu.nju.lms.sql.JDBC;
-import edu.nju.lms.sql.POGenerator;
 
 public class DepartmentDataImpl extends UnicastRemoteObject implements DepartmentDataService{
 	

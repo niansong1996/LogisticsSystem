@@ -8,9 +8,9 @@ import org.junit.Test;
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.dataService.impl.UserDataImpl;
-import edu.nju.lms.sql.JDBC;
 
 public class UserDataTest {
 	UserDataService userData;

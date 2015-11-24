@@ -1,4 +1,4 @@
-package edu.nju.lms.sql;
+package edu.nju.lms.data.utility;
 
 import java.sql.*;
 

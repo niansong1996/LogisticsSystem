@@ -1,27 +1,34 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.List;
 
-import edu.nju.lms.PO.DepartmentPO;
-import edu.nju.lms.PO.PaymentPO;
+import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.DataUtility;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 
-public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
-	private ArrayList<ReceiptPO> ReceiptList = new ArrayList<ReceiptPO>();
+public class FinanceReceiptDataImpl extends UnicastRemoteObject implements FinanceReceiptDataService{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6783659224778825793L;
 	
-	public FinanceReceiptDataImpl(){
+	public FinanceReceiptDataImpl() throws RemoteException{
 		
 	}
 	
-	public ResultMessage addReceipt(ReceiptPO Receipt) throws RemoteException {
-		if(findReceipt(Receipt.getId())==null){
-			this.ReceiptList.add(Receipt);
+	public ResultMessage addReceipt(ReceiptPO receipt) throws RemoteException {
+		if(findReceipt(receipt.getId())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(receipt, receipt.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -30,34 +37,34 @@ public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
 	}
 
 	public ArrayList<ReceiptPO> findReceipt(Calendar date) throws RemoteException {
-		ArrayList<ReceiptPO> result=null;
-		Iterator<ReceiptPO> it = ReceiptList.iterator();
-		while(it.hasNext()){
-			ReceiptPO next = it.next();
-			if(next.getReceiptDate()==date){
-				result.add(next);
-			}
-		}
-		return result;
+		ArrayList<ReceiptPO> receiptList = new ArrayList<ReceiptPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where receiptDate between \""
+				+ DataUtility.Cal2String(date)+" 00:00:00\" and \""+DataUtility.Cal2String(date)+" 23:59:59\";" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(receiptList,result, ReceiptPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return receiptList;
 	}
 	
 	public ReceiptPO findReceipt(String id) throws RemoteException{
-		ReceiptPO result = null;
-		Iterator<ReceiptPO> it = ReceiptList.iterator();
-		while(it.hasNext()){
-			ReceiptPO next = it.next();
-			if(next.getId()==id){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		ReceiptPO receipt = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			receipt = (ReceiptPO)POGenerator.generateObject(result, ReceiptPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return receipt;
 	}
 
 	public ResultMessage deleteReceipt(String id) throws RemoteException {
-		ReceiptPO Receipt = findReceipt(id);
-		if(!(Receipt==null)){
-			ReceiptList.remove(Receipt);
+		ReceiptPO receipt = findReceipt(id);
+		if(!(receipt==null)){
+			JDBC.ExecuteData("delete from receiptpo where id = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -65,15 +72,11 @@ public class FinanceReceiptDataImpl implements FinanceReceiptDataService{
 		}
 	}
 
-	//TODO
-	public ResultMessage updateReceipt(ReceiptPO Receipt)
+	public ResultMessage updateReceipt(ReceiptPO receipt)
 			throws RemoteException {
-		
-		ReceiptPO tempReceipt = findReceipt(Receipt.getId());
-		if(tempReceipt!=null){
-			ReceiptList.remove(findReceipt(Receipt.getId()));
-			ReceiptList.add(Receipt);
-			tempReceipt = Receipt;
+		ReceiptPO tempReceipt = findReceipt(receipt.getId());
+		if(!(tempReceipt==null)){
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(receipt, receipt.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{

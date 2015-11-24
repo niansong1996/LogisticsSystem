@@ -1,7 +1,11 @@
 package edu.nju.lms.PO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import edu.nju.lms.data.PaymentType;
 
 /**
  *@author tj
@@ -17,6 +21,22 @@ public class ReceiptPO extends ListPO {
 	private String courierNum;
 	private ArrayList<String> expressNums;
 	
+	
+	public ReceiptPO(String id,String receiptDate, String amount, String courierNum, String expressNums) {
+		super(id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		this.receiptDate = Calendar.getInstance();
+		try {
+			this.receiptDate.setTime(sdf.parse(receiptDate));
+		} catch (ParseException e) {System.out.println("parse failed!!!");}
+		this.amount = Double.parseDouble(amount);
+		this.courierNum = courierNum;
+		String expressNumsTmp = expressNums.replace("[", "").replace("]", "");
+		if(!expressNumsTmp.equals("")){
+		String expressNumsTmpArray[] = expressNumsTmp.split(", ");
+		for(String tmp : expressNumsTmpArray) this.expressNums.add(tmp);
+		}
+	}
 	public ReceiptPO(String id,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
 		super(id);
 		this.receiptDate = receiptDate;
@@ -56,6 +76,17 @@ public class ReceiptPO extends ListPO {
 	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
-	
+	@Override 
+	public boolean equals(Object object){
+		ReceiptPO receipt = (ReceiptPO)object;
+			if(this.receiptDate.getTime().getYear()==receipt.receiptDate.getTime().getYear())
+				if(this.receiptDate.getTime().getMonth()==receipt.receiptDate.getTime().getMonth())
+					if(this.receiptDate.getTime().getDay()==receipt.receiptDate.getTime().getDay())
+				if(this.courierNum.equals(receipt.courierNum))
+					if(this.amount==receipt.amount)
+//						if(this.expressNums.toString().equals(receipt.expressNums.toString()))
+						return true;
+		return false;
+	}
 	
 }

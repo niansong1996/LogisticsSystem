@@ -13,10 +13,10 @@ import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.PaymentPO;
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.PaymentType;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
-import edu.nju.lms.sql.JDBC;
-import edu.nju.lms.sql.POGenerator;
 
 public class Demo2 {
 	public static FinancePaymentDataService financePaymentData;

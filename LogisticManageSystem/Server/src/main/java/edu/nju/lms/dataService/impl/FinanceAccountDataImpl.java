@@ -13,9 +13,9 @@ import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinanceAccountDataService;
-import edu.nju.lms.sql.JDBC;
-import edu.nju.lms.sql.POGenerator;
 
 public class FinanceAccountDataImpl extends UnicastRemoteObject implements FinanceAccountDataService, Serializable{
 	

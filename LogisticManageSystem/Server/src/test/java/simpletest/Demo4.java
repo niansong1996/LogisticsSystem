@@ -3,8 +3,8 @@ package simpletest;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.AccountPO;
+import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
-import edu.nju.lms.sql.JDBC;
 
 public class Demo4 {
 	public static AccountPO accountPo1 = new AccountPO("6225887941959874",1212343.5);

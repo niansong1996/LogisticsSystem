@@ -12,9 +12,10 @@ import java.util.List;
 import edu.nju.lms.PO.PaymentPO;
 import edu.nju.lms.PO.EarningsPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.DataUtility;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinancePaymentDataService;
-import edu.nju.lms.sql.JDBC;
-import edu.nju.lms.sql.POGenerator;
 
 public class FinancePaymentDataImpl extends UnicastRemoteObject implements FinancePaymentDataService{
 	
@@ -38,7 +39,7 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 	public List<PaymentPO> findPayment(Calendar date) throws RemoteException {
 		ArrayList<PaymentPO> paymentList = new ArrayList<PaymentPO>();
 		ResultSet result = JDBC.ExecuteQuery("select * from paymentpo where payTime between \""
-				+ Cal2String(date)+" 00:00:00\" and \""+Cal2String(date)+" 23:59:59\";" );
+				+ DataUtility.Cal2String(date)+" 00:00:00\" and \""+DataUtility.Cal2String(date)+" 23:59:59\";" );
 		try{
 		if(!result.wasNull())
 			POGenerator.generateMultiObject(paymentList,result, PaymentPO.class.getName());
@@ -94,8 +95,5 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 //		}
 		return result;
 	}
-	public String Cal2String(Object cal){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(((Calendar)cal).getTime());
-	}
+	
 }

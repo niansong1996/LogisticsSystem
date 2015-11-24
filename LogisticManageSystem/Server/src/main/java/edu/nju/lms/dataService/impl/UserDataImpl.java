@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.UserDataService;
-import edu.nju.lms.sql.JDBC;
-import edu.nju.lms.sql.POGenerator;
 
 public class UserDataImpl extends UnicastRemoteObject implements UserDataService{
 

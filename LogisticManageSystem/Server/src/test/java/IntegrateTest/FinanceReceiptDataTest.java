@@ -8,12 +8,13 @@ import org.junit.Test;
 
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.impl.FinanceReceiptDataImpl;
 import junit.framework.Assert;
 
 public class FinanceReceiptDataTest {
-	public FinanceReceiptDataService financeReceiptData = new FinanceReceiptDataImpl();
+	public FinanceReceiptDataService financeReceiptData;
 	
 	Calendar cal1 = Calendar.getInstance();
 	Calendar cal2 = Calendar.getInstance();
@@ -28,12 +29,18 @@ public class FinanceReceiptDataTest {
 	
 	@Test
 	public void testAddReceipt() throws RemoteException{
+		financeReceiptData = new FinanceReceiptDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table receiptpo");
 		Assert.assertEquals(success, financeReceiptData.addReceipt(receipt1));
 		Assert.assertEquals(fail1, financeReceiptData.addReceipt(receipt1));
 		Assert.assertEquals(success, financeReceiptData.addReceipt(receipt2));
 	}
 	@Test
 	public void testDeleteReceipt() throws RemoteException{
+		financeReceiptData = new FinanceReceiptDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt1);
 		Assert.assertEquals(success, financeReceiptData.deleteReceipt(receipt1.getId()));
 		Assert.assertEquals(fail2, financeReceiptData.deleteReceipt(receipt1.getId()));
@@ -41,19 +48,19 @@ public class FinanceReceiptDataTest {
 	}
 	@Test
 	public void testFindReceipt_name() throws RemoteException{
+		financeReceiptData = new FinanceReceiptDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt2);
 		Assert.assertEquals(receipt2, financeReceiptData.findReceipt(receipt2.getId()));
 		Assert.assertEquals(null, financeReceiptData.findReceipt(receipt1.getId()));
 		
 	}
 	@Test
-	public void testFindReceipt_time() throws RemoteException{
-		financeReceiptData.addReceipt(receipt2);
-		Assert.assertEquals(receipt2, financeReceiptData.findReceipt(cal2));
-		Assert.assertEquals(null, financeReceiptData.findReceipt(cal1));
-	}
-	@Test
 	public void testUpdateReceipt() throws RemoteException{
+		financeReceiptData = new FinanceReceiptDataImpl();
+		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt2);
 		Assert.assertEquals(success, financeReceiptData.updateReceipt(receipt2));
 		Assert.assertEquals(fail2, financeReceiptData.updateReceipt(receipt1));

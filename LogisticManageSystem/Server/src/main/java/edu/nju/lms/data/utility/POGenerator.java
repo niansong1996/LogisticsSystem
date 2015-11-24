@@ -1,4 +1,4 @@
-package edu.nju.lms.sql;
+package edu.nju.lms.data.utility;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -60,9 +60,9 @@ public class POGenerator {
 				case 4: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));break;
 				case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
 				}
-			list.add(cls.cast(result));
+				list.add(cls.cast(result));
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("Generate PO failed!!");
 			e.printStackTrace();
@@ -186,7 +186,7 @@ public class POGenerator {
 		} catch (Exception e) {
 			System.out.println("Get field elements failed!!!");
 		}
-		//	System.out.println(result);
+		System.out.println(result);
 		return result;
 	}
 

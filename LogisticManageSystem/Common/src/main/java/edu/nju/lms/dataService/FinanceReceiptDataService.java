@@ -22,6 +22,8 @@ public interface FinanceReceiptDataService extends Remote{
 	
 	public ArrayList<ReceiptPO> findReceipt(Calendar date) throws RemoteException;
 	
+	public ReceiptPO findReceipt(String id) throws RemoteException;
+	
 	public ArrayList<ReceiptPO> findReceipt(Calendar date,String department) throws RemoteException;
 	
 }

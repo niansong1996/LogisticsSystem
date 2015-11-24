@@ -45,3 +45,12 @@ payTime datetime not null,
 account varchar(20) not null,
 amount double not null
 );
+create table receiptpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+receiptDate datetime not null,
+amount double not null,
+courierNum varchar(12) not null,
+expressNums text not null
+);
