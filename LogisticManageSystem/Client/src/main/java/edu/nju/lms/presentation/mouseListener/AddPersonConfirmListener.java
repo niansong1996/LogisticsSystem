@@ -12,6 +12,7 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MyDialog;
 
 /**
  *@author tj
@@ -28,6 +29,10 @@ public class AddPersonConfirmListener extends ButtonListener {
 		for(int i = 0;i<6;i++){
 			JTextField text=(JTextField)units.get(i);
 			info[i]=text.getText();
+			if(info[i].isEmpty()){
+				MyDialog error = new MyDialog("incomplete");
+				return;
+			}
 		}
 		JComboBox box = (JComboBox)units.get(6);
 		String duty = (String) box.getSelectedItem();
@@ -37,9 +42,13 @@ public class AddPersonConfirmListener extends ButtonListener {
 		if(personControl!=null){
 		ResultMessage result = personControl.addPersonnel(person);
 			if(result.isSuccess()){
-				JOptionPane.showMessageDialog(null, "添加成功！");
+				for(int i = 0;i<6;i++){
+					JTextField text=(JTextField)units.get(i);
+					text.setText("");
+				}
+				MyDialog error = new MyDialog("addSuccess");
 			}else{
-				JOptionPane.showMessageDialog(null, result.getErrorMessage());
+				MyDialog error = new MyDialog(result.getErrorMessage());
 			}
 		}
 	}

@@ -11,33 +11,50 @@
 			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="168" h="23" type="0"/>
 			<unit name ="loginButton" class = "MainButton" x="565" y="130" w="195" h="44" type="0"/>
 			<unit name ="inquireButton1" class = "MainButton" x="760" y="130" w="195" h="44" type="1" listenerName="InquireListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name = "InquirePanel" class = "MainPanel" x="0" y="0"  w = "1080" h = "720">
 			<component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="loginback1" class = "Component" x="560" y="120" w="400" h="500"/>
 			<unit name ="loginButton1" class = "MainButton" x="565" y="130" w="195" h="44" type="1" listenerName="LogInListener"/>
 			<unit name ="inquireButton" class = "MainButton" x="760" y="130" w="195" h="44" type="0"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+			<unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="ManagerPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="PersonnelManage" class = "MainButton" x="360" y="310" w="256" h="257" type="1" listenerName="PersonnelManageButtonListener"/>
-		    <unit name ="checkList" class = "MainButton" x="100" y="440" w="258" h="128" type="0"/>
-		    <unit name ="InstitutionManage" class = "MainButton" x="360" y="50" w="256" h="257" type="0"/>
-		    <unit name ="log" class = "MainButton" x="100" y="180" w="128" h="128" type="0"/>
-		    <unit name ="receiptList" class = "MainButton" x="230" y="180" w="128" h="128" type="0"/>
-		    <unit name ="addCity" class = "MainButton" x="100" y="50" w="258" h="128" type="0"/>
-		    <unit name ="freightStrategy" class = "MainButton" x="230" y="310" w="128" h="128" type="0"/>
-		    <unit name ="salaryStrategy" class = "MainButton" x="100" y="310" w="128" h="128" type="0"/>
+		    <unit name ="PersonnelManage" class = "MainButton" x="560" y="360" w="256" h="257" type="1" listenerName="PersonnelManageButtonListener"/>
+		    <unit name ="checkList" class = "MainButton" x="300" y="490" w="258" h="128" type="1" listenerName="CheckListButtonListener"/>
+		    <unit name ="InstitutionManage" class = "MainButton" x="560" y="100" w="256" h="257" type="1" listenerName="DepartManageButtonListener"/>
+		    <unit name ="log" class = "MainButton" x="300" y="230" w="128" h="128" type="1" listenerName="CheckLogButtonListener"/>
+		    <unit name ="receiptList" class = "MainButton" x="430" y="230" w="128" h="128" type="1" listenerName="SumReceiptButtonListener"/>
+		    <unit name ="addCity" class = "MainButton" x="300" y="100" w="258" h="128" type="1" listenerName="CityButtonListener"/>
+		    <unit name ="freightStrategy" class = "MainButton" x="430" y="360" w="128" h="128" type="1" listenerName="FreightStrategyButtonListener"/>
+		    <unit name ="salaryStrategy" class = "MainButton" x="300" y="360" w="128" h="128" type="1" listenerName = "SalaryStrategyButtonListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="PersonnelManage" class = "Component" x="30" y="20" w="98" h="23"/>
-		     <unit name ="mainTable" class = "MainTable" x="100" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+		     <unit name ="guide_back" class="MainButton" x="0" y="0" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_addcity" class="MainButton" x="0" y="40" w="40" h="40" type="0"/>
+		     <unit name ="guide_department" class="MainButton" x="0" y="80" w="40" h="40" type="0"/>
+		     <unit name ="guide_list" class="MainButton" x="0" y="120" w="40" h="40" type="0"/>
+		     <unit name ="guide_loginfo" class="MainButton" x="0" y="160" w="40" h="40" type="0"/>
+		     <unit name ="guide_personnel" class="MainButton" x="0" y="200" w="40" h="40" type="0"/>
+		     <unit name ="guide_salarystrategy" class="MainButton" x="0" y="240" w="40" h="40" type="0"/>
+		     <unit name ="guide_statistic" class="MainButton" x="0" y="280" w="40" h="40" type="0"/>
+		     <unit name ="guide_transportstrategy" class="MainButton" x="0" y="320" w="40" h="40" type="0"/>
+ 		     <unit name ="mainTable" class = "MainTable" x="100" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
 		     <unit name ="addPerson" class = "MainButton" x="50" y="60" w="150" h="32" type="1" listenerName="AddPersonButtonListener"/>
-		     <unit name ="delete" class = "MainButton" x="600" y="600" w="150" h="32" type="1" listenerName="DeletePersonButtonListener"/>
-		     <unit name ="save" class = "MainButton" x="780" y="600" w="150" h="32" type="1" listenerName="SavePersonButtonListener"/>
+		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
+		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SavePersonButtonListener"/>
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
+		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="AddPersonPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="background" class = "Component" x="0" y="0" w="1080" h="720"/>
@@ -54,6 +71,8 @@
 		    <unit name ="personDuty" class = "MyCombox" x="130" y="350" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
 		    <unit name ="confirm" class = "MainButton" x="130" y="400" w="75" h="16" type="1" listenerName="AddPersonConfirmListener"/>
 		    <unit name ="cancel" class = "MainButton" x="220" y="400" w="75" h="16" type="1" listenerName="CancelAddListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>

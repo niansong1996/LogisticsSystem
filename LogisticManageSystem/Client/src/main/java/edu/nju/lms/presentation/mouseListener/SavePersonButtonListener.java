@@ -1,9 +1,13 @@
 package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MainTable;
+import edu.nju.lms.presentation.tableModel.PersonnelTableModel;
 
 /**
  *@author tj
@@ -15,5 +19,7 @@ public class SavePersonButtonListener extends ButtonListener {
 		super(units, controller, button);
 		// TODO Auto-generated constructor stub
 	}
+	public void mouseReleased(MouseEvent e) {
 
+	}
 }

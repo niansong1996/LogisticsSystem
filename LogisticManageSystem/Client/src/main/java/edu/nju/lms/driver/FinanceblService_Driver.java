@@ -59,8 +59,8 @@ public class FinanceblService_Driver {
 			System.out.println(result.getErrorMessage());
 		}
 		//find
-		SalaryStrategyVO svo=financeStrategy.findSalaryStrategy();
-		System.out.println(svo);
+	//	SalaryStrategyVO svo=financeStrategy.findSalaryStrategy();
+//		System.out.println(svo);
 		
 		
 		ReceiptVO receipt=financeReceipt.createReceipt(null);
