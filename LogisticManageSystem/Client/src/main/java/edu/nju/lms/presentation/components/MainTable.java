@@ -3,19 +3,20 @@ package edu.nju.lms.presentation.components;
 import java.awt.Dimension;
 import java.lang.reflect.Constructor;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowSorter;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.MainPanel;
@@ -32,7 +33,7 @@ public class MainTable extends JPanel{
 	protected UIController controller;
 	protected Element element;
 	private JScrollPane scrollpane;
-	private TableModel model;
+	private AbstractTableModel model;
 	/**
 	 * create model and initialize table
 	 * @param element
@@ -47,7 +48,7 @@ public class MainTable extends JPanel{
 				Integer.parseInt(element.attributeValue("w")),Integer.parseInt(element.attributeValue("h")));
 		initializeTable();
 		setWidth(element.attributeValue("cw"), element.attributeValue("rw"));
-		new ATextField(this);
+		//new ATextField(this);
 	}
 	
 	/**
@@ -61,8 +62,8 @@ public class MainTable extends JPanel{
 		 */
 		try {
 			Class<?> myModel = Class.forName(MainPanel.packageName+"tableModel."+element.attributeValue("model"));
-			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class,this.getClass());
-			model = (TableModel) ctr.newInstance(element, controller, this);
+			Constructor<?> ctr = myModel.getConstructor(Element.class,UIController.class);
+			model = (AbstractTableModel) ctr.newInstance(element, controller);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,6 +71,14 @@ public class MainTable extends JPanel{
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFillsViewportHeight(true);
 		table.setShowVerticalLines(false);
+		
+		/**
+		 * initialize components
+		 */
+		TableColumn tc1 = table.getColumnModel().getColumn(0);
+		JCheckBox ckb = new JCheckBox();
+		tc1.setCellEditor(new DefaultCellEditor(ckb));
+        
 		/**
 		 * sort method
 		 * when click the column, data will be sorted
@@ -88,7 +97,7 @@ public class MainTable extends JPanel{
 		/**
 		 * set JScrollpane
 		 */
-		scrollpane = new JScrollPane();  
+		scrollpane = new JScrollPane();
         scrollpane.getViewport().setOpaque(false);
         scrollpane.setOpaque(false);
         scrollpane.setViewportView(table); 
@@ -97,10 +106,10 @@ public class MainTable extends JPanel{
         /**
          * set table
          */
-        table.setOpaque(false);  
+//        table.setOpaque(false);  
         DefaultTableCellRenderer render = new DefaultTableCellRenderer();   
-        render.setOpaque(false);
-        table.setDefaultRenderer(Object.class,render);
+//        render.setOpaque(false);
+//        table.setDefaultRenderer(Object.class,render);
         /**
          * table header opaque
          */
@@ -122,12 +131,12 @@ public class MainTable extends JPanel{
 	 * @param rwStr row width
 	 */
 	private void setWidth(String cwStr, String rwStr){
-		int cw = Integer.parseInt(cwStr);
-		int rw = Integer.parseInt(rwStr);
-		for (int i = 0; i < table.getColumnCount(); i++) {
-			table.getColumnModel().getColumn(i).setPreferredWidth(cw);
-		}
-		table.setRowHeight(rw);
+//		int cw = Integer.parseInt(cwStr);
+//		int rw = Integer.parseInt(rwStr);
+//		for (int i = 0; i < table.getColumnCount(); i++) {
+//			table.getColumnModel().getColumn(i).setPreferredWidth(cw);
+//		}
+		table.setRowHeight(40);
 	}
 
 	public JTable getTable() {
@@ -137,11 +146,11 @@ public class MainTable extends JPanel{
 		this.table = table;
 	}
 
-	public TableModel getModel() {
+	public AbstractTableModel getModel() {
 		return model;
 	}
 
-	public void setModel(TableModel model) {
+	public void setModel(AbstractTableModel model) {
 		this.model = model;
 	}
 	public TableColumnModel getColumnModel(){

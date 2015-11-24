@@ -1,130 +1,85 @@
 package edu.nju.lms.presentation.tableModel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Vector;
 
-import javax.swing.JButton;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
-
+import javax.swing.table.AbstractTableModel;
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.components.MainButton;
-import edu.nju.lms.presentation.components.MainTable;
-import edu.nju.lms.presentation.components.MyTextField;
 
 /**
  * personnel table model
  * @author cuihao
  *
  */
-public class PersonnelTableModel implements TableModel{
-	ArrayList<PersonnelVO> personnel = new ArrayList<PersonnelVO>();
-	MainTable table = null;
-	private String[] name = {"编号","姓名","机构","职务","基本","计次","提成",""};
-	public PersonnelTableModel(Element element, UIController controller, MainTable table) {
+public class PersonnelTableModel extends AbstractTableModel{
+	
+	private static final long serialVersionUID = -215942872351619032L;
+	String[] head = { "选择", "ID", "姓名", "机构","职责", "薪水", "计次", "提成", "", ""};
+	Vector<Object[]> data ;
+	Class<?>[] typeArray = { Boolean.class, Object.class, Object.class,Object.class, Object.class, Double.class, Double.class,
+			Double.class, Object.class, Object.class };
+	ArrayList<PersonnelVO> changed = new ArrayList<PersonnelVO>();
+	public PersonnelTableModel(Element element, UIController controller) {
 		super();
-		PersonnelVO p1 = new PersonnelVO("123", "cuiods", "01", "总经理", 20000, 0, 100000);
-		PersonnelVO p2 = new PersonnelVO("124", "tj", "01", "总经理", 20000, 0, 100000);
-		personnel.add(p1);
-		personnel.add(p2);
-		this.table = table;
-	}
-
-	public void addTableModelListener(TableModelListener l) {
-	}
-
-	public Class<?> getColumnClass(int columnIndex) {
-		if(columnIndex==7) {
-			return MainButton.class;
+		data = new Vector<Object[]>();
+		ArrayList<PersonnelVO> persons = new ArrayList<PersonnelVO>();
+		PersonnelVO personnel1 = new PersonnelVO("12345", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel2 = new PersonnelVO("12346", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel3 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		persons.add(personnel1);
+		persons.add(personnel2);
+		persons.add(personnel3);
+		for (PersonnelVO mperson: persons) {
+			Object[] rowData = { new Boolean(false), mperson.getId(), mperson.getName(), mperson.getDepartmentNum(),mperson.getDuty(),
+					new Double(mperson.getSalary()), new Double(mperson.getPerTime()), new Double(mperson.getBonus()),
+					"", "" };
+			data.add(rowData);
 		}
-		return MyTextField.class;
 	}
 
 	public int getColumnCount() {
-		return 8;
-	}
-
-	public String getColumnName(int columnIndex) {
-		return name[columnIndex];
+		return head.length;
 	}
 
 	public int getRowCount() {
-		return personnel.size();
+		return data.size();
+	}
+	
+	public String getColumnName(int column) {  
+        return head[column];  
+    }  
+
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		return data.get(rowIndex)[columnIndex];
+	}
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex) {  
+        return true;  
+    }
+	
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {  
+        data.get(rowIndex)[columnIndex] = aValue;
+        PersonnelVO p = new PersonnelVO((String)data.get(rowIndex)[1], (String)data.get(rowIndex)[2], (String)data.get(rowIndex)[3],(String)data.get(rowIndex)[4],(Double)data.get(rowIndex)[5], (Double)data.get(rowIndex)[6], (Double)data.get(rowIndex)[7]);
+        changed.add(p);
+        fireTableCellUpdated(rowIndex, columnIndex);  
+    }
+	
+	public Class<?> getColumnClass(int columnIndex) {
+		return typeArray[columnIndex];
 	}
 
-	public Object getValueAt(final int rowIndex, int columnIndex) {
-		if(columnIndex==7){
-			MainButton button = new MainButton("delete");
-			button.addMouseListener(new MouseListener() {
-				public void mouseReleased(MouseEvent e) {
-					personnel.remove(table.getTable().getSelectedRow());
-					table.repaint();
-				}
-				public void mousePressed(MouseEvent e) {
-				}
-				public void mouseExited(MouseEvent e) {
-				}
-				public void mouseEntered(MouseEvent e) {	
-				}
-				public void mouseClicked(MouseEvent e) {
-				}
-			});
-			return button;
-		}
-		PersonnelVO p = personnel.get(rowIndex);
-		Field[] fields = p.getClass().getDeclaredFields();
-		Field current = fields[columnIndex];
-		current.setAccessible(true);
-		Object get = null;
-		try {
-			get = current.get(p);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		if(columnIndex <= 3){
-			return new MyTextField((String) get);
-		}else{
-			Double num = (Double) get;
-			double d = num;
-			String str = d +"";
-			return new MyTextField(str);
-		}
+	public void removeRow(int row) {
+		data.remove(row);
 	}
 
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return true;
-	}
-
-	public void removeTableModelListener(TableModelListener l) {
-	}
-
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		if(columnIndex==7){
-			table.remove((MainButton)aValue);
-			table.repaint();
-			return;
-		}
-		MyTextField text = (MyTextField) aValue;
-		String change = text.getText();
-		PersonnelVO personnelVO = personnel.get(rowIndex);
-		switch(columnIndex){
-		case 0: personnelVO.setId(change); break;
-		case 1: personnelVO.setName(change); break;
-		case 2: personnelVO.setDepartmentNum(change); break;
-		case 3: personnelVO.setDuty(change);break;
-		case 4: personnelVO.setSalary(Double.parseDouble(change)); break;
-		case 5: personnelVO.setPerTime(Double.parseDouble(change)); break;
-		case 6: personnelVO.setBonus(Double.parseDouble(change)); break;
+	public void removeRows(int row, int count) {
+		for (int i = 0; i < count; i++) {
+			if (data.size() > row) {
+				data.remove(row);
+			}
 		}
 	}
-
 }
