@@ -14,7 +14,7 @@ public class ListDataImpl implements ListDataService{
 	
 	private ArrayList<ListPO> list=new ArrayList<ListPO>();
 	
-	public List<ListPO> findList(ListType type) throws RemoteException {
+	public ArrayList<ListPO> findList(ListType type) throws RemoteException {
 		ArrayList<ListPO> result=new ArrayList<ListPO>();
 		return result;
 	}

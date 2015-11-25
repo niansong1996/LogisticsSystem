@@ -54,3 +54,21 @@ amount double not null,
 courierNum varchar(12) not null,
 expressNums text not null
 );
+create table priceStrategypo
+(
+_id_ int unsigned not null auto_increment primary key,
+standard double not null,
+express double not null,
+economic double not null,
+rate1 double not null,
+rate2 double not null,
+rate3 double not null
+);
+create table salaryStrategypo
+(
+_id_ int unsigned not null auto_increment primary key,
+type varchar(20) not null unique,
+basic double not null,
+perTime double not null,
+bonus double not null
+);	
