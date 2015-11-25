@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation;
 
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
@@ -36,18 +37,18 @@ public class UIController {
 		switch(type){
 		case ADMINISTRATOR:break;
 		case COUNTER_INTERMEDIATE:
-			warehouseController = new WarehouseController();
+			warehouseController = BusinessLogicFactory.createWarehouseController();
 		case COUNTER_BUSSINESS:
 		case COURIER:
-			transportController = new TransportController();
+			transportController = BusinessLogicFactory.createTransportController();
 			break;
 		case MANAGER:
-			personnelController = new PersonnelController();
-			departmentController = new DepartmentController();
-			listController = new ListController();
+			personnelController = BusinessLogicFactory.createPersonnelController();
+			departmentController = BusinessLogicFactory.createDepartmentController();
+			listController = BusinessLogicFactory.createListController();
 		case FINANCIAL_ADVANCED:
 		case FINANCIAL_NORMAL:
-			financeController = new FinanceController();
+			financeController = BusinessLogicFactory.createFinanceController();
 			break;
 		}
 	}

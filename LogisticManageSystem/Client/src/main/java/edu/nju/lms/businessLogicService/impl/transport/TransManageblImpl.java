@@ -42,9 +42,9 @@ public class TransManageblImpl{
 		
 	}
 
-	public DriverVO addDriver(DriverVO driverNum) {
-		return new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20");
-	}
+//	public DriverVO addDriver(DriverVO driverNum) {
+//		return new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20");
+//	}
 
 	public ResultMessage saveDriverInfor(DriverVO driverInfor) {
 		return new ResultMessage(true, "");
@@ -58,9 +58,9 @@ public class TransManageblImpl{
 		return new ResultMessage(true, "");
 	}
 
-	public DriverVO findDriver(String vehicleNum) {
-		return new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20");
-	}
+//	public DriverVO findDriver(String vehicleNum) {
+//		return new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20");
+//	}
 
 	public String createCarNum(String businessNum){
 		String temp=String.valueOf(basicCarNum);

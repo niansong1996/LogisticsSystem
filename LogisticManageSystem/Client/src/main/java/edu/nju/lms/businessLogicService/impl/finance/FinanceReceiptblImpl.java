@@ -49,12 +49,12 @@ public class FinanceReceiptblImpl{
 		String[] time=debit.getReceiptDate().split("/");
 		Calendar c=Calendar.getInstance();
 		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
-		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
-		try {
-			result=service.addReceipt(po);
-		} catch (RemoteException e) {
-			// TODO
-		}
+//		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+//		try {
+//			result=service.addReceipt(po);
+//		} catch (RemoteException e) {
+//			// TODO
+//		}
 		return result;
 	}
 
@@ -81,12 +81,12 @@ public class FinanceReceiptblImpl{
 		String[] time=debit.getReceiptDate().split("/");
 		Calendar c=Calendar.getInstance();
 		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
-		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
-		try {
-			result=service.updateReceipt(po);
-		} catch (RemoteException e) {
-			// TODO
-		}
+	//	ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+//		try {
+//			result=service.updateReceipt(po);
+//		} catch (RemoteException e) {
+//			// TODO
+//		}
 		return result;
 	}
 

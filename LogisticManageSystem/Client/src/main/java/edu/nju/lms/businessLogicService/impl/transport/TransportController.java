@@ -25,7 +25,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	TransportToolDataService toolData;
 	TransportListDataService listData;
-	TransportCommdityDataService commodityData;
 	
 	TransManageblImpl manage;
 	TransProcessblImpl process;
