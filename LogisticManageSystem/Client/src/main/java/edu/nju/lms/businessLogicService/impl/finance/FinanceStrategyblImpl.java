@@ -109,8 +109,10 @@ public class FinanceStrategyblImpl{
 			return PersonType.COUNTER_INTERMEDIATE;
 		}else if(duty.equals("营业厅业务员")){
 			return PersonType.COUNTER_BUSSINESS;
-		}else{
+		}else if(duty.equals("快递员")){
 			return PersonType.COURIER;
+		}else{
+			return PersonType.DRIVER;
 		}
 	}
 	public String changeToVO(PersonType duty){
@@ -131,6 +133,8 @@ public class FinanceStrategyblImpl{
 			return "营业厅业务员";
 		case COURIER:
 			return "快递员";
+		case DRIVER:
+			return "司机";
 		}
 		return null;
 	}
