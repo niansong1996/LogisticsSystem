@@ -38,6 +38,8 @@ public class POGenerator {
 			case 3: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4));break;
 			case 4: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));break;
 			case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
+			case 6: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));break;
+			case 7: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));break;
 			}
 		return result;
 	}
@@ -59,6 +61,8 @@ public class POGenerator {
 				case 3: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4));break;
 				case 4: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));break;
 				case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
+				case 6: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));break;
+				case 7: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));break;
 				}
 				list.add(cls.cast(result));
 			}

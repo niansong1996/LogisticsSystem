@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.transport;
 
+import java.rmi.Naming;
+
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
@@ -10,13 +12,40 @@ import edu.nju.lms.VO.TransportVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentblImpl;
+import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.DepartmentDataService;
+import edu.nju.lms.dataService.TransportCommdityDataService;
+import edu.nju.lms.dataService.TransportListDataService;
+import edu.nju.lms.dataService.TransportToolDataService;
 
 public class TransportController implements TransManageblService,TransProcessblService{
-
+	
+	TransportToolDataService toolData;
+	TransportListDataService listData;
+	TransportCommdityDataService commdityData;
+	
 	TransManageblImpl manage;
 	TransProcessblImpl process;
+	//LogController logController;
+	
+	String logId;
+	
+	public TransportController(){
+		try {
+			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
+			manage=new TransManageblImpl(toolData);
+			//logController=new LogController();
+		} catch (Exception e) {
+			System.out.println("网络未连接！");
+			System.exit(0);
+		} 
+	}
+	public TransportController(String id){
+		this.logId=id;
+	}
 	
 	public OrderInforVO checkOrderInfor(String orderNum) {
 		return process.checkOrderInfor(orderNum);
@@ -78,23 +107,23 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return manage.findVehicle(vehicleNum);
 	}
 
-	public DriverVO addDriver(DriverVO driverNum) {
-		return manage.addDriver(driverNum);
+	public DriverVO addDriver(DriverVO driver) {
+		return manage.addDriver(driver);
 	}
 
-	public ResultMessage saveDriverInfor(DriverVO driverInfor) {
-		return manage.saveDriverInfor(driverInfor);
+	public ResultMessage saveDriverInfor(DriverVO driver) {
+		return manage.saveDriverInfor(driver);
 	}
 
-	public ResultMessage deleteDriver(String driverNum) {
-		return manage.deleteDriver(driverNum);
+	public ResultMessage deleteDriver(String id) {
+		return manage.deleteDriver(id);
 	}
 
-	public ResultMessage updateDriver(DriverVO modified) {
-		return manage.updateDriver(modified);
+	public ResultMessage updateDriver(DriverVO driver) {
+		return manage.updateDriver(driver);
 	}
 
-	public DriverVO findDriver(String vehicleNum) {
-		return manage.findDriver(vehicleNum);
+	public DriverVO findDriver(String id) {
+		return manage.findDriver(id);
 	}
 }

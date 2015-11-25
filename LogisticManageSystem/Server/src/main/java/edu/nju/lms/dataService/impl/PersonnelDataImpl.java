@@ -1,13 +1,15 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import edu.nju.lms.PO.PersonnelPO;
-import edu.nju.lms.PO.UserPO;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.PersonnelDataService;
 
 /**
@@ -15,47 +17,65 @@ import edu.nju.lms.dataService.PersonnelDataService;
  * 2015/11/18
  *
  */
-public class PersonnelDataImpl implements PersonnelDataService{
-	
-	private ArrayList<PersonnelPO> personnelList=new ArrayList<PersonnelPO>();
+public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1278885707116401114L;
+
+	public PersonnelDataImpl() throws RemoteException {
+	}
 
 	public ResultMessage addPersonnel(PersonnelPO personnel) throws RemoteException {
-		if(findPersonnel(personnel.getName())==null){
-			personnelList.add(personnel);
+		if(findPersonnel(personnel.getId())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(personnel, personnel.getClass().getName()));
 			return new ResultMessage(true,null);
-		}else{
+		}
+		else{
 			return new ResultMessage(false,"The personnel already exists!");
 		}
 	}
 
 	public PersonnelPO findPersonnel(String id) throws RemoteException {
-		PersonnelPO result = null;
-		Iterator<PersonnelPO> it = personnelList.iterator();
-		while(it.hasNext()){
-			PersonnelPO next = it.next();
-			if(next.getName().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		PersonnelPO personnel = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from personnelpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			personnel = (PersonnelPO)POGenerator.generateObject(result, PersonnelPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return personnel;
+	}
+	
+	public ArrayList<PersonnelPO> ambiFindPersonnel(String id) throws RemoteException {
+		ArrayList<PersonnelPO> list = new ArrayList<PersonnelPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from personnelpo where id like \"%"+id+"%\";");
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(list,result, PersonnelPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return list;
 	}
 
 	public ResultMessage deletePersonnel(String id) throws RemoteException {
-		PersonnelPO personnel=findPersonnel(id);
+		PersonnelPO personnel = findPersonnel(id);
 		if(!(personnel==null)){
-			personnelList.remove(personnel);
+			JDBC.ExecuteData("delete from personnelpo where id = "+id+";");
 			return new ResultMessage(true,null);
-		}else{
+		}
+		else{
 			return new ResultMessage(false,"Could not find the personnel!");
 		}
 	}
 
 	public ResultMessage updatePersonnel(PersonnelPO personnel) throws RemoteException {
-		PersonnelPO tempPersonnel=findPersonnel(personnel.getName());
+		PersonnelPO tempPersonnel = findPersonnel(personnel.getId());
 		if(!(tempPersonnel==null)){
-			deletePersonnel(tempPersonnel.getName());
-			addPersonnel(personnel);
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(personnel, personnel.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{

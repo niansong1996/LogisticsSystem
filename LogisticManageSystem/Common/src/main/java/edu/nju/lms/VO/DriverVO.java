@@ -5,6 +5,7 @@ package edu.nju.lms.VO;
  *@date 2015年10月24日
  */
 public class DriverVO {
+	//司机编号
 	private String driverNum;
 	private String driverName;
 	private String birth;

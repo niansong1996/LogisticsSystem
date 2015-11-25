@@ -19,6 +19,17 @@ public class PersonnelPO implements Serializable{
 	private double perTime;
 	private double bonus;
 	
+	public PersonnelPO(String id,String name, String departmentNum, String duty, 
+			String salary, String perTime, String bonus) {
+		this.id = id;
+		this.name = name;
+		this.departmentNum = departmentNum;
+		this.duty = PersonType.valueOf(duty);
+		this.salary = Double.parseDouble(salary);
+		this.perTime = Double.parseDouble(perTime);
+		this.bonus = Double.parseDouble(bonus);
+	}
+	
 	public PersonnelPO(String id,String name, String departmentNum, PersonType duty, 
 			double salary, double perTime, double bonus) {
 		this.id = id;
@@ -84,6 +95,20 @@ public class PersonnelPO implements Serializable{
 
 	public void setBonus(double bonus) {
 		this.bonus = bonus;
+	}
+	
+	@Override
+	public boolean equals(Object object){
+		PersonnelPO personnel = (PersonnelPO)object;
+		if(this.id.equals(personnel.id))
+			if(this.name.equals(personnel.name))
+				if(this.departmentNum.equals(personnel.departmentNum))
+					if(this.duty==personnel.duty)
+						if(this.salary==personnel.salary)
+							if(this.perTime==personnel.perTime)
+								if(this.bonus==personnel.bonus)
+									return true;
+		return false;
 	}
 
 }

@@ -13,6 +13,12 @@ public class PriceStrategyPO implements Serializable{
 	private final double rate1 = 18;
 	private final double rate2 = 23;
 	private final double rate3 = 25;
+	public PriceStrategyPO(String staS) {
+		double sta = Double.parseDouble(staS);
+		standard = sta;
+		economic = rate1/rate2 * sta;
+		express = rate3/rate2 * sta;
+	}
 	public PriceStrategyPO(double sta) {
 		standard = sta;
 		economic = rate1/rate2 * sta;
@@ -36,6 +42,12 @@ public class PriceStrategyPO implements Serializable{
 	public void setEconomic(int economic) {
 		this.economic = economic;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		PriceStrategyPO priceStrategy = (PriceStrategyPO)object;
+		if(this.standard==priceStrategy.standard)
+			return true;
+		return false;
+	}
 
 }

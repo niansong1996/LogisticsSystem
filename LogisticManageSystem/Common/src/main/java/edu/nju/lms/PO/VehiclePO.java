@@ -11,24 +11,17 @@ public class VehiclePO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5891429209039094359L;
-	/**
-	 * car's dai hao
-	 */
-	private String vehicleNum;
-	/**
-	 * plate number
-	 */
 	private String plateNum;
-	/**
-	 * fu yi time
-	 */
+	private String vehicleNum;
 	private int serviceYears;
+	private String businessHallNum;
 	
-	public VehiclePO(String vehicleNum, String plateNum, int serviceYears) {
+	public VehiclePO(String plateNum,String vehicleNum, String businessHallNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;
 		this.serviceYears = serviceYears;
+		this.businessHallNum=businessHallNum;
 	}
 	public String getVehicleNum() {
 		return vehicleNum;
@@ -48,6 +41,11 @@ public class VehiclePO implements Serializable{
 	public void setServiceYears(int serviceYears) {
 		this.serviceYears = serviceYears;
 	}
-	
+	public String getBusinessHallNum() {
+		return businessHallNum;
+	}
+	public void setBusinessHallNum(String businessHallNum) {
+		this.businessHallNum = businessHallNum;
+	}
 	
 }
