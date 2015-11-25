@@ -6,6 +6,7 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
+import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
@@ -49,7 +50,7 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage updateDepartment(DepartmentVO department) {
-		ResultMessage message = idCheck(department.getDepartmentNum());
+		ResultMessage message = idCheck(department.getDepartmentNum(),department.getType());
 		if(!message.isSuccess()){
 			return message;
 		}
@@ -71,7 +72,7 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage addDepartment(DepartmentVO department) {
-		ResultMessage result=idCheck(department.getDepartmentNum());
+		ResultMessage result=idCheck(department.getDepartmentNum(),department.getType());
 		if(!result.isSuccess()){
 			return result;
 		}
@@ -123,7 +124,23 @@ public class DepartmentblImpl{
 		if(id.length()!=6){
 			result.setSuccess(false);
 			result.setErrorMessage("输入机构的位数不正确！");
+		}
+		return result;
+	}
+	public ResultMessage idCheck(String id,DepartmentType type){
+		ResultMessage result=new ResultMessage(true,"");
+		if(id.length()!=6){
+			result.setSuccess(false);
+			result.setErrorMessage("输入机构的位数不正确！");
 			return result;
+		}
+		if(id.charAt(3)=='0'&&!(type.equals("TRANSITCENTER"))){
+			result.setSuccess(false);
+			result.setErrorMessage("输入机构编号与类型不符！");
+		}
+		if(id.charAt(3)=='1'&&!(type.equals("BUSINESSHALL"))){
+			result.setSuccess(false);
+			result.setErrorMessage("输入机构编号与类型不符！");
 		}
 		return result;
 	}

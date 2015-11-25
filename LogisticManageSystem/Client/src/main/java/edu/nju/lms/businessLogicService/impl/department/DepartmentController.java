@@ -93,17 +93,4 @@ public class DepartmentController implements DepartmentblService{
 //		}
 		return result;
 	}
-	
-//	public static void main(String[] args){
-//		DepartmentController x=new DepartmentController();
-//		ArrayList<String> a1=new ArrayList<String>();
-//		a1.add("025101");
-//		ArrayList<Double> a2=new ArrayList<Double>();
-//		a2.add(12345.0);
-//		CityVO a=new CityVO("025","Nanjing",a1,a2);
-//		DepartmentVO depart=new DepartmentVO(DepartmentType.BUSINESSHALL,"025101","025");
-//		ResultMessage result=x.addDepartment(depart);
-//		System.out.println(result.isSuccess());
-//	}
-
 }

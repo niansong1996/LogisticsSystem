@@ -8,6 +8,7 @@ import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.ListblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.ListDataService;
 
@@ -36,8 +37,8 @@ public class ListController implements ListblService{
 		this.logID=id;
 	}
 	
-	public ArrayList<ListVO> getListInfo() {
-		ArrayList<ListVO> result=list.getListInfo();
+	public ArrayList<ListVO> getListInfo(ListType type) {
+		ArrayList<ListVO> result=list.getListInfo(type);
 //		time=sdf.format(new Date());
 //		op=new OperationVO(time,logID,"查看单据信息");
 //		logController.addLog(op);
@@ -47,12 +48,20 @@ public class ListController implements ListblService{
 
 	public ResultMessage changeList(ListVO List) {
 		ResultMessage result=list.changeList(List);
-		if(result.isSuccess()){
+//		if(result.isSuccess()){
 //			time=sdf.format(new Date());
 //			op=new OperationVO(time,logID,"更新单据信息");
 //			logController.addLog(op);
-		}
+//		}
 		
+		return result;
+	}
+	
+	public ListVO getListInfo(String id) {
+		ListVO result=list.getListInfo(id);
+//		time=sdf.format(new Date());
+//		op=new OperationVO(time,logID,"查看单据信息");
+//		logController.addLog(op);
 		return result;
 	}
 

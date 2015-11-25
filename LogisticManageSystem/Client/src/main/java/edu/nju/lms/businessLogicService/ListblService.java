@@ -3,6 +3,7 @@ package edu.nju.lms.businessLogicService;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.ListVO;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -14,7 +15,9 @@ public interface ListblService {
 	 *  to find if there exist list that has'nt checked
 	 * @return
 	 */
-	public ArrayList<ListVO>  getListInfo();
+	public ArrayList<ListVO>  getListInfo(ListType type);
+	
+	public ListVO getListInfo(String id);
 	/**
 	 * use id to find List，and change the data
 	 * @param List

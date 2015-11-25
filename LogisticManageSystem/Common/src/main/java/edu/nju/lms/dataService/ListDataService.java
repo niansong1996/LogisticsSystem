@@ -1,11 +1,11 @@
 package edu.nju.lms.dataService;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.Calendar;
-import java.util.List;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.data.ListState;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 /**
  * 
@@ -21,7 +21,7 @@ public interface ListDataService extends Remote{
 	 * @throws RemoteException
 	 * @see ListPO
 	 */
-	public List<ListPO> findList(Calendar begin,Calendar end) throws RemoteException;
+	public ArrayList<ListPO> findList(ListType type) throws RemoteException;
 	
 	/**
 	 * @param id
@@ -37,5 +37,5 @@ public interface ListDataService extends Remote{
 	 * @throws RemoteException
 	 * @see ListState ResultMessage
 	 */
-	public ResultMessage updateList(String id,ListState state) throws RemoteException;
+	public ResultMessage updateList(ListPO list) throws RemoteException;
 }
