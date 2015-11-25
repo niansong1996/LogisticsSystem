@@ -72,8 +72,8 @@ public class FinanceStrategyDataTest {
 	}
 	@Test
 	public void testFindSalaryStrategy() throws RemoteException{
-		Assert.assertEquals(fail22, financeStrategyData.findSalaryStrategy());
+		Assert.assertEquals(fail22, financeStrategyData.findSalaryStrategy(PersonType.ADMINISTRATOR));
 		financeStrategyData.addSalaryStrategy(salaryStrategyPO2);
-		Assert.assertEquals(salaryStrategyPO2, financeStrategyData.findSalaryStrategy());
+		Assert.assertEquals(salaryStrategyPO2, financeStrategyData.findSalaryStrategy(PersonType.COUNTER_BUSSINESS));
 	}
 }
