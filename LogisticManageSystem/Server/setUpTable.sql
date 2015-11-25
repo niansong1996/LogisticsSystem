@@ -83,3 +83,16 @@ salary double not null,
 perTime double not null,
 bonus double not null
 );
+create table commoditypo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+shipState varchar(20) not null,
+send varchar(12) not null,
+loading varchar(12) not null,
+arrival varchar(12) not null,
+dispatch varchar(12) not null,
+checkin varchar(12) not null,
+checkout varchar(12) not null,
+receive varchar(12) not null
+);

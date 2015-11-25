@@ -1,25 +1,31 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.TransportCommdityDataService;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
+import edu.nju.lms.dataService.TransportCommodityDataService;
 
 /**
  * @author oppalu
  * 2015/11/18
  *
  */
-public class TransportCommodityDataImpl implements TransportCommdityDataService {
-	
-	private ArrayList<CommodityPO> commodityList = new ArrayList<CommodityPO>();
+public class TransportCommodityDataImpl extends UnicastRemoteObject implements TransportCommodityDataService {
+
+	private static final long serialVersionUID = 3191234465459995450L;
+
+	public TransportCommodityDataImpl() throws RemoteException {
+	}
 
 	public ResultMessage addCommodity(CommodityPO commodity) throws RemoteException {
 		if(findCommodity(commodity.getId())==null){
-			this.commodityList.add(commodity);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(commodity, commodity.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -28,22 +34,21 @@ public class TransportCommodityDataImpl implements TransportCommdityDataService 
 	}
 
 	public CommodityPO findCommodity(String id) throws RemoteException {
-		CommodityPO result = null;
-		Iterator<CommodityPO> it = commodityList.iterator();
-		while(it.hasNext()){
-			CommodityPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		CommodityPO commodity = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from commoditypo where id = "+id);
+		try{
+		if(!result.wasNull())
+			commodity = (CommodityPO)POGenerator.generateObject(result, CommodityPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return commodity;
 	}
 
 	public ResultMessage deleteCommodity(String id) throws RemoteException {
-		CommodityPO commodity=findCommodity(id);
+		CommodityPO commodity = findCommodity(id);
 		if(!(commodity==null)){
-			commodityList.remove(commodity);
+			JDBC.ExecuteData("delete from commoditypo where id = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
@@ -54,8 +59,7 @@ public class TransportCommodityDataImpl implements TransportCommdityDataService 
 	public ResultMessage updateCommodity(CommodityPO commodity) throws RemoteException {
 		CommodityPO tempCommodity = findCommodity(commodity.getId());
 		if(!(tempCommodity==null)){
-			deleteCommodity(tempCommodity.getId());
-			addCommodity(commodity);
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(commodity, commodity.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{

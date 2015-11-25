@@ -30,7 +30,6 @@ public class POGenerator {
 		Constructor<?> cons[] = cls.getConstructors();  
 		Constructor<?> constructor = cons[0];
 		int paraNum = constructor.getParameterCount();
-
 		if(rs.next())
 			switch(paraNum){
 			case 1: result = constructor.newInstance(rs.getString(2));break;
@@ -40,6 +39,9 @@ public class POGenerator {
 			case 5: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));break;
 			case 6: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));break;
 			case 7: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));break;
+			case 8: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));break;
+			case 9: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));break;
+			case 10: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));break;
 			}
 		return result;
 	}
