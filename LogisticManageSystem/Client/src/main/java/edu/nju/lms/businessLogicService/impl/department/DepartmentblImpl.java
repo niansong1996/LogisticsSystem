@@ -120,7 +120,7 @@ public class DepartmentblImpl{
 		} catch (RemoteException e) {
 			//TODO
 		}
-		if(cityPO.getId()!=null){
+		if(cityPO!=null){
 			city=new CityVO(cityPO.getId(),cityPO.getName(),cityPO.getBusinessNums(),cityPO.getDistance());
 		}
 		return city;
