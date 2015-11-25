@@ -74,7 +74,7 @@
 		    <unit name ="bonus" class = "MyTextField" x="520" y="356" w="168" h="23" type="0" />
 		    <unit name ="personDuty" class = "MyCombox" x="520" y="414" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
-		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddListener"/>
+		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddPersonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
@@ -118,7 +118,7 @@
 		    <unit name ="location" class = "MyTextField" x="520" y="256" w="168" h="23" type="0"/>
 		    <unit name ="institutionType" class = "MyCombox" x="520" y="354" w="168" h="23" type="0" items="营业厅;中转中心"/>
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddDepartConfirmListener"/>
-		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddListener"/>
+		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddDepartmentListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
