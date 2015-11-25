@@ -17,7 +17,7 @@ import edu.nju.lms.presentation.UIController;
 public class PersonnelTableModel extends AbstractTableModel{
 	
 	private static final long serialVersionUID = -215942872351619032L;
-	String[] head = { "选择", "ID", "姓名", "机构","职责", "薪水", "计次", "提成", "", ""};
+	String[] head = { "选择", "ID", "姓名", "机构","职责", "薪水", "计次", "提成"};
 	Vector<Object[]> data ;
 	Class<?>[] typeArray = { Boolean.class, Object.class, Object.class,Object.class, Object.class, Double.class, Double.class,
 			Double.class, Object.class, Object.class };

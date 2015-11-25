@@ -83,4 +83,7 @@ public class UserController implements UserblService{
 	public void setID(String id){
 		this.logID = id;
 	}
+	public static void main(String[] args){
+		UserController user=new UserController();
+	}
 }

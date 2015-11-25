@@ -37,44 +37,100 @@
 		</mainPanel>
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
-		     <component name="PersonnelManage" class = "Component" x="70" y="20" w="98" h="23"/>
- 		     <unit name ="mainTable" class = "MainTable" x="100" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
-		     <unit name ="addPerson" class = "MainButton" x="50" y="60" w="150" h="32" type="1" listenerName="AddPersonButtonListener"/>
+		     <component name="PersonnelManage" class = "Component" x="150" y="20" w="98" h="23"/>
+ 		     <unit name ="mainTable" class = "MainTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+		     <unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddPersonButtonListener"/>
 		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
 		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SavePersonButtonListener"/>
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
-		     <unit name ="guide_back" class="MainButton" x="0" y="0" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_addcity" class="MainButton" x="0" y="40" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_department" class="MainButton" x="0" y="80" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_list" class="MainButton" x="0" y="120" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_loginfo" class="MainButton" x="0" y="160" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_personnel" class="MainButton" x="0" y="200" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_salarystrategy" class="MainButton" x="0" y="240" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_statistic" class="MainButton" x="0" y="280" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
-		     <unit name ="guide_transportstrategy" class="MainButton" x="0" y="320" w="40" h="40" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_list" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_loginfo" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_personnel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_salarystrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_statistic" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		     <unit name ="guide_transportstrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="AddPersonPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <component name="personName" class = "Component" x="50" y="50" w="78" h="23"/>
-		    <component name="personDuty" class = "Component" x="50" y="100" w="78" h="23"/>
-		    <component name="institution" class = "Component" x="50" y="150" w="78" h="23"/>
-		    <component name="salary" class = "Component" x="50" y="200" w="78" h="23"/>
-		    <unit name ="personID" class = "MyTextField" x="130" y="50" w="168" h="23" type="0"/>
-		    <unit name ="personName" class = "MyTextField" x="130" y="100" w="168" h="23" type="0"/>
-		    <unit name ="institution" class = "MyTextField" x="130" y="150" w="168" h="23" type="0"/>
-		    <unit name ="salary" class = "MyTextField" x="130" y="200" w="168" h="23" type="0" />
-		    <unit name ="perTime" class = "MyTextField" x="130" y="250" w="168" h="23" type="0" />
-		    <unit name ="bonus" class = "MyTextField" x="130" y="300" w="168" h="23" type="0" />
-		    <unit name ="personDuty" class = "MyCombox" x="130" y="350" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
-		    <unit name ="confirm" class = "MainButton" x="130" y="400" w="75" h="16" type="1" listenerName="AddPersonConfirmListener"/>
-		    <unit name ="cancel" class = "MainButton" x="220" y="400" w="75" h="16" type="1" listenerName="CancelAddListener"/>
+		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
+		    <component name="id" class = "Component" x="350" y="100" w="144" h="35"/>
+		    <component name="personName" class = "Component" x="350" y="150" w="144" h="35"/>
+		    <component name="institution" class = "Component" x="350" y="200" w="144" h="35"/>
+		    <component name="salary" class = "Component" x="350" y="250" w="144" h="35"/>
+		    <component name="perTime" class = "Component" x="350" y="300" w="144" h="35"/>
+		    <component name="bonus" class = "Component" x="350" y="350" w="144" h="35"/>
+		    <component name="duty" class = "Component" x="350" y="400" w="144" h="35"/>
+		    <unit name ="personID" class = "MyTextField" x="520" y="106" w="168" h="23" type="0"/>
+		    <unit name ="personName" class = "MyTextField" x="520" y="156" w="168" h="23" type="0"/>
+		    <unit name ="institution" class = "MyTextField" x="520" y="206" w="168" h="23" type="0"/>
+		    <unit name ="salary" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" />
+		    <unit name ="perTime" class = "MyTextField" x="520" y="306" w="168" h="23" type="0" />
+		    <unit name ="bonus" class = "MyTextField" x="520" y="356" w="168" h="23" type="0" />
+		    <unit name ="personDuty" class = "MyCombox" x="520" y="414" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
+		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddListener"/>
+		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_list" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_loginfo" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_personnel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_salarystrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_statistic" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_transportstrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="InstitutionManage" class="MainPanel" x="0" y="0" w="1080" h="720">
+		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="InstitutionManage" class = "Component" x="150" y="20" w="98" h="23"/>
+ 		    <unit name ="mainTable" class = "MainTable" x="150" y="100" w="900" h="460" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		    <unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddDepartButtonListener"/>
+		    <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeleteDepartButtonListener"/>
+		    <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SaveDepartButtonListener"/>
+		    <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindDepartButtonListener"/>
+		    <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
+		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_list" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_loginfo" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_personnel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_salarystrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_statistic" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_transportstrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="AddDepartmentPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
+		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
+		    <component name="institution" class = "Component" x="350" y="150" w="144" h="35"/>
+		    <component name="location" class = "Component" x="350" y="250" w="144" h="35"/>
+		    <component name="institutionType" class = "Component" x="350" y="350" w="144" h="35"/>
+		    <unit name ="departID" class = "MyTextField" x="520" y="156" w="168" h="23" type="0"/>
+		    <unit name ="location" class = "MyTextField" x="520" y="256" w="168" h="23" type="0"/>
+		    <unit name ="institutionType" class = "MyCombox" x="520" y="354" w="168" h="23" type="0" items="营业厅;中转中心"/>
+		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddDepartConfirmListener"/>
+		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddListener"/>
+		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_list" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_loginfo" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_personnel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_salarystrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_statistic" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="guide_transportstrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
-	<Frame name="InfoPanel" class="InfoPanel" x="0" y="0" width="200" height="44"/>
 </presentation> 

@@ -7,12 +7,14 @@ public class VehicleVO {
 	private String plateNum;
 	private String vehicleNum;
 	private int serviceYears;
+	private String businessHallNum;
 	
-	public VehicleVO(String vehicleNum, String plateNum, int serviceYears) {
+	public VehicleVO(String plateNum,String vehicleNum, String businessHallNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;
 		this.serviceYears = serviceYears;
+		this.businessHallNum=businessHallNum;
 	}
 	public String getVehicleNum() {
 		return vehicleNum;
@@ -31,6 +33,12 @@ public class VehicleVO {
 	}
 	public void setServiceYears(int serviceYears) {
 		this.serviceYears = serviceYears;
+	}
+	public String getBusinessHallNum() {
+		return businessHallNum;
+	}
+	public void setBusinessHallNum(String businessHallNum) {
+		this.businessHallNum = businessHallNum;
 	}
 	
 	

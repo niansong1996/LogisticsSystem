@@ -25,6 +25,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.tableModel.ComBoxRender;
 
 /**
  * General table class
@@ -38,6 +39,7 @@ public class MainTable extends JPanel{
 	protected Element element;
 	private JScrollPane scrollpane;
 	private AbstractTableModel model;
+	private ComBoxRender box;
 	/**
 	 * create model and initialize table
 	 * @param element
@@ -92,6 +94,7 @@ public class MainTable extends JPanel{
         setOpaque();
         scrollpane.setBounds(2,2,this.getWidth()-2,this.getHeight()-2);
 		add(scrollpane);
+		setCombox();
 	}
 	
 	/**
@@ -127,6 +130,19 @@ public class MainTable extends JPanel{
             ((JLabel) headerRenderer).setHorizontalAlignment(JLabel.CENTER);   
             ((JLabel) headerRenderer).setOpaque(false);   
         } 
+	}
+	
+	public void setCombox(){
+		if(element.attributeValue("dataType").equals("ComBox")){
+			try {
+				Class<?> myBox = Class.forName(MainPanel.packageName+"tableModel.ComBoxRender");
+				Constructor<?> ctr = myBox.getConstructor(MainTable.class,int.class);
+				box = (ComBoxRender) ctr.newInstance(this, 2);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/**
