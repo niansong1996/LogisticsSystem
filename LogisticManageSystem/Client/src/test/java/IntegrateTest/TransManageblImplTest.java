@@ -1,6 +1,7 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+import junit.framework.Assert;
 
 import org.junit.Test;
 
@@ -8,14 +9,15 @@ import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransManageblImpl;
 import edu.nju.lms.data.ResultMessage;
-import junit.framework.Assert;
+import edu.nju.lms.dataService.TransportToolDataService;
 
 public class TransManageblImplTest {
+	private TransportToolDataService data;
+	TransManageblImpl manage = new TransManageblImpl(data);
 
 	@Test
 	public void testVehicle() {
-		TransManageblImpl manage = new TransManageblImpl();
-		VehicleVO vehicle = new VehicleVO("0000000000", "苏F216FU", 10);
+		VehicleVO vehicle = new VehicleVO("000000000", "苏F216FU","000000", 10);
 		Assert.assertEquals(vehicle, manage.addVehicle(vehicle));
 		Assert.assertEquals(true, manage.saveVehicleInfor(vehicle).isSuccess());
 		Assert.assertEquals(vehicle, manage.findVehicle("0000000000"));
@@ -27,8 +29,7 @@ public class TransManageblImplTest {
 	
 	@Test
 	public void testDriver() {
-		TransManageblImpl manage = new TransManageblImpl();
-		DriverVO driver = new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20");
+		DriverVO driver = new DriverVO("020202", "niansong", "1996/01/02", "320000199601020000", "12312341234", 0, "20","000000");
 		Assert.assertEquals(driver, manage.addDriver(driver));
 		Assert.assertEquals(true, manage.saveDriverInfor(driver).isSuccess());
 		Assert.assertEquals(driver, manage.findDriver("020202"));

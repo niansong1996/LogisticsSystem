@@ -25,11 +25,10 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	TransportToolDataService toolData;
 	TransportListDataService listData;
-	TransportCommdityDataService commdityData;
+	TransportCommdityDataService commodityData;
 	
 	TransManageblImpl manage;
 	TransProcessblImpl process;
-	//LogController logController;
 	
 	String logId;
 	
@@ -37,7 +36,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		try {
 			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
 			manage=new TransManageblImpl(toolData);
-			//logController=new LogController();
 		} catch (Exception e) {
 			System.out.println("网络未连接！");
 			System.exit(0);

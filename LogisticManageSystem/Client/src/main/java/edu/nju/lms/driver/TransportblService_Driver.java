@@ -67,12 +67,5 @@ public class TransportblService_Driver {
 		
 	}
 	
-	public static void main(String[] args) {
-		TransManageblService manager = new TransManageblImpl();
-		TransProcessblImpl process = new TransProcessblImpl();
-		TransportblService_Driver driver = new TransportblService_Driver();
-		driver.drive(process, manager);
-	}
-	
 	
 }

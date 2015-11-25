@@ -16,7 +16,7 @@ public class VehiclePO implements Serializable{
 	private int serviceYears;
 	private String businessHallNum;
 	
-	public VehiclePO(String plateNum,String vehicleNum, String businessHallNum, int serviceYears) {
+	public VehiclePO(String vehicleNum, String plateNum,String businessHallNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;

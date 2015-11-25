@@ -25,8 +25,9 @@ public class DriverPO implements Serializable{
 	private int sex;
 	//行驶证期限
 	private Calendar drivingLimit;
+	private String businesshallNum;
 	public DriverPO(String driverNum, String driverName, Calendar birth, String idNum, String phoneNum, int sex,
-			Calendar drivingLimit) {
+			Calendar drivingLimit,String businesshallNum) {
 		super();
 		this.driverNum = driverNum;
 		this.driverName = driverName;
@@ -35,6 +36,7 @@ public class DriverPO implements Serializable{
 		this.phoneNum = phoneNum;
 		this.sex = sex;
 		this.drivingLimit = drivingLimit;
+		this.businesshallNum=businesshallNum;
 	}
 	public String getDriverNum() {
 		return driverNum;
@@ -77,6 +79,12 @@ public class DriverPO implements Serializable{
 	}
 	public void setDrivingLimit(Calendar drivingLimit) {
 		this.drivingLimit = drivingLimit;
+	}
+	public String getBusinesshallNum() {
+		return businesshallNum;
+	}
+	public void setBusinesshallNum(String businesshallNum) {
+		this.businesshallNum = businesshallNum;
 	}
 	
 	

@@ -27,7 +27,6 @@ public class ListController implements ListblService{
 		try {
 			listService=(ListDataService) Naming.lookup("//127.0.0.1:1099/ListDataService");
 			list=new ListblImpl(listService);
-			//logController=new LogController();
 		}catch (Exception e) {
 			System.out.println("网络未连接");
 			System.exit(0);
@@ -39,29 +38,19 @@ public class ListController implements ListblService{
 	
 	public ArrayList<ListVO> getListInfo(ListType type) {
 		ArrayList<ListVO> result=list.getListInfo(type);
-//		time=sdf.format(new Date());
-//		op=new OperationVO(time,logID,"查看单据信息");
-//		logController.addLog(op);
 				
 		return result;
 	}
 
 	public ResultMessage changeList(ListVO List) {
 		ResultMessage result=list.changeList(List);
-//		if(result.isSuccess()){
-//			time=sdf.format(new Date());
-//			op=new OperationVO(time,logID,"更新单据信息");
-//			logController.addLog(op);
-//		}
 		
 		return result;
 	}
 	
 	public ListVO getListInfo(String id) {
 		ListVO result=list.getListInfo(id);
-//		time=sdf.format(new Date());
-//		op=new OperationVO(time,logID,"查看单据信息");
-//		logController.addLog(op);
+
 		return result;
 	}
 
