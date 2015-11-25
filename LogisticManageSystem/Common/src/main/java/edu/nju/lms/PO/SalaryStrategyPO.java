@@ -14,6 +14,14 @@ public class SalaryStrategyPO implements Serializable{
 	private double perTime;
 	private double bonus;
 	
+	public SalaryStrategyPO(String type, String basic, 
+			String pertime,String bonus) {
+		this.type = PersonType.valueOf(type);
+		this.basic = Double.parseDouble(basic);
+		this.perTime = Double.parseDouble(pertime);
+		this.bonus = Double.parseDouble(bonus);
+	}
+	
 	public SalaryStrategyPO(PersonType type, double basic, 
 			double pertime,double bonus) {
 		this.type = type;
@@ -54,5 +62,15 @@ public class SalaryStrategyPO implements Serializable{
 		this.bonus = bonus;
 	}
 	
+	@Override
+	public boolean equals(Object object){
+		SalaryStrategyPO salaryStrategy = (SalaryStrategyPO)object;
+		if(salaryStrategy.type==this.type)
+			if(salaryStrategy.basic==this.basic)
+				if(salaryStrategy.perTime==this.perTime)
+					if(salaryStrategy.bonus==this.bonus)
+						return true;
+		return false;
+	}
 	
 }

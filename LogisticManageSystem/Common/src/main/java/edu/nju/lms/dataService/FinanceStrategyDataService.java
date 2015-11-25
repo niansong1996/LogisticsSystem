@@ -29,12 +29,6 @@ public interface FinanceStrategyDataService extends Remote{
 	public PriceStrategyPO findPriceStrategy() throws RemoteException;
 	
 	/**
-	 * @return ResultMessage
-	 * @throws RemoteException
-	 */
-	public ResultMessage deletePriceStrategy() throws RemoteException;
-	
-	/**
 	 * @param PriceStrategyPo
 	 * @return ResultMessage
 	 * @throws RemoteException
@@ -54,12 +48,6 @@ public interface FinanceStrategyDataService extends Remote{
 	 * @see SalaryStrategyPO
 	 */
 	public SalaryStrategyPO findSalaryStrategy(PersonType type) throws RemoteException;
-	
-	/**
-	 * @return ResultMessage
-	 * @throws RemoteException
-	 */
-	public ResultMessage deleteSalaryStrategy() throws RemoteException;
 	
 	/**
 	 * @param SalaryStrategyPo

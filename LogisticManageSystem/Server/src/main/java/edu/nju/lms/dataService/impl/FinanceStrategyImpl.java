@@ -1,74 +1,98 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 
-public class FinanceStrategyImpl implements FinanceStrategyDataService{
-	PriceStrategyPO priceStrategy;
-	SalaryStrategyPO salaryStrategy;
+public class FinanceStrategyImpl extends UnicastRemoteObject implements FinanceStrategyDataService{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3796517921459190041L;
 
 
-	public FinanceStrategyImpl(){
+	public FinanceStrategyImpl() throws RemoteException{
 
 	}
-
+	
 	public ResultMessage addPriceStrategy(PriceStrategyPO PriceStrategy)
 			throws RemoteException {
-		if(this.priceStrategy==null){
-			this.priceStrategy = PriceStrategy;
+		if(findPriceStrategy()==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(PriceStrategy, PriceStrategy.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
-		else
-			return new ResultMessage(true,"The price strategy already exists");
+		else{
+			return new ResultMessage(false,"The price strategy already exists!");
+		}
 	}
 
 	public PriceStrategyPO findPriceStrategy() throws RemoteException {
-		return this.priceStrategy;
-	}
-
-	public ResultMessage deletePriceStrategy() throws RemoteException {
-		if(this.priceStrategy==null) return new ResultMessage(false,"Counld not find th price strategy!");
-		this.priceStrategy = null;
-		return new ResultMessage(true,null);
+		PriceStrategyPO priceStrategy = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from priceStrategypo;");
+		try{
+		if(!result.wasNull())
+			priceStrategy = (PriceStrategyPO)POGenerator.generateObject(result, PriceStrategyPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return priceStrategy;
 	}
 
 	public ResultMessage updatePriceStrategy(PriceStrategyPO PriceStrategy)
 			throws RemoteException {
-		if(this.priceStrategy==null) return new ResultMessage(false,"Counld not find th price strategy!");
-		this.priceStrategy = PriceStrategy;
-		return new ResultMessage(true,null);
+		PriceStrategyPO tempPriceStrategy = findPriceStrategy();
+		if(!(tempPriceStrategy==null)){
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(PriceStrategy, PriceStrategy.getClass().getName()));
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the price strategy!");
+		}
 	}
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyPO SalaryStrategy)
 			throws RemoteException {
-		if(this.salaryStrategy==null){
-			this.salaryStrategy = SalaryStrategy;
+		if(findSalaryStrategy(SalaryStrategy.getType())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(SalaryStrategy, SalaryStrategy.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
-		else
-			return new ResultMessage(true,"The salary strategy already exists");
+		else{
+			return new ResultMessage(false,"The salary strategy already exists!");
+		}
 	}
 
 	public SalaryStrategyPO findSalaryStrategy(PersonType type) throws RemoteException {
-		return this.salaryStrategy;
-	}
-
-	public ResultMessage deleteSalaryStrategy() throws RemoteException {
-		if(this.salaryStrategy==null) return new ResultMessage(false,"Counld not find th salary strategy!");
-		this.salaryStrategy = null;
-		return new ResultMessage(true,null);
+		SalaryStrategyPO salaryStrategy = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from salaryStrategypo where type = \""+type+"\";");
+		try{
+		if(!result.wasNull())
+			salaryStrategy = (SalaryStrategyPO)POGenerator.generateObject(result, SalaryStrategyPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return salaryStrategy;
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyPO SalaryStrategy)
 			throws RemoteException {
-		if(this.salaryStrategy==null) return new ResultMessage(false,"Counld not find th salary strategy!");
-		this.salaryStrategy = SalaryStrategy;
-		return new ResultMessage(true,null);
+		SalaryStrategyPO tempSalaryStrategy = findSalaryStrategy(SalaryStrategy.getType());
+		if(!(tempSalaryStrategy==null)){
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(SalaryStrategy, SalaryStrategy.getClass().getName()));
+			return new ResultMessage(true,null);
+		}
+		else{
+			return new ResultMessage(false,"Could not find the salary strategy!");
+		}
 	}
 
 }
