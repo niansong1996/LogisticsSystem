@@ -96,3 +96,5 @@ checkin varchar(12) not null,
 checkout varchar(12) not null,
 receive varchar(12) not null
 );
+insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
+
