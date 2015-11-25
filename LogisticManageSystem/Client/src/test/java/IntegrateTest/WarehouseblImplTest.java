@@ -24,7 +24,7 @@ import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.TransportCommdityDataService;
+import edu.nju.lms.dataService.TransportCommodityDataService;
 import mockObject.MockExpressItemInfo;
 import mockObject.MockExpressList;
 
@@ -149,7 +149,7 @@ public class WarehouseblImplTest {
 		baseInfo.add("lily");
 		baseInfo.add("南京大学仙林校区");
 		SendPO s = new SendPO("1458756100","0289630156",baseInfo,0,0,"goods",0,3);
-		CommodityPO c = new CommodityPO(s);
+//		CommodityPO c = new CommodityPO(s);
 		assertEquals("南京大学仙林校区",re.getExDestination());
 	}
 	

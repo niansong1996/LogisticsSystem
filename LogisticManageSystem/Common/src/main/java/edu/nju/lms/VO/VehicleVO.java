@@ -9,7 +9,7 @@ public class VehicleVO {
 	private int serviceYears;
 	private String businessHallNum;
 	
-	public VehicleVO(String plateNum,String vehicleNum, String businessHallNum, int serviceYears) {
+	public VehicleVO(String vehicleNum, String plateNum,String businessHallNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
 		this.plateNum = plateNum;

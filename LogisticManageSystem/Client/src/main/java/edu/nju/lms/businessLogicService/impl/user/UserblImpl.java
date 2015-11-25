@@ -18,7 +18,7 @@ public class UserblImpl{
 	private UserDataService dataService = null;
 	
 	public UserblImpl(UserDataService service) {
-		this.setDataService(service);
+		this.dataService=service;
 	}
 	
 	public UserVO findUserInfo(String id) {
@@ -139,13 +139,5 @@ public class UserblImpl{
 			usersVO.add(userVO);
 		}
 		return usersVO;
-	}
-	
-	public UserDataService getDataService() {
-		return dataService;
-	}
-
-	public void setDataService(UserDataService dataService) {
-		this.dataService = dataService;
 	}
 }

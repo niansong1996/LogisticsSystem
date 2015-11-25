@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -18,8 +20,8 @@ public class DispatchPO extends ListPO{
 	private Calendar arrivalDate;
 	private String expressNum;
 	
-	public DispatchPO(String id,String dispatchPerson, Calendar arrivalDate, String expressNum) {
-		super(id);
+	public DispatchPO(String id,String state,String dispatchPerson, Calendar arrivalDate, String expressNum) {
+		super(id,ListState.valueOf(state));
 		this.dispatchPerson = dispatchPerson;
 		this.arrivalDate = arrivalDate;
 		this.expressNum = expressNum;

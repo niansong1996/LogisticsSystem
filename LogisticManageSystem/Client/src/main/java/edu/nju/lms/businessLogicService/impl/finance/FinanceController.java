@@ -39,11 +39,6 @@ public class FinanceController
 	
 	private String logID;
 	
-//	LogController logController;
-//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//	String time="";
-//	OperationVO op=null;
-	
 	public FinanceController(){
 		try {
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
@@ -54,7 +49,6 @@ public class FinanceController
 			receipt=new FinanceReceiptblImpl(receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
 			strategy=new FinanceStrategyblImpl(strategyData);
-			//logController=new LogController();
 		} catch (Exception e) {
 			System.out.println("网络未连接");
 	    	System.exit(0);

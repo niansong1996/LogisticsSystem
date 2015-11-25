@@ -29,9 +29,11 @@ public class PersonnelblImpl  {
 		if(id.length()==10){
 			try {
 				PersonnelPO personPO=service.findPersonnel(id);
-				PersonnelVO person=new PersonnelVO(personPO.getId(),personPO.getName(),personPO.getDepartmentNum(),
-						changeToVO(personPO.getDuty()),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
-				result.add(person);
+				if(personPO!=null){
+					PersonnelVO person=new PersonnelVO(personPO.getId(),personPO.getName(),personPO.getDepartmentNum(),
+							changeToVO(personPO.getDuty()),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
+					result.add(person);
+				}
 			} catch (RemoteException e) {
 				// TODO
 			}
@@ -126,8 +128,10 @@ public class PersonnelblImpl  {
 			return PersonType.COUNTER_INTERMEDIATE;
 		}else if(duty.equals("营业厅业务员")){
 			return PersonType.COUNTER_BUSSINESS;
-		}else{
+		}else if(duty.equals("快递员")){
 			return PersonType.COURIER;
+		}else{
+			return PersonType.DRIVER;
 		}
 	}
 	public String changeToVO(PersonType duty){
@@ -148,6 +152,8 @@ public class PersonnelblImpl  {
 			return "营业厅业务员";
 		case COURIER:
 			return "快递员";
+		case DRIVER:
+			return "司机";
 		}
 		return null;
 	}

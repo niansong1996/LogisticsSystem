@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -14,8 +16,8 @@ public class ReceivePO extends ListPO{
 	private String receiverName;
 	private Calendar receiveTime;
 	private String expressNum;
-	public ReceivePO(String id,String receiverName, Calendar receiveTime,String expressNum) {
-		super(id);
+	public ReceivePO(String id,String state,String receiverName, Calendar receiveTime,String expressNum) {
+		super(id,ListState.valueOf(state));
 		this.receiverName = receiverName;
 		this.receiveTime = receiveTime;
 		this.expressNum = expressNum;

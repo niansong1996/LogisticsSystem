@@ -15,8 +15,9 @@ public class DriverVO {
 	private int sex;
 	//行驶证期限
 	private String drivingLimit;
+	private String businesshallNum;
 	public DriverVO(String driverNum, String driverName, String birth, String idNum, String phoneNum, int sex,
-			String drivingLimit) {
+			String drivingLimit,String businesshallNum) {
 		super();
 		this.driverNum = driverNum;
 		this.driverName = driverName;
@@ -25,6 +26,7 @@ public class DriverVO {
 		this.phoneNum = phoneNum;
 		this.sex = sex;
 		this.drivingLimit = drivingLimit;
+		this.businesshallNum=businesshallNum;
 	}
 	public String getDriverNum() {
 		return driverNum;
@@ -67,5 +69,11 @@ public class DriverVO {
 	}
 	public void setDrivingLimit(String drivingLimit) {
 		this.drivingLimit = drivingLimit;
+	}
+	public String getBusinesshallNum() {
+		return businesshallNum;
+	}
+	public void setBusinesshallNum(String businesshallNum) {
+		this.businesshallNum = businesshallNum;
 	}
 }

@@ -11,12 +11,11 @@ public abstract class ListPO implements Serializable{
 	 */
 	private static final long serialVersionUID = 5697602870723648981L;
 	public String id;
-	protected ListState state;
+	public ListState state;
 	
-	public ListPO(String id) {
-		super();
+	public ListPO(String id,ListState state) {
+		this.state = state;
 		this.id = id;
-		this.state = ListState.WAITING;
 	}
 	public String getId() {
 		return id;

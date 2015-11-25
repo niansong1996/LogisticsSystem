@@ -19,18 +19,13 @@ import edu.nju.lms.dataService.PersonnelDataService;
 public class PersonnelController implements PersonnelblService{
 	PersonnelDataService personService;
 	PersonnelblImpl personbl;
-//	LogController logController;
-//	
-//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//	String time="";
-//	OperationVO op=null;
+
 	String logID="";
 	
 	public PersonnelController(){
 		try {
 			personService=(PersonnelDataService)Naming.lookup("//127.0.0.1:1099/PersonnelDataService");
 			personbl=new PersonnelblImpl(personService);
-			//logController=new LogController();
 		}catch (Exception e) {
 			System.out.println("网络未连接！");
 			System.exit(0);
@@ -42,41 +37,25 @@ public class PersonnelController implements PersonnelblService{
 	
 	public ArrayList<PersonnelVO> findPersonInfo(String id) {
 		 ArrayList<PersonnelVO> result=personbl.findPersonInfo(id);
-//		if(result.getId()!=null){
-//			time=sdf.format(new Date());
-//			op=new OperationVO(time,logID,"查询员工"+id+"的信息");
-//			logController.addLog(op);
-//		}
+
 		return result;
 	}
 
 	public ResultMessage deletePersonnel(String id) {
 		ResultMessage result=personbl.deletePersonnel(id);
-//		if(result.isSuccess()){
-//			time=sdf.format(new Date());
-//			op=new OperationVO(time,logID,"删除员工"+id+"的信息");
-//			logController.addLog(op);
-//		}
+
 		return result;
 	}
 
 	public ResultMessage updatePersonnel(PersonnelVO Personnel) {
 		ResultMessage result=personbl.updatePersonnel(Personnel);
-//		if(result.isSuccess()){
-//			time=sdf.format(new Date());
-//			op=new OperationVO(time,logID,"更新员工"+Personnel.getId()+"的信息");
-//			logController.addLog(op);
-//		}
+
 		return result;
 	}
 
 	public ResultMessage addPersonnel(PersonnelVO Personnel) {
 		ResultMessage result=personbl.addPersonnel(Personnel);
-//		if(result.isSuccess()){
-//			time=sdf.format(new Date());
-//			op=new OperationVO(time,logID,"增加员工"+Personnel.getId()+"的信息");
-//			logController.addLog(op);
-//		}
+
 		return result;
 	}
 	public ResultMessage updatePerTimes(String id, double amount) {
