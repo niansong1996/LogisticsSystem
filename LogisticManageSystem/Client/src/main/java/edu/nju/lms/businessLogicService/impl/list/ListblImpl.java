@@ -53,8 +53,6 @@ public class ListblImpl{
 	
 	public ResultMessage changeList(ListVO List) {
 		ResultMessage result=new ResultMessage(false,"");
-		ListPO po=new ListPO(List.getId(),List.getState());
-		result=service.updateList(po);
 		
 		return result;
 	}

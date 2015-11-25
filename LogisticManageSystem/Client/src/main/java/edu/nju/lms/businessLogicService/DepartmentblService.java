@@ -22,5 +22,5 @@ public interface DepartmentblService {
 	
 	public CityVO findCity(String id);
 	
-	
+	public ResultMessage updateCity(CityVO  city);
 }

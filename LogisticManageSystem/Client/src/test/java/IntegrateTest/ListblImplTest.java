@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.data.ListType;
 
 /**
  * @author oppalu
@@ -25,7 +26,7 @@ public class ListblImplTest {
 	
 	@Test
 	public void testGetListInfo(){
-		ArrayList<ListVO> list=listController.getListInfo();
+		ArrayList<ListVO> list=listController.getListInfo(ListType.ARRIVAL);
 		System.out.println("**********start testing getListInfo**********");
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getId()+" "+list.get(i).getType()+" "+list.get(i).getState());

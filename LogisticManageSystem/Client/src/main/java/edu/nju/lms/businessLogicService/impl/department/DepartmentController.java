@@ -93,4 +93,14 @@ public class DepartmentController implements DepartmentblService{
 //		}
 		return result;
 	}
+	
+	public ResultMessage updateCity(CityVO city){
+		ResultMessage result=department.updateCity(city);
+//		if(result.isSuccess()){
+//		time=sdf.format(new Date());
+//		op=new OperationVO(time,logID,"更新城市"+city.getId()+"的信息");
+//		logController.addLog(op);
+//	}
+		return result;
+	}
 }

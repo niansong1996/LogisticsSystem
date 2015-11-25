@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.department;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
@@ -87,6 +88,12 @@ public class DepartmentblImpl{
 				departmentPO = new DepartmentPO(department.getType(), 
 						department.getDepartmentNum(), city.getId());
 				result = service.addDepartment(departmentPO);
+				//when add a businesshall,update the city info
+				if(department.getType().equals("BUSINESSHALL")){
+					CityVO temp=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
+					temp.getBusinessNums().add(department.getDepartmentNum());
+					updateCity(temp);
+				}
 			}
 		} catch (RemoteException e) {
 			//TODO
@@ -119,6 +126,16 @@ public class DepartmentblImpl{
 		return city;
 	}
 
+	public ResultMessage updateCity(CityVO city){
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
+		try {
+			result=service.updateCity(cityPO);
+		} catch (RemoteException e) {
+			//TODO
+		}
+		return result;
+	}
 	public ResultMessage idCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");
 		if(id.length()!=6){
