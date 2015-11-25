@@ -37,19 +37,16 @@ public class MyTextField extends JTextField {
 		y = Integer.parseInt(text.attributeValue("y"));
 		setBounds(x, y, w, h);
 		this.setFocusable(true);;
-		drawPic();
 	}
 
 	public MyTextField(String text) {
 		super();
 		setText(text);
 		setHorizontalAlignment(JTextField.CENTER);
-		drawPic();
 		setFont(new Font("微软雅黑", Font.BOLD, 18));
 	}
 	public MyTextField(){
 		super();
-		drawPic();
 	}
 
 	public void paintComponent(Graphics g) {

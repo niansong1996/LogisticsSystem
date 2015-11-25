@@ -3,6 +3,7 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JTextField;
 
@@ -14,35 +15,42 @@ import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.tableModel.PersonnelTableModel;
 
 /**
- *@author tj
- *@date 2015年11月20日
+ * @author tj
+ * @date 2015年11月20日
  */
 public class FindPersonButtonListener extends ButtonListener {
 	private PersonnelController personControl;
+
 	public FindPersonButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		personControl = controller.getPersonnelController();
 	}
+
 	public void mouseReleased(MouseEvent e) {
-		JTextField idField = (JTextField) units.get(14);
+		JTextField idField = (JTextField) units.get(5);
 		String id = "";
 		id = idField.getText();
 		idField.setText("");
-		if(id!=""&&personControl!=null){
-			ArrayList<PersonnelVO> person = personControl.findPersonInfo(id);
-			if(person.isEmpty()){
+		if (id != "" && personControl != null) {
+			ArrayList<PersonnelVO> found = personControl.findPersonInfo(id);
+			if (found.isEmpty()) {
 				MyDialog error = new MyDialog("notExist");
 				return;
 			}
-//			ArrayList<PersonnelVO> person = new ArrayList<PersonnelVO>();
-//			PersonnelVO p1 = new PersonnelVO("123457", "cuiods", "01", "总经理", 20000, 0, 100000);
-//			PersonnelVO p2 = new PersonnelVO("12345724", "goulu", "01", "总经理", 20000, 0, 100000);
-//			person.add(p1);
-//			person.add(p2);
-			MainTable table = (MainTable)units.get(9);
-			PersonnelTableModel model = (PersonnelTableModel) table.getModel();
-			model.setPersonnel(person);
-			table.repaint();
+			Vector<Object[]> persons = new Vector<Object[]>();
+			// PersonnelVO p = new PersonnelVO("123457", "cuiods", "01", "总经理",
+			// 20000, 0, 100000);
+			// PersonnelVO p1 = new PersonnelVO("12345724", "goulu", "01",
+			// "总经理", 20000, 0, 100000);
+			for (PersonnelVO p1 : found) {
+				Object[] rowData = { new Boolean(false), p1.getId(), p1.getName(), p1.getDepartmentNum(), p1.getDuty(),
+						new Double(p1.getSalary()), new Double(p1.getPerTime()), new Double(p1.getBonus()), "", "" };
+				persons.add(rowData);
+				MainTable table = (MainTable) units.get(0);
+				PersonnelTableModel model = (PersonnelTableModel) table.getModel();
+				model.setData(persons);
+				table.repaint();
+			}
 		}
 	}
 }

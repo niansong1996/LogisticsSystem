@@ -16,8 +16,13 @@ public class ManageBackButtonListener extends ButtonListener {
 		super(units, controller, button);
 		// TODO Auto-generated constructor stub
 	}
+	public void mouseEntered(MouseEvent e) {
+		button.setIn(true);
+		button.repaint();
+	}
 	public void mouseReleased(MouseEvent e) {
 		controller.changeTo("ManagerPanel");
 		
 	}
+	
 }

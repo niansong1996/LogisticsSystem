@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainTable;
 import edu.nju.lms.presentation.tableModel.PersonnelTableModel;
@@ -29,6 +30,9 @@ public class DeletePersonButtonListener extends ButtonListener {
 			if(model.getValueAt(i, 0).equals(true)){
 				model.removeRow(i);
 				i--;
+				String id = (String) model.getValueAt(i, 1);
+				PersonnelController control = controller.getPersonnelController();
+				control.deletePersonnel(id);
 			}
 		}
 		table.repaint();

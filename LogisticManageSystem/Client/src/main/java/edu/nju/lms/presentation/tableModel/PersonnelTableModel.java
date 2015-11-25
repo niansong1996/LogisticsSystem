@@ -82,4 +82,17 @@ public class PersonnelTableModel extends AbstractTableModel{
 			}
 		}
 	}
+
+	public Vector<Object[]> getData() {
+		return data;
+	}
+
+	public void setData(Vector<Object[]> person) {
+		this.data = person;
+	}
+
+	public ArrayList<PersonnelVO> getChanged() {
+		return changed;
+	}
+	
 }
