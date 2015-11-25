@@ -39,12 +39,9 @@ public class AddDepartConfirmListener extends ButtonListener {
 		JComboBox box = (JComboBox) units.get(2);
 		String t = (String) box.getSelectedItem();
 		DepartmentType type = null;
-		switch (t) {
-		case "营业厅":
+		if (t.equals("营业厅")) {
 			type = DepartmentType.BUSINESSHALL;
-			break;
-
-		case "中转中心":
+		} else if (t.equals("中转中心")) {
 			type = DepartmentType.TRANSITCENTER;
 		}
 		DepartmentVO depart = new DepartmentVO(type, departmentNum, location);

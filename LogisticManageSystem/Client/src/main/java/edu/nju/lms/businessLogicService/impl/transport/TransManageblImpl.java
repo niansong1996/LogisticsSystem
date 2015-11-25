@@ -38,6 +38,7 @@ public class TransManageblImpl{
 	}
 
 	public VehicleVO findVehicle(String vehicleNum) {
+		return null;
 		
 	}
 
