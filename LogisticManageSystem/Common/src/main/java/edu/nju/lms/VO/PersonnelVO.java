@@ -1,6 +1,5 @@
 package edu.nju.lms.VO;
 
-import edu.nju.lms.data.PersonType;
 
 /**
  * basic info of a person

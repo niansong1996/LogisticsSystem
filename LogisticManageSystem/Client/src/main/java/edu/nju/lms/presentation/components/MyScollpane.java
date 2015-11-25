@@ -32,6 +32,14 @@ public class MyScollpane<T> extends JScrollPane{
         getViewport().setView(list);
         getVerticalScrollBar().setUI(new MyScrollPaneUI());
 	}
+	
+	public MyScollpane(JList<T> list){
+		//System.out.println(list.getComponentCount());
+		this.list = list;
+		//this.list.setModel(model);
+        getViewport().setView(list);
+        getVerticalScrollBar().setUI(new MyScrollPaneUI());
+	}
 		
 	public JList<T> getList() {
 		return list;

@@ -37,8 +37,19 @@ public class PersonnelblImpl  {
 			} catch (RemoteException e) {
 				// TODO
 			}
-		}else if(id.length()==6){
-			//TODO
+		}else{
+			try {
+				ArrayList<PersonnelPO> po=service.ambiFindPersonnel(id);
+				if(po.size()!=0){
+					for(PersonnelPO temp : po){
+						PersonnelVO person=new PersonnelVO(temp.getId(),temp.getName(),temp.getDepartmentNum(),
+								changeToVO(temp.getDuty()),temp.getSalary(),temp.getPerTime(),temp.getBonus());
+						result.add(person);
+					}
+				}
+			} catch (RemoteException e) {
+				// TODO
+			}
 		}
 		
 		return result;
@@ -93,13 +104,13 @@ public class PersonnelblImpl  {
 
 	public ResultMessage idCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");
-		if(id.length()!=6&&id.length()!=10){
+		if(id.length()!=10){
 			result.setSuccess(false);
 			result.setErrorMessage("输入的位数不正确！");
 		}
 		return result;
 	}
-	
+
 	public ResultMessage updatePerTime(String id,double amount){
 		ResultMessage result=new ResultMessage(false,"");
 		ArrayList<PersonnelVO> list=findPersonInfo(id);
