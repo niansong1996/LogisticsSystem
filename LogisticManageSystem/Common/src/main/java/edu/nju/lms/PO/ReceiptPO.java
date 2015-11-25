@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PaymentType;
 
 /**
@@ -22,8 +23,8 @@ public class ReceiptPO extends ListPO {
 	private ArrayList<String> expressNums;
 	
 	
-	public ReceiptPO(String id,String receiptDate, String amount, String courierNum, String expressNums) {
-		super(id);
+	public ReceiptPO(String id,String state,String receiptDate, String amount, String courierNum, String expressNums) {
+		super(id,ListState.valueOf(state));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		this.receiptDate = Calendar.getInstance();
 		try {
@@ -37,8 +38,8 @@ public class ReceiptPO extends ListPO {
 		for(String tmp : expressNumsTmpArray) this.expressNums.add(tmp);
 		}
 	}
-	public ReceiptPO(String id,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
-		super(id);
+	public ReceiptPO(String id,String state,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
+		super(id,ListState.valueOf(state));
 		this.receiptDate = receiptDate;
 		this.amount = amount;
 		this.courierNum = courierNum;

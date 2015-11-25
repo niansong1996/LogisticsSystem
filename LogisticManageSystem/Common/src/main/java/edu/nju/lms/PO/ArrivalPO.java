@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import edu.nju.lms.data.ArrivalState;
+import edu.nju.lms.data.ListState;
 
 /**
  *@author tj
@@ -23,16 +24,16 @@ public class ArrivalPO extends ListPO implements Serializable{
 	//optional  中转中心编号,只有在中转中心到达时才有 
     private String transitNum;
 	
-    public ArrivalPO(String id,String arrivalState, String expressNum, String destination,String setOut, String arrivalDate) {
-		super(id);
+    public ArrivalPO(String id,String state,String arrivalState, String expressNum, String destination,String setOut, String arrivalDate) {
+		super(id,ListState.valueOf(state));
 		this.arrivalState = ArrivalState.valueOf(arrivalState);
 		this.expressNum = expressNum;
 		this.destination = destination;
 		this.setOut = setOut;
 //		this.arrivalDate = Calendar.Builder.arrivalDate;
 	}
-	public ArrivalPO(String id,ArrivalState arrivalState, String expressNum, String destination,String setOut, Calendar arrivalDate) {
-		super(id);
+	public ArrivalPO(String id,String state,ArrivalState arrivalState, String expressNum, String destination,String setOut, Calendar arrivalDate) {
+		super(id,ListState.valueOf(state));
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
 		this.destination = destination;
@@ -40,10 +41,10 @@ public class ArrivalPO extends ListPO implements Serializable{
 		this.arrivalDate = arrivalDate;
 	}
 	
-	public ArrivalPO(String id, String expressNum, String destination,String setOut,
+	public ArrivalPO(String id,String state, String expressNum, String destination,String setOut,
 			Calendar arrivalDate,
 			long shipmentNum) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.arrivalState = ArrivalState.COMPLETE;
 		this.expressNum = expressNum;
 		this.destination = destination;
@@ -51,9 +52,9 @@ public class ArrivalPO extends ListPO implements Serializable{
 		this.arrivalDate = arrivalDate;
 
 	}
-	public ArrivalPO(String id,ArrivalState arrivalState, String expressNum, String destination,String setOut, 
+	public ArrivalPO(String id,String state,ArrivalState arrivalState, String expressNum, String destination,String setOut, 
 			Calendar arrivalDate,String transitNum) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.arrivalState = arrivalState;
 		this.expressNum = expressNum;
 		this.destination = destination;
@@ -61,9 +62,9 @@ public class ArrivalPO extends ListPO implements Serializable{
 		this.arrivalDate = arrivalDate;
 		this.transitNum = transitNum;
 	}
-	public ArrivalPO(String id, String expressNum, String destination,String setOut, Calendar arrivalDate,String shipmentNum
+	public ArrivalPO(String id,String state, String expressNum, String destination,String setOut, Calendar arrivalDate,String shipmentNum
 			,String transitNum) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.arrivalState = ArrivalState.COMPLETE;
 		this.expressNum = expressNum;
 		this.destination = destination;

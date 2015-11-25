@@ -9,6 +9,7 @@ amount double not null
 create table arrivalpo
 (
 _id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
 expressNum varchar(12) not null unique,
 arrivalState varchar(12) not null,
 destination varchar(12) not null,

@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
+
 public class EarningsPO extends ListPO {
 	/**
 	 * 
@@ -12,8 +14,8 @@ public class EarningsPO extends ListPO {
 	private double profit;
 	private Calendar date;
 	private String id;
-	public EarningsPO(String id,double earnings, double payment, Calendar date) {
-		super(id);
+	public EarningsPO(String id,String state,double earnings, double payment, Calendar date) {
+		super(id,ListState.valueOf(state));
 		this.earnings = earnings;
 		this.payment = payment;
 		this.profit = earnings-payment;

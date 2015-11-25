@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PaymentType;
 
 public class PaymentPO extends ListPO {
@@ -17,9 +18,9 @@ public class PaymentPO extends ListPO {
 	private String account;
 	private double amount;
 	
-	public PaymentPO(String id,String paymentType, String payTime, String account,
+	public PaymentPO(String id,String state,String paymentType, String payTime, String account,
 			String amount) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.paymentType = PaymentType.valueOf(paymentType);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		this.payTime = Calendar.getInstance();
@@ -30,9 +31,9 @@ public class PaymentPO extends ListPO {
 		this.amount = Double.parseDouble(amount);
 	}
 	
-	public PaymentPO(String id,PaymentType paymentType, Calendar payTime, String account,
+	public PaymentPO(String id,String state,PaymentType paymentType, Calendar payTime, String account,
 			double amount) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.paymentType = paymentType;
 		this.payTime = payTime;
 		this.account = account;

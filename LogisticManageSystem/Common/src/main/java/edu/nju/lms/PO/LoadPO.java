@@ -2,6 +2,7 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.LoadType;
 
 /**
@@ -29,9 +30,9 @@ public class LoadPO extends ListPO {
 	
 	private double freight;
 
-	public LoadPO(String id,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
+	public LoadPO(String id,String state,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
 			String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.loadType = loadType;
 		this.loadDate = loadDate;
 		this.businessHallNum = businessHallNum;

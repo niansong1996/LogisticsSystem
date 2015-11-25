@@ -3,6 +3,7 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PartitionType;
 
 /**
@@ -27,9 +28,9 @@ public class CheckoutPO extends ListPO{
 	 */
 	private String motorNum;
 	
-	public CheckoutPO(String id,ArrayList<String> expressNums, Calendar checkoutDate, String destination, PartitionType loadType,
+	public CheckoutPO(String id,String state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, PartitionType loadType,
 			String arrivalNum, String motorNum) {
-		super(id);
+		super(id,ListState.valueOf(state));
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
 		this.destination = destination;

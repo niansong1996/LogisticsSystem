@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
+import edu.nju.lms.data.ListState;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -24,8 +26,8 @@ public class CheckinPO extends ListPO{
 	 */
 	private Map<String,String> exDestination;
 	
-	public CheckinPO(String id,ArrayList<String> expresses, Calendar checkinDate, Map<String, String> exDestination) {
-		super(id);
+	public CheckinPO(String id,String state,ArrayList<String> expresses, Calendar checkinDate, Map<String, String> exDestination) {
+		super(id,ListState.valueOf(state));
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
 		this.exDestination = exDestination;

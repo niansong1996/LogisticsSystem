@@ -116,10 +116,12 @@ public class POGenerator {
 
 			if(isList(object.getClass())){
 				Field[] fatherField = object.getClass().getFields();
-				Field fd1;
-				fd1 = object.getClass().getField(fatherField[0].getName());
+				Field fd1 = object.getClass().getField(fatherField[0].getName());
 				fd1.setAccessible(true);
-				result += fd1.getName()+"=\""+ fd1.get(object)+"\" ,";
+				result += ", \""+ fd1.get(object)+"\"";
+				Field fd2 = object.getClass().getField(fatherField[1].getName());
+				fd2.setAccessible(true);
+				result += ", \""+ fd2.get(object)+"\"";
 			}
 
 			for (int j = 1; j < field.length; j++) {
@@ -170,10 +172,12 @@ public class POGenerator {
 
 			if(isList(object.getClass())){
 				Field[] fatherField = object.getClass().getFields();
-				Field fd1;
-				fd1 = object.getClass().getField(fatherField[0].getName());
+				Field fd1 = object.getClass().getField(fatherField[0].getName());
 				fd1.setAccessible(true);
 				result += ", \""+ fd1.get(object)+"\"";
+				Field fd2 = object.getClass().getField(fatherField[1].getName());
+				fd2.setAccessible(true);
+				result += ", \""+ fd2.get(object)+"\"";
 			}
 
 			for (int j = 1; j < field.length; j++) {
