@@ -10,7 +10,7 @@ import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
-import edu.nju.lms.dataService.impl.FinanceStrategyImpl;
+import edu.nju.lms.dataService.impl.FinanceStrategyDataImpl;
 import junit.framework.Assert;
 
 public class FinanceStrategyDataTest {
@@ -31,7 +31,7 @@ public class FinanceStrategyDataTest {
 	
 	@Test
 	public void testAddPriceStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
@@ -41,7 +41,7 @@ public class FinanceStrategyDataTest {
 	}
 	@Test
 	public void testUpdatePriceStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
@@ -51,7 +51,7 @@ public class FinanceStrategyDataTest {
 	}
 	@Test
 	public void testFindPriceStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
@@ -61,7 +61,7 @@ public class FinanceStrategyDataTest {
 	}
 	@Test
 	public void testAddSalaryStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
@@ -71,7 +71,7 @@ public class FinanceStrategyDataTest {
 	}	
 	@Test
 	public void testUpdateSalaryStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
@@ -81,7 +81,7 @@ public class FinanceStrategyDataTest {
 	}
 	@Test
 	public void testFindSalaryStrategy() throws RemoteException{
-		financeStrategyData = new FinanceStrategyImpl();
+		financeStrategyData = new FinanceStrategyDataImpl();
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");

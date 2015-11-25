@@ -72,3 +72,14 @@ basic double not null,
 perTime double not null,
 bonus double not null
 );	
+create table personnelpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+name varchar(10) not null,
+departmentNum varchar(12) not null,
+duty varchar(20) not null,
+salary double not null,
+perTime double not null,
+bonus double not null
+);

@@ -14,14 +14,14 @@ import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 
-public class FinanceStrategyImpl extends UnicastRemoteObject implements FinanceStrategyDataService{
+public class FinanceStrategyDataImpl extends UnicastRemoteObject implements FinanceStrategyDataService{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3796517921459190041L;
 
 
-	public FinanceStrategyImpl() throws RemoteException{
+	public FinanceStrategyDataImpl() throws RemoteException{
 
 	}
 	
