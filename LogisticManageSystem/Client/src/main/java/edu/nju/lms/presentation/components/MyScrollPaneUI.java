@@ -61,7 +61,7 @@ class MyScrollPaneUI extends BasicScrollBarUI{
 	
 	@Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds){
-		g.drawImage(new ImageIcon("pictures/scrollpane/bar.png").getImage(), trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, null);
+		g.drawImage(new ImageIcon("pictures/units/bar.png").getImage(), trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, null);
 	}
 	
 	@Override
@@ -80,7 +80,7 @@ class MyScrollPaneUI extends BasicScrollBarUI{
 
 			@Override
             public void paint(Graphics g) {
-            	g.drawImage(new ImageIcon("pictures/scrollpane/up.png").getImage(), 0, 0, getWidth(), getHeight(), null);
+            	g.drawImage(new ImageIcon("pictures/units/up.png").getImage(), 0, 0, getWidth(), getHeight(), null);
             }
         };
     }
@@ -94,7 +94,7 @@ class MyScrollPaneUI extends BasicScrollBarUI{
 
 			@Override
             public void paint(Graphics g) {
-                g.drawImage(new ImageIcon("pictures/scrollpane/down.png").getImage(), 0, 0, getWidth(), getHeight(), null);
+                g.drawImage(new ImageIcon("pictures/units/down.png").getImage(), 0, 0, getWidth(), getHeight(), null);
             }
         };
     }
