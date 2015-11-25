@@ -35,7 +35,7 @@ public class MyCombox<T> extends JComboBox<T> {
 		 setUI(new BasicComboBoxUI(){
 		 public void installUI(JComponent comboBox) {
 		 super.installUI(comboBox);
-		 listBox.setForeground(Color.WHITE);
+		 listBox.setForeground(Color.DARK_GRAY);
 		 listBox.setSelectionBackground(new Color(0,0,0,0));
 		 listBox.setSelectionForeground(Color.BLACK);
 		 }

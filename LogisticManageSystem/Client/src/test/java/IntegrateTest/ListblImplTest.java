@@ -25,12 +25,12 @@ public class ListblImplTest {
 	
 	@Test
 	public void testGetListInfo(){
-		ArrayList<ListVO> list=listController.getListInfo();
-		System.out.println("**********start testing getListInfo**********");
-		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getId()+" "+list.get(i).getType()+" "+list.get(i).getState());
-		}
-		System.out.println("**********end testing**********");
+//		ArrayList<ListVO> list=listController.getListInfo();
+//	    System.out.println("**********start testing getListInfo**********");
+//		for(int i=0;i<list.size();i++){
+//			System.out.println(list.get(i).getId()+" "+list.get(i).getType()+" "+list.get(i).getState());
+//		}
+//		System.out.println("**********end testing**********");
 	}
 	
 	@Test

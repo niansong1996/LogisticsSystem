@@ -20,8 +20,8 @@ public class ListblService_Driver {
 			System.out.println(result.getErrorMessage());
 		}
 		
-		ArrayList<ListVO> listInfor = listblService.getListInfo();
-		System.out.println(listInfor.get(0).getId());
+	//	ArrayList<ListVO> listInfor = listblService.getListInfo();
+	//	System.out.println(listInfor.get(0).getId());
 	}
 	public static void main5(String[] args) {
 //		ListblService_Driver d = new ListblService_Driver();

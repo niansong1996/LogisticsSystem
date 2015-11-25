@@ -54,3 +54,11 @@ amount double not null,
 courierNum varchar(12) not null,
 expressNums text not null
 );
+
+
+
+
+
+
+
+insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");

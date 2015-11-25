@@ -8,16 +8,15 @@ import edu.nju.lms.presentation.UIController;
 
 /**
  *@author tj
- *@date 2015年11月24日
+ *@date 2015年11月25日
  */
-public class DepartManageButtonListener extends ButtonListener {
+public class AddDepartButtonListener extends ButtonListener{
 
-	public DepartManageButtonListener(ArrayList<Component> units, UIController controller, Component button) {
+	public AddDepartButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		// TODO Auto-generated constructor stub
 	}
 	public void mouseReleased(MouseEvent e) {
-		controller.changeTo("InstitutionManage");
-		
+		controller.changeTo("AddDepartmentPanel");
 	}
 }

@@ -28,11 +28,11 @@ public class DeletePersonButtonListener extends ButtonListener {
 		PersonnelTableModel model = (PersonnelTableModel) table.getModel();
 		for(int i = 0; i < model.getRowCount(); i++) {
 			if(model.getValueAt(i, 0).equals(true)){
-				model.removeRow(i);
-				i--;
 				String id = (String) model.getValueAt(i, 1);
 				PersonnelController control = controller.getPersonnelController();
 				control.deletePersonnel(id);
+				model.removeRow(i);
+				i--;
 			}
 		}
 		table.repaint();
