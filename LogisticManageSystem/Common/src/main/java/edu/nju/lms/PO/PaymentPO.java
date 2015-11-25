@@ -31,9 +31,9 @@ public class PaymentPO extends ListPO {
 		this.amount = Double.parseDouble(amount);
 	}
 	
-	public PaymentPO(String id,String state,PaymentType paymentType, Calendar payTime, String account,
+	public PaymentPO(String id,ListState state,PaymentType paymentType, Calendar payTime, String account,
 			double amount) {
-		super(id,ListState.valueOf(state));
+		super(id,state);
 		this.paymentType = paymentType;
 		this.payTime = payTime;
 		this.account = account;

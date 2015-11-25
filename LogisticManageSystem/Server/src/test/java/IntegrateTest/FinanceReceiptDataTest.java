@@ -7,6 +7,7 @@ import java.util.Calendar;
 import org.junit.Test;
 
 import edu.nju.lms.PO.ReceiptPO;
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
@@ -20,8 +21,8 @@ public class FinanceReceiptDataTest {
 	Calendar cal2 = Calendar.getInstance();
 	ArrayList<String> expressNums1 = new ArrayList<String>();
 	ArrayList<String> expressNums2 = new ArrayList<String>();
-	public ReceiptPO receipt1 = new ReceiptPO("7384736271",cal1,873647.5,"9384736283",expressNums1);
-	public ReceiptPO receipt2 = new ReceiptPO("5374927463",cal1,283626.5,"2326367483",expressNums1);
+	public ReceiptPO receipt1 = new ReceiptPO("7384736271",ListState.WAITING,cal1,873647.5,"9384736283",expressNums1);
+	public ReceiptPO receipt2 = new ReceiptPO("5374927463",ListState.WAITING,cal1,283626.5,"2326367483",expressNums1);
 	
 	public ResultMessage success = new ResultMessage(true,null);
 	public ResultMessage fail1 = new ResultMessage(false,"The receipt already exists!");

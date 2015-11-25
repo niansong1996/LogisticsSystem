@@ -38,8 +38,8 @@ public class ReceiptPO extends ListPO {
 		for(String tmp : expressNumsTmpArray) this.expressNums.add(tmp);
 		}
 	}
-	public ReceiptPO(String id,String state,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
-		super(id,ListState.valueOf(state));
+	public ReceiptPO(String id,ListState state,Calendar receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
+		super(id,state);
 		this.receiptDate = receiptDate;
 		this.amount = amount;
 		this.courierNum = courierNum;
