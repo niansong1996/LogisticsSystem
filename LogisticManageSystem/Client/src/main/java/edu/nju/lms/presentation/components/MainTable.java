@@ -1,9 +1,13 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.lang.reflect.Constructor;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -136,6 +140,7 @@ public class MainTable extends JPanel{
 //		for (int i = 0; i < table.getColumnCount(); i++) {
 //			table.getColumnModel().getColumn(i).setPreferredWidth(cw);
 //		}
+		table.getColumnModel().getColumn(0).setPreferredWidth(15);
 		table.setRowHeight(40);
 	}
 
