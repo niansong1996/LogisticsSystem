@@ -19,7 +19,7 @@ public class UserController implements UserblService{
 	private String logID;
 	
 	public UserController(){
-		try{    
+		try{
 			userService=(UserDataService) Naming.lookup("//127.0.0.1:1099/UserDataService"); 
 			user=new UserblImpl(userService);
 			//logController=new LogController();

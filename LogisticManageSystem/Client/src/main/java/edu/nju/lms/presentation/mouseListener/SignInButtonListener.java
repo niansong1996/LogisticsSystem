@@ -32,40 +32,43 @@ public class SignInButtonListener extends ButtonListener {
 		String name = "";
 		name = n.getText();
 		String password = "";
-		name = n.getText();
+		password = n.getText();
 		n.setText("");
 		p.setText("");
-		controller.changeTo("ManagerPanel");
-//		if (name != "" && password != "") {
-//			UserVO info = userController.findUserInfo(name);
-//			if (info.getUserName() == null) {
-//				MyDialog error = new MyDialog("notExist");
-//			} else if (info.getPassword().equals(password)) {
-//				controller.setLogID(name);
-//				controller.initialize(info.getPower());
-//				switch (info.getPower()) {
-//				case MANAGER:
-//					controller.changeTo("ManagerPanel");
-//					break;
-//				case FINANCIAL_ADVANCED:
-//					break;
-//				case FINANCIAL_NORMAL:
-//					break;
-//				case ADMINISTRATOR:
-//					break;
-//				case COUNTER_INTERMEDIATE:
-//					break;
-//				case COUNTER_BUSSINESS:
-//					break;
-//				case WAREHOUSE:
-//					break;
-//				case COURIER:
-//					break;
-//
-//				}
-//			} else {
-//				MyDialog error = new MyDialog("passwordError");
-//			}
-//		}
+//		controller.changeTo("ManagerPanel");
+		if (name != "" && password != "") {
+			if(userController==null){
+				return;
+			}
+			UserVO info = userController.findUserInfo(name);
+			if (info.getUserName() == null) {
+				MyDialog error = new MyDialog("notExist");
+			} else if (info.getPassword().equals(password)) {
+				controller.setLogID(name);
+				controller.initialize(info.getPower());
+				switch (info.getPower()) {
+				case MANAGER:
+					controller.changeTo("ManagerPanel");
+					break;
+				case FINANCIAL_ADVANCED:
+					break;
+				case FINANCIAL_NORMAL:
+					break;
+				case ADMINISTRATOR:
+					break;
+				case COUNTER_INTERMEDIATE:
+					break;
+				case COUNTER_BUSSINESS:
+					break;
+				case WAREHOUSE:
+					break;
+				case COURIER:
+					break;
+
+				}
+			} else {
+				MyDialog error = new MyDialog("passwordError");
+			}
+		}
 	}
 }
