@@ -29,9 +29,25 @@ public class PersonnelTableModel extends AbstractTableModel{
 		PersonnelVO personnel1 = new PersonnelVO("12345", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
 		PersonnelVO personnel2 = new PersonnelVO("12346", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
 		PersonnelVO personnel3 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel4 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel5 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel6 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel7 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel8 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel9 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel10 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
+		PersonnelVO personnel11 = new PersonnelVO("12347", "上山打老虎", "老虎打不到", "去打小松鼠", 0, 0, 0);
 		persons.add(personnel1);
 		persons.add(personnel2);
 		persons.add(personnel3);
+		persons.add(personnel4);
+		persons.add(personnel5);
+		persons.add(personnel6);
+		persons.add(personnel7);
+		persons.add(personnel8);
+		persons.add(personnel9);
+		persons.add(personnel10);
+		persons.add(personnel11);
 		for (PersonnelVO mperson: persons) {
 			Object[] rowData = { new Boolean(false), mperson.getId(), mperson.getName(), mperson.getDepartmentNum(),mperson.getDuty(),
 					new Double(mperson.getSalary()), new Double(mperson.getPerTime()), new Double(mperson.getBonus()),

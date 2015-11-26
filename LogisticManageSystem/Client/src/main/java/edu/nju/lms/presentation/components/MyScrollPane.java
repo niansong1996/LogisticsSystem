@@ -1,7 +1,6 @@
 package edu.nju.lms.presentation.components;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
@@ -10,33 +9,31 @@ import org.dom4j.Element;
 import edu.nju.lms.presentation.UIController;
 
 /**
- * my scrollpane
+ * my Scroll pane
  * @author cuihao
  * @date 2015-11-25 19:23:54
- * @param <T> components in the scrollpane
+ * @param <T> components in the scroll pane
  */
-public class MyScollpane<T> extends JScrollPane{
+public class MyScrollPane<T> extends JScrollPane{
 
 	private static final long serialVersionUID = -2221225508091244689L;
 	private JList<T> list = new JList<T>();
 	private DefaultListModel<T> model = new DefaultListModel<T>();
 
-	public MyScollpane(Element element, UIController controller) {
+	public MyScrollPane(Element element, UIController controller) {
 		this();
 		setBounds(Integer.parseInt(element.attributeValue("x")), Integer.parseInt(element.attributeValue("y")),
 				Integer.parseInt(element.attributeValue("w")), Integer.parseInt(element.attributeValue("h")));
 	}
 	
-	public MyScollpane(){
+	public MyScrollPane(){
 		list.setModel(model);
         getViewport().setView(list);
         getVerticalScrollBar().setUI(new MyScrollPaneUI());
 	}
 	
-	public MyScollpane(JList<T> list){
-		//System.out.println(list.getComponentCount());
+	public MyScrollPane(JList<T> list){
 		this.list = list;
-		//this.list.setModel(model);
         getViewport().setView(list);
         getVerticalScrollBar().setUI(new MyScrollPaneUI());
 	}
@@ -61,14 +58,4 @@ public class MyScollpane<T> extends JScrollPane{
 		model.remove(i);
 	}
 	
-//	public static void main(String[] args){
-//		JFrame frame = new JFrame("test");
-//		frame.setTitle("ScrollBar Demo");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(400, 200);
-//        frame.setAlwaysOnTop(true);
-//        MyScollpane<String> s = new MyScollpane<String>();
-//        frame.getContentPane().add(s, java.awt.BorderLayout.CENTER);
-//        frame.setVisible(true);
-//	}
 }

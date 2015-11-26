@@ -12,7 +12,7 @@ import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainTable;
-import edu.nju.lms.presentation.components.MyCombox;
+import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
@@ -23,7 +23,7 @@ import edu.nju.lms.presentation.components.MyTextField;
  *
  */
 public class UserTableModel implements TableModel {
-	private Class[] cellType = { String.class, MyTextField.class, MyTextField.class, MyCombox.class };
+	private Class[] cellType = { String.class, MyTextField.class, MyTextField.class, MyComboBox.class };
 	private ArrayList<UserVO> users = new ArrayList<UserVO>();
 
 	public UserTableModel(Element element, UIController controller, MainTable table) {
@@ -73,7 +73,7 @@ public class UserTableModel implements TableModel {
 		case 2:
 			return new MyTextField(user.getPassword());
 		case 3:
-			MyCombox<PersonType> com = new MyCombox<PersonType>();
+			MyComboBox<PersonType> com = new MyComboBox<PersonType>();
 			com.addItem(PersonType.ADMINISTRATOR);
 			com.addItem(PersonType.COUNTER_BUSSINESS);
 			com.addItem(PersonType.COUNTER_INTERMEDIATE);

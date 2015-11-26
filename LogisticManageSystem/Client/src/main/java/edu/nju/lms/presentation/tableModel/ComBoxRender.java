@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 import edu.nju.lms.presentation.components.MainTable;
-import edu.nju.lms.presentation.components.MyCombox;
+import edu.nju.lms.presentation.components.MyComboBox;
 
 public class ComBoxRender<String> extends DefaultCellEditor implements TableCellRenderer{
 
