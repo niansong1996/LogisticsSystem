@@ -23,17 +23,19 @@ public class ButtonListener implements MouseListener{
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		button.setIn(false);
+		button.setPressed(true);
+		button.repaint();
 	}
 
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		button.setIn(false);
+		button.setPressed(true);
+		button.repaint();
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
@@ -44,6 +46,7 @@ public class ButtonListener implements MouseListener{
 
 	public void mouseExited(MouseEvent e) {
 		button.setIn(false);
+		button.setPressed(false);
 		button.repaint();
 	}
 }

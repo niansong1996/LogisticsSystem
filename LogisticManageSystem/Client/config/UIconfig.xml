@@ -192,14 +192,14 @@
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="save" class = "MainButton" x="950" y="670" w="112" h="34" type="1" listenerName="SaveSalaryStrategyButtonListener"/>
-		    <unit name ="add" class = "MainButton" x="820" y="670" w="112" h="34" type="1" listenerName="ShowSalaryStrategyButtonListener"/>
+		    <unit name ="show" class = "MainButton" x="820" y="670" w="112" h="34" type="1" listenerName="ShowSalaryStrategyButtonListener"/>
 		</mainPanel>
 		<mainPanel name="FreightStrategy" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="freightPanel" class = "Component" x="150" y="100" w="639" h="394"/>
 		    <component name="freigthStrategy" class = "Component" x="150" y="20" w="98" h="23"/> 
 		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" />
-		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveSalaryStrategyButtonListener"/>
+		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveFreightStrategyButtonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>

@@ -1,6 +1,7 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -25,9 +26,18 @@ import edu.nju.lms.presentation.config.FrameConfig;
 public class MyDialog extends JFrame implements Runnable {
 	private FrameConfig config;
 	private String info;
-
+	private boolean is_str = false;
+	private Dimension screenSize;
 	public MyDialog(String info) {
 		this.info = info;
+		initialize();
+		Thread t = new Thread(this);
+		t.start();
+	}
+
+	public MyDialog(String info, boolean is_str) {
+		this.info = info;
+		this.is_str = is_str;
 		initialize();
 		Thread t = new Thread(this);
 		t.start();
@@ -42,8 +52,9 @@ public class MyDialog extends JFrame implements Runnable {
 		setResizable(false);
 		setSize(config.getWidth(), config.getHeight());
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((screenSize.width - config.getWidth()) / 2+430 ,(screenSize.height - config.getHeight()) / 2+300);
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((screenSize.width - config.getWidth()) / 2 + 430,
+				(screenSize.height - config.getHeight()) / 2 + 300);
 		setVisible(true);
 		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.6f);
 	}
@@ -52,8 +63,16 @@ public class MyDialog extends JFrame implements Runnable {
 		super.paint(g);
 		Image image;
 		try {
-			image = ImageIO.read(new FileInputStream("pictures/" + info + ".png"));
-			g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
+			if (is_str) {
+				g.setFont(new Font("微软雅黑", Font.BOLD, 23));
+				g.drawString(info, 23, 23);
+				setLocation((screenSize.width - config.getWidth()) / 2 -200,
+				(screenSize.height - config.getHeight()) / 2 +200);
+				setSize(700,44);
+			} else {
+				image = ImageIO.read(new FileInputStream("pictures/" + info + ".png"));
+				g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -62,9 +81,9 @@ public class MyDialog extends JFrame implements Runnable {
 	}
 
 	public void run() {
-		int time = 100;
-		for (int i = time; i >0; i--) {
-			com.sun.awt.AWTUtilities.setWindowOpacity(this, (float) (i * 0.01));
+		int time = 200;
+		for (int i = time; i > 0; i--) {
+			com.sun.awt.AWTUtilities.setWindowOpacity(this, (float) (i * 0.005));
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
