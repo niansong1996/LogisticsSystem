@@ -70,8 +70,8 @@ public class FinancePaymentDataTest {
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
-		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2));
-		Assert.assertEquals(null, financePaymentData.findPayment(cal1));
+		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2).get(0));
+		Assert.assertEquals(true, financePaymentData.findPayment(cal1).isEmpty());
 	}
 	@Test
 	public void testUpdatePayment() throws RemoteException{
