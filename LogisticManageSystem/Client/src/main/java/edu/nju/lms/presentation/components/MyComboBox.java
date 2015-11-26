@@ -1,21 +1,22 @@
 package edu.nju.lms.presentation.components;
 
-import java.awt.Color;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 
-public class MyCombox<T> extends JComboBox<T> {
+/**
+ * My ComboBox
+ * @author cuihao
+ * @date 2015-11-26 19:44:07
+ * @param <T> items in the ComBobox
+ */
+public class MyComboBox<T> extends JComboBox<T> {
 
 	private static final long serialVersionUID = 3980256366114323391L;
 	Element element;
 
-	public MyCombox(Element element, UIController controller) {
+	public MyComboBox(Element element, UIController controller) {
 		super();
 		this.element = element;
 		setOpaque(false);
@@ -27,13 +28,13 @@ public class MyCombox<T> extends JComboBox<T> {
 			
 			setBounds(x, y, w, h);
 		}
-		setUI(new MyComBoxUI());
+		setUI(new MyComboBoxUI());
 
 		setEditable(false);
 		addMyItems();
 	}
 
-	public MyCombox() {
+	public MyComboBox() {
 		this(null, null);
 	}
 
@@ -48,17 +49,17 @@ public class MyCombox<T> extends JComboBox<T> {
 		}
 	}
 	
-	public static void main(String[] args){
-		JFrame frame = new JFrame("test");
-		frame.setTitle("ScrollBar Demo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(180, 70);
-        frame.setAlwaysOnTop(true);
-        MyCombox<String> s = new MyCombox<String>();
-        s.addItem("总经理");
-        s.addItem("财务人员");
-        frame.getContentPane().add(s);
-        frame.setVisible(true);
-	}
+//	public static void main(String[] args){
+//		JFrame frame = new JFrame("test");
+//		frame.setTitle("ScrollBar Demo");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(180, 70);
+//        frame.setAlwaysOnTop(true);
+//        MyCombox<String> s = new MyCombox<String>();
+//        s.addItem("总经理");
+//        s.addItem("财务人员");
+//        frame.getContentPane().add(s);
+//        frame.setVisible(true);
+//	}
 
 }

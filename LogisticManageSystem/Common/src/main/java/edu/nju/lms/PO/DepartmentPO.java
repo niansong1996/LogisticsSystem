@@ -48,6 +48,14 @@ public class DepartmentPO implements Serializable{
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		DepartmentPO department = (DepartmentPO)object;
+		if(this.departmentNum.equals(department.departmentNum))
+			if(this.location.equals(department.location))
+				if(this.type==department.type)
+					return true;
+		return false;
+	}
 	
 }

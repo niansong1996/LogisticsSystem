@@ -22,7 +22,21 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
  * 2015-11-25 19:23:20
  */
 class MyScrollPaneUI extends BasicScrollBarUI{
-	private static final float ARC_NUMBER = 20.0f;
+	/**
+	 * arc number
+	 */
+	private final float ARC_NUMBER = 20.0f;
+	/**
+	 * pictures
+	 */
+	private final String PIC_BAR = "pictures/units/bar.png";
+	private final String PIC_UP = "pictures/units/up.png";
+	private final String PIC_DOWN = "pictures/units/down.png";
+	
+	/**
+	 * draw scroll bar
+	 * thumbBounds has attributes: x y width height
+	 */
 	@Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds){
 		Graphics2D g2 = (Graphics2D) g;
@@ -59,9 +73,12 @@ class MyScrollPaneUI extends BasicScrollBarUI{
         g2.setPaint(oldPaint);
 	}
 	
+	/**
+	 * draw scroll background
+	 */
 	@Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds){
-		g.drawImage(new ImageIcon("pictures/units/bar.png").getImage(), trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, null);
+		g.drawImage(new ImageIcon(PIC_BAR).getImage(), trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, null);
 	}
 	
 	@Override
@@ -72,6 +89,9 @@ class MyScrollPaneUI extends BasicScrollBarUI{
     protected void paintIncreaseHighlight(Graphics g) {
     }
     
+    /**
+     * draw up arrow
+     */
     @Override
     protected javax.swing.JButton createDecreaseButton(int orientation) {
         return new BasicArrowButton(orientation) {
@@ -80,11 +100,14 @@ class MyScrollPaneUI extends BasicScrollBarUI{
 
 			@Override
             public void paint(Graphics g) {
-            	g.drawImage(new ImageIcon("pictures/units/up.png").getImage(), 0, 0, getWidth(), getHeight(), null);
+            	g.drawImage(new ImageIcon(PIC_UP).getImage(), 0, 0, getWidth(), getHeight(), null);
             }
         };
     }
     
+    /**
+     * draw down arrow
+     */
     @Override
     protected javax.swing.JButton createIncreaseButton(int orientation) {
 
@@ -94,7 +117,7 @@ class MyScrollPaneUI extends BasicScrollBarUI{
 
 			@Override
             public void paint(Graphics g) {
-                g.drawImage(new ImageIcon("pictures/units/down.png").getImage(), 0, 0, getWidth(), getHeight(), null);
+                g.drawImage(new ImageIcon(PIC_DOWN).getImage(), 0, 0, getWidth(), getHeight(), null);
             }
         };
     }

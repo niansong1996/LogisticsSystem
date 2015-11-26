@@ -34,10 +34,11 @@ import edu.nju.lms.presentation.tableModel.ComBoxRender;
  * test xml file: <unit name ="mainTable" class = "panel.MainTable" x="0" y="0" w="500" h="500" type="0" dataType = "UserVO" rw = "20" cw = "40" model = "panel.UserTableModel"/>
  */
 public class MainTable extends JPanel{
+	private static final long serialVersionUID = -3204250850973887961L;
 	private JTable table;
 	protected UIController controller;
 	protected Element element;
-	private JScrollPane scrollpane;
+	private MyScrollPane scrollpane;
 	private AbstractTableModel model;
 	private ComBoxRender box;
 	/**
@@ -54,7 +55,6 @@ public class MainTable extends JPanel{
 				Integer.parseInt(element.attributeValue("w")),Integer.parseInt(element.attributeValue("h")));
 		initializeTable();
 		setWidth(element.attributeValue("cw"), element.attributeValue("rw"));
-		//new ATextField(this);
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class MainTable extends JPanel{
 		/**
 		 * set JScrollpane
 		 */
-		scrollpane = new JScrollPane();
+		scrollpane = new MyScrollPane();
         scrollpane.getViewport().setOpaque(false);
         scrollpane.setOpaque(false);
         scrollpane.setViewportView(table); 
@@ -139,7 +139,6 @@ public class MainTable extends JPanel{
 				Constructor<?> ctr = myBox.getConstructor(MainTable.class,int.class);
 				box = (ComBoxRender) ctr.newInstance(this, 2);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -49,10 +49,32 @@ public class SendPO extends ListPO {
 	private double price;
 	private int time;
 	
-	//construct function
-	public SendPO(String expressNum,String state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, int time) {
+	//constructor for reflection
+	public SendPO(String expressNum,String state,String id,String baseInfor,String initialNum, String weight, String volume, String goodsName,
+			String packingType, String mode, String price, String time) {
 		super(id,ListState.valueOf(state));
+		this.expressNum = expressNum;
+		this.baseInfor = new ArrayList<String>();
+		String baseInforTmp = baseInfor.replace("[", "").replace("]", "");
+		if(!baseInforTmp.equals("")){
+		String baseInforTmpArray[] = baseInforTmp.split(", ");
+		for(String tmp : baseInforTmpArray) this.baseInfor.add(tmp);
+		}
+		this.initialNum = Integer.parseInt(initialNum);
+		this.weight = Double.parseDouble(weight);
+		this.volume = Double.parseDouble(volume);
+		this.goodsName = goodsName;
+		this.packingType = PackingType.valueOf(packingType);
+		this.mode = TransportMode.valueOf(mode);
+		this.price = Double.parseDouble(price);
+		this.time = Integer.parseInt(time);
+	}
+	
+	
+	//construct function
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+			PackingType packingType, TransportMode mode, double price, int time) {
+		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
 		this.initialNum = initialNum;
@@ -71,8 +93,8 @@ public class SendPO extends ListPO {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(String expressNum,String state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
-		super(id,ListState.valueOf(state));
+	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
+		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = 1;
@@ -84,9 +106,9 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(String expressNum,String state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, int time) {
-		super(id,ListState.valueOf(state));
+		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = 1;
@@ -98,8 +120,8 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(String expressNum,String state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
-		super(id,ListState.valueOf(state));
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
+		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
@@ -111,9 +133,9 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(String expressNum,String state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType,  double price, int time) {
-		super(id,ListState.valueOf(state));
+		super(id,state);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
 		this.weight = weight;

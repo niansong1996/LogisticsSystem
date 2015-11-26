@@ -11,23 +11,42 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
-public class MyComBoxUI extends BasicComboBoxUI{
+/**
+ * my ComBobox UI
+ * @author cuihao
+ * @date 2015-11-26 19:41:51
+ */
+public class MyComboBoxUI extends BasicComboBoxUI{
 	/**
 	 * scroll button
 	 */
-	JButton button;
+	private JButton button;
 	/**
 	 * something I don't know.
 	 */
 	private boolean boundsLight = false;
+	/**
+	 * font size
+	 */
+	private int fontSize = 21;
+	/**
+	 * font
+	 */
+	private String font = "微软雅黑";
 	
-	public MyComBoxUI() {
+	/**
+	 * ComboBox button picture
+	 */
+	private final String PIC_NORMAL = "pictures/units/combobutton.png";
+	private final String PIC_INTO = "pictures/units/combobutton1.png";
+	private final String PIC_CLICKED = "pictures/units/combobutton2.png";
+	
+	public MyComboBoxUI() {
 		super();
 	}
 	
@@ -37,10 +56,10 @@ public class MyComBoxUI extends BasicComboBoxUI{
 	@Override
 	protected JButton createArrowButton(){
 		button = new JButton();
-		button.setIcon(new ImageIcon("pictures/units/combobutton.png"));
+		button.setIcon(new ImageIcon(PIC_NORMAL));
 		button.setRolloverEnabled(true);
-		button.setRolloverIcon(new ImageIcon("pictures/units/combobutton1.png"));
-		button.setRolloverSelectedIcon(new ImageIcon("pictures/units/combobutton2.png"));
+		button.setRolloverIcon(new ImageIcon(PIC_INTO));
+		button.setRolloverSelectedIcon(new ImageIcon(PIC_CLICKED));
 		button.setBorder(null);
 		button.setContentAreaFilled(false);
 		button.setOpaque(false);
@@ -59,9 +78,9 @@ public class MyComBoxUI extends BasicComboBoxUI{
 			paintCurrentValue(g2, r, hasFocus);
 		}
 		if (comboBox.isPopupVisible()) {
-			button.setIcon(new ImageIcon("pictures/units/combobutton1.png"));
+			button.setIcon(new ImageIcon(PIC_INTO));
 		} else {
-			button.setIcon(new ImageIcon("pictures/units/combobutton.png"));
+			button.setIcon(new ImageIcon(PIC_NORMAL));
 		}
 	}
 	
@@ -70,7 +89,7 @@ public class MyComBoxUI extends BasicComboBoxUI{
 	 */
 	public void paintCurrentValue(Graphics g, Rectangle bounds, boolean hasFocus) {
 		Font oldFont = comboBox.getFont();
-		comboBox.setFont(new Font("微软雅黑", Font.PLAIN, 21));
+		comboBox.setFont(new Font(font, Font.PLAIN, fontSize));
 
 		super.paintCurrentValue(g, bounds, hasFocus);
 		comboBox.setFont(oldFont);
@@ -96,8 +115,9 @@ public class MyComBoxUI extends BasicComboBoxUI{
 			private static final long serialVersionUID = 7869205825443338959L;
 
 			protected JScrollPane createScroller() {
-				MyScollpane<String> sp = new MyScollpane<String>(list);
-				sp.setFont(new Font("微软雅黑", Font.PLAIN, 21));
+				@SuppressWarnings("unchecked")
+				MyScrollPane<String> sp = new MyScrollPane<String>(list);
+				sp.setFont(new Font(font, Font.PLAIN, fontSize));
 				sp.setHorizontalScrollBar(null);
 				return sp;
 			}

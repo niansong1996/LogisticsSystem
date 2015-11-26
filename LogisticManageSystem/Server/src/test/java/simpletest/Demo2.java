@@ -12,6 +12,7 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.PaymentPO;
 import edu.nju.lms.PO.UserPO;
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
@@ -26,9 +27,9 @@ public class Demo2 {
 		Calendar cal2 = Calendar.getInstance();
 		AccountPO accountPo1 = new AccountPO("6225887941959874",1212343.5);
 		AccountPO accountPo2 = new AccountPO("6836474938271738",8736482.2);
-		PaymentPO paymentPo1 = new PaymentPO("8736473827",PaymentType.SALARY,cal1,accountPo1.getName(),23452.2);
-		PaymentPO paymentPo2 = new PaymentPO("8394837820",PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
-		PaymentPO paymentPo3 = new PaymentPO("8394837820",PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
+		PaymentPO paymentPo1 = new PaymentPO("8736473827",ListState.WAITING,PaymentType.SALARY,cal1,accountPo1.getName(),23452.2);
+		PaymentPO paymentPo2 = new PaymentPO("8394837820",ListState.WAITING,PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
+		PaymentPO paymentPo3 = new PaymentPO("8394837820",ListState.WAITING,PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
 		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		try {
