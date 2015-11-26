@@ -12,12 +12,8 @@ import edu.nju.lms.VO.TransportVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
-import edu.nju.lms.businessLogicService.impl.department.DepartmentblImpl;
-import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.DepartmentDataService;
-import edu.nju.lms.dataService.TransportCommdityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 import edu.nju.lms.dataService.TransportToolDataService;
 

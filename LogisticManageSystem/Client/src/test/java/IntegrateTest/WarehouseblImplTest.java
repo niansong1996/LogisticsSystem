@@ -148,7 +148,7 @@ public class WarehouseblImplTest {
 		ArrayList<String>baseInfo = new ArrayList<String>();
 		baseInfo.add("lily");
 		baseInfo.add("南京大学仙林校区");
-		SendPO s = new SendPO("1458756100","0289630156",baseInfo,0,0,"goods",0,3);
+//		SendPO s = new SendPO("1458756100","0289630156",baseInfo,0,0,"goods",0,3);
 //		CommodityPO c = new CommodityPO(s);
 		assertEquals("南京大学仙林校区",re.getExDestination());
 	}

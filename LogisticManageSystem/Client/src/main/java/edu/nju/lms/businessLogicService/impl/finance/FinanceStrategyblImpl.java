@@ -22,9 +22,9 @@ public class FinanceStrategyblImpl{
 		this.service=service;
 	}
 	
-	public ResultMessage addPriceStrategy(PriceStrategyVO priceStrategy) {
+	public ResultMessage addPriceStrategy(double std) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		PriceStrategyPO po=new PriceStrategyPO(priceStrategy.getStandard());
+		PriceStrategyPO po=new PriceStrategyPO(std);
 		try {
 			result=service.addPriceStrategy(po);
 		} catch (RemoteException e) {
@@ -33,9 +33,9 @@ public class FinanceStrategyblImpl{
 		return result;
 	}
 
-	public ResultMessage updatePriceStrategy(PriceStrategyVO priceStrategy) {
+	public ResultMessage updatePriceStrategy(double std) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		PriceStrategyPO po=new PriceStrategyPO(priceStrategy.getStandard());
+		PriceStrategyPO po=new PriceStrategyPO(std);
 		try {
 			result=service.updatePriceStrategy(po);
 		} catch (RemoteException e) {
@@ -95,21 +95,21 @@ public class FinanceStrategyblImpl{
 	}
 
 	public PersonType changeToPO(String duty){
-		if(duty.equals("管理员")){
+		if(duty.equals("administrator")){
 			return PersonType.ADMINISTRATOR;
-		}else if(duty.equals("总经理")){
+		}else if(duty.equals("manager")){
 			return PersonType.MANAGER;
-		}else if(duty.equals("普通财务人员")){
+		}else if(duty.equals("financial_normal")){
 			return PersonType.FINANCIAL_NORMAL;
-		}else if(duty.equals("高级财务人员")){
+		}else if(duty.equals("financial_advanced")){
 			return PersonType.FINANCIAL_ADVANCED;
-		}else if(duty.equals("中转中心仓库管理人员")){
+		}else if(duty.equals("warehouse")){
 			return PersonType.WAREHOUSE;
-		}else if(duty.equals("中转中心业务员")){
+		}else if(duty.equals("counter_intermediate")){
 			return PersonType.COUNTER_INTERMEDIATE;
-		}else if(duty.equals("营业厅业务员")){
+		}else if(duty.equals("counter_bussiness")){
 			return PersonType.COUNTER_BUSSINESS;
-		}else if(duty.equals("快递员")){
+		}else if(duty.equals("courier")){
 			return PersonType.COURIER;
 		}else{
 			return PersonType.DRIVER;

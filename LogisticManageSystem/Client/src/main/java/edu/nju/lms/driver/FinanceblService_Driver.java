@@ -13,9 +13,6 @@ import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
-import edu.nju.lms.businessLogicService.impl.finance.FinancePayblImpl;
-import edu.nju.lms.businessLogicService.impl.finance.FinanceReceiptblImpl;
-import edu.nju.lms.businessLogicService.impl.finance.FinanceStrategyblImpl;
 import edu.nju.lms.data.ResultMessage;
 
 public class FinanceblService_Driver {
@@ -28,14 +25,14 @@ public class FinanceblService_Driver {
 		PriceStrategyVO priceStrategy=new PriceStrategyVO(10.1,20.1,30.1);
 		SalaryStrategyVO salaryStrategy=new SalaryStrategyVO("aa",1000,3,300);
 		//运费add
-		result=financeStrategy.addPriceStrategy(null);
+		result=financeStrategy.addPriceStrategy(10);
 		if(result==new ResultMessage(true,"")){
 			System.out.println("add successfully!");
 		}else{
 			System.out.println(result.getErrorMessage());
 		}
 		//运费update
-		result=financeStrategy.updatePriceStrategy(priceStrategy);
+		result=financeStrategy.updatePriceStrategy(10);
 		if(result==new ResultMessage(true,"")){
 			System.out.println("update successfully!");
 		}else{

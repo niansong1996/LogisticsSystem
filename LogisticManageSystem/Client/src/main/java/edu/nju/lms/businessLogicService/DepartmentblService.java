@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.data.ResultMessage;
@@ -23,4 +25,8 @@ public interface DepartmentblService {
 	public CityVO findCity(String id);
 	
 	public ResultMessage updateCity(CityVO  city);
+	
+	public ResultMessage deleteCity(String id);
+	
+	public ArrayList<CityVO> showAllCities();
 }

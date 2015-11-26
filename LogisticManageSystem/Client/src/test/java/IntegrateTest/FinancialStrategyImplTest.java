@@ -13,17 +13,17 @@ public class FinancialStrategyImplTest {
 	@Test
 	public void testPriceStrategy() {
 		PriceStrategyVO priceStrategyVO = new PriceStrategyVO(23, 25, 18);
-		Assert.assertEquals(true, strategyImpl.addPriceStrategy(new PriceStrategyVO(23, 0, 0)).isSuccess());
+		Assert.assertEquals(true, strategyImpl.addPriceStrategy(23).isSuccess());
 		Assert.assertEquals(priceStrategyVO,strategyImpl.findPriceStrategy());
 		priceStrategyVO = new PriceStrategyVO(46, 50, 36);
-		Assert.assertEquals(true, strategyImpl.updatePriceStrategy(priceStrategyVO).isSuccess());
+		Assert.assertEquals(true, strategyImpl.updatePriceStrategy(23).isSuccess());
 		Assert.assertEquals(46, strategyImpl.findPriceStrategy().getStandard(),0.01);
 	}
 	
 	@Test
 	public void testSalaryStrategy() {
 		SalaryStrategyVO salaryStrategyVO = new SalaryStrategyVO("快递员", 4000, 10, 200);
-		Assert.assertEquals(true, strategyImpl.addPriceStrategy(new PriceStrategyVO(23, 0, 0)).isSuccess());
+		Assert.assertEquals(true, strategyImpl.addPriceStrategy(23).isSuccess());
 		//TODO Error!
 	//	Assert.assertEquals(salaryStrategyVO,strategyImpl.findSalaryStrategy());
 		salaryStrategyVO = new SalaryStrategyVO("快递员", 4500, 10, 200);

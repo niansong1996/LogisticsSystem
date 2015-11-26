@@ -58,12 +58,12 @@ public class FinanceController
 		this.logID=id;
 	}
 	
-	public ResultMessage addPriceStrategy(PriceStrategyVO priceStrategy) {
-		return strategy.addPriceStrategy(priceStrategy);
+	public ResultMessage addPriceStrategy(double std) {
+		return strategy.addPriceStrategy(std);
 	}
 
-	public ResultMessage updatePriceStrategy(PriceStrategyVO priceStrategy) {
-		return strategy.updatePriceStrategy(priceStrategy);
+	public ResultMessage updatePriceStrategy(double std) {
+		return strategy.updatePriceStrategy(std);
 	}
 
 	public PriceStrategyVO findPriceStrategy() {

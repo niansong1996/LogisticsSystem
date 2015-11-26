@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
@@ -68,6 +70,16 @@ public class DepartmentController implements DepartmentblService{
 	public ResultMessage updateCity(CityVO city){
 		ResultMessage result=department.updateCity(city);
 
+		return result;
+	}
+	
+	public ResultMessage deleteCity(String id) {
+		ResultMessage result=department.deleteCity(id);
+		return result;
+	}
+	
+	public ArrayList<CityVO> showAllCities(){
+		ArrayList<CityVO> result=department.showAllCities();
 		return result;
 	}
 }

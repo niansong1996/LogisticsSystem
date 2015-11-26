@@ -7,7 +7,6 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
@@ -51,7 +50,7 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage updateDepartment(DepartmentVO department) {
-		ResultMessage message = idCheck(department.getDepartmentNum(),department.getType());
+		ResultMessage message = idCheck(department.getDepartmentNum());
 		if(!message.isSuccess()){
 			return message;
 		}
@@ -73,7 +72,7 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage addDepartment(DepartmentVO department) {
-		ResultMessage result=idCheck(department.getDepartmentNum(),department.getType());
+		ResultMessage result=idCheck(department.getDepartmentNum());
 		if(!result.isSuccess()){
 			return result;
 		}
@@ -89,7 +88,7 @@ public class DepartmentblImpl{
 						department.getDepartmentNum(), city.getId());
 				result = service.addDepartment(departmentPO);
 				//when add a businesshall,update the city info
-				if(department.getType().equals("BUSINESSHALL")){
+				if(department.getType().toString().equals("BUSINESSHALL")){
 					CityVO temp=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 					temp.getBusinessNums().add(department.getDepartmentNum());
 					updateCity(temp);
@@ -102,7 +101,11 @@ public class DepartmentblImpl{
 	}
 
 	public ResultMessage addCity(CityVO city) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ResultMessage result=cityIdCheck(city.getId());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
 		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 		try {
 			result=service.addCity(cityPO);
@@ -125,9 +128,25 @@ public class DepartmentblImpl{
 		}
 		return city;
 	}
-
+	public ResultMessage deleteCity(String id){
+		ResultMessage result=cityIdCheck(id);
+		if(!result.isSuccess()){
+			return result;
+		}
+		try {
+			result=service.deleteCity(id);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		return result;
+	}
+	
 	public ResultMessage updateCity(CityVO city){
-		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ResultMessage result=cityIdCheck(city.getId());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
 		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 		try {
 			result=service.updateCity(cityPO);
@@ -136,6 +155,22 @@ public class DepartmentblImpl{
 		}
 		return result;
 	}
+	
+	public ArrayList<CityVO> showAllCities(){
+		ArrayList<CityVO> result=new ArrayList<CityVO>();
+		ArrayList<CityPO> po=null;
+		try {
+			po=service.showAllCities();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(CityPO city : po){
+			CityVO vo=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
+			result.add(vo);
+		}
+		return result;
+	}
+	
 	public ResultMessage idCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");
 		if(id.length()!=6){
@@ -144,20 +179,12 @@ public class DepartmentblImpl{
 		}
 		return result;
 	}
-	public ResultMessage idCheck(String id,DepartmentType type){
+	
+	public ResultMessage cityIdCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");
-		if(id.length()!=6){
+		if(id.length()!=3){
 			result.setSuccess(false);
-			result.setErrorMessage("输入机构的位数不正确！");
-			return result;
-		}
-		if(id.charAt(3)=='0'&&!(type.equals("TRANSITCENTER"))){
-			result.setSuccess(false);
-			result.setErrorMessage("输入机构编号与类型不符！");
-		}
-		if(id.charAt(3)=='1'&&!(type.equals("BUSINESSHALL"))){
-			result.setSuccess(false);
-			result.setErrorMessage("输入机构编号与类型不符！");
+			result.setErrorMessage("输入城市编号的位数不正确！");
 		}
 		return result;
 	}

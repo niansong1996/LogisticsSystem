@@ -92,6 +92,9 @@ public class UserblImpl{
 	
 	private ResultMessage idCheck(String id) {
 		ResultMessage result = new ResultMessage(true, "");
+		if(id.equals("admin")){
+			return result;
+		}
 		if(id.length()!=10) {
 			result.setSuccess(false);
 			result.setErrorMessage("输入的位数不正确");

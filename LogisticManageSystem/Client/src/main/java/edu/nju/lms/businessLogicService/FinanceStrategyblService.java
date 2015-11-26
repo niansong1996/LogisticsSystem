@@ -10,9 +10,9 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface FinanceStrategyblService {
 	//运费策略
-	public ResultMessage addPriceStrategy (PriceStrategyVO priceStrategy);
+	public ResultMessage addPriceStrategy (double std);
 	
-	public ResultMessage updatePriceStrategy(PriceStrategyVO priceStrategy);
+	public ResultMessage updatePriceStrategy(double std);
 	
 	public PriceStrategyVO findPriceStrategy();
 	//薪水策略
