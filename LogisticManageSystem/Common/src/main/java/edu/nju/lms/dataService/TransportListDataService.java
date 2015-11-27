@@ -12,7 +12,7 @@ import edu.nju.lms.data.ResultMessage;
 public interface TransportListDataService extends Remote{
 	
 	public ResultMessage addSend(SendPO send) throws RemoteException;
-	public ResultMessage updateSengdList(SendPO sendList);
+	public ResultMessage updateSendList(SendPO sendList);
 	public SendPO findSendList(String expressNum);
 	
 	public ResultMessage addLoad(LoadPO load) throws RemoteException;

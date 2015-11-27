@@ -1,6 +1,5 @@
 package edu.nju.lms.main;
 
-import edu.nju.lms.presentation.MainFrame;
 import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.config.ConfigReader;

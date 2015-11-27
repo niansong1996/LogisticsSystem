@@ -3,8 +3,9 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.PartitionType;
+import edu.nju.lms.data.LoadType;
 
 /**
  *@author tj
@@ -18,7 +19,7 @@ public class CheckoutPO extends ListPO{
 	private ArrayList<String> expressNums;
 	private Calendar checkoutDate;
 	private String destination;//demonstrated by the citypo's id
-	private PartitionType loadType;
+	private LoadType loadType;
 	/**
 	 * the number of arrival list
 	 */
@@ -28,7 +29,18 @@ public class CheckoutPO extends ListPO{
 	 */
 	private String motorNum;
 	
-	public CheckoutPO(String id,String state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, PartitionType loadType,
+	public CheckoutPO(String id,String state,String expressNums, String checkoutDate, String destination, String loadType,
+			String arrivalNum, String motorNum) {
+		super(id,ListState.valueOf(state));
+		CommonUtility.String2Array(this.expressNums,expressNums);
+		this.checkoutDate = CommonUtility.String2Cal(checkoutDate);
+		this.destination = destination;
+		this.loadType = LoadType.valueOf(loadType);
+		this.arrivalNum = arrivalNum;
+		this.motorNum = motorNum;
+	}
+	
+	public CheckoutPO(String id,String state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, LoadType loadType,
 			String arrivalNum, String motorNum) {
 		super(id,ListState.valueOf(state));
 		this.expressNums = expressNums;
@@ -71,11 +83,11 @@ public class CheckoutPO extends ListPO{
 		this.destination = destination;
 	}
 
-	public PartitionType getLoadType() {
+	public LoadType getLoadType() {
 		return loadType;
 	}
 
-	public void setLoadType(PartitionType loadType) {
+	public void setLoadType(LoadType loadType) {
 		this.loadType = loadType;
 	}
 

@@ -1,14 +1,18 @@
 package edu.nju.lms.PO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
+import edu.nju.lms.data.PaymentType;
 
 /**
- *@author tj
- *@date 2015年10月24日
+ *@author nians
+ *@date 2015年11月27日
  */
 
 public class CheckinPO extends ListPO{
@@ -21,16 +25,19 @@ public class CheckinPO extends ListPO{
 	 */
 	private ArrayList<String> expresses;
 	private Calendar checkinDate;
-	/**
-	 * every express's destination :express number , destination name
-	 */
-	private Map<String,String> exDestination;
 	
-	public CheckinPO(String id,String state,ArrayList<String> expresses, Calendar checkinDate, Map<String, String> exDestination) {
+	public CheckinPO(String id,String state,String expresses, String checkinDate) {
+		super(id,ListState.valueOf(state));
+		this.checkinDate = CommonUtility.String2Cal(checkinDate);
+		CommonUtility.String2Array(this.expresses, expresses);;
+		this.checkinDate = CommonUtility.String2Cal(checkinDate);
+	}
+	
+	
+	public CheckinPO(String id,String state,ArrayList<String> expresses, Calendar checkinDate) {
 		super(id,ListState.valueOf(state));
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
-		this.exDestination = exDestination;
 	}
     
 	public String getId() {
@@ -55,14 +62,6 @@ public class CheckinPO extends ListPO{
 
 	public void setCheckinDate(Calendar checkinDate) {
 		this.checkinDate = checkinDate;
-	}
-
-	public Map<String, String> getExDestination() {
-		return exDestination;
-	}
-
-	public void setExDestination(Map<String, String> exDestination) {
-		this.exDestination = exDestination;
 	}
 	
 }

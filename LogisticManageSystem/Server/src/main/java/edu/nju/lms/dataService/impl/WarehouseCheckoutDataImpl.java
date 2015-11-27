@@ -1,59 +1,58 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 
 public class WarehouseCheckoutDataImpl implements WarehouseCheckoutDataService{
 	
-	private ArrayList<CheckoutPO> checkoutList = new ArrayList<CheckoutPO>();
-	
-	public ResultMessage addCheckout(CheckoutPO checkout) throws RemoteException {
-		if(findCheckout(checkout.getId())==null){
-			this.checkoutList.add(checkout);
+	public ResultMessage addCheckout(CheckoutPO checkin) throws RemoteException {
+		if(findCheckout(checkin.getId())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(checkin, checkin.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The checkout list already exists!");
+			return new ResultMessage(false,"The checkin already exists!");
 		}
 	}
 
 	public CheckoutPO findCheckout(String id) throws RemoteException {
-		CheckoutPO result = null;
-		Iterator<CheckoutPO> it = checkoutList.iterator();
-		while(it.hasNext()){
-			CheckoutPO next = it.next();
-			if(next.getId()==id){
-				result = next;
-				break;
-			}
-		}
-		return result;
+		CheckoutPO checkin = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from checkinpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			checkin = (CheckoutPO)POGenerator.generateObject(result, CheckoutPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return checkin;
 	}
 
 	public ResultMessage deleteCheckout(String id) throws RemoteException {
-		CheckoutPO checkout = findCheckout(id);
-		if(!(checkout==null)){
-			checkoutList.remove(checkout);
+		CheckoutPO checkin = findCheckout(id);
+		if(!(checkin==null)){
+			JDBC.ExecuteData("delete from checkinpo where id = "+id+";");
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"Could not find the checkout list!");
+			return new ResultMessage(false,"Could not find the checkin!");
 		}
 	}
 
-	public ResultMessage updateCheckout(CheckoutPO checkout) throws RemoteException {
-		CheckoutPO tempCheckout = findCheckout(checkout.getId());
+	public ResultMessage updateCheckout(CheckoutPO checkin) throws RemoteException {
+		CheckoutPO tempCheckout = findCheckout(checkin.getId());
 		if(!(tempCheckout==null)){
-			tempCheckout = checkout;
+			JDBC.ExecuteData(POGenerator.generateUpdateOp(checkin, checkin.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"Could not find the checkout list!");
+			return new ResultMessage(false,"Could not find the checkin!");
 		}
 	}
 

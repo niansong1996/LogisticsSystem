@@ -179,5 +179,17 @@ public class TransportListDataImpl implements TransportListDataService {
 			return new ResultMessage(false,"Could not find the receive list!");
 		}
 	}
+	public ResultMessage updateSendList(SendPO sendList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public SendPO findSendList(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public LoadPO findLoadList(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
