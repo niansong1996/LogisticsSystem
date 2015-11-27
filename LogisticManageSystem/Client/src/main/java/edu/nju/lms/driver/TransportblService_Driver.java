@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
-import edu.nju.lms.VO.LoadVO;
+import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.VO.VehicleVO;
@@ -32,7 +32,7 @@ public class TransportblService_Driver {
 		ArrayList<String> commodityNums = new ArrayList<String>();
 		commodityNums.add("0000000000");
 		commodityNums.add("0000000001");
-		LoadVO load = process.createLoadList(new LoadVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23));
+		LoadCarVO load = process.createLoadList(new LoadCarVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23));
 		System.out.println("createLoadList:"+load.getDriverNum());
 		
 		ResultMessage result2 = process.saveLoadList(load);
