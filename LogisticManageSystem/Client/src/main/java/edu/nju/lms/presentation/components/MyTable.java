@@ -1,11 +1,13 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 
-public abstract class MyTable extends MyScrollPane<MyTableLabel> {
+public abstract class MyTable extends MyScrollPane<MyTableLabel> implements MouseListener{
 
 	private static final long serialVersionUID = -6295339660809296638L;
 
@@ -16,9 +18,12 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> {
 
 	public MyTable(Element element, UIController controller) {
 		super(element, controller);
+		addMouseListener(this);
 		getData();
-		for (MyTableLabel label: data) {
-			addItem(label);
+		for (int i = 0; i < data.size(); i++) {
+			MyTableLabel label = data.get(i);
+			label.setBounds(0,i*label.getHeight(),label.getWidth(), label.getHeight());
+			getViewport().setView(label);
 		}
 	}
 	
@@ -35,5 +40,25 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> {
 	 * @see# addData
 	 */
 	protected abstract void getData();
+	
+	public void mouseClicked(MouseEvent e) {
+		controller.getFrame().repaint();
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		controller.getFrame().repaint();
+	}
+
+	public void mouseExited(MouseEvent e) {
+		controller.getFrame().repaint();
+	}
+
+	public void mousePressed(MouseEvent e) {
+		controller.getFrame().repaint();
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		controller.getFrame().repaint();
+	}
 
 }

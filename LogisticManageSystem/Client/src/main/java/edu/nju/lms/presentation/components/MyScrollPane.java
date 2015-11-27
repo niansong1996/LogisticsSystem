@@ -19,9 +19,13 @@ public class MyScrollPane<T> extends JScrollPane{
 	private static final long serialVersionUID = -2221225508091244689L;
 	private JList<T> list = new JList<T>();
 	private DefaultListModel<T> model = new DefaultListModel<T>();
+	protected Element element;
+	protected UIController controller;
 
 	public MyScrollPane(Element element, UIController controller) {
-		this();
+		getVerticalScrollBar().setUI(new MyScrollPaneUI());
+		this.element = element;
+		this.controller = controller;
 		setBounds(Integer.parseInt(element.attributeValue("x")), Integer.parseInt(element.attributeValue("y")),
 				Integer.parseInt(element.attributeValue("w")), Integer.parseInt(element.attributeValue("h")));
 	}

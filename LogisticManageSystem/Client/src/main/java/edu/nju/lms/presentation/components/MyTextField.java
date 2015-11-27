@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -45,6 +46,9 @@ public class MyTextField extends JTextField {
 		setText(text);
 		setHorizontalAlignment(JTextField.CENTER);
 		setFont(new Font("微软雅黑", Font.BOLD, 18));
+		setBackground(Color.WHITE);
+		setBorder(null);
+		setEditable(false);
 	}
 	public MyTextField(){
 		super();
