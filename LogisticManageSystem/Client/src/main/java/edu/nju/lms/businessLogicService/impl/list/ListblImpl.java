@@ -31,7 +31,7 @@ public class ListblImpl{
 			// TODO
 		}
 		for(ListPO po : list){
-			if(po.getState().equals("WAITING")){
+			if(po.getState().toString().equals("WAITING")){
 				ListVO temp=new ListVO(po.getId());
 				result.add(temp);
 			}
@@ -51,9 +51,13 @@ public class ListblImpl{
 		return list;
 	}
 	
-	public ResultMessage changeList(ListVO List) {
-		ResultMessage result=new ResultMessage(false,"");
-		
+	public ResultMessage changeList(ListVO List,ListType type) {
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		try {
+			result=service.updateList(List.getId(), List.getState());
+		} catch (RemoteException e) {
+			// TODO 
+		}	
 		return result;
 	}
 

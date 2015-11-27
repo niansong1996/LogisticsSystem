@@ -11,7 +11,6 @@ import edu.nju.lms.data.ResultMessage;
 
 public class WarehouseOpblImpl {
 	private ListInfo listInfo;
-	private LogInfo logInfo;
 	private CheckinPO checkinPO;
 	private CheckoutPO checkoutPO;
 	private ExpressList expressList;
@@ -46,15 +45,7 @@ public class WarehouseOpblImpl {
 	public void setListInfo(ListInfo listInfo) {
 		this.listInfo = listInfo;
 	}
-
-	public LogInfo getLogInfo() {
-		return logInfo;
-	}
-
-	public void setLogInfo(LogInfo logInfo) {
-		this.logInfo = logInfo;
-	}
-
+	
 	public ExpressList getExpressList() {
 		return expressList;
 	}

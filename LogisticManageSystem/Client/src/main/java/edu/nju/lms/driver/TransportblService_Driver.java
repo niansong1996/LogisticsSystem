@@ -18,8 +18,7 @@ import edu.nju.lms.data.ResultMessage;
 public class TransportblService_Driver {
 	public void drive(TransProcessblService process, TransManageblService manager) {
 		
-		OrderInforVO order = process.checkOrderInfor("0000000000");
-		System.out.println("checkOrderInfor: "+order.getExpressNum());
+		ArrayList<OrderInforVO> order = process.checkOrderInfor("0000000000");
 		
 		ArrayList<String> baseInfo = new ArrayList<String>();
 		baseInfo.add("张三");
@@ -32,26 +31,23 @@ public class TransportblService_Driver {
 		ArrayList<String> commodityNums = new ArrayList<String>();
 		commodityNums.add("0000000000");
 		commodityNums.add("0000000001");
-		LoadCarVO load = process.createLoadList(new LoadCarVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23));
-		System.out.println("createLoadList:"+load.getDriverNum());
+//		LoadCarVO load = process.createLoadList(new LoadVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23));
+//		System.out.println("createLoadList:"+load.getDriverNum());
+//		
+//		ResultMessage result2 = process.saveLoadList(load);
+//		System.out.println("saveLoadList:"+result2.isSuccess());
+//		
+//		ArrivalVO arrival = process.createArrivalList(ArrivalState.COMPLETE, "0000000000");
+//		System.out.println("createArrivalList:"+arrival.getDestination());
+//		
+//		ResultMessage result3 = process.saveArrivalList(arrival);
+//		System.out.println("saveArrivalList:"+result3.isSuccess());
+//		
+//		DispatchVO dispatch = process.createDispatchList("010101", "niansong");
+//		System.out.println("createDispatchList:"+dispatch.getDispatchPerson());
 		
-		ResultMessage result2 = process.saveLoadList(load);
-		System.out.println("saveLoadList:"+result2.isSuccess());
-		
-		ArrivalVO arrival = process.createArrivalList(ArrivalState.COMPLETE, "0000000000");
-		System.out.println("createArrivalList:"+arrival.getDestination());
-		
-		ResultMessage result3 = process.saveArrivalList(arrival);
-		System.out.println("saveArrivalList:"+result3.isSuccess());
-		
-		DispatchVO dispatch = process.createDispatchList("010101", "niansong");
-		System.out.println("createDispatchList:"+dispatch.getDispatchPerson());
-		
-		ResultMessage result4 = process.saveDispatchList(dispatch);
-		System.out.println("saveDispatchList:"+result4.isSuccess());
-		
-		ResultMessage result5 = process.saveTransportList(null);
-		System.out.println("saveTransportList:"+result5.isSuccess());
+//		ResultMessage result4 = process.saveDispatchList(dispatch);
+//		System.out.println("saveDispatchList:"+result4.isSuccess());
 		
 		VehicleVO vehicle = manager.addVehicle(manager.findVehicle("0000000"));
 		System.out.println("addVehicle:"+vehicle.getPlateNum());

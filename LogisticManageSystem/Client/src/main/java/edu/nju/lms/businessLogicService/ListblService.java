@@ -23,6 +23,6 @@ public interface ListblService {
 	 * @param List
 	 * @return
 	 */
-	public ResultMessage changeList(ListVO List);
+	public ResultMessage changeList(ListVO List,ListType type);
 	
 }

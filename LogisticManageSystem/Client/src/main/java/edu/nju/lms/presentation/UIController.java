@@ -102,7 +102,7 @@ public class UIController {
 	}
 
 	public void setLogID(String id){
-		userController.setID(id);
+		userController.setLogID(id);
 	}
 	public PersonnelController getPersonnelController() {
 		return personnelController;

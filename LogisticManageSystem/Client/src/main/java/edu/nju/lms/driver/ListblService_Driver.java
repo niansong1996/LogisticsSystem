@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogicService.ListblService;
 import edu.nju.lms.businessLogicService.impl.list.ListblImpl;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -13,7 +14,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public class ListblService_Driver {
 	public void drive(ListblService listblService){
-		ResultMessage result = listblService.changeList(new ListVO("0000000000"));
+		ResultMessage result = listblService.changeList(new ListVO("0000000000"),ListType.ARRIVAL);
 		if(result.isSuccess()){
 			System.out.println("Update success\n");
 		}else{

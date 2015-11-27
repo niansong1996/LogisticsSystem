@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
 import java.rmi.Naming;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -18,6 +19,7 @@ import edu.nju.lms.businessLogicService.FinanceAccountblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
+import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
@@ -37,6 +39,9 @@ public class FinanceController
 	FinanceReceiptDataService receiptData;
 	FinanceStrategyDataService strategyData;
 	
+	LogController logController;
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy/mm/dd");
+	String time="";
 	private String logID;
 	
 	public FinanceController(){

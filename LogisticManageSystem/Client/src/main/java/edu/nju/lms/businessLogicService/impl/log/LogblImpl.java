@@ -18,7 +18,7 @@ public class LogblImpl {
 	private LogDataService logData=null;
 	
 	public LogblImpl(LogDataService logService){
-		this.setLogData(logService);
+		this.logData=logService;
 	}
 	/**
 	 * get the info of log in valid time
@@ -55,13 +55,5 @@ public class LogblImpl {
 			e.printStackTrace();
 		}
 		return result;
-	}
-	
-	public LogDataService getLogData() {
-		return logData;
-	}
-
-	public void setLogData(LogDataService logData) {
-		this.logData = logData;
 	}
 }
