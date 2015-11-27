@@ -31,7 +31,7 @@ public class FinanceReceiptDataTest {
 	@Test
 	public void testAddReceipt() throws RemoteException{
 		financeReceiptData = new FinanceReceiptDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table receiptpo");
 		Assert.assertEquals(success, financeReceiptData.addReceipt(receipt1));
 		Assert.assertEquals(fail1, financeReceiptData.addReceipt(receipt1));
@@ -40,7 +40,7 @@ public class FinanceReceiptDataTest {
 	@Test
 	public void testDeleteReceipt() throws RemoteException{
 		financeReceiptData = new FinanceReceiptDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt1);
 		Assert.assertEquals(success, financeReceiptData.deleteReceipt(receipt1.getId()));
@@ -50,7 +50,7 @@ public class FinanceReceiptDataTest {
 	@Test
 	public void testFindReceipt_name() throws RemoteException{
 		financeReceiptData = new FinanceReceiptDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt2);
 		Assert.assertEquals(receipt2, financeReceiptData.findReceipt(receipt2.getId()));
@@ -60,7 +60,7 @@ public class FinanceReceiptDataTest {
 	@Test
 	public void testUpdateReceipt() throws RemoteException{
 		financeReceiptData = new FinanceReceiptDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table receiptpo");
 		financeReceiptData.addReceipt(receipt2);
 		Assert.assertEquals(success, financeReceiptData.updateReceipt(receipt2));

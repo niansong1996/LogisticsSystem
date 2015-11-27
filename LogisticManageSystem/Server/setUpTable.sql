@@ -1,4 +1,4 @@
-create database lms;
+create database lms character set UTF-8;
 use lms;
 create table accountpo
 (

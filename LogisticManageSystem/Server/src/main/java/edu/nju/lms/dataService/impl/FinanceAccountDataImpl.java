@@ -7,11 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.PO.InitialInforPO;
-import edu.nju.lms.PO.PersonnelPO;
-import edu.nju.lms.PO.UserPO;
-import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;

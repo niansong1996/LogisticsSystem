@@ -40,7 +40,7 @@ public class FinancePaymentDataTest {
 	@Test
 	public void testAddPayment() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		Assert.assertEquals(success,financePaymentData.addPayment(paymentPo1));
 		Assert.assertEquals(fail1, financePaymentData.addPayment(paymentPo1));
@@ -49,7 +49,7 @@ public class FinancePaymentDataTest {
 	@Test
 	public void testDeletePayment() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo1);
 		Assert.assertEquals(success, financePaymentData.deletePayment(paymentPo1.getId()));
@@ -58,7 +58,7 @@ public class FinancePaymentDataTest {
 	@Test
 	public void testFindPayment_num() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(paymentPo2.getId()));
@@ -67,7 +67,7 @@ public class FinancePaymentDataTest {
 	@Test 
 	public void testFindPayment_time() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2).get(0));
@@ -76,7 +76,7 @@ public class FinancePaymentDataTest {
 	@Test
 	public void testUpdatePayment() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		financePaymentData.addPayment(paymentPo2);
 		Assert.assertEquals(success, financePaymentData.updatePayment(paymentPo2));

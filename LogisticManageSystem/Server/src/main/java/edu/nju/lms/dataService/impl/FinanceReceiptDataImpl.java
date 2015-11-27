@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
-import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;

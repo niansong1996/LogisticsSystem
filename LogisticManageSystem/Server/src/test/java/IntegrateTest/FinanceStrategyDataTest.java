@@ -32,7 +32,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testAddPriceStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(success1, financeStrategyData.addPriceStrategy(priceStrategyPO1));
@@ -42,7 +42,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testUpdatePriceStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(fail12, financeStrategyData.updatePriceStrategy(priceStrategyPO2));
@@ -52,7 +52,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testFindPriceStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(null, financeStrategyData.findPriceStrategy());
@@ -62,7 +62,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testAddSalaryStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(success2, financeStrategyData.addSalaryStrategy(salaryStrategyPO1));
@@ -72,7 +72,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testUpdateSalaryStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(fail22, financeStrategyData.updateSalaryStrategy(salaryStrategyPO2));
@@ -82,7 +82,7 @@ public class FinanceStrategyDataTest {
 	@Test
 	public void testFindSalaryStrategy() throws RemoteException{
 		financeStrategyData = new FinanceStrategyDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table priceStrategypo");
 		JDBC.ExecuteData("truncate table salaryStrategypo");
 		Assert.assertEquals(null, financeStrategyData.findSalaryStrategy(PersonType.ADMINISTRATOR));

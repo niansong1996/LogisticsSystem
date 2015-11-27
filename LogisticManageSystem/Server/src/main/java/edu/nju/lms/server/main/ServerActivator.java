@@ -31,7 +31,7 @@ public class ServerActivator
 		String url = "jdbc:mysql://127.0.0.1:3306/lms";
 		String user = "root";
 		String password = "9990";
-		JDBC CommonJDBC = new JDBC(url,user,password);
+		JDBC.createJDBC(url,user,password);
 		
 		 try{    
 	         LocateRegistry.createRegistry(1099);    

@@ -30,7 +30,7 @@ public class FinanceAccountDataTest {
 	@Test
 	public void testAddAccount() throws RemoteException{
 		financeAccountData = new FinanceAccountDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table accountpo");
 		Assert.assertEquals(success, financeAccountData.addAccount(accountPo1));
 		Assert.assertEquals(fail1,financeAccountData.addAccount(accountPo1));
@@ -40,7 +40,7 @@ public class FinanceAccountDataTest {
 	@Test
 	public void testDeleteAccount() throws RemoteException{
 		financeAccountData = new FinanceAccountDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table accountpo");
 		financeAccountData.addAccount(accountPo1);
 		Assert.assertEquals(success, financeAccountData.deleteAccount(accountPo1.getName()));
@@ -49,7 +49,7 @@ public class FinanceAccountDataTest {
 	@Test 
 	public void testUpadtaAccout() throws RemoteException{
 		financeAccountData = new FinanceAccountDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table accountpo");
 		financeAccountData.addAccount(accountPo2);
 		Assert.assertEquals(fail2, financeAccountData.updateAccount(accountPo1));
@@ -58,7 +58,7 @@ public class FinanceAccountDataTest {
 	@Test
 	public void testFindAccount() throws RemoteException{
 		financeAccountData = new FinanceAccountDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table accountpo");
 		financeAccountData.addAccount(accountPo2);
 		Assert.assertEquals(accountPo2,financeAccountData.findAccount(accountPo2.getName()));

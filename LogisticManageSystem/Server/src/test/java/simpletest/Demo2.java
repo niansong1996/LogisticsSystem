@@ -30,7 +30,7 @@ public class Demo2 {
 		PaymentPO paymentPo1 = new PaymentPO("8736473827",ListState.WAITING,PaymentType.SALARY,cal1,accountPo1.getName(),23452.2);
 		PaymentPO paymentPo2 = new PaymentPO("8394837820",ListState.WAITING,PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
 		PaymentPO paymentPo3 = new PaymentPO("8394837820",ListState.WAITING,PaymentType.FREIGHT,cal2,accountPo2.getName(),83732.2);
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table paymentpo");
 		try {
 			financePaymentData.addPayment(paymentPo1);

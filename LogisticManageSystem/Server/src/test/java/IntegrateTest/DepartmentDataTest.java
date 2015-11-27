@@ -34,7 +34,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testAddDepartment() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		Assert.assertEquals(success,departmentData.addDepartment(departmentPo1));
@@ -44,7 +44,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testDeleteDepartment() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addDepartment(departmentPo1);
@@ -54,7 +54,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testFindDepartment() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addDepartment(departmentPo2);
@@ -65,7 +65,7 @@ public class DepartmentDataTest {
 	@Test
 	public void testUpdateDepartment() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addDepartment(departmentPo2);
@@ -75,7 +75,7 @@ public class DepartmentDataTest {
 //	@Test
 	public void testAddCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		Assert.assertEquals(success,departmentData.addCity(cityPo1));
@@ -85,7 +85,7 @@ public class DepartmentDataTest {
 //	@Test
 	public void testDeleteCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addCity(cityPo1);
@@ -95,7 +95,7 @@ public class DepartmentDataTest {
 //	@Test
 	public void testFindCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addCity(cityPo2);
@@ -106,7 +106,7 @@ public class DepartmentDataTest {
 //	@Test
 	public void testUpdateCity() throws RemoteException{
 		departmentData = new DepartmentDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table departmentpo;");
 		JDBC.ExecuteData("truncate table citypo;");
 		departmentData.addCity(cityPo2);

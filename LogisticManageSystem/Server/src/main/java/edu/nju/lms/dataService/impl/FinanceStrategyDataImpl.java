@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import edu.nju.lms.PO.PriceStrategyPO;
-import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;

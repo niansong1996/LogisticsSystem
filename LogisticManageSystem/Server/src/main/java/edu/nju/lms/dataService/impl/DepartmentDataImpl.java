@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
@@ -109,5 +110,17 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		else{
 			return new ResultMessage(false,"Could not find the city!");
 		}
+	}
+
+	public ArrayList<CityPO> showAllCities() throws RemoteException {
+		ArrayList<CityPO> cityList = new ArrayList<CityPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from citypo;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(cityList,result, CityPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return cityList;
 	}
 }

@@ -3,9 +3,8 @@ package edu.nju.lms.data.utility;
 import java.sql.*;
 
 public class JDBC {
-	static Connection conn;
-	Statement statement;
-	String driver = "com.mysql.jdbc.Driver";
+	private static Connection conn;
+	private static String driver = "com.mysql.jdbc.Driver";
 
 	public static ResultSet ExecuteQuery(String sql){
 //		System.out.println(sql);
@@ -30,33 +29,13 @@ public class JDBC {
 		}
 		return result;
 	}
-
-	public JDBC(String url,String user,String password){
-		//TODO to be modified into actual url, user and password
+	private JDBC(){}
+	public static void createJDBC(String url,String user,String password){
 
 		try { 
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			if(!conn.isClosed()) System.out.println("Succeeded connecting to the Database!");
-//			Statement statement = conn.createStatement();
-			/*
-			String sql = "select * from person";	         
-
-			// 结果集
-			ResultSet rs = statement.executeQuery(sql);
-
-			System.out.println("-----------------");
-			System.out.println("执行结果如下所示:");
-			System.out.println("-----------------");
-			System.out.println("-----------------");
-
-			while(rs.next()) {
-				System.out.println(rs.getString(1)+"  "+rs.getString(2));
-			}
-
-			rs.close();
-			conn.close();
-			 */
 		} catch(ClassNotFoundException e) {
 			System.out.println("Sorry,can`t find the Driver!"); 
 			e.printStackTrace();

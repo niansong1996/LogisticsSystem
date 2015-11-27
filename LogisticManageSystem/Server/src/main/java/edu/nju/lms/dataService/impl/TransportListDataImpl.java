@@ -9,7 +9,6 @@ import edu.nju.lms.PO.DispatchPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
-import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportListDataService;
 

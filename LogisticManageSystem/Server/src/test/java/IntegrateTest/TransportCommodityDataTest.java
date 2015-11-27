@@ -25,7 +25,7 @@ public class TransportCommodityDataTest {
 	@Test
 	public void testAddCommodity() throws RemoteException{
 		transportCommodityData = new TransportCommodityDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table commoditypo");
 		Assert.assertEquals(success,transportCommodityData.addCommodity(commodityPo1));
 		Assert.assertEquals(fail1,transportCommodityData.addCommodity(commodityPo1));
@@ -34,7 +34,7 @@ public class TransportCommodityDataTest {
 	@Test
 	public void testDeleteCommodity() throws RemoteException{
 		transportCommodityData = new TransportCommodityDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table commoditypo");
 		transportCommodityData.addCommodity(commodityPo1);
 		Assert.assertEquals(success, transportCommodityData.deleteCommodity(commodityPo1.getId()));
@@ -43,7 +43,7 @@ public class TransportCommodityDataTest {
 	@Test
 	public void testFindCommodity() throws RemoteException{
 		transportCommodityData = new TransportCommodityDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table commoditypo");
 		transportCommodityData.addCommodity(commodityPo2);
 		Assert.assertEquals(commodityPo2, transportCommodityData.findCommodity(commodityPo2.getId()));
@@ -53,7 +53,7 @@ public class TransportCommodityDataTest {
 	@Test
 	public void testUpdateCommodity() throws RemoteException{
 		transportCommodityData = new TransportCommodityDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table commoditypo");
 		transportCommodityData.addCommodity(commodityPo2);
 		Assert.assertEquals(success,transportCommodityData.updateCommodity(commodityPo2));

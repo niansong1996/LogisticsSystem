@@ -24,7 +24,7 @@ public class PersonnelDataTest {
 	@Test
 	public void testAddPersonnel() throws RemoteException{
 		personnelData = new PersonnelDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table personnelpo");
 		Assert.assertEquals(success,personnelData.addPersonnel(personnelPo1));
 		Assert.assertEquals(fail1,personnelData.addPersonnel(personnelPo1));
@@ -33,7 +33,7 @@ public class PersonnelDataTest {
 	@Test
 	public void testDeletePersonnel() throws RemoteException{
 		personnelData = new PersonnelDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table personnelpo");
 		personnelData.addPersonnel(personnelPo1);
 		Assert.assertEquals(success, personnelData.deletePersonnel(personnelPo1.getId()));
@@ -42,7 +42,7 @@ public class PersonnelDataTest {
 	@Test
 	public void testFindPersonnel() throws RemoteException{
 		personnelData = new PersonnelDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table personnelpo");
 		personnelData.addPersonnel(personnelPo2);
 		Assert.assertEquals(personnelPo2, personnelData.findPersonnel(personnelPo2.getId()));
@@ -52,7 +52,7 @@ public class PersonnelDataTest {
 	@Test
 	public void testUpdatePersonnel() throws RemoteException{
 		personnelData = new PersonnelDataImpl();
-		JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
+		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
 		JDBC.ExecuteData("truncate table personnelpo");
 		personnelData.addPersonnel(personnelPo2);
 		Assert.assertEquals(success,personnelData.updatePersonnel(personnelPo2));
