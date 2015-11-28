@@ -54,7 +54,7 @@ public class ListblImpl{
 	public ResultMessage changeList(ListVO List,ListType type) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		try {
-			result=service.updateList(List.getId(), List.getState());
+			result=service.updateList(List.getId(), List.getState(),type);
 		} catch (RemoteException e) {
 			// TODO 
 		}	

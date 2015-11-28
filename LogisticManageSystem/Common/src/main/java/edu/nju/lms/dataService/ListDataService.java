@@ -37,5 +37,5 @@ public interface ListDataService extends Remote{
 	 * @throws RemoteException
 	 * @see ListState ResultMessage
 	 */
-	public ResultMessage updateList(String id,ListState state) throws RemoteException;
+	public ResultMessage updateList(String id,ListState state,ListType type) throws RemoteException;
 }
