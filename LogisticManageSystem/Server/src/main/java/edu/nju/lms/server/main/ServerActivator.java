@@ -9,17 +9,25 @@ import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
+import edu.nju.lms.dataService.ListDataService;
 import edu.nju.lms.dataService.PersonnelDataService;
 import edu.nju.lms.dataService.TransportCommodityDataService;
+import edu.nju.lms.dataService.TransportToolDataService;
 import edu.nju.lms.dataService.UserDataService;
+import edu.nju.lms.dataService.WarehouseCheckinDataService;
+import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 import edu.nju.lms.dataService.impl.DepartmentDataImpl;
 import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
 import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
 import edu.nju.lms.dataService.impl.FinanceReceiptDataImpl;
 import edu.nju.lms.dataService.impl.FinanceStrategyDataImpl;
+import edu.nju.lms.dataService.impl.ListDataImpl;
 import edu.nju.lms.dataService.impl.PersonnelDataImpl;
 import edu.nju.lms.dataService.impl.TransportCommodityDataImpl;
+import edu.nju.lms.dataService.impl.TransportToolDataImpl;
 import edu.nju.lms.dataService.impl.UserDataImpl;
+import edu.nju.lms.dataService.impl.WarehouseCheckinDataImpl;
+import edu.nju.lms.dataService.impl.WarehouseCheckoutDataImpl;
 
 public class ServerActivator 
 {
@@ -43,6 +51,11 @@ public class ServerActivator
 	         FinanceStrategyDataService financeStrategyDataService = new FinanceStrategyDataImpl();
 	         PersonnelDataService personnelDataService = new PersonnelDataImpl();  
 	         TransportCommodityDataService transportCommodityDataService = new TransportCommodityDataImpl();
+	         TransportToolDataService transportToolDataService = new TransportToolDataImpl();
+	         WarehouseCheckinDataService warehouseCheckinDataService = new WarehouseCheckinDataImpl();
+	         WarehouseCheckoutDataService warehouseCheckoutDataService = new WarehouseCheckoutDataImpl();
+	         ListDataService listDataService = new ListDataImpl();
+	         
 	         
 	         Naming.rebind("UserDataService", userDataService);
 	         Naming.rebind("FinanceAccountDataService", financeAccountDataService);
@@ -52,6 +65,11 @@ public class ServerActivator
 	         Naming.rebind("FinanceStrategyDataService", financeStrategyDataService);
 	         Naming.rebind("PersonnelDataService", personnelDataService);
 	         Naming.rebind("TransportCommodityDataService", transportCommodityDataService);
+	         Naming.rebind("transportToolDataSevice", transportToolDataService);
+	         Naming.rebind("transportToolDataService",transportToolDataService);
+	         Naming.rebind("warehouseCheckinDataService", warehouseCheckinDataService);
+	         Naming.rebind("warehouseCheckoutDataService", warehouseCheckoutDataService);
+	         Naming.rebind("listDataService", listDataService);
 	         
 	         
 	         //如果要把实例注册到另一台启动了RMI注册服务的机器上    

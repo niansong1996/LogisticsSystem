@@ -16,36 +16,31 @@ import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.ListDataService;
 
 public class ListDataImpl implements ListDataService{
-	
-	private ArrayList<ListPO> list=new ArrayList<ListPO>();
-	
+
 	public ArrayList<ListPO> findList(ListType type) throws RemoteException {
 		ArrayList<ListPO> list=new ArrayList<ListPO>();
 		ResultSet result = JDBC.ExecuteQuery("select * from "+type.toString().toLowerCase()+"po ;");
 		try{
-		if(!result.wasNull())
-			POGenerator.generateMultiObject(list,result, ListPO.class.getName());
+			if(!result.wasNull())
+				POGenerator.generateMultiObject(list,result, ListPO.class.getName());
 		}catch (SQLException e) {
 			e.printStackTrace();
 		};
 		return list;
 	}
 
-	public ListPO findList(String id) throws RemoteException {
-		ListPO result = null;
-		Iterator<ListPO> it = list.iterator();
-		while(it.hasNext()){
-			ListPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
+	public ResultMessage updateList(String id, ListState state, ListType type) throws RemoteException {
+		String poName = type.toString().toLowerCase()+"po";
+		ResultSet result = JDBC.ExecuteQuery("select * from "+poName+" where id = "+id+" ;");
+		try {
+			if(!result.wasNull()){
+				JDBC.ExecuteData("update "+poName+" set state = "+state+" where id = "+id+" ;");
+				return new ResultMessage(true,null);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return result;
-	}
-
-	public ResultMessage updateList(String id, ListState state) throws RemoteException {
-		return null;
+		return new ResultMessage(false,"The list doesn't exist!");
 	}
 
 }
