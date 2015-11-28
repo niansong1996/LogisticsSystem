@@ -32,6 +32,7 @@ public class CheckoutPO extends ListPO{
 	public CheckoutPO(String id,String state,String expressNums, String checkoutDate, String destination, String loadType,
 			String arrivalNum, String motorNum) {
 		super(id,ListState.valueOf(state));
+		this.expressNums = new ArrayList<String>();
 		CommonUtility.String2Array(this.expressNums,expressNums);
 		this.checkoutDate = CommonUtility.String2Cal(checkoutDate);
 		this.destination = destination;
@@ -40,9 +41,9 @@ public class CheckoutPO extends ListPO{
 		this.motorNum = motorNum;
 	}
 	
-	public CheckoutPO(String id,String state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, LoadType loadType,
+	public CheckoutPO(String id,ListState state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, LoadType loadType,
 			String arrivalNum, String motorNum) {
-		super(id,ListState.valueOf(state));
+		super(id,state);
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
 		this.destination = destination;
@@ -106,6 +107,17 @@ public class CheckoutPO extends ListPO{
 	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		CheckoutPO checkout = (CheckoutPO)object;
+		if(this.arrivalNum.equals(checkout.arrivalNum))
+			if(this.destination.equals(checkout.destination))
+				if(CommonUtility.Calequals(this.checkoutDate, checkout.checkoutDate))
+					if(this.expressNums.equals(checkout.expressNums))
+						if(this.loadType==checkout.loadType)
+							if(this.motorNum.equals(checkout.motorNum))
+								return true;
+		return false;
+	}
 	
 }

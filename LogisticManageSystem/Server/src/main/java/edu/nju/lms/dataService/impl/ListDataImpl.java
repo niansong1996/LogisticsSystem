@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import edu.nju.lms.PO.ListPO;
+import edu.nju.lms.PO.ListPO;
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
@@ -29,17 +31,6 @@ public class ListDataImpl implements ListDataService{
 		return list;
 	}
 
-	public ResultMessage updateList(ListPO list) throws RemoteException {
-		ListPO tempList = findList(list.getId());
-		if(!(tempList==null)){
-			JDBC.ExecuteData(POGenerator.generateUpdateOp(list, list.getClass().getName()));
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the list!");
-		}
-	}
-
 	public ListPO findList(String id) throws RemoteException {
 		ListPO result = null;
 		Iterator<ListPO> it = list.iterator();
@@ -51,6 +42,10 @@ public class ListDataImpl implements ListDataService{
 			}
 		}
 		return result;
+	}
+
+	public ResultMessage updateList(String id, ListState state) throws RemoteException {
+		return null;
 	}
 
 }

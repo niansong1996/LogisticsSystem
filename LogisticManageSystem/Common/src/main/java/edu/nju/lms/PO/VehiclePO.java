@@ -16,6 +16,14 @@ public class VehiclePO implements Serializable{
 	private int serviceYears;
 	private String businessHallNum;
 	
+	public VehiclePO(String plateNum,String vehicleNum, String serviceYears, String businessHallNum) {
+		super();
+		this.vehicleNum = vehicleNum;
+		this.plateNum = plateNum;
+		this.serviceYears = Integer.parseInt(serviceYears);
+		this.businessHallNum=businessHallNum;
+	}
+	
 	public VehiclePO(String vehicleNum, String plateNum,String businessHallNum, int serviceYears) {
 		super();
 		this.vehicleNum = vehicleNum;
@@ -47,5 +55,14 @@ public class VehiclePO implements Serializable{
 	public void setBusinessHallNum(String businessHallNum) {
 		this.businessHallNum = businessHallNum;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		VehiclePO vehicle = (VehiclePO)object;
+		if(this.businessHallNum.equals(vehicle.businessHallNum))
+			if(this.plateNum.equals(vehicle.plateNum))
+				if(this.serviceYears==vehicle.serviceYears)
+					if(this.vehicleNum.equals(vehicle.vehicleNum))
+						return true;
+		return false;
+	}
 }

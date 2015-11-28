@@ -2,6 +2,8 @@ package edu.nju.lms.PO;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
+
 /**
  *@author tj
  *@date 2015年10月24日
@@ -26,6 +28,20 @@ public class DriverPO implements Serializable{
 	//行驶证期限
 	private Calendar drivingLimit;
 	private String businesshallNum;
+	
+	public DriverPO(String driverNum, String driverName, String birth, String idNum, String phoneNum, String sex,
+			String drivingLimit,String businesshallNum) {
+		super();
+		this.driverNum = driverNum;
+		this.driverName = driverName;
+		this.birth = CommonUtility.String2Cal(birth);
+		this.idNum = idNum;
+		this.phoneNum = phoneNum;
+		this.sex = Integer.parseInt(sex);
+		this.drivingLimit = CommonUtility.String2Cal(drivingLimit);
+		this.businesshallNum=businesshallNum;
+	}
+	
 	public DriverPO(String driverNum, String driverName, Calendar birth, String idNum, String phoneNum, int sex,
 			Calendar drivingLimit,String businesshallNum) {
 		super();
@@ -86,6 +102,19 @@ public class DriverPO implements Serializable{
 	public void setBusinesshallNum(String businesshallNum) {
 		this.businesshallNum = businesshallNum;
 	}
-	
+	@Override
+	public boolean equals(Object object){
+		DriverPO driver = (DriverPO)object;
+		if(this.businesshallNum.equals(driver.businesshallNum))
+			if(CommonUtility.Calequals(this.birth, driver.birth))
+				if(this.driverName.equals(driver.driverName))
+					if(this.driverNum.equals(driver.driverNum))
+						if(CommonUtility.Calequals(this.drivingLimit, driver.drivingLimit))
+							if(this.idNum.equals(driver.idNum))
+								if(this.phoneNum.equals(driver.phoneNum))
+									if(this.sex==driver.sex)
+										return true;
+		return false;
+	}
 	
 }

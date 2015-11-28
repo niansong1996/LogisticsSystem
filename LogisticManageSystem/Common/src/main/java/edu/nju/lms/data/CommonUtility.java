@@ -27,4 +27,12 @@ public class CommonUtility {
 		for(String t : array) list.add(t);
 		}
 	}
+	public static boolean Calequals(Calendar cal1,Calendar cal2){
+		if(cal1.getTime().getYear()==cal2.getTime().getYear())
+			if(cal1.getTime().getMonth()==cal2.getTime().getMonth())
+				if(cal1.getTime().getDay()==cal2.getTime().getDay())
+					return true;
+		return false;
+		
+	}
 }

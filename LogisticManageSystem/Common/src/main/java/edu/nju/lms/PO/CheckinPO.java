@@ -1,14 +1,10 @@
 package edu.nju.lms.PO;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Map;
 
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.PaymentType;
 
 /**
  *@author nians
@@ -28,14 +24,15 @@ public class CheckinPO extends ListPO{
 	
 	public CheckinPO(String id,String state,String expresses, String checkinDate) {
 		super(id,ListState.valueOf(state));
+		this.expresses = new ArrayList<String>();
 		this.checkinDate = CommonUtility.String2Cal(checkinDate);
 		CommonUtility.String2Array(this.expresses, expresses);;
 		this.checkinDate = CommonUtility.String2Cal(checkinDate);
 	}
 	
 	
-	public CheckinPO(String id,String state,ArrayList<String> expresses, Calendar checkinDate) {
-		super(id,ListState.valueOf(state));
+	public CheckinPO(String id,ListState state,ArrayList<String> expresses, Calendar checkinDate) {
+		super(id,state);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
 	}
@@ -63,5 +60,12 @@ public class CheckinPO extends ListPO{
 	public void setCheckinDate(Calendar checkinDate) {
 		this.checkinDate = checkinDate;
 	}
-	
+	@Override 
+	public boolean equals(Object object){
+		CheckinPO checkin = (CheckinPO)object;
+		if(CommonUtility.Calequals(this.checkinDate,checkin.checkinDate))
+			if(this.expresses.equals(checkin.expresses))
+				return true;
+		return false;
+	}
 }

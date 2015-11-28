@@ -99,5 +99,48 @@ checkin varchar(12) not null,
 checkout varchar(12) not null,
 receive varchar(12) not null
 );
+create table checkinpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+expresses text,
+checkinDate datetime not null
+);
+create table checkoutpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+expressNums text,
+checkoutDate datetime not null,
+destination varchar(20) not null,
+loadType varchar(20) not null,
+arrivalNum varchar(12) not null,
+motorNum varchar(12) not null
+);
+create table vehiclepo
+(
+_id_ int unsigned not null auto_increment primary key,
+plateNum varchar(20) not null unique,
+vehicleNum varchar(20) not null unique,
+serviceYears tinyint not null,
+businessHallNum varchar(20) not null
+);
+create table driverpo
+(
+_id_ int unsigned not null auto_increment primary key,
+driverNum varchar(20) not null,
+driverName varchar(20) not null,
+birth datetime not null,
+idNum varchar(20) not null,
+phoneNum varchar(20) not null,
+sex tinyint not null,
+drivingLimit datetime not null,
+businesshallNum varchar(20) not null
+);
+
+
+
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 
