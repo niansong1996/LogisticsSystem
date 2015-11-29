@@ -28,7 +28,7 @@ public class UserController implements UserblService{
 			user=new UserblImpl(userService);
 	    }    
 	    catch (Exception e){
-	    	System.out.println("网络未连接");
+			System.out.println("网络未连接");
 	    	System.exit(0);
 	    }
 	}

@@ -47,8 +47,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
 			process=new TransProcessblImpl(commodityData,listData);
 		} catch (Exception e) {
-			System.out.println("网络未连接！");
-			System.exit(0);
+			System.out.println("网络未连接");
+	    	System.exit(0);
 		} 
 	}
 	public TransportController(String id){

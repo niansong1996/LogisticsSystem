@@ -52,8 +52,7 @@ public class FinancePayblImpl{
 	}
 
 	public SalaryVO showSalarySum(int year, int month) {
-		// TODO Auto-generated method stub
-		return new SalaryVO("2015/8/12","工商银行",2000,null);
+		return null;
 	}
 
 	public EarningVO showEarning() {

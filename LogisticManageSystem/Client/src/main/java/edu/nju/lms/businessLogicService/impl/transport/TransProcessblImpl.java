@@ -3,6 +3,7 @@ package edu.nju.lms.businessLogicService.impl.transport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
@@ -14,10 +15,8 @@ import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
-import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.data.TransportMode;
+import edu.nju.lms.data.ShipState;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 
@@ -43,6 +42,7 @@ public class TransProcessblImpl{
 
 	public SendVO createSendList(SendVO baseMessage) {
 		SendVO result=baseMessage;
+		double money=0;
 		result.setId(createSendNum());
 		try {
 			FinanceController finance=BusinessLogicFactory.getFinanceController();
@@ -63,18 +63,40 @@ public class TransProcessblImpl{
 		} catch (RemoteException e) {
 			// TODO
 		}
-		
+
+		if(result.isSuccess()){
+			ArrayList<String> loading=new ArrayList<String>();
+			ArrayList<String> arrival=new ArrayList<String>();
+			ArrayList<String> checkin=new ArrayList<String>();
+			ArrayList<String> checkout=new ArrayList<String>();
+			CommodityPO c=new CommodityPO(sendList.getExpressNum(),"",sendList.getId(),loading,arrival,"",checkin,checkout,"");
+			try {
+				commodity.addCommodity(c);
+			} catch (RemoteException e) {
+			}
+		}
 		return result;
 	}
 
 	public SendVO findSendList(String expressNum) {
-		// TODO Auto-generated method stub
-		return null;
+		SendVO result=null;
+		SendPO po=null;
+		
+		try {
+			po=list.findSendList(expressNum);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		if(po!=null){
+			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getInitialNum(),
+					po.getWeight(),po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime());
+		}
+		return result;
 	}
 
 	public LoadVO createLoadList(LoadVO baseMessage) {
-		// TODO Auto-generated method stub
-		return null;
+		LoadVO result=baseMessage;
+		return result;
 	}
 
 	public ResultMessage saveLoadList(LoadVO loadList) {

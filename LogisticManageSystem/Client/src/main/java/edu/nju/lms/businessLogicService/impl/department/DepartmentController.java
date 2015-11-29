@@ -29,8 +29,8 @@ public class DepartmentController implements DepartmentblService{
 			departService=(DepartmentDataService) Naming.lookup("//127.0.0.1:1099/DepartmentDataService");
 			department=new DepartmentblImpl(departService);
 		} catch (Exception e) {
-			System.out.println("网络未连接！");
-			System.exit(0);
+			System.out.println("网络未连接");
+	    	System.exit(0);
 		} 
 	}
 	public DepartmentController(String id){

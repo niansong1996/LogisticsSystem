@@ -48,7 +48,7 @@ public class FinancePayblImplTest {
 	@Test
 	public void testShowEarning() {
 		paybl.createRent(1244, 2015);
-		paybl.createSalary(new SalaryVO("2015/10/22","1548569789699968",2000,null));
+		//paybl.createSalary(new SalaryVO("2015/10/22","1548569789699968",2000,null));
 		EarningVO e = paybl.showEarning();
 		Assert.assertEquals(e.getProfit(),-3244);
 	}

@@ -32,8 +32,8 @@ public class PersonnelController implements PersonnelblService{
 			personService=(PersonnelDataService)Naming.lookup("//127.0.0.1:1099/PersonnelDataService");
 			personbl=new PersonnelblImpl(personService);
 		}catch (Exception e) {
-			System.out.println("网络未连接！");
-			System.exit(0);
+			System.out.println("网络未连接");
+	    	System.exit(0);
 		}
 	}
 	public PersonnelController(String id){

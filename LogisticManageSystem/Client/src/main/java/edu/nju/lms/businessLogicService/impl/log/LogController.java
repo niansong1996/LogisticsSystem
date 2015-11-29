@@ -19,8 +19,8 @@ public class LogController implements LogblService{
 			logService=(LogDataService) Naming.lookup("//127.0.0.1:1099/LogDataService");
 			log=new LogblImpl(logService);
 		} catch (Exception e) {
-			System.out.println("网络未连接！");
-			System.exit(0);
+			System.out.println("网络未连接");
+	    	System.exit(0);
 		} 
 	}
 	

@@ -31,7 +31,7 @@ public class ListController implements ListblService{
 			list=new ListblImpl(listService);
 		}catch (Exception e) {
 			System.out.println("网络未连接");
-			System.exit(0);
+	    	System.exit(0);
 		}
 	}
 	public ListController(String id){

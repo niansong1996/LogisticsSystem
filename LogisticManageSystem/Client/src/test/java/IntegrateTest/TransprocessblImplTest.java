@@ -2,6 +2,8 @@ package IntegrateTest;
 
 import java.util.ArrayList;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import edu.nju.lms.VO.ArrivalVO;
@@ -9,15 +11,17 @@ import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.SendVO;
-import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ShipState;
-import junit.framework.Assert;
+import edu.nju.lms.dataService.TransportCommodityDataService;
+import edu.nju.lms.dataService.TransportListDataService;
 
 public class TransprocessblImplTest {
 	
-	TransProcessblImpl process = new TransProcessblImpl();
+	TransportListDataService list;
+	TransportCommodityDataService commodity;
+	TransProcessblImpl process = new TransProcessblImpl(commodity,list);
 	
 	@Test
 	public void testSend() {
@@ -46,8 +50,8 @@ public class TransprocessblImplTest {
 		send();
 		ArrayList<String> commodityNums = new ArrayList<String>();
 		commodityNums.add("0000000000");
-		LoadCarVO loadR = new LoadCarVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23);
-		LoadCarVO load = new LoadCarVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23);
+//		LoadVO loadR = new LoadVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23);
+//		LoadVO load = new LoadVO("0000000000", "2015/01/02", "0250101", "0000000000", "0250102", "010101", "01",commodityNums , 23);
 		//Assert.assertEquals(loadR, process.createLoadList(load));
 		//Assert.assertEquals(true, process.saveLoadList(loadR).isSuccess());
 	}

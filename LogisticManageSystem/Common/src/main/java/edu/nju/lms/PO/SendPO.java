@@ -195,5 +195,15 @@ public class SendPO extends ListPO {
 	public void setTime(double time) {
 		this.time = time;
 	}
+
+
+	public ArrayList<String> getBaseInfor() {
+		return baseInfor;
+	}
+
+
+	public void setBaseInfor(ArrayList<String> baseInfor) {
+		this.baseInfor = baseInfor;
+	}
 	
 }
