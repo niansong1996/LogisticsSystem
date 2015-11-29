@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,8 +11,13 @@ import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 
-public class WarehouseCheckoutDataImpl implements WarehouseCheckoutDataService{
+public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements WarehouseCheckoutDataService{
 	
+	public WarehouseCheckoutDataImpl() throws RemoteException {
+	}
+
+	private static final long serialVersionUID = -7331521818518305879L;
+
 	public ResultMessage addCheckout(CheckoutPO checkout) throws RemoteException {
 		if(findCheckout(checkout.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(checkout, checkout.getClass().getName()));

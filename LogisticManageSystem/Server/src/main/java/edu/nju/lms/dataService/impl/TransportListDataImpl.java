@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,8 +13,10 @@ import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportListDataService;
 
-public class TransportListDataImpl implements TransportListDataService {
-	
+public class TransportListDataImpl extends UnicastRemoteObject implements TransportListDataService{
+	public TransportListDataImpl() throws RemoteException {
+	}
+	private static final long serialVersionUID = 308924668395302280L;
 	private ArrayList<SendPO> sendList = new ArrayList<SendPO>();
 	private ArrayList<LoadPO> loadList = new ArrayList<LoadPO>();
 	private ArrayList<ArrivalPO> arrivalList = new ArrayList<ArrivalPO>();

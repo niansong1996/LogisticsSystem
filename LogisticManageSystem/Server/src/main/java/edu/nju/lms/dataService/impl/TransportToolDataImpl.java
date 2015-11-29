@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -11,8 +12,13 @@ import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.TransportToolDataService;
 
-public class TransportToolDataImpl implements TransportToolDataService{
+public class TransportToolDataImpl extends UnicastRemoteObject implements TransportToolDataService{
 	
+	public TransportToolDataImpl() throws RemoteException {
+	}
+
+	private static final long serialVersionUID = 4734469294067751049L;
+
 	public ResultMessage addVehicle(VehiclePO vehicle) throws RemoteException {
 		if(findVehicle(vehicle.getVehicleNum())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(vehicle, vehicle.getClass().getName()));

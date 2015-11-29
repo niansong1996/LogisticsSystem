@@ -1,12 +1,11 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
@@ -15,7 +14,12 @@ import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.ListDataService;
 
-public class ListDataImpl implements ListDataService{
+public class ListDataImpl extends UnicastRemoteObject implements  ListDataService{
+
+	private static final long serialVersionUID = 7297460025532046217L;
+
+	public ListDataImpl() throws RemoteException {
+	}
 
 	public ArrayList<ListPO> findList(ListType type) throws RemoteException {
 		ArrayList<ListPO> list=new ArrayList<ListPO>();

@@ -12,11 +12,12 @@ import edu.nju.lms.dataService.ListDataService;
 import edu.nju.lms.dataService.impl.ListDataImpl;
 
 public class ListDataTest {
-	ListDataService listData = new ListDataImpl();
+	ListDataService listData;
 	ResultMessage success = new ResultMessage(true,null);
 	
 	@Test
 	public void testAddList() throws RemoteException{
+		listData = new ListDataImpl();
 		ListPO po=null;
 		//Assert.assertEquals(success,listData.updateList(po));
 		
