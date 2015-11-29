@@ -7,6 +7,14 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 
+/**
+ * When create a table, you need to override a method to initialize data
+ * For example, when create a personnelTable,you need to create {@link PersonnelTable}
+ * and override addData method
+ * @author cuihao
+ * @see MyTableLabel
+ * @date 2015-11-29 23:36:18
+ */
 public abstract class MyTable extends MyScrollPane<MyTableLabel> implements MouseListener{
 
 	private static final long serialVersionUID = -6295339660809296638L;
@@ -59,6 +67,10 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 
 	public void mouseReleased(MouseEvent e) {
 		controller.getFrame().repaint();
+	}
+	
+	public void remove(MyTableLabel component){
+		data.remove(component);
 	}
 
 }

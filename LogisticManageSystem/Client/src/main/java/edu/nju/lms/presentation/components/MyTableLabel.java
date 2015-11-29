@@ -1,6 +1,5 @@
 package edu.nju.lms.presentation.components;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -12,35 +11,78 @@ import javax.swing.JLabel;
 
 import org.dom4j.Element;
 
+/**
+ * general table label
+ * a table is composed of a {@link MyTable} extends {@link MyScrollPane} 
+ * and many table labels, this is a general table label including {@link MyCheckBox}
+ * , {@link MyTextField}, and {@link MainButton}
+ * @author cuihao
+ * @date 2015-11-29 23:23:49
+ */
 public class MyTableLabel extends JLabel implements MouseListener{
 
 	private static final long serialVersionUID = 420418378988671847L;
 	
+	/**
+	 * width of the label
+	 */
 	private int width;
 	
+	/**
+	 * height of the label
+	 */
 	private int height;
 	
+	/**
+	 * the label includes many components including {@link MyCheckBox}
+     * {@link MyTextField}, and {@link MainButton}
+	 */
 	private java.awt.Component[] components;
 	
+	/**
+	 * path of picture background (white default)
+	 */
 	private String picPath = "pictures/white.png";
 	
+	/**
+	 * delete button of the label
+	 */
 	MainButton button = null;
 	
+	/**
+	 * the color of the label
+	 */
 	public static boolean isWhite;
+	
+	/**
+	 * a reference used in button listener
+	 * @warning table might be uninitialized 
+	 */
+	private MyTable table;
 
-	public MyTableLabel(Element element, int height, java.awt.Component[] components) {
+	/**
+	 * @param element of the <b>table</b>
+	 * @param height of this label
+	 * @param components this label, must be components
+	 * @param table which the label belongs to. This parameter is not a good design
+	 */
+	public MyTableLabel(Element element, int height, java.awt.Component[] components, MyTable table) {
 		setLayout(null);
 		width = Integer.parseInt(element.attributeValue("w"));
 		this.height = height;
 		this.components = components;
+		this.table = table;
 		initializeComponents();
 		setPreferredSize(new Dimension(width, height));
 		addMouseListener(this);
 	}
 	
+	/**
+	 * add check box and button additionally
+	 */
 	private void initializeComponents() {
 		int column = width/(components.length + 2);
-		JCheckBox check = new JCheckBox("", false);
+		MyCheckBox check = new MyCheckBox("");
 		check.setBounds((column-30)/2, (height-30)/2, 20, 20);
 		add(check);
 		for(int i = 1; i <= components.length; i++) {
@@ -51,6 +93,7 @@ public class MyTableLabel extends JLabel implements MouseListener{
 		button = new MainButton("delete");
 		button.setBounds((components.length+1)*column+column/8, height/8, column*3/4, height*3/4);
 		button.setVisible(false);
+		button.addMouseListener(new tableDeleteListener(table, this));
 		add(button);
 	}
 	
@@ -83,8 +126,21 @@ public class MyTableLabel extends JLabel implements MouseListener{
 		repaint();
 	}
 	
-	public java.awt.Component[] getComponents(){
-		return components;
+	/**
+	 * get component in the label
+	 * @param index
+	 * @return java.awt.component
+	 */
+	public java.awt.Component getComponents(int index){
+		return components[index];
+	}
+	
+	/**
+	 * get column of the component
+	 * @return length of components
+	 */
+	public int getColumnNum(){
+		return components.length;
 	}
 	
 	public int getWidth() {
@@ -113,6 +169,39 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	
 	private void showButton(boolean isShow) {
 		button.setVisible(isShow);
+	}
+	
+	/**
+	 * delete button listener
+	 * @author cuihao
+	 * @date 2015-11-29 23:35:13
+	 */
+	class tableDeleteListener implements MouseListener{
+
+		MyTable table;
+		MyTableLabel label;
+		public tableDeleteListener(MyTable table, MyTableLabel label) {
+			this.table = table;
+			this.label = label;
+		}
+		
+		public void mouseClicked(MouseEvent e) {
+		}
+
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		public void mouseExited(MouseEvent e) {
+		}
+
+		public void mousePressed(MouseEvent e) {
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			table.remove(label);
+			table.repaint();
+		}
+		
 	}
 
 }
