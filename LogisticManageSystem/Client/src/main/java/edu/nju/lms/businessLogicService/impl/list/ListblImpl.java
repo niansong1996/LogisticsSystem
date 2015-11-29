@@ -38,18 +38,6 @@ public class ListblImpl{
 		}
 		return result;
 	}
-
-	public ListVO getListInfo(String id){
-		ListVO list=null;
-		ListPO po=null;
-		try {
-			po=service.findList(id);
-			list=new ListVO(po.getId());
-		} catch (RemoteException e) {
-			// TODO 
-		}
-		return list;
-	}
 	
 	public ResultMessage changeList(ListVO List,ListType type) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");

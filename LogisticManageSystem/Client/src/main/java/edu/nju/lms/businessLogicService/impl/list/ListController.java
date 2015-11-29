@@ -68,19 +68,6 @@ public class ListController implements ListblService{
 		return result;
 	}
 	
-	public ListVO getListInfo(String id) {
-		ListVO result=list.getListInfo(id);
-
-		time=sdf.format(new Date());
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
-		OperationVO op=new OperationVO(time,logID,"查看"+id+"的单据信息");
-		logController.addLog(op);
-		
-		return result;
-	}
 	public String getLogID() {
 		return logID;
 	}

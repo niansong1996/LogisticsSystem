@@ -1,18 +1,26 @@
 package edu.nju.lms.businessLogicService.impl.transport;
 
 import java.rmi.Naming;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.LoadVO;
+import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.OrderInforVO;
+import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.VO.VehicleVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
+import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 import edu.nju.lms.dataService.TransportToolDataService;
 
@@ -20,16 +28,24 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	TransportToolDataService toolData;
 	TransportListDataService listData;
+	TransportCommodityDataService commodityData;
 	
 	TransManageblImpl manage;
 	TransProcessblImpl process;
 	
+	LogController logController;
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy/mm/dd");
+	String time="";
 	String logId;
 	
 	public TransportController(){
 		try {
 			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
 			manage=new TransManageblImpl(toolData);
+			
+			listData=(TransportListDataService) Naming.lookup("//127.0.0.1:1099/TransportListDataService");
+			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
+			process=new TransProcessblImpl(commodityData,listData);
 		} catch (Exception e) {
 			System.out.println("网络未连接！");
 			System.exit(0);
@@ -38,24 +54,70 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public TransportController(String id){
 		this.logId=id;
 	}
-	public VehicleVO addVehicle(VehicleVO plateNum) {
+	public VehicleVO addVehicle(VehicleVO plateNum) {	
 		return manage.addVehicle(plateNum);
 	}
 
 	public ResultMessage saveVehicleInfor(VehicleVO vehicleInfor) {
-		return manage.saveVehicleInfor(vehicleInfor);
+		ResultMessage result=manage.saveVehicleInfor(vehicleInfor);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"增加车辆"+vehicleInfor.getVehicleNum()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public ResultMessage deleteVehicle(String vehicleNum) {
-		return manage.deleteVehicle(vehicleNum);
+		ResultMessage result=manage.deleteVehicle(vehicleNum);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"删除车辆"+vehicleNum+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public ResultMessage updateVehicle(VehicleVO modified) {
-		return manage.updateVehicle(modified);
+		ResultMessage result=manage.updateVehicle(modified);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"更新车辆"+modified.getVehicleNum()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public VehicleVO findVehicle(String vehicleNum) {
-		return manage.findVehicle(vehicleNum);
+		VehicleVO result=manage.findVehicle(vehicleNum);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看车辆"+vehicleNum+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 
 	public DriverVO addDriver(DriverVO driver) {
@@ -63,78 +125,232 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 
 	public ResultMessage saveDriverInfor(DriverVO driver) {
-		return manage.saveDriverInfor(driver);
+		ResultMessage result=manage.saveDriverInfor(driver);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"增加司机"+driver.getDriverNum()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public ResultMessage deleteDriver(String id) {
-		return manage.deleteDriver(id);
+		ResultMessage result= manage.deleteDriver(id);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"删除司机"+id+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public ResultMessage updateDriver(DriverVO driver) {
-		return manage.updateDriver(driver);
+		ResultMessage result=manage.updateDriver(driver);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"更新司机"+driver.getDriverNum()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 
 	public DriverVO findDriver(String id) {
-		return manage.findDriver(id);
+		DriverVO result=manage.findDriver(id);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看司机"+id+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum) {
-		// TODO Auto-generated method stub
-		return null;
+		 ArrayList<OrderInforVO> result=process.checkOrderInfor(orderNum);
+		 
+		 time=sdf.format(new Date());
+		 try {
+			 logController=BusinessLogicFactory.getLogController();
+		 } catch (NoBusinessLogicException e) {
+		 }
+		 OperationVO op=new OperationVO(time,logId,"查看快递"+orderNum+"的物流信息");
+		 logController.addLog(op);
+		 
+		 return result;
 	}
-	public ResultMessage addOrderInfor(OrderInforVO orderInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	public SendVO createSendList(SendVO baseMessage) {
-		// TODO Auto-generated method stub
-		return null;
+		return process.createSendList(baseMessage);
 	}
 	public ResultMessage saveSendList(SendVO sendList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public ResultMessage updateSengdList(SendVO sendList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=process.saveSendList(sendList);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"新建寄件单"+sendList.getId()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 	public SendVO findSendList(String expressNum) {
-		// TODO Auto-generated method stub
-		return null;
+		SendVO result=process.findSendList(expressNum);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看寄件单"+expressNum+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 	public LoadVO createLoadList(LoadVO baseMessage) {
-		// TODO Auto-generated method stub
-		return null;
+		return process.createLoadList(baseMessage);
 	}
 	public ResultMessage saveLoadList(LoadVO loadList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=process.saveLoadList(loadList);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"新建装车单"+loadList.getId()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 	public LoadVO findLoadList(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		LoadVO result=process.findLoadList(id);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看装车单"+id+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
-		// TODO Auto-generated method stub
-		return null;
+		return process.createArrivalList(arrivalList);
 	}
 	public ResultMessage saveArrivalList(ArrivalVO arrivalList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=process.saveArrivalList(arrivalList);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"新建到达单"+arrivalList.getId()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 	public ArrivalVO findArrivalList(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrivalVO result=process.findArrivalList(id);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看到达单"+id+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 	public DispatchVO createDispatchList(DispatchVO dipatchList) {
-		// TODO Auto-generated method stub
-		return null;
+		return process.createDispatchList(dipatchList);
 	}
-	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage saveDispatchList(DispatchVO dispatchList) {
+		ResultMessage result=process.saveDispatchList(dispatchList);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"新建派件单"+dispatchList.getId()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
 	}
 	public DispatchVO findDispatchList(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		DispatchVO result=process.findDispatchList(id);
+		
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看派件单"+id+"的信息");
+		logController.addLog(op);
+		
+		return result;
+	}
+	public ReceiveVO createReceiveList(ReceiveVO receiveList) {
+		return process.createReceiveList(receiveList);
+	}
+	public ResultMessage saveReceiveList(ReceiveVO receiveList) {
+		ResultMessage result=process.saveReceiveList(receiveList);
+		
+		if(result.isSuccess()){
+			time=sdf.format(new Date());
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(time,logId,"新建收件单"+receiveList.getId()+"的信息");
+			logController.addLog(op);
+		}
+		
+		return result;
+	}
+	public ReceiveVO findReceiveList(String id) {
+		ReceiveVO result=process.findReceiveList(id);
+		time=sdf.format(new Date());
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(time,logId,"查看收件单"+id+"的信息");
+		logController.addLog(op);
+		
+		return result;
 	}
 }

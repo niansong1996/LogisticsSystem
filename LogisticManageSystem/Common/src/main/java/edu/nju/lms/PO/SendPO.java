@@ -47,7 +47,7 @@ public class SendPO extends ListPO {
 	 * price and days will needed
 	 */
 	private double price;
-	private int time;
+	private double time;
 	
 	//constructor for reflection
 	public SendPO(String expressNum,String state,String id,String baseInfor,String initialNum, String weight, String volume, String goodsName,
@@ -67,13 +67,13 @@ public class SendPO extends ListPO {
 		this.packingType = PackingType.valueOf(packingType);
 		this.mode = TransportMode.valueOf(mode);
 		this.price = Double.parseDouble(price);
-		this.time = Integer.parseInt(time);
+		this.time = Double.parseDouble(time);
 	}
 	
 	
 	//construct function
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, int time) {
+			PackingType packingType, TransportMode mode, double price, double time) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
@@ -93,7 +93,7 @@ public class SendPO extends ListPO {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, int time) {
+	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -107,7 +107,7 @@ public class SendPO extends ListPO {
 		this.time = time;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, int time) {
+			PackingType packingType, TransportMode mode, double price, double time) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -120,7 +120,7 @@ public class SendPO extends ListPO {
 		this.price = price;
 		this.time = time;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, int time) {
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -134,7 +134,7 @@ public class SendPO extends ListPO {
 		this.time = time;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType,  double price, int time) {
+			PackingType packingType,  double price, double time) {
 		super(id,state);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
@@ -189,10 +189,10 @@ public class SendPO extends ListPO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getTime() {
+	public double getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	

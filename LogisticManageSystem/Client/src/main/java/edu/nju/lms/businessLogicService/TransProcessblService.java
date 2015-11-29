@@ -2,15 +2,12 @@ package edu.nju.lms.businessLogicService;
 
 import java.util.ArrayList;
 
-import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
-import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
+import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
-import edu.nju.lms.data.ArrivalState;
-import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -23,14 +20,9 @@ public interface TransProcessblService {
 	
 	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum);
 	
-	public ResultMessage addOrderInfor(OrderInforVO orderInfo);
-	
-	
 	public SendVO createSendList(SendVO baseMessage);
 	
 	public ResultMessage saveSendList(SendVO sendList);
-	
-	public ResultMessage updateSengdList(SendVO sendList);
 	
 	public SendVO findSendList(String expressNum);
 	
@@ -54,5 +46,12 @@ public interface TransProcessblService {
 	public ResultMessage saveDispatchList(DispatchVO dipatchList);
 	
 	public DispatchVO findDispatchList(String id);
+	
+	
+	public ReceiveVO createReceiveList(ReceiveVO receiveList);
+
+	public ResultMessage saveReceiveList(ReceiveVO receiveList);
+	
+	public ReceiveVO findReceiveList(String id);
 	
 }

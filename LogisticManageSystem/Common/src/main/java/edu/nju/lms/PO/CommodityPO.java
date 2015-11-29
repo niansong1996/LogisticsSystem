@@ -1,6 +1,7 @@
 package edu.nju.lms.PO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import edu.nju.lms.data.ShipState;
 
@@ -21,18 +22,18 @@ public class CommodityPO implements Serializable{
 
 	//sender list
 	private String send;
-	private String loading;
-	private String arrival;
+	private ArrayList<String> load;
+	private ArrayList<String> arrival;
 	private String dispatch;
-	private String checkin;
-	private String checkout;
+	private ArrayList<String> checkin;
+	private ArrayList<String> checkout;
 	private String receive;
-	public CommodityPO(String id, String shipState, String send, String loading, String arrival, String dispatch,
-			String checkin, String checkout, String receive) {
+	public CommodityPO(String id, String shipState, String send, ArrayList<String> loading, ArrayList<String> arrival, String dispatch,
+			ArrayList<String> checkin, ArrayList<String> checkout, String receive) {
 		this.id = id;
 		this.shipState = ShipState.valueOf(shipState);
 		this.send = send;
-		this.loading = loading;
+		this.load = loading;
 		this.arrival = arrival;
 		this.dispatch = dispatch;
 		this.checkin = checkin;
@@ -40,13 +41,13 @@ public class CommodityPO implements Serializable{
 		this.receive = receive;
 	}
 	
-	public CommodityPO(String id, ShipState shipState, String send, String loading, String arrival, String dispatch,
-			String checkin, String checkout, String receive) {
+	public CommodityPO(String id, ShipState shipState, String send, ArrayList<String> loading, ArrayList<String> arrival, String dispatch,
+			ArrayList<String> checkin, ArrayList<String> checkout, String receive) {
 		super();
 		this.id = id;
 		this.shipState = shipState;
 		this.send = send;
-		this.loading = loading;
+		this.load = loading;
 		this.arrival = arrival;
 		this.dispatch = dispatch;
 		this.checkin = checkin;
@@ -72,16 +73,16 @@ public class CommodityPO implements Serializable{
 	public void setSend(String send) {
 		this.send = send;
 	}
-	public String getLoad() {
-		return loading;
+	public ArrayList<String> getLoad() {
+		return load;
 	}
-	public void setLoad(String loading) {
-		this.loading = loading;
+	public void setLoad(ArrayList<String> loading) {
+		this.load = loading;
 	}
-	public String getArrival() {
+	public ArrayList<String> getArrival() {
 		return arrival;
 	}
-	public void setArrival(String arrival) {
+	public void setArrival(ArrayList<String> arrival) {
 		this.arrival = arrival;
 	}
 	public String getDispatch() {
@@ -90,16 +91,16 @@ public class CommodityPO implements Serializable{
 	public void setDispatch(String dispatch) {
 		this.dispatch = dispatch;
 	}
-	public String getCheckin() {
+	public ArrayList<String> getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(String checkin) {
+	public void setCheckin(ArrayList<String> checkin) {
 		this.checkin = checkin;
 	}
-	public String getCheckout() {
+	public ArrayList<String> getCheckout() {
 		return checkout;
 	}
-	public void setCheckout(String checkout) {
+	public void setCheckout(ArrayList<String> checkout) {
 		this.checkout = checkout;
 	}
 	public String getReceive() {
@@ -120,7 +121,7 @@ public class CommodityPO implements Serializable{
 				if(this.checkout.equals(commodity.checkout))
 					if(this.dispatch.equals(commodity.dispatch))
 						if(this.id.equals(commodity.id))
-							if(this.loading.equals(commodity.loading))
+							if(this.load.equals(commodity.load))
 								if(this.receive.equals(commodity.receive))
 									if(this.send.equals(commodity.send))
 										if(this.shipState==commodity.shipState)
