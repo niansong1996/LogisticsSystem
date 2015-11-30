@@ -12,7 +12,6 @@ public abstract class ListPO implements Serializable{
 	private static final long serialVersionUID = 5697602870723648981L;
 	public String id;
 	public ListState state;
-	public String createTime;
 	
 	public ListPO(String id,ListState state) {
 		this.state = state;
@@ -29,12 +28,6 @@ public abstract class ListPO implements Serializable{
 	}
 	public void setState(ListState state) {
 		this.state = state;
-	}
-	public String getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
 	}
 	
 }

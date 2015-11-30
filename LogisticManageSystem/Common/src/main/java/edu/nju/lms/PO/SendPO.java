@@ -48,10 +48,10 @@ public class SendPO extends ListPO {
 	 */
 	private double price;
 	private double time;
-	
+	private String createTime;
 	//constructor for reflection
 	public SendPO(String expressNum,String state,String id,String baseInfor,String initialNum, String weight, String volume, String goodsName,
-			String packingType, String mode, String price, String time) {
+			String packingType, String mode, String price, String time,String createTime) {
 		super(id,ListState.valueOf(state));
 		this.expressNum = expressNum;
 		this.baseInfor = new ArrayList<String>();
@@ -68,12 +68,13 @@ public class SendPO extends ListPO {
 		this.mode = TransportMode.valueOf(mode);
 		this.price = Double.parseDouble(price);
 		this.time = Double.parseDouble(time);
+		this.createTime=createTime;
 	}
 	
 	
 	//construct function
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, double time) {
+			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
@@ -85,6 +86,7 @@ public class SendPO extends ListPO {
 		this.mode = mode;
 		this.price = price;
 		this.time = time;
+		this.createTime=createTime;
 	}
 	public String getExpressNum() {
 		return expressNum;
@@ -93,7 +95,7 @@ public class SendPO extends ListPO {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time) {
+	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time,String createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -105,9 +107,10 @@ public class SendPO extends ListPO {
 		this.mode = TransportMode.NORMAL;
 		this.price = price;
 		this.time = time;
+		this.createTime=createTime;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, double time) {
+			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -119,8 +122,9 @@ public class SendPO extends ListPO {
 		this.mode = mode;
 		this.price = price;
 		this.time = time;
+		this.createTime=createTime;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time) {
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,String createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -132,9 +136,10 @@ public class SendPO extends ListPO {
 		this.mode = mode;
 		this.price = price;
 		this.time = time;
+		this.createTime=createTime;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType,  double price, double time) {
+			PackingType packingType,  double price, double time,String createTime) {
 		super(id,state);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
@@ -145,6 +150,7 @@ public class SendPO extends ListPO {
 		this.mode = TransportMode.NORMAL;
 		this.price = price;
 		this.time = time;
+		this.createTime=createTime;
 	}
 	//getters and setters
 	public int getInitialNum() {
@@ -205,5 +211,10 @@ public class SendPO extends ListPO {
 	public void setBaseInfor(ArrayList<String> baseInfor) {
 		this.baseInfor = baseInfor;
 	}
-	
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
 }

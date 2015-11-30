@@ -1,9 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.user;
 
 import java.rmi.Naming;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.UserVO;
@@ -11,6 +9,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 public class UserController implements UserblService{
@@ -18,8 +17,7 @@ public class UserController implements UserblService{
 	UserblImpl user;
 
 	LogController logController;
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy/mm/dd");
-	String time="";
+	CreateTime getTime=new CreateTime();
 	private String logID;
 	
 	public UserController(){
@@ -39,12 +37,11 @@ public class UserController implements UserblService{
 	public UserVO findUserInfo(String id) {
 		UserVO result=user.findUserInfo(id);
 		
-		time=sdf.format(new Date());
 		try {
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(time,logID,"查看用户"+id+"的信息");
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看用户"+id+"的信息");
 		logController.addLog(op);
 
 		return result;
@@ -54,12 +51,11 @@ public class UserController implements UserblService{
 		ResultMessage result=user.deleteUser(id);
 		
 		if(result.isSuccess()){
-			time=sdf.format(new Date());
 			try {
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(time,logID,"删除用户"+id+"的信息");
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除用户"+id+"的信息");
 			logController.addLog(op);
 		}
 
@@ -70,12 +66,11 @@ public class UserController implements UserblService{
 		ResultMessage result=user.updateUser(User);
 		
 		if(result.isSuccess()){
-			time=sdf.format(new Date());
 			try {
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(time,logID,"更新用户"+User.getUserName()+"的信息");
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新用户"+User.getUserName()+"的信息");
 			logController.addLog(op);
 		}
 
@@ -86,12 +81,11 @@ public class UserController implements UserblService{
 		ResultMessage result=user.addUser(User);
 
 		if(result.isSuccess()){
-			time=sdf.format(new Date());
 			try {
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(time,logID,"新增用户"+User.getUserName()+"的信息");
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"新增用户"+User.getUserName()+"的信息");
 			logController.addLog(op);
 		}
 		
@@ -101,12 +95,11 @@ public class UserController implements UserblService{
 	public ArrayList<UserVO> findAllUser() {
 		ArrayList<UserVO> result=user.findAllUser();
 
-		time=sdf.format(new Date());
 		try {
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(time,logID,"查看所有用户的信息");
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看所有用户的信息");
 		logController.addLog(op);
 		
 		return result;

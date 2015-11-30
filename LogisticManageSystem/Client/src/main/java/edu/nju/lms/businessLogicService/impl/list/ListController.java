@@ -1,9 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.list;
 
 import java.rmi.Naming;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.VO.OperationVO;
@@ -11,6 +9,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.ListblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.ListDataService;
@@ -20,8 +19,7 @@ public class ListController implements ListblService{
 	ListDataService listService;
 	ListblImpl list;
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	String time="";
+	CreateTime getTime=new CreateTime();
 	LogController logController;
 	String logID;
 	
@@ -41,12 +39,11 @@ public class ListController implements ListblService{
 	public ArrayList<ListVO> getListInfo(ListType type) {
 		ArrayList<ListVO> result=list.getListInfo(type);
 		
-		time=sdf.format(new Date());
 		try {
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(time,logID,"查看类型为"+type.toString()+"的单据信息");
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看类型为"+type.toString()+"的单据信息");
 		logController.addLog(op);
 		
 		return result;
@@ -56,12 +53,11 @@ public class ListController implements ListblService{
 		ResultMessage result=list.changeList(List,type);
 		
 		if(result.isSuccess()){
-			time=sdf.format(new Date());
 			try {
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(time,logID,"审批类型为"+type.toString()+"的单据信息");
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"审批类型为"+type.toString()+"的单据信息");
 			logController.addLog(op);
 		}
 		
