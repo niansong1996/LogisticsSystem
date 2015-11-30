@@ -40,7 +40,7 @@
 		     <component name="PersonnelManage" class = "Component" x="150" y="20" w="98" h="23"/>
  		     <unit name ="mainTable" class = "table.PersonnelTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
 		     <unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddPersonButtonListener"/>
-		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="0" listenerName="DeletePersonButtonListener"/>
+		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
 		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="0" listenerName="SavePersonButtonListener"/>
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>

@@ -36,10 +36,12 @@ public class DeletePersonButtonListener extends ButtonListener {
 //		}
 //		table.repaint();
 		ArrayList<MyTableLabel> data = table.getDataList();
-		for(MyTableLabel label: data) {
+		for(int i = 0; i < data.size(); i++) {
+			MyTableLabel label = data.get(i);
 			MyCheckBox check = (MyCheckBox) label.getComponent(0);
 			if(check.isSelected()) {
-				table.remove(label);
+				table.remove(i);
+				i--;
 			}
 		}
 	}

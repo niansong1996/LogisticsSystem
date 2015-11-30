@@ -37,9 +37,9 @@ public class MyCheckBox extends JCheckBox{
 			JCheckBox jcb = (JCheckBox) e.getItem();
 			{
 				if (jcb.isSelected()) {
-					jcb.setIcon(new ImageIcon(PIC_PLAIN));
-				} else
 					jcb.setIcon(new ImageIcon(PIC_SELECTED));
+				} else
+					jcb.setIcon(new ImageIcon(PIC_PLAIN));
 			}
 		}
 	}
