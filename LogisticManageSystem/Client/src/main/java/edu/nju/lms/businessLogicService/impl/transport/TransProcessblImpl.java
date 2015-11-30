@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService.impl.transport;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.CommodityPO;
@@ -84,7 +85,7 @@ public class TransProcessblImpl{
 		SendVO result=null;
 		SendPO po=null;
 		try {
-			po=list.findSendList(expressNum);
+			po=list.findSend(expressNum);
 		} catch (RemoteException e) {
 			// TODO
 		}
@@ -131,7 +132,7 @@ public class TransProcessblImpl{
 		LoadVO result=null;
 		LoadPO po=null;
 		try {
-			po=list.findLoadList(id);
+			po=list.findLoad(id);
 		} catch (RemoteException e) {
 			// TODO
 		}
@@ -199,8 +200,22 @@ public class TransProcessblImpl{
 	}
 
 	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		//String id,String state,String dispatchPerson, Calendar arrivalDate, String expressNum
+		DispatchPO po=new DispatchPO(dipatchList.getId(),dipatchList.getState().toString(),dipatchList.getDispatchPerson(),getTime.changeToCal(dipatchList.getArrivalDate()),dipatchList.getExpressNum());
+		try {
+			result=list.addDispatch(po);
+		} catch (RemoteException e1) {
+			// TODO
+		}
+		if(result.isSuccess()){
+			try {
+				CommodityPO c=commodity.findCommodity(dipatchList.getExpressNum());
+				c.setDispatch(dipatchList.getId());;
+				commodity.updateCommodity(c);
+			} catch (RemoteException e) {}
+		}
+		return result;
 	}
 
 	public DispatchVO findDispatchList(String id) {
@@ -224,8 +239,21 @@ public class TransProcessblImpl{
 		return result;
 	}
 	public ResultMessage saveReceiveList(ReceiveVO receiveList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ReceivePO po=new ReceivePO(receiveList.getId(),receiveList.getState().toString(),receiveList.getReceiverName(),getTime.changeToCal(receiveList.getReceiveTime()),receiveList.getExpressNum());
+		try {
+			result=list.addReceive(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		if(result.isSuccess()){
+			try {
+				CommodityPO c=commodity.findCommodity(receiveList.getExpressNum());
+				c.setReceive(receiveList.getId());
+				commodity.updateCommodity(c);
+			} catch (RemoteException e) {}
+		}
+		return result;
 	}
 	public ReceiveVO findReceiveList(String id) {
 		ReceiveVO receive=null;
