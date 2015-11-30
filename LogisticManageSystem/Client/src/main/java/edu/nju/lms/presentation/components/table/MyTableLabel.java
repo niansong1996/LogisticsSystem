@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyCheckBox;
 import edu.nju.lms.presentation.components.MyScrollPane;
@@ -68,6 +69,13 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 * @warning table might be uninitialized 
 	 */
 	private MyTable table;
+	
+	/**
+	 * used to repaint
+	 */
+	private UIController controller;
+	
+//	private boolean clicked = false;
 
 	/**
 	 * @param element of the <b>table</b>
@@ -75,48 +83,51 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 * @param components this label, must be components
 	 * @param table which the label belongs to. This parameter is not a good design
 	 */
-	public MyTableLabel(Element element, int height, java.awt.Component[] components, MyTable table) {
+	public MyTableLabel(Element element, UIController controller, int height, java.awt.Component[] components, MyTable table) {
 		setLayout(null);
 		width = Integer.parseInt(element.attributeValue("w"));
 		this.height = height;
 		this.components = components;
 		this.table = table;
-		initializeComponents();
+		this.controller = controller;
 		setPreferredSize(new Dimension(width, height));
 		addMouseListener(this);
+		initializeComponents();
 	}
 	
 	/**
 	 * add check box and button additionally
 	 */
 	private void initializeComponents() {
-		int column = width/(components.length + 2);
+		int column = (int) (width/(components.length + 1.5));
 		/**
 		 * add check box
 		 */
 		MyCheckBox check = new MyCheckBox("");
-		check.setBounds((column-30)/2, (height-30)/2, 20, 20);
+		int checkWidth = column/2;
+		check.setBounds(checkWidth/4,height/4-2,checkWidth/2, checkWidth/2);
 		add(check);
 		/**
 		 * add data components
 		 */
-		for(int i = 1; i <= components.length; i++) {
-			java.awt.Component component = components[i-1];
-			component.setBounds(i*column+column/8, height/8, column*3/4, height*3/4);
+		for(int i = 0; i < components.length; i++) {
+			java.awt.Component component = components[i];
+			component.setBounds(checkWidth+i*column, height/8, column*3/4, height*3/4);
 			add(component);
 		}
 		/**
 		 * add delete button and edit button
 		 */
 		deleteButton = new MainButton("tabledelete");
-		deleteButton.setBounds((components.length+1)*column+column/8, height/8, column*3/8, height*3/5);
-		deleteButton.setVisible(false);
-		deleteButton.addMouseListener(new tableDeleteListener(table, this, deleteButton));
+		deleteButton.setBounds(checkWidth+components.length*column, height/3, height/3+15, height/3);
+		deleteButton.setVisible(true);
 		add(deleteButton);
 		editButton = new MainButton("change");
-		editButton.setBounds((components.length+1)*column+column*5/8, height/8, column*3/8, height*3/5);
-		editButton.setVisible(false);
+		editButton.setBounds(checkWidth+components.length*column+height/3+20, height/3, height/3+15, height/3);
+		editButton.setVisible(true);
 		add(editButton);
+		editButton.addMouseListener(new TableEditListener(editButton));
+		deleteButton.addMouseListener(new tableDeleteListener(table, this, deleteButton));
 	}
 	
 	@Override
@@ -125,29 +136,27 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		repaint();
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		repaint();
+		changeGrey();
+		controller.getFrame().repaint();
 	}
 
 	public void mouseExited(MouseEvent e) {
 		changeWhite();
-		showButton(false);
-		repaint();
+		controller.getFrame().repaint();
 	}
 
 	public void mousePressed(MouseEvent e) {
 		changeGrey();
-		repaint();
+		controller.getFrame().repaint();
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		showButton(true);
-		repaint();
+		controller.getFrame().repaint();
 	}
-	
+
 	/**
 	 * get component in the label
 	 * @param index
@@ -187,10 +196,6 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	
 	private void changeWhite(){
 		picPath = "pictures/white.png";
-	}
-	
-	private void showButton(boolean isShow) {
-		deleteButton.setVisible(isShow);
 	}
 	
 	/**
@@ -250,15 +255,19 @@ public class MyTableLabel extends JLabel implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
 		}
 		public void mouseEntered(MouseEvent e) {
+			button.setIn(true);
+			button.repaint();
 		}
 		public void mouseExited(MouseEvent e) {
-			for(int i = 0; i < getColumnNum(); i++) {
-				java.awt.Component c = components[i];
-				if(c instanceof MyTextField) {
-					MyTextField text = (MyTextField)c;
-					text.setEditable(false);
-				}
-			}
+//			for(int i = 0; i < getColumnNum(); i++) {
+//				java.awt.Component c = components[i];
+//				if(c instanceof MyTextField) {
+//					MyTextField text = (MyTextField)c;
+//					text.setEditable(false);
+//				}
+//			}
+			button.setIn(false);
+			button.repaint();
 		}
 		
 		public void mousePressed(MouseEvent e) {

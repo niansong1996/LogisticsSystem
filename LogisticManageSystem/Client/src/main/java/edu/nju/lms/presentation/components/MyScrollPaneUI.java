@@ -21,7 +21,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
  * @author cuihao
  * 2015-11-25 19:23:20
  */
-class MyScrollPaneUI extends BasicScrollBarUI{
+public class MyScrollPaneUI extends BasicScrollBarUI{
 	/**
 	 * arc number
 	 */

@@ -45,9 +45,8 @@ public class MyTextField extends JTextField {
 		super();
 		setText(text);
 		setHorizontalAlignment(JTextField.CENTER);
-		setFont(new Font("微软雅黑", Font.BOLD, 18));
-		setOpaque(false);
-		setBorder(new EmptyBorder(0, 0, 0, 0));
+		drawPic();
+		setFont(new Font("微软雅黑", Font.PLAIN, 16));
 		setEditable(false);
 	}
 	public MyTextField(){

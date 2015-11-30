@@ -1,12 +1,17 @@
 package edu.nju.lms.presentation.components.table;
 
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+
+import javax.swing.JList;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyScrollPane;
+import edu.nju.lms.presentation.components.MyScrollPaneUI;
 
 /**
  * When create a table, you need to override a method to initialize data
@@ -24,16 +29,16 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 	 * list of {@link MyTableLabel} to be shown
 	 */
 	private ArrayList<MyTableLabel> data = new ArrayList<MyTableLabel>();
+	
+	private JList<MyTableLabel> list = new JList<MyTableLabel>();
 
 	public MyTable(Element element, UIController controller) {
 		super(element, controller);
 		addMouseListener(this);
 		getData();
-		for (int i = 0; i < data.size(); i++) {
-			MyTableLabel label = data.get(i);
-			label.setBounds(0,i*label.getHeight(),label.getWidth(), label.getHeight());
-			getViewport().setView(label);
-		}
+		setView();
+		getVerticalScrollBar().setUI(new MyScrollPaneUI());
+		setHorizontalScrollBar(null);
 	}
 	
 	/**
@@ -42,6 +47,22 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 	 */
 	protected void addData(MyTableLabel label) {
 		data.add(label);
+	}
+	
+	private void setView() {
+		int width = 0;
+		int height = 0;
+		for (int i = 0; i < data.size(); i++) {
+			MyTableLabel label = data.get(i);
+			width = label.getWidth();
+			height =  label.getHeight();
+			label.setBounds(0,i*height,width, height);
+			data.set(i, label);
+			list.add(label);
+		}
+		list.setPreferredSize(new Dimension(width, height*data.size()));
+		list.setOpaque(false);
+		getViewport().setView(list);
 	}
 	
 	/**
@@ -71,7 +92,22 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 	}
 	
 	public void remove(MyTableLabel component){
+		list.removeAll();
 		data.remove(component);
+		setView();
+		controller.getFrame().repaint();
 	}
+	
+	public void remove(int index) {
+		list.removeAll();
+		data.remove(index);
+		setView();
+		controller.getFrame().repaint();
+	}
+	
+	public ArrayList<MyTableLabel> getDataList(){
+		return data;
+	}
+
 
 }
