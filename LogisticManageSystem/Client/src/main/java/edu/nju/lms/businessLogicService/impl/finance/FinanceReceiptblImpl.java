@@ -1,13 +1,12 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
 import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
+import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 
@@ -17,6 +16,7 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
  */
 public class FinanceReceiptblImpl{
 	private FinanceReceiptDataService service;
+	CreateTime getTime=new CreateTime();
 	private static int basicNum=0;
 	
 	public FinanceReceiptblImpl(FinanceReceiptDataService service){
@@ -28,11 +28,8 @@ public class FinanceReceiptblImpl{
 	 */
 	public ReceiptVO createReceipt(ReceiptVO debit) {
 		ReceiptVO result=debit;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String time=sdf.format(new Date());
-		result.setReceiptDate(time);
+		result.setReceiptDate(getTime.returnTime());
 		result.setId(createNum());
-		
 		return result;
 	}
 	
@@ -46,15 +43,12 @@ public class FinanceReceiptblImpl{
 
 	public ResultMessage addReceipt(ReceiptVO debit) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		String[] time=debit.getReceiptDate().split("/");
-		Calendar c=Calendar.getInstance();
-		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
-//		ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
-//		try {
-//			result=service.addReceipt(po);
-//		} catch (RemoteException e) {
-//			// TODO
-//		}
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),getTime.changeToCal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		try {
+			result=service.addReceipt(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
 		return result;
 	}
 
@@ -78,15 +72,12 @@ public class FinanceReceiptblImpl{
 			return result;
 		}
 		result=new ResultMessage(false,"网络未连接");
-		String[] time=debit.getReceiptDate().split("/");
-		Calendar c=Calendar.getInstance();
-		c.set(Integer.parseInt(time[0]), Integer.parseInt(time[1]),Integer.parseInt(time[2]));
-	//	ReceiptPO po=new ReceiptPO(debit.getId(),c,debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
-//		try {
-//			result=service.updateReceipt(po);
-//		} catch (RemoteException e) {
-//			// TODO
-//		}
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),getTime.changeToCal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		try {
+			result=service.updateReceipt(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
 		return result;
 	}
 
@@ -99,9 +90,7 @@ public class FinanceReceiptblImpl{
 			// TODO
 		}
 		for(ReceiptPO po : listPO){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			String time=sdf.format(po.getReceiptDate());
-			ReceiptVO temp=new ReceiptVO(po.getId(),time,po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			ReceiptVO temp=new ReceiptVO(po.getId(),getTime.changeToString(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
 			listVO.add(temp);
 		}
 		return listVO;
@@ -116,9 +105,7 @@ public class FinanceReceiptblImpl{
 			// TODO
 		}
 		for(ReceiptPO po : listPO){
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			String time=sdf.format(po.getReceiptDate());
-			ReceiptVO temp=new ReceiptVO(po.getId(),time,po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			ReceiptVO temp=new ReceiptVO(po.getId(),getTime.changeToString(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
 			listVO.add(temp);
 		}
 		return listVO;

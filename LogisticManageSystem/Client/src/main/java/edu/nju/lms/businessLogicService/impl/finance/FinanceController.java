@@ -8,12 +8,15 @@ import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.VO.FreightVO;
 import edu.nju.lms.VO.InitialInfoVO;
+import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.VO.SalaryVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.FinanceAccountblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
@@ -63,27 +66,77 @@ public class FinanceController
 	}
 	
 	public ResultMessage addPriceStrategy(double std) {
-		return strategy.addPriceStrategy(std);
+		ResultMessage result=strategy.addPriceStrategy(std);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"增加运费策略");
+			logController.addLog(op);
+		}
+		return result;
 	}
 
 	public ResultMessage updatePriceStrategy(double std) {
-		return strategy.updatePriceStrategy(std);
+		ResultMessage result=strategy.updatePriceStrategy(std);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新运费策略");
+			logController.addLog(op);
+		}
+		return result;
 	}
 
 	public PriceStrategyVO findPriceStrategy() {
-		return strategy.findPriceStrategy();
+		PriceStrategyVO result=strategy.findPriceStrategy();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看运费策略");
+		logController.addLog(op);
+		return result;
 	}
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		return strategy.addSalaryStrategy(salaryStrategy);
+		ResultMessage result=strategy.addSalaryStrategy(salaryStrategy);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"增加薪水策略");
+			logController.addLog(op);
+		}
+		return result;
 	}
 
 	public SalaryStrategyVO findSalaryStrategy(String type) {
-		return strategy.findSalaryStrategy(type);
+		SalaryStrategyVO result=strategy.findSalaryStrategy(type);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看薪水策略");
+		logController.addLog(op);
+		return result;
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		return strategy.updateSalaryStrategy(salaryStrategy);
+		ResultMessage result=strategy.updateSalaryStrategy(salaryStrategy);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新薪水策略");
+			logController.addLog(op);
+		}
+		return result;
 	}
 
 	public RentVO createRent(int sum, int year) {
@@ -141,25 +194,70 @@ public class FinanceController
 		return receipt.createReceipt(debit);
 	}
 	public ResultMessage addReceipt(ReceiptVO debit) {
-		return receipt.addReceipt(debit);
+		ResultMessage result=receipt.addReceipt(debit);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"增加收款单"+debit.getId()+"的信息");
+			logController.addLog(op);
+		}
+		return result;
 	}
 	public ResultMessage deleteReceipt(String id) {
-		return receipt.deleteReceipt(id);
+		ResultMessage result=receipt.deleteReceipt(id);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除收款单"+id+"的信息");
+			logController.addLog(op);
+		}
+		return result;
 	}
 	public ResultMessage updateReceipt(ReceiptVO debit) {
-		return receipt.updateReceipt(debit);
+		ResultMessage result=receipt.updateReceipt(debit);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新收款单"+debit.getId()+"的信息");
+			logController.addLog(op);
+		}
+		return result;
 	}
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department) {
-		return receipt.showReceiptList(date, department);
+		ArrayList<ReceiptVO> result=receipt.showReceiptList(date, department);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看收款单信息");
+		logController.addLog(op);
+		return result;
 	}
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
-		return receipt.showReceiptList(date);
+		ArrayList<ReceiptVO> result=receipt.showReceiptList(date);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看收款单信息");
+		logController.addLog(op);
+		return result;
 	}
 	public double getReceiptSum(Calendar date) {
-		return receipt.getReceiptSum(date);
-	}
-	public ResultMessage checkComplete(ReceiptVO debit) {
-		return receipt.checkComplete(debit);
+		double result=receipt.getReceiptSum(date);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		OperationVO op=new OperationVO(getTime.returnTime(),logID,"计算收款总额");
+		logController.addLog(op);
+		return result;
 	}
 	
 }

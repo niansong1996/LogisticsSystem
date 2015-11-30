@@ -57,7 +57,7 @@ public class FinanceStrategyblImpl{
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		PersonType type=changeToPO(salaryStrategy.getType());
+		PersonType type=PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po=new SalaryStrategyPO(type,salaryStrategy.getBasic(),
 				salaryStrategy.getPerTime(),salaryStrategy.getBonus());
 		try {
@@ -70,10 +70,10 @@ public class FinanceStrategyblImpl{
 
 	public SalaryStrategyVO findSalaryStrategy(String type) {
 		SalaryStrategyVO result=null;
-		PersonType POtype=changeToPO(type);
+		PersonType POtype=PersonType.valueOf(type.toUpperCase());
 		try {
 			SalaryStrategyPO po=service.findSalaryStrategy(POtype);
-			String VOtype=changeToVO(po.getType());
+			String VOtype=po.getType().toString().toLowerCase();
 			result=new SalaryStrategyVO(VOtype,po.getBasic(),po.getPerTime(),po.getBonus());
 		} catch (RemoteException e) {
 			// TODO
@@ -83,7 +83,7 @@ public class FinanceStrategyblImpl{
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		PersonType type=changeToPO(salaryStrategy.getType());
+		PersonType type=PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po=new SalaryStrategyPO(type,salaryStrategy.getBasic(),
 				salaryStrategy.getPerTime(),salaryStrategy.getBonus());
 		try {
@@ -92,50 +92,5 @@ public class FinanceStrategyblImpl{
 			// TODO
 		}
 		return result;
-	}
-
-	public PersonType changeToPO(String duty){
-		if(duty.equals("administrator")){
-			return PersonType.ADMINISTRATOR;
-		}else if(duty.equals("manager")){
-			return PersonType.MANAGER;
-		}else if(duty.equals("financial_normal")){
-			return PersonType.FINANCIAL_NORMAL;
-		}else if(duty.equals("financial_advanced")){
-			return PersonType.FINANCIAL_ADVANCED;
-		}else if(duty.equals("warehouse")){
-			return PersonType.WAREHOUSE;
-		}else if(duty.equals("counter_intermediate")){
-			return PersonType.COUNTER_INTERMEDIATE;
-		}else if(duty.equals("counter_bussiness")){
-			return PersonType.COUNTER_BUSSINESS;
-		}else if(duty.equals("courier")){
-			return PersonType.COURIER;
-		}else{
-			return PersonType.DRIVER;
-		}
-	}
-	public String changeToVO(PersonType duty){
-		switch(duty){
-		case ADMINISTRATOR:
-			return "管理员";
-		case MANAGER:
-			return "总经理";
-		case FINANCIAL_NORMAL:
-			return "普通财务人员";
-		case FINANCIAL_ADVANCED:
-			return "高级财务人员";
-		case WAREHOUSE:
-			return "中转中心仓库管理人员";
-		case COUNTER_INTERMEDIATE:
-			return "中转中心业务员";
-		case COUNTER_BUSSINESS:
-			return "营业厅业务员";
-		case COURIER:
-			return "快递员";
-		case DRIVER:
-			return "司机";
-		}
-		return null;
 	}
 }
