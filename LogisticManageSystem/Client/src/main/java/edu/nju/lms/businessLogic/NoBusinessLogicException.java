@@ -5,6 +5,6 @@ public class NoBusinessLogicException extends Exception{
 	
 	@Override
 	public void printStackTrace(){
-		System.out.println("The Business Logic Not Initialized!!!");
+		System.err.println("The Business Logic Not Initialized!!!");
 	}
 }
