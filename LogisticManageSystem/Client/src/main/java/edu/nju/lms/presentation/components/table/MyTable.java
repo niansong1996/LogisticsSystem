@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation.components;
+package edu.nju.lms.presentation.components.table;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MyScrollPane;
 
 /**
  * When create a table, you need to override a method to initialize data

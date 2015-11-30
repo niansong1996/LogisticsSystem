@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation.components;
+package edu.nju.lms.presentation.components.table;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -6,10 +6,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import org.dom4j.Element;
+
+import edu.nju.lms.presentation.components.MainButton;
+import edu.nju.lms.presentation.components.MyCheckBox;
+import edu.nju.lms.presentation.components.MyScrollPane;
+import edu.nju.lms.presentation.components.MyTextField;
 
 /**
  * general table label
@@ -47,7 +51,12 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	/**
 	 * delete button of the label
 	 */
-	MainButton button = null;
+	MainButton deleteButton = null;
+	
+	/**
+	 * edit button of the label
+	 */
+	MainButton editButton = null;
 	
 	/**
 	 * the color of the label
@@ -82,19 +91,32 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 */
 	private void initializeComponents() {
 		int column = width/(components.length + 2);
+		/**
+		 * add check box
+		 */
 		MyCheckBox check = new MyCheckBox("");
 		check.setBounds((column-30)/2, (height-30)/2, 20, 20);
 		add(check);
+		/**
+		 * add data components
+		 */
 		for(int i = 1; i <= components.length; i++) {
 			java.awt.Component component = components[i-1];
 			component.setBounds(i*column+column/8, height/8, column*3/4, height*3/4);
 			add(component);
 		}
-		button = new MainButton("delete");
-		button.setBounds((components.length+1)*column+column/8, height/8, column*3/4, height*3/4);
-		button.setVisible(false);
-		button.addMouseListener(new tableDeleteListener(table, this));
-		add(button);
+		/**
+		 * add delete button and edit button
+		 */
+		deleteButton = new MainButton("tabledelete");
+		deleteButton.setBounds((components.length+1)*column+column/8, height/8, column*3/8, height*3/5);
+		deleteButton.setVisible(false);
+		deleteButton.addMouseListener(new tableDeleteListener(table, this, deleteButton));
+		add(deleteButton);
+		editButton = new MainButton("change");
+		editButton.setBounds((components.length+1)*column+column*5/8, height/8, column*3/8, height*3/5);
+		editButton.setVisible(false);
+		add(editButton);
 	}
 	
 	@Override
@@ -168,7 +190,7 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	}
 	
 	private void showButton(boolean isShow) {
-		button.setVisible(isShow);
+		deleteButton.setVisible(isShow);
 	}
 	
 	/**
@@ -180,18 +202,24 @@ public class MyTableLabel extends JLabel implements MouseListener{
 
 		MyTable table;
 		MyTableLabel label;
-		public tableDeleteListener(MyTable table, MyTableLabel label) {
+		MainButton button;
+		public tableDeleteListener(MyTable table, MyTableLabel label,MainButton button) {
 			this.table = table;
 			this.label = label;
+			this.button = button;
 		}
 		
 		public void mouseClicked(MouseEvent e) {
 		}
 
 		public void mouseEntered(MouseEvent e) {
+			button.setIn(true);
+			button.repaint();
 		}
 
 		public void mouseExited(MouseEvent e) {
+			button.setIn(false);
+			button.repaint();
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -202,6 +230,52 @@ public class MyTableLabel extends JLabel implements MouseListener{
 			table.repaint();
 		}
 		
+	}
+	
+	/**
+	 * Table edit listener
+	 * If the editButton is clicked, then the components of 
+	 * this label is <b>Editable</b>
+	 * @author cuihao
+	 * @date 2015-11-30 09:00:01
+	 */
+	class TableEditListener implements MouseListener {
+		
+		MainButton button;
+		
+		public TableEditListener(MainButton button) {
+			this.button = button;
+		}
+
+		public void mouseClicked(MouseEvent e) {
+		}
+		public void mouseEntered(MouseEvent e) {
+		}
+		public void mouseExited(MouseEvent e) {
+			for(int i = 0; i < getColumnNum(); i++) {
+				java.awt.Component c = components[i];
+				if(c instanceof MyTextField) {
+					MyTextField text = (MyTextField)c;
+					text.setEditable(false);
+				}
+			}
+		}
+		
+		public void mousePressed(MouseEvent e) {
+		}
+		
+		/**
+		 * set editable
+		 */
+		public void mouseReleased(MouseEvent e) {
+			for(int i = 0; i < getColumnNum(); i++) {
+				java.awt.Component c = components[i];
+				if(c instanceof MyTextField) {
+					MyTextField text = (MyTextField)c;
+					text.setEditable(true);
+				}
+			}
+		}
 	}
 
 }
