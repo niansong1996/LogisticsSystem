@@ -14,18 +14,42 @@ import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
 
+/**
+ * A ConfirmFrame is a Dialog requiring user to choose.
+ * Use method <b>isConfirm</b> to get what user chooses.<br>
+ * For example:<br>
+ * 	 &nbsp&nbsp&nbsp&nbsp ConfirmFrame frame = new ConfirmFrame(ConfirmFrame.DELETE);<br>
+ *	 &nbsp&nbsp&nbsp&nbsp System.out.println(frame.isConfirm());
+ * @author cuihao
+ * @date 2015-11-30 22:14:23
+ * @see# isConfirm
+ */
 public class ConfirmFrame extends MainFrame {
 	
 	private static final long serialVersionUID = -7548510958161064852L;
 	
-	private String confirmMessage;
+	/**
+	 * This is <b>a picture path</b> indicating what need to be confirmed
+	 * Usually using ConfirmFrame
+	 */
+	private String message;
+	/**
+	 * width of frame
+	 */
 	private int width;
+	/**
+	 * height of frame
+	 */
 	private int height;
+	
 	private JPanel panel;
 	private boolean isClicked = false;
 	private boolean isConfirm = false;
 	private MainButton confirm;
 	private MainButton cancel;
+	
+	public static final String DELETE = "pictures/units/deleteConfirm.png";
+	public static final String SAVE = "pictures/units/saveConfirm.png";
 	
 	public ConfirmFrame() {
 		this("");
@@ -33,13 +57,17 @@ public class ConfirmFrame extends MainFrame {
 	
 	public ConfirmFrame(String message) {
 		super();
-		this.confirmMessage = message;
+		this.message = message;
 		initializeFrame();
 		initializePanel();
 		initializeLabel();
 		initializeButton();
 	}
 	
+	/**
+	 * This is a method returns whether user confirmed.
+	 * @return boolean
+	 */
 	public boolean isConfirm(){
 		while(!isClicked){
 			try {
@@ -81,11 +109,11 @@ public class ConfirmFrame extends MainFrame {
 	
 	private void initializeButton() {
 		confirm = new MainButton("confirm");
-		confirm.setBounds(75, 155, 112, 34);
+		confirm.setBounds(55, 165, 112, 34);
 		confirm.setVisible(true);
 		confirm.addMouseListener(new ConfirmDialogListener());
 		cancel = new MainButton("cancel");
-		cancel.setBounds(215, 155, 112, 34);
+		cancel.setBounds(195, 165, 112, 34);
 		cancel.setVisible(true);
 		cancel.addMouseListener(new CancelDialogListener());
 		panel.add(confirm);
@@ -93,8 +121,24 @@ public class ConfirmFrame extends MainFrame {
 	}
 	
 	private void initializeLabel() {
+		JLabel label = new JLabel(){
+
+			private static final long serialVersionUID = 565241279742922849L;
+
+			@Override
+			public void paintComponent(Graphics g) {
+				g.drawImage(new ImageIcon(message).getImage(), 0, 0, getWidth(), getHeight(), this);
+			}
+		};
+		label.setBounds(0, 0, getWidth(), getHeight()-60);
+		panel.add(label);
 	}
 	
+	/**
+	 * listener of confirm button
+	 * @author cuihao
+	 *
+	 */
 	class ConfirmDialogListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {}
@@ -118,6 +162,11 @@ public class ConfirmFrame extends MainFrame {
 		
 	}
 	
+	/**
+	 * listener of cancel button
+	 * @author cuihao
+	 *
+	 */
 	class CancelDialogListener implements MouseListener {
 		public void mouseClicked(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {
@@ -138,7 +187,7 @@ public class ConfirmFrame extends MainFrame {
 	}
 	
 	public static void main(String[] args) {
-		ConfirmFrame frame = new ConfirmFrame("hahahahah");
+		ConfirmFrame frame = new ConfirmFrame(ConfirmFrame.DELETE);
 		System.out.println(frame.isConfirm());
 	}
 }

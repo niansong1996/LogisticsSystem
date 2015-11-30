@@ -312,5 +312,5 @@
 		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
-	<Frame name="ConfirmFrame" class="ConfirmFrame" x="0" y="0" width="400" height="200"/>
+	<Frame name="ConfirmFrame" class="ConfirmFrame" x="0" y="0" width="361" height="220"/>
 </presentation> 
