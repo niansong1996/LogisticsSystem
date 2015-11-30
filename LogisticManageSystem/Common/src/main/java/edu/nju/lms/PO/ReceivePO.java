@@ -2,6 +2,7 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 
 /**
@@ -10,12 +11,20 @@ import edu.nju.lms.data.ListState;
  */
 public class ReceivePO extends ListPO{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = 3682064715190520949L;
 	private String receiverName;
 	private Calendar receiveTime;
 	private String expressNum;
+	
+	public ReceivePO(String id,String state,String receiverName, String receiveTime,String expressNum) {
+		super(id,ListState.valueOf(state));
+		this.receiverName = receiverName;
+		this.receiveTime = CommonUtility.String2Cal(receiveTime);
+		this.expressNum = expressNum;
+	}
+	
 	public ReceivePO(String id,String state,String receiverName, Calendar receiveTime,String expressNum) {
 		super(id,ListState.valueOf(state));
 		this.receiverName = receiverName;

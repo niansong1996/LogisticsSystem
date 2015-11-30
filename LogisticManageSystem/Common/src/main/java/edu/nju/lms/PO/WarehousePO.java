@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.Partition;
 
 /**
@@ -27,6 +28,19 @@ public class WarehousePO implements Serializable{
 	private ArrayList<String> checkInlists;
 	private ArrayList<String> checkOutlists;
 	private ArrayList<Partition> partitionInfor;
+	
+	public WarehousePO(String cordon, String id, String expressNums, String checkInlists,
+			String checkOutlists) {
+		super();
+		this.expressNums = new ArrayList<String>();
+		this.checkInlists = new ArrayList<String>();
+		this.checkOutlists = new ArrayList<String>();
+		this.cordon = Double.parseDouble(cordon);
+		this.id = id;
+		CommonUtility.String2Array(this.expressNums, expressNums);
+		CommonUtility.String2Array(this.checkInlists, checkInlists);
+		CommonUtility.String2Array(this.checkOutlists, checkOutlists);
+	}
 	
 	public WarehousePO(double cordon, String id, ArrayList<String> expressNums, ArrayList<String> checkInlists,
 			ArrayList<String> checkOutlists, ArrayList<Partition> partitionInfor) {

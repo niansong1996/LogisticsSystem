@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import edu.nju.lms.data.ArrivalState;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 
 /**
@@ -12,7 +13,7 @@ import edu.nju.lms.data.ListState;
  */
 public class ArrivalPO extends ListPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = 5411187468179303952L;
 	private String expressNum;
@@ -24,13 +25,14 @@ public class ArrivalPO extends ListPO implements Serializable{
 	//optional  中转中心编号,只有在中转中心到达时才有 
     private String transitNum;
 	
-    public ArrivalPO(String id,String state,String arrivalState, String expressNum, String destination,String setOut, String arrivalDate) {
+    public ArrivalPO(String id,String state,String arrivalState, String expressNum, String destination,String setOut, String arrivalDate,String transmitnum) {
 		super(id,ListState.valueOf(state));
 		this.arrivalState = ArrivalState.valueOf(arrivalState);
 		this.expressNum = expressNum;
 		this.destination = destination;
 		this.setOut = setOut;
-//		this.arrivalDate = Calendar.Builder.arrivalDate;
+		this.arrivalDate = CommonUtility.String2Cal(arrivalDate);
+		this.transitNum = "";
 	}
 	public ArrivalPO(String id,String state,ArrivalState arrivalState, String expressNum, String destination,String setOut, Calendar arrivalDate) {
 		super(id,ListState.valueOf(state));

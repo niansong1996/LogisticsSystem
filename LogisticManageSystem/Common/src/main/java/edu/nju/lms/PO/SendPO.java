@@ -12,7 +12,7 @@ import edu.nju.lms.data.TransportMode;
  */
 public class SendPO extends ListPO {
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = -7648258119493841934L;
 	//the express's number

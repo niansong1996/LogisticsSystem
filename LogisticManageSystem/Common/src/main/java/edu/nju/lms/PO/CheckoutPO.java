@@ -13,7 +13,7 @@ import edu.nju.lms.data.LoadType;
  */
 public class CheckoutPO extends ListPO{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = -6939485649504767770L;
 	private ArrayList<String> expressNums;

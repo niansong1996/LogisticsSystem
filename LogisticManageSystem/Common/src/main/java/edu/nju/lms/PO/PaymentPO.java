@@ -5,12 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PaymentType;
 
 public class PaymentPO extends ListPO {
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = 2852405640506195901L;
 	private PaymentType paymentType;
@@ -22,11 +23,7 @@ public class PaymentPO extends ListPO {
 			String amount) {
 		super(id,ListState.valueOf(state));
 		this.paymentType = PaymentType.valueOf(paymentType);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		this.payTime = Calendar.getInstance();
-		try {
-			this.payTime.setTime(sdf.parse(payTime));
-		} catch (ParseException e) {System.out.println("parse failed!!!");}
+		this.payTime= CommonUtility.String2Cal(payTime);
 		this.account = account;
 		this.amount = Double.parseDouble(amount);
 	}

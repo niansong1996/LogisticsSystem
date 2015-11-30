@@ -6,7 +6,7 @@ import edu.nju.lms.data.PersonType;
 
 public class SalaryStrategyPO implements Serializable{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = 3617529261196612698L;
 	private PersonType type;

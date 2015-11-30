@@ -2,6 +2,7 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.LoadType;
 
@@ -10,6 +11,10 @@ import edu.nju.lms.data.LoadType;
  *@date ����5:12:31
  */
 public class LoadPO extends ListPO {
+	/**
+	 * have been modified for sql
+	 */
+	private static final long serialVersionUID = 2386217053513984805L;
 	//load type
 	private LoadType loadType;
 	//װ������
@@ -30,6 +35,22 @@ public class LoadPO extends ListPO {
 	
 	private double freight;
 
+	public LoadPO(String id,String state,String loadType,String loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
+			String vehicleNum, String driverNum, String commodityNums, String freight) {
+		super(id,ListState.valueOf(state));
+		this.commodityNums = new ArrayList<String>();
+		this.loadType = LoadType.valueOf(loadType);
+		this.loadDate = CommonUtility.String2Cal(loadDate);
+		this.businessHallNum = businessHallNum;
+		this.motorNum = motorNum;
+		this.destiCity = destiCity;
+		this.destiBusinessHall = destiBusinessHall;
+		this.vehicleNum = vehicleNum;
+		this.driverNum = driverNum;
+		CommonUtility.String2Array(this.commodityNums, commodityNums);
+		this.freight = Double.parseDouble(freight);
+	}
+	
 	public LoadPO(String id,String state,LoadType loadType,Calendar loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
 			String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
 		super(id,ListState.valueOf(state));

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class PriceStrategyPO implements Serializable{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = -1361752431077831590L;
 	private double standard;

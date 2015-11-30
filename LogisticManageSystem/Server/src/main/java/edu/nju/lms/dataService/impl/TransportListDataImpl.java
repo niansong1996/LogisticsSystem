@@ -2,8 +2,8 @@ package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.DispatchPO;
@@ -11,188 +11,118 @@ import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.TransportListDataService;
 
 public class TransportListDataImpl extends UnicastRemoteObject implements TransportListDataService{
 	public TransportListDataImpl() throws RemoteException {
 	}
 	private static final long serialVersionUID = 308924668395302280L;
-	private ArrayList<SendPO> sendList = new ArrayList<SendPO>();
-	private ArrayList<LoadPO> loadList = new ArrayList<LoadPO>();
-	private ArrayList<ArrivalPO> arrivalList = new ArrayList<ArrivalPO>();
-	private ArrayList<DispatchPO> dispatchList = new ArrayList<DispatchPO>();
-	private ArrayList<ReceivePO> receiveList = new ArrayList<ReceivePO>();
 
 	public ResultMessage addSend(SendPO send) throws RemoteException {
 		if(findSend(send.getId())==null){
-			this.sendList.add(send);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(send, send.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The send list already exists!");
+			return new ResultMessage(false,"The send already exists!");
 		}
 	}
 	public SendPO findSend(String id) throws RemoteException {
-		SendPO result = null;
-		Iterator<SendPO> it = sendList.iterator();
-		while(it.hasNext()){
-			SendPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
-	public ResultMessage deleteSend(String id) throws RemoteException {
-		SendPO send = findSend(id);
-		if(!(send==null)){
-			sendList.remove(send);
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the send list!");
-		}
+		SendPO send = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return send;
 	}
 
 	public ResultMessage addLoad(LoadPO load) throws RemoteException {
 		if(findLoad(load.getId())==null){
-			this.loadList.add(load);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(load, load.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The load list already exists!");
+			return new ResultMessage(false,"The load already exists!");
 		}
 	}
 	public LoadPO findLoad(String id) throws RemoteException {
-		LoadPO result = null;
-		Iterator<LoadPO> it = loadList.iterator();
-		while(it.hasNext()){
-			LoadPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
-	public ResultMessage deleteLoad(String id) throws RemoteException {
-		LoadPO load = findLoad(id);
-		if(!(load==null)){
-			loadList.remove(load);
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the load list!");
-		}
+		LoadPO load = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from loadpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			load = (LoadPO)POGenerator.generateObject(result, LoadPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return load;
 	}
 
 	public ResultMessage addArrival(ArrivalPO arrival) throws RemoteException {
 		if(findArrival(arrival.getId())==null){
-			this.arrivalList.add(arrival);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(arrival, arrival.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The arrival list already exists!");
+			return new ResultMessage(false,"The arrival already exists!");
 		}
 	}
 	public ArrivalPO findArrival(String id) throws RemoteException {
-		ArrivalPO result = null;
-		Iterator<ArrivalPO> it = arrivalList.iterator();
-		while(it.hasNext()){
-			ArrivalPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
-	public ResultMessage deleteArrival(String id) throws RemoteException {
-		ArrivalPO arrival = findArrival(id);
-		if(!(arrival==null)){
-			arrivalList.remove(arrival);
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the arrival list!");
-		}
+		ArrivalPO arrival = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from arrivalpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			arrival = (ArrivalPO)POGenerator.generateObject(result, ArrivalPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return arrival;
 	}
 
 	public ResultMessage addDispatch(DispatchPO dispatch) throws RemoteException {
 		if(findDispatch(dispatch.getId())==null){
-			this.dispatchList.add(dispatch);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(dispatch, dispatch.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The dispatch list already exists!");
+			return new ResultMessage(false,"The dispatch already exists!");
 		}
 	}
 	public DispatchPO findDispatch(String id) throws RemoteException {
-		DispatchPO result = null;
-		Iterator<DispatchPO> it = dispatchList.iterator();
-		while(it.hasNext()){
-			DispatchPO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
-	public ResultMessage deleteDispatch(String id) throws RemoteException {
-		DispatchPO dispatch = findDispatch(id);
-		if(!(dispatch==null)){
-			dispatchList.remove(dispatch);
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the dispatch list!");
-		}
+		DispatchPO dispatch = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from dispatchpo where id = "+id);
+		try{
+		if(!result.wasNull())
+			dispatch = (DispatchPO)POGenerator.generateObject(result, DispatchPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return dispatch;
 	}
 
 	public ResultMessage addReceive(ReceivePO receive) throws RemoteException {
 		if(findReceive(receive.getId())==null){
-			this.receiveList.add(receive);
+			JDBC.ExecuteData(POGenerator.generateInsertOp(receive, receive.getClass().getName()));
 			return new ResultMessage(true,null);
 		}
 		else{
-			return new ResultMessage(false,"The receive list already exists!");
+			return new ResultMessage(false,"The receive already exists!");
 		}
 	}
 	public ReceivePO findReceive(String id) throws RemoteException {
-		ReceivePO result = null;
-		Iterator<ReceivePO> it = receiveList.iterator();
-		while(it.hasNext()){
-			ReceivePO next = it.next();
-			if(next.getId().equals(id)){
-				result = next;
-				break;
-			}
-		}
-		return result;
-	}
-	public ResultMessage deleteReceive(String id) throws RemoteException {
-		ReceivePO receive = findReceive(id);
-		if(!(receive==null)){
-			receiveList.remove(receive);
-			return new ResultMessage(true,null);
-		}
-		else{
-			return new ResultMessage(false,"Could not find the receive list!");
-		}
-	}
-	public ResultMessage updateSendList(SendPO sendList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public SendPO findSendList(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public LoadPO findLoadList(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ReceivePO receive = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from receivepo where id = "+id);
+		try{
+		if(!result.wasNull())
+			receive = (ReceivePO)POGenerator.generateObject(result, ReceivePO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return receive;
 	}
 
 }

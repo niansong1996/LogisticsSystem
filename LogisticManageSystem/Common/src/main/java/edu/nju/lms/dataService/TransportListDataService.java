@@ -13,10 +13,10 @@ import edu.nju.lms.data.ResultMessage;
 public interface TransportListDataService extends Remote{
 	
 	public ResultMessage addSend(SendPO send) throws RemoteException;
-	public SendPO findSendList(String expressNum) throws RemoteException;
+	public SendPO findSend(String expressNum) throws RemoteException;
 	
 	public ResultMessage addLoad(LoadPO load) throws RemoteException;
-	public LoadPO findLoadList(String id) throws RemoteException;
+	public LoadPO findLoad(String id) throws RemoteException;
 	
 	public ResultMessage addArrival(ArrivalPO arrival) throws RemoteException;
 	public ArrivalPO findArrival(String id) throws RemoteException;

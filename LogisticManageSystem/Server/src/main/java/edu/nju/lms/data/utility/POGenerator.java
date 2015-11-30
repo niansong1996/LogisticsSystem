@@ -19,7 +19,7 @@ public class POGenerator {
 			result = generateDataObject(cls,rs);
 
 		} catch (Exception e) {
-			System.out.println("Generate PO failed!!");
+			System.err.println("Generate PO failed!!");
 			e.printStackTrace();
 		}
 		return result;
@@ -69,7 +69,7 @@ public class POGenerator {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Generate PO failed!!");
+			System.err.println("Generate PO failed!!");
 			e.printStackTrace();
 		}
 	}
@@ -95,7 +95,7 @@ public class POGenerator {
 					}
 				}catch(NullPointerException e){continue;}
 			}} catch (Exception e) {
-				System.out.println("Get field elements failed!!!");
+				System.err.println("Get field elements failed!!!");
 				e.printStackTrace();
 			}
 		return false;
@@ -117,10 +117,10 @@ public class POGenerator {
 				Field[] fatherField = object.getClass().getFields();
 				Field fd1 = object.getClass().getField(fatherField[0].getName());
 				fd1.setAccessible(true);
-				result += ", \""+ fd1.get(object)+"\"";
+				result += fd1.getName()+"=\""+ fd1.get(object)+"\" ,";
 				Field fd2 = object.getClass().getField(fatherField[1].getName());
 				fd2.setAccessible(true);
-				result += ", \""+ fd2.get(object)+"\"";
+				result += fd2.getName()+ "=\""+ fd2.get(object)+"\" ,";
 			}
 
 			for (int j = 1; j < field.length; j++) {
@@ -144,7 +144,7 @@ public class POGenerator {
 			fd2.setAccessible(true);
 			result+="where "+fd2.getName()+"=\""+fd2.get(object)+"\";";
 		} catch (Exception e) {
-			System.out.println("Get field elements failed!!!");
+			System.err.println("Get field elements failed!!!");
 			e.printStackTrace();
 		}
 		//	System.out.println(result);
@@ -193,9 +193,9 @@ public class POGenerator {
 			}
 			result+=");";
 		} catch (Exception e) {
-			System.out.println("Get field elements failed!!!");
+			System.err.println("Get field elements failed!!!");
 		}
-		System.out.println(result);
+//		System.out.println(result);
 		return result;
 	}
 

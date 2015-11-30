@@ -140,7 +140,60 @@ drivingLimit datetime not null,
 businesshallNum varchar(20) not null
 );
 
+create table sendpo
+(
+_id_ int unsigned not null auto_increment primary key,
+);
 
+create table loadpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+loadType varchar(20) not null,
+loadDate datetime not null,
+businessHallNum varchar(12) not null,
+motorNum varchar(12) not null,
+destiCity varchar(12) not null,
+destiBusinessHall varchar(12) not null,
+vehicleNum varchar(12) not null,
+driverNum varchar(12) not null,
+commodityNums text not null,
+freight double not null
+)
+
+create table arrivalpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+expressNum varchar(12) not null,
+arrivalState varchar(20) not null,
+destination varchar(20) not null,
+setOut varhcar(20) not null,
+arrivalDate datetime not null,
+transitNum varchar(12) not null
+);
+
+create table dispatchpo 
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+dispatchPerson varchar(20) not null,
+arrivalDate datetime not null,
+expressNum varchar(12) not null
+);
+
+create table receivepo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+receiverName varchar(12) not null,
+receiveTime datetime not null,
+expressNum varchar(12) not null
+);
 
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 

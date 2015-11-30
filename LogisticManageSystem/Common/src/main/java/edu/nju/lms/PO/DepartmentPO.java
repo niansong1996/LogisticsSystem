@@ -10,7 +10,7 @@ import edu.nju.lms.data.DepartmentType;
  */
 public class DepartmentPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = 6377542916069618722L;
 	private String departmentNum;

@@ -13,7 +13,7 @@ import edu.nju.lms.data.ListState;
 
 public class CheckinPO extends ListPO{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = 979646609984022653L;
 	/**

@@ -10,7 +10,7 @@ import edu.nju.lms.data.PersonType;
  */
 public class UserPO implements Serializable{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = 7803240290729659545L;
 	private String userName;

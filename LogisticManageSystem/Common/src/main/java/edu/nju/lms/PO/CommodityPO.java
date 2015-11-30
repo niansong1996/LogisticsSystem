@@ -3,6 +3,7 @@ package edu.nju.lms.PO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ShipState;
 
 /**
@@ -13,7 +14,7 @@ import edu.nju.lms.data.ShipState;
 //TODO the member variables need to be switched to be their ids 
 public class CommodityPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = -3226666377697831921L;
 	// commodity number
@@ -22,22 +23,26 @@ public class CommodityPO implements Serializable{
 
 	//sender list
 	private String send;
-	private ArrayList<String> load;
+	private ArrayList<String> loading;
 	private ArrayList<String> arrival;
 	private String dispatch;
 	private ArrayList<String> checkin;
 	private ArrayList<String> checkout;
 	private String receive;
-	public CommodityPO(String id, String shipState, String send, ArrayList<String> loading, ArrayList<String> arrival, String dispatch,
-			ArrayList<String> checkin, ArrayList<String> checkout, String receive) {
+	public CommodityPO(String id, String shipState, String send, String loading, String arrival, String dispatch,
+			String checkin, String checkout, String receive) {
+		this.loading = new ArrayList<String>();
+		this.arrival = new ArrayList<String>();
+		this.checkin = new ArrayList<String>();
+		this.checkout = new ArrayList<String>();
 		this.id = id;
 		this.shipState = ShipState.valueOf(shipState);
 		this.send = send;
-		this.load = loading;
-		this.arrival = arrival;
+		CommonUtility.String2Array(this.loading, loading);
+		CommonUtility.String2Array(this.arrival,arrival	);
 		this.dispatch = dispatch;
-		this.checkin = checkin;
-		this.checkout = checkout;
+		CommonUtility.String2Array(this.checkin,checkin);
+		CommonUtility.String2Array(this.checkout, checkout);
 		this.receive = receive;
 	}
 	
@@ -47,7 +52,7 @@ public class CommodityPO implements Serializable{
 		this.id = id;
 		this.shipState = shipState;
 		this.send = send;
-		this.load = loading;
+		this.loading = loading;
 		this.arrival = arrival;
 		this.dispatch = dispatch;
 		this.checkin = checkin;
@@ -74,10 +79,10 @@ public class CommodityPO implements Serializable{
 		this.send = send;
 	}
 	public ArrayList<String> getLoad() {
-		return load;
+		return loading;
 	}
 	public void setLoad(ArrayList<String> loading) {
-		this.load = loading;
+		this.loading = loading;
 	}
 	public ArrayList<String> getArrival() {
 		return arrival;
@@ -121,7 +126,7 @@ public class CommodityPO implements Serializable{
 				if(this.checkout.equals(commodity.checkout))
 					if(this.dispatch.equals(commodity.dispatch))
 						if(this.id.equals(commodity.id))
-							if(this.load.equals(commodity.load))
+							if(this.loading.equals(commodity.loading))
 								if(this.receive.equals(commodity.receive))
 									if(this.send.equals(commodity.send))
 										if(this.shipState==commodity.shipState)

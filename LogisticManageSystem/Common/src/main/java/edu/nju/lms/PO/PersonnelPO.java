@@ -9,7 +9,9 @@ import edu.nju.lms.data.PersonType;
  *@date 2015年10月24日
  */
 public class PersonnelPO implements Serializable{
-
+	/**
+	 * have been modified for sql
+	 */
 	private static final long serialVersionUID = 2931845580562512886L;
 	private String id;
 	private String name;

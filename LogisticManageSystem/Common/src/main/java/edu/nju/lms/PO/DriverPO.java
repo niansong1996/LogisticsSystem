@@ -10,7 +10,7 @@ import edu.nju.lms.data.CommonUtility;
  */
 public class DriverPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = -1501603914228742144L;
 	private String driverNum;

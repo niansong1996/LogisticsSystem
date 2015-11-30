@@ -15,8 +15,8 @@ import edu.nju.lms.dataService.impl.TransportCommodityDataImpl;
 public class TransportCommodityDataTest {
 	TransportCommodityDataService transportCommodityData;
 	
-	CommodityPO commodityPo1 = new CommodityPO("7876354637",ShipState.RECEIPIENT,"9837463526","9837463526","9837463526","9837463526","9837463526","9837463526","9837463526");
-	CommodityPO commodityPo2 = new CommodityPO("3984534242",ShipState.DISPATCHING,"9837463526","9837463526","9837463526","9837463526","9837463526","9837463526","9837463526");
+	CommodityPO commodityPo1 = new CommodityPO("7876354637","RECEIPIENT","9837463526","[9837463526]","[9837463526]","9837463526","[9837463526]","[9837463526]","9837463526");
+	CommodityPO commodityPo2 = new CommodityPO("3984534242","DISPATCHING","9837463526","[9837463526]","[9837463526]","9837463526","[9837463526]","[9837463526]","9837463526");
 	
 	ResultMessage success = new ResultMessage(true,null);
 	ResultMessage fail1 = new ResultMessage(false,"The commodity already exists!");

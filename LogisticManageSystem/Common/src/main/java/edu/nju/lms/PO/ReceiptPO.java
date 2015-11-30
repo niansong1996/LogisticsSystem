@@ -1,13 +1,10 @@
 package edu.nju.lms.PO;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.PaymentType;
 
 /**
  *@author tj
@@ -15,7 +12,7 @@ import edu.nju.lms.data.PaymentType;
  */
 public class ReceiptPO extends ListPO {
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = 6546369664824813665L;
 	private Calendar receiptDate;

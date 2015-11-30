@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class AccountPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = -2920275357062710781L;
 	private String name;//unique identifier

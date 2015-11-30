@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public class VehiclePO implements Serializable{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = -5891429209039094359L;
 	private String plateNum;

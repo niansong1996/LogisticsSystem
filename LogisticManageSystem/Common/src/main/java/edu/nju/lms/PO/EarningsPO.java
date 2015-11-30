@@ -2,11 +2,12 @@ package edu.nju.lms.PO;
 
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 
 public class EarningsPO extends ListPO {
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = -2314846105977404899L;
 	private double earnings;
@@ -14,6 +15,15 @@ public class EarningsPO extends ListPO {
 	private double profit;
 	private Calendar date;
 	private String id;
+	
+	public EarningsPO(String id,String state,String earnings, String payment, String date) {
+		super(id,ListState.valueOf(state));
+		this.earnings = Double.parseDouble(earnings);
+		this.payment = Double.parseDouble(payment);
+		this.profit = this.earnings-this.payment;
+		this.date = CommonUtility.String2Cal(date);
+	}
+	
 	public EarningsPO(String id,String state,double earnings, double payment, Calendar date) {
 		super(id,ListState.valueOf(state));
 		this.earnings = earnings;

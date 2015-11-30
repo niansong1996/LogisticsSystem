@@ -7,7 +7,7 @@ public class JDBC {
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	public static ResultSet ExecuteQuery(String sql){
-		System.out.println(sql);
+//		System.out.println(sql);
 		ResultSet result = null;
 		try {
 			Statement statement = conn.createStatement();
@@ -25,7 +25,7 @@ public class JDBC {
 			Statement statement = conn.createStatement();
 			statement.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Execution failed!!!");
+			System.err.println("Execution failed!!!");
 		}
 		return result;
 	}
@@ -37,7 +37,7 @@ public class JDBC {
 			conn = DriverManager.getConnection(url, user, password);
 			if(!conn.isClosed()) System.out.println("Succeeded connecting to the Database!");
 		} catch(ClassNotFoundException e) {
-			System.out.println("Sorry,can`t find the Driver!"); 
+			System.err.println("Sorry,can`t find the Driver!"); 
 			e.printStackTrace();
 		} catch(SQLException e) {
 			e.printStackTrace();

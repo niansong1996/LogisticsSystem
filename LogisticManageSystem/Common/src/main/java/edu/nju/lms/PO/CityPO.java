@@ -3,13 +3,15 @@ package edu.nju.lms.PO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import edu.nju.lms.data.CommonUtility;
+
 /**
  *@author tj
  *@date 2015��10��23��
  */
 public class CityPO implements Serializable{
 	/**
-	 * 
+	 * have been modified by sql
 	 */
 	private static final long serialVersionUID = 5052194559400755176L;
 	private String id;
@@ -29,15 +31,11 @@ public class CityPO implements Serializable{
 		this.id = id;
 		this.name = name;
 		String distanceTmp = distance.replace("[", "").replace("]", "");
-		String businessNumsTmp = businessNums.replace("[", "").replace("]", "");
 		if(!distanceTmp.equals("")){
 			String distanceTmpArray[] = distanceTmp.split(", ");
 			for(String tmp : distanceTmpArray) this.distance.add(Double.parseDouble(tmp));
 		}
-		if(!businessNumsTmp.equals("")){
-		String businessNumsTmpArray[] = businessNumsTmp.split(", ");
-		for(String tmp : businessNumsTmpArray) this.businessNums.add(tmp);
-		}
+		CommonUtility.String2Array(this.businessNums, businessNums);
 	}
 
 	public CityPO(String id,String name, ArrayList<String> businessNums,ArrayList<Double> distance) {
