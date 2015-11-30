@@ -44,7 +44,7 @@ public class TransProcessblImpl{
 		this.list=list;
 	}
 
-	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum) {
+	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum){
 		// TODO Auto-generated method stub
 		return null;
 	}
