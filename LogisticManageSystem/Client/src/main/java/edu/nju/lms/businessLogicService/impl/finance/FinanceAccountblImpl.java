@@ -3,7 +3,6 @@ package edu.nju.lms.businessLogicService.impl.finance;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.InitialInforPO;
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.data.ResultMessage;
@@ -21,7 +20,11 @@ public class FinanceAccountblImpl{
 	}
 
 	public ResultMessage addAccount(AccountVO account) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ResultMessage result=idCheck(account.getID());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
 		AccountPO accountPO=new AccountPO(account.getID(),account.getAmount());
 		try {
 			result=service.addAccount(accountPO);
@@ -46,7 +49,11 @@ public class FinanceAccountblImpl{
 	}
 
 	public ResultMessage deleteAccount(String id) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ResultMessage result=idCheck(id);
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deleteAccount(id);
 		} catch (RemoteException e) {
@@ -56,7 +63,11 @@ public class FinanceAccountblImpl{
 	}
 
 	public ResultMessage updateAccount(AccountVO account){
-		ResultMessage result=new ResultMessage(false,"网络未连接");
+		ResultMessage result=idCheck(account.getID());
+		if(!result.isSuccess()){
+			return result;
+		}
+		result=new ResultMessage(false,"网络未连接");
 		AccountPO accountPO=new AccountPO(account.getID(),account.getAmount());
 		try {
 			result=service.updateAccount(accountPO);
@@ -69,6 +80,15 @@ public class FinanceAccountblImpl{
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		//TODO
+		return result;
+	}
+	
+	public ResultMessage idCheck(String id){
+		ResultMessage result=new ResultMessage(true,"");
+		if(id.length()!=16){
+			result.setSuccess(false);
+			result.setErrorMessage("输入账户名称的位数不正确！");
+		}
 		return result;
 	}
 

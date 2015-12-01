@@ -35,7 +35,7 @@ public class LogblImpl {
 			e.printStackTrace();
 		}
 		for(OperationPO opPO: temp){
-			OperationVO op=new OperationVO(opPO.getTime(),opPO.getUser(),opPO.getExplain());
+			OperationVO op=new OperationVO(opPO.getTiming(),opPO.getUsername(),opPO.getExplanation());
 			log.add(op);
 		}
 		return log;
