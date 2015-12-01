@@ -67,12 +67,12 @@ public class ServerActivator
 	         Naming.rebind("FinanceStrategyDataService", financeStrategyDataService);
 	         Naming.rebind("PersonnelDataService", personnelDataService);
 	         Naming.rebind("TransportCommodityDataService", transportCommodityDataService);
-	         Naming.rebind("transportToolDataSevice", transportToolDataService);
-	         Naming.rebind("transportToolDataService",transportToolDataService);
-	         Naming.rebind("warehouseCheckinDataService", warehouseCheckinDataService);
-	         Naming.rebind("warehouseCheckoutDataService", warehouseCheckoutDataService);
-	         Naming.rebind("listDataService", listDataService);
-	         Naming.rebind("logDataService", logDataService);
+	         Naming.rebind("TransportToolDataSevice", transportToolDataService);
+	         Naming.rebind("TransportToolDataService",transportToolDataService);
+	         Naming.rebind("WarehouseCheckinDataService", warehouseCheckinDataService);
+	         Naming.rebind("WarehouseCheckoutDataService", warehouseCheckoutDataService);
+	         Naming.rebind("ListDataService", listDataService);
+	         Naming.rebind("LogDataService", logDataService);
 	         
 	         
 	         //如果要把实例注册到另一台启动了RMI注册服务的机器上    
