@@ -18,6 +18,7 @@ import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.FinanceAccountblService;
+import edu.nju.lms.businessLogicService.FinanceMoneyblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
@@ -30,12 +31,13 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 
 public class FinanceController
-		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
+		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService ,FinanceMoneyblService{
 
 	FinanceAccountblImpl accountf;
 	FinancePayblImpl pay;
 	FinanceReceiptblImpl receipt;
 	FinanceStrategyblImpl strategy;
+	FinanceMoneyblImpl moneyImpl;
 	
 	FinanceAccountDataService accountData;
 	FinancePaymentDataService payData;
@@ -50,12 +52,14 @@ public class FinanceController
 		try {
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
 			accountf=new FinanceAccountblImpl(accountData);
+			moneyImpl=new FinanceMoneyblImpl(accountData);
 			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
 			pay=new FinancePayblImpl(payData);
 			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
 			receipt=new FinanceReceiptblImpl(receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
 			strategy=new FinanceStrategyblImpl(strategyData);
+
 		} catch (Exception e) {
 			System.out.println("网络未连接");
 	    	System.exit(0);
@@ -257,6 +261,30 @@ public class FinanceController
 		}
 		OperationVO op=new OperationVO(getTime.returnTime(),logID,"计算收款总额");
 		logController.addLog(op);
+		return result;
+	}
+	public ResultMessage payMoney(String accountNum,double money) {
+		ResultMessage result=moneyImpl.payMoney(accountNum,money);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"账户"+accountNum+"进行付款");
+			logController.addLog(op);
+		}
+		return result;
+	}
+	public ResultMessage addMoney(String accountNum,double money) {
+		ResultMessage result=moneyImpl.addMoney(accountNum, money);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			OperationVO op=new OperationVO(getTime.returnTime(),logID,"账户"+accountNum+"进行收款");
+			logController.addLog(op);
+		}
 		return result;
 	}
 	
