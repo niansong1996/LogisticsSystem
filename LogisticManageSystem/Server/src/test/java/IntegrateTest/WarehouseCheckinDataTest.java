@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import edu.nju.lms.PO.CheckinPO;
 import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;

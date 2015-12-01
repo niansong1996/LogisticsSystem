@@ -1,10 +1,5 @@
 package simpletest;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class Demo {
 	public static void main(String[] args){
 /*		
@@ -19,6 +14,7 @@ public class Demo {
 		
 		*/
 		
+		/*
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String s = sdf.format(new Date());
 		Date date = new Date();
@@ -30,7 +26,7 @@ public class Demo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+*/
 		
 	}
 

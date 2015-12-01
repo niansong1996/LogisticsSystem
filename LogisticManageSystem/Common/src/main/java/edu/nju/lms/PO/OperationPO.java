@@ -3,49 +3,45 @@ package edu.nju.lms.PO;
 import java.io.Serializable;
 
 /**
- *@author tj
- *@date 2015年10月24日
+ *@author nians
+ *@date 2015/12/01
  */
 public class OperationPO implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8886437067330282800L;
-	//备注
-	private String explain;
-	private String time;
-	private String user;
-	
-	public OperationPO(String time,String user,String explain) {
+	//modified the name of member variables to mismatch key word in sql
+	private String explanation;
+	private String timing;
+	private String username;
+	public OperationPO(String explanation, String timing, String username) {
 		super();
-		this.explain = explain;
-		this.time = time;
-		this.user = user;
+		this.explanation = explanation;
+		this.timing = timing;
+		this.username = username;
 	}
-
-	public String getExplain() {
-		return explain;
+	public String getExplanation() {
+		return explanation;
 	}
-
-	public void setExplain(String explain) {
-		this.explain = explain;
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
-
-	public String getTime() {
-		return time;
+	public String getTiming() {
+		return timing;
 	}
-
-	public void setTime(String time) {
-		this.time = time;
+	public void setTiming(String timing) {
+		this.timing = timing;
 	}
-
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
-
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-    
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 }

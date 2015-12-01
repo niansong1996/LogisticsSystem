@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.data.ShipState;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.impl.TransportCommodityDataImpl;

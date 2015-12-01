@@ -12,7 +12,6 @@ import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinancePaymentDataService;
-import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
 import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
 import junit.framework.Assert;
 

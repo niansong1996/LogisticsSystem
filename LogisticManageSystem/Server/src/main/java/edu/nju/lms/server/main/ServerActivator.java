@@ -10,6 +10,7 @@ import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 import edu.nju.lms.dataService.ListDataService;
+import edu.nju.lms.dataService.LogDataService;
 import edu.nju.lms.dataService.PersonnelDataService;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportToolDataService;
@@ -22,6 +23,7 @@ import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
 import edu.nju.lms.dataService.impl.FinanceReceiptDataImpl;
 import edu.nju.lms.dataService.impl.FinanceStrategyDataImpl;
 import edu.nju.lms.dataService.impl.ListDataImpl;
+import edu.nju.lms.dataService.impl.LogDataImpl;
 import edu.nju.lms.dataService.impl.PersonnelDataImpl;
 import edu.nju.lms.dataService.impl.TransportCommodityDataImpl;
 import edu.nju.lms.dataService.impl.TransportToolDataImpl;
@@ -55,7 +57,7 @@ public class ServerActivator
 	         WarehouseCheckinDataService warehouseCheckinDataService = new WarehouseCheckinDataImpl();
 	         WarehouseCheckoutDataService warehouseCheckoutDataService = new WarehouseCheckoutDataImpl();
 	         ListDataService listDataService = new ListDataImpl();
-	         
+	         LogDataService logDataService = new LogDataImpl();
 	         
 	         Naming.rebind("UserDataService", userDataService);
 	         Naming.rebind("FinanceAccountDataService", financeAccountDataService);
@@ -70,6 +72,7 @@ public class ServerActivator
 	         Naming.rebind("warehouseCheckinDataService", warehouseCheckinDataService);
 	         Naming.rebind("warehouseCheckoutDataService", warehouseCheckoutDataService);
 	         Naming.rebind("listDataService", listDataService);
+	         Naming.rebind("logDataService", logDataService);
 	         
 	         
 	         //如果要把实例注册到另一台启动了RMI注册服务的机器上    

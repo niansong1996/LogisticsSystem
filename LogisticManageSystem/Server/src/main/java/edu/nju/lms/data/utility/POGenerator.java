@@ -46,7 +46,8 @@ public class POGenerator {
 	}
 
 
-	public static void generateMultiObject(List list,ResultSet rs, String className){
+	@SuppressWarnings("unchecked")
+	public static void generateMultiObject(@SuppressWarnings("rawtypes") List list,ResultSet rs, String className){
 		Class<?> cls = null;
 		try {
 			cls = Class.forName(className);

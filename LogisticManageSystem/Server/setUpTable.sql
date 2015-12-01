@@ -140,11 +140,6 @@ drivingLimit datetime not null,
 businesshallNum varchar(20) not null
 );
 
-create table sendpo
-(
-_id_ int unsigned not null auto_increment primary key,
-);
-
 create table loadpo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -160,7 +155,7 @@ vehicleNum varchar(12) not null,
 driverNum varchar(12) not null,
 commodityNums text not null,
 freight double not null
-)
+);
 
 create table arrivalpo
 (
@@ -170,7 +165,7 @@ state varchar(20) not null,
 expressNum varchar(12) not null,
 arrivalState varchar(20) not null,
 destination varchar(20) not null,
-setOut varhcar(20) not null,
+setOut varchar(20) not null,
 arrivalDate datetime not null,
 transitNum varchar(12) not null
 );
@@ -194,6 +189,11 @@ receiverName varchar(12) not null,
 receiveTime datetime not null,
 expressNum varchar(12) not null
 );
-
+create table operationpo
+(
+explanation varchar(100) not null,
+timing varchar(20) not null,
+username varchar(12) not null
+);
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 

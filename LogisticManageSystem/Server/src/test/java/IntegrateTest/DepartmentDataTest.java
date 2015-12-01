@@ -13,7 +13,6 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.DepartmentDataService;
 import edu.nju.lms.dataService.impl.DepartmentDataImpl;
-import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
 
 public class DepartmentDataTest {
 	DepartmentDataService departmentData;
