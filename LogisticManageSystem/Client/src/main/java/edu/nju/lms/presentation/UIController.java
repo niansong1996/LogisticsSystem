@@ -22,8 +22,8 @@ public class UIController {
 	private WarehouseController warehouseController;
 	private PersonnelController personnelController;
 	public UIController() {
-		userController = new UserController();
-		logController = new LogController();
+	//	userController = new UserController();
+	//	logController = new LogController();
 		frame = new MainFrame();
 	}
 	public void changeTo(String panel){

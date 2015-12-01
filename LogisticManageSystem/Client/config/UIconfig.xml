@@ -7,7 +7,7 @@
 			<component name="password" class = "Component" x="620" y="360" w="78" h="25"/>
 			<component name="loginback1" class = "Component" x="560" y="120" w="400" h="500"/>
 			<unit name ="SignIn" class = "MainButton" x="685" y="500" w="150" h="32" type="1" listenerName="SignInButtonListener"/>
-			<unit name ="userName" class = "MyTextField" x="715" y="270" w="168" h="23" type="0"/>
+			<unit name ="userName" class = "MyTextField" x="715" y="270" w="168" h="23" type="0" textType="null"/>
 			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="168" h="23" type="0"/>
 			<unit name ="loginButton" class = "MainButton" x="565" y="130" w="195" h="44" type="0"/>
 			<unit name ="inquireButton1" class = "MainButton" x="760" y="130" w="195" h="44" type="1" listenerName="InquireListener"/>
@@ -43,7 +43,7 @@
 		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
 		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="0" listenerName="SavePersonButtonListener"/>
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
-		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
+		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		     <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		     <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="CityButtonListener"/>
 		     <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="DepartManageButtonListener"/>
@@ -66,12 +66,12 @@
 		    <component name="perTime" class = "Component" x="350" y="300" w="144" h="35"/>
 		    <component name="bonus" class = "Component" x="350" y="350" w="144" h="35"/>
 		    <component name="duty" class = "Component" x="350" y="400" w="144" h="35"/>
-		    <unit name ="personID" class = "MyTextField" x="520" y="106" w="168" h="23" type="0"/>
-		    <unit name ="personName" class = "MyTextField" x="520" y="156" w="168" h="23" type="0"/>
-		    <unit name ="institution" class = "MyTextField" x="520" y="206" w="168" h="23" type="0"/>
-		    <unit name ="salary" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" />
-		    <unit name ="perTime" class = "MyTextField" x="520" y="306" w="168" h="23" type="0" />
-		    <unit name ="bonus" class = "MyTextField" x="520" y="356" w="168" h="23" type="0" />
+		    <unit name ="personID" class = "MyTextField" x="520" y="106" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="personName" class = "MyTextField" x="520" y="156" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="institution" class = "MyTextField" x="520" y="206" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="salary" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="perTime" class = "MyTextField" x="520" y="306" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="bonus" class = "MyTextField" x="520" y="356" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="personDuty" class = "MyComboBox" x="520" y="414" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
 		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddPersonListener"/>
@@ -95,7 +95,7 @@
 		    <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeleteDepartButtonListener"/>
 		    <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SaveDepartButtonListener"/>
 		    <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindDepartButtonListener"/>
-		    <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0"/>
+		    <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="CityButtonListener"/>
 		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="DepartManageButtonListener"/>
@@ -114,8 +114,8 @@
 		    <component name="institution" class = "Component" x="350" y="150" w="144" h="35"/>
 		    <component name="location" class = "Component" x="350" y="250" w="144" h="35"/>
 		    <component name="institutionType" class = "Component" x="350" y="350" w="144" h="35"/>
-		    <unit name ="departID" class = "MyTextField" x="520" y="156" w="168" h="23" type="0"/>
-		    <unit name ="location" class = "MyTextField" x="520" y="256" w="168" h="23" type="0"/>
+		    <unit name ="departID" class = "MyTextField" x="520" y="156" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="location" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="institutionType" class = "MyComboBox" x="520" y="354" w="168" h="23" type="0" items="营业厅;中转中心"/>
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddDepartConfirmListener"/>
 		    <unit name ="cancel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="CancelAddDepartmentListener"/>
@@ -156,30 +156,30 @@
 		    <component name ="month" class="Component" x="340" y="480" w="164" h="24"/>
 		    <component name ="count" class="Component" x="340" y="550" w="164" h="24"/>
 		    <component name = "month" class ="Component" x="340" y="620" w="164" h="24"/>
-		    <unit name ="courier" class="MyTextField" x="530" y="130" w="168" h="23" type="0" />
-		    <unit name ="counter_bussiness" class="MyTextField" x="530" y="200" w="168" h="23" type="0" />
-		    <unit name ="counter_intermediate" class="MyTextField" x="530" y="270" w="168" h="23" type="0" />
-		    <unit name ="financial_normal" class="MyTextField" x="530" y="340" w="168" h="23" type="0" />
-		    <unit name ="financial_advanced" class="MyTextField" x="530" y="410" w="168" h="23" type="0" />
-		    <unit name ="warehouse" class="MyTextField" x="530" y="480" w="168" h="23" type="0" />
-		    <unit name ="driver" class="MyTextField" x="530" y="550" w="168" h="23" type="0" />
-		    <unit name ="manager" class="MyTextField" x="530" y="620" w="168" h="23" type="0" />
-		    <unit name ="courier" class="MyTextField" x="720" y="130" w="168" h="23" type="0" />
-		    <unit name ="businessman" class="MyTextField" x="720" y="200" w="168" h="23" type="0" />
-		    <unit name ="transitMan" class="MyTextField" x="720" y="270" w="168" h="23" type="0" />
-		    <unit name ="finance_normal" class="MyTextField" x="720" y="340" w="168" h="23" type="0" />
-		    <unit name ="finance_advance" class="MyTextField" x="720" y="410" w="168" h="23" type="0" />
-		    <unit name ="warehouseMan" class="MyTextField" x="720" y="480" w="168" h="23" type="0" />
-		    <unit name ="driver" class="MyTextField" x="720" y="550" w="168" h="23" type="0" />
-		    <unit name ="manager" class="MyTextField" x="720" y="620" w="168" h="23" type="0" />
-		    <unit name ="courier" class="MyTextField" x="910" y="130" w="168" h="23" type="0" />
-		    <unit name ="businessman" class="MyTextField" x="910" y="200" w="168" h="23" type="0" />
-		    <unit name ="transitMan" class="MyTextField" x="910" y="270" w="168" h="23" type="0" />
-		    <unit name ="finance_normal" class="MyTextField" x="910" y="340" w="168" h="23" type="0" />
-		    <unit name ="finance_advance" class="MyTextField" x="910" y="410" w="168" h="23" type="0" />
-		    <unit name ="warehouseMan" class="MyTextField" x="910" y="480" w="168" h="23" type="0" />
-		    <unit name ="driver" class="MyTextField" x="910" y="550" w="168" h="23" type="0" />
-		    <unit name ="manager" class="MyTextField" x="910" y="620" w="168" h="23" type="0" />
+		    <unit name ="courier" class="MyTextField" x="530" y="130" w="168" h="23" type="0" textType="salaryStrategy;courier;getBasic"/>
+		    <unit name ="counter_bussiness" class="MyTextField" x="530" y="200" w="168" h="23" type="0" textType="salaryStrategy;counter_bussiness;getBasic"/>
+		    <unit name ="counter_intermediate" class="MyTextField" x="530" y="270" w="168" h="23" type="0" textType="salaryStrategy;counter_intermediate;getBasic"/>
+		    <unit name ="financial_normal" class="MyTextField" x="530" y="340" w="168" h="23" type="0" textType="salaryStrategy;financial_normal;getBasic"/>
+		    <unit name ="financial_advanced" class="MyTextField" x="530" y="410" w="168" h="23" type="0" textType="salaryStrategy;financial_advanced;getBasic"/>
+		    <unit name ="warehouse" class="MyTextField" x="530" y="480" w="168" h="23" type="0" textType="salaryStrategy;warehouse;getBasic"/>
+		    <unit name ="driver" class="MyTextField" x="530" y="550" w="168" h="23" type="0" textType="salaryStrategy;driver;getBasic"/>
+		    <unit name ="manager" class="MyTextField" x="530" y="620" w="168" h="23" type="0" textType="salaryStrategy;manager;getBasic"/>
+		    <unit name ="courier" class="MyTextField" x="720" y="130" w="168" h="23" type="0" textType="salaryStrategy;courier;getPerTime" />
+		    <unit name ="businessman" class="MyTextField" x="720" y="200" w="168" h="23" type="0" textType="salaryStrategy;counter_bussiness;getPerTime" />
+		    <unit name ="transitMan" class="MyTextField" x="720" y="270" w="168" h="23" type="0" textType="salaryStrategy;counter_intermediate;getPerTime"/>
+		    <unit name ="finance_normal" class="MyTextField" x="720" y="340" w="168" h="23" type="0" textType="salaryStrategy;financial_normal;getPerTime" />
+		    <unit name ="finance_advance" class="MyTextField" x="720" y="410" w="168" h="23" type="0" textType="salaryStrategy;financial_advanced;getPerTime" />
+		    <unit name ="warehouseMan" class="MyTextField" x="720" y="480" w="168" h="23" type="0" textType="salaryStrategy;warehouse;getPerTime" />
+		    <unit name ="driver" class="MyTextField" x="720" y="550" w="168" h="23" type="0" textType="salaryStrategy;driver;getPerTime" />
+		    <unit name ="manager" class="MyTextField" x="720" y="620" w="168" h="23" type="0" textType="salaryStrategy;manager;getPerTime" />
+		    <unit name ="courier" class="MyTextField" x="910" y="130" w="168" h="23" type="0" textType="salaryStrategy;courier;getBonus" />
+		    <unit name ="businessman" class="MyTextField" x="910" y="200" w="168" h="23" type="0" textType="salaryStrategy;counter_bussiness;getBonus" />
+		    <unit name ="transitMan" class="MyTextField" x="910" y="270" w="168" h="23" type="0" textType="salaryStrategy;counter_intermediate;getBonus"/>
+		    <unit name ="finance_normal" class="MyTextField" x="910" y="340" w="168" h="23" type="0" textType="salaryStrategy;financial_normal;getBonus"/>
+		    <unit name ="finance_advance" class="MyTextField" x="910" y="410" w="168" h="23" type="0" textType="salaryStrategy;financial_advanced;getBonus"/>
+		    <unit name ="warehouseMan" class="MyTextField" x="910" y="480" w="168" h="23" type="0" textType="salaryStrategy;warehouse;getBonus" />
+		    <unit name ="driver" class="MyTextField" x="910" y="550" w="168" h="23" type="0" textType="salaryStrategy;driver;getBonus"/>
+		    <unit name ="manager" class="MyTextField" x="910" y="620" w="168" h="23" type="0" textType="salaryStrategy;manager;getBonus"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="CityButtonListener"/>
 		    <unit name ="guide_department" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="DepartManageButtonListener"/>
@@ -192,7 +192,6 @@
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="save" class = "MainButton" x="950" y="670" w="112" h="34" type="1" listenerName="SaveSalaryStrategyButtonListener"/>
-		    <unit name ="show" class = "MainButton" x="820" y="670" w="112" h="34" type="1" listenerName="ShowSalaryStrategyButtonListener"/>
 		</mainPanel>
 		<mainPanel name="FreightStrategy" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
@@ -307,6 +306,13 @@
 		    <unit name ="guide_accountManage" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_statistic" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_loginfo" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="courierPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <unit name ="RecieveList" class = "MainButton" x="150" y="200" w="256" h="257" type="1" listenerName="PayManageButtonListener"/>
+		    <unit name ="sendList" class = "MainButton" x="150" y="200" w="256" h="257" type="1" listenerName="PayManageButtonListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>

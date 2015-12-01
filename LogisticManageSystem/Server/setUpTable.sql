@@ -196,4 +196,4 @@ timing varchar(20) not null,
 username varchar(12) not null
 );
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
-
+insert into SalaryStrategyPO value("courier","200","200","300");
