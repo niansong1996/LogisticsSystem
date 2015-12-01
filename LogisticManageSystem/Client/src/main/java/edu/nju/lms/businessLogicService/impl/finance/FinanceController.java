@@ -126,7 +126,7 @@ public class FinanceController
 		} catch (NoBusinessLogicException e) {
 		}
 		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看薪水策略");
-		logController.addLog(op);
+	//	logController.addLog(op);
 		return result;
 	}
 

@@ -197,7 +197,7 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="freightPanel" class = "Component" x="150" y="100" w="639" h="394"/>
 		    <component name="freigthStrategy" class = "Component" x="150" y="20" w="98" h="23"/> 
-		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" />
+		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="null" />
 		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveFreightStrategyButtonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="CityButtonListener"/>
@@ -271,11 +271,11 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="payManage" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="payList" class = "Component" x="180" y="80" w="516" h="588"/>
-		    <unit name="payTime" class="MyTextField" x="370" y="170" w="168" h="23" type="0"/>
-		    <unit name="payAmount" class="MyTextField" x="370" y="245" w="168" h="23" type="0"/>
-		    <unit name="payPerson" class="MyTextField" x="370" y="316" w="168" h="23" type="0"/>
-		    <unit name="payAccount" class="MyTextField" x="370" y="389" w="168" h="23" type="0"/>
-		    <unit name="explain" class="MyTextField" x="370" y="530" w="168" h="23" type="0"/>
+		    <unit name="payTime" class="MyTextField" x="370" y="170" w="168" h="23" type="0" textType="null"/>
+		    <unit name="payAmount" class="MyTextField" x="370" y="245" w="168" h="23" type="0" textType="null"/>
+		    <unit name="payPerson" class="MyTextField" x="370" y="316" w="168" h="23" type="0" textType="null"/>
+		    <unit name="payAccount" class="MyTextField" x="370" y="389" w="168" h="23" type="0" textType="null"/>
+		    <unit name="explain" class="MyTextField" x="370" y="530" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="personDuty" class = "MyComboBox" x="370" y="460" w="168" h="23" type="0" items="运费;租金;人员薪水"/>
 		    <unit name ="add" class = "MainButton" x="550" y="580" w="112" h="34" type="1" listenerName="AddPayListButtonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="FinanceABackButtonListener"/>
@@ -292,12 +292,12 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="initialAccount" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="initialBuild" class = "Component" x="180" y="100" w="650" h="300"/>
-		    <unit name="department" class="MyTextField" x="320" y="120" w="168" h="23" type="0"/>
-		    <unit name="car" class="MyTextField" x="320" y="190" w="168" h="23" type="0"/>
-		    <unit name="person" class="MyTextField" x="320" y="270" w="168" h="23" type="0"/>
-		    <unit name="store" class="MyTextField" x="320" y="346" w="168" h="23" type="0"/>
-		    <unit name="accountName" class="MyTextField" x="640" y="190" w="168" h="23" type="0"/>
-		    <unit name="balance" class="MyTextField" x="640" y="270" w="168" h="23" type="0"/>
+		    <unit name="department" class="MyTextField" x="320" y="120" w="168" h="23" type="0" textType="null"/>
+		    <unit name="car" class="MyTextField" x="320" y="190" w="168" h="23" type="0" textType="null"/>
+		    <unit name="person" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="null"/>
+		    <unit name="store" class="MyTextField" x="320" y="346" w="168" h="23" type="0" textType="null"/>
+		    <unit name="accountName" class="MyTextField" x="640" y="190" w="168" h="23" type="0" textType="null"/>
+		    <unit name="balance" class="MyTextField" x="640" y="270" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="add" class = "MainButton" x="650" y="340" w="112" h="34" type="1" listenerName="InitialAddButtonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="FinanceABackButtonListener"/>
 		    <unit name ="guide_sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
