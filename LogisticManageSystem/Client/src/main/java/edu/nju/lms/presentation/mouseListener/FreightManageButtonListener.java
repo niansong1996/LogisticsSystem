@@ -1,6 +1,7 @@
 package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import edu.nju.lms.presentation.UIController;
@@ -14,6 +15,12 @@ public class FreightManageButtonListener extends ButtonListener {
 	public FreightManageButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

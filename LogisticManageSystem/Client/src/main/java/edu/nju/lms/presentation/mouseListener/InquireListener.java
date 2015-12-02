@@ -19,4 +19,10 @@ public class InquireListener extends ButtonListener{
 		button.repaint();
 	}
 
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

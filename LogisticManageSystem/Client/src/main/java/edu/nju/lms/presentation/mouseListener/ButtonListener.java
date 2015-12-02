@@ -12,7 +12,7 @@ import edu.nju.lms.presentation.components.MainButton;
  *@author tj
  *@date 2015年11月18日
  */
-public class ButtonListener implements MouseListener{
+public abstract class ButtonListener implements MouseListener{
 	protected ArrayList<java.awt.Component> units;
 	protected UIController controller;
 	protected MainButton button;
@@ -34,10 +34,7 @@ public class ButtonListener implements MouseListener{
 		button.repaint();
 	}
 
-	public void mouseReleased(MouseEvent e) {
-
-		
-	}
+	abstract public void mouseReleased(MouseEvent e);
 
 	public void mouseEntered(MouseEvent e) {
 		button.setIn(true);

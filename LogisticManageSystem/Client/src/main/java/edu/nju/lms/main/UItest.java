@@ -10,7 +10,7 @@ public class UItest {
 	public void mainFrameTest(){
 		ui = new UIController();
 		ConfigReader r = new ConfigReader();
-		PanelConfig panelConfig = r.readPanel("MainPanel");
+		PanelConfig panelConfig = r.readPanel("counterBussinessPanel");
 		MainPanel mainPanel = new MainPanel(panelConfig,ui);
 		ui.getFrame().getContentPane().add(mainPanel);
 		ui.getFrame().setVisible(true);

@@ -22,11 +22,11 @@ public class TransportblService_Driver {
 		
 		ArrayList<String> baseInfo = new ArrayList<String>();
 		baseInfo.add("张三");
-		SendVO send = process.createSendList(new SendVO("0000000000", "0000000000", baseInfo, 1, 1, "goods", 23, 1));
-		System.out.println("createSendList:"+send.getPrice());
+//		SendVO send = process.createSendList(new SendVO("0000000000", "0000000000", baseInfo, 1, 1, "goods", 23, 1));
+//		System.out.println("createSendList:"+send.getPrice());
 		
-		ResultMessage result1 = process.saveSendList(send);
-		System.out.println("saveSendList:"+result1.isSuccess());
+//		ResultMessage result1 = process.saveSendList(send);
+//		System.out.println("saveSendList:"+result1.isSuccess());
 		
 		ArrayList<String> commodityNums = new ArrayList<String>();
 		commodityNums.add("0000000000");

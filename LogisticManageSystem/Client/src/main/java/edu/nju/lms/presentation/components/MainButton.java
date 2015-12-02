@@ -25,12 +25,14 @@ public class MainButton extends JLabel{
 	private String name;
 	private boolean isIn;
 	private boolean isPressed;
+	private Element element;
 	public MainButton(Element button,UIController controller){
 		w = Integer.parseInt(button.attributeValue("w"));
 		h = Integer.parseInt(button.attributeValue("h"));
 		x = Integer.parseInt(button.attributeValue("x"));
 		y = Integer.parseInt(button.attributeValue("y"));
 		name =button.attributeValue("name");
+		element = button;
 		setBounds(x,y,w,h);
 	}
 	
@@ -54,6 +56,10 @@ public class MainButton extends JLabel{
 	}
 	public void setPressed(boolean isPressed){
 		this.isPressed = isPressed;
+	}
+
+	public Element getElement() {
+		return element;
 	}
 	
 }
