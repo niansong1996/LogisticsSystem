@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -26,27 +27,10 @@ public class PersonnelTable extends MyTable{
 	@Override
 	protected void getData() {
 		persons = new ArrayList<PersonnelVO>();
-		PersonnelVO p = new PersonnelVO("123", "cui", "123", "manager", 0, 0, 0);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
-		persons.add(p);
+//		PersonnelVO p = new PersonnelVO("123", "cui", "123", "manager", 0, 0, 0);
+//		persons.add(p);
+		PersonnelController personnel = controller.getPersonnelController();
+		//TODO 
 		for (int i = 0; i < persons.size(); i++) {
 			PersonnelVO person = persons.get(i);
 			java.awt.Component[] component = { new MyTextField(person.getId()), new MyTextField(person.getName()),

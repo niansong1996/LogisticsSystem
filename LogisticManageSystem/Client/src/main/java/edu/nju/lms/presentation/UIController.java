@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation;
 
+import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
@@ -21,21 +22,26 @@ public class UIController {
 	private UserController userController;
 	private WarehouseController warehouseController;
 	private PersonnelController personnelController;
+
 	public UIController() {
 		userController = new UserController();
 		logController = new LogController();
 		frame = new MainFrame();
 	}
-	public void changeTo(String panel){
-		frame.changeTo(panel,this);
+
+	public void changeTo(String panel) {
+		frame.changeTo(panel, this);
 	}
+
 	/**
 	 * initialize controller according to {@link PersonType}
+	 * 
 	 * @param type
 	 */
-	public void initialize(PersonType type){
-		switch(type){
-		case ADMINISTRATOR:break;
+	public void initialize(PersonType type) {
+		switch (type) {
+		case ADMINISTRATOR:
+			break;
 		case COUNTER_INTERMEDIATE:
 			warehouseController = BusinessLogicFactory.createWarehouseController();
 		case COUNTER_BUSSINESS:
@@ -51,62 +57,90 @@ public class UIController {
 			financeController = BusinessLogicFactory.createFinanceController();
 			break;
 		}
+		addData();
 	}
+
+	public void addData() {
+		PersonnelVO vo = new PersonnelVO("122301456999", "tj", "025458963222", "总经理", 2000, 200, 200);
+		personnelController.addPersonnel(vo);
+		vo = new PersonnelVO("522301456999", "tj", "025458963222", "总经理", 2000, 200, 200);
+		personnelController.addPersonnel(vo);
+		vo = new PersonnelVO("122301456889", "tj", "025458963222", "总经理", 2000, 200, 200);
+		personnelController.addPersonnel(vo);
+	}
+
 	public MainFrame getFrame() {
 		return frame;
 	}
+
 	public void setFrame(MainFrame frame) {
 		this.frame = frame;
 	}
+
 	public DepartmentController getDepartmentController() {
 		return departmentController;
 	}
+
 	public void setDepartmentController(DepartmentController departmentController) {
 		this.departmentController = departmentController;
 	}
+
 	public FinanceController getFinanceController() {
 		return financeController;
 	}
+
 	public void setFinanceController(FinanceController financeController) {
 		this.financeController = financeController;
 	}
+
 	public ListController getListController() {
 		return listController;
 	}
+
 	public void setListController(ListController listController) {
 		this.listController = listController;
 	}
+
 	public LogController getLogController() {
 		return logController;
 	}
+
 	public void setLogController(LogController logController) {
 		this.logController = logController;
 	}
+
 	public TransportController getTransportController() {
 		return transportController;
 	}
+
 	public void setTransportController(TransportController transportController) {
 		this.transportController = transportController;
 	}
+
 	public UserController getUserController() {
 		return userController;
 	}
+
 	public void setUserController(UserController userController) {
 		this.userController = userController;
 	}
+
 	public WarehouseController getWarehouseController() {
 		return warehouseController;
 	}
+
 	public void setWarehouseController(WarehouseController warehouseController) {
 		this.warehouseController = warehouseController;
 	}
 
-	public void setLogID(String id){
-		userController.setLogID(id);
+	public void setLogID(String id) {
+		logController.setLogID(id);
 	}
+
 	public PersonnelController getPersonnelController() {
 		return personnelController;
 	}
+
 	public void setPersonnelController(PersonnelController personnelController) {
 		this.personnelController = personnelController;
 	}
