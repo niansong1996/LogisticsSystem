@@ -125,10 +125,12 @@ public class MyTableLabel extends JLabel  {
 		/**
 		 * add data components
 		 */
+		int before = checkWidth;
 		for (int i = 0; i < components.length; i++) {
 			java.awt.Component component = components[i];
 			component.setFont(new Font("微软雅黑",Font.PLAIN,15));
-			component.setBounds(checkWidth + i * column, height / 8, column , height * 3 / 4);
+			component.setBounds(before, (height-component.getHeight())/2, component.getWidth() , component.getHeight());
+			before+=component.getWidth()+10;
 			add(component);
 		}
 		/**

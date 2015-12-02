@@ -33,12 +33,24 @@ public class PersonnelTable extends MyTable{
 		for (int i = 0; i < persons.size(); i++) {
 			PersonnelVO person = persons.get(i);
 			String type = person.getDuty();
-			MyComboBox box = new MyComboBox(element,controller);
+			MyComboBox box = new MyComboBox(element, controller);
+			box.setSize(150,30);
 			box.setSelectedItem(type);
-			java.awt.Component[] component = { new MyTextField(person.getId()), new MyTextField(person.getName()),
-					new MyTextField(person.getDepartmentNum()), box,new MyTextField(person.getSalary() + ""),
-					new MyTextField(person.getPerTime() + ""),new MyTextField(person.getBonus() + "") };
-			MyTableLabel label = new MyTableLabel(element, controller , 50, component,this);
+			MyTextField personID = new MyTextField(person.getId());
+			personID.setSize(100, 30);
+			MyTextField personName = new MyTextField(person.getName());
+			personName.setSize(80,30);
+			MyTextField personDepartment = new MyTextField(person.getDepartmentNum());
+			personDepartment.setSize(100,30);
+			MyTextField personSalary = new MyTextField(person.getSalary() + "");
+			personSalary.setSize(80,30);
+			MyTextField personPertime = new MyTextField(person.getPerTime() + "");
+			personPertime.setSize(60,30);
+			MyTextField personBounus = new MyTextField(person.getBonus() + "");
+			personBounus.setSize(80,30);
+			java.awt.Component[] component = { personID, personName, personDepartment, personSalary, personPertime,
+					personBounus, box };
+			MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 			addData(label);
 		}
 	}
