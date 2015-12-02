@@ -161,9 +161,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 		
 		return result;
 	}
-	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum) {
-		 ArrayList<OrderInforVO> result=process.checkOrderInfor(orderNum);
-
+	public OrderInforVO checkOrderInfor(String orderNum) {
+		 OrderInforVO result=process.checkOrderInfor(orderNum);
 		 try {
 			 logController=BusinessLogicFactory.getLogController();
 		 } catch (NoBusinessLogicException e) {

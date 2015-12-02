@@ -1,7 +1,5 @@
 package edu.nju.lms.businessLogicService;
 
-import java.util.ArrayList;
-
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.LoadVO;
@@ -18,7 +16,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface TransProcessblService {
 	
-	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum);
+	public OrderInforVO checkOrderInfor(String orderNum);
 	
 	public SendVO createSendList(SendVO baseMessage);
 	

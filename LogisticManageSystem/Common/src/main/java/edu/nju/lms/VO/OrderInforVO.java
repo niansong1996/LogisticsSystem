@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import edu.nju.lms.data.ShipState;
 
 /**
- *@author tj
- *@date 2015年10月24日
+ *@author nians	
+ *@date 2015/12/02
+ *@use serve as an property of commodity, used to demonstrate the current state of the
+ *     commodity and the history track of the commodity
  */
 public class OrderInforVO  {
+	//current state of the commodity
 	private ShipState shipState;
-	//每个字符串包含时间+空格+xx营业厅或xx中转中心
+	//time+space+location
 	private ArrayList<String> track;
+	//the expressNum of the orderInforVO is identical to the commodity it belongs
 	private String expressNum;
 	
 	public OrderInforVO(ShipState shipState, ArrayList<String> track, String expressNum) {
-		super();
 		this.shipState = shipState;
 		this.track = track;
 		this.expressNum = expressNum;

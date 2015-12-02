@@ -44,9 +44,14 @@ public class TransProcessblImpl{
 		this.list=list;
 	}
 
-	public ArrayList<OrderInforVO> checkOrderInfor(String orderNum){
-		// TODO Auto-generated method stub
-		return null;
+	public OrderInforVO checkOrderInfor(String orderNum){
+		TransHistoryTrack historyTrack = new TransHistoryTrack(commodity,list);
+		try {
+			return historyTrack.getTrack(orderNum);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public SendVO createSendList(SendVO baseMessage) {
