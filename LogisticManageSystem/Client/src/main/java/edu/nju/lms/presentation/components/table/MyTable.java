@@ -111,6 +111,11 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 	public ArrayList<MyTableLabel> getDataList(){
 		return data;
 	}
-
+	public void setDataList(ArrayList<MyTableLabel> labels){
+		this.data = labels;
+		list.removeAll();
+		setView();
+		controller.getFrame().repaint();
+	}
 
 }

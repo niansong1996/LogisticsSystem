@@ -81,9 +81,9 @@ public class MyDialog extends JFrame implements Runnable {
 	}
 
 	public void run() {
-		int time = 200;
+		int time = 100;
 		for (int i = time; i > 0; i--) {
-			com.sun.awt.AWTUtilities.setWindowOpacity(this, (float) (i * 0.005));
+			com.sun.awt.AWTUtilities.setWindowOpacity(this, (float) (i * 0.01));
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
