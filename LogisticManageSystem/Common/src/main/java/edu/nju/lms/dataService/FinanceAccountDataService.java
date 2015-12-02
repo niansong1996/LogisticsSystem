@@ -2,6 +2,7 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.InitialInforPO;
@@ -21,6 +22,8 @@ public interface FinanceAccountDataService extends Remote{
 	 */
 	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException;
 	
+	public ArrayList<InitialInforPO> findInitialInfo() throws RemoteException;
+	
 	/**
 	 * @param Account
 	 * @return ResultMessage
@@ -35,6 +38,8 @@ public interface FinanceAccountDataService extends Remote{
 	 * @see AccountPO
 	 */
 	public AccountPO findAccount(String id) throws RemoteException;
+	
+	public ArrayList<AccountPO> showAllAccount() throws RemoteException;
 
 	/**
 	 * @param id

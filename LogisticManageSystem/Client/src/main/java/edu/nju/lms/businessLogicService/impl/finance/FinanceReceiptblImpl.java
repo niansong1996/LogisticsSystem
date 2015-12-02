@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
-import edu.nju.lms.data.CreateTime;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 
@@ -16,7 +16,7 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
  */
 public class FinanceReceiptblImpl{
 	private FinanceReceiptDataService service;
-	CreateTime getTime=new CreateTime();
+	CommonUtility time=new CommonUtility();
 	private static int basicNum=0;
 	
 	public FinanceReceiptblImpl(FinanceReceiptDataService service){
@@ -28,7 +28,7 @@ public class FinanceReceiptblImpl{
 	 */
 	public ReceiptVO createReceipt(ReceiptVO debit) {
 		ReceiptVO result=debit;
-		result.setReceiptDate(getTime.returnTime());
+		result.setReceiptDate(time.getTime());
 		result.setId(createNum());
 		return result;
 	}
@@ -43,7 +43,7 @@ public class FinanceReceiptblImpl{
 
 	public ResultMessage addReceipt(ReceiptVO debit) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),getTime.changeToCal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),time.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			result=service.addReceipt(po);
 		} catch (RemoteException e) {
@@ -72,7 +72,7 @@ public class FinanceReceiptblImpl{
 			return result;
 		}
 		result=new ResultMessage(false,"网络未连接");
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),getTime.changeToCal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),time.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			result=service.updateReceipt(po);
 		} catch (RemoteException e) {
@@ -90,7 +90,7 @@ public class FinanceReceiptblImpl{
 			// TODO
 		}
 		for(ReceiptPO po : listPO){
-			ReceiptVO temp=new ReceiptVO(po.getId(),getTime.changeToString(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
 			listVO.add(temp);
 		}
 		return listVO;
@@ -105,7 +105,7 @@ public class FinanceReceiptblImpl{
 			// TODO
 		}
 		for(ReceiptPO po : listPO){
-			ReceiptVO temp=new ReceiptVO(po.getId(),getTime.changeToString(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
 			listVO.add(temp);
 		}
 		return listVO;

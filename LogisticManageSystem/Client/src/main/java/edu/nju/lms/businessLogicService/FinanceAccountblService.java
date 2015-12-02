@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.data.ResultMessage;
@@ -17,8 +19,14 @@ public interface FinanceAccountblService {
 	public ResultMessage deleteAccount(String id);
 	
 	public ResultMessage updateAccount(AccountVO account);
+
+	public ArrayList<AccountVO> showAllAccount();
 	
 	//initial account,including the company's initial financial information
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial);
+	
+	public ResultMessage initialInfo();
+	
+	public ArrayList<InitialInfoVO> findInitialInfo();
 }

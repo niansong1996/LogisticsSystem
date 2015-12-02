@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.data.ResultMessage;
@@ -43,6 +45,8 @@ public interface TransManageblService {
 	 * @see VehicleVO
 	 */
 	public ResultMessage updateVehicle(VehicleVO modified );
+	
+	public ArrayList<VehicleVO> showAllVehicle();
 	
 	/**
 	 * find a {@link VehicleVO} by id

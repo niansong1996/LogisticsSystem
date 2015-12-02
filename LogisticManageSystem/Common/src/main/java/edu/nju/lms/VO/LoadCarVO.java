@@ -1,7 +1,6 @@
 package edu.nju.lms.VO;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class LoadCarVO extends ListVO{
 	private String loadDate;

@@ -20,7 +20,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
-import edu.nju.lms.data.CreateTime;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.ShipState;
@@ -31,7 +31,7 @@ import edu.nju.lms.dataService.TransportListDataService;
 public class TransProcessblImpl{
 	TransportCommodityDataService commodity;
 	TransportListDataService list;
-	CreateTime getTime=new CreateTime();
+	CommonUtility getTime=new CommonUtility();
 	
 	private static int basicSendNum=0;
 	private static int basicArrivalNum=0;
@@ -57,7 +57,7 @@ public class TransProcessblImpl{
 	public SendVO createSendList(SendVO baseMessage) {
 		SendVO result=baseMessage;
 		result.setId(createSendNum());
-		result.setCreateTime(getTime.returnTime());
+		result.setCreateTime(getTime.getTime());
 		result.setPrice(calculateMoney(baseMessage.getPackingType(),baseMessage.getMode()));
 		//TODO   time
 		return result;
@@ -103,13 +103,13 @@ public class TransProcessblImpl{
 	public LoadVO createLoadList(LoadVO baseMessage) {
 		LoadVO result=baseMessage;
 		result.setId(createLoadNum());
-		result.setLoadDate(getTime.returnTime());
+		result.setLoadDate(getTime.getTime());
 		return result;
 	}
 
 	public ResultMessage saveLoadList(LoadVO loadList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		LoadPO po=new LoadPO(loadList.getId(),loadList.getState().toString(),loadList.getLoadType(),getTime.changeToCal(loadList.getLoadDate()),
+		LoadPO po=new LoadPO(loadList.getId(),loadList.getState().toString(),loadList.getLoadType(),getTime.String2Cal(loadList.getLoadDate()),
 				loadList.getBusinessHallNum(),loadList.getMotorNum(),loadList.getDestiCity().getId(),loadList.getBusinessHallNum(),
 				loadList.getVehicleNum(),loadList.getDriverNum(),loadList.getCommodityNums(),loadList.getFreight());
 		try {
@@ -145,7 +145,7 @@ public class TransProcessblImpl{
 			try {
 				depart = BusinessLogicFactory.getDepartmentController();
 				CityVO city=depart.findCity(po.getDestiCity());
-				result=new LoadVO(po.getId(),po.getLoadType(),getTime.changeToString(po.getLoadDate()),
+				result=new LoadVO(po.getId(),po.getLoadType(),getTime.Cal2String(po.getLoadDate()),
 						po.getBusinessHallNum(),po.getMotorNum(),city,po.getBusinessHallNum(),
 						po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
 			} catch (NoBusinessLogicException e) {
@@ -157,14 +157,14 @@ public class TransProcessblImpl{
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
 		ArrivalVO result=arrivalList;
 		result.setId(createArrivalNum());
-		result.setArrivalDate(getTime.returnTime());
+		result.setArrivalDate(getTime.getTime());
 		return result;
 	}
 
 	public ResultMessage saveArrivalList(ArrivalVO arrivalList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		ArrivalPO po=new ArrivalPO(arrivalList.getId(),arrivalList.getState().toString(),arrivalList.getArrivalState(),arrivalList.getExpressNum(),
-				arrivalList.getDestination(),arrivalList.getSetOut(),getTime.changeToCal(arrivalList.getArrivalDate()));
+				arrivalList.getDestination(),arrivalList.getSetOut(),getTime.String2Cal(arrivalList.getArrivalDate()));
 		try {
 			result=list.addArrival(po);
 		} catch (RemoteException e) {
@@ -191,7 +191,7 @@ public class TransProcessblImpl{
 			// TODO
 		}
 		if(po!=null){
-			result=new ArrivalVO(po.getId(),po.getArrivalState(), po.getExpressNum(), po.getDestination(),po.getSetOut(), getTime.changeToString(po.getArrivalDate()));
+			result=new ArrivalVO(po.getId(),po.getArrivalState(), po.getExpressNum(), po.getDestination(),po.getSetOut(), getTime.Cal2String(po.getArrivalDate()));
 		}
 		return result;
 	}
@@ -199,14 +199,13 @@ public class TransProcessblImpl{
 	public DispatchVO createDispatchList(DispatchVO dispatchList) {
 		DispatchVO result=dispatchList;
 		result.setId(createDispatchNum());
-		result.setArrivalDate(getTime.returnTime());
+		result.setArrivalDate(getTime.getTime());
 		return result;
 	}
 
 	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		//String id,String state,String dispatchPerson, Calendar arrivalDate, String expressNum
-		DispatchPO po=new DispatchPO(dipatchList.getId(),dipatchList.getState().toString(),dipatchList.getDispatchPerson(),getTime.changeToCal(dipatchList.getArrivalDate()),dipatchList.getExpressNum());
+		DispatchPO po=new DispatchPO(dipatchList.getId(),dipatchList.getState().toString(),dipatchList.getDispatchPerson(),getTime.String2Cal(dipatchList.getArrivalDate()),dipatchList.getExpressNum());
 		try {
 			result=list.addDispatch(po);
 		} catch (RemoteException e1) {
@@ -231,7 +230,7 @@ public class TransProcessblImpl{
 			// TODO
 		}
 		if(po!=null){
-			result=new DispatchVO(po.getId(),po.getDispatchPerson(),getTime.changeToString(po.getArrivalDate()),po.getExpressNum());
+			result=new DispatchVO(po.getId(),po.getDispatchPerson(),getTime.Cal2String(po.getArrivalDate()),po.getExpressNum());
 		}
 		return result;
 	}
@@ -239,12 +238,12 @@ public class TransProcessblImpl{
 	public ReceiveVO createReceiveList(ReceiveVO receiveList) {
 		ReceiveVO result=receiveList;
 		result.setId(createReceiveNum());
-		result.setReceiveTime(getTime.returnTime());
+		result.setReceiveTime(getTime.getTime());
 		return result;
 	}
 	public ResultMessage saveReceiveList(ReceiveVO receiveList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		ReceivePO po=new ReceivePO(receiveList.getId(),receiveList.getState().toString(),receiveList.getReceiverName(),getTime.changeToCal(receiveList.getReceiveTime()),receiveList.getExpressNum());
+		ReceivePO po=new ReceivePO(receiveList.getId(),receiveList.getState().toString(),receiveList.getReceiverName(),getTime.String2Cal(receiveList.getReceiveTime()),receiveList.getExpressNum());
 		try {
 			result=list.addReceive(po);
 		} catch (RemoteException e) {

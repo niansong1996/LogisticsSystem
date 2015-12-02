@@ -2,6 +2,7 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
@@ -38,6 +39,8 @@ public interface WarehouseDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateWarehouse(WarehousePO warehouse) throws RemoteException;
+	
+	public ArrayList<WarehousePO> showAllWarehouse() throws RemoteException;
 	
 }
 

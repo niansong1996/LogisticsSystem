@@ -158,23 +158,89 @@ public class FinanceController
 	}
 	
 	public ResultMessage addAccount(AccountVO account) {
-		return accountf.addAccount(account);
+		ResultMessage result=accountf.addAccount(account);
+		
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			logController.addLog("增加账户"+account.getID()+"的信息");
+		}
+		
+		return result;
 	}
 	
 	public AccountVO showAccount(String id) {
-		return accountf.showAccount(id);
+		AccountVO result=accountf.showAccount(id);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看账户"+id+"的信息");
+		return result;
 	}
 	
 	public ResultMessage deleteAccount(String id) {
-		return accountf.deleteAccount(id);
+		ResultMessage result=accountf.deleteAccount(id);
+		
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			logController.addLog("删除账户"+id+"的信息");
+		}
+		
+		return result;
 	}
 	
 	public ResultMessage updateAccount(AccountVO account) {
-		return accountf.updateAccount(account);
+		ResultMessage result=accountf.updateAccount(account);
+		
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			logController.addLog("更新账户"+account.getID()+"的信息");
+		}
+		
+		return result;
 	}
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
-		return accountf.addInitialInfo(initial);
+		ResultMessage result=accountf.addInitialInfo(initial);
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			logController.addLog("系统初期初始化成功！");
+		}
+		return result;
+	}
+
+	public ResultMessage initialInfo() {
+		ResultMessage result=accountf.initialInfo();
+		if(result.isSuccess()){
+			try {
+				logController=BusinessLogicFactory.getLogController();
+			} catch (NoBusinessLogicException e) {
+			}
+			logController.addLog("期初建账成功！");
+		}
+		return result;
+	}
+
+	public ArrayList<InitialInfoVO> findInitialInfo() {
+		ArrayList<InitialInfoVO> result=accountf.findInitialInfo();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看期初建账的信息");
+		return result;
 	}
 
 	public ResultMessage createSalary(SalaryVO salaryVO) {
@@ -263,6 +329,16 @@ public class FinanceController
 			}
 			logController.addLog("账户"+accountNum+"进行收款");
 		}
+		return result;
+	}
+
+	public ArrayList<AccountVO> showAllAccount() {
+		ArrayList<AccountVO> result=accountf.showAllAccount();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("显示所有账户信息");
 		return result;
 	}
 	

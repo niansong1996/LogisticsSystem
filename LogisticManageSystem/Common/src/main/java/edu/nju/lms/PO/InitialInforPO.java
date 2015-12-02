@@ -2,12 +2,14 @@ package edu.nju.lms.PO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class InitialInforPO implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8979310777332153793L;
+	private Calendar date;
 	private ArrayList<String> departments;
 	private ArrayList<String> personnel;
 	/**
@@ -17,9 +19,10 @@ public class InitialInforPO implements Serializable{
 	private ArrayList<String> warehouses;
 	private ArrayList<String> accounts;
 	
-	public InitialInforPO(ArrayList<String> departments, ArrayList<String> personnel, ArrayList<String> cars,
+	public InitialInforPO(Calendar date,ArrayList<String> departments, ArrayList<String> personnel, ArrayList<String> cars,
 			ArrayList<String> warehouses, ArrayList<String> accounts) {
 		super();
+		this.date=date;
 		this.departments = departments;
 		this.personnel = personnel;
 		this.cars = cars;
@@ -65,6 +68,14 @@ public class InitialInforPO implements Serializable{
 
 	public void setAccounts(ArrayList<String> accounts) {
 		this.accounts = accounts;
+	}
+
+	public Calendar getDate() {
+		return date;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
 	}
 	
 	

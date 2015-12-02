@@ -5,7 +5,6 @@ import edu.nju.lms.VO.FreightVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
-import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinancePaymentDataService;
 
