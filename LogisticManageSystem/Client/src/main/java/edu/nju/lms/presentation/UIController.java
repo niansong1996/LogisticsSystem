@@ -53,7 +53,7 @@ public class UIController {
 	 */
 	public void initialize() {
 		if(logController==null) {
-			logController = BusinessLogicFactory.createLogController();
+		//	logController = BusinessLogicFactory.createLogController();
 			userController = BusinessLogicFactory.createUserController();
 			listController = BusinessLogicFactory.createListController();
 			personnelController = BusinessLogicFactory.createPersonnelController();
