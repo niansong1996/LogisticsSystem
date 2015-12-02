@@ -91,14 +91,14 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		controller.getFrame().repaint();
 	}
 	
-	public void remove(MyTableLabel component){
+	public void my_remove(MyTableLabel component){
 		list.removeAll();
 		data.remove(component);
 		setView();
 		controller.getFrame().repaint();
 	}
 	
-	public void remove(int index) {
+	public void my_remove(int index) {
 		list.removeAll();
 		data.remove(index);
 		setView();

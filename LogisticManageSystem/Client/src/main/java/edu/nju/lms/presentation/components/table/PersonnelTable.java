@@ -7,6 +7,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
@@ -27,16 +28,16 @@ public class PersonnelTable extends MyTable{
 	@Override
 	protected void getData() {
 		persons = new ArrayList<PersonnelVO>();
-//		PersonnelVO p = new PersonnelVO("123", "cui", "123", "manager", 0, 0, 0);
-//		persons.add(p);
 		PersonnelController personnel = controller.getPersonnelController();
-		//TODO 
+		ArrayList<PersonnelVO> persons = personnel.showAllPersonnel();
 		for (int i = 0; i < persons.size(); i++) {
 			PersonnelVO person = persons.get(i);
+			String type = person.getDuty();
+			MyComboBox box = new MyComboBox(element,controller);
+			box.setSelectedItem(type);
 			java.awt.Component[] component = { new MyTextField(person.getId()), new MyTextField(person.getName()),
-					new MyTextField(person.getDepartmentNum()), new MyTextField(person.getDuty()),
-					new MyTextField(person.getSalary() + ""), new MyTextField(person.getPerTime() + ""),
-					new MyTextField(person.getBonus() + "") };
+					new MyTextField(person.getDepartmentNum()), box,new MyTextField(person.getSalary() + ""),
+					new MyTextField(person.getPerTime() + ""),new MyTextField(person.getBonus() + "") };
 			MyTableLabel label = new MyTableLabel(element, controller , 50, component,this);
 			addData(label);
 		}

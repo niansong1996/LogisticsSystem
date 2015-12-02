@@ -24,8 +24,8 @@ public class UIController {
 	private PersonnelController personnelController;
 
 	public UIController() {
-		userController = new UserController();
-		logController = new LogController();
+		userController = BusinessLogicFactory.createUserController();
+		logController = BusinessLogicFactory.createLogController();
 		frame = new MainFrame();
 	}
 
@@ -61,11 +61,11 @@ public class UIController {
 	}
 
 	public void addData() {
-		PersonnelVO vo = new PersonnelVO("122301456999", "tj", "025458963222", "总经理", 2000, 200, 200);
+		PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
 		personnelController.addPersonnel(vo);
-		vo = new PersonnelVO("522301456999", "tj", "025458963222", "总经理", 2000, 200, 200);
+		vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
 		personnelController.addPersonnel(vo);
-		vo = new PersonnelVO("122301456889", "tj", "025458963222", "总经理", 2000, 200, 200);
+		vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000, 200, 200);
 		personnelController.addPersonnel(vo);
 	}
 
