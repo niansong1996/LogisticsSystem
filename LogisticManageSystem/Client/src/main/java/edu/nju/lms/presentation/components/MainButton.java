@@ -62,4 +62,8 @@ public class MainButton extends JLabel{
 		return element;
 	}
 	
+	public String getName(){
+		return name;
+	}
+
 }

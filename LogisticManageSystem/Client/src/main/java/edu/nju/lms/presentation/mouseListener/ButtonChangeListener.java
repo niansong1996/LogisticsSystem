@@ -16,7 +16,7 @@ public class ButtonChangeListener extends ButtonListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		controller.changeTo(button.getName());
+		controller.changeTo(button.getElement().attributeValue("change"));
 	}
 
 }
