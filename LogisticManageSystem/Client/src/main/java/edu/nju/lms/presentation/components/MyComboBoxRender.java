@@ -21,12 +21,12 @@ public class MyComboBoxRender<T> implements ListCellRenderer<T>{
 			boolean cellHasFocus) {
 		JLabel renderer = (JLabel) render.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		if (isSelected) {
-			renderer.setBackground(Color.GRAY);
+			renderer.setBackground(Color.LIGHT_GRAY);
 			renderer.setForeground(Color.WHITE);
 		} else {
 			renderer.setBackground(Color.WHITE);
 		}
-		list.setSelectionBackground(Color.DARK_GRAY);
+		list.setSelectionBackground(Color.LIGHT_GRAY);
 		list.setBorder(null);
 		renderer.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		renderer.setHorizontalAlignment(JLabel.CENTER);

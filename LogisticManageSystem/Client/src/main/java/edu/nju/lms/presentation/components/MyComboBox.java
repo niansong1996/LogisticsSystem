@@ -29,6 +29,7 @@ public class MyComboBox<T> extends JComboBox<T> {
 			setBounds(x, y, w, h);
 		}
 		setUI(new MyComboBoxUI());
+		setRenderer(new MyComboBoxRender<T>());
 
 		setEditable(false);
 		addMyItems();

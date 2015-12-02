@@ -33,7 +33,7 @@ public class MyComboBoxUI extends BasicComboBoxUI{
 	/**
 	 * font size
 	 */
-	private int fontSize = 21;
+	private int fontSize = 16;
 	/**
 	 * font
 	 */

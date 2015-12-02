@@ -18,7 +18,7 @@ import edu.nju.lms.data.ResultMessage;
 public class TransportblService_Driver {
 	public void drive(TransProcessblService process, TransManageblService manager) {
 		
-		ArrayList<OrderInforVO> order = process.checkOrderInfor("0000000000");
+//		ArrayList<OrderInforVO> order = process.checkOrderInfor("0000000000");
 		
 		ArrayList<String> baseInfo = new ArrayList<String>();
 		baseInfo.add("张三");
