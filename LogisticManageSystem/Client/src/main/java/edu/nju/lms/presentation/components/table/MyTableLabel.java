@@ -1,6 +1,7 @@
 package edu.nju.lms.presentation.components.table;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -31,7 +32,7 @@ import edu.nju.lms.presentation.components.MyTextField;
  * @author cuihao
  * @date 2015-11-29 23:23:49
  */
-public class MyTableLabel extends JLabel implements MouseListener {
+public class MyTableLabel extends JLabel  {
 
 	private static final long serialVersionUID = 420418378988671847L;
 
@@ -106,7 +107,6 @@ public class MyTableLabel extends JLabel implements MouseListener {
 		this.table = table;
 		this.controller = controller;
 		setPreferredSize(new Dimension(width, height));
-		addMouseListener(this);
 		initializeComponents();
 	}
 
@@ -127,7 +127,8 @@ public class MyTableLabel extends JLabel implements MouseListener {
 		 */
 		for (int i = 0; i < components.length; i++) {
 			java.awt.Component component = components[i];
-			component.setBounds(checkWidth + i * column, height / 8, column * 3 / 4, height * 3 / 4);
+			component.setFont(new Font("微软雅黑",Font.PLAIN,15));
+			component.setBounds(checkWidth + i * column, height / 8, column , height * 3 / 4);
 			add(component);
 		}
 		/**
@@ -149,28 +150,6 @@ public class MyTableLabel extends JLabel implements MouseListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(new ImageIcon(picPath).getImage(), 0, 0, this.getWidth(), this.getHeight() + 20, this);
-	}
-
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	public void mouseEntered(MouseEvent e) {
-		changeGrey();
-		controller.getFrame().repaint();
-	}
-
-	public void mouseExited(MouseEvent e) {
-		changeWhite();
-		controller.getFrame().repaint();
-	}
-
-	public void mousePressed(MouseEvent e) {
-		changeGrey();
-		controller.getFrame().repaint();
-	}
-
-	public void mouseReleased(MouseEvent e) {
-		controller.getFrame().repaint();
 	}
 
 	/**
@@ -208,11 +187,11 @@ public class MyTableLabel extends JLabel implements MouseListener {
 		this.height = height;
 	}
 
-	private void changeGrey() {
+	public void changeGrey() {
 		picPath = "pictures/addPath.png";
 	}
 
-	private void changeWhite() {
+	public void changeWhite() {
 		picPath = "pictures/white.png";
 	}
 

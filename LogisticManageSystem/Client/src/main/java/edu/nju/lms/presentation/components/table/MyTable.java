@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JList;
+import javax.swing.ScrollPaneConstants;
 
 import org.dom4j.Element;
 
@@ -38,7 +39,7 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		getData();
 		setView();
 		getVerticalScrollBar().setUI(new MyScrollPaneUI());
-		setHorizontalScrollBar(null);
+		setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
 	/**
@@ -57,6 +58,8 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 			width = label.getWidth();
 			height =  label.getHeight();
 			label.setBounds(0,i*height,width, height);
+			if(i%2!=0)
+			label.changeGrey();
 			data.set(i, label);
 			list.add(label);
 		}
