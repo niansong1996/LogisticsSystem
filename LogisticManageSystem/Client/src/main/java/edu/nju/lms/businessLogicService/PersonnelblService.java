@@ -47,5 +47,7 @@ public interface PersonnelblService {
 	 * update the money for courier when a receipt is created
 	 */
 	public ResultMessage updatePerTimes(String id,double amount);
+	
+	public ArrayList<PersonnelVO> showAllPersonnel();
 }
 

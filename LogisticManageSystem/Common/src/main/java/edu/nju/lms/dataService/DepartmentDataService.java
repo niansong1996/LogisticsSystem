@@ -14,6 +14,7 @@ public interface DepartmentDataService extends Remote{
 	public DepartmentPO findDepartment(String id) throws RemoteException;
 	public ResultMessage deleteDepartment(String id) throws RemoteException;
 	public ResultMessage updateDepartment(DepartmentPO Department) throws RemoteException;
+	public ArrayList<DepartmentPO> showAllDepartments() throws RemoteException;
 	public ResultMessage addCity(CityPO City) throws RemoteException;
 	public CityPO findCity(String id) throws RemoteException;
 	public ResultMessage deleteCity(String id) throws RemoteException;

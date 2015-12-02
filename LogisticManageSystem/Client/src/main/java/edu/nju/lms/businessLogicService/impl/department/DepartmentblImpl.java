@@ -100,6 +100,21 @@ public class DepartmentblImpl{
 		return result;
 	}
 
+	public ArrayList<DepartmentVO> showAllDepartments() {
+		ArrayList<DepartmentVO> result=new ArrayList<DepartmentVO>();
+		ArrayList<DepartmentPO> po=null;
+		try {
+			po=service.showAllDepartments();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(DepartmentPO department : po){
+			DepartmentVO vo=new DepartmentVO(department.getType(),department.getDepartmentNum(),department.getLocation());
+			result.add(vo);
+		}
+		return result;
+	}
+	
 	public ResultMessage addCity(CityVO city) {
 		ResultMessage result=cityIdCheck(city.getId());
 		if(!result.isSuccess()){

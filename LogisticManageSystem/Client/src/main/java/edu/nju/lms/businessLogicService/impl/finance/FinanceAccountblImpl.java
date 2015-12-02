@@ -23,7 +23,7 @@ public class FinanceAccountblImpl{
 		ResultMessage result=idCheck(account.getID());
 		if(!result.isSuccess()){
 			return result;
-		}
+		} 
 		result=new ResultMessage(false,"网络未连接");
 		AccountPO accountPO=new AccountPO(account.getID(),account.getAmount());
 		try {

@@ -7,7 +7,6 @@ import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.LoadVO;
-import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
@@ -17,7 +16,6 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
@@ -33,8 +31,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	TransProcessblImpl process;
 	
 	LogController logController;
-	CreateTime getTime=new CreateTime();
-	String logId;
 	
 	public TransportController(){
 		try {
@@ -49,9 +45,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 	    	System.exit(0);
 		} 
 	}
-	public TransportController(String id){
-		this.logId=id;
-	}
+	
 	public VehicleVO addVehicle(VehicleVO plateNum) {	
 		return manage.addVehicle(plateNum);
 	}
@@ -64,8 +58,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"增加车辆"+vehicleInfor.getVehicleNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("增加车辆"+vehicleInfor.getVehicleNum()+"的信息");
 		}
 		
 		return result;
@@ -79,8 +72,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"删除车辆"+vehicleNum+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除车辆"+vehicleNum+"的信息");
 		}
 		
 		return result;
@@ -94,8 +86,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"更新车辆"+modified.getVehicleNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新车辆"+modified.getVehicleNum()+"的信息");
 		}
 		
 		return result;
@@ -108,8 +99,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看车辆"+vehicleNum+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看车辆"+vehicleNum+"的信息");
 		
 		return result;
 	}
@@ -126,8 +116,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"增加司机"+driver.getDriverNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("增加司机"+driver.getDriverNum()+"的信息");
 		}
 		
 		return result;
@@ -141,8 +130,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"删除司机"+id+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除司机"+id+"的信息");
 		}
 		
 		return result;
@@ -156,8 +144,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"更新司机"+driver.getDriverNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新司机"+driver.getDriverNum()+"的信息");
 		}
 		
 		return result;
@@ -170,8 +157,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看司机"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看司机"+id+"的信息");
 		
 		return result;
 	}
@@ -182,8 +168,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			 logController=BusinessLogicFactory.getLogController();
 		 } catch (NoBusinessLogicException e) {
 		 }
-		 OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看快递"+orderNum+"的物流信息");
-		 logController.addLog(op);
+		 logController.addLog("查看快递"+orderNum+"的物流信息");
 		 
 		 return result;
 	}
@@ -199,8 +184,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"新建寄件单"+sendList.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新建寄件单"+sendList.getId()+"的信息");
 		}
 		
 		return result;
@@ -212,8 +196,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看寄件单"+expressNum+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看寄件单"+expressNum+"的信息");
 		
 		return result;
 	}
@@ -228,8 +211,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"新建装车单"+loadList.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新建装车单"+loadList.getId()+"的信息");
 		}
 		
 		return result;
@@ -241,8 +223,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看装车单"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看装车单"+id+"的信息");
 		
 		return result;
 	}
@@ -257,8 +238,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"新建到达单"+arrivalList.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新建到达单"+arrivalList.getId()+"的信息");
 		}
 		
 		return result;
@@ -270,8 +250,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看到达单"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看到达单"+id+"的信息");
 		
 		return result;
 	}
@@ -286,8 +265,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"新建派件单"+dispatchList.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新建派件单"+dispatchList.getId()+"的信息");
 		}
 		
 		return result;
@@ -299,8 +277,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看派件单"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看派件单"+id+"的信息");
 		
 		return result;
 	}
@@ -315,8 +292,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logId,"新建收件单"+receiveList.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新建收件单"+receiveList.getId()+"的信息");
 		}
 		
 		return result;
@@ -327,8 +303,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logId,"查看收件单"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看收件单"+id+"的信息");
 		
 		return result;
 	}

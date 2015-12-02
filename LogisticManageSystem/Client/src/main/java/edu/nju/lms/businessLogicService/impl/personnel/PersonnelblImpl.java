@@ -101,6 +101,25 @@ public class PersonnelblImpl  {
 		}
 		return result;
 	}
+	
+	public ArrayList<PersonnelVO> showAllPersonnel() {
+		ArrayList<PersonnelVO> result=new ArrayList<PersonnelVO>();
+		ArrayList<PersonnelPO> po=null;
+		
+		try {
+			po=service.showAllPersonnel();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		if(po!=null){
+			for(PersonnelPO person : po){
+				PersonnelVO vo=new PersonnelVO(person.getId(),person.getName(),person.getDepartmentNum(),
+						person.getDuty().toString(),person.getSalary(),person.getPerTime(),person.getBonus());
+				result.add(vo);
+			}
+		}
+		return result;
+	}
 
 	public ResultMessage idCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");

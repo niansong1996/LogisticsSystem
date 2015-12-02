@@ -20,6 +20,8 @@ public interface DepartmentblService {
 	
 	public ResultMessage addDepartment(DepartmentVO Department);
 	
+	public ArrayList<DepartmentVO> showAllDepartments();
+	
 	public ResultMessage addCity(CityVO city);
 	
 	public CityVO findCity(String id);

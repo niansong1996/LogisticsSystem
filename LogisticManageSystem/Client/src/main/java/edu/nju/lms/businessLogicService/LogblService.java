@@ -19,5 +19,5 @@ public interface LogblService {
 	 */
 	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end);
 
-	public ResultMessage addLog(OperationVO op);
+	public ResultMessage addLog(String explain);
 }

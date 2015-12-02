@@ -83,4 +83,16 @@ public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelD
 		}
 	}
 
+	public ArrayList<PersonnelPO> showAllPersonnel() throws RemoteException {
+		ArrayList<PersonnelPO> PersonnelList = new ArrayList<PersonnelPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from personnelpo;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(PersonnelList,result, PersonnelPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return PersonnelList;
+	}
+
 }

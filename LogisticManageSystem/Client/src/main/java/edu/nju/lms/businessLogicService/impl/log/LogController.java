@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.LogblService;
+import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.LogDataService;
 
@@ -13,6 +14,8 @@ public class LogController implements LogblService{
 
 	LogblImpl log;
 	LogDataService logService;
+	CreateTime getTime=new CreateTime();
+	String logId;
 	
 	public LogController(){
 		try {
@@ -28,8 +31,16 @@ public class LogController implements LogblService{
 		return log.getLogInfo(begin, end);
 	}
 
-	public ResultMessage addLog(OperationVO op) {
+	public ResultMessage addLog(String explain) {
+		OperationVO op=new OperationVO(logId,getTime.returnTime(),explain);
 		return log.addLog(op);
 	}
 
+	public String getLogId() {
+		return logId;
+	}
+
+	public void setLogId(String logId) {
+		this.logId = logId;
+	}
 }

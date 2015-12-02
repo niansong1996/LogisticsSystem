@@ -5,12 +5,10 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
@@ -19,8 +17,6 @@ public class DepartmentController implements DepartmentblService{
 	DepartmentblImpl department;
 	
 	LogController logController;
-	CreateTime getTime=new CreateTime();
-	private String logID;
 	
 	public DepartmentController(){
 		try {
@@ -31,9 +27,6 @@ public class DepartmentController implements DepartmentblService{
 	    	System.exit(0);
 		} 
 	}
-	public DepartmentController(String id){
-		this.logID=id;
-	}
 	
 	public DepartmentVO getDepartInfo(String id) {
 		DepartmentVO result=department.getDepartInfo(id); 
@@ -42,8 +35,7 @@ public class DepartmentController implements DepartmentblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看机构"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看机构"+id+"的信息");
 		
 		return result;
 	}
@@ -56,8 +48,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除机构"+id+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除机构"+id+"的信息");
 		}
 		
 		return result;
@@ -71,8 +62,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新机构"+Department.getDepartmentNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新机构"+Department.getDepartmentNum()+"的信息");
 		}
 		
 		return result;
@@ -86,8 +76,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"新增机构"+Department.getDepartmentNum()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新增机构"+Department.getDepartmentNum()+"的信息");
 		}
 		
 		return result;
@@ -101,8 +90,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"新增城市"+city.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新增城市"+city.getId()+"的信息");
 		}
 		
 		return result;
@@ -115,8 +103,7 @@ public class DepartmentController implements DepartmentblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看城市"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看城市"+id+"的信息");
 		
 		return result;
 	}
@@ -129,8 +116,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新城市"+city.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新城市"+city.getId()+"的信息");
 		}
 		
 		return result;
@@ -144,8 +130,7 @@ public class DepartmentController implements DepartmentblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除城市"+id+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除城市"+id+"的信息");
 		}
 		
 		return result;
@@ -158,16 +143,19 @@ public class DepartmentController implements DepartmentblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看所有城市的信息");
-		logController.addLog(op);
+		logController.addLog("查看所有城市的信息");
 		
 		return result;
 	}
-	public String getLogID() {
-		return logID;
-	}
-	public void setLogID(String logID) {
-		this.logID = logID;
+
+	public ArrayList<DepartmentVO> showAllDepartments() {
+		ArrayList<DepartmentVO> result=department.showAllDepartments();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看所有机构的信息");
+		return result;
 	}
 	
 }

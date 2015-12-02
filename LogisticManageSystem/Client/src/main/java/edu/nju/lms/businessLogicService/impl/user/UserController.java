@@ -3,13 +3,11 @@ package edu.nju.lms.businessLogicService.impl.user;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 public class UserController implements UserblService{
@@ -17,8 +15,6 @@ public class UserController implements UserblService{
 	UserblImpl user;
 
 	LogController logController;
-	CreateTime getTime=new CreateTime();
-	private String logID;
 	
 	public UserController(){
 		try{
@@ -30,9 +26,6 @@ public class UserController implements UserblService{
 	    	System.exit(0);
 	    }
 	}
-	public UserController(String id){
-		this.logID=id;
-	}
 	
 	public UserVO findUserInfo(String id) {
 		UserVO result=user.findUserInfo(id);
@@ -41,8 +34,7 @@ public class UserController implements UserblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看用户"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看用户"+id+"的信息");
 
 		return result;
 	}
@@ -55,8 +47,7 @@ public class UserController implements UserblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除用户"+id+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除用户"+id+"的信息");
 		}
 
 		return result;
@@ -70,8 +61,7 @@ public class UserController implements UserblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新用户"+User.getUserName()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新用户"+User.getUserName()+"的信息");
 		}
 
 		return result;
@@ -85,8 +75,7 @@ public class UserController implements UserblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"新增用户"+User.getUserName()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新增用户"+User.getUserName()+"的信息");
 		}
 		
 		return result;
@@ -99,16 +88,9 @@ public class UserController implements UserblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看所有用户的信息");
-		logController.addLog(op);
+		logController.addLog("查看所有用户的信息");
 		
 		return result;
 	}
-	public String getLogID() {
-		return logID;
-	}
-	public void setLogID(String logID) {
-		this.logID = logID;
-	}
-
+	
 }

@@ -3,13 +3,11 @@ package edu.nju.lms.businessLogicService.impl.personnel;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.PersonnelblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.CreateTime;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.PersonnelDataService;
 
@@ -22,8 +20,6 @@ public class PersonnelController implements PersonnelblService{
 	PersonnelblImpl personbl;
 
 	LogController logController;
-	CreateTime getTime=new CreateTime();
-	String logID="";
 	
 	public PersonnelController(){
 		try {
@@ -34,9 +30,6 @@ public class PersonnelController implements PersonnelblService{
 	    	System.exit(0);
 		}
 	}
-	public PersonnelController(String id){
-		this.logID=id;
-	}
 	
 	public ArrayList<PersonnelVO> findPersonInfo(String id) {
 		ArrayList<PersonnelVO> result=personbl.findPersonInfo(id);
@@ -45,8 +38,7 @@ public class PersonnelController implements PersonnelblService{
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		OperationVO op=new OperationVO(getTime.returnTime(),logID,"查看员工"+id+"的信息");
-		logController.addLog(op);
+		logController.addLog("查看员工"+id+"的信息");
 		
 		return result;
 	}
@@ -59,8 +51,7 @@ public class PersonnelController implements PersonnelblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"删除员工"+id+"的信息");
-			logController.addLog(op);
+			logController.addLog("删除员工"+id+"的信息");
 		}
 		
 		return result;
@@ -74,8 +65,7 @@ public class PersonnelController implements PersonnelblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"更新员工"+Personnel.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("更新员工"+Personnel.getId()+"的信息");
 		}
 		
 		return result;
@@ -89,8 +79,7 @@ public class PersonnelController implements PersonnelblService{
 				logController=BusinessLogicFactory.getLogController();
 			} catch (NoBusinessLogicException e) {
 			}
-			OperationVO op=new OperationVO(getTime.returnTime(),logID,"新增员工"+Personnel.getId()+"的信息");
-			logController.addLog(op);
+			logController.addLog("新增员工"+Personnel.getId()+"的信息");
 		}
 		
 		return result;
@@ -98,11 +87,15 @@ public class PersonnelController implements PersonnelblService{
 	public ResultMessage updatePerTimes(String id, double amount) {
 		return personbl.updatePerTime(id, amount);
 	}
-	public String getLogID() {
-		return logID;
-	}
-	public void setLogID(String logID) {
-		this.logID = logID;
+	
+	public ArrayList<PersonnelVO> showAllPersonnel() {
+		ArrayList<PersonnelVO> result=personbl.showAllPersonnel();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看所有员工的信息");
+		return result;
 	}
 
 }

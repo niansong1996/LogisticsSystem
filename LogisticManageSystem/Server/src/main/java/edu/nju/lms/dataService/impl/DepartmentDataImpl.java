@@ -12,7 +12,12 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.DepartmentDataService;
-
+/**
+ * 
+ * @author oppalu
+ *2015/12/02
+ *
+ */
 public class DepartmentDataImpl extends UnicastRemoteObject implements DepartmentDataService{
 	
 	/**
@@ -122,5 +127,17 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 			e.printStackTrace();
 		};
 		return cityList;
+	}
+
+	public ArrayList<DepartmentPO> showAllDepartments() throws RemoteException {
+		ArrayList<DepartmentPO> DepartmentList = new ArrayList<DepartmentPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(DepartmentList,result, DepartmentPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return DepartmentList;
 	}
 }

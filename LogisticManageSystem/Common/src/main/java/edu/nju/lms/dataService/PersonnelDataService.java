@@ -14,4 +14,5 @@ public interface PersonnelDataService extends Remote{
 	public ArrayList<PersonnelPO> ambiFindPersonnel(String id) throws RemoteException;
 	public ResultMessage deletePersonnel(String id) throws RemoteException;
 	public ResultMessage updatePersonnel(PersonnelPO personnel) throws RemoteException;
+	public ArrayList<PersonnelPO> showAllPersonnel() throws RemoteException;
 }
