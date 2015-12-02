@@ -45,13 +45,7 @@ public class FindPersonButtonListener extends ButtonListener {
 			PersonnelTable table = (PersonnelTable)units.get(0);
 			for (int i = 0; i < found.size(); i++) {
 				PersonnelVO person = found.get(i);
-				String type = person.getDuty();
-				MyComboBox box = new MyComboBox(table.getElement(),controller);
-				box.setSelectedItem(type);
-				java.awt.Component[] components = { new MyTextField(person.getId()), new MyTextField(person.getName()),
-						new MyTextField(person.getDepartmentNum()),new MyTextField(person.getSalary() + ""),
-						new MyTextField(person.getPerTime() + ""),new MyTextField(person.getBonus() + "") ,box};
-				MyTableLabel label = new MyTableLabel(button.getElement(),controller,50,components,table);
+				MyTableLabel label = table.createLabel(person);
 				labels.add(label);
 			}
 			table.setDataList(labels);

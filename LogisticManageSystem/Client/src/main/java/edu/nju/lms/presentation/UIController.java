@@ -1,5 +1,9 @@
 package edu.nju.lms.presentation;
 
+import java.util.ArrayList;
+
+import edu.nju.lms.VO.CityVO;
+import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
@@ -10,7 +14,9 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.PersonType;
+import edu.nju.lms.data.ResultMessage;
 
 public class UIController {
 	private MainFrame frame;
@@ -61,12 +67,23 @@ public class UIController {
 	}
 
 	public void addData() {
-		PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
-		personnelController.addPersonnel(vo);
-		vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
-		personnelController.addPersonnel(vo);
-		vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000, 200, 200);
-		personnelController.addPersonnel(vo);
+//		PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
+//		personnelController.addPersonnel(vo);
+//		vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
+//		personnelController.addPersonnel(vo);
+//		vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000, 200, 200);
+//		personnelController.addPersonnel(vo);
+		ArrayList<String> s = new ArrayList<String>();
+		ArrayList<Double> x = new ArrayList<Double>();
+		ResultMessage re1 = departmentController.addCity(new CityVO("015","NanJing",s,x));
+		System.out.println(re1.getErrorMessage());
+		DepartmentVO vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025456","015");
+		ResultMessage re = departmentController.addDepartment(vo);
+		System.out.println(re.getErrorMessage());
+//		vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025856","025");
+//		departmentController.addDepartment(vo);
+//		vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025858","025");
+//		departmentController.addDepartment(vo);
 	}
 
 	public MainFrame getFrame() {
