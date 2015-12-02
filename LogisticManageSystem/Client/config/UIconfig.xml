@@ -318,7 +318,86 @@
 		</mainPanel>
 		<mainPanel name="counterBussinessPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 			<component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
-			<unit name ="RecieveList" class = "MainButton" x="150" y="200" w="256" h="257" type="1" listenerName="PayManageButtonListener"/>
+			<unit name ="loadList" change="loadListPanel" class = "MainButton" x="120" y="150" w="200" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="dispatchList" change="dispatchListPanel" class = "MainButton" x="340" y="150" w="200" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="vehicleManage" change="vehicleManagePanel" class = "MainButton" x="560" y="150" w="400" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="driverManage" change="driverManagePanel" class = "MainButton" x="340" y="370" w="400" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="receipt" change="receiptPanel" class = "MainButton" x="120" y="370" w="200" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="arrivalList" change="arrivalListPanel" class = "MainButton" x="760" y="370" w="200" h="200" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="loadListPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="dispatchListPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="vehicleManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="driverManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="receiptPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="arrivalListPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_vehicleManage" change="vehicleManagePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_driverManage" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_receipt" change="receiptPanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
