@@ -4,12 +4,18 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyCheckBox;
@@ -74,7 +80,7 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 * used to repaint
 	 */
 	private UIController controller;
-	
+	private Element element;
 //	private boolean clicked = false;
 
 	/**
@@ -85,6 +91,7 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 */
 	public MyTableLabel(Element element, UIController controller, int height, java.awt.Component[] components, MyTable table) {
 		setLayout(null);
+		this.element = element;
 		width = Integer.parseInt(element.attributeValue("w"));
 		this.height = height;
 		this.components = components;
@@ -204,7 +211,6 @@ public class MyTableLabel extends JLabel implements MouseListener{
 	 * @date 2015-11-29 23:35:13
 	 */
 	class tableDeleteListener implements MouseListener{
-
 		MyTable table;
 		MyTableLabel label;
 		MainButton button;
@@ -231,6 +237,17 @@ public class MyTableLabel extends JLabel implements MouseListener{
 		}
 
 		public void mouseReleased(MouseEvent e) {
+			String type = element.attributeValue("name");
+			ResultMessage result;
+			if(type.equals("personnel")){
+				PersonnelController personnel = controller.getPersonnelController();
+				JTextField field = (JTextField)getComponents(0);
+				result = personnel.deletePersonnel(field.getText());
+			}else if(type.equals("department")){
+				DepartmentController department = controller.getDepartmentController();
+				JTextField field = (JTextField)getComponents(2);
+				result = department.deleteDepartment(field.getText());
+			}
 			table.remove(label);
 			table.repaint();
 		}

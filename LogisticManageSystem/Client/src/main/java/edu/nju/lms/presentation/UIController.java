@@ -134,7 +134,7 @@ public class UIController {
 	}
 
 	public void setLogID(String id) {
-		logController.setLogID(id);
+		logController.setLogId(id);
 	}
 
 	public PersonnelController getPersonnelController() {
