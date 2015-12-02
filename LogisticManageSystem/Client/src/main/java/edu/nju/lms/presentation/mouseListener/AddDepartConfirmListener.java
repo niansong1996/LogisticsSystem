@@ -53,7 +53,7 @@ public class AddDepartConfirmListener extends ButtonListener {
 				loc.setText("");
 				MyDialog error = new MyDialog("addSuccess");
 			} else {
-				MyDialog error = new MyDialog(re.getErrorMessage());
+				MyDialog error = new MyDialog(re.getErrorMessage(),true);
 			}
 		}
 	}

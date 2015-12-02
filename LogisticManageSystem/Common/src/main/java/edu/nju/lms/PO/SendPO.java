@@ -19,12 +19,6 @@ public class SendPO extends ListPO {
 	private String expressNum;
 	//base information of sender and receiver
 	private ArrayList<String> baseInfor;
-	public static enum SendBaseInfor{
-		//sender's information
-		SENDERNAME,SENDERADDRESS,SENDERCOMPANY,SENDERPHONE,SENDERTELE,
-		//receivers information
-		RECEIVERNAME,RECEIVERADDRESS,RECEIVERCOMPANY,RECEIVERPHONE,RECEIVERTELE
-	}
 	
 	/**
 	 * goods' information

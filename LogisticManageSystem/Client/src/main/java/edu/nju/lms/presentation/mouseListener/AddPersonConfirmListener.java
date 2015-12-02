@@ -48,7 +48,7 @@ public class AddPersonConfirmListener extends ButtonListener {
 				}
 				MyDialog error = new MyDialog("addSuccess");
 			}else{
-				MyDialog error = new MyDialog(result.getErrorMessage());
+				MyDialog error = new MyDialog(result.getErrorMessage(),true);
 			}
 		}
 	}

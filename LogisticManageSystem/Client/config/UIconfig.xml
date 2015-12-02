@@ -38,7 +38,7 @@
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="PersonnelManage" class = "Component" x="150" y="20" w="98" h="23"/>
- 		     <unit name ="mainTable" class = "table.PersonnelTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+ 		     <unit name ="mainTable" class = "table.PersonnelTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
 		     <unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddPersonButtonListener"/>
 		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
 		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="0" listenerName="SavePersonButtonListener"/>
@@ -90,7 +90,7 @@
 		<mainPanel name="InstitutionManage" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="InstitutionManage" class = "Component" x="150" y="20" w="98" h="23"/>
- 		    <unit name ="mainTable" class = "MainTable" x="150" y="100" w="900" h="460" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+ 		    <unit name ="mainTable" class = "table.DepartmentTable" x="150" y="100" w="900" h="460" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel" items="营业厅;中转中心"/>
 		    <unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddDepartButtonListener"/>
 		    <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeleteDepartButtonListener"/>
 		    <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SaveDepartButtonListener"/>
@@ -197,7 +197,7 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="freightPanel" class = "Component" x="150" y="100" w="639" h="394"/>
 		    <component name="freigthStrategy" class = "Component" x="150" y="20" w="98" h="23"/> 
-		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="null" />
+		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="freightStrategy" />
 		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveFreightStrategyButtonListener"/>
 		    <unit name ="guide_back" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ManageBackButtonListener"/>
 		    <unit name ="guide_addcity" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="CityButtonListener"/>

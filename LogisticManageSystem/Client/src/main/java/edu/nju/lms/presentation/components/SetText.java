@@ -3,6 +3,7 @@ package edu.nju.lms.presentation.components;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 
@@ -17,7 +18,7 @@ public class SetText {
 		}
 		FinanceController finance = new FinanceController();
 		/**
-		 * 传入的type通过;分割为三部分 如 "salaryStrategy;courier;getBasic"
+		 * 对于salaryStrategy,传入的type通过;分割为三部分 如 "salaryStrategy;courier;getBasic"
 		 */
 		String[] infos = type.split(";");
 		String result="";
@@ -46,6 +47,9 @@ public class SetText {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(infos[0].equals("freightStrategy")){
+			PriceStrategyVO vo = finance.findPriceStrategy();
+			return vo.getStandard()+"";
 		}
 //		SalaryStrategyVO vo;
 //		if(type.equals("courierBasic")){

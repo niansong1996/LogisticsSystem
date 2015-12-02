@@ -43,7 +43,7 @@ public class AddPayListButtonListener extends ButtonListener {
 		if(result.isSuccess()){
 			MyDialog dialog = new MyDialog("addSuccess");
 		}else{
-			MyDialog dialog = new MyDialog(result.getErrorMessage());
+			MyDialog dialog = new MyDialog(result.getErrorMessage(),true);
 		}
 	}
 }
