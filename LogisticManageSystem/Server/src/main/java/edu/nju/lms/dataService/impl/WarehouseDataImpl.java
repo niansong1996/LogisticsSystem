@@ -1,11 +1,15 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.utility.JDBC;
+import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.WarehouseDataService;
 
 public class WarehouseDataImpl implements WarehouseDataService{
@@ -56,6 +60,19 @@ public class WarehouseDataImpl implements WarehouseDataService{
 		else{
 			return new ResultMessage(false,"Could not find the warehouse!");
 		}
+	}
+
+	public ArrayList<WarehousePO> showAllWarehouse() throws RemoteException {
+		ArrayList<WarehousePO> warehouseList = new ArrayList<WarehousePO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from warehousepo;");
+		try{
+		if(!result.wasNull()){
+			POGenerator.generateMultiObject(warehouseList,result, WarehousePO.class.getName());
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return warehouseList;
 	}
 
 }

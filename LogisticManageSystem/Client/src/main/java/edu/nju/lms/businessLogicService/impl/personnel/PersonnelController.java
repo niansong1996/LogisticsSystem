@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.PersonnelblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
@@ -23,6 +22,7 @@ public class PersonnelController implements PersonnelblService{
 	
 	public PersonnelController(){
 		try {
+			logController=BusinessLogicFactory.getLogController();
 			personService=(PersonnelDataService)Naming.lookup("//127.0.0.1:1099/PersonnelDataService");
 			personbl=new PersonnelblImpl(personService);
 		}catch (Exception e) {
@@ -34,10 +34,6 @@ public class PersonnelController implements PersonnelblService{
 	public ArrayList<PersonnelVO> findPersonInfo(String id) {
 		ArrayList<PersonnelVO> result=personbl.findPersonInfo(id);
 
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看员工"+id+"的信息");
 		
 		return result;
@@ -47,10 +43,6 @@ public class PersonnelController implements PersonnelblService{
 		ResultMessage result=personbl.deletePersonnel(id);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除员工"+id+"的信息");
 		}
 		
@@ -61,10 +53,6 @@ public class PersonnelController implements PersonnelblService{
 		ResultMessage result=personbl.updatePersonnel(Personnel);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新员工"+Personnel.getId()+"的信息");
 		}
 		
@@ -75,10 +63,6 @@ public class PersonnelController implements PersonnelblService{
 		ResultMessage result=personbl.addPersonnel(Personnel);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新增员工"+Personnel.getId()+"的信息");
 		}
 		
@@ -90,10 +74,6 @@ public class PersonnelController implements PersonnelblService{
 	
 	public ArrayList<PersonnelVO> showAllPersonnel() {
 		ArrayList<PersonnelVO> result=personbl.showAllPersonnel();
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看所有员工的信息");
 		return result;
 	}

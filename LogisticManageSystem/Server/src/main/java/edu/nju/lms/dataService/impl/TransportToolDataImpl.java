@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.VehiclePO;
@@ -105,6 +106,19 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		else{
 			return new ResultMessage(false,"Could not find the driver!");
 		}
+	}
+
+	public ArrayList<VehiclePO> showAllVihicle() throws RemoteException {
+		ArrayList<VehiclePO> vehicleList = new ArrayList<VehiclePO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from vehiclepo;");
+		try{
+		if(!result.wasNull()){
+			POGenerator.generateMultiObject(vehicleList,result, VehiclePO.class.getName());
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return vehicleList;
 	}
 
 }

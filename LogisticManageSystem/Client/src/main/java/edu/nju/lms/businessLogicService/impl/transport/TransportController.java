@@ -15,6 +15,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
@@ -32,6 +33,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	LogController logController;
 	
+	ListController listController;
+	
 	public TransportController(){
 		try {
 			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
@@ -39,9 +42,15 @@ public class TransportController implements TransManageblService,TransProcessblS
 			
 			listData=(TransportListDataService) Naming.lookup("//127.0.0.1:1099/TransportListDataService");
 			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
-			process=new TransProcessblImpl(commodityData,listData);
-		} catch (Exception e) {
-			System.out.println("网络未连接");
+			
+			listController = BusinessLogicFactory.getListController();
+			process=new TransProcessblImpl(listController,commodityData,listData);
+			
+			logController=BusinessLogicFactory.getLogController();
+		}catch(NoBusinessLogicException e1){
+			e1.printStackTrace();
+		}catch (Exception e) {
+			System.err.println("网络未连接");
 	    	System.exit(0);
 		} 
 	}
@@ -54,10 +63,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=manage.saveVehicleInfor(vehicleInfor);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("增加车辆"+vehicleInfor.getVehicleNum()+"的信息");
 		}
 		
@@ -68,10 +73,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=manage.deleteVehicle(vehicleNum);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除车辆"+vehicleNum+"的信息");
 		}
 		
@@ -82,10 +83,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=manage.updateVehicle(modified);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新车辆"+modified.getVehicleNum()+"的信息");
 		}
 		
@@ -94,11 +91,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 
 	public VehicleVO findVehicle(String vehicleNum) {
 		VehicleVO result=manage.findVehicle(vehicleNum);
-
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看车辆"+vehicleNum+"的信息");
 		
 		return result;
@@ -112,10 +104,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=manage.saveDriverInfor(driver);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("增加司机"+driver.getDriverNum()+"的信息");
 		}
 		
@@ -126,10 +114,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result= manage.deleteDriver(id);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除司机"+id+"的信息");
 		}
 		
@@ -140,10 +124,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=manage.updateDriver(driver);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新司机"+driver.getDriverNum()+"的信息");
 		}
 		
@@ -152,21 +132,12 @@ public class TransportController implements TransManageblService,TransProcessblS
 
 	public DriverVO findDriver(String id) {
 		DriverVO result=manage.findDriver(id);
-
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看司机"+id+"的信息");
 		
 		return result;
 	}
 	public OrderInforVO checkOrderInfor(String orderNum) {
 		 OrderInforVO result=process.checkOrderInfor(orderNum);
-		 try {
-			 logController=BusinessLogicFactory.getLogController();
-		 } catch (NoBusinessLogicException e) {
-		 }
 		 logController.addLog("查看快递"+orderNum+"的物流信息");
 		 
 		 return result;
@@ -179,10 +150,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=process.saveSendList(sendList);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新建寄件单"+sendList.getId()+"的信息");
 		}
 		
@@ -190,11 +157,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 	public SendVO findSendList(String expressNum) {
 		SendVO result=process.findSendList(expressNum);
-		
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看寄件单"+expressNum+"的信息");
 		
 		return result;
@@ -206,10 +168,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=process.saveLoadList(loadList);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新建装车单"+loadList.getId()+"的信息");
 		}
 		
@@ -217,11 +175,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 	public LoadVO findLoadList(String id) {
 		LoadVO result=process.findLoadList(id);
-
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看装车单"+id+"的信息");
 		
 		return result;
@@ -233,10 +186,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=process.saveArrivalList(arrivalList);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新建到达单"+arrivalList.getId()+"的信息");
 		}
 		
@@ -244,11 +193,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 	public ArrivalVO findArrivalList(String id) {
 		ArrivalVO result=process.findArrivalList(id);
-
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看到达单"+id+"的信息");
 		
 		return result;
@@ -257,13 +201,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return process.createDispatchList(dipatchList);
 	}
 	public ResultMessage saveDispatchList(DispatchVO dispatchList) {
-		ResultMessage result=process.saveDispatchList(dispatchList);
-		
+		ResultMessage result=process.saveDispatchList(dispatchList);		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新建派件单"+dispatchList.getId()+"的信息");
 		}
 		
@@ -271,11 +210,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 	public DispatchVO findDispatchList(String id) {
 		DispatchVO result=process.findDispatchList(id);
-		
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看派件单"+id+"的信息");
 		
 		return result;
@@ -284,13 +218,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return process.createReceiveList(receiveList);
 	}
 	public ResultMessage saveReceiveList(ReceiveVO receiveList) {
-		ResultMessage result=process.saveReceiveList(receiveList);
-		
+		ResultMessage result=process.saveReceiveList(receiveList);		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新建收件单"+receiveList.getId()+"的信息");
 		}
 		
@@ -298,12 +227,16 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 	public ReceiveVO findReceiveList(String id) {
 		ReceiveVO result=process.findReceiveList(id);
+		logController.addLog("查看收件单"+id+"的信息");		
+		return result;
+	}
+	public ArrayList<VehicleVO> showAllVehicle() {
+		ArrayList<VehicleVO> result=manage.showAllVehicles();
 		try {
 			logController=BusinessLogicFactory.getLogController();
 		} catch (NoBusinessLogicException e) {
 		}
-		logController.addLog("查看收件单"+id+"的信息");
-		
+		logController.addLog("查看所有车辆的信息");
 		return result;
 	}
 }

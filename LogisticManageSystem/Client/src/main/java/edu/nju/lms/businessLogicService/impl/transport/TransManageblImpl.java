@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService.impl.transport;
 
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.DriverPO;
@@ -94,6 +95,24 @@ public class TransManageblImpl{
 		return result;
 	}
 
+	public ArrayList<VehicleVO> showAllVehicles(){
+		ArrayList<VehicleVO> result=new ArrayList<VehicleVO>();
+		ArrayList<VehiclePO> po=null;
+		try {
+			po=service.showAllVihicle();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		if(po!=null){
+			for(VehiclePO temp : po){
+				VehicleVO vo=new VehicleVO(temp.getVehicleNum(),temp.getPlateNum(),
+						temp.getBusinessHallNum(),temp.getServiceYears());
+				result.add(vo);
+			}
+		}
+		return result;
+	}
+	
 	public DriverVO addDriver(DriverVO driver) {
 		DriverVO result=driver;
 		result.setDriverNum(createDriverNum(driver.getBusinesshallNum()));

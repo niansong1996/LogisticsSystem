@@ -5,20 +5,16 @@ package edu.nju.lms.VO;
  * @author Cui
  * 2015-10-25 00:02:11
  */
-public class SalaryVO {
+public class SalaryVO extends ListVO{
 	private String time;
-	private String accountName;
 	private double amount;
-	private String explain;
-	private String payPerson;
-	private String paymentType;
-	public SalaryVO(String time, String accountName, double amount, String explain,String payPerson,String paymentType) {
+	private String accountNum;
+
+	public SalaryVO(String id,String time, double amount,String accountNum) {
+		super(id);
 		this.time = time;
-		this.accountName = accountName;
 		this.amount = amount;
-		this.explain = explain;
-		this.payPerson = payPerson;
-		this.paymentType = paymentType;
+		this.accountNum=accountNum;
 	}
 	public String getTime() {
 		return time;
@@ -26,35 +22,17 @@ public class SalaryVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getAccountName() {
-		return accountName;
-	}
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
 	public double getAmount() {
 		return amount;
 	}
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public String getExplain() {
-		return explain;
+	public String getAccountNum() {
+		return accountNum;
 	}
-	public void setExplain(String explain) {
-		this.explain = explain;
+	public void setAccountNum(String accountNum) {
+		this.accountNum = accountNum;
 	}
-	public String getPayPerson() {
-		return payPerson;
-	}
-	public void setPayPerson(String payPerson) {
-		this.payPerson = payPerson;
-	}
-	public String getPaymentType() {
-		return paymentType;
-	}
-	public void setPaymentType(String paymentType) {
-		this.paymentType = paymentType;
-	}
-	
+
 }

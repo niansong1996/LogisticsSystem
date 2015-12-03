@@ -2,7 +2,11 @@ package edu.nju.lms.businessLogicService.impl.finance;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.DepartmentVO;
+import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.VO.VehicleVO;
+import edu.nju.lms.VO.WarehouseVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
@@ -31,19 +35,55 @@ public class FinanceBuildInitial {
 	}
 	
 	public ArrayList<String> getAccounts(){
-		return null;
+		try {
+			finance=BusinessLogicFactory.getFinanceController();
+		} catch (NoBusinessLogicException e) {
+		}
+		ArrayList<String> result=new ArrayList<String>();
+		ArrayList<AccountVO> temp=finance.showAllAccount();
+		for(AccountVO vo : temp){
+			result.add(vo.getID());
+		}
+		return result;
 	}
 	
 	public ArrayList<String> getPersonnel(){
-		return null;
+		try {
+			personnel=BusinessLogicFactory.getPersonnelController();
+		} catch (NoBusinessLogicException e) {
+		}
+		ArrayList<String> result=new ArrayList<String>();
+		ArrayList<PersonnelVO> temp=personnel.showAllPersonnel();
+		for(PersonnelVO vo : temp){
+			result.add(vo.getId());
+		}
+		return result;
 	}
 	
 	public ArrayList<String> getCars(){
-		return null;
+		try {
+			transport=BusinessLogicFactory.getTransportController();
+		} catch (NoBusinessLogicException e) {
+		}
+		ArrayList<String> result=new ArrayList<String>();
+		ArrayList<VehicleVO> temp=transport.showAllVehicle();
+		for(VehicleVO vo : temp){
+			result.add(vo.getVehicleNum());
+		}
+		return result;
 	}
 	
 	
 	public ArrayList<String> getWarehouse(){
-		return null;
+		try {
+			warehouse=BusinessLogicFactory.getWarehouseController();
+		} catch (NoBusinessLogicException e) {
+		}
+		ArrayList<String> result=new ArrayList<String>();
+//		ArrayList<WarehouseVO> temp=warehouse.showAllWarehouse();
+//		for(WarehouseVO vo : temp){
+//			result.add(vo.getId());
+//		}
+		return result;
 	}
 }

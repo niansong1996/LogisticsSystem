@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
@@ -20,6 +19,7 @@ public class DepartmentController implements DepartmentblService{
 	
 	public DepartmentController(){
 		try {
+			logController=BusinessLogicFactory.getLogController();
 			departService=(DepartmentDataService) Naming.lookup("//127.0.0.1:1099/DepartmentDataService");
 			department=new DepartmentblImpl(departService);
 		} catch (Exception e) {
@@ -30,13 +30,7 @@ public class DepartmentController implements DepartmentblService{
 	
 	public DepartmentVO getDepartInfo(String id) {
 		DepartmentVO result=department.getDepartInfo(id); 
-
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看机构"+id+"的信息");
-		
 		return result;
 	}
 
@@ -44,10 +38,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.deleteDepartment(id);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除机构"+id+"的信息");
 		}
 		
@@ -58,10 +48,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.updateDepartment(Department);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新机构"+Department.getDepartmentNum()+"的信息");
 		}
 		
@@ -72,10 +58,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.addDepartment(Department);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新增机构"+Department.getDepartmentNum()+"的信息");
 		}
 		
@@ -86,10 +68,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.addCity(city);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新增城市"+city.getId()+"的信息");
 		}
 		
@@ -99,10 +77,6 @@ public class DepartmentController implements DepartmentblService{
 	public CityVO findCity(String id) {
 		CityVO result=department.findCity(id);
 
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看城市"+id+"的信息");
 		
 		return result;
@@ -112,10 +86,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.updateCity(city);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新城市"+city.getId()+"的信息");
 		}
 		
@@ -126,10 +96,6 @@ public class DepartmentController implements DepartmentblService{
 		ResultMessage result=department.deleteCity(id);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除城市"+id+"的信息");
 		}
 		
@@ -139,10 +105,6 @@ public class DepartmentController implements DepartmentblService{
 	public ArrayList<CityVO> showAllCities(){
 		ArrayList<CityVO> result=department.showAllCities();
 		
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看所有城市的信息");
 		
 		return result;
@@ -150,10 +112,6 @@ public class DepartmentController implements DepartmentblService{
 
 	public ArrayList<DepartmentVO> showAllDepartments() {
 		ArrayList<DepartmentVO> result=department.showAllDepartments();
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看所有机构的信息");
 		return result;
 	}

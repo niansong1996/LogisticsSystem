@@ -15,6 +15,11 @@ import edu.nju.lms.data.ShipState;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 
+/**
+ * 
+ * @author nians
+ *
+ */
 public class TransHistoryTrack {
 	TransportCommodityDataService commodity;
 	TransportListDataService list;

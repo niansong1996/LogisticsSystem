@@ -5,28 +5,23 @@ package edu.nju.lms.VO;
  * @author Cui
  * 2015-10-24 23:55:57
  */
-public class FreightVO {
+public class FreightVO extends ListVO{
 	private String time;
-	private String accountName;
 	private double amount;
+	private String accountNum;
 	private String explain;
-	public FreightVO(String time, String accountName, double amount, String explain) {
+	public FreightVO(String id,String time, double amount, String explain,String accountNum) {
+		super(id);
 		this.time = time;
-		this.accountName = accountName;
 		this.amount = amount;
 		this.explain = explain;
+		this.accountNum=accountNum;
 	}
 	public String getTime() {
 		return time;
 	}
 	public void setTime(String time) {
 		this.time = time;
-	}
-	public String getAccountName() {
-		return accountName;
-	}
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
 	}
 	public double getAmount() {
 		return amount;
@@ -40,6 +35,11 @@ public class FreightVO {
 	public void setExplain(String explain) {
 		this.explain = explain;
 	}
-	
+	public String getAccountNum() {
+		return accountNum;
+	}
+	public void setAccountNum(String accountNum) {
+		this.accountNum = accountNum;
+	}
 
 }

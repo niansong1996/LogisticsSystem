@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
@@ -16,10 +17,14 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
  */
 public class FinanceReceiptblImpl{
 	private FinanceReceiptDataService service;
-	CommonUtility time=new CommonUtility();
-	private static int basicNum=0;
+	ListController listController;
 	
-	public FinanceReceiptblImpl(FinanceReceiptDataService service){
+	CommonUtility time=new CommonUtility();
+	private int basicNum;
+	
+	public FinanceReceiptblImpl(ListController listController,FinanceReceiptDataService service){
+		this.listController=listController;
+		this.basicNum = Integer.parseInt(listController.getNumOccupancy().getReceiptListNum());
 		this.service=service;
 	}
 
@@ -111,6 +116,21 @@ public class FinanceReceiptblImpl{
 		return listVO;
 	}
 
+	public ArrayList<ReceiptVO> showReceiptList(Calendar start, Calendar end) {
+		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
+		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
+		try {
+			listPO=service.findReceipt(start,end);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(ReceiptPO po : listPO){
+			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			listVO.add(temp);
+		}
+		return listVO;
+	}
+	
 	public double getReceiptSum(Calendar date) {
 		ArrayList<ReceiptVO> listVO=showReceiptList(date);
 		double sum=0;
