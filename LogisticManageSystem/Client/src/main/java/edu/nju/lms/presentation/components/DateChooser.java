@@ -3,6 +3,7 @@ package edu.nju.lms.presentation.components;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,7 +14,6 @@ import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Stroke;
 import java.awt.Toolkit;
-import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
@@ -38,6 +38,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
+import org.dom4j.Element;
+
+import edu.nju.lms.presentation.UIController;
+
 public class DateChooser extends JPanel {
 
 	private static final long serialVersionUID = 4529266044762990227L;
@@ -50,7 +54,7 @@ public class DateChooser extends JPanel {
 	private JP2 jp2;
 	private JP3 jp3;
 	private JP4 jp4;
-	private Font font = new Font("宋体", Font.PLAIN, 12);
+	private Font font = new Font("微软雅黑", Font.PLAIN, 20);
 	private final LabelManager lm = new LabelManager();
 	private JLabel showDate; // ,toSelect;
 	private SimpleDateFormat sdf;
@@ -77,8 +81,16 @@ public class DateChooser extends JPanel {
 		sdf = new SimpleDateFormat(format);
 		select = Calendar.getInstance();
 		select.setTime(initDate);
+		setOpaque(false);
+		setFont(font);
 		initPanel();
 		initLabel();
+	}
+	
+	public DateChooser(Element element, UIController controller) {
+		this("yyyy-MM-dd");
+		setBounds(Integer.parseInt(element.attributeValue("x")), Integer.parseInt(element.attributeValue("y")),
+				Integer.parseInt(element.attributeValue("w")), Integer.parseInt(element.attributeValue("h")));
 	}
 
 	/**
@@ -99,7 +111,7 @@ public class DateChooser extends JPanel {
 	// 根据初始化的日期,初始化面板
 	private void initPanel() {
 		monthPanel = new JPanel(new BorderLayout());
-		monthPanel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+		monthPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		JPanel up = new JPanel(new BorderLayout());
 		up.add(jp1 = new JP1(), BorderLayout.NORTH);
 		up.add(jp2 = new JP2(), BorderLayout.CENTER);
@@ -125,6 +137,7 @@ public class DateChooser extends JPanel {
 	// 初始化标签
 	private void initLabel() {
 		showDate = new JLabel(sdf.format(initDate));
+		showDate.setFont(font);
 		showDate.setRequestFocusEnabled(true);
 		showDate.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
@@ -137,7 +150,7 @@ public class DateChooser extends JPanel {
 		this.setBackground(Color.WHITE);
 		this.add(showDate, BorderLayout.CENTER);
 		// this.add(toSelect,BorderLayout.EAST);
-		this.setPreferredSize(new Dimension(90, 25));
+		this.setPreferredSize(new Dimension(90, 35));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		showDate.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent me) {
@@ -192,6 +205,7 @@ public class DateChooser extends JPanel {
 	// 提交日期
 	private void commit() {
 		System.out.println("选中的日期是：" + sdf.format(select.getTime()));
+		showDate.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		showDate.setText(sdf.format(select.getTime()));
 		hidePanel();
 	}
@@ -218,8 +232,8 @@ public class DateChooser extends JPanel {
 		if (x < 0) {
 			x = 0;
 		}
-		if (x > size.width - 295) {
-			x = size.width - 295;
+		if (x > size.width - 380) {
+			x = size.width - 380;
 		}
 		if (y < size.height - 170) {
 		} else {
@@ -238,7 +252,7 @@ public class DateChooser extends JPanel {
 
 		public JP1() {
 			super(new BorderLayout());
-			this.setBackground(new Color(160, 185, 215));
+			this.setBackground(Color.LIGHT_GRAY);
 			initJP1();
 		}
 
@@ -268,7 +282,7 @@ public class DateChooser extends JPanel {
 			this.add(yearleft, BorderLayout.WEST);
 			this.add(centercontainer, BorderLayout.CENTER);
 			this.add(yearright, BorderLayout.EAST);
-			this.setPreferredSize(new Dimension(295, 25));
+			this.setPreferredSize(new Dimension(380, 25));
 
 			updateDate();
 
@@ -359,26 +373,27 @@ public class DateChooser extends JPanel {
 		}
 
 		private void updateDate() {
+			center.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 			center.setText(select.get(Calendar.YEAR) + "年" + (select.get(Calendar.MONTH) + 1) + "月");
 		}
 	}
 
 	private class JP2 extends JPanel {
 		public JP2() {
-			this.setPreferredSize(new Dimension(295, 20));
+			this.setPreferredSize(new Dimension(380, 40));
 		}
 
 		protected void paintComponent(Graphics g) {
-			g.setFont(font);
-			g.drawString("星期日 星期一 星期二 星期三 星期四 星期五 星期六", 5, 10);
-			g.drawLine(0, 15, getWidth(), 15);
+			g.setFont(new Font("微软雅黑",Font.PLAIN,16));
+			g.drawString("星期日 星期一 星期二 星期三 星期四 星期五 星期六", 5, 24);
+			g.drawLine(0, 30, getWidth(), 30);
 		}
 	}
 
 	private class JP3 extends JPanel {
 		public JP3() {
 			super(new GridLayout(6, 7));
-			this.setPreferredSize(new Dimension(295, 100));
+			this.setPreferredSize(new Dimension(380, 160));
 			initJP3();
 		}
 
@@ -426,7 +441,7 @@ public class DateChooser extends JPanel {
 				this.setForeground(Color.LIGHT_GRAY);
 			}
 			if (day == select.get(Calendar.DAY_OF_MONTH)) {
-				this.setBackground(new Color(160, 185, 215));
+				this.setBackground(Color.LIGHT_GRAY);
 			} else {
 				this.setBackground(Color.WHITE);
 			}
@@ -601,7 +616,7 @@ public class DateChooser extends JPanel {
 		public JP4() {
 			super(new BorderLayout());
 			this.setPreferredSize(new Dimension(295, 20));
-			this.setBackground(new Color(160, 185, 215));
+			this.setBackground(Color.LIGHT_GRAY);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
 			final JLabel jl = new JLabel("今天: " + sdf.format(new Date()));
 			jl.setToolTipText("点击选择今天日期");
