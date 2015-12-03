@@ -11,6 +11,9 @@ import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
+import edu.nju.lms.presentation.components.table.DepartmentTable;
+import edu.nju.lms.presentation.components.table.MyTableLabel;
+import edu.nju.lms.presentation.components.table.PersonnelTable;
 
 /**
  * @author tj
@@ -35,8 +38,11 @@ public class FindDepartButtonListener extends ButtonListener {
 				MyDialog error = new MyDialog("notExist");
 				return;
 			}
-			//TODO
-
+			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
+			DepartmentTable table = (DepartmentTable)units.get(0);
+			MyTableLabel label = table.createLabel(found);
+			labels.add(label);
+			table.setDataList(labels);
 		}
 	}
 }

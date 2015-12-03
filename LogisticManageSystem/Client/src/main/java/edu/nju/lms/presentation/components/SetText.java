@@ -27,6 +27,7 @@ public class SetText {
 			try {
 				Class ss = Class.forName("edu.nju.lms.VO.SalaryStrategyVO");
 				Method method = ss.getDeclaredMethod(infos[2]);
+				if(vo!=null)
 				result = method.invoke(vo)+"";
 			} catch (NoSuchMethodException e) {
 				// TODO Auto-generated catch block
@@ -49,6 +50,7 @@ public class SetText {
 			}
 		}else if(infos[0].equals("freightStrategy")){
 			PriceStrategyVO vo = finance.findPriceStrategy();
+			if(vo!=null)
 			return vo.getStandard()+"";
 		}
 //		SalaryStrategyVO vo;

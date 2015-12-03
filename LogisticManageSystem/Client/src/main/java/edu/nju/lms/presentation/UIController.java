@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
@@ -67,23 +68,27 @@ public class UIController {
 	}
 
 	public void addData() {
-//		PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
-//		personnelController.addPersonnel(vo);
-//		vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000, 200, 200);
-//		personnelController.addPersonnel(vo);
-//		vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000, 200, 200);
-//		personnelController.addPersonnel(vo);
-		ArrayList<String> s = new ArrayList<String>();
-		ArrayList<Double> x = new ArrayList<Double>();
-		ResultMessage re1 = departmentController.addCity(new CityVO("015","NanJing",s,x));
-		System.out.println(re1.getErrorMessage());
-		DepartmentVO vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025456","015");
-		ResultMessage re = departmentController.addDepartment(vo);
-		System.out.println(re.getErrorMessage());
-//		vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025856","025");
-//		departmentController.addDepartment(vo);
-//		vo = new DepartmentVO(DepartmentType.BUSINESSHALL,"025858","025");
-//		departmentController.addDepartment(vo);
+		// PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222",
+		// "总经理", 2000, 200, 200);
+		// personnelController.addPersonnel(vo);
+		// vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000,
+		// 200, 200);
+		// personnelController.addPersonnel(vo);
+		// vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000,
+		// 200, 200);
+		// personnelController.addPersonnel(vo);
+		// ArrayList<String> s = new ArrayList<String>();
+		// ArrayList<Double> x = new ArrayList<Double>();
+		// ResultMessage re1 = departmentController.addCity(new
+		// CityVO("015","NanJing",s,x));
+		// DepartmentVO so = new
+		// DepartmentVO(DepartmentType.BUSINESSHALL,"025456","015");
+		// ResultMessage re = departmentController.addDepartment(so);
+//		SalaryStrategyVO strategy = new SalaryStrategyVO("warehouse", 45, 45, 45);
+//		financeController.addSalaryStrategy(strategy);
+//		strategy = new SalaryStrategyVO("driver", 45, 45, 45);
+//		financeController.addSalaryStrategy(strategy);
+	//	financeController.addPriceStrategy(100);
 	}
 
 	public MainFrame getFrame() {

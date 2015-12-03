@@ -56,7 +56,7 @@ public class SavePersonButtonListener extends ButtonListener {
 			PersonnelVO find = finds.get(0);
 			if (find!=null) {
 				result = personnel.updatePersonnel(vo);
-			} 
+			}
 		}
 		if (result.isSuccess()) {
 			MyDialog dialog = new MyDialog("保存成功！", true);

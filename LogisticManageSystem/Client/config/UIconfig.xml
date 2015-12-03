@@ -214,6 +214,10 @@
 		<mainPanel name="checkListPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="checkList" class = "Component" x="150" y="20" w="98" h="23"/>
+		     <component name="listsPanel" class ="Component" x="150" y="60" w="520" h="600"/>
+		     <unit name ="listType" class = "MyComboBox" x="240" y="84" w="168" h="23" type="0" items="寄件单;收件单;装车单;装运单;收款单;到达单;派件单;入库单;出库单;租金付款单;工资付款单;运费付款单"/>
+		     <unit name ="listNum" class="MyTextField" x="520" y="84" w="80" h="23" type="0" textType="null" />
+		     <unit name ="findPerson" class = "MainButton" x="600" y="84" w="53" h="23" type="0" />
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -258,12 +262,12 @@
 		</mainPanel>
 		<mainPanel name="FinancialAdvancedPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="payManage" change="PayManagePanel" class = "MainButton" x="150" y="200" w="256" h="257" type="1" listenerName="PayManageButtonListener"/>
-		    <unit name ="sumManage" change="checkListPanel" class = "MainButton" x="408" y="200" w="128" h="128" type="1" listenerName="CheckListButtonListener"/>
-		    <unit name ="initialAccount" change="initialAccountPanel" class = "MainButton" x="538" y="200" w="128" h="128" type="1" listenerName="InitialAccountButtonListener"/>
-		    <unit name ="log" change="checkLogPanel" class = "MainButton" x="408" y="330" w="128" h="128" type="1" listenerName="CheckLogButtonListener"/>
-		    <unit name ="receiptList" change="SumReceiptPanel" class = "MainButton" x="538" y="330" w="128" h="128" type="1" listenerName="SumReceiptButtonListener"/>
-		    <unit name ="accountManage" change="PayManagePanel" class = "MainButton" x="668" y="200" w="256" h="257" type="1" listenerName="CityButtonListener"/>
+		    <unit name ="payManage" change="PayManagePanel" class = "MainButton" x="150" y="200" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="sumManage" change="checkListPanel" class = "MainButton" x="408" y="200" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="initialAccount" change="initialAccountPanel" class = "MainButton" x="538" y="200" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="log" change="checkLogPanel" class = "MainButton" x="408" y="330" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="receiptList" change="SumReceiptPanel" class = "MainButton" x="538" y="330" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="accountManage" change="PayManagePanel" class = "MainButton" x="668" y="200" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>

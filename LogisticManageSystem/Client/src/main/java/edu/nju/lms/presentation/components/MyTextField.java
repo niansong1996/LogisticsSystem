@@ -30,8 +30,10 @@ public class MyTextField extends JTextField {
 	private int w;
 	private TexturePaint texture;
 	private BufferedImage img;
+	Element text;
 	public MyTextField(Element text, UIController controller) {
 		super();
+		this.text = text;
 		w = Integer.parseInt(text.attributeValue("w"));
 		h = Integer.parseInt(text.attributeValue("h"));
 		x = Integer.parseInt(text.attributeValue("x"));
@@ -76,5 +78,9 @@ public class MyTextField extends JTextField {
 		}
 		Rectangle rect = new Rectangle(0, 0, img.getWidth(null), img.getHeight(null));
 		texture = new TexturePaint(img, rect);
+	}
+	@Override
+	public String getName(){
+		return text.attributeValue("name");
 	}
 }

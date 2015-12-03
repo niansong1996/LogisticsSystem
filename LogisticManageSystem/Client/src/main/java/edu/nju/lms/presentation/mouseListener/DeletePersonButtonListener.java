@@ -47,10 +47,12 @@ public class DeletePersonButtonListener extends ButtonListener {
 			MyTableLabel label = data.get(i);
 			MyCheckBox check = (MyCheckBox) label.getComponent(0);
 			if (check.isSelected()) {
-				table.my_remove(i);
-				JTextField field = (JTextField) label.getComponent(0);
+				JTextField field = (JTextField) label.getComponents(0);
 				result = control.deletePersonnel(field.getText());
-				i--;
+				if (result.isSuccess()) {
+					table.my_remove(i);
+					i--;
+				}
 			}
 		}
 		if (result.isSuccess()) {

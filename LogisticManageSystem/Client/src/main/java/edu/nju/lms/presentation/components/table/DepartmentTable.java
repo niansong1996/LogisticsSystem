@@ -39,24 +39,32 @@ public class DepartmentTable extends MyTable {
 			return;
 		}
 		for (int i = 0; i < departments.size(); i++) {
-			DepartmentVO department = departments.get(i);
-			DepartmentType t = department.getType();
-			String type = "";
-			switch (t) {
-			case BUSINESSHALL:
-				type = "营业厅";
-				break;
-			case TRANSITCENTER:
-				type = "中转中心";
-				break;
-			}
-			MyComboBox box = new MyComboBox(element, controller);
-			box.setSelectedItem(type);
-			java.awt.Component[] component = { new MyTextField(department.getLocation()), box,
-					new MyTextField(department.getDepartmentNum()) };
-			MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
+			MyTableLabel label = createLabel(departments.get(i));		
 			addData(label);
 		}
+	}
+	public MyTableLabel createLabel(DepartmentVO department){
+		DepartmentType t = department.getType();
+		String type = "";
+		switch (t) {
+		case BUSINESSHALL: 
+			type = "营业厅";
+			break;
+		case TRANSITCENTER:
+			type = "中转中心";
+			break;
+		}
+		MyComboBox box = new MyComboBox(element, controller);
+		box.setSelectedItem(type);
+		box.setSize(150,30);
+		MyTextField location = new MyTextField(department.getLocation());
+		location.setSize(200,30);
+		MyTextField num = new MyTextField(department.getDepartmentNum());
+		num.setSize(200,30);
+		java.awt.Component[] component = {location, box, num};
+		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
+		return label;
+		
 	}
 
 }
