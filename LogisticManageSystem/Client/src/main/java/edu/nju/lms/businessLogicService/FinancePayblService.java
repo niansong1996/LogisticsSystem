@@ -1,8 +1,10 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.Calendar;
+
 import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.VO.FreightVO;
-import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.data.ResultMessage;
@@ -12,29 +14,23 @@ import edu.nju.lms.data.ResultMessage;
  *@date 2015年10月25日
  */
 public interface FinancePayblService {
-	//rent payment
-	public RentVO createRent(int sum, int year);
+	
+	public RentVO createRent(double amount,int year,String accountNum);
 	
 	public ResultMessage saveRent(RentVO rent);
 	
-	//freight payment
-	public FreightVO showFreight();
-	
-	public ResultMessage updateFreight(int freight);
+	public FreightVO createFreight();
 	
 	public ResultMessage saveFreight(FreightVO freight);
 	
-	//salary payment
-	public PersonnelVO showSalary(String person);
+	public SalaryVO createSalary();
 	
-	//return the salary payment list in this month
-	public SalaryVO showSalarySum(int year, int month);
+	public ResultMessage saveSalary(SalaryVO salary);
 	
-	//list of financial operation
-	public EarningVO showEarning();
+	public ListVO showAllPayment(Calendar start,Calendar end);
 	
-	//export earning list as excel
-	public boolean exportEarning(EarningVO earnings);
+	public EarningVO showEarnings();
 	
-	public ResultMessage createSalary(SalaryVO salaryVO);
+	public ResultMessage exportEarning(EarningVO earnings);
+
 }

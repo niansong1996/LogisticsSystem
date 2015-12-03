@@ -48,13 +48,16 @@ public class FinanceStrategyblImpl{
 		PriceStrategyVO result=null;
 		try {
 			PriceStrategyPO po=service.findPriceStrategy();
-			result=new PriceStrategyVO(po.getStandard(),po.getExpress(),po.getEconomic());
+			result=new PriceStrategyVO(changeNum(po.getStandard()),changeNum(po.getExpress()),changeNum(po.getEconomic()));
 		} catch (RemoteException e) {
 			// TODO
 		}
 		return result;
 	}
-
+	public double changeNum(double x){
+		return Math.round(x*10)/10.0;
+	}
+	
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		PersonType type=PersonType.valueOf(salaryStrategy.getType().toUpperCase());

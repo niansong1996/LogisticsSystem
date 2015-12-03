@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
@@ -18,6 +17,7 @@ public class UserController implements UserblService{
 	
 	public UserController(){
 		try{
+			logController=BusinessLogicFactory.getLogController();
 			userService=(UserDataService) Naming.lookup("//127.0.0.1:1099/UserDataService"); 
 			user=new UserblImpl(userService);
 	    }    
@@ -30,10 +30,6 @@ public class UserController implements UserblService{
 	public UserVO findUserInfo(String id) {
 		UserVO result=user.findUserInfo(id);
 		
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看用户"+id+"的信息");
 
 		return result;
@@ -43,10 +39,6 @@ public class UserController implements UserblService{
 		ResultMessage result=user.deleteUser(id);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("删除用户"+id+"的信息");
 		}
 
@@ -57,10 +49,6 @@ public class UserController implements UserblService{
 		ResultMessage result=user.updateUser(User);
 		
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("更新用户"+User.getUserName()+"的信息");
 		}
 
@@ -71,10 +59,6 @@ public class UserController implements UserblService{
 		ResultMessage result=user.addUser(User);
 
 		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
 			logController.addLog("新增用户"+User.getUserName()+"的信息");
 		}
 		
@@ -84,10 +68,6 @@ public class UserController implements UserblService{
 	public ArrayList<UserVO> findAllUser() {
 		ArrayList<UserVO> result=user.findAllUser();
 
-		try {
-			logController=BusinessLogicFactory.getLogController();
-		} catch (NoBusinessLogicException e) {
-		}
 		logController.addLog("查看所有用户的信息");
 		
 		return result;

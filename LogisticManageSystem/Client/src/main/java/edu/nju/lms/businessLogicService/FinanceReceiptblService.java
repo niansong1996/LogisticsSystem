@@ -24,6 +24,8 @@ public interface FinanceReceiptblService {
 	
 	public ArrayList<ReceiptVO> showReceiptList (Calendar date);
 	
+	public ArrayList<ReceiptVO> showReceiptList(Calendar start,Calendar end);
+	
 	public double getReceiptSum(Calendar date);
 	
 }

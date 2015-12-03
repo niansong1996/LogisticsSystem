@@ -18,6 +18,8 @@ public interface ListblService {
 	 */
 	public ArrayList<ListVO>  getListInfo(ListType type);
 	
+	public ArrayList<ListVO> getAllList();
+	
 	/**
 	 * use id to find List，and change the data
 	 * @param List

@@ -114,7 +114,7 @@ public class PersonnelblImpl  {
 		if(po!=null){
 			for(PersonnelPO person : po){
 				PersonnelVO vo=new PersonnelVO(person.getId(),person.getName(),person.getDepartmentNum(),
-						person.getDuty().toString(),person.getSalary(),person.getPerTime(),person.getBonus());
+						changeToVO(person.getDuty()),person.getSalary(),person.getPerTime(),person.getBonus());
 				result.add(vo);
 			}
 		}

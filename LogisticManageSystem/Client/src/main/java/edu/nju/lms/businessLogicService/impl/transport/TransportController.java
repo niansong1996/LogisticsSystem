@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.transport;
 
 import java.rmi.Naming;
+import java.util.ArrayList;
 
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
@@ -227,6 +228,15 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public ReceiveVO findReceiveList(String id) {
 		ReceiveVO result=process.findReceiveList(id);
 		logController.addLog("查看收件单"+id+"的信息");		
+		return result;
+	}
+	public ArrayList<VehicleVO> showAllVehicle() {
+		ArrayList<VehicleVO> result=manage.showAllVehicles();
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看所有车辆的信息");
 		return result;
 	}
 }

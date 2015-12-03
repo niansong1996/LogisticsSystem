@@ -39,6 +39,24 @@ public class ListblImpl{
 		return result;
 	}
 	
+	public ArrayList<ListVO> getAllList() {
+		ArrayList<ListVO> result=new ArrayList<ListVO>();
+		ArrayList<ListPO> list=new ArrayList<ListPO>();
+		
+		try {
+			list=service.findAllList();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		for(ListPO po : list){
+			if(po.getState().toString().equals("WAITING")){
+				ListVO temp=new ListVO(po.getId());
+				result.add(temp);
+			}
+		}
+		return result;
+	}
+	
 	public ResultMessage changeList(ListVO List,ListType type) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		try {

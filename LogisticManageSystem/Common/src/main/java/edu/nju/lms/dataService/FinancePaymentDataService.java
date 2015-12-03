@@ -2,11 +2,13 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import edu.nju.lms.PO.EarningsPO;
 import edu.nju.lms.PO.PaymentPO;
+import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -50,12 +52,16 @@ public interface FinancePaymentDataService extends Remote{
 	 */
 	public ResultMessage updatePayment(PaymentPO Payment) throws RemoteException;
 	
+	public ArrayList<PaymentPO> showAllPayment() throws RemoteException;
+	
 	/**
 	 * show the earnings
 	 * @param date
 	 * @return a list of EarningsPO
 	 * @throws RemoteException
 	 */
-	public List<EarningsPO> findEarning(Calendar date) throws RemoteException;
+	public EarningsPO findEarning() throws RemoteException;
+	
+	public ResultMessage exportEarning(EarningVO earnings);
 	
 }
