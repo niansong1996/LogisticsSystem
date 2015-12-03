@@ -70,17 +70,14 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
 	public ArrayList<UserPO> getAllUser() throws RemoteException {
 		ArrayList<UserPO> userList = new ArrayList<UserPO>();
-		for(int i=1;;i++){
-		ResultSet result = JDBC.ExecuteQuery("select * from userpo where id = "+i+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from userpo;");
 		try{
 		if(!result.wasNull()){
-			UserPO user = (UserPO)POGenerator.generateObject(result, UserPO.class.getName());
-			userList.add(user);
-		}else break;
+			POGenerator.generateMultiObject(userList,result, UserPO.class.getName());
+		}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		};
-	}
 		return userList;
 	}
 

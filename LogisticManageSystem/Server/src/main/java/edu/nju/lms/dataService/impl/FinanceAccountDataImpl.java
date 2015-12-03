@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.InitialInforPO;
@@ -75,6 +76,32 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 		else{
 			return new ResultMessage(false,"Could not find the account!");
 		}
+	}
+
+	public ArrayList<InitialInforPO> findInitialInfo() throws RemoteException {
+		ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from initialInforpo;");
+		try{
+		if(!result.wasNull()){
+			POGenerator.generateMultiObject(initialInforList,result, InitialInforPO.class.getName());
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return initialInforList;
+	}
+
+	public ArrayList<AccountPO> showAllAccount() throws RemoteException {
+		ArrayList<AccountPO> accountList = new ArrayList<AccountPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from accountpo;");
+		try{
+		if(!result.wasNull()){
+			POGenerator.generateMultiObject(accountList,result, AccountPO.class.getName());
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return accountList;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.lms.PO.ListPO;
+import edu.nju.lms.PO.NumOccupancyPO;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
@@ -31,4 +32,14 @@ public interface ListDataService extends Remote{
 	 * @see ListState ResultMessage
 	 */
 	public ResultMessage updateList(String id,ListState state,ListType type) throws RemoteException;
+	
+	/**
+	 * use to store the occupancy of the used num of the lists
+	 * @author nians
+	 * 
+	 */
+	public NumOccupancyPO getNumOccupancy() throws RemoteException;
+	
+	public ResultMessage updateNumOccupancy(NumOccupancyPO numOccupancyPO) throws RemoteException;
+	
 }

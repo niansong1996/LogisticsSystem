@@ -6,6 +6,7 @@ _id_ int unsigned not null auto_increment primary key,
 name varchar(25) not null unique,
 amount double not null
 );
+
 create table arrivalpo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -157,18 +158,6 @@ commodityNums text not null,
 freight double not null
 );
 
-create table arrivalpo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-expressNum varchar(12) not null,
-arrivalState varchar(20) not null,
-destination varchar(20) not null,
-setOut varchar(20) not null,
-arrivalDate datetime not null,
-transitNum varchar(12) not null
-);
 
 create table dispatchpo 
 (
@@ -191,9 +180,34 @@ expressNum varchar(12) not null
 );
 create table operationpo
 (
+_id_ int unsigned not null auto_increment primary key,
 explanation varchar(100) not null,
 timing varchar(20) not null,
 username varchar(12) not null
 );
+create table initialinforpo
+(
+_id_ int unsigned not null auto_increment primary key,
+date datetime not null unique,
+departments text not null,
+personnel text not null,
+cars text not null,
+warehouses text not null,
+accounts text not null
+);
+create table numoccupancypo
+(
+_id_ int unsigned not null auto_increment primary key,
+SendListNum varchar(12) not null,
+ArrivalListNum varchar(12) not null,
+CheckinListNum varchar(12) not null,
+CheckoutListNum varchar(12) not null,
+DispathcListNum varchar(12) not null,
+LoadListNum varchar(12) not null,
+PaymentListNum varchar(12) not null,
+ReceiptListNum varchar(12) not null,
+ReceiveListNum varchar(12) not null
+)
+
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");
