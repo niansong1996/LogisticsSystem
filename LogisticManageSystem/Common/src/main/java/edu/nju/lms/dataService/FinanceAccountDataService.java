@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.InitialInforPO;
+import edu.nju.lms.PO.InitialInfoPO;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -20,9 +20,9 @@ public interface FinanceAccountDataService extends Remote{
 	 * @return ResultMessage
 	 * @throws RemoteException
 	 */
-	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException;
+	public ResultMessage addInitialInfo(InitialInfoPO InitialInfo) throws RemoteException;
 	
-	public ArrayList<InitialInforPO> findInitialInfo() throws RemoteException;
+	public ArrayList<InitialInfoPO> findInitialInfo() throws RemoteException;
 	
 	/**
 	 * @param Account

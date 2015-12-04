@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.data.CommonUtility;
 
-public class InitialInforPO implements Serializable{
+public class InitialInfoPO implements Serializable{
 	/**
 	 * have been modified for sql
 	 */
@@ -21,7 +21,7 @@ public class InitialInforPO implements Serializable{
 	private ArrayList<String> warehouses;
 	private ArrayList<String> accounts;
 	
-	public InitialInforPO(String date,String departments, String personnel, String cars,
+	public InitialInfoPO(String date,String departments, String personnel, String cars,
 			String warehouses, String accounts) {
 		this.departments = new ArrayList<String>();
 		this.personnel = new ArrayList<String>();
@@ -37,7 +37,7 @@ public class InitialInforPO implements Serializable{
 		CommonUtility.String2Array(this.accounts,accounts);
 	}
 	
-	public InitialInforPO(Calendar date,ArrayList<String> departments, ArrayList<String> personnel, ArrayList<String> cars,
+	public InitialInfoPO(Calendar date,ArrayList<String> departments, ArrayList<String> personnel, ArrayList<String> cars,
 			ArrayList<String> warehouses, ArrayList<String> accounts) {
 		this.date=date;
 		this.departments = departments;

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.InitialInforPO;
+import edu.nju.lms.PO.InitialInfoPO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
@@ -26,14 +26,12 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 		
 	}
 	
-	//TODO
-	public ResultMessage addInitialInfo(InitialInforPO InitialInfo) throws RemoteException {
-		return null;
-		
+	public ResultMessage addInitialInfo(InitialInfoPO initialInfo) throws RemoteException {
+			JDBC.ExecuteData(POGenerator.generateInsertOp(initialInfo, initialInfo.getClass().getName()));
+			return new ResultMessage(true,null);
 	}
 
 	public ResultMessage addAccount(AccountPO account) throws RemoteException {
-
 		if(findAccount(account.getName())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(account, account.getClass().getName()));
 			return new ResultMessage(true,null);
@@ -78,17 +76,17 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 		}
 	}
 
-	public ArrayList<InitialInforPO> findInitialInfo() throws RemoteException {
-		ArrayList<InitialInforPO> initialInforList = new ArrayList<InitialInforPO>();
-		ResultSet result = JDBC.ExecuteQuery("select * from initialInforpo;");
+	public ArrayList<InitialInfoPO> findInitialInfo() throws RemoteException {
+		ArrayList<InitialInfoPO> initialInfoList = new ArrayList<InitialInfoPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from initialInfopo;");
 		try{
 		if(!result.wasNull()){
-			POGenerator.generateMultiObject(initialInforList,result, InitialInforPO.class.getName());
+			POGenerator.generateMultiObject(initialInfoList,result, InitialInfoPO.class.getName());
 		}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		};
-		return initialInforList;
+		return initialInfoList;
 	}
 
 	public ArrayList<AccountPO> showAllAccount() throws RemoteException {

@@ -8,7 +8,6 @@ import java.util.List;
 
 import edu.nju.lms.PO.EarningsPO;
 import edu.nju.lms.PO.PaymentPO;
-import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -59,9 +58,7 @@ public interface FinancePaymentDataService extends Remote{
 	 * @param date
 	 * @return a list of EarningsPO
 	 * @throws RemoteException
+	 * @author nians
 	 */
-	public EarningsPO findEarning() throws RemoteException;
-	
-	public ResultMessage exportEarning(EarningVO earnings) throws RemoteException;
-	
+	public List<EarningsPO> findEarnings(Calendar start,Calendar end) throws RemoteException;
 }

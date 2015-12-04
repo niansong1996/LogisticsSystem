@@ -84,8 +84,17 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 
 	public ArrayList<ReceiptPO> findReceipt(Calendar date, String department)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ReceiptPO> receiptList = new ArrayList<ReceiptPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where receiptDate between \""
+				+ DataUtility.Cal2String(date)+" 00:00:00\" and \""+DataUtility.Cal2String(date)+" 23:59:59\""+
+				" and courierNum like "+department+" ;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(receiptList,result, ReceiptPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return receiptList;
 	}
 
 	public ArrayList<ReceiptPO> findReceipt(Calendar start, Calendar end) throws RemoteException {

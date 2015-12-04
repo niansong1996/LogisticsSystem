@@ -10,7 +10,6 @@ import java.util.List;
 
 import edu.nju.lms.PO.EarningsPO;
 import edu.nju.lms.PO.PaymentPO;
-import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;
 import edu.nju.lms.data.utility.JDBC;
@@ -84,31 +83,29 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 		}
 	}
 
-	public List<EarningsPO> findEarning(Calendar date) throws RemoteException {
-		ArrayList<EarningsPO> result=null;
-//		Iterator<EarningsPO> it = earningList.iterator();
-//		while(it.hasNext()){
-//			EarningsPO next = it.next();
-//			if(next.getDate()==date){
-//				result.add(next);
-//			}
-//		}
-		return result;
+	public List<EarningsPO> findEarnings(Calendar start,Calendar end) throws RemoteException {
+		ArrayList<EarningsPO> earningsList=new ArrayList<EarningsPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from earningspo where payTime between \""
+				+ DataUtility.Cal2String(start)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\";" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(earningsList,result, EarningsPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return earningsList;
 	}
 
 	public ArrayList<PaymentPO> showAllPayment() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public EarningsPO findEarning() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ResultMessage exportEarning(EarningVO earnings) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PaymentPO> paymentList = new ArrayList<PaymentPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from paymentpo;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(paymentList,result, PaymentPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return paymentList;
 	}
 	
 }

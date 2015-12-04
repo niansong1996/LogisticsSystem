@@ -13,7 +13,7 @@ public class JDBC {
 			Statement statement = conn.createStatement();
 			result = statement.executeQuery(sql);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println("Execution failed!!!");
 		}
 		return result;
 	}
@@ -38,11 +38,10 @@ public class JDBC {
 			if(!conn.isClosed()) System.out.println("Succeeded connecting to the Database!");
 		} catch(ClassNotFoundException e) {
 			System.err.println("Sorry,can`t find the Driver!"); 
-			e.printStackTrace();
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.err.println("The MySql can't be connected!");
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.err.println("Create JDBC failed due to UNKNOWN reason");
 		} 
 	}
 }

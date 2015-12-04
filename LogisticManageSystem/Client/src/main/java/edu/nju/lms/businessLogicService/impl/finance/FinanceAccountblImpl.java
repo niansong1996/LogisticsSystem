@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.InitialInforPO;
+import edu.nju.lms.PO.InitialInfoPO;
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.data.CommonUtility;
@@ -101,7 +101,7 @@ public class FinanceAccountblImpl{
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		initial.setDate(getTime.getTime());
-		InitialInforPO po=new InitialInforPO(getTime.String2Cal(initial.getDate()),initial.getDepartments(),
+		InitialInfoPO po=new InitialInfoPO(getTime.String2Cal(initial.getDate()),initial.getDepartments(),
 				initial.getPersonnel(),initial.getCars(),initial.getWarehouses(),initial.getAccounts());
 		try {
 			result=service.addInitialInfo(po);
@@ -122,14 +122,14 @@ public class FinanceAccountblImpl{
 
 	public ArrayList<InitialInfoVO> findInitialInfo() {
 		ArrayList<InitialInfoVO> result=new ArrayList<InitialInfoVO>();
-		ArrayList<InitialInforPO> po=null;
+		ArrayList<InitialInfoPO> po=null;
 		try {
 			po=service.findInitialInfo();
 		} catch (RemoteException e) {
 			// TODO
 		}
 		if(po!=null){
-			for(InitialInforPO temp : po){
+			for(InitialInfoPO temp : po){
 				InitialInfoVO vo=new InitialInfoVO(getTime.Cal2String(temp.getDate()),temp.getDepartments(),
 						temp.getPersonnel(),temp.getCars(),temp.getWarehouses(),temp.getAccounts());
 				result.add(vo);

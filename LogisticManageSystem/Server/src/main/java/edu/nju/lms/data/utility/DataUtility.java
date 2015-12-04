@@ -15,7 +15,7 @@ public class DataUtility {
 		Calendar cal = Calendar.getInstance();
 		try {
 			cal.setTime(sdf.parse(s));
-		} catch (ParseException e) {System.out.println("parse failed!!!");}
+		} catch (ParseException e) {System.err.println("parse failed!!!");}
 		return cal;
 	}
 }

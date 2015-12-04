@@ -5,10 +5,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+
+import edu.nju.lms.data.CommonUtility;
 
 public class POGenerator {
 	public static Object generateObject(ResultSet rs,String className){
@@ -133,7 +133,7 @@ public class POGenerator {
 				else if(fd1.getType().getSimpleName().equals("integer"))
 					result += field[j].getName()+"="+ fd1.get(object)+" ";
 				else if(fd1.getType().getSimpleName().equals("Calendar"))
-					result += field[j].getName()+"=\""+ Cal2String((Calendar)fd1.get(object)) +"\" ";
+					result += field[j].getName()+"=\""+ CommonUtility.Cal2String((Calendar)fd1.get(object)) +"\" ";
 				else
 					result += field[j].getName()+"=\""+ fd1.get(object)+"\" ";
 			}
@@ -188,7 +188,7 @@ public class POGenerator {
 				else if(fd1.getType().getSimpleName().equals("integer"))
 					result += ", "+ fd1.get(object)+"";
 				else if(fd1.getType().getSimpleName().equals("Calendar"))
-					result += ",\""+ Cal2String((Calendar)fd1.get(object))+"\"";
+					result += ",\""+ CommonUtility.Cal2String((Calendar)fd1.get(object))+"\"";
 				else
 					result += ", \""+ fd1.get(object)+"\"";
 			}
@@ -198,16 +198,5 @@ public class POGenerator {
 		}
 //		System.out.println(result);
 		return result;
-	}
-
-	public static String Cal2String(Object cal){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return sdf.format(((Calendar)cal).getTime());
-	}
-
-	public static <T> T[] concat(T[] first, T[] second) {
-		T[] result = Arrays.copyOf(first, first.length + second.length);
-		System.arraycopy(second, 0, result, first.length, second.length);
-		return result;
-	}         
+	}     
 }
