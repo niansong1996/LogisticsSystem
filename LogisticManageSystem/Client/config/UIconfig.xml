@@ -215,9 +215,10 @@
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="checkList" class = "Component" x="150" y="20" w="98" h="23"/>
 		     <component name="listsPanel" class ="Component" x="150" y="60" w="520" h="600"/>
-		     <unit name ="listType" class = "MyComboBox" x="240" y="84" w="168" h="23" type="0" items="寄件单;收件单;装车单;装运单;收款单;到达单;派件单;入库单;出库单;租金付款单;工资付款单;运费付款单"/>
+		     <unit name ="listType" class = "MyComboBox" x="260" y="84" w="150" h="23" type="1" items="寄件单;收件单;装车单;装运单;收款单;到达单;派件单;入库单;出库单;租金付款单;工资付款单;运费付款单" listenerName="ListTypeListener"/>
 		     <unit name ="listNum" class="MyTextField" x="520" y="84" w="80" h="23" type="0" textType="null" />
 		     <unit name ="findPerson" class = "MainButton" x="600" y="84" w="53" h="23" type="0" />
+		     <unit name ="department" class = "table.ListTable" x="150" y="100" w="900" h="460" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

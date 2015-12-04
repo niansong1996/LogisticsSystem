@@ -25,25 +25,25 @@ public class AddPayListButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		FinanceController finance = controller.getFinanceController();
-		String[] content = new String[5];
-		for (int i = 0; i < 5; i++) {
-			JTextField text = (JTextField) units.get(i);
-			content[i] = text.getText();
-			if(content[i].isEmpty()){
-				MyDialog dialog = new MyDialog("incomplete");
-				return;
-			}
-			text.setText("");
-		}
-		JComboBox box = (JComboBox) units.get(5);
-		String type = (String) box.getSelectedItem();
-		SalaryVO vo = new SalaryVO(content[0],content[3],Double.parseDouble(content[1]),content[4],content[2],type);
-		ResultMessage result = finance.createSalary(vo);
-		if(result.isSuccess()){
-			MyDialog dialog = new MyDialog("addSuccess");
-		}else{
-			MyDialog dialog = new MyDialog(result.getErrorMessage(),true);
-		}
+//		FinanceController finance = controller.getFinanceController();
+//		String[] content = new String[5];
+//		for (int i = 0; i < 5; i++) {
+//			JTextField text = (JTextField) units.get(i);
+//			content[i] = text.getText();
+//			if(content[i].isEmpty()){
+//				MyDialog dialog = new MyDialog("incomplete");
+//				return;
+//			}
+//			text.setText("");
+//		}
+//		JComboBox box = (JComboBox) units.get(5);
+//		String type = (String) box.getSelectedItem();
+//		SalaryVO vo = new SalaryVO(content[0],content[3],Double.parseDouble(content[1]),content[4],content[2],type);
+//		ResultMessage result = finance.createSalary(vo);
+//		if(result.isSuccess()){
+//			MyDialog dialog = new MyDialog("addSuccess");
+//		}else{
+//			MyDialog dialog = new MyDialog(result.getErrorMessage(),true);
+//		}
 	}
 }
