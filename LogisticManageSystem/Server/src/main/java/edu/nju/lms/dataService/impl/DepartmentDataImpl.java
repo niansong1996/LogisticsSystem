@@ -14,8 +14,7 @@ import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.DepartmentDataService;
 /**
  * 
- * @author oppalu
- *2015/12/02
+ * @author nians
  *
  */
 public class DepartmentDataImpl extends UnicastRemoteObject implements DepartmentDataService{

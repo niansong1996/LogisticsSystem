@@ -1,7 +1,9 @@
 package edu.nju.lms.PO;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.TransportMode;
@@ -42,18 +44,15 @@ public class SendPO extends ListPO {
 	 */
 	private double price;
 	private double time;
-	private String createTime;
+	private Calendar createTime;
 	//constructor for reflection
 	public SendPO(String expressNum,String state,String id,String baseInfor,String initialNum, String weight, String volume, String goodsName,
 			String packingType, String mode, String price, String time,String createTime) {
 		super(id,ListState.valueOf(state));
 		this.expressNum = expressNum;
 		this.baseInfor = new ArrayList<String>();
-		String baseInforTmp = baseInfor.replace("[", "").replace("]", "");
-		if(!baseInforTmp.equals("")){
-		String baseInforTmpArray[] = baseInforTmp.split(", ");
-		for(String tmp : baseInforTmpArray) this.baseInfor.add(tmp);
-		}
+		CommonUtility.String2Array(this.baseInfor, baseInfor);
+		
 		this.initialNum = Integer.parseInt(initialNum);
 		this.weight = Double.parseDouble(weight);
 		this.volume = Double.parseDouble(volume);
@@ -62,13 +61,13 @@ public class SendPO extends ListPO {
 		this.mode = TransportMode.valueOf(mode);
 		this.price = Double.parseDouble(price);
 		this.time = Double.parseDouble(time);
-		this.createTime=createTime;
+		this.createTime=CommonUtility.String2Cal(createTime);
 	}
 	
 	
 	//construct function
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
+			PackingType packingType, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
@@ -89,7 +88,7 @@ public class SendPO extends ListPO {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time,String createTime) {
+	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -104,7 +103,7 @@ public class SendPO extends ListPO {
 		this.createTime=createTime;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
-			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
+			PackingType packingType, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -118,7 +117,7 @@ public class SendPO extends ListPO {
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,String createTime) {
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
@@ -133,7 +132,7 @@ public class SendPO extends ListPO {
 		this.createTime=createTime;
 	}
 	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
-			PackingType packingType,  double price, double time,String createTime) {
+			PackingType packingType,  double price, double time,Calendar createTime) {
 		super(id,state);
 		this.baseInfor=baseInfor;
 		this.initialNum = initialNum;
@@ -205,10 +204,10 @@ public class SendPO extends ListPO {
 	public void setBaseInfor(ArrayList<String> baseInfor) {
 		this.baseInfor = baseInfor;
 	}
-	public String getCreateTime() {
+	public Calendar getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
 }

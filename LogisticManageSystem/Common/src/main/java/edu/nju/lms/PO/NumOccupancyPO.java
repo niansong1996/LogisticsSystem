@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class NumOccupancyPO implements Serializable{
 	/**
-	 * 
+	 * no need to modify for sql
 	 */
 	private static final long serialVersionUID = -8912809095291881407L;
 	private String SendListNum;

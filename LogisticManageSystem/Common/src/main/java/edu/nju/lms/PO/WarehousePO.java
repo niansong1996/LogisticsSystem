@@ -2,7 +2,6 @@ package edu.nju.lms.PO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Map;
 
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.Partition;

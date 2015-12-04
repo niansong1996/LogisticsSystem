@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public class OperationPO implements Serializable{
 	/**
-	 * 
+	 * no need to modify for sql
 	 */
 	private static final long serialVersionUID = 8886437067330282800L;
 	//modified the name of member variables to mismatch key word in sql

@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
+
 public class InitialInforPO implements Serializable{
 	/**
-	 * 
+	 * have been modified for sql
 	 */
 	private static final long serialVersionUID = -8979310777332153793L;
 	private Calendar date;
@@ -19,9 +21,24 @@ public class InitialInforPO implements Serializable{
 	private ArrayList<String> warehouses;
 	private ArrayList<String> accounts;
 	
+	public InitialInforPO(String date,String departments, String personnel, String cars,
+			String warehouses, String accounts) {
+		this.departments = new ArrayList<String>();
+		this.personnel = new ArrayList<String>();
+		this.cars = new ArrayList<String>();
+		this.warehouses = new ArrayList<String>();
+		this.accounts = new ArrayList<String>();
+		
+		this.date=CommonUtility.String2Cal(date);
+		CommonUtility.String2Array(this.departments, departments);
+		CommonUtility.String2Array(this.personnel,personnel);
+		CommonUtility.String2Array(this.cars,cars);
+		CommonUtility.String2Array(this.warehouses,warehouses);
+		CommonUtility.String2Array(this.accounts,accounts);
+	}
+	
 	public InitialInforPO(Calendar date,ArrayList<String> departments, ArrayList<String> personnel, ArrayList<String> cars,
 			ArrayList<String> warehouses, ArrayList<String> accounts) {
-		super();
 		this.date=date;
 		this.departments = departments;
 		this.personnel = personnel;
