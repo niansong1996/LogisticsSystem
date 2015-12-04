@@ -4,11 +4,11 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 
-public class LoadListTable extends MyTable{
+public class CommodityTable extends MyTable{
 
 	private static final long serialVersionUID = 1380293244986696457L;
 
-	public LoadListTable(Element element, UIController controller) {
+	public CommodityTable(Element element, UIController controller) {
 		super(element, controller);
 	}
 

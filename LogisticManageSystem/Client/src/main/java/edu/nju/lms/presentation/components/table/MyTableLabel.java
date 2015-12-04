@@ -120,7 +120,7 @@ public class MyTableLabel extends JLabel  {
 		 */
 		MyCheckBox check = new MyCheckBox("");
 		int checkWidth = column / 2;
-		check.setBounds(checkWidth / 4, height / 4 - 2, checkWidth / 2, checkWidth / 2);
+		check.setBounds((checkWidth-22)/2, (height-20)/2, 22, 20);
 		add(check);
 		/**
 		 * add data components
