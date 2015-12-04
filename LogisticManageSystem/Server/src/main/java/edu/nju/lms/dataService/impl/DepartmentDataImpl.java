@@ -39,6 +39,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public DepartmentPO findDepartment(String id) throws RemoteException {
+		assert id.length()==6;
 		DepartmentPO department = null;
 		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo where departmentNum = \""+id+"\";");
 		try{
@@ -50,6 +51,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		return department;	}
 
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
+		assert id.length()==6;
 		DepartmentPO department = findDepartment(id);
 		if(!(department==null)){
 			JDBC.ExecuteData("delete from departmentpo where departmentNum = "+id+";");
@@ -83,6 +85,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public CityPO findCity(String id) throws RemoteException {
+		assert id.length()==3;
 		CityPO city = null;
 		ResultSet result = JDBC.ExecuteQuery("select * from citypo where id = \""+id+"\";");
 		try{
@@ -95,6 +98,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public ResultMessage deleteCity(String id) throws RemoteException {
+		assert id.length()==3;
 		CityPO city = findCity(id);
 		if(!(city==null)){
 			JDBC.ExecuteData("delete from citypo where id = \""+id+"\";");
