@@ -75,7 +75,7 @@ public class TransProcessblImpl{
 	public ResultMessage saveSendList(SendVO sendList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getInitialNum(),sendList.getWeight(),
-				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),sendList.getCreateTime());
+				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),CommonUtility.String2Cal(sendList.getCreateTime()));
 		try {
 			result=list.addSend(po);
 		} catch (RemoteException e) {
@@ -104,7 +104,7 @@ public class TransProcessblImpl{
 		}
 		if(po!=null){
 			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getInitialNum(),po.getWeight(),
-					po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime(),po.getCreateTime());
+					po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime(),CommonUtility.Cal2String(po.getCreateTime()));
 		}
 		return result;
 	}
