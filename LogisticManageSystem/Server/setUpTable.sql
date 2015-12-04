@@ -268,6 +268,6 @@ businessHallNum varchar(20) not null
 
 
 
-
+insert into NumOccupancyPO value(NULL,"0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000");
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");

@@ -4,9 +4,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.DispatchPO;
+import edu.nju.lms.PO.LoadCarPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
@@ -123,6 +125,29 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 			e.printStackTrace();
 		};
 		return receive;
+	}
+	public ArrayList<LoadPO> findUnpaidLoad() throws RemoteException {
+		ArrayList<LoadPO> loadList = new ArrayList<LoadPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from loadpo where state = \"PASS\" ;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(loadList,result, LoadPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return loadList;
+	}
+	public ResultMessage addLoadCar(LoadCarPO load) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public LoadCarPO findLoadCar(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<LoadCarPO> findAllLoadCar() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

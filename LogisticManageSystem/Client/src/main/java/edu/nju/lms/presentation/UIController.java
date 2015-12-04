@@ -1,13 +1,5 @@
 package edu.nju.lms.presentation;
 
-import java.util.ArrayList;
-
-import edu.nju.lms.VO.ArrivalVO;
-import edu.nju.lms.VO.CityVO;
-import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.VO.ReceiveVO;
-import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
@@ -17,9 +9,7 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.PersonType;
-import edu.nju.lms.data.ResultMessage;
 
 public class UIController {
 	private MainFrame frame;
@@ -36,6 +26,7 @@ public class UIController {
 		logController = BusinessLogicFactory.createLogController();
 		userController = BusinessLogicFactory.createUserController();
 		listController = BusinessLogicFactory.createListController();
+		transportController = BusinessLogicFactory.createTransportController();
 		frame = new MainFrame();
 	}
 
@@ -91,8 +82,8 @@ public class UIController {
 //		strategy = new SalaryStrategyVO("driver", 45, 45, 45);
 //		financeController.addSalaryStrategy(strategy);
 	//	financeController.addPriceStrategy(100);
-		ResultMessage result = transportController.saveReceiveList(new ReceiveVO("ss","ss"));
-		System.out.println(result.getErrorMessage());
+//		ResultMessage result = transportController.saveReceiveList(new ReceiveVO("ss","ss"));
+//		System.out.println(result.getErrorMessage());
 	}
 
 	public MainFrame getFrame() {

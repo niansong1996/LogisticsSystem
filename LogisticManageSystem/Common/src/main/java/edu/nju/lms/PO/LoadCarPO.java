@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import edu.nju.lms.data.ListState;
 
 public class LoadCarPO extends ListPO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2214418940416103203L;
 	private String loadDate;
 	//current businesshall
 	private String businessHallNum;

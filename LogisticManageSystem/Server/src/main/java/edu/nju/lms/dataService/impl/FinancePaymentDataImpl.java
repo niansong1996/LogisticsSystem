@@ -107,5 +107,18 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 		};
 		return paymentList;
 	}
+
+	public ArrayList<PaymentPO> showAllPayment(Calendar start, Calendar end) throws RemoteException {
+		ArrayList<PaymentPO> paymentList = new ArrayList<PaymentPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from paymentpo where payTime between \""
+				+ DataUtility.Cal2String(start)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\";" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(paymentList,result, PaymentPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return paymentList;
+	}
 	
 }

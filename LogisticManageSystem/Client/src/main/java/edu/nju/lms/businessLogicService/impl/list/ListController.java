@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import edu.nju.lms.PO.NumOccupancyPO;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.ListblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ListType;
@@ -25,8 +26,10 @@ public class ListController implements ListblService{
 			listService=(ListDataService) Naming.lookup("//127.0.0.1:1099/ListDataService");
 			list=new ListblImpl(listService);
 			listNum = new ListNumOccupancy();
-		}catch (Exception e) {
-			System.out.println("网络未连接");
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		} catch(Exception e1){
+			System.err.println("网络未连接");
 	    	System.exit(0);
 		}
 	}

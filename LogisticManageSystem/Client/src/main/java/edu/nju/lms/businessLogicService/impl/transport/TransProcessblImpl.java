@@ -43,12 +43,13 @@ public class TransProcessblImpl{
 	
 	public TransProcessblImpl(ListController listController,TransportCommodityDataService commodity,TransportListDataService list){
 		this.listController = listController;
+		try{
 		this.basicArrivalNum = Integer.parseInt(listController.getNumOccupancy().getArrivalListNum());
 		this.basicLoadNum = Integer.parseInt(listController.getNumOccupancy().getLoadListNum());
 		this.basicSendNum = Integer.parseInt(listController.getNumOccupancy().getSendListNum());
 		this.basicDispatchNum = Integer.parseInt(listController.getNumOccupancy().getDispatchListNum());
 		this.basicReceiveNum = Integer.parseInt(listController.getNumOccupancy().getReceiveListNum());
-		
+		}catch(Exception e){System.err.println("parse Error!!!");}
 		this.commodity=commodity;
 		this.list=list;
 	}

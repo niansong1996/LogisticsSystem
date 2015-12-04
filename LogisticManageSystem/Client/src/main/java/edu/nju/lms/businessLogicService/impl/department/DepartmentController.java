@@ -1,11 +1,15 @@
 package edu.nju.lms.businessLogicService.impl.department;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.DepartmentblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
@@ -22,10 +26,12 @@ public class DepartmentController implements DepartmentblService{
 			logController=BusinessLogicFactory.getLogController();
 			departService=(DepartmentDataService) Naming.lookup("//127.0.0.1:1099/DepartmentDataService");
 			department=new DepartmentblImpl(departService);
-		} catch (Exception e) {
-			System.out.println("网络未连接");
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		} catch(Exception e1){
+			System.err.println("网络未连接");
 	    	System.exit(0);
-		} 
+		}
 	}
 	
 	public DepartmentVO getDepartInfo(String id) {

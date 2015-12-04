@@ -15,6 +15,7 @@ import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.FinanceAccountblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
@@ -62,8 +63,10 @@ public class FinanceController
 			receipt=new FinanceReceiptblImpl(listController,accountData,receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
 			strategy=new FinanceStrategyblImpl(strategyData);
-		} catch (Exception e) {
-			System.out.println("网络未连接");
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		} catch(Exception e1){
+			System.err.println("网络未连接");
 	    	System.exit(0);
 		}
 	}
