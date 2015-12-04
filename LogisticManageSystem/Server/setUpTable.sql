@@ -1,5 +1,6 @@
 create database lms character set utf8;
 use lms;
+
 create table accountpo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -18,6 +19,29 @@ setOut varchar(12) not null,
 arrivalData date not null,
 transitNum varchar(12) not null
 );
+
+create table checkinpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+expresses text,
+checkinDate datetime not null
+);
+
+create table checkoutpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+expressNums text,
+checkoutDate datetime not null,
+destination varchar(20) not null,
+loadType varchar(20) not null,
+arrivalNum varchar(12) not null,
+motorNum varchar(12) not null
+);
+
 create table citypo(
 _id_ int unsigned not null auto_increment primary key,
 id varchar(10) not null unique,
@@ -25,68 +49,7 @@ name varchar(20) not null unique,
 distance text not null,
 businessNums text not null
 );
-create table departmentpo(
-_id_ int unsigned not null auto_increment primary key,
-departmentNum varchar(12) not null unique,
-type varchar(20) not null,
-location varchar(20) not null
-);
-create table userpo
-(
-_id_ int unsigned not null auto_increment primary key,
-userName varchar(12) not null unique,
-password varchar(12) not null,
-power varchar(20) not null
-);
-create table paymentpo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-paymentType varchar(20) not null,
-payTime datetime not null,
-account varchar(20) not null,
-amount double not null
-);
-create table receiptpo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-receiptDate datetime not null,
-amount double not null,
-courierNum varchar(12) not null,
-expressNums text not null
-);
-create table priceStrategypo
-(
-_id_ int unsigned not null auto_increment primary key,
-standard double not null,
-express double not null,
-economic double not null,
-rate1 double not null,
-rate2 double not null,
-rate3 double not null
-);
-create table salaryStrategypo
-(
-_id_ int unsigned not null auto_increment primary key,
-type varchar(20) not null unique,
-basic double not null,
-perTime double not null,
-bonus double not null
-);	
-create table personnelpo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-name varchar(10) not null,
-departmentNum varchar(12) not null,
-duty varchar(20) not null,
-salary double not null,
-perTime double not null,
-bonus double not null
-);
+
 create table commoditypo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -100,34 +63,24 @@ checkin varchar(12) not null,
 checkout varchar(12) not null,
 receive varchar(12) not null
 );
-create table checkinpo
+
+create table departmentpo(
+_id_ int unsigned not null auto_increment primary key,
+departmentNum varchar(12) not null unique,
+type varchar(20) not null,
+location varchar(20) not null
+);
+
+create table dispatchpo 
 (
 _id_ int unsigned not null auto_increment primary key,
 id varchar(12) not null unique,
 state varchar(20) not null,
-expresses text,
-checkinDate datetime not null
+dispatchPerson varchar(20) not null,
+arrivalDate datetime not null,
+expressNum varchar(12) not null
 );
-create table checkoutpo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-expressNums text,
-checkoutDate datetime not null,
-destination varchar(20) not null,
-loadType varchar(20) not null,
-arrivalNum varchar(12) not null,
-motorNum varchar(12) not null
-);
-create table vehiclepo
-(
-_id_ int unsigned not null auto_increment primary key,
-plateNum varchar(20) not null unique,
-vehicleNum varchar(20) not null unique,
-serviceYears tinyint not null,
-businessHallNum varchar(20) not null
-);
+
 create table driverpo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -139,6 +92,27 @@ phoneNum varchar(20) not null,
 sex tinyint not null,
 drivingLimit datetime not null,
 businesshallNum varchar(20) not null
+);
+
+create table earningspo
+(
+_id_ int unsigned not null auto_increment primary key,
+earnings double not null,
+payment double not null,
+profit double not null,
+date datetime not null,
+id varchar(20) not null
+);
+
+create table initialinforpo
+(
+_id_ int unsigned not null auto_increment primary key,
+date datetime not null unique,
+departments text not null,
+personnel text not null,
+cars text not null,
+warehouses text not null,
+accounts text not null
 );
 
 create table loadpo
@@ -158,43 +132,6 @@ commodityNums text not null,
 freight double not null
 );
 
-
-create table dispatchpo 
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-dispatchPerson varchar(20) not null,
-arrivalDate datetime not null,
-expressNum varchar(12) not null
-);
-
-create table receivepo
-(
-_id_ int unsigned not null auto_increment primary key,
-id varchar(12) not null unique,
-state varchar(20) not null,
-receiverName varchar(12) not null,
-receiveTime datetime not null,
-expressNum varchar(12) not null
-);
-create table operationpo
-(
-_id_ int unsigned not null auto_increment primary key,
-explanation varchar(100) not null,
-timing varchar(20) not null,
-username varchar(12) not null
-);
-create table initialinforpo
-(
-_id_ int unsigned not null auto_increment primary key,
-date datetime not null unique,
-departments text not null,
-personnel text not null,
-cars text not null,
-warehouses text not null,
-accounts text not null
-);
 create table numoccupancypo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -207,7 +144,130 @@ LoadListNum varchar(12) not null,
 PaymentListNum varchar(12) not null,
 ReceiptListNum varchar(12) not null,
 ReceiveListNum varchar(12) not null
-)
+);
+
+create table operationpo
+(
+_id_ int unsigned not null auto_increment primary key,
+explanation varchar(100) not null,
+timing varchar(20) not null,
+username varchar(12) not null
+);
+
+create table paymentpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+paymentType varchar(20) not null,
+payTime datetime not null,
+account varchar(20) not null,
+amount double not null
+);
+
+create table personnelpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+name varchar(10) not null,
+departmentNum varchar(12) not null,
+duty varchar(20) not null,
+salary double not null,
+perTime double not null,
+bonus double not null
+);
+
+create table priceStrategypo
+(
+_id_ int unsigned not null auto_increment primary key,
+standard double not null,
+express double not null,
+economic double not null,
+rate1 double not null,
+rate2 double not null,
+rate3 double not null
+);
+
+create table receiptpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+receiptDate datetime not null,
+amount double not null,
+courierNum varchar(12) not null,
+expressNums text not null
+);
+
+create table receivepo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+receiverName varchar(12) not null,
+receiveTime datetime not null,
+expressNum varchar(12) not null
+);
+
+create table salaryStrategypo
+(
+_id_ int unsigned not null auto_increment primary key,
+type varchar(20) not null unique,
+basic double not null,
+perTime double not null,
+bonus double not null
+);	
+
+create table sendpo
+(
+_id_ int unsigned not null auto_increment primary key,
+expressNum varchar(12) not null,
+baseInfor text not null,
+initialNum int not null,
+weight double not null,
+volume double not null,
+goodsName varchar(20) not null,
+packingType varchar(20) not null,
+mode varchar(20) not null,
+price double not null,
+time double not null,
+createTime double not null
+);
+
+create table userpo
+(
+_id_ int unsigned not null auto_increment primary key,
+userName varchar(12) not null unique,
+password varchar(12) not null,
+power varchar(20) not null
+);
+
+create table vehiclepo
+(
+_id_ int unsigned not null auto_increment primary key,
+plateNum varchar(20) not null unique,
+vehicleNum varchar(20) not null unique,
+serviceYears tinyint not null,
+businessHallNum varchar(20) not null
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");
