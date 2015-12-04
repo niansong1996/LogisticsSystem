@@ -50,7 +50,7 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		data.add(label);
 	}
 	
-	private void setView() {
+	protected void setView() {
 		int width = 0;
 		int height = 0;
 		for (int i = 0; i < data.size(); i++) {

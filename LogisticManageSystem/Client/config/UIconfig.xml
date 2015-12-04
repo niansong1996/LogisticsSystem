@@ -351,7 +351,7 @@
 			<unit name="carNum" class="MyTextField" x="340" y="410" w="180" h="33" type="0" textType="null"/>
 			<unit name="driverNum" class="MyTextField" x="340" y="490" w="180" h="33" type="0" textType="null"/>
 			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
-			<unit name ="add" class = "MainButton" x="900" y="550" w="112" h="34" type="0" listenerName=""/>
+			<unit name ="add" class = "MainButton" x="900" y="550" w="112" h="34" type="1" listenerName="CommodityAddListener"/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -430,10 +430,10 @@
 			<component name="commodityNum" class = "Component" x="165" y="420" w="150" h="27"/>
 			<unit name ="receipt" class = "table.CommodityTable" x="590" y="160" w="400" h="400" type="2"/>
 			<unit name="date" class="DateChooser" x="320" y="115" w="150" h="30" type="0"/>
+			<unit name="commodityNum" class="MyTextField" x="165" y="480" w="300" h="33" type="0" textType="null"/>
 			<unit name="courierNum" class="MyTextField" x="320" y="220" w="180" h="33" type="0" textType="null"/>
 			<unit name="receiptMoney" class="MyTextField" x="320" y="320" w="180" h="33" type="0" textType="null"/>
-			<unit name="commodityNum" class="MyTextField" x="165" y="480" w="300" h="33" type="0" textType="null"/>
-			<unit name ="add" class = "MainButton" x="350" y="415" w="112" h="34" type="0" listenerName=""/>
+			<unit name ="add" class = "MainButton" x="350" y="415" w="112" h="34" type="1" listenerName="CommodityAddListener"/>
 			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -456,11 +456,11 @@
 			<component name="commodityNum" class = "Component" x="165" y="440" w="150" h="27"/>
 			<unit name ="receipt" class = "table.CommodityTable" x="590" y="160" w="400" h="400" type="2"/>
 			<unit name ="courierNum" class="MyTextField" x="320" y="200" w="180" h="33" type="0" textType="null"/>
+			<unit name ="commodityNum" class="MyTextField" x="320" y="440" w="180" h="33" type="0" textType="null"/>
 			<unit name ="date" class="DateChooser" x="320" y="115" w="150" h="30" type="0"/>
 			<unit name ="arrivalState" class = "MyComboBox" x="320" y="276" w="180" h="33" type="0" items="完整;破损;丢失"/>
 			<unit name ="start" class = "MyComboBox" x="320" y="356" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
-			<unit name ="commodityNum" class="MyTextField" x="320" y="440" w="180" h="33" type="0" textType="null"/>
-			<unit name ="add" class = "MainButton" x="290" y="520" w="112" h="34" type="0" listenerName=""/>
+			<unit name ="add" class = "MainButton" x="290" y="520" w="112" h="34" type="1" listenerName="CommodityAddListener"/>
 			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

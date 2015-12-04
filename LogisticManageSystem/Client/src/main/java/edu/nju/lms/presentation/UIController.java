@@ -31,8 +31,9 @@ public class UIController {
 	private PersonnelController personnelController;
 
 	public UIController() {
-		userController = BusinessLogicFactory.createUserController();
 		logController = BusinessLogicFactory.createLogController();
+		userController = BusinessLogicFactory.createUserController();
+		listController = BusinessLogicFactory.createListController();
 		frame = new MainFrame();
 	}
 
@@ -58,7 +59,6 @@ public class UIController {
 		case MANAGER:
 			personnelController = BusinessLogicFactory.createPersonnelController();
 			departmentController = BusinessLogicFactory.createDepartmentController();
-			listController = BusinessLogicFactory.createListController();
 		case FINANCIAL_ADVANCED:
 		case FINANCIAL_NORMAL:
 			financeController = BusinessLogicFactory.createFinanceController();
