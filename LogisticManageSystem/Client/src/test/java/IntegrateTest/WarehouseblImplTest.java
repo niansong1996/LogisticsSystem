@@ -1,34 +1,29 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
+import mockObject.MockExpressItemInfo;
+import mockObject.MockExpressList;
 
 import org.junit.Test;
 
-import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.PO.Location;
-import edu.nju.lms.PO.SendPO;
-import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseManageblImpl;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseOpblImpl;
-import edu.nju.lms.data.ArrivalState;
-import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
-import mockObject.MockExpressItemInfo;
-import mockObject.MockExpressList;
 
 /**
  *@author tj
@@ -38,9 +33,10 @@ public class WarehouseblImplTest {
 	WarehouseManageblImpl manage = new WarehouseManageblImpl();
 	WarehouseOpblImpl operation = new WarehouseOpblImpl();
 	MockExpressList expressList = new MockExpressList();
+	ListController listController;
 	TransportListDataService list;
 	TransportCommodityDataService commodity;
-	TransProcessblImpl trans= new TransProcessblImpl(commodity,list);
+	TransProcessblImpl trans= new TransProcessblImpl(listController,commodity,list);
 	
 	@Test
 	public void testCheckWarehouseInfor() {

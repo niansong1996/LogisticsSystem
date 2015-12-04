@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.VO.FreightVO;
-import edu.nju.lms.VO.ListVO;
+import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.data.ResultMessage;
@@ -15,7 +15,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface FinancePayblService {
 	
-	public RentVO createRent(double amount,int year,String accountNum);
+	public RentVO createRent(RentVO rent);
 	
 	public ResultMessage saveRent(RentVO rent);
 	
@@ -27,7 +27,7 @@ public interface FinancePayblService {
 	
 	public ResultMessage saveSalary(SalaryVO salary);
 	
-	public ListVO showAllPayment(Calendar start,Calendar end);
+	public PaymentVO showAllPayment(Calendar start,Calendar end);
 	
 	public EarningVO showEarnings();
 	

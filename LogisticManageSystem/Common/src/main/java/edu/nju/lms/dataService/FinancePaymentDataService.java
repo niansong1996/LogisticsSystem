@@ -62,6 +62,6 @@ public interface FinancePaymentDataService extends Remote{
 	 */
 	public EarningsPO findEarning() throws RemoteException;
 	
-	public ResultMessage exportEarning(EarningVO earnings);
+	public ResultMessage exportEarning(EarningVO earnings) throws RemoteException;
 	
 }

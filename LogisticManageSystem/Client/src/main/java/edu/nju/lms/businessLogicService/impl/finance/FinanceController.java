@@ -8,16 +8,14 @@ import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.VO.FreightVO;
 import edu.nju.lms.VO.InitialInfoVO;
-import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.FinanceAccountblService;
-import edu.nju.lms.businessLogicService.FinanceMoneyblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
@@ -28,7 +26,6 @@ import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
-import edu.nju.lms.dataService.TransportListDataService;
 
 public class FinanceController
 		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
@@ -54,9 +51,9 @@ public class FinanceController
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
 			accountf=new FinanceAccountblImpl(accountData);
 			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
-			pay=new FinancePayblImpl(payData);
+			pay=new FinancePayblImpl(listController,accountData,payData);
 			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
-			receipt=new FinanceReceiptblImpl(listController,receiptData);
+			receipt=new FinanceReceiptblImpl(listController,accountData,receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
 			strategy=new FinanceStrategyblImpl(strategyData);
 		} catch (Exception e) {
@@ -218,22 +215,50 @@ public class FinanceController
 		logController.addLog("计算收款总额");
 		return result;
 	}
-	public ResultMessage payMoney(String accountNum,double money) {
-		ResultMessage result=moneyImpl.payMoney(accountNum,money);
-			logController.addLog("账户"+accountNum+"进行付款");
-		}
-		return result;
+
+	public RentVO createRent(RentVO rent) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	public ResultMessage addMoney(String accountNum,double money) {
-		ResultMessage result=moneyImpl.addMoney(accountNum, money);
-		if(result.isSuccess()){
-			try {
-				logController=BusinessLogicFactory.getLogController();
-			} catch (NoBusinessLogicException e) {
-			}
-			logController.addLog("账户"+accountNum+"进行收款");
-		}
-		return result;
+	
+	public ResultMessage saveRent(RentVO rent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public FreightVO createFreight() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage saveFreight(FreightVO freight) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SalaryVO createSalary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage saveSalary(SalaryVO salary) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public PaymentVO showAllPayment(Calendar start, Calendar end) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public EarningVO showEarnings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage exportEarning(EarningVO earnings) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

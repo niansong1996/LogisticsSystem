@@ -1,15 +1,17 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
+import junit.framework.Assert;
 
 import org.junit.Test;
 
-import edu.nju.lms.PO.InitialInforPO;
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceAccountblImpl;
 import edu.nju.lms.data.ResultMessage;
-import junit.framework.Assert;
 
 /**
  *@author tj
@@ -42,12 +44,12 @@ public class FinanceAccountblImplTest {
 
 	@Test
 	public void testAddInitialInfo() {
-		String[] departments = {"025000"};
-		String[] personnel = {"1000000021"};
-		String[] cars = {"025000111"};
-		String[] warehouses = {"025000"};
-		String[] accounts ={"1256975631269789"};
-		InitialInfoVO init = new InitialInfoVO(departments, personnel, cars, warehouses, accounts);
+		ArrayList<String> departments=new ArrayList<String>();
+		ArrayList<String> personnel=new ArrayList<String>();
+		ArrayList<String> cars=new ArrayList<String>();
+		ArrayList<String> warehouses=new ArrayList<String>();
+		ArrayList<String> accounts=new ArrayList<String>();
+		InitialInfoVO init = new InitialInfoVO("",departments, personnel, cars, warehouses, accounts);
 		ResultMessage re = accountbl.addInitialInfo(init);
 		assertEquals(true,re.isSuccess());
 	}

@@ -1,23 +1,17 @@
 package edu.nju.lms.VO;
 
-public class RentVO extends ListVO{
-	private double amount;
+import edu.nju.lms.data.PaymentType;
+
+public class RentVO extends PaymentVO{
+
 	private int year;
-	private String accountNum;
+
 	
-	public RentVO(String id,double amount, int year,String accountNum) {
-		super(id);
-		this.amount = amount;
-		this.year = year;
-		this.accountNum=accountNum;
+	public RentVO(String id,String payTime,String accountNum,double amount, int year) {
+		super(id,PaymentType.RENT,payTime,accountNum,amount);
+		this.year=year;
 	}
 	
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
 	public int getYear() {
 		return year;
 	}
@@ -25,12 +19,4 @@ public class RentVO extends ListVO{
 		this.year = year;
 	}
 
-	public String getAccountNum() {
-		return accountNum;
-	}
-
-	public void setAccountNum(String accountNum) {
-		this.accountNum = accountNum;
-	}
-		
 }

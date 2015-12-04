@@ -9,6 +9,7 @@ import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 
 /**
@@ -18,13 +19,14 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
 public class FinanceReceiptblImpl{
 	private FinanceReceiptDataService service;
 	ListController listController;
+	FinanceAccountDataService account;
 	
 	CommonUtility time=new CommonUtility();
 	private int basicNum;
 	
-	public FinanceReceiptblImpl(ListController listController,FinanceReceiptDataService service){
+	public FinanceReceiptblImpl(ListController listController,FinanceAccountDataService account,FinanceReceiptDataService service){
 		this.listController=listController;
-		this.basicNum = Integer.parseInt(listController.getNumOccupancy().getReceiptListNum());
+		this.account=account;
 		this.service=service;
 	}
 
