@@ -51,7 +51,7 @@ public interface FinancePaymentDataService extends Remote{
 	 */
 	public ResultMessage updatePayment(PaymentPO Payment) throws RemoteException;
 	
-	public ArrayList<PaymentPO> showAllPayment() throws RemoteException;
+	public ArrayList<PaymentPO> showAllPayment(Calendar start,Calendar end) throws RemoteException;
 	
 	/**
 	 * show the earnings

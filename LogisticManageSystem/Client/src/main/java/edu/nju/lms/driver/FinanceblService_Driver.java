@@ -60,7 +60,7 @@ public class FinanceblService_Driver {
 //		System.out.println(svo);
 		
 		
-		ReceiptVO receipt=financeReceipt.createReceipt(null);
+		ReceiptVO receipt=financeReceipt.createReceipt(null,"1234567");
 		System.out.println(receipt);
 		
 //		result=financeReceipt.saveReceipt(null);
@@ -78,22 +78,10 @@ public class FinanceblService_Driver {
 		ArrayList<ReceiptVO> list=financeReceipt.showReceiptList(null);
 		System.out.println(list);
 		
-		RentVO rentVO = financePay.createRent(2530, 253);
-		System.out.println(rentVO.getAmount());
 		
 		result = financePay.saveRent(null);
 		if(result.isSuccess()){
 			System.out.println("Save rent successfully");
-		}else{
-			System.out.println(result.getErrorMessage());
-		}
-		
-		FreightVO freight = financePay.showFreight();
-		System.out.println(freight.getAmount());
-		
-		result = financePay.updateFreight(50);
-		if(result.isSuccess()){
-			System.out.println("Update Freight successfully");
 		}else{
 			System.out.println(result.getErrorMessage());
 		}
@@ -105,13 +93,10 @@ public class FinanceblService_Driver {
 			System.out.println(result.getErrorMessage());
 		}
 		
-		PersonnelVO person = financePay.showSalary("010");
-		System.out.println(person.getBonus()+" "+person.getSalary());
-		
-		SalaryVO salary = financePay.showSalarySum(21,2);
+		SalaryVO salary = financePay.createSalary("1234567850");
 		System.out.println(salary.getAmount());
 		
-		EarningVO earning = financePay.showEarning();
+		EarningVO earning = financePay.showEarnings();
 		System.out.println(earning.getProfit());
 		
 		System.out.println(financePay.exportEarning(null));

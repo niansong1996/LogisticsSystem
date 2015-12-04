@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService;
 
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
+import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
@@ -30,6 +31,13 @@ public interface TransProcessblService {
 	public ResultMessage saveLoadList(LoadVO loadList);
 	
 	public LoadVO findLoadList(String id);
+	
+	
+	public LoadCarVO createLoadCarList(LoadCarVO baseMessage);
+
+	public ResultMessage saveLoadCarList(LoadCarVO loadCarList);
+	
+	public LoadCarVO findLoadCarList(String id);
 	
 	
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList);

@@ -23,7 +23,7 @@ public class LoadPO extends ListPO {
 	private String businessHallNum;
 	//���˱��
 	private String motorNum;
-	//������ת���Ļ�Ӫҵ��
+	
 	private String destiCity;
 	private String destiBusinessHall;
 	private String vehicleNum;

@@ -21,6 +21,8 @@ import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
@@ -42,16 +44,20 @@ public class FinanceController
 	
 	ListController listController;
 	LogController logController;
+	PersonnelController personnelController;
+	TransportController transportController;
 	
 	public FinanceController(){
 		try {
 			listController=BusinessLogicFactory.getListController();
 			logController=BusinessLogicFactory.getLogController();
+			personnelController=BusinessLogicFactory.getPersonnelController();
+			transportController=BusinessLogicFactory.getTransportController();
 			
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
 			accountf=new FinanceAccountblImpl(accountData);
 			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
-			pay=new FinancePayblImpl(listController,accountData,payData);
+			pay=new FinancePayblImpl(listController,personnelController,transportController,accountData,payData);
 			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
 			receipt=new FinanceReceiptblImpl(listController,accountData,receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
@@ -170,8 +176,8 @@ public class FinanceController
 		return result;
 	}
 
-	public ReceiptVO createReceipt(ReceiptVO debit) {
-		return receipt.createReceipt(debit);
+	public ReceiptVO createReceipt(ReceiptVO debit,String account) {
+		return receipt.createReceipt(debit,account);
 	}
 	public ResultMessage addReceipt(ReceiptVO debit) {
 		ResultMessage result=receipt.addReceipt(debit);
@@ -217,43 +223,49 @@ public class FinanceController
 	}
 
 	public RentVO createRent(RentVO rent) {
-		// TODO Auto-generated method stub
-		return null;
+		return pay.createRent(rent);
 	}
 	
 	public ResultMessage saveRent(RentVO rent) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=pay.saveRent(rent);
+		if(result.isSuccess()){
+			logController.addLog("新建租金付款单");
+		}
+		return result;
 	}
 
-	public FreightVO createFreight() {
-		// TODO Auto-generated method stub
-		return null;
+	public FreightVO createFreight(String accountNum) {
+		return pay.createFreight(accountNum);
 	}
 
 	public ResultMessage saveFreight(FreightVO freight) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=pay.saveFreight(freight);
+		if(result.isSuccess()){
+			logController.addLog("新建运费付款单");
+		}
+		return result;
 	}
 
-	public SalaryVO createSalary() {
-		// TODO Auto-generated method stub
-		return null;
+	public SalaryVO createSalary(String accountNum) {
+		return pay.createSalary(accountNum);
 	}
 
 	public ResultMessage saveSalary(SalaryVO salary) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=pay.saveSalary(salary);
+		if(result.isSuccess()){
+			logController.addLog("新建工资付款单");
+		}
+		return result;
 	}
 
-	public PaymentVO showAllPayment(Calendar start, Calendar end) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<PaymentVO> showAllPayment(Calendar start, Calendar end) {
+		return pay.showAllPayment(start, end);
 	}
 
 	public EarningVO showEarnings() {
-		// TODO Auto-generated method stub
-		return null;
+		EarningVO result=pay.showEarnings();
+		logController.addLog("查看成本收益表");
+		return result;
 	}
 
 	public ResultMessage exportEarning(EarningVO earnings) {

@@ -1,5 +1,6 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.EarningVO;
@@ -19,15 +20,15 @@ public interface FinancePayblService {
 	
 	public ResultMessage saveRent(RentVO rent);
 	
-	public FreightVO createFreight();
+	public FreightVO createFreight(String accountNum);
 	
 	public ResultMessage saveFreight(FreightVO freight);
 	
-	public SalaryVO createSalary();
+	public SalaryVO createSalary(String accountNum);
 	
 	public ResultMessage saveSalary(SalaryVO salary);
 	
-	public PaymentVO showAllPayment(Calendar start,Calendar end);
+	public ArrayList<PaymentVO> showAllPayment(Calendar start,Calendar end);
 	
 	public EarningVO showEarnings();
 	

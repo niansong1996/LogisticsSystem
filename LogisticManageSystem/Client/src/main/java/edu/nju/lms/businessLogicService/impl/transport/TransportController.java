@@ -3,9 +3,11 @@ package edu.nju.lms.businessLogicService.impl.transport;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
+import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
@@ -239,4 +241,20 @@ public class TransportController implements TransManageblService,TransProcessblS
 		logController.addLog("查看所有车辆的信息");
 		return result;
 	}
+
+	public LoadCarVO createLoadCarList(LoadCarVO baseMessage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage saveLoadCarList(LoadCarVO loadCarList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public LoadCarVO findLoadCarList(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

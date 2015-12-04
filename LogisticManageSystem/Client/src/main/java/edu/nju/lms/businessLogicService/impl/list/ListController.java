@@ -27,7 +27,7 @@ public class ListController implements ListblService{
 			listNum = new ListNumOccupancy();
 		}catch (Exception e) {
 			System.out.println("网络未连接");
-			System.exit(0);
+	    	System.exit(0);
 		}
 	}
 

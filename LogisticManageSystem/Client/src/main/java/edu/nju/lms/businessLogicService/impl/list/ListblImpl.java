@@ -41,17 +41,19 @@ public class ListblImpl{
 	
 	public ArrayList<ListVO> getAllList() {
 		ArrayList<ListVO> result=new ArrayList<ListVO>();
-		ArrayList<ListPO> list=new ArrayList<ListPO>();
+		ArrayList<ListPO> list=null;
 		
 		try {
 			list=service.findAllList();
 		} catch (RemoteException e) {
 			// TODO
 		}
-		for(ListPO po : list){
-			if(po.getState().toString().equals("WAITING")){
-				ListVO temp=new ListVO(po.getId());
-				result.add(temp);
+		if(list!=null){
+			for(ListPO po : list){
+				if(po.getState().toString().equals("WAITING")){
+					ListVO temp=new ListVO(po.getId());
+					result.add(temp);
+				}
 			}
 		}
 		return result;

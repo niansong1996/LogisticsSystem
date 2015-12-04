@@ -12,7 +12,7 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface FinanceReceiptblService {
 	
-	public ReceiptVO createReceipt(ReceiptVO debit);
+	public ReceiptVO createReceipt(ReceiptVO debit,String accountName);
 	
 	public ResultMessage addReceipt(ReceiptVO debit);
 	
