@@ -13,6 +13,7 @@ import edu.nju.lms.dataService.ListDataService;
 import edu.nju.lms.dataService.LogDataService;
 import edu.nju.lms.dataService.PersonnelDataService;
 import edu.nju.lms.dataService.TransportCommodityDataService;
+import edu.nju.lms.dataService.TransportListDataService;
 import edu.nju.lms.dataService.TransportToolDataService;
 import edu.nju.lms.dataService.UserDataService;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
@@ -26,6 +27,7 @@ import edu.nju.lms.dataService.impl.ListDataImpl;
 import edu.nju.lms.dataService.impl.LogDataImpl;
 import edu.nju.lms.dataService.impl.PersonnelDataImpl;
 import edu.nju.lms.dataService.impl.TransportCommodityDataImpl;
+import edu.nju.lms.dataService.impl.TransportListDataImpl;
 import edu.nju.lms.dataService.impl.TransportToolDataImpl;
 import edu.nju.lms.dataService.impl.UserDataImpl;
 import edu.nju.lms.dataService.impl.WarehouseCheckinDataImpl;
@@ -58,6 +60,7 @@ public class ServerActivator
 	         WarehouseCheckoutDataService warehouseCheckoutDataService = new WarehouseCheckoutDataImpl();
 	         ListDataService listDataService = new ListDataImpl();
 	         LogDataService logDataService = new LogDataImpl();
+	         TransportListDataService transportListDataService = new TransportListDataImpl();
 	         
 	         Naming.rebind("UserDataService", userDataService);
 	         Naming.rebind("FinanceAccountDataService", financeAccountDataService);
@@ -73,6 +76,7 @@ public class ServerActivator
 	         Naming.rebind("WarehouseCheckoutDataService", warehouseCheckoutDataService);
 	         Naming.rebind("ListDataService", listDataService);
 	         Naming.rebind("LogDataService", logDataService);
+	         Naming.rebind("TransportListDataService",transportListDataService);
 	         
 	         
 	         //如果要把实例注册到另一台启动了RMI注册服务的机器上    
