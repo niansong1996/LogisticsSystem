@@ -70,4 +70,9 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 			return new ResultMessage(false,"Could not find the numOccupancy!");
 		}
 	}
+
+	public ArrayList<ListPO> findAllList() throws RemoteException {
+		
+		return null;
+	}
 }

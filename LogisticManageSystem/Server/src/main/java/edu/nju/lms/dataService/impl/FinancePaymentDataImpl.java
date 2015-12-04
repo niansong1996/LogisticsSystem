@@ -10,6 +10,7 @@ import java.util.List;
 
 import edu.nju.lms.PO.EarningsPO;
 import edu.nju.lms.PO.PaymentPO;
+import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;
 import edu.nju.lms.data.utility.JDBC;
@@ -93,6 +94,21 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 //			}
 //		}
 		return result;
+	}
+
+	public ArrayList<PaymentPO> showAllPayment() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public EarningsPO findEarning() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage exportEarning(EarningVO earnings) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

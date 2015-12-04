@@ -88,4 +88,17 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 		return null;
 	}
 
+	public ArrayList<ReceiptPO> findReceipt(Calendar start, Calendar end) throws RemoteException {
+		ArrayList<ReceiptPO> receiptList = new ArrayList<ReceiptPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where receiptDate between \""
+				+ DataUtility.Cal2String(start)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\";" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(receiptList,result, ReceiptPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return receiptList;
+	}
+
 }
