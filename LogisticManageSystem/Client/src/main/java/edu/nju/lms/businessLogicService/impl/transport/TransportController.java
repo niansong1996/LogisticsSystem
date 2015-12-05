@@ -3,7 +3,6 @@ package edu.nju.lms.businessLogicService.impl.transport;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
@@ -170,17 +169,15 @@ public class TransportController implements TransManageblService,TransProcessblS
 		ResultMessage result=process.saveLoadList(loadList);
 		
 		if(result.isSuccess()){
-			logController.addLog("新建装车单"+loadList.getId()+"的信息");
+			logController.addLog("新建装运单"+loadList.getId()+"的信息");
 		}
 		
 		return result;
 	}
-	public LoadVO findLoadList(String id) {
-		LoadVO result=process.findLoadList(id);
-		logController.addLog("查看装车单"+id+"的信息");
-		
-		return result;
+	public ArrayList<LoadVO> findUnpaidLoad() {
+		return process.findUnpaidLoad();
 	}
+	
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
 		return process.createArrivalList(arrivalList);
 	}
@@ -243,18 +240,20 @@ public class TransportController implements TransManageblService,TransProcessblS
 	}
 
 	public LoadCarVO createLoadCarList(LoadCarVO baseMessage) {
-		// TODO Auto-generated method stub
-		return null;
+		return process.createLoadCarList(baseMessage);
 	}
 
 	public ResultMessage saveLoadCarList(LoadCarVO loadCarList) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultMessage result=process.saveLoadCarList(loadCarList);
+		if(result.isSuccess()){
+			logController.addLog("新建装车单"+loadCarList.getId()+"的信息");
+		}
+		return result;
 	}
-
-	public LoadCarVO findLoadCarList(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<LoadCarVO> findUnpaidLoadCar() {
+		return process.findUnpaidLoadCar();
 	}
+	
 	
 }

@@ -23,7 +23,7 @@ public interface TransportListDataService extends Remote{
 	
 	public ResultMessage addLoadCar(LoadCarPO load) throws RemoteException;
 	public LoadCarPO findLoadCar(String id) throws RemoteException;
-	public ArrayList<LoadCarPO> findAllLoadCar() throws RemoteException;
+	public ArrayList<LoadCarPO> findUnpaidLoadCar() throws RemoteException;
 	
 	public ResultMessage addArrival(ArrivalPO arrival) throws RemoteException;
 	public ArrivalPO findArrival(String id) throws RemoteException;

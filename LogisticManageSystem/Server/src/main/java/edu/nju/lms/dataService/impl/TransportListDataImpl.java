@@ -145,7 +145,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public ArrayList<LoadCarPO> findAllLoadCar() throws RemoteException {
+	public ArrayList<LoadCarPO> findUnpaidLoadCar() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

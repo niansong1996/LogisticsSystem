@@ -12,8 +12,10 @@ public class ReceiveVO extends ListVO {
 	private String receiverName;
 	private String receiveTime;
 	private String expressNum;
-	public ReceiveVO(String id, String expressNum) {
+	public ReceiveVO(String id, String receiverName,String receiveTime,String expressNum) {
 		super(id);
+		this.receiverName=receiverName;
+		this.receiveTime=receiveTime;
 		this.expressNum = expressNum;
 		this.type = ListType.RECEIVE;
 	}

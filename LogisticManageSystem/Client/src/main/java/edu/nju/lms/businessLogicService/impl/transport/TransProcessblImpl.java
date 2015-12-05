@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.PO.DispatchPO;
+import edu.nju.lms.PO.LoadCarPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DispatchVO;
+import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
@@ -129,28 +131,72 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public LoadVO findLoadList(String id) {
-		LoadVO result=null;
-		LoadPO po=null;
+	public ArrayList<LoadVO> findUnpaidLoad() {
+		ArrayList<LoadVO> result=new ArrayList<LoadVO>();
+		ArrayList<LoadPO> po=null;
 		try {
-			po=list.findLoad(id);
+			po=list.findUnpaidLoad();
 		} catch (RemoteException e) {
 			// TODO
 		}
 		if(po!=null){
 			DepartmentController depart;
-			try {
-				depart = BusinessLogicFactory.getDepartmentController();
-				CityVO city=depart.findCity(po.getDestiCity());
-				result=new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),
-						po.getBusinessHallNum(),po.getMotorNum(),city,po.getBusinessHallNum(),
-						po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
-			} catch (NoBusinessLogicException e) {
+			for(LoadPO temp : po){
+				try {
+					depart = BusinessLogicFactory.getDepartmentController();
+					CityVO city=depart.findCity(temp.getDestiCity());
+					LoadVO vo=new LoadVO(temp.getId(),temp.getLoadType(),CommonUtility.Cal2String(temp.getLoadDate()),
+							temp.getBusinessHallNum(),temp.getMotorNum(),city,temp.getBusinessHallNum(),
+							temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());
+					result.add(vo);
+				} catch (NoBusinessLogicException e) {
+				}
 			}
 		}
 		return result;
 	}
+	
+	public LoadCarVO createLoadCarList(LoadCarVO baseMessage) {
+		LoadCarVO result=baseMessage;
+		result.setLoadDate(CommonUtility.getTime());
+		int commodityNum=baseMessage.getCommodityNums().size();
+		double freight=30*2*(commodityNum/100.0);
+		result.setFreight(freight);
+		return result;
+	}
 
+	public ResultMessage saveLoadCarList(LoadCarVO loadCarList) {
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		LoadCarPO po=new LoadCarPO(loadCarList.getId(),loadCarList.getState().toString(),CommonUtility.String2Cal(loadCarList.getLoadDate()),
+				loadCarList.getBusinessHallNum(),loadCarList.getMotorNum(),loadCarList.getDestiBusinessHall(),loadCarList.getVehicleNum(),
+				loadCarList.getDriverNum(),loadCarList.getCommodityNums(),loadCarList.getFreight());
+		try {
+			result=list.addLoadCar(po);
+		} catch (RemoteException e) {
+			// TODO
+		}
+		return result;
+	}
+	
+	public ArrayList<LoadCarVO> findUnpaidLoadCar() {
+		ArrayList<LoadCarVO> result=new ArrayList<LoadCarVO>();
+		ArrayList<LoadCarPO> po=null;
+		try {
+			po=list.findUnpaidLoadCar();
+		} catch (RemoteException e) {
+			// TODO
+		}
+		if(po!=null){
+			for(LoadCarPO temp : po){
+				LoadCarVO vo=new LoadCarVO(temp.getId(),CommonUtility.Cal2String(temp.getLoadDate()),
+				temp.getBusinessHallNum(),temp.getMotorNum(),temp.getBusinessHallNum(),
+				temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());
+				result.add(vo);
+			}
+		}
+		return result;
+	}
+	
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
 		ArrivalVO result=arrivalList;
 		result.setId(this.listController.applyListNum(ListType.ARRIVAL));
@@ -264,7 +310,7 @@ public class TransProcessblImpl{
 			// TODO
 		}
 		if(po!=null){
-			receive=new ReceiveVO(po.getReceiverName(),po.getExpressNum());
+			receive=new ReceiveVO(po.getId(),po.getReceiverName(),CommonUtility.Cal2String(po.getReceiveTime()),po.getExpressNum());
 		}
 		return receive;
 	}

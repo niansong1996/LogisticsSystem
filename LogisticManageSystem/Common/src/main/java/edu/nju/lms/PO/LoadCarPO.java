@@ -1,6 +1,7 @@
 package edu.nju.lms.PO;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import edu.nju.lms.data.ListState;
 
@@ -9,7 +10,7 @@ public class LoadCarPO extends ListPO{
 	 * 
 	 */
 	private static final long serialVersionUID = 2214418940416103203L;
-	private String loadDate;
+	private Calendar loadDate;
 	//current businesshall
 	private String businessHallNum;
 	//qiyunbianhao
@@ -23,7 +24,7 @@ public class LoadCarPO extends ListPO{
 	
 	private double freight;
 	
-	public LoadCarPO(String id, String state,String loadDate, String businessHallNum,
+	public LoadCarPO(String id, String state,Calendar loadDate, String businessHallNum,
 			String motorNum, String destiBusinessHall,
 			String vehicleNum, String driverNum, ArrayList<String> commodityNums,
 			double freight) {
@@ -38,11 +39,11 @@ public class LoadCarPO extends ListPO{
 		this.freight = freight;
 	}
 
-	public String getLoadDate() {
+	public Calendar getLoadDate() {
 		return loadDate;
 	}
 
-	public void setLoadDate(String loadDate) {
+	public void setLoadDate(Calendar loadDate) {
 		this.loadDate = loadDate;
 	}
 

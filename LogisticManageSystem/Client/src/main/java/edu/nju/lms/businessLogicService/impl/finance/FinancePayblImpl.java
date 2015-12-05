@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.PaymentPO;
 import edu.nju.lms.VO.EarningVO;
 import edu.nju.lms.VO.FreightVO;
+import edu.nju.lms.VO.LoadCarVO;
+import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.RentVO;
@@ -17,6 +18,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -156,8 +158,18 @@ public class FinancePayblImpl{
 	}
 	
 	public double calculateFreight() {
-		// TODO Auto-generated method stub
-		return 0;
+		double result=0;
+		ArrayList<LoadVO> load=transportController.findUnpaidLoad();
+		ArrayList<LoadCarVO> loadCar=transportController.findUnpaidLoadCar();
+		for(LoadVO vo : load){
+			result+=vo.getFreight();
+			vo.setState(ListState.PAID);
+		}
+		for(LoadCarVO vo : loadCar){
+			result+=vo.getFreight();
+			vo.setState(ListState.PAID);
+		}
+		return result;
 	}
 	
 	public ResultMessage payMoney(String accountNum,double money) {

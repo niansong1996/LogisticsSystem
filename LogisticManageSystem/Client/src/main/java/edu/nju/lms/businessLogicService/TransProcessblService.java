@@ -1,5 +1,7 @@
 package edu.nju.lms.businessLogicService;
 
+import java.util.ArrayList;
+
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.LoadCarVO;
@@ -30,14 +32,14 @@ public interface TransProcessblService {
 
 	public ResultMessage saveLoadList(LoadVO loadList);
 	
-	public LoadVO findLoadList(String id);
+	public ArrayList<LoadVO> findUnpaidLoad();
 	
 	
 	public LoadCarVO createLoadCarList(LoadCarVO baseMessage);
 
 	public ResultMessage saveLoadCarList(LoadCarVO loadCarList);
 	
-	public LoadCarVO findLoadCarList(String id);
+	public ArrayList<LoadCarVO> findUnpaidLoadCar();
 	
 	
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList);
