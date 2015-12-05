@@ -13,11 +13,11 @@ import edu.nju.lms.dataService.ListDataService;
 public class ListNumOccupancy {
 	private NumOccupancyPO numOccupancy;
 	private ListDataService listService;
-	public ListNumOccupancy(ListDataService listService){
+	ListNumOccupancy(ListDataService listService){
 		numOccupancy = this.getNumOccupancy(listService);
 		this.listService = listService;
 	}
-	public String generateListNum(ListType listType){
+	String generateListNum(ListType listType){
 		switch(listType){
 		case ARRIVAL:numOccupancy.increaseArrivalListNum();return numOccupancy.getArrivalListNum();
 		case CHECKIN:numOccupancy.increaseCheckinListNum();return numOccupancy.getCheckinListNum();
@@ -31,9 +31,9 @@ public class ListNumOccupancy {
 		case SEND:numOccupancy.increaseSendListNum();return numOccupancy.getSendListNum();
 		default:System.err.println("The listType not match!!!");return "error";
 		}
-		
+
 	}
-	public NumOccupancyPO getNumOccupancy(ListDataService listService) {
+	NumOccupancyPO getNumOccupancy(ListDataService listService) {
 		try {
 			return listService.getNumOccupancy();
 		} catch (RemoteException e) {
