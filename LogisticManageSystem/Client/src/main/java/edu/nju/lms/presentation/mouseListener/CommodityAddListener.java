@@ -27,8 +27,8 @@ public class CommodityAddListener extends ButtonListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		MyTextField num = (MyTextField) units.get(2);
-		num.setText("");
 		String text = num.getText();
+		num.setText("");
 		table.addCommodity(text);
 	}
 
