@@ -22,6 +22,7 @@ import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.ShipState;
@@ -34,22 +35,8 @@ public class TransProcessblImpl{
 	TransportListDataService list;
 	
 	ListController listController;
-	
-	private int basicSendNum;
-	private int basicArrivalNum;
-	private int basicLoadNum;
-	private int basicDispatchNum;
-	private int basicReceiveNum;
-	
 	public TransProcessblImpl(ListController listController,TransportCommodityDataService commodity,TransportListDataService list){
 		this.listController = listController;
-		try{
-		this.basicArrivalNum = Integer.parseInt(listController.getNumOccupancy().getArrivalListNum());
-		this.basicLoadNum = Integer.parseInt(listController.getNumOccupancy().getLoadListNum());
-		this.basicSendNum = Integer.parseInt(listController.getNumOccupancy().getSendListNum());
-		this.basicDispatchNum = Integer.parseInt(listController.getNumOccupancy().getDispatchListNum());
-		this.basicReceiveNum = Integer.parseInt(listController.getNumOccupancy().getReceiveListNum());
-		}catch(Exception e){System.err.println("parse Error!!!");}
 		this.commodity=commodity;
 		this.list=list;
 	}
@@ -66,7 +53,7 @@ public class TransProcessblImpl{
 
 	public SendVO createSendList(SendVO baseMessage) {
 		SendVO result=baseMessage;
-		result.setId(createSendNum());
+		result.setId(listController.applyListNum(ListType.SEND));
 		result.setCreateTime(CommonUtility.getTime());
 		result.setPrice(calculateMoney(baseMessage.getPackingType(),baseMessage.getMode()));
 		//TODO   time
@@ -112,7 +99,7 @@ public class TransProcessblImpl{
 
 	public LoadVO createLoadList(LoadVO baseMessage) {
 		LoadVO result=baseMessage;
-		result.setId(createLoadNum());
+		result.setId(this.listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
 		return result;
 	}
@@ -166,7 +153,7 @@ public class TransProcessblImpl{
 
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
 		ArrivalVO result=arrivalList;
-		result.setId(createArrivalNum());
+		result.setId(this.listController.applyListNum(ListType.ARRIVAL));
 		result.setArrivalDate(CommonUtility.getTime());
 		return result;
 	}
@@ -208,7 +195,7 @@ public class TransProcessblImpl{
 
 	public DispatchVO createDispatchList(DispatchVO dispatchList) {
 		DispatchVO result=dispatchList;
-		result.setId(createDispatchNum());
+		result.setId(this.listController.applyListNum(ListType.DISPATCH));
 		result.setArrivalDate(CommonUtility.getTime());
 		return result;
 	}
@@ -247,7 +234,7 @@ public class TransProcessblImpl{
 	
 	public ReceiveVO createReceiveList(ReceiveVO receiveList) {
 		ReceiveVO result=receiveList;
-		result.setId(createReceiveNum());
+		result.setId(this.listController.applyListNum(ListType.RECEIVE));
 		result.setReceiveTime(CommonUtility.getTime());
 		return result;
 	}
@@ -280,52 +267,6 @@ public class TransProcessblImpl{
 			receive=new ReceiveVO(po.getReceiverName(),po.getExpressNum());
 		}
 		return receive;
-	}
-	
-	public String createSendNum(){
-		String temp=String.valueOf(basicSendNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		String result="01"+temp;
-		basicSendNum++;
-		return result;
-	}
-	public String createArrivalNum(){
-		String temp=String.valueOf(basicArrivalNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		String result="03"+temp;
-		basicArrivalNum++;
-		return result;
-	}
-	public String createLoadNum(){
-		String temp=String.valueOf(basicLoadNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		String result="02"+temp;
-		basicLoadNum++;
-		return result;
-	}
-	public String createDispatchNum(){
-		String temp=String.valueOf(basicDispatchNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		String result="04"+temp;
-		basicDispatchNum++;
-		return result;
-	}
-	public String createReceiveNum(){
-		String temp=String.valueOf(basicReceiveNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		String result="07"+temp;
-		basicReceiveNum++;
-		return result;
 	}
 	
 	public double calculateMoney(PackingType packingType, TransportMode mode){

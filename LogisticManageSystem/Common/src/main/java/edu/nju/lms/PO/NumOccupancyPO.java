@@ -12,18 +12,21 @@ public class NumOccupancyPO implements Serializable{
 	private String CheckinListNum;
 	private String CheckoutListNum;
 	private String DispatchListNum;
+	private String LoadCarListNum;
 	private String LoadListNum;
 	private String PaymentListNum;
 	private String ReceiptListNum;
 	private String ReceiveListNum;
 	public NumOccupancyPO(String sendListNum, String arrivalListNum, String checkinListNum, String checkoutListNum,
-			String dispatchListNum, String loadListNum, String paymentListNum, String receiptListNum,
-			String receiveListNum) {
+			String dispatchListNum, String loadCarListNum, String loadListNum, String paymentListNum,
+			String receiptListNum, String receiveListNum) {
+		super();
 		SendListNum = sendListNum;
 		ArrivalListNum = arrivalListNum;
 		CheckinListNum = checkinListNum;
 		CheckoutListNum = checkoutListNum;
 		DispatchListNum = dispatchListNum;
+		LoadCarListNum = loadCarListNum;
 		LoadListNum = loadListNum;
 		PaymentListNum = paymentListNum;
 		ReceiptListNum = receiptListNum;
@@ -32,59 +35,62 @@ public class NumOccupancyPO implements Serializable{
 	public String getSendListNum() {
 		return SendListNum;
 	}
-	public void setSendListNum(String sendListNum) {
-		SendListNum = sendListNum;
+	public void increaseSendListNum() {
+		SendListNum = String.valueOf(Long.parseLong(SendListNum)+1L);
 	}
 	public String getArrivalListNum() {
 		return ArrivalListNum;
 	}
-	public void setArrivalListNum(String arrivalListNum) {
-		ArrivalListNum = arrivalListNum;
+	public void increaseArrivalListNum() {
+		ArrivalListNum = String.valueOf(Long.parseLong(ArrivalListNum)+1L);
 	}
 	public String getCheckinListNum() {
 		return CheckinListNum;
 	}
-	public void setCheckinListNum(String checkinListNum) {
-		CheckinListNum = checkinListNum;
+	public void increaseCheckinListNum() {
+		CheckinListNum = String.valueOf(Long.parseLong(CheckinListNum)+1L);
 	}
 	public String getCheckoutListNum() {
 		return CheckoutListNum;
 	}
-	public void setCheckoutListNum(String checkoutListNum) {
-		CheckoutListNum = checkoutListNum;
+	public void increaseCheckoutListNum() {
+		CheckoutListNum = String.valueOf(Long.parseLong(CheckoutListNum)+1L);
 	}
 	public String getDispatchListNum() {
 		return DispatchListNum;
 	}
-	public void setDispatchListNum(String dispatchListNum) {
-		DispatchListNum = dispatchListNum;
+	public void increaseDispatchListNum() {
+		DispatchListNum = String.valueOf(Long.parseLong(DispatchListNum)+1L);
 	}
 	public String getLoadListNum() {
 		return LoadListNum;
 	}
-	public void setLoadListNum(String loadListNum) {
-		LoadListNum = loadListNum;
+	public void increaseLoadListNum() {
+		LoadListNum = String.valueOf(Long.parseLong(LoadListNum)+1L);
 	}
 	public String getPaymentListNum() {
 		return PaymentListNum;
 	}
-	public void setPaymentListNum(String paymentListNum) {
-		PaymentListNum = paymentListNum;
+	public void increasePaymentListNum() {
+		PaymentListNum = String.valueOf(Long.parseLong(PaymentListNum)+1L);
 	}
 	public String getReceiptListNum() {
 		return ReceiptListNum;
 	}
-	public void setReceiptListNum(String receiptListNum) {
-		ReceiptListNum = receiptListNum;
+	public void increaseReceiptListNum() {
+		ReceiptListNum = String.valueOf(Long.parseLong(ReceiptListNum)+1L);
 	}
 	public String getReceiveListNum() {
 		return ReceiveListNum;
 	}
-	public void setReceiveListNum(String receiveListNum) {
-		ReceiveListNum = receiveListNum;
+	public void increaseReceiveListNum() {
+		ReceiveListNum = String.valueOf(Long.parseLong(ReceiveListNum)+1L);
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getLoadCarListNum() {
+		return LoadCarListNum;
+	}
+	public void increaseLoadCarListNum() {
+		LoadCarListNum = String.valueOf(Long.parseLong(LoadCarListNum)+1L);
 	}
 	
 	

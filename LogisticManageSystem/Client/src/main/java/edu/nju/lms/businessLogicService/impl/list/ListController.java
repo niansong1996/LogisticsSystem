@@ -3,7 +3,6 @@ package edu.nju.lms.businessLogicService.impl.list;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import edu.nju.lms.PO.NumOccupancyPO;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
@@ -25,7 +24,7 @@ public class ListController implements ListblService{
 			logController=BusinessLogicFactory.getLogController();
 			listService=(ListDataService) Naming.lookup("//127.0.0.1:1099/ListDataService");
 			list=new ListblImpl(listService);
-			listNum = new ListNumOccupancy();
+			listNum = new ListNumOccupancy(listService);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
 		} catch(Exception e1){
@@ -52,19 +51,14 @@ public class ListController implements ListblService{
 		return result;
 	}
 
-	public NumOccupancyPO getNumOccupancy() {
-		return this.listNum.getNumOccupancy(listService);
-	}
-
-	public ResultMessage updateNumOccupancy(NumOccupancyPO numOccupancyPO) {
-		return this.listNum.updateNumOccupancy(listService, numOccupancyPO);
-	}
-
 	public ArrayList<ListVO> getAllList() {
 		ArrayList<ListVO> result=list.getAllList();
 		logController.addLog("查看所有单据信息");
 		return result;
 	}
 
+	public String applyListNum(ListType type){
+		return this.listNum.generateListNum(type);
+	}
 	
 }

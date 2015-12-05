@@ -141,6 +141,7 @@ CheckinListNum varchar(12) not null,
 CheckoutListNum varchar(12) not null,
 DispathcListNum varchar(12) not null,
 LoadListNum varchar(12) not null,
+LoadCarListNum varchar(12) not null,
 PaymentListNum varchar(12) not null,
 ReceiptListNum varchar(12) not null,
 ReceiveListNum varchar(12) not null
@@ -268,6 +269,6 @@ businessHallNum varchar(20) not null
 
 
 
-insert into NumOccupancyPO value(NULL,"0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000","0000000000");
+insert into NumOccupancyPO value(NULL,"0100000000","0300000000","0000000000","0000000000","0400000000","0200000000","0000000000","0000000000","0000000000","0700000000");
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");
