@@ -214,11 +214,15 @@
 		<mainPanel name="checkListPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="checkList" class = "Component" x="150" y="20" w="98" h="23"/>
-		     <component name="listsPanel" class ="Component" x="150" y="60" w="520" h="600"/>
-		     <unit name ="list" class = "table.ListTable" x="174" y="110" w="470" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
-		     <unit name ="listType" class = "MyComboBox" x="260" y="84" w="150" h="23" type="itemListener" items="寄件单;收件单;装车单;装运单;收款单;到达单;派件单;入库单;出库单;租金付款单;工资付款单;运费付款单" listenerName="ListTypeListener"/>
-		     <unit name ="listNum" class="MyTextField" x="500" y="84" w="100" h="23" type="0" textType="null" />
-		     <unit name ="findPerson" class = "MainButton" x="600" y="84" w="53" h="23" type="0" />
+		     <component name="listsPanel" class ="Component" x="120" y="60" w="520" h="600"/>
+		     <unit name ="list" class = "table.ListTable" x="144" y="110" w="470" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="listType" class = "MyComboBox" x="230" y="84" w="150" h="23" type="itemListener" items="寄件单;收件单;装车单;装运单;收款单;到达单;派件单;入库单;出库单;租金付款单;工资付款单;运费付款单" listenerName="ListTypeListener"/>
+		     <unit name ="listNum" class="MyTextField" x="470" y="84" w="100" h="23" type="0" textType="null" />
+		     <unit name ="findPerson" class = "MainButton" x="570" y="84" w="53" h="23" type="1" listenerName="FindListListener"/>
+		     <unit name ="pass" class = "MainButton" x="200" y="650" w="112" h="34" type="1" listenerName="PassChoosedListListener"/>
+		     <unit name ="fail" class = "MainButton" x="380" y="650" w="112" h="34" type="1" listenerName="FailChoosedListListener"/>
+		     <unit name ="pass" class = "MainButton" x="700" y="650" w="112" h="34" type="1" listenerName="PassSingleListListener"/>
+		     <unit name ="fail" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="FailSingleListListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -234,6 +238,11 @@
 		<mainPanel name="checkLogPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="log" class = "Component" x="150" y="20" w="98" h="23"/>
+		     <component name="to" class = "Component" x="345" y="60" w="31" h="29"/>
+		     <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
+		     <unit name ="end" class="DateChooser" x="395" y="60" w="180" h="33" type="0"/>
+		     <unit name ="logTable" class = "table.LogTable" x="150" y="130" w="850" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="search" class = "MainButton" x="600" y="60" w="112" h="34" type="1" listenerName="SearchLogButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

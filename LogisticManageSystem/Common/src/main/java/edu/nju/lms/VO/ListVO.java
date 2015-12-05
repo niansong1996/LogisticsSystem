@@ -31,5 +31,8 @@ public class ListVO {
 	public ListType getType() {
 		return type;
 	}
+	public void setType(String type){
+		this.type = EnumTransformer.str2ListType(type);
+	}
 	
 }

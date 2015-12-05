@@ -11,6 +11,7 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 import edu.nju.lms.presentation.components.table.PayListTable;
 import edu.nju.lms.presentation.components.table.PersonnelTable;
@@ -28,6 +29,8 @@ public class SearchProfitListButtonListener extends ButtonListener {
 		super(units, controller, button);
 		this.lists = new ArrayList<PaymentVO>();
 		this.finance = controller.getFinanceController();
+		this.start = (DateChooser) units.get(0);
+		this.end = (DateChooser) units.get(1);
 	}
 
 	@Override
@@ -37,6 +40,9 @@ public class SearchProfitListButtonListener extends ButtonListener {
 		Calendar d = Calendar.getInstance();
 		d.setTime(end.getDate());
 		lists = finance.showAllPayment(s, d);
+		if(lists.isEmpty()){
+			MyDialog dialog = new MyDialog("此段时间无账单",true);
+		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
 		PayListTable table = (PayListTable)units.get(2);
 		for (int i = 0; i < lists.size(); i++) {
