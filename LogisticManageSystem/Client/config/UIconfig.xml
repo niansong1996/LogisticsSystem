@@ -249,6 +249,15 @@
 		<mainPanel name="SumReceiptPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="receiptSum" class = "Component" x="150" y="20" w="98" h="23"/>
+		     <component name="to" class = "Component" x="345" y="60" w="31" h="29"/>
+		     <component name="payListText" class = "Component" x="260" y="120" w="160" h="48"/>
+		     <component name="receiveListText" class = "Component" x="740" y="120" w="160" h="48"/>
+		     <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
+		     <unit name ="end" class="DateChooser" x="395" y="60" w="180" h="33" type="0"/>
+		     <unit name ="paylist" class = "table.PayListTable" x="120" y="170" w="470" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="receiptlist" class = "table.ReceiptTable" x="600" y="170" w="470" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="export" class = "MainButton" x="900" y="60" w="112" h="34" type="1" listenerName="ExportListButtonListener"/>
+		     <unit name ="search" class = "MainButton" x="590" y="60" w="112" h="34" type="1" listenerName="SearchProfitListButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

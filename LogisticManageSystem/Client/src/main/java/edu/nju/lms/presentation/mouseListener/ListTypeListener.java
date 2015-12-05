@@ -10,7 +10,7 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.components.ListTransformer;
+import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.table.ListTable;
 import edu.nju.lms.presentation.components.table.MyTable;
@@ -37,7 +37,7 @@ public class ListTypeListener implements ItemListener {
 
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
-			ListType type = ListTransformer.str2Type((String) e.getItem());
+			ListType type = EnumTransformer.str2ListType((String) e.getItem());
 			if (listControl != null) {
 				ArrayList<ListVO> lists = listControl.getListInfo(type);
 				ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

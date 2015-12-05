@@ -12,7 +12,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.components.ListTransformer;
+import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -40,8 +40,8 @@ public class ListTable extends MyTable {
 		}
 	}
 	public MyTableLabel createLabel(ListVO list) {
-	    String type = ListTransformer.type2Str(list.getType());
-	    String state = ListTransformer.state2Str(list.getState());
+	    String type = EnumTransformer.listType2Str(list.getType());
+	    String state = EnumTransformer.listState2Str(list.getState());
 		MyLabel listType = new MyLabel(type);
 		listType.setSize(80, 30);
 		MyLabel listID = new MyLabel(list.getId());
