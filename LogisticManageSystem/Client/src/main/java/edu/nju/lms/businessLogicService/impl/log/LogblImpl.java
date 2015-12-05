@@ -32,11 +32,13 @@ public class LogblImpl {
 		try {
 			temp=logData.findOperation(begin, end);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return log;
 		}
-		for(OperationPO opPO: temp){
-			OperationVO op=new OperationVO(opPO.getTiming(),opPO.getUsername(),opPO.getExplanation());
-			log.add(op);
+		if(temp!=null){
+			for(OperationPO opPO: temp){
+				OperationVO op=new OperationVO(opPO.getTiming(),opPO.getUsername(),opPO.getExplanation());
+				log.add(op);
+			}
 		}
 		return log;
 	}
@@ -48,11 +50,11 @@ public class LogblImpl {
 	 */
 	public ResultMessage addLog(OperationVO op) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		OperationPO opPO=new OperationPO(op.getTime(),op.getUser(),op.getExplain());
+		OperationPO opPO=new OperationPO(op.getExplain(),op.getTime(),op.getUser());
 		try {
 			result=logData.addOperation(opPO);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return result;
 		}
 		return result;
 	}

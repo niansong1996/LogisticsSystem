@@ -16,8 +16,11 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
+import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
@@ -33,19 +36,25 @@ public class TransportController implements TransManageblService,TransProcessblS
 	TransProcessblImpl process;
 	
 	LogController logController;
-	
 	ListController listController;
+	DepartmentController departmentController;
+	FinanceController financeController;
+	PersonnelController personnelController;
 	
 	public TransportController(){
 		try {
 			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
-			manage=new TransManageblImpl(toolData);
+			personnelController=BusinessLogicFactory.getPersonnelController();
+			listController = BusinessLogicFactory.getListController();
+			departmentController=BusinessLogicFactory.getDepartmentController();
+			financeController=BusinessLogicFactory.getFinanceController();
+			
+			manage=new TransManageblImpl(personnelController,departmentController,listController,toolData);
 			
 			listData=(TransportListDataService) Naming.lookup("//127.0.0.1:1099/TransportListDataService");
 			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
 			
-			listController = BusinessLogicFactory.getListController();
-			process=new TransProcessblImpl(listController,commodityData,listData);
+			process=new TransProcessblImpl(listController,departmentController,financeController,commodityData,listData);
 			
 			logController=BusinessLogicFactory.getLogController();
 		}catch(NoBusinessLogicException e1){

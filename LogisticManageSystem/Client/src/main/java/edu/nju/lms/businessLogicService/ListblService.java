@@ -2,7 +2,6 @@ package edu.nju.lms.businessLogicService;
 
 import java.util.ArrayList;
 
-import edu.nju.lms.PO.NumOccupancyPO;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
@@ -19,6 +18,8 @@ public interface ListblService {
 	public ArrayList<ListVO>  getListInfo(ListType type);
 	
 	public ArrayList<ListVO> getAllList();
+	
+	public ListVO getListInfo(String id);
 	
 	/**
 	 * use id to find List，and change the data

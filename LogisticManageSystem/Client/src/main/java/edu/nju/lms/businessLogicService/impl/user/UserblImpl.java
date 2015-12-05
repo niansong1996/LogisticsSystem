@@ -30,7 +30,6 @@ public class UserblImpl{
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
-			//TODO
 		}
 		if (userPO != null) {
 			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
@@ -47,7 +46,7 @@ public class UserblImpl{
 		try {
 			result = dataService.deleteUser(id);
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
@@ -66,7 +65,7 @@ public class UserblImpl{
 		try {
 			result = dataService.updateUser(userPO);
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
@@ -85,7 +84,7 @@ public class UserblImpl{
 		try {
 			result = dataService.addUser(userPO);
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
@@ -134,7 +133,6 @@ public class UserblImpl{
 		try {
 			users = dataService.getAllUser();
 		} catch (RemoteException e) {
-			//TODO
 		}
 		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
 		for(UserPO user: users) {

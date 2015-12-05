@@ -12,25 +12,27 @@ public class NumOccupancyPO implements Serializable{
 	private String CheckinListNum;
 	private String CheckoutListNum;
 	private String DispatchListNum;
-	private String LoadCarListNum;
 	private String LoadListNum;
 	private String PaymentListNum;
 	private String ReceiptListNum;
 	private String ReceiveListNum;
+	private String DriverNum;
+	private String CarNum;
 	public NumOccupancyPO(String sendListNum, String arrivalListNum, String checkinListNum, String checkoutListNum,
-			String dispatchListNum, String loadCarListNum, String loadListNum, String paymentListNum,
-			String receiptListNum, String receiveListNum) {
+			String dispatchListNum,String loadListNum, String paymentListNum,String receiptListNum, 
+			String receiveListNum,String driverNum,String carNum) {
 		super();
 		SendListNum = sendListNum;
 		ArrivalListNum = arrivalListNum;
 		CheckinListNum = checkinListNum;
 		CheckoutListNum = checkoutListNum;
 		DispatchListNum = dispatchListNum;
-		LoadCarListNum = loadCarListNum;
 		LoadListNum = loadListNum;
 		PaymentListNum = paymentListNum;
 		ReceiptListNum = receiptListNum;
 		ReceiveListNum = receiveListNum;
+		DriverNum=driverNum;
+		CarNum=carNum;
 	}
 	public String getSendListNum() {
 		return SendListNum;
@@ -86,12 +88,16 @@ public class NumOccupancyPO implements Serializable{
 	public void increaseReceiveListNum() {
 		ReceiveListNum = String.valueOf(Long.parseLong(ReceiveListNum)+1L);
 	}
-	public String getLoadCarListNum() {
-		return LoadCarListNum;
+	public String getDriverNum() {
+		return DriverNum;
 	}
-	public void increaseLoadCarListNum() {
-		LoadCarListNum = String.valueOf(Long.parseLong(LoadCarListNum)+1L);
+	public void increaseDriverNum() {
+		ReceiveListNum = String.valueOf(Long.parseLong(DriverNum)+1L);
 	}
-	
-	
+	public String getCarNum() {
+		return CarNum;
+	}
+	public void increaseCarNum() {
+		CarNum = String.valueOf(Long.parseLong(CarNum)+1L);
+	}
 }

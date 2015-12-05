@@ -1,9 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.transport;
 
 import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import edu.nju.lms.PO.DriverPO;
 import edu.nju.lms.PO.VehiclePO;
@@ -11,26 +9,31 @@ import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.VehicleVO;
-import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportToolDataService;
 
 public class TransManageblImpl{
 
 	TransportToolDataService service;
-	private static int basicCarNum=0;
-	private static int basicDriverNum=0;
+	PersonnelController personnelController;
+	DepartmentController departmentController;
+	ListController listController;
 	
-	public TransManageblImpl(TransportToolDataService tool){
+	public TransManageblImpl(PersonnelController personnelController,DepartmentController departmentController,ListController listController,TransportToolDataService tool){
+		this.personnelController=personnelController;
+		this.departmentController=departmentController;
+		this.listController=listController;
 		this.service=tool;
 	}
 	
 	public VehicleVO addVehicle(VehicleVO vehicle) {
 		VehicleVO car=vehicle;
-		car.setVehicleNum(createCarNum(vehicle.getBusinessHallNum()));
+		car.setVehicleNum(vehicle.getBusinessHallNum()+listController.applyListNum(ListType.CAR));
 		return car;
 	}
 
@@ -45,7 +48,7 @@ public class TransManageblImpl{
 		try {
 			result=service.addVehicle(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -59,7 +62,7 @@ public class TransManageblImpl{
 		try {
 			result=service.deleteVehicle(vehicleNum);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -75,7 +78,7 @@ public class TransManageblImpl{
 		try {
 			result=service.updateVehicle(po);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
 		return result;
 	}
@@ -90,7 +93,7 @@ public class TransManageblImpl{
 				po.getBusinessHallNum(),po.getServiceYears());
 			}
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -101,7 +104,7 @@ public class TransManageblImpl{
 		try {
 			po=service.showAllVihicle();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(VehiclePO temp : po){
@@ -115,7 +118,7 @@ public class TransManageblImpl{
 	
 	public DriverVO addDriver(DriverVO driver) {
 		DriverVO result=driver;
-		result.setDriverNum(createDriverNum(driver.getBusinesshallNum()));
+		result.setDriverNum(driver.getBusinesshallNum()+listController.applyListNum(ListType.DRIVER));
 		return result;
 	}
 
@@ -125,29 +128,17 @@ public class TransManageblImpl{
 			return result;
 		}
 		result=new ResultMessage(false,"网络未连接");
-		String[] temp1=driver.getBirth().split("/");
-		Calendar c1=Calendar.getInstance();
-		c1.set(Integer.parseInt(temp1[0]), Integer.parseInt(temp1[1]),Integer.parseInt(temp1[2]));
-		String[] temp2=driver.getDrivingLimit().split("/");
-		Calendar c2=Calendar.getInstance();
-		c2.set(Integer.parseInt(temp2[0]), Integer.parseInt(temp2[1]),Integer.parseInt(temp2[2]));
-		
-		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),c1,driver.getIdNum(),
-				driver.getPhoneNum(),driver.getSex(),c2,driver.getBusinesshallNum());
+
+		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),CommonUtility.String2Cal(driver.getBirth()),
+				driver.getIdNum(),driver.getPhoneNum(),driver.getSex(),CommonUtility.String2Cal(driver.getDrivingLimit()),driver.getBusinesshallNum());
 		try {
 			result=service.addDriver(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		//add the driver into the personnel
-		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),
-				"司机",0,0,0);
-		try {
-			PersonnelController personnelController=BusinessLogicFactory.getPersonnelController();
-			personnelController.addPersonnel(personnel);
-		} catch (NoBusinessLogicException e) {
-			e.printStackTrace();
-		}
+		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),"司机",0,0,0);
+		personnelController.addPersonnel(personnel);
 		return result;
 	}
 
@@ -160,14 +151,9 @@ public class TransManageblImpl{
 		try {
 			result=service.deleteDriver(driverNum);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
-		try {
-			PersonnelController personnelController=BusinessLogicFactory.getPersonnelController();
-			personnelController.deletePersonnel(driverNum);
-		} catch (NoBusinessLogicException e) {
-			e.printStackTrace();
-		}
+		personnelController.deletePersonnel(driverNum);
 		return result;
 	}
 
@@ -177,28 +163,16 @@ public class TransManageblImpl{
 			return result;
 		}
 		result=new ResultMessage(false,"网络未连接");
-		String[] temp1=driver.getBirth().split("/");
-		Calendar c1=Calendar.getInstance();
-		c1.set(Integer.parseInt(temp1[0]), Integer.parseInt(temp1[1]),Integer.parseInt(temp1[2]));
-		String[] temp2=driver.getDrivingLimit().split("/");
-		Calendar c2=Calendar.getInstance();
-		c2.set(Integer.parseInt(temp2[0]), Integer.parseInt(temp2[1]),Integer.parseInt(temp2[2]));
-		
-		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),c1,driver.getIdNum(),
-				driver.getPhoneNum(),driver.getSex(),c2,driver.getBusinesshallNum());
+	
+		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),CommonUtility.String2Cal(driver.getBirth()),
+				driver.getIdNum(),driver.getPhoneNum(),driver.getSex(),CommonUtility.String2Cal(driver.getDrivingLimit()),driver.getBusinesshallNum());
 		try {
 			result=service.addDriver(po);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
-		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),
-				"司机",0,0,0);
-		try {
-			PersonnelController personnelController=BusinessLogicFactory.getPersonnelController();
-			personnelController.updatePersonnel(personnel);
-		} catch (NoBusinessLogicException e) {
-			e.printStackTrace();
-		}
+		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),"司机",0,0,0);
+		personnelController.updatePersonnel(personnel);
 		return result;
 	}
 
@@ -208,47 +182,21 @@ public class TransManageblImpl{
 		try {
 			po=service.findDriver(vehicleNum);
 			if(po!=null){
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-				String birth=sdf.format(po.getBirth());
-				String drivingLimit=sdf.format(po.getDrivingLimit());
-				result=new DriverVO(po.getDriverNum(),po.getDriverName(),birth,po.getIdNum(),
-						po.getPhoneNum(),po.getSex(),drivingLimit,po.getBusinesshallNum());
+				result=new DriverVO(po.getDriverNum(),po.getDriverName(),CommonUtility.Cal2String(po.getBirth()),
+						po.getIdNum(),po.getPhoneNum(),po.getSex(),CommonUtility.Cal2String(po.getDrivingLimit()),po.getBusinesshallNum());
 			}
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
 
-	public String createCarNum(String businessNum){
-		String temp=String.valueOf(basicCarNum);
-		while(temp.length()<3){
-			temp="0"+temp;
-		}
-		String result=businessNum+temp;
-		basicCarNum++;
-		return result;
-	}
-	public String createDriverNum(String businessNum){
-		String temp=String.valueOf(basicDriverNum);
-		while(temp.length()<3){
-			temp="0"+temp;
-		}
-		String result=businessNum+temp;
-		basicDriverNum++;
-		return result;
-	}
 	public ResultMessage check(String businessNum){
 		ResultMessage result=new ResultMessage(true,"");
-		try {
-			DepartmentController departController=BusinessLogicFactory.getDepartmentController();
-			DepartmentVO depart=departController.getDepartInfo(businessNum);
-			if(depart==null){
-				result.setSuccess(false);
-				result.setErrorMessage("未找到该机构！");
-			}
-		} catch (NoBusinessLogicException e) {
-			e.printStackTrace();
+		DepartmentVO depart=departmentController.getDepartInfo(businessNum);
+		if(depart==null){
+			result.setSuccess(false);
+			result.setErrorMessage("未找到该机构！");
 		}
 		return result;
 	}

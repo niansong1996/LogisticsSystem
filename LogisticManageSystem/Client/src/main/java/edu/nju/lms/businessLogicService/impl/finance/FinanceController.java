@@ -20,10 +20,12 @@ import edu.nju.lms.businessLogicService.FinanceAccountblService;
 import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
@@ -47,6 +49,8 @@ public class FinanceController
 	LogController logController;
 	PersonnelController personnelController;
 	TransportController transportController;
+	DepartmentController departmentController;
+	//WarehouseController warehouseController;
 	
 	public FinanceController(){
 		try {
@@ -54,9 +58,11 @@ public class FinanceController
 			logController=BusinessLogicFactory.getLogController();
 			personnelController=BusinessLogicFactory.getPersonnelController();
 			transportController=BusinessLogicFactory.getTransportController();
+			departmentController=BusinessLogicFactory.getDepartmentController();
+			//warehouseController=BusinessLogicFactory.getWarehouseController();
 			
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
-			accountf=new FinanceAccountblImpl(accountData);
+			accountf=new FinanceAccountblImpl(departmentController,personnelController,transportController,accountData);
 			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
 			pay=new FinancePayblImpl(listController,personnelController,transportController,accountData,payData);
 			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");

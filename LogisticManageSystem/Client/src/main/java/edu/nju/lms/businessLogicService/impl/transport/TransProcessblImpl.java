@@ -18,8 +18,6 @@ import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
-import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
@@ -37,8 +35,13 @@ public class TransProcessblImpl{
 	TransportListDataService list;
 	
 	ListController listController;
-	public TransProcessblImpl(ListController listController,TransportCommodityDataService commodity,TransportListDataService list){
+	DepartmentController departmentController;
+	FinanceController financeController;
+	
+	public TransProcessblImpl(ListController listController,DepartmentController departmentController,FinanceController financeController,TransportCommodityDataService commodity,TransportListDataService list){
 		this.listController = listController;
+		this.departmentController=departmentController;
+		this.financeController=financeController;
 		this.commodity=commodity;
 		this.list=list;
 	}
@@ -69,7 +72,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addSend(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(result.isSuccess()){
 			ArrayList<String> loading=new ArrayList<String>();
@@ -90,7 +93,7 @@ public class TransProcessblImpl{
 		try {
 			po=list.findSend(expressNum);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getInitialNum(),po.getWeight(),
@@ -103,6 +106,7 @@ public class TransProcessblImpl{
 		LoadVO result=baseMessage;
 		result.setId(this.listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
+		//TODO
 		return result;
 	}
 
@@ -114,7 +118,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addLoad(po);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
 		if(result.isSuccess()){
 			ArrayList<String> temp=loadList.getCommodityNums(); 
@@ -137,20 +141,15 @@ public class TransProcessblImpl{
 		try {
 			po=list.findUnpaidLoad();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
-			DepartmentController depart;
 			for(LoadPO temp : po){
-				try {
-					depart = BusinessLogicFactory.getDepartmentController();
-					CityVO city=depart.findCity(temp.getDestiCity());
-					LoadVO vo=new LoadVO(temp.getId(),temp.getLoadType(),CommonUtility.Cal2String(temp.getLoadDate()),
-							temp.getBusinessHallNum(),temp.getMotorNum(),city,temp.getBusinessHallNum(),
-							temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());
-					result.add(vo);
-				} catch (NoBusinessLogicException e) {
-				}
+				CityVO city=departmentController.findCity(temp.getDestiCity());
+				LoadVO vo=new LoadVO(temp.getId(),temp.getLoadType(),CommonUtility.Cal2String(temp.getLoadDate()),
+						temp.getBusinessHallNum(),temp.getMotorNum(),city,temp.getBusinessHallNum(),
+						temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());
+				result.add(vo);
 			}
 		}
 		return result;
@@ -158,6 +157,7 @@ public class TransProcessblImpl{
 	
 	public LoadCarVO createLoadCarList(LoadCarVO baseMessage) {
 		LoadCarVO result=baseMessage;
+		result.setId(listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
 		int commodityNum=baseMessage.getCommodityNums().size();
 		double freight=30*2*(commodityNum/100.0);
@@ -173,7 +173,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addLoadCar(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -184,7 +184,7 @@ public class TransProcessblImpl{
 		try {
 			po=list.findUnpaidLoadCar();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(LoadCarPO temp : po){
@@ -211,7 +211,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addArrival(po);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
 		if(result.isSuccess()){
 			try {
@@ -231,7 +231,7 @@ public class TransProcessblImpl{
 		try {
 			po=list.findArrival(id);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			result=new ArrivalVO(po.getId(),po.getArrivalState(), po.getExpressNum(), po.getDestination(),po.getSetOut(), CommonUtility.Cal2String(po.getArrivalDate()));
@@ -252,7 +252,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addDispatch(po);
 		} catch (RemoteException e1) {
-			// TODO
+			return result;
 		}
 		if(result.isSuccess()){
 			try {
@@ -270,7 +270,7 @@ public class TransProcessblImpl{
 		try {
 			po=list.findDispatch(id);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			result=new DispatchVO(po.getId(),po.getDispatchPerson(),CommonUtility.Cal2String(po.getArrivalDate()),po.getExpressNum());
@@ -290,7 +290,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addReceive(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(result.isSuccess()){
 			try {
@@ -307,7 +307,7 @@ public class TransProcessblImpl{
 		try {
 			po=list.findReceive(id);
 		} catch (RemoteException e) {
-			// TODO
+			return receive;
 		}
 		if(po!=null){
 			receive=new ReceiveVO(po.getId(),po.getReceiverName(),CommonUtility.Cal2String(po.getReceiveTime()),po.getExpressNum());
@@ -317,29 +317,21 @@ public class TransProcessblImpl{
 	
 	public double calculateMoney(PackingType packingType, TransportMode mode){
 		double money=0;
-		FinanceController finance=null;
-		try {
-			finance=BusinessLogicFactory.getFinanceController();
-		} catch (NoBusinessLogicException e) {}
 		switch(packingType){
 		case WOODENBOX:
-			money+=10;
-			break;
+			money+=10;break;
 		case CARTON:
-			money+=5;
-			break;
+			money+=5;break;
 		case BAG:
 			money+=1;
 		}
 		switch(mode){
 		case CHEAP:
-			money+=finance.findPriceStrategy().getEconomic();
-			break;
+			money+=financeController.findPriceStrategy().getEconomic();break;
 		case NORMAL:
-			money+=finance.findPriceStrategy().getStandard();
-			break;
+			money+=financeController.findPriceStrategy().getStandard();break;
 		case FAST:
-			money+=finance.findPriceStrategy().getExpress();
+			money+=financeController.findPriceStrategy().getExpress();
 		}
 		return money;
 	}

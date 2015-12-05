@@ -14,7 +14,6 @@ public class LogController implements LogblService{
 
 	LogblImpl log;
 	LogDataService logService;
-	CommonUtility getTime=new CommonUtility();
 	String logId;
 	
 	public LogController(){
@@ -32,7 +31,7 @@ public class LogController implements LogblService{
 	}
 
 	public ResultMessage addLog(String explain) {
-		OperationVO op=new OperationVO(logId,getTime.getTime(),explain);
+		OperationVO op=new OperationVO(CommonUtility.getTime(),logId,explain);
 		return log.addLog(op);
 	}
 

@@ -9,6 +9,7 @@ import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
@@ -22,9 +23,6 @@ public class FinanceReceiptblImpl{
 	ListController listController;
 	FinanceAccountDataService accountService;
 	
-	CommonUtility time=new CommonUtility();
-	private int basicNum;
-	
 	public FinanceReceiptblImpl(ListController listController,FinanceAccountDataService account,FinanceReceiptDataService service){
 		this.listController=listController;
 		this.accountService=account;
@@ -36,8 +34,8 @@ public class FinanceReceiptblImpl{
 	 */
 	public ReceiptVO createReceipt(ReceiptVO debit,String account) {
 		ReceiptVO result=debit;
-		result.setReceiptDate(time.getTime());
-		result.setId(createNum());
+		result.setReceiptDate(CommonUtility.getTime());
+		result.setId(listController.applyListNum(ListType.RECEIPT));
 		result.setAccount(account);
 		return result;
 	}
@@ -52,17 +50,16 @@ public class FinanceReceiptblImpl{
 
 	public ResultMessage addReceipt(ReceiptVO debit) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),time.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			result=service.addReceipt(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		
 		if(result.isSuccess()){
 			result=addMoney(debit.getAccount(),debit.getAmount());
 		}
-		
 		return result;
 	}
 
@@ -75,7 +72,7 @@ public class FinanceReceiptblImpl{
 		try {
 			result=service.deleteReceipt(id);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -86,11 +83,11 @@ public class FinanceReceiptblImpl{
 			return result;
 		}
 		result=new ResultMessage(false,"网络未连接");
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),time.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			result=service.updateReceipt(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -101,11 +98,12 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(date, department);
 		} catch (RemoteException e) {
-			// TODO
 		}
-		for(ReceiptPO po : listPO){
-			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
-			listVO.add(temp);
+		if(listPO!=null){
+			for(ReceiptPO po : listPO){
+				ReceiptVO temp=new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+				listVO.add(temp);
+			}
 		}
 		return listVO;
 	}
@@ -116,11 +114,13 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(date);
 		} catch (RemoteException e) {
-			// TODO
 		}
-		for(ReceiptPO po : listPO){
-			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
-			listVO.add(temp);
+		
+		if(listPO!=null){
+			for(ReceiptPO po : listPO){
+				ReceiptVO temp=new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+				listVO.add(temp);
+			}
 		}
 		return listVO;
 	}
@@ -131,11 +131,12 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(start,end);
 		} catch (RemoteException e) {
-			// TODO
 		}
-		for(ReceiptPO po : listPO){
-			ReceiptVO temp=new ReceiptVO(po.getId(),time.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
-			listVO.add(temp);
+		if(listPO!=null){
+			for(ReceiptPO po : listPO){
+				ReceiptVO temp=new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+				listVO.add(temp);
+			}
 		}
 		return listVO;
 	}
@@ -143,8 +144,10 @@ public class FinanceReceiptblImpl{
 	public double getReceiptSum(Calendar date) {
 		ArrayList<ReceiptVO> listVO=showReceiptList(date);
 		double sum=0;
-		for(ReceiptVO vo : listVO){
-			sum+=vo.getAmount();
+		if(listVO!=null){
+			for(ReceiptVO vo : listVO){
+				sum+=vo.getAmount();
+			}
 		}
 		return sum;
 	}
@@ -155,7 +158,7 @@ public class FinanceReceiptblImpl{
 		try {
 			account=accountService.findAccount(accountNum);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(account==null){
 			result=new ResultMessage(false,"未找到对应账户！");
@@ -167,7 +170,7 @@ public class FinanceReceiptblImpl{
 		try {
 			result=accountService.updateAccount(account);
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
@@ -183,17 +186,6 @@ public class FinanceReceiptblImpl{
 			result.setSuccess(false);
 			result.setErrorMessage("输入编号格式不正确！");
 		}
-		return result;
-	}
-	
-	public String createNum(){
-		String result="08";
-		String temp=String.valueOf(basicNum);
-		while(temp.length()<8){
-			temp="0"+temp;
-		}
-		result+=temp;
-		basicNum++;
 		return result;
 	}
 }

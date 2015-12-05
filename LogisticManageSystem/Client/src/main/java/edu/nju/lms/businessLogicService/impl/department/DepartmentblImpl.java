@@ -27,7 +27,6 @@ public class DepartmentblImpl{
 		try {
 			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
-			//TODO
 		}
 		if(departmentPO!=null) {
 			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
@@ -44,7 +43,7 @@ public class DepartmentblImpl{
 		try {
 			message=service.deleteDepartment(id);
 		} catch (RemoteException e) {
-			//TODO
+			return message;
 		}
 		return message;
 	}
@@ -66,7 +65,7 @@ public class DepartmentblImpl{
 				message = service.updateDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {
-			//TODO
+			return message;
 		}
 		return message;
 	}
@@ -95,7 +94,7 @@ public class DepartmentblImpl{
 				}
 			}
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
@@ -106,11 +105,12 @@ public class DepartmentblImpl{
 		try {
 			po=service.showAllDepartments();
 		} catch (RemoteException e) {
-			// TODO
 		}
-		for(DepartmentPO department : po){
-			DepartmentVO vo=new DepartmentVO(department.getType(),department.getDepartmentNum(),department.getLocation());
-			result.add(vo);
+		if(po!=null){
+			for(DepartmentPO department : po){
+				DepartmentVO vo=new DepartmentVO(department.getType(),department.getDepartmentNum(),department.getLocation());
+				result.add(vo);
+			}
 		}
 		return result;
 	}

@@ -28,7 +28,7 @@ public class FinanceStrategyblImpl {
 		try {
 			result = service.addPriceStrategy(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -39,19 +39,19 @@ public class FinanceStrategyblImpl {
 		try {
 			result = service.updatePriceStrategy(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
 
 	public PriceStrategyVO findPriceStrategy() {
-		PriceStrategyVO result = null;
+		PriceStrategyVO result = new PriceStrategyVO(0,0,0);
 		try {
 			PriceStrategyPO po = service.findPriceStrategy();
 			if (po != null)
 				result = new PriceStrategyVO(po.getStandard(), po.getExpress(), po.getEconomic());
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -64,7 +64,7 @@ public class FinanceStrategyblImpl {
 		try {
 			result = service.addSalaryStrategy(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -79,7 +79,7 @@ public class FinanceStrategyblImpl {
 				result = new SalaryStrategyVO(VOtype, po.getBasic(), po.getPerTime(), po.getBonus());
 			}
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -92,7 +92,7 @@ public class FinanceStrategyblImpl {
 		try {
 			result = service.updateSalaryStrategy(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}

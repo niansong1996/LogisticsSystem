@@ -35,7 +35,7 @@ public class PersonnelblImpl  {
 					result.add(person);
 				}
 			} catch (RemoteException e) {
-				// TODO
+				return result;
 			}
 		}else{
 			try {
@@ -48,10 +48,9 @@ public class PersonnelblImpl  {
 					}
 				}
 			} catch (RemoteException e) {
-				// TODO
+				return result;
 			}
 		}
-		
 		return result;
 	}
 
@@ -64,7 +63,7 @@ public class PersonnelblImpl  {
 		try {
 			result=service.deletePersonnel(id);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -81,7 +80,7 @@ public class PersonnelblImpl  {
 		try {
 			result=service.updatePersonnel(personPO);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
 		return result;
 	}
@@ -98,6 +97,7 @@ public class PersonnelblImpl  {
 		try {
 			result=service.addPersonnel(personnelPO);
 		} catch (RemoteException e) {
+			return result;
 		}
 		return result;
 	}
@@ -109,7 +109,7 @@ public class PersonnelblImpl  {
 		try {
 			po=service.showAllPersonnel();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(PersonnelPO person : po){

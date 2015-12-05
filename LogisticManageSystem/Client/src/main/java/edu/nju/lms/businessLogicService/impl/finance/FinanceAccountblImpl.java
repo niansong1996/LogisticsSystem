@@ -7,6 +7,10 @@ import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.InitialInfoPO;
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -17,9 +21,16 @@ import edu.nju.lms.dataService.FinanceAccountDataService;
  */
 public class FinanceAccountblImpl{
 	private FinanceAccountDataService service;
-	CommonUtility getTime=new CommonUtility();
+	PersonnelController personnelController;
+	TransportController transportController;
+	DepartmentController departmentController;
+	//WarehouseController warehouseController;
 	
-	public FinanceAccountblImpl(FinanceAccountDataService service){
+	public FinanceAccountblImpl(DepartmentController departmentController,PersonnelController personnelController,TransportController transportController,FinanceAccountDataService service){
+		this.personnelController=personnelController;
+		this.departmentController=departmentController;
+		this.transportController=transportController;
+		//this.warehouseController=warehouseController;
 		this.service=service;
 	}
 
@@ -33,7 +44,7 @@ public class FinanceAccountblImpl{
 		try {
 			result=service.addAccount(accountPO);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -44,7 +55,7 @@ public class FinanceAccountblImpl{
 		try {
 			accountPO=service.findAccount(id);
 		} catch (RemoteException e) {
-			// TODO 
+			return result;
 		}
 		if(accountPO!=null){
 			result=new AccountVO(accountPO.getName(),accountPO.getAmount());
@@ -61,7 +72,7 @@ public class FinanceAccountblImpl{
 		try {
 			result=service.deleteAccount(id);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -76,7 +87,7 @@ public class FinanceAccountblImpl{
 		try {
 			result=service.updateAccount(accountPO);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
@@ -87,7 +98,7 @@ public class FinanceAccountblImpl{
 		try {
 			po=service.showAllAccount();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(AccountPO temp : po){
@@ -100,20 +111,20 @@ public class FinanceAccountblImpl{
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		initial.setDate(getTime.getTime());
-		InitialInfoPO po=new InitialInfoPO(getTime.String2Cal(initial.getDate()),initial.getDepartments(),
+		initial.setDate(CommonUtility.getTime());
+		InitialInfoPO po=new InitialInfoPO(CommonUtility.String2Cal(initial.getDate()),initial.getDepartments(),
 				initial.getPersonnel(),initial.getCars(),initial.getWarehouses(),initial.getAccounts());
 		try {
 			result=service.addInitialInfo(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		return result;
 	}
 
 	public ResultMessage initialInfo() {
 		ResultMessage result=new ResultMessage(false,"");
-		FinanceBuildInitial initial=new FinanceBuildInitial();
+		FinanceBuildInitial initial=new FinanceBuildInitial(departmentController,personnelController,transportController);
 		InitialInfoVO vo=new InitialInfoVO("",initial.getDepartments(),initial.getPersonnel(),
 				initial.getCars(),initial.getWarehouse(),initial.getAccounts());
 		result=addInitialInfo(vo);
@@ -126,11 +137,11 @@ public class FinanceAccountblImpl{
 		try {
 			po=service.findInitialInfo();
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(InitialInfoPO temp : po){
-				InitialInfoVO vo=new InitialInfoVO(getTime.Cal2String(temp.getDate()),temp.getDepartments(),
+				InitialInfoVO vo=new InitialInfoVO(CommonUtility.Cal2String(temp.getDate()),temp.getDepartments(),
 						temp.getPersonnel(),temp.getCars(),temp.getWarehouses(),temp.getAccounts());
 				result.add(vo);
 			}

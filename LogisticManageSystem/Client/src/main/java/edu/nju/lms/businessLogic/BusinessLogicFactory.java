@@ -25,7 +25,10 @@ public class BusinessLogicFactory {
 	}
 	public static DepartmentController getDepartmentController() throws NoBusinessLogicException{
 		if(departmentController!=null) return departmentController;
-		else throw new NoBusinessLogicException();
+		else {
+			System.err.println("departmentController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static FinanceController createFinanceController(){
@@ -34,7 +37,10 @@ public class BusinessLogicFactory {
 	}
 	public static FinanceController getFinanceController() throws NoBusinessLogicException{
 		if(financeController!=null) return financeController;
-		else throw new NoBusinessLogicException();
+		else {
+			System.err.println("financeController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static ListController createListController(){
@@ -43,7 +49,10 @@ public class BusinessLogicFactory {
 	}
 	public static ListController getListController() throws NoBusinessLogicException{
 		if(listController!=null) return listController;
-		else throw new NoBusinessLogicException();
+		else{
+			System.err.println("listController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static LogController createLogController(){
@@ -52,7 +61,10 @@ public class BusinessLogicFactory {
 	}
 	public static LogController getLogController() throws NoBusinessLogicException{
 		if(logController!=null) return logController;
-		else throw new NoBusinessLogicException();
+		else{
+			System.err.println("logController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static PersonnelController createPersonnelController(){
@@ -61,7 +73,10 @@ public class BusinessLogicFactory {
 	}
 	public static PersonnelController getPersonnelController() throws NoBusinessLogicException{
 		if(personnelController!=null) return personnelController;
-		else throw new NoBusinessLogicException();
+		else{
+			System.err.println("personnelController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static TransportController createTransportController(){
@@ -70,7 +85,10 @@ public class BusinessLogicFactory {
 	}
 	public static TransportController getTransportController() throws NoBusinessLogicException{
 		if(transportController!=null) return transportController;
-		else throw new NoBusinessLogicException();
+		else {
+			System.err.println("transportController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static UserController createUserController(){
@@ -79,7 +97,10 @@ public class BusinessLogicFactory {
 	}
 	public static UserController getUserController() throws NoBusinessLogicException{
 		if(userController!=null) return userController;
-		else throw new NoBusinessLogicException();
+		else {
+			System.err.println("userController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 	
 	public static WarehouseController createWarehouseController(){
@@ -88,6 +109,9 @@ public class BusinessLogicFactory {
 	}
 	public static WarehouseController getWarehouseController() throws NoBusinessLogicException{
 		if(warehouseController!=null) return warehouseController;
-		else throw new NoBusinessLogicException();
+		else {
+			System.err.println("warehouseController not initialized");
+			throw new NoBusinessLogicException();
+		}
 	}
 }

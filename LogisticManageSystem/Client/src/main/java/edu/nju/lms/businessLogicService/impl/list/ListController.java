@@ -60,5 +60,10 @@ public class ListController implements ListblService{
 	public String applyListNum(ListType type){
 		return this.listNum.generateListNum(type);
 	}
+
+	public ListVO getListInfo(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

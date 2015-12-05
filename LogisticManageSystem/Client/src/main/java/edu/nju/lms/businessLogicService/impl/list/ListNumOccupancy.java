@@ -24,11 +24,12 @@ public class ListNumOccupancy {
 		case CHECKOUT:numOccupancy.increaseCheckoutListNum();return numOccupancy.getCheckoutListNum();
 		case DISPATCH:numOccupancy.increaseDispatchListNum();return numOccupancy.getDispatchListNum();
 		case LOAD:numOccupancy.increaseLoadListNum();return numOccupancy.getLoadListNum();
-		case LOADCAR:numOccupancy.increaseLoadCarListNum();return numOccupancy.getLoadCarListNum();
 		case PAYMENT:numOccupancy.increasePaymentListNum();return numOccupancy.getPaymentListNum();
 		case RECEIPT:numOccupancy.increaseReceiptListNum();return numOccupancy.getReceiptListNum();
 		case RECEIVE:numOccupancy.increaseReceiveListNum();return numOccupancy.getReceiveListNum();
 		case SEND:numOccupancy.increaseSendListNum();return numOccupancy.getSendListNum();
+		case DRIVER:numOccupancy.increaseDriverNum();return numOccupancy.getDriverNum();
+		case CAR:numOccupancy.increaseCarNum();return numOccupancy.getCarNum();
 		default:System.err.println("The listType not match!!!");return "error";
 		}
 

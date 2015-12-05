@@ -19,6 +19,7 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -35,7 +36,6 @@ public class FinancePayblImpl{
 	TransportController transportController;
 	FinancePaymentDataService service;
 	FinanceAccountDataService accountService;
-	CommonUtility getTime=new CommonUtility();
 	
 	public FinancePayblImpl(ListController listController,PersonnelController personnelController,TransportController transportController,FinanceAccountDataService account,FinancePaymentDataService service){
 		this.listController=listController;
@@ -47,18 +47,19 @@ public class FinancePayblImpl{
 
 	public RentVO createRent(RentVO rent) {
 		RentVO result=rent;
-		result.setPayTime(getTime.getTime());
+		result.setId(listController.applyListNum(ListType.PAYMENT));
+		result.setPayTime(CommonUtility.getTime());
 		return result;
 	}
 
 	public ResultMessage saveRent(RentVO rent) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		PaymentPO po=new PaymentPO(rent.getId(),rent.getState(),PaymentType.RENT,
-				getTime.String2Cal(rent.getPayTime()),rent.getAccount(),rent.getAmount());
+				CommonUtility.String2Cal(rent.getPayTime()),rent.getAccount(),rent.getAmount());
 		try {
 			result=service.addPayment(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		
 		if(result.isSuccess()){
@@ -68,9 +69,10 @@ public class FinancePayblImpl{
 	}
 
 	public FreightVO createFreight(String accountNum) {
-		FreightVO result=null;
+		FreightVO result=new FreightVO("","","",0);
+		result.setId(listController.applyListNum(ListType.PAYMENT));
 		result.setAccount(accountNum);
-		result.setPayTime(getTime.getTime());
+		result.setPayTime(CommonUtility.getTime());
 		result.setAmount(calculateFreight());
 		return result;
 	}
@@ -78,11 +80,11 @@ public class FinancePayblImpl{
 	public ResultMessage saveFreight(FreightVO freight) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		PaymentPO po=new PaymentPO(freight.getId(),freight.getState(),PaymentType.FREIGHT,
-				getTime.String2Cal(freight.getPayTime()),freight.getAccount(),freight.getAmount());
+				CommonUtility.String2Cal(freight.getPayTime()),freight.getAccount(),freight.getAmount());
 		try {
 			result=service.addPayment(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		
 		if(result.isSuccess()){
@@ -92,8 +94,9 @@ public class FinancePayblImpl{
 	}
 
 	public SalaryVO createSalary(String accountNum) {
-		SalaryVO result=null;
-		result.setPayTime(getTime.getTime());
+		SalaryVO result=new SalaryVO("","","",0);
+		result.setId(listController.applyListNum(ListType.PAYMENT));
+		result.setPayTime(CommonUtility.getTime());
 		result.setAccount(accountNum);
 		result.setAmount(calculateSalary());
 		return result;
@@ -102,11 +105,11 @@ public class FinancePayblImpl{
 	public ResultMessage saveSalary(SalaryVO salary) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		PaymentPO po=new PaymentPO(salary.getId(),salary.getState(),PaymentType.SALARY,
-				getTime.String2Cal(salary.getPayTime()),salary.getAccount(),salary.getAmount());
+				CommonUtility.String2Cal(salary.getPayTime()),salary.getAccount(),salary.getAmount());
 		try {
 			result=service.addPayment(po);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		
 		if(result.isSuccess()){
@@ -122,11 +125,11 @@ public class FinancePayblImpl{
 		try {
 			po=service.showAllPayment(start,end);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(po!=null){
 			for(PaymentPO temp : po){
-				PaymentVO vo=new PaymentVO(temp.getId(),temp.getPaymentType(),getTime.Cal2String(temp.getPayTime()),
+				PaymentVO vo=new PaymentVO(temp.getId(),temp.getPaymentType(),CommonUtility.Cal2String(temp.getPayTime()),
 						temp.getAccount(),temp.getAmount());
 				result.add(vo);
 			}
@@ -173,12 +176,12 @@ public class FinancePayblImpl{
 	}
 	
 	public ResultMessage payMoney(String accountNum,double money) {
-		ResultMessage result=new ResultMessage(true,"");
+		ResultMessage result=new ResultMessage(false,"网络未连接");
 		AccountPO account=null;
 		try {
 			account=accountService.findAccount(accountNum);
 		} catch (RemoteException e) {
-			// TODO
+			return result;
 		}
 		if(account==null){
 			result=new ResultMessage(false,"未找到对应账户！");
@@ -195,7 +198,7 @@ public class FinancePayblImpl{
 		try {
 			result=accountService.updateAccount(account);
 		} catch (RemoteException e) {
-			//TODO
+			return result;
 		}
 		return result;
 	}
