@@ -1,5 +1,9 @@
 package edu.nju.lms.presentation;
 
+import java.util.ArrayList;
+
+import edu.nju.lms.VO.ReceiveVO;
+import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
@@ -10,6 +14,7 @@ import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.PersonType;
+import edu.nju.lms.data.ResultMessage;
 
 public class UIController {
 	private MainFrame frame;
@@ -52,6 +57,7 @@ public class UIController {
 		case MANAGER:
 			personnelController = BusinessLogicFactory.createPersonnelController();
 			departmentController = BusinessLogicFactory.createDepartmentController();
+			transportController = BusinessLogicFactory.createTransportController();
 		case FINANCIAL_ADVANCED:
 		case FINANCIAL_NORMAL:
 			financeController = BusinessLogicFactory.createFinanceController();
@@ -81,9 +87,13 @@ public class UIController {
 //		financeController.addSalaryStrategy(strategy);
 //		strategy = new SalaryStrategyVO("driver", 45, 45, 45);
 //		financeController.addSalaryStrategy(strategy);
-	//	financeController.addPriceStrategy(100);
-//		ResultMessage result = transportController.saveReceiveList(new ReceiveVO("ss","ss"));
-//		System.out.println(result.getErrorMessage());
+		financeController.addPriceStrategy(100);
+		SendVO vo = new SendVO("1256545696", null,null,2, 2,"hi", 5, 2,null);
+		vo = transportController.createSendList(vo);
+
+		
+		ResultMessage result = transportController.saveSendList(vo);
+		System.out.println(result.getErrorMessage());
 	}
 
 	public MainFrame getFrame() {

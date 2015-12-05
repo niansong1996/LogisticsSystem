@@ -1,16 +1,20 @@
 package edu.nju.lms.presentation;
 
 import java.awt.Graphics;
+import java.awt.ItemSelectable;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.components.Component;
 import edu.nju.lms.presentation.components.MainButton;
+import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.config.ComponentConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
 import edu.nju.lms.presentation.config.UnitConfig;
@@ -95,6 +99,14 @@ public class MainPanel extends JPanel {
 							java.awt.Component.class);
 					mouseListener = (MouseListener) ct.newInstance(units, controller, com);
 					com.addMouseListener(mouseListener);
+				}else if(unit.getElement().attributeValue("type").equals("itemListener")){
+					Class<?> listenner = Class
+							.forName(packageName + "mouseListener."+ unit.getElement().attributeValue("listenerName"));
+					ItemListener itemListener;
+					Constructor<?> ct = listenner.getConstructor(ArrayList.class, UIController.class,
+							java.awt.Component.class);
+					itemListener = (ItemListener) ct.newInstance(units, controller, com);
+					((ItemSelectable) com).addItemListener(itemListener);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
