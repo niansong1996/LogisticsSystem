@@ -2,6 +2,7 @@ package edu.nju.lms.presentation;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
@@ -93,6 +94,7 @@ public class UIController {
 //		
 //		ResultMessage result = transportController.saveSendList(vo);
 //		System.out.println(result.getErrorMessage());
+		//financeController.addPriceStrategy(100);
 	}
 
 	public MainFrame getFrame() {

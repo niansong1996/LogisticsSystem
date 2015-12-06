@@ -42,7 +42,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService{
 	 */
 	public ArrayList<OperationPO> findOperation(Calendar begin, Calendar end) throws RemoteException {
 		ArrayList<OperationPO> operationList = new ArrayList<OperationPO>();
-		ResultSet result = JDBC.ExecuteQuery("select * from operationpo where operationDate between \""
+		ResultSet result = JDBC.ExecuteQuery("select * from operationpo where timing between \""
 				+ DataUtility.Cal2String(begin)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\";" );
 		try{
 		if(!result.wasNull())

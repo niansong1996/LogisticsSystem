@@ -374,8 +374,8 @@
 		    <unit name ="tiji" class="MyTextField" x="510" y="486" w="45" h="23" type="0" textType="null"/>
 		    <unit name ="inName" class="MyTextField" x="740" y="486" w="100" h="23" type="0" textType="null"/>
 		    <unit name ="size" class="MyTextField" x="900" y="486" w="100" h="23" type="0" textType="null"/>
-		    <unit name ="price" class="MyLabel" x="350" y="544" w="100" h="23" type="0" textType="null"/>
-		    <unit name ="price" class="MyLabel" x="730" y="544" w="100" h="23" type="0" textType="null"/>
+		    <unit name ="price" class="MyLabel" x="350" y="544" w="100" h="30" type="0" textType="null"/>
+		    <unit name ="price" class="MyLabel" x="730" y="544" w="100" h="30" type="0" textType="null"/>
 		    <unit name ="create" class = "MainButton" x="850" y="546" w="112" h="34" type="1" listenerName="CreateSendListListener"/>
 		    <unit name ="save" class = "MainButton" x="400" y="620" w="112" h="34" type="1" listenerName="SaveSendListListener"/>
 		    <unit name ="cancel" class = "MainButton" x="700" y="620" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="courierPanel"/>
@@ -393,11 +393,14 @@
 		    <unit name ="guide_send" change="sendPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_receive" change="receivePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="expressNum" class="MyTextField" x="315" y="172" w="168" h="23" type="0" textType="null"/>
-		    <unit name ="receiver" class="MyTextField" x="280" y="260" w="100" h="23" type="0" textType="null"/>
-		    <unit name ="phone" class="MyTextField" x="650" y="260" w="168" h="23" type="0" textType="null"/>
-		    <unit name ="address" class="MyTextField" x="250" y="349" w="100" h="23" type="0" textType="null"/>
+		    <unit name ="receiver" class="MyLabel" x="280" y="260" w="168" h="30" type="0" textType="null"/>
+		    <unit name ="phone" class="MyLabel" x="650" y="260" w="168" h="30" type="0" textType="null"/>
+		    <unit name ="address" class="MyLabel" x="250" y="349" w="168" h="30" type="0" textType="null"/>
 		    <unit name ="Truereceiver" class="MyTextField" x="330" y="435" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="contactMode" class="MyTextField" x="730" y="435" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="300" y="550" w="112" h="34" type="1" listenerName="SaveReceiveListListener"/>
+		    <unit name ="search" class = "MainButton" x="502" y="168" w="112" h="34" type="1" listenerName="SearchSendListListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="550" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="courierPanel"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel> 

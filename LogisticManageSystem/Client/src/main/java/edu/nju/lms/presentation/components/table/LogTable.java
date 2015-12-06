@@ -30,9 +30,9 @@ public class LogTable extends MyTable {
 		MyLabel explain = new MyLabel(vo.getExplain());
 		MyLabel time = new MyLabel(vo.getTime());
 		MyLabel user = new MyLabel(vo.getUser());
-		explain.setSize(280,30);
-		time.setSize(280,30);
-		user.setSize(290,80);
+		explain.setSize(250,30);
+		time.setSize(200,30);
+		user.setSize(150,30);
 		java.awt.Component[] component = {explain,time,user};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;

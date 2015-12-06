@@ -15,6 +15,7 @@ import edu.nju.lms.data.TransportMode;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.MyComboBox;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyLabel;
 
 /**
@@ -24,6 +25,7 @@ import edu.nju.lms.presentation.components.MyLabel;
 public class CreateSendListListener extends ButtonListener {
 	private TransportController control;
 	private SendVO vo;
+
 	public CreateSendListListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		this.control = controller.getTransportController();
@@ -37,12 +39,11 @@ public class CreateSendListListener extends ButtonListener {
 			JTextField field = (JTextField) units.get(i);
 			baseInfo.add(field.getText());
 		}
+		//city
 		MyComboBox cb = (MyComboBox) units.get(3);
 		String receiverCity = (String) cb.getSelectedItem();
-		baseInfo.add(receiverCity);
 		MyComboBox combo = (MyComboBox) units.get(4);
 		String senderCity = (String) combo.getSelectedItem();
-		baseInfo.add(senderCity);
 		// transform date to string
 		DateChooser dateChooser = (DateChooser) units.get(0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -60,7 +61,13 @@ public class CreateSendListListener extends ButtonListener {
 			other[i - 13] = field.getText();
 		}
 		// create SendVo
-		vo = new SendVO(other[0], null, baseInfo, Integer.parseInt(other[1]), Double.parseDouble(other[2]),
+		for(int i =1;i<3;i++){
+			if(!isNumeric(other[i])){
+				new MyDialog("输入的格式不正确！",true);
+				return;
+			}
+		}
+		vo = new SendVO(other[0], null, baseInfo, senderCity,receiverCity,Integer.parseInt(other[1]), Double.parseDouble(other[2]),
 				Double.parseDouble(other[3]), other[4], packType, transMode, 0, 0, date);
 		completeInfo(control.createSendList(vo));
 	}
@@ -76,4 +83,12 @@ public class CreateSendListListener extends ButtonListener {
 		return vo;
 	}
 
+	private boolean isNumeric(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if ((!Character.isDigit(str.charAt(i)))&&(str.charAt(i)!='.')) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
