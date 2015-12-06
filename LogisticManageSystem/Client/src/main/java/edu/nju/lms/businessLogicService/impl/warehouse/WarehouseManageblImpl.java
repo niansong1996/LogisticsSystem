@@ -59,13 +59,5 @@ public class WarehouseManageblImpl {
 	public ResultMessage initialize(PartitionVO partition, double cordon, String warehouseNum) {
 		return new ResultMessage(true, "");
 	}
-
-	public ExpressList getExpressList() {
-		return expressList;
-	}
-
-	public void setExpressList(ExpressList expressList) {
-		this.expressList = expressList;
-	}
 	
 }
