@@ -42,8 +42,8 @@ public class CityPO implements Serializable{
 		super();
 		this.id = id;
 		this.name = name;
-		this.distance = distance;
 		this.businessNums = businessNums;
+		this.distance = distance;
 	}
 
 	public String getId() {

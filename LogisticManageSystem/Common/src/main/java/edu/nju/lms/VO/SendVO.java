@@ -180,4 +180,17 @@ public class SendVO extends ListVO{
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+	public String getSenderCity() {
+		return senderCity;
+	}
+	public void setSenderCity(String senderCity) {
+		this.senderCity = senderCity;
+	}
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+	
 }

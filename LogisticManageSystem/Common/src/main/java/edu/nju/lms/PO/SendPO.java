@@ -42,17 +42,20 @@ public class SendPO extends ListPO {
 	/**
 	 * price and days will needed
 	 */
+	private String senderCity;
+	private String receiverCity;
 	private double price;
 	private double time;
 	private Calendar createTime;
 	//constructor for reflection
-	public SendPO(String expressNum,String state,String id,String baseInfor,String initialNum, String weight, String volume, String goodsName,
+	public SendPO(String expressNum,String state,String id,String baseInfor,String senderCity,String receiverCity,String initialNum, String weight, String volume, String goodsName,
 			String packingType, String mode, String price, String time,String createTime) {
 		super(id,ListState.valueOf(state));
 		this.expressNum = expressNum;
 		this.baseInfor = new ArrayList<String>();
 		CommonUtility.String2Array(this.baseInfor, baseInfor);
-		
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = Integer.parseInt(initialNum);
 		this.weight = Double.parseDouble(weight);
 		this.volume = Double.parseDouble(volume);
@@ -66,11 +69,13 @@ public class SendPO extends ListPO {
 	
 	
 	//construct function
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -88,10 +93,12 @@ public class SendPO extends ListPO {
 		this.expressNum = expressNum;
 	}
 	//override to input more conveniently
-	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time,Calendar createTime) {
+	public SendPO(String expressNum,ListState state, String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,double weight, double volume, String goodsName, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = 1;
 		this.weight = weight;
 		this.volume = volume;
@@ -102,11 +109,13 @@ public class SendPO extends ListPO {
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor, String senderCity,String receiverCity,double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = 1;
 		this.weight = weight;
 		this.volume = volume;
@@ -117,10 +126,12 @@ public class SendPO extends ListPO {
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,Calendar createTime) {
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,Calendar createTime) {
 		super(id,state);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -131,10 +142,12 @@ public class SendPO extends ListPO {
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendPO(String expressNum,ListState state,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType,  double price, double time,Calendar createTime) {
 		super(id,state);
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -210,4 +223,17 @@ public class SendPO extends ListPO {
 	public void setCreateTime(Calendar createTime) {
 		this.createTime = createTime;
 	}
+	public String getSenderCity() {
+		return senderCity;
+	}
+	public void setSenderCity(String senderCity) {
+		this.senderCity = senderCity;
+	}
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+	
 }

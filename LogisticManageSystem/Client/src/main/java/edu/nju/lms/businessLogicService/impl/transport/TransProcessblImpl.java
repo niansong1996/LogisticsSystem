@@ -62,14 +62,14 @@ public class TransProcessblImpl{
 		SendVO result=baseMessage;
 		result.setId(listController.applyListNum(ListType.SEND));
 		result.setCreateTime(CommonUtility.getTime());
-		result.setPrice(calculateMoney(baseMessage.getPackingType(),baseMessage.getMode()));
+		result.setPrice(calculateMoney(baseMessage));
 		result.setTime(NumRound.round(Math.random()*3+1));
 		return result;
 	}
 
 	public ResultMessage saveSendList(SendVO sendList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getInitialNum(),sendList.getWeight(),
+		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getSenderCity(),sendList.getReceiverCity(),sendList.getInitialNum(),sendList.getWeight(),
 				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),CommonUtility.String2Cal(sendList.getCreateTime()));
 		try {
 			result=list.addSend(po);
@@ -98,7 +98,7 @@ public class TransProcessblImpl{
 			return result;
 		}
 		if(po!=null){
-			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getInitialNum(),po.getWeight(),
+			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getSenderCity(),po.getReceiverCity(),po.getInitialNum(),po.getWeight(),
 					po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime(),CommonUtility.Cal2String(po.getCreateTime()));
 		}
 		return result;
@@ -338,9 +338,14 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public double calculateMoney(PackingType packingType, TransportMode mode){
+	public double calculateMoney(SendVO send){
 		double money=0;
-		switch(packingType){
+		double temp=0;
+		CityVO current=departmentController.findCity(CommonUtility.cityNameToNum(send.getSenderCity()));
+		int num=City.returnValue(send.getReceiverCity());
+		double distance=current.getDistance().get(num+1);
+		
+		switch(send.getPackingType()){
 		case WOODENBOX:
 			money+=10;break;
 		case CARTON:
@@ -348,17 +353,23 @@ public class TransProcessblImpl{
 		case BAG:
 			money+=1;
 		}
+		
 		if(financeController==null){
 			financeController=BusinessLogicFactory.createFinanceController();
 		}
-		switch(mode){
+		switch(send.getMode()){
 		case CHEAP:
-			money+=financeController.findPriceStrategy().getEconomic();break;
+			temp=financeController.findPriceStrategy().getEconomic();
+			money+=(distance/1000.0)*temp*send.getWeight();break;
 		case NORMAL:
-			money+=financeController.findPriceStrategy().getStandard();break;
+			temp=financeController.findPriceStrategy().getStandard();
+			money+=(distance/1000.0)*temp*send.getWeight();break;
 		case FAST:
-			money+=financeController.findPriceStrategy().getExpress();
+			temp=financeController.findPriceStrategy().getExpress();
+			money+=(distance/1000.0)*temp*send.getWeight();
 		}
+		money=NumRound.round(money);
 		return money;
 	}
+	
 }

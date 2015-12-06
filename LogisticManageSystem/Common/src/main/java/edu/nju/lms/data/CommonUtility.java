@@ -40,4 +40,16 @@ public class CommonUtility {
 		return false;
 		
 	}
+	public static String cityNameToNum(String name){
+		if(name.equals("北京")){
+			return "010";
+		}else if(name.equals("上海")){
+			return "021";
+		}else if(name.equals("广州")){
+			return "020";
+		}else if(name.equals("南京")){
+			return "025";
+		}
+		return null;
+	}
 }
