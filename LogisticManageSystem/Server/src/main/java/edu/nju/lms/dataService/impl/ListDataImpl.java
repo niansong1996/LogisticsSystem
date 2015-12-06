@@ -20,6 +20,7 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 	private static final long serialVersionUID = 7297460025532046217L;
 
 	public ListDataImpl() throws RemoteException {
+		
 	}
 
 	public ArrayList<ListPO> findList(ListType type) throws RemoteException {

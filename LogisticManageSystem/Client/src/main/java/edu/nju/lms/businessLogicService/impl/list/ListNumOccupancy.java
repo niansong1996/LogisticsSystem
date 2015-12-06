@@ -14,8 +14,13 @@ public class ListNumOccupancy {
 	private NumOccupancyPO numOccupancy;
 	private ListDataService listService;
 	ListNumOccupancy(ListDataService listService){
-		numOccupancy = this.getNumOccupancy(listService);
 		this.listService = listService;
+		System.out.println("*****************\ninitialized\n**************");
+		try {
+			this.numOccupancy = listService.getNumOccupancy();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	String generateListNum(ListType listType){
 		switch(listType){
@@ -33,14 +38,6 @@ public class ListNumOccupancy {
 		default:System.err.println("The listType not match!!!");return "error";
 		}
 
-	}
-	NumOccupancyPO getNumOccupancy(ListDataService listService) {
-		try {
-			return listService.getNumOccupancy();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public void saveNumOccupancy() {
