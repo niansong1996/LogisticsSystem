@@ -2,7 +2,9 @@ package edu.nju.lms.VO;
 
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
+import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.PaymentType;
+import edu.nju.lms.data.TransportMode;
 
 /**
  *@author tj
@@ -12,7 +14,10 @@ public class EnumTransformer {
 	private static String[] my_types = {"寄件单","收件单","装车单","装运单","收款单","到达单","派件单","入库单",
 			"出库单","租金付款单","工资付款单","运费付款单"};
 	private static String[] my_state = {"通过","不通过","等待"};
-	private static String[] paymentTypes={"运费","租金","薪水"};
+	private static String[] paymentTypes = {"运费","租金","薪水"};
+	private static String[] packTypes = {"快递袋","木箱","纸箱"};
+	private static String[] transMode = {"标准快递","次晨快递","经济快递"};
+	private static String[] cities = {"南京","上海","广州","北京"};
 	/**
 	 * transform the ListType to Chinese
 	 * @param type
@@ -80,5 +85,43 @@ public class EnumTransformer {
 	public static String payment2Str(PaymentType type){
 		int loc = type.ordinal();
 		return paymentTypes[loc];
+	}
+	/**
+	 * transform the string to PackingType
+	 * @param type
+	 * @return
+	 * @see PackingType
+	 */
+	public static PackingType str2PackType(String type){
+		int index = -1;
+		for(int i=0;i<packTypes.length;i++){
+			if(type.equals(packTypes[i])){
+				index = i;
+				break;
+			}
+		}
+		if(index!=-1){
+			return PackingType.values()[index];
+		}
+		return null;
+	}
+	/**
+	 * transform the string to TransportMode
+	 * @param mode
+	 * @return
+	 * @see TransportMode
+	 */
+	public static TransportMode str2TransMode(String mode){
+		int index = -1;
+		for(int i=0;i<transMode.length;i++){
+			if(mode.equals(transMode[i])){
+				index = i;
+				break;
+			}
+		}
+		if(index!=-1){
+			return TransportMode.values()[index];
+		}
+		return null;	
 	}
 }

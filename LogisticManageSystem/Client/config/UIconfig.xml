@@ -355,30 +355,33 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="send" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="sendPanel" class = "Component" x="100" y="100" w="964" h="517"/>
-		    <unit name ="guide_back" change="courierPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_send" change="sendPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_receive" change="receivePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="expressNum" class="MyTextField" x="230" y="120" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="date" class="DateChooser" x="860" y="115" w="180" h="33" type="0"/>
 		    <unit name ="packType" class = "MyComboBox" x="230" y="183" w="168" h="23" type="0" items="快递袋;木箱;纸箱"/>
 		    <unit name ="transMode" class = "MyComboBox" x="765" y="183" w="168" h="23" type="0" items="标准快递;次晨快递;经济快递"/>
 		    <unit name ="city" class = "MyComboBox" x="750" y="240" w="168" h="23" type="0" items="南京;上海;广州;北京"/>
+		    <unit name ="city" class = "MyComboBox" x="750" y="360" w="168" h="23" type="0" items="南京;上海;广州;北京"/>
 		    <unit name ="receiverName" class="MyTextField" x="246" y="240" w="140" h="23" type="0" textType="null"/>
 		    <unit name ="receiverPhone" class="MyTextField" x="500" y="240" w="140" h="23" type="0" textType="null"/>
 		    <unit name ="receiverAddress" class="MyTextField" x="200" y="302" w="350" h="23" type="0" textType="null"/>
 		    <unit name ="receiverWork" class="MyTextField" x="722" y="302" w="300" h="23" type="0" textType="null"/>
 		    <unit name ="senderName" class="MyTextField" x="246" y="362" w="140" h="23" type="0" textType="null"/>
 		    <unit name ="senderPhone" class="MyTextField" x="500" y="362" w="140" h="23" type="0" textType="null"/>
-		    <unit name ="city" class = "MyComboBox" x="750" y="360" w="168" h="23" type="0" items="南京;上海;广州;北京"/>
 		    <unit name ="senderAddress" class="MyTextField" x="200" y="422" w="350" h="23" type="0" textType="null"/>
 		    <unit name ="senderWork" class="MyTextField" x="722" y="422" w="300" h="23" type="0" textType="null"/>
+		    <unit name ="expressNum" class="MyTextField" x="230" y="120" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="number" class="MyTextField" x="210" y="486" w="50" h="23" type="0" textType="null"/>
 		    <unit name ="weight" class="MyTextField" x="336" y="486" w="50" h="23" type="0" textType="null"/>
 		    <unit name ="tiji" class="MyTextField" x="510" y="486" w="45" h="23" type="0" textType="null"/>
 		    <unit name ="inName" class="MyTextField" x="740" y="486" w="100" h="23" type="0" textType="null"/>
 		    <unit name ="size" class="MyTextField" x="900" y="486" w="100" h="23" type="0" textType="null"/>
-		    <unit name ="price" class="MyTextField" x="350" y="544" w="100" h="23" type="0" textType="null"/>
-		    <unit name ="price" class="MyTextField" x="730" y="544" w="100" h="23" type="0" textType="null"/>
+		    <unit name ="price" class="MyLabel" x="350" y="544" w="100" h="23" type="0" textType="null"/>
+		    <unit name ="price" class="MyLabel" x="730" y="544" w="100" h="23" type="0" textType="null"/>
+		    <unit name ="create" class = "MainButton" x="850" y="546" w="112" h="34" type="1" listenerName="CreateSendListListener"/>
+		    <unit name ="save" class = "MainButton" x="400" y="620" w="112" h="34" type="1" listenerName="SaveSendListListener"/>
+		    <unit name ="cancel" class = "MainButton" x="700" y="620" w="112" h="34" type="1" listenerName="CancelSaveSendListListener"/>
+		    <unit name ="guide_back" change="courierPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_send" change="sendPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_receive" change="receivePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel> 
