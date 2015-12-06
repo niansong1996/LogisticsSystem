@@ -26,7 +26,8 @@ public class WarehousePO implements Serializable{
 	private ArrayList<String> expressNums;
 	private ArrayList<String> checkInlists;
 	private ArrayList<String> checkOutlists;
-	private ArrayList<Partition> partitionInfor;
+	//String example:"[1000,1,1000,AIRPLANE]"
+	private ArrayList<String> partitionInfor;
 	
 	public WarehousePO(String cordon, String id, String expressNums, String checkInlists,
 			String checkOutlists) {
