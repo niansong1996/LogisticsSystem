@@ -25,6 +25,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.City;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
+import edu.nju.lms.data.NumRound;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.ShipState;
@@ -62,7 +63,7 @@ public class TransProcessblImpl{
 		result.setId(listController.applyListNum(ListType.SEND));
 		result.setCreateTime(CommonUtility.getTime());
 		result.setPrice(calculateMoney(baseMessage.getPackingType(),baseMessage.getMode()));
-		result.setTime(Math.random()*3+1);
+		result.setTime(NumRound.round(Math.random()*3+1));
 		return result;
 	}
 
@@ -333,6 +334,7 @@ public class TransProcessblImpl{
 		case CAR:
 			result=distance*2*(commodityNum/100.0); return result;
 		}
+		result=NumRound.round(result);
 		return result;
 	}
 	

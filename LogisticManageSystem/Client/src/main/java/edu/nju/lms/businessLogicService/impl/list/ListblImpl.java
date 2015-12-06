@@ -28,7 +28,6 @@ public class ListblImpl{
 		try {
 			list=service.findList(type);
 		} catch (RemoteException e) {
-			// TODO
 		}
 		for(ListPO po : list){
 			if(po.getState().toString().equals("WAITING")){

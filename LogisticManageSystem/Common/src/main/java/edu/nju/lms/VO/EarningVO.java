@@ -10,14 +10,12 @@ public class EarningVO {
 	private double payment;
 	private double profit;
 	private String date;
-	private String id;
 	public EarningVO(double earnings, double payment,
-			double profit, String date, String id) {
+			double profit, String date) {
 		this.earnings = earnings;
 		this.payment = payment;
 		this.profit = profit;
 		this.date = date;
-		this.id = id;
 	}
 	public double getEarnings() {
 		return earnings;
@@ -43,12 +41,5 @@ public class EarningVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	
 	
 }

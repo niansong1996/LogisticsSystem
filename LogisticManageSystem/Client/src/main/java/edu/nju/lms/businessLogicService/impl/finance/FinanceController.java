@@ -272,8 +272,8 @@ public class FinanceController
 		return pay.showAllPayment(start, end);
 	}
 
-	public EarningVO showEarnings() {
-		EarningVO result=pay.showEarnings();
+	public EarningVO showEarnings(Calendar start,Calendar end) {
+		EarningVO result=pay.showEarnings(start,end);
 		logController.addLog("查看成本收益表");
 		return result;
 	}

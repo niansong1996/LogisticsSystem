@@ -30,7 +30,7 @@ public interface FinancePayblService {
 	
 	public ArrayList<PaymentVO> showAllPayment(Calendar start,Calendar end);
 	
-	public EarningVO showEarnings();
+	public EarningVO showEarnings(Calendar start,Calendar end);
 	
 	public ResultMessage exportEarning(EarningVO earnings);
 

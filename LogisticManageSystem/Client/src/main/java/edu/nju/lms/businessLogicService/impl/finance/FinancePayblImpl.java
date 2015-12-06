@@ -12,8 +12,11 @@ import edu.nju.lms.VO.LoadCarVO;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
@@ -146,7 +149,31 @@ public class FinancePayblImpl {
 		return result;
 	}
 
-	public EarningVO showEarnings() {
+	public EarningVO showEarnings(Calendar start,Calendar end) {
+		EarningVO result=new EarningVO(0,0,0,CommonUtility.getTime());
+		FinanceController finance=null;
+		double payment=0;
+		double earning=0;
+		try {
+			finance=BusinessLogicFactory.getFinanceController();
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		}
+		ArrayList<PaymentVO> paymentList=finance.showAllPayment(start, end);
+		if(paymentList!=null){
+			for(PaymentVO vo : paymentList){
+				payment+=vo.getAmount();
+			}
+		}
+		ArrayList<ReceiptVO> receiptList=finance.showReceiptList(start, end);
+		if(receiptList!=null){
+			for(ReceiptVO vo : receiptList){
+				earning+=vo.getAmount();
+			}
+		}
+		result.setPayment(payment);
+		result.setEarnings(earning);
+		result.setProfit(earning-payment);
 		return null;
 	}
 

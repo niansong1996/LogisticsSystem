@@ -101,7 +101,6 @@ earnings double not null,
 payment double not null,
 profit double not null,
 date datetime not null,
-id varchar(20) not null
 );
 
 create table initialinforpo

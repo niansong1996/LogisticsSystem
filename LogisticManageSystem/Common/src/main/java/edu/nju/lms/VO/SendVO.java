@@ -20,20 +20,24 @@ public class SendVO extends ListVO{
 	private ArrayList<String> baseInfor;
 	public static enum SendBaseInfor{
 		//sender's information
-		SENDERNAME,SENDERCITY,SENDERADDRESS,SENDERCOMPANY,SENDERPHONE,SENDERTELE,
+		SENDERNAME,SENDERADDRESS,SENDERCOMPANY,SENDERPHONE,SENDERTELE,
 		//receivers information
-		RECEIVERNAME,RECEIVERCITY,RECEIVERADDRESS,RECEIVERCOMPANY,RECEIVERPHONE,RECEIVERTELE
+		RECEIVERNAME,RECEIVERADDRESS,RECEIVERCOMPANY,RECEIVERPHONE,RECEIVERTELE
 	}
 
+	private String senderCity;
+	private String receiverCity;
 	private double price;
 	private double time;
 	private String createTime;
 	
-	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor = baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -44,10 +48,12 @@ public class SendVO extends ListVO{
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendVO(String expressNum, String id,ArrayList<String> baseInfor,double weight, double volume, String goodsName, double price, double time,String createTime) {
+	public SendVO(String expressNum, String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,double weight, double volume, String goodsName, double price, double time,String createTime) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = 1;
 		this.weight = weight;
 		this.volume = volume;
@@ -58,11 +64,13 @@ public class SendVO extends ListVO{
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendVO(String expressNum,String id,ArrayList<String> baseInfor, double weight, double volume, String goodsName,
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity, double weight, double volume, String goodsName,
 			PackingType packingType, TransportMode mode, double price, double time,String createTime) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = 1;
 		this.weight = weight;
 		this.volume = volume;
@@ -73,10 +81,12 @@ public class SendVO extends ListVO{
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,String createTime) {
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName, TransportMode mode, double price, double time,String createTime) {
 		super(id);
 		this.expressNum = expressNum;
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -87,10 +97,12 @@ public class SendVO extends ListVO{
 		this.time = time;
 		this.createTime=createTime;
 	}
-	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,int initialNum, double weight, double volume, String goodsName,
+	public SendVO(String expressNum,String id,ArrayList<String> baseInfor,String senderCity,String receiverCity,int initialNum, double weight, double volume, String goodsName,
 			PackingType packingType,  double price, double time,String createTime) {
 		super(id);
 		this.baseInfor=baseInfor;
+		this.senderCity=senderCity;
+		this.receiverCity=receiverCity;
 		this.initialNum = initialNum;
 		this.weight = weight;
 		this.volume = volume;
