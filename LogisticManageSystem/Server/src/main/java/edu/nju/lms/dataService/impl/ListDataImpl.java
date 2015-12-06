@@ -25,10 +25,15 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 	public ArrayList<ListPO> findList(ListType type) throws RemoteException {
 		ArrayList<ListPO> list=new ArrayList<ListPO>();
 		ResultSet result = JDBC.ExecuteQuery("select * from "+type.toString().toLowerCase()+"po ;");
+		String classType = type.toString();
+		classType = classType.charAt(0)+classType.substring(1).toLowerCase()+"PO";
 		try{
 			if(!result.wasNull())
-				POGenerator.generateMultiObject(list,result, ListPO.class.getName());
+				POGenerator.generateMultiObject(list,result, Class.forName("edu.nju.lms.PO."+classType).getName());
 		}catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
 		return list;
@@ -73,6 +78,11 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 
 	public ArrayList<ListPO> findAllList() throws RemoteException {
 		
+		return null;
+	}
+
+	public ListPO findListInfo(String id) throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

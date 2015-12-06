@@ -19,47 +19,114 @@ import edu.nju.lms.data.ResultMessage;
  */
 public interface TransProcessblService {
 	
+	/**
+	 * check the {@link ListState} and {@link OrderInforVO}
+	 *  of the {@link CommodityPO} 
+	 * @param orderNum: id of the commodity
+	 * @return OrderInforVO: state and track information of the commodity
+	 * @see OrderInforVO 
+	 */
 	public OrderInforVO checkOrderInfor(String orderNum);
-	
+	/**
+	 * complete {@link SendVO}
+	 * @param baseMessage
+	 * @return completed send list VO
+	 * @see SendVO
+	 */
 	public SendVO createSendList(SendVO baseMessage);
-	
+	/**
+	* save {@link SendVO}
+	* @param sendList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveSendList(SendVO sendList);
 	
 	public SendVO findSendList(String expressNum);
 	
-	
+	/**
+	 * complete {@link LoadVO}
+	 * @param baseMessage
+	 * @return completed load list VO
+	 * @see LoadVO
+	 */
 	public LoadVO createLoadList(LoadVO baseMessage);
-
+	/**
+	* save {@link LoadVO}
+	* @param loadList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveLoadList(LoadVO loadList);
 	
 	public ArrayList<LoadVO> findUnpaidLoad();
 	
-	
+	/**
+	 * complete {@link LoadCarVO}
+	 * @param baseMessage
+	 * @return completed loadCar list VO
+	 * @see LoadCarVO
+	 */
 	public LoadCarVO createLoadCarList(LoadCarVO baseMessage);
-
+	/**
+	* save {@link LoadCarVO}
+	* @param loadCarList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveLoadCarList(LoadCarVO loadCarList);
 	
 	public ArrayList<LoadCarVO> findUnpaidLoadCar();
 	
-	
+	/**
+	 * complete {@link ArrivalVO}
+	 * @param baseMessage
+	 * @return completed Arrival list VO
+	 * @see ArrivalVO
+	 */
 	public ArrivalVO createArrivalList(ArrivalVO arrivalList);
-
+	/**
+	* save {@link ArrivalVO}
+	* @param arrivalList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveArrivalList(ArrivalVO arrivalList);
 	
 	public ArrivalVO findArrivalList(String id);
 	
-
+	/**
+	 * complete {@link DispatchVO}
+	 * @param baseMessage
+	 * @return completed Dispatch list VO
+	 * @see DispatchVO
+	 */
 	public DispatchVO createDispatchList(DispatchVO dipatchList);
-
+	/**
+	* save {@link DispatchVO}
+	* @param dispatchList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveDispatchList(DispatchVO dipatchList);
 	
 	public DispatchVO findDispatchList(String id);
 	
-	
+	/**
+	 * complete {@link ReceiveVO}
+	 * @param baseMessage
+	 * @return completed Receive list VO
+	 * @see ReceiveVO
+	 */
 	public ReceiveVO createReceiveList(ReceiveVO receiveList);
-
+	/**
+	* save {@link ReceiveVO}
+	* @param receiveList
+	* @return ResultMessage
+	* @see ResultMessage
+	*/
 	public ResultMessage saveReceiveList(ReceiveVO receiveList);
 	
 	public ReceiveVO findReceiveList(String id);
-	
+
 }

@@ -17,8 +17,6 @@ public interface ListblService {
 	 */
 	public ArrayList<ListVO>  getListInfo(ListType type);
 	
-	public ArrayList<ListVO> getAllList();
-	
 	public ListVO getListInfo(String id);
 	
 	/**

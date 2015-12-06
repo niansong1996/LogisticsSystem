@@ -43,7 +43,7 @@ public class DepartmentblImpl{
 		try {
 			message=service.deleteDepartment(id);
 		} catch (RemoteException e) {
-			return message;
+			return new ResultMessage(false,"网络未连接");
 		}
 		return message;
 	}
@@ -65,7 +65,7 @@ public class DepartmentblImpl{
 				message = service.updateDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {
-			return message;
+			new ResultMessage(false,"网络未连接");
 		}
 		return message;
 	}
@@ -94,7 +94,7 @@ public class DepartmentblImpl{
 				}
 			}
 		} catch (RemoteException e) {
-			return result;
+			return new ResultMessage(false,"网络未连接");
 		}
 		return result;
 	}
@@ -125,7 +125,7 @@ public class DepartmentblImpl{
 		try {
 			result=service.addCity(cityPO);
 		} catch (RemoteException e) {
-			//TODO
+			return new ResultMessage(false,"网络未连接");
 		}
 		return result;
 	}
@@ -136,7 +136,6 @@ public class DepartmentblImpl{
 		try {
 			cityPO=service.findCity(id);
 		} catch (RemoteException e) {
-			//TODO
 		}
 		if(cityPO!=null){
 			city=new CityVO(cityPO.getId(),cityPO.getName(),cityPO.getBusinessNums(),cityPO.getDistance());
@@ -151,7 +150,7 @@ public class DepartmentblImpl{
 		try {
 			result=service.deleteCity(id);
 		} catch (RemoteException e) {
-			// TODO
+			return new ResultMessage(false,"网络未连接");
 		}
 		return result;
 	}
@@ -166,7 +165,7 @@ public class DepartmentblImpl{
 		try {
 			result=service.updateCity(cityPO);
 		} catch (RemoteException e) {
-			//TODO
+			return new ResultMessage(false,"网络未连接");
 		}
 		return result;
 	}
@@ -177,7 +176,6 @@ public class DepartmentblImpl{
 		try {
 			po=service.showAllCities();
 		} catch (RemoteException e) {
-			// TODO
 		}
 		for(CityPO city : po){
 			CityVO vo=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());

@@ -118,5 +118,4 @@ public class DepartmentController implements DepartmentblService{
 		logController.addLog("查看所有机构的信息");
 		return result;
 	}
-	
 }

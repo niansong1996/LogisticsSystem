@@ -24,7 +24,7 @@ public interface ListDataService extends Remote{
 	 */
 	public ArrayList<ListPO> findList(ListType type) throws RemoteException;
 	
-	public ArrayList<ListPO> findAllList() throws RemoteException;
+	public ListPO findListInfo(String id) throws RemoteException;
 	
 	/**
 	 * @param id

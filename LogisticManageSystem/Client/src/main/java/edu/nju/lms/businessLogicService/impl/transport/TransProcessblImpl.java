@@ -22,6 +22,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.data.City;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.PackingType;
@@ -61,7 +62,7 @@ public class TransProcessblImpl{
 		result.setId(listController.applyListNum(ListType.SEND));
 		result.setCreateTime(CommonUtility.getTime());
 		result.setPrice(calculateMoney(baseMessage.getPackingType(),baseMessage.getMode()));
-		//TODO   time
+		result.setTime(Math.random()*3+1);
 		return result;
 	}
 
@@ -106,10 +107,10 @@ public class TransProcessblImpl{
 		LoadVO result=baseMessage;
 		result.setId(this.listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
-		//TODO
+		result.setFreight(calculateFreight(result));
 		return result;
 	}
-
+	
 	public ResultMessage saveLoadList(LoadVO loadList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		LoadPO po=new LoadPO(loadList.getId(),loadList.getState().toString(),loadList.getLoadType(),CommonUtility.String2Cal(loadList.getLoadDate()),
@@ -313,6 +314,26 @@ public class TransProcessblImpl{
 			receive=new ReceiveVO(po.getId(),po.getReceiverName(),CommonUtility.Cal2String(po.getReceiveTime()),po.getExpressNum());
 		}
 		return receive;
+	}
+	
+	public double calculateFreight(LoadVO load){
+		double result=1;
+		CityVO current=departmentController.findCity(load.getBusinessHallNum().substring(0, 3));
+		CityVO destiny=load.getDestiCity();
+		
+		int temp=City.returnValue(destiny.getName());
+		double distance=current.getDistance().get(temp+1);
+		
+		int commodityNum=load.getCommodityNums().size();
+		switch(load.getLoadType()){
+		case AIRPLANE:
+			result=distance*20*(commodityNum/100.0); return result;
+		case TRAIN:
+			result=distance*(0.2)*(commodityNum/100.0); return result;
+		case CAR:
+			result=distance*2*(commodityNum/100.0); return result;
+		}
+		return result;
 	}
 	
 	public double calculateMoney(PackingType packingType, TransportMode mode){
