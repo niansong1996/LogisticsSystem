@@ -26,6 +26,7 @@ import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
@@ -50,7 +51,7 @@ public class FinanceController
 	PersonnelController personnelController;
 	TransportController transportController;
 	DepartmentController departmentController;
-	//WarehouseController warehouseController;
+	WarehouseController warehouseController;
 	
 	public FinanceController(){
 		try {
@@ -59,7 +60,7 @@ public class FinanceController
 			personnelController=BusinessLogicFactory.getPersonnelController();
 			transportController=BusinessLogicFactory.getTransportController();
 			departmentController=BusinessLogicFactory.getDepartmentController();
-			//warehouseController=BusinessLogicFactory.getWarehouseController();
+			warehouseController=BusinessLogicFactory.getWarehouseController();
 			
 			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
 			accountf=new FinanceAccountblImpl(departmentController,personnelController,transportController,accountData);

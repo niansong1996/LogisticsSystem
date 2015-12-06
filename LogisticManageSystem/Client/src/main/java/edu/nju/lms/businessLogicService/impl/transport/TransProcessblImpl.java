@@ -18,6 +18,7 @@ import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.VO.SendVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
@@ -38,10 +39,9 @@ public class TransProcessblImpl{
 	DepartmentController departmentController;
 	FinanceController financeController;
 	
-	public TransProcessblImpl(ListController listController,DepartmentController departmentController,FinanceController financeController,TransportCommodityDataService commodity,TransportListDataService list){
+	public TransProcessblImpl(ListController listController,DepartmentController departmentController,TransportCommodityDataService commodity,TransportListDataService list){
 		this.listController = listController;
 		this.departmentController=departmentController;
-		this.financeController=financeController;
 		this.commodity=commodity;
 		this.list=list;
 	}
@@ -324,6 +324,9 @@ public class TransProcessblImpl{
 			money+=5;break;
 		case BAG:
 			money+=1;
+		}
+		if(financeController==null){
+			financeController=BusinessLogicFactory.createFinanceController();
 		}
 		switch(mode){
 		case CHEAP:

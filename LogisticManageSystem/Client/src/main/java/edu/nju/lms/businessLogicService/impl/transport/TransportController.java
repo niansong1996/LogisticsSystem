@@ -17,7 +17,6 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.TransManageblService;
 import edu.nju.lms.businessLogicService.TransProcessblService;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
-import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
@@ -38,7 +37,6 @@ public class TransportController implements TransManageblService,TransProcessblS
 	LogController logController;
 	ListController listController;
 	DepartmentController departmentController;
-	FinanceController financeController;
 	PersonnelController personnelController;
 	
 	public TransportController(){
@@ -47,14 +45,13 @@ public class TransportController implements TransManageblService,TransProcessblS
 			personnelController=BusinessLogicFactory.getPersonnelController();
 			listController = BusinessLogicFactory.getListController();
 			departmentController=BusinessLogicFactory.getDepartmentController();
-			financeController=BusinessLogicFactory.getFinanceController();
-			
+		
 			manage=new TransManageblImpl(personnelController,departmentController,listController,toolData);
 			
 			listData=(TransportListDataService) Naming.lookup("//127.0.0.1:1099/TransportListDataService");
 			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
 			
-			process=new TransProcessblImpl(listController,departmentController,financeController,commodityData,listData);
+			process=new TransProcessblImpl(listController,departmentController,commodityData,listData);
 			
 			logController=BusinessLogicFactory.getLogController();
 		}catch(NoBusinessLogicException e1){

@@ -40,7 +40,7 @@ public class ServerActivator
 		activator.activateServer();
 	}
 	public void activateServer(){
-		String url = "jdbc:mysql://127.0.0.1:3306/lms";
+		String url = "jdbc:mysql://127.0.0.1:3306/lms?useUnicode=true&characterEncoding=utf8";
 		String user = "root";
 		String password = "9990";
 		JDBC.createJDBC(url,user,password);
