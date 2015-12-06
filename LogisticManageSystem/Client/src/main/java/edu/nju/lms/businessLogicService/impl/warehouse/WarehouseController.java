@@ -1,59 +1,90 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
+import java.rmi.Naming;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
+import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.WarehouseCheckinDataService;
+import edu.nju.lms.dataService.WarehouseCheckoutDataService;
+import edu.nju.lms.dataService.WarehouseDataService;
 
 /**
  *@author tj
  *@date 2015年11月15日
  */
-public class WarehouseController implements WareHouseblService {
-	WarehouseManageblImpl managebl;
-	WarehouseOpblImpl opbl;
+public class WarehouseController implements WareHouseblService{
+	WarehouseManageblImpl warehouseManagebl;
+	WarehouseOpblImpl warehouseOpbl;
+	LogController logController;
+	TransportController transportController;
+	WarehouseDataService warehouseData;
+	WarehouseCheckinDataService warehouseCheckinData;
+	WarehouseCheckoutDataService warehouseCheckoutData;
+	public WarehouseController(){
+		try {
+			logController=BusinessLogicFactory.getLogController();
+			transportController=BusinessLogicFactory.getTransportController();
+			warehouseData=(WarehouseDataService) Naming.lookup("//127.0.0.1:1099/WarehouseDataService"); 
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println("网络未连接");
+		}
+		
+
+		warehouseManagebl = new WarehouseManageblImpl(warehouseData);
+		warehouseOpbl = new WarehouseOpblImpl(warehouseCheckinData,warehouseCheckoutData,transportController);
+
+
+
+	}
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
-		return opbl.createCheckinList(baseMessage, warehouseNum);
+		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
 	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
-		return opbl.saveCheckinList(checkinList, warehouseNum);
+		return warehouseOpbl.saveCheckinList(checkinList, warehouseNum);
 	}
 
 	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
-		return opbl.createCheckoutList(baseMessage, warehouseNum);
+		return warehouseOpbl.createCheckoutList(baseMessage, warehouseNum);
 	}
 
 	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum) {
-		return opbl.saveCheckoutList(checkoutList, warehouseNum);
+		return warehouseOpbl.saveCheckoutList(checkoutList, warehouseNum);
 	}
 
 	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
-		return managebl.checkWarehouseInfor(start, end, warehouseNum);
+		return warehouseManagebl.checkWarehouseInfor(start, end, warehouseNum);
 	}
 
 	public ResultMessage exportExcel(InventoryExcelVO excel, String wareHouseNum) {
-		return managebl.exportExcel(excel, wareHouseNum);
+		return warehouseManagebl.exportExcel(excel, wareHouseNum);
 	}
 
 	public ResultMessage setCordon(double cordon, String warehouseNum) {
-		return managebl.setCordon(cordon, warehouseNum);
+		return warehouseManagebl.setCordon(cordon, warehouseNum);
 	}
 
 	public PartitionVO showPartition(String warehouseNum) {
-		return managebl.showPartition(warehouseNum);
+		return warehouseManagebl.showPartition(warehouseNum);
 	}
 
 	public ResultMessage modifyPartition(PartitionVO modified, String warehouseNum) {
-		return managebl.modifyPartition(modified, warehouseNum);
+		return warehouseManagebl.modifyPartition(modified, warehouseNum);
 	}
 
 	public ResultMessage initialize(PartitionVO partition, double cordon, String warehouseNum) {
-		return managebl.initialize(partition, cordon, warehouseNum);
+		return warehouseManagebl.initialize(partition, cordon, warehouseNum);
 	}
 
 }

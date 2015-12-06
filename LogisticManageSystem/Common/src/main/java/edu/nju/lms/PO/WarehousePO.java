@@ -102,5 +102,13 @@ public class WarehousePO implements Serializable{
 	public void setCheckOutlists(ArrayList<String> checkOutlists) {
 		this.checkOutlists = checkOutlists;
 	}
+
+	public ArrayList<String> getPartitionInfor() {
+		return partitionInfor;
+	}
+
+	public void setPartitionInfor(ArrayList<String> partitionInfor) {
+		this.partitionInfor = partitionInfor;
+	}
   
 }

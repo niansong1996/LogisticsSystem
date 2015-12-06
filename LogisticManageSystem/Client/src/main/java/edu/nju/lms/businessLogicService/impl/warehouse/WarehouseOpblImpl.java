@@ -6,15 +6,31 @@ import edu.nju.lms.PO.CheckinPO;
 import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.WarehouseCheckinDataService;
+import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 
 public class WarehouseOpblImpl {
-	private ListInfo listInfo;
 	private CheckinPO checkinPO;
 	private CheckoutPO checkoutPO;
-	private ExpressList expressList;
+	
+	private WarehouseCheckinDataService checkinData;
+	private WarehouseCheckoutDataService checkoutData;
+	
+	public WarehouseOpblImpl(WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,TransportController transportController){
+		this.checkinData = checkinData;
+		this.checkoutData = checkoutData;
+	}
+	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
+		baseMessage.setCheckinDate(CommonUtility.getTime());
+		for(String s : baseMessage.getExpresses()){
+			
+		}
+		
 		String[] expresses = {"124567895"};
 		String[] exDestination = {"Shanghai"};
 		return new CheckinVO("1234567990",null,null,"2015/4/6",null);
@@ -37,21 +53,4 @@ public class WarehouseOpblImpl {
 		// TODO Auto-generated method stub
 		return new ResultMessage(true,null);
 	}
-
-	public ListInfo getListInfo() {
-		return listInfo;
-	}
-
-	public void setListInfo(ListInfo listInfo) {
-		this.listInfo = listInfo;
-	}
-	
-	public ExpressList getExpressList() {
-		return expressList;
-	}
-
-	public void setExpressList(ExpressList expressList) {
-		this.expressList = expressList;
-	}
-	
 }
