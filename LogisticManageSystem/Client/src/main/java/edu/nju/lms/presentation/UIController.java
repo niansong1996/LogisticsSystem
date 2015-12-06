@@ -31,7 +31,6 @@ public class UIController {
 		logController = BusinessLogicFactory.createLogController();
 		userController = BusinessLogicFactory.createUserController();
 		listController = BusinessLogicFactory.createListController();
-		transportController = BusinessLogicFactory.createTransportController();
 		frame = new MainFrame();
 	}
 
@@ -52,18 +51,14 @@ public class UIController {
 			warehouseController = BusinessLogicFactory.createWarehouseController();
 		case COUNTER_BUSSINESS:
 		case COURIER:
-			transportController = BusinessLogicFactory.createTransportController();
-			break;
 		case MANAGER:
+		case WAREHOUSE:
+		case FINANCIAL_ADVANCED:
+		case FINANCIAL_NORMAL:
 			personnelController = BusinessLogicFactory.createPersonnelController();
 			departmentController = BusinessLogicFactory.createDepartmentController();
 			transportController = BusinessLogicFactory.createTransportController();
-		case FINANCIAL_ADVANCED:
-		case FINANCIAL_NORMAL:
 			financeController = BusinessLogicFactory.createFinanceController();
-			break;
-		case WAREHOUSE:
-			departmentController = BusinessLogicFactory.createDepartmentController();
 			break;
 		}
 		addData();
@@ -90,13 +85,13 @@ public class UIController {
 //		financeController.addSalaryStrategy(strategy);
 //		strategy = new SalaryStrategyVO("driver", 45, 45, 45);
 //		financeController.addSalaryStrategy(strategy);
-		financeController.addPriceStrategy(100);
-		SendVO vo = new SendVO("1256545696", null,null,2, 2,"hi", 5, 2,null);
-		vo = transportController.createSendList(vo);
-
-		
-		ResultMessage result = transportController.saveSendList(vo);
-		System.out.println(result.getErrorMessage());
+//		financeController.addPriceStrategy(100);
+//		SendVO vo = new SendVO("1256545696", null,null,2, 2,"hi", 5, 2,null);
+//		vo = transportController.createSendList(vo);
+//
+//		
+//		ResultMessage result = transportController.saveSendList(vo);
+//		System.out.println(result.getErrorMessage());
 	}
 
 	public MainFrame getFrame() {

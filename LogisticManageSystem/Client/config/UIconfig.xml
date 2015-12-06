@@ -428,7 +428,7 @@
 			<unit name="arrivalLoc" class="MyTextField" x="340" y="330" w="180" h="33" type="0" textType="null"/>
 			<unit name="carNum" class="MyTextField" x="340" y="410" w="180" h="33" type="0" textType="null"/>
 			<unit name="driverNum" class="MyTextField" x="340" y="490" w="180" h="33" type="0" textType="null"/>
-			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
+			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="1" listenerName="AddLoadCarListener"/>
 			<unit name ="add" class = "MainButton" x="900" y="550" w="112" h="34" type="1" listenerName="CommodityAddListener"/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -450,8 +450,8 @@
 			<unit name="date" class="DateChooser" x="550" y="195" w="180" h="33" type="0"/>
 			<unit name="courierNum" class="MyTextField" x="550" y="300" w="180" h="33" type="0" textType="null"/>
 			<unit name="commodityNum" class="MyTextField" x="550" y="400" w="180" h="33" type="0" textType="null"/>
-			<unit name ="cancel" class = "MainButton" x="920" y="600" w="112" h="34" type="0" listenerName=""/>
-			<unit name ="save" class = "MainButton" x="800" y="600" w="112" h="34" type="0" listenerName=""/>
+			<unit name ="cancel" change="dispatchListPanel" class = "MainButton" x="920" y="600" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="save" class = "MainButton" x="800" y="600" w="112" h="34" type="1" listenerName="AddDispatchListener"/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_dispatchList" change="dispatchListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -479,6 +479,8 @@
 			<unit name ="guide_arrivalList" change="arrivalListPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="addVehicleManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		</mainPanel>
 		<mainPanel name="driverManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
