@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.nju.lms.data.CommonUtility;
-import edu.nju.lms.data.Partition;
 
 /**
  *@author tj
@@ -26,11 +25,11 @@ public class WarehousePO implements Serializable{
 	private ArrayList<String> expressNums;
 	private ArrayList<String> checkInlists;
 	private ArrayList<String> checkOutlists;
-	//String example:"[1000,1,1000,AIRPLANE]"
+	//String example:"1000 1 1000 AIRPLANE"
 	private ArrayList<String> partitionInfor;
 	
 	public WarehousePO(String cordon, String id, String expressNums, String checkInlists,
-			String checkOutlists) {
+			String checkOutlists,String partitionInfor) {
 		super();
 		this.expressNums = new ArrayList<String>();
 		this.checkInlists = new ArrayList<String>();
@@ -40,10 +39,11 @@ public class WarehousePO implements Serializable{
 		CommonUtility.String2Array(this.expressNums, expressNums);
 		CommonUtility.String2Array(this.checkInlists, checkInlists);
 		CommonUtility.String2Array(this.checkOutlists, checkOutlists);
+		CommonUtility.String2Array(this.partitionInfor, partitionInfor);
 	}
 	
 	public WarehousePO(double cordon, String id, ArrayList<String> expressNums, ArrayList<String> checkInlists,
-			ArrayList<String> checkOutlists, ArrayList<Partition> partitionInfor) {
+			ArrayList<String> checkOutlists, ArrayList<String> partitionInfor) {
 		super();
 		this.cordon = cordon;
 		this.id = id;
@@ -102,15 +102,5 @@ public class WarehousePO implements Serializable{
 	public void setCheckOutlists(ArrayList<String> checkOutlists) {
 		this.checkOutlists = checkOutlists;
 	}
-    
-	
-
-	public ArrayList<Partition> getPartitionInfor() {
-		return partitionInfor;
-	}
-
-
-	public void setPartitionInfor(ArrayList<Partition> partitionInfor) {
-		this.partitionInfor = partitionInfor;
-	}
+  
 }

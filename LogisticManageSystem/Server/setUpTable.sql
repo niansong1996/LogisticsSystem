@@ -115,6 +115,15 @@ warehouses text not null,
 accounts text not null
 );
 
+create table inventorypo
+(
+_id_ int unsigned not null auto_increment primary key,
+expressNum varchar(12) not null,
+checkinTime datetime not null,
+destination varchar(10) not null,
+location varchar(20) not null
+);
+
 create table loadpo
 (
 _id_ int unsigned not null auto_increment primary key,
