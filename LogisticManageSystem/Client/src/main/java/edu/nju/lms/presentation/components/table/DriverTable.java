@@ -33,7 +33,7 @@ public class DriverTable extends MyTable{
 		}
 	}
 	
-	private MyTableLabel createLabel(DriverVO driver) {
+	public MyTableLabel createLabel(DriverVO driver) {
 		MyTextField driverNum = new MyTextField(driver.getDriverNum());
 		driverNum.setSize(100,30);
 		MyTextField name = new MyTextField(driver.getDriverName());

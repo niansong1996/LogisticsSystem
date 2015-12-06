@@ -40,7 +40,7 @@ public class VehicleTable extends MyTable{
 		
 	}
 	
-	private MyTableLabel createLabel(VehicleVO vehicle) {
+	public MyTableLabel createLabel(VehicleVO vehicle) {
 		MyTextField plateNum = new MyTextField(vehicle.getPlateNum());
 		plateNum.setSize(150,30);
 		MyTextField vehicleNum = new MyTextField(vehicle.getVehicleNum());
