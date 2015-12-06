@@ -282,5 +282,19 @@ public class FinanceController
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public static void main(String[] args){
+		LogController logController=BusinessLogicFactory.createLogController();
+		ListController listController=BusinessLogicFactory.createListController();
+		PersonnelController personnelController=BusinessLogicFactory.createPersonnelController();
+		DepartmentController departmentController=BusinessLogicFactory.createDepartmentController();
+		WarehouseController warehouseController=BusinessLogicFactory.createWarehouseController();
+		TransportController transportController=BusinessLogicFactory.createTransportController();
+		FinanceController f=BusinessLogicFactory.createFinanceController();
+//		AccountVO account=new AccountVO("1234567890000000",100000);
+//		System.out.println(f.addAccount(account).getErrorMessage());
+		RentVO rent=new RentVO("0100000000",CommonUtility.getTime(),"1234567890000000",100,2014);
+		System.out.println(f.saveRent(rent).isSuccess());
+	}
 
 }

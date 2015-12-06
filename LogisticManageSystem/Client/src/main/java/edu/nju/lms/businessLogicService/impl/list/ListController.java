@@ -59,4 +59,7 @@ public class ListController implements ListblService{
 		return list.getListInfo(id);
 	}
 
+	public static void main(){
+		
+	}
 }

@@ -25,7 +25,7 @@ public class CityPO implements Serializable{
 	 */
 	private ArrayList<String> businessNums;
 
-	public CityPO(String id,String name, String businessNums,String distance) {
+	public CityPO(String id,String name,String distance, String businessNums) {
 		this.distance = new ArrayList<Double>();
 		this.businessNums = new ArrayList<String>();
 		this.id = id;

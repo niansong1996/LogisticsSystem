@@ -4,6 +4,7 @@ import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.ArrivalVO;
+import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.VO.LoadCarVO;
@@ -20,7 +21,11 @@ import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.data.City;
+import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.data.TransportMode;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 import edu.nju.lms.dataService.TransportToolDataService;
@@ -261,5 +266,12 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return process.findUnpaidLoadCar();
 	}
 	
-	
+	public static void main(String[] args){
+		LogController logController=BusinessLogicFactory.createLogController();
+		ListController listController=BusinessLogicFactory.createListController();
+		DepartmentController departmentController=BusinessLogicFactory.createDepartmentController();
+		PersonnelController personnelController=BusinessLogicFactory.createPersonnelController();
+		TransportController t=BusinessLogicFactory.createTransportController();
+		
+	}
 }

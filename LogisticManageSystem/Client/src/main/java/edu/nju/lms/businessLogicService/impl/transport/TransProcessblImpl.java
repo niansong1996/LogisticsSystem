@@ -323,7 +323,7 @@ public class TransProcessblImpl{
 		CityVO destiny=load.getDestiCity();
 		
 		int temp=City.returnValue(destiny.getName());
-		double distance=current.getDistance().get(temp+1);
+		double distance=current.getDistance().get(temp-1);
 		
 		int commodityNum=load.getCommodityNums().size();
 		switch(load.getLoadType()){
@@ -343,7 +343,7 @@ public class TransProcessblImpl{
 		double temp=0;
 		CityVO current=departmentController.findCity(CommonUtility.cityNameToNum(send.getSenderCity()));
 		int num=City.returnValue(send.getReceiverCity());
-		double distance=current.getDistance().get(num+1);
+		double distance=current.getDistance().get(num-1);
 		
 		switch(send.getPackingType()){
 		case WOODENBOX:
