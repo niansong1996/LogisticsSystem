@@ -13,6 +13,13 @@ public class PriceStrategyPO implements Serializable{
 	private final double rate1 = 18;
 	private final double rate2 = 23;
 	private final double rate3 = 25;
+	public PriceStrategyPO(String standard,String express,String economic,String rate1,String rate2,String rate3){
+		this.standard = Double.parseDouble(standard);
+		this.express = Double.parseDouble(express);
+		this.economic = Double.parseDouble(economic);
+	}
+	
+	
 	public PriceStrategyPO(String staS) {
 		double sta = Double.parseDouble(staS);
 		standard = sta;

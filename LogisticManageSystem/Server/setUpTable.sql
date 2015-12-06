@@ -118,6 +118,7 @@ accounts text not null
 create table inventorypo
 (
 _id_ int unsigned not null auto_increment primary key,
+warehouseId varchar(12) not null,
 expressNum varchar(12) not null,
 checkinTime datetime not null,
 destination varchar(10) not null,
@@ -278,7 +279,7 @@ businessHallNum varchar(20) not null
 
 
 
-
+insert into PriceStrategyPO value(NULL,18,25,35,18,25,35);
 insert into NumOccupancyPO value(NULL,"0100000000","0300000000","0500000000","0600000000","0400000000","0200000000","0900000000","0800000000","0700000000","000","000");
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");

@@ -8,12 +8,13 @@ public class InventoryPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 7238013501176144206L;
+	String warehouseId;
 	String expressNum;
 	String checkinTime;
 	String destination;
 	String location;
-	public InventoryPO(String expressNum, String checkinTime, String destination, String location) {
-		super();
+	public InventoryPO(String warehouseId,String expressNum, String checkinTime, String destination, String location) {
+		this.warehouseId = warehouseId;
 		this.expressNum = expressNum;
 		this.checkinTime = checkinTime;
 		this.destination = destination;

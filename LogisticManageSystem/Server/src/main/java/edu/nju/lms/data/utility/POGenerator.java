@@ -28,7 +28,17 @@ public class POGenerator {
 		Object result = null;
 		Constructor<?> cons[] = cls.getConstructors();  
 		Constructor<?> constructor = cons[0];
-		int paraNum = constructor.getParameterCount();
+		int paraNum = 0;
+		for(int i=0;i<cons.length;i++){
+		constructor = cons[i];
+		paraNum = constructor.getParameterCount();
+		System.out.println(cls.getDeclaredFields().length);
+		boolean con1 = cls.getDeclaredFields().length-1!=paraNum;
+		boolean con2 = !checkConstructor(constructor);
+		if(con1||con2) continue;
+		else break;
+		}
+		if(paraNum==0) System.out.println("no matching constructor found!");
 		if(rs.next())
 			switch(paraNum){
 			case 1: result = constructor.newInstance(rs.getString(2));break;
@@ -199,5 +209,11 @@ public class POGenerator {
 		}
 //		System.out.println(result);
 		return result;
-	}     
+	}  
+	
+	public static boolean checkConstructor(Constructor<?> constructor){
+		for(Class<?> cls : constructor.getParameterTypes()){
+			if(!cls.getSimpleName().equals("String")) return false;
+		}return true;
+	}
 }
