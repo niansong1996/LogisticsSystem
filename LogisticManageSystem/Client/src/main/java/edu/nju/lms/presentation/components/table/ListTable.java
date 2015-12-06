@@ -33,11 +33,11 @@ public class ListTable extends MyTable {
 	@Override
 	protected void getData() {
 		this.listControl = controller.getListController();
-		lists = listControl.getAllList();
-		for (int i = 0; i < lists.size(); i++) {
-			MyTableLabel label = createLabel(lists.get(i));
-			addData(label);
-		}
+//		lists = listControl.getAllList();
+//		for (int i = 0; i < lists.size(); i++) {
+//			MyTableLabel label = createLabel(lists.get(i));
+//			addData(label);
+//		}
 	}
 	public MyTableLabel createLabel(ListVO list) {
 	    String type = EnumTransformer.listType2Str(list.getType());

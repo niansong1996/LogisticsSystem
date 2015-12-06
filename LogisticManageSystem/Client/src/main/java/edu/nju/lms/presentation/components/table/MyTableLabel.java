@@ -130,7 +130,6 @@ public class MyTableLabel extends JLabel  {
 			java.awt.Component component = components[i];
 			component.setFont(new Font("微软雅黑",Font.PLAIN,15));
 			component.setBounds(before, (height-component.getHeight())/2, component.getWidth() , component.getHeight());
-			System.out.println(component.getWidth()+","+component.getHeight());
 			before+=component.getWidth()+10;
 			add(component);
 		}

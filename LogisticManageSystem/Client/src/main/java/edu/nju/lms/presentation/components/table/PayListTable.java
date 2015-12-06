@@ -32,7 +32,7 @@ public class PayListTable extends MyTable implements MouseListener{
 	public MyTableLabel createLabel(PaymentVO pay) {
 		String type = EnumTransformer.payment2Str(pay.getPaymentType());
 		MyLabel typeLabel = new MyLabel(type);
-		typeLabel.setSize(80,30);
+		typeLabel.setSize(30,30);
 		MyLabel idLabel = new MyLabel(pay.getId());
 		idLabel.setSize(80,30);
 		MyLabel timeLabel = new MyLabel(pay.getPayTime());

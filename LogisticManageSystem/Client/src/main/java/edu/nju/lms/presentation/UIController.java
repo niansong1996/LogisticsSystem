@@ -2,8 +2,12 @@ package edu.nju.lms.presentation;
 
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.AccountVO;
+import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.ReceiveVO;
+import edu.nju.lms.VO.RentVO;
+import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
@@ -14,6 +18,8 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 
@@ -95,6 +101,10 @@ public class UIController {
 //		ResultMessage result = transportController.saveSendList(vo);
 //		System.out.println(result.getErrorMessage());
 		//financeController.addPriceStrategy(100);
+//		RentVO vo = new RentVO(null,CommonUtility.getTime(),"212545",20,10);
+//		vo = financeController.createRent(vo);
+//		ResultMessage me = financeController.saveRent(vo);
+//		System.out.println(me.getErrorMessage());
 	}
 
 	public MainFrame getFrame() {
