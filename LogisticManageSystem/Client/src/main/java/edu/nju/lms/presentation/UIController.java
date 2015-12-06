@@ -62,6 +62,9 @@ public class UIController {
 		case FINANCIAL_NORMAL:
 			financeController = BusinessLogicFactory.createFinanceController();
 			break;
+		case WAREHOUSE:
+			departmentController = BusinessLogicFactory.createDepartmentController();
+			break;
 		}
 		addData();
 	}
