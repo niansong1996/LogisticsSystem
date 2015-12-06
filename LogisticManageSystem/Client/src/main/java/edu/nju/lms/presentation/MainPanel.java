@@ -50,6 +50,7 @@ public class MainPanel extends JPanel {
 	private int h;
 	private int w;
 	private String name;
+
 	public MainPanel(PanelConfig config, UIController controller) {
 		this.controller = controller;
 		this.config = config;
@@ -61,7 +62,7 @@ public class MainPanel extends JPanel {
 		x = Integer.parseInt(button.attributeValue("x"));
 		y = Integer.parseInt(button.attributeValue("y"));
 		name = button.attributeValue("name");
-		setBounds(x,y,w,h);
+		setBounds(x, y, w, h);
 		createComponents();
 		createUnits();
 	}
@@ -99,9 +100,9 @@ public class MainPanel extends JPanel {
 							java.awt.Component.class);
 					mouseListener = (MouseListener) ct.newInstance(units, controller, com);
 					com.addMouseListener(mouseListener);
-				}else if(unit.getElement().attributeValue("type").equals("itemListener")){
+				} else if (unit.getElement().attributeValue("type").equals("itemListener")) {
 					Class<?> listenner = Class
-							.forName(packageName + "mouseListener."+ unit.getElement().attributeValue("listenerName"));
+							.forName(packageName + "mouseListener." + unit.getElement().attributeValue("listenerName"));
 					ItemListener itemListener;
 					Constructor<?> ct = listenner.getConstructor(ArrayList.class, UIController.class,
 							java.awt.Component.class);
@@ -161,5 +162,4 @@ public class MainPanel extends JPanel {
 	public String getName() {
 		return name;
 	}
-	
 }

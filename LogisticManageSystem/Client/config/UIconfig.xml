@@ -378,7 +378,7 @@
 		    <unit name ="price" class="MyLabel" x="730" y="544" w="100" h="23" type="0" textType="null"/>
 		    <unit name ="create" class = "MainButton" x="850" y="546" w="112" h="34" type="1" listenerName="CreateSendListListener"/>
 		    <unit name ="save" class = "MainButton" x="400" y="620" w="112" h="34" type="1" listenerName="SaveSendListListener"/>
-		    <unit name ="cancel" class = "MainButton" x="700" y="620" w="112" h="34" type="1" listenerName="CancelSaveSendListListener"/>
+		    <unit name ="cancel" class = "MainButton" x="700" y="620" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="courierPanel"/>
 		    <unit name ="guide_back" change="courierPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_send" change="sendPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_receive" change="receivePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

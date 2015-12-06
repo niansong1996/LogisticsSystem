@@ -36,7 +36,7 @@ public class SignInButtonListener extends ButtonListener {
 		n.setText("");
 		p.setText("");
 		controller.changeTo("courierPanel");
-		controller.initialize(PersonType.MANAGER);
+		controller.initialize(PersonType.COURIER);
 //		if (name != "" && password != "") {
 //			if(userController==null){
 //				return;

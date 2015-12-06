@@ -23,7 +23,7 @@ import edu.nju.lms.presentation.components.MyLabel;
  */
 public class CreateSendListListener extends ButtonListener {
 	private TransportController control;
-
+	private SendVO vo;
 	public CreateSendListListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		this.control = controller.getTransportController();
@@ -46,7 +46,7 @@ public class CreateSendListListener extends ButtonListener {
 		// transform date to string
 		DateChooser dateChooser = (DateChooser) units.get(0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String date = sdf.format(dateChooser);
+		String date = sdf.format(dateChooser.getDate());
 		// packType
 		MyComboBox box = (MyComboBox) units.get(1);
 		PackingType packType = EnumTransformer.str2PackType((String) box.getSelectedItem());
@@ -60,16 +60,20 @@ public class CreateSendListListener extends ButtonListener {
 			other[i - 13] = field.getText();
 		}
 		// create SendVo
-		SendVO vo = new SendVO(other[0], null, baseInfo, Integer.parseInt(other[1]), Double.parseDouble(other[2]),
+		vo = new SendVO(other[0], null, baseInfo, Integer.parseInt(other[1]), Double.parseDouble(other[2]),
 				Double.parseDouble(other[3]), other[4], packType, transMode, 0, 0, date);
 		completeInfo(control.createSendList(vo));
-
 	}
 
 	public void completeInfo(SendVO result) {
 		MyLabel priceLabel = (MyLabel) units.get(19);
-		priceLabel.setText(result.getPrice()+"");
+		priceLabel.setText(result.getPrice() + "");
 		MyLabel timeLabel = (MyLabel) units.get(20);
-		timeLabel.setText(result.getTime()+"");
+		timeLabel.setText(result.getTime() + "");
 	}
+
+	public SendVO getVo() {
+		return vo;
+	}
+
 }

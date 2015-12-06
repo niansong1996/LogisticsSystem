@@ -2,6 +2,7 @@ package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.TransportMode;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
+import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyComboBox;
 
 /**
@@ -32,6 +34,9 @@ public class SaveSendListListener extends ButtonListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		MainButton button = (MainButton) units.get(21);
+		MouseListener[] listeners = button.getMouseListeners();
+		CreateSendListListener createListener = (CreateSendListListener)listeners[0];
 		
 	}
 }
