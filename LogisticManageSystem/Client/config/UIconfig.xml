@@ -773,34 +773,68 @@
 		<mainPanel name="checkInPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="checkIn" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="checkInPanel" class = "Component" x="105" y="80" w="950" h="600"/>
+		    <unit name="expressNum" class="MyTextField" x="350" y="150" w="168" h="33" type="0" textType="null"/>
+		    <unit name="lineNum" class="MyTextField" x="350" y="340" w="168" h="33" type="0" textType="null"/>
+		    <unit name="LocNum" class="MyTextField" x="350" y="430" w="168" h="33" type="0" textType="null"/>
+		    <unit name="destination" class="MyTextField" x="350" y="530" w="168" h="33" type="0" textType="null"/>
+		    <unit name="partition" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="航运区;铁运区;汽运区;机动区" />
+		    <unit name ="checkinList" class = "table.CheckInTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
+		    <unit name ="add" class = "MainButton" x="200" y="600" w="112" h="34" type="1" listenerName="AddExpressListener"/>
+		    <unit name ="cancel" class = "MainButton" x="380" y="600" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
+		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckInListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_lookWarehouse" change="lookWarehousePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_checkWarehouse" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="initializePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="initialize" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="initializePanel" class ="Component" x="105" y="80" w="950" h="600"/>
+		    <unit name="warning" class="MyTextField" x="388" y="145" w="160" h="33" type="0" textType="null"/>
+		    <unit name="airStart" class="MyTextField" x="380" y="245" w="80" h="33" type="0" textType="null"/>
+		    <unit name="airEnd" class="MyTextField" x="560" y="245" w="80" h="33" type="0" textType="null"/>
+		    <unit name="trainStart" class="MyTextField" x="380" y="342" w="80" h="33" type="0" textType="null"/>
+		    <unit name="trainEnd" class="MyTextField" x="560" y="342" w="80" h="33" type="0" textType="null"/>
+		    <unit name="motoStart" class="MyTextField" x="380" y="440" w="80" h="33" type="0" textType="null"/>
+		    <unit name="moroEnd" class="MyTextField" x="560" y="440" w="80" h="33" type="0" textType="null"/>
+		    <unit name="flexStart" class="MyTextField" x="380" y="536" w="80" h="33" type="0" textType="null"/>
+		    <unit name="flexEnd" class="MyTextField" x="560" y="536" w="80" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="600" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_lookWarehouse" change="lookWarehousePanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_checkWarehouse" change="driverManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="checkOutPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="checkOut" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="checkOutPanel" class = "Component" x="105" y="80" w="950" h="600"/>
+		    <unit name="expressNum" class="MyTextField" x="350" y="150" w="168" h="33" type="0" textType="null"/>
+		    <unit name="arrivalNum" class="MyTextField" x="390" y="340" w="168" h="33" type="0" textType="null"/>
+		    <unit name="motoNum" class="MyTextField" x="350" y="430" w="168" h="33" type="0" textType="null"/>
+		    <unit name="destination" class="MyTextField" x="350" y="530" w="168" h="33" type="0" textType="null"/>
+		    <unit name="loadType" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="飞机;汽车;火车" />
+		    <unit name ="checkinList" class = "table.CheckoutTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
+		    <unit name ="add" class = "MainButton" x="200" y="600" w="112" h="34" type="1" listenerName="AddCheckoutListener"/>
+		    <unit name ="cancel" class = "MainButton" x="380" y="600" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
+		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckoutListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -808,13 +842,15 @@
 			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="lookWarehousePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="lookWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="warehousePandian" class ="Component" x="105" y="80" w="950" h="600"/>
+		    <unit name ="confirm" class = "MainButton" x="550" y="600" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -822,13 +858,20 @@
 			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="checkWarehousePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="warehouseStore" class = "Component" x="105" y="80" w="950" h="600"/>
 		    <component name="checkWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="to" class = "Component" x="680" y="100" w="30" h="30"/>
+		    <unit name ="start" class="DateChooser" x="500" y="100" w="180" h="33" type="0"/>
+		    <unit name ="end" class="DateChooser" x="730" y="100" w="180" h="33" type="0"/>
+		    <unit name ="warehouseStore" class = "table.WarehouseStoreTable" x="150" y="150" w="850" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
+		    <unit name ="search" class = "MainButton" x="920" y="100" w="112" h="34" type="1" listenerName="ExportWareExcelListener" />
+		    <unit name ="export" class = "MainButton" x="150" y="100" w="112" h="34" type="1" listenerName="ExportWareExcelListener" />
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -836,13 +879,17 @@
 			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="warningPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="warning" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="setWarningPanel" class = "Component" x="105" y="80" w="950" h="459"/>
+		    <unit name="warning" class="MyTextField" x="640" y="285" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="400" w="112" h="34" type="1" listenerName="AddExpressListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="400" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -850,13 +897,24 @@
 			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 		<mainPanel name="PartitionPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="partition" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="changePartition" class ="Component" x="105" y="80" w="950" h="600"/>
+		    <unit name="airStart" class="MyTextField" x="380" y="200" w="80" h="33" type="0" textType="null"/>
+		    <unit name="airEnd" class="MyTextField" x="560" y="200" w="80" h="33" type="0" textType="null"/>
+		    <unit name="trainStart" class="MyTextField" x="380" y="295" w="80" h="33" type="0" textType="null"/>
+		    <unit name="trainEnd" class="MyTextField" x="560" y="295" w="80" h="33" type="0" textType="null"/>
+		    <unit name="motoStart" class="MyTextField" x="380" y="390" w="80" h="33" type="0" textType="null"/>
+		    <unit name="moroEnd" class="MyTextField" x="560" y="390" w="80" h="33" type="0" textType="null"/>
+		    <unit name="flexStart" class="MyTextField" x="380" y="485" w="80" h="33" type="0" textType="null"/>
+		    <unit name="flexEnd" class="MyTextField" x="560" y="485" w="80" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="580" w="112" h="34" type="1" listenerName="SavePartitionListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="580" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -864,7 +922,7 @@
 			<unit name ="guide_checkWarehouse" change="checkWarehousePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_initialize" change="initializePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_partition" change="PartitionPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+			<unit name ="guide_warning" change="warningPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>

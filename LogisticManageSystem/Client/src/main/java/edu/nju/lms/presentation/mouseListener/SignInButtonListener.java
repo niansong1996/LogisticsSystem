@@ -35,8 +35,8 @@ public class SignInButtonListener extends ButtonListener {
 		password = p.getText();
 		n.setText("");
 		p.setText("");
-		controller.changeTo("FinancialAdvancedPanel");
-		controller.initialize(PersonType.FINANCIAL_ADVANCED);
+		controller.changeTo("warehousePanel");
+		controller.initialize(PersonType.WAREHOUSE);
 //		if (name != "" && password != "") {
 //			if(userController==null){
 //				return;
