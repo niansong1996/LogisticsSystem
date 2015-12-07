@@ -41,7 +41,7 @@ public class SaveReceiptListener extends ButtonListener{
 		ReceiptVO finalReceipt = finance.createReceipt(receipt);
 		ResultMessage result = finance.addReceipt(finalReceipt);
 		if(result.isSuccess()) {
-			new MyDialog("addSucess");
+			new MyDialog("addSuccess");
 		}else{
 			new MyDialog(result.getErrorMessage(),true);
 		}

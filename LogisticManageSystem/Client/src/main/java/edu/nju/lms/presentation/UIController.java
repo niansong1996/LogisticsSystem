@@ -1,14 +1,5 @@
 package edu.nju.lms.presentation;
 
-import java.util.ArrayList;
-
-import edu.nju.lms.VO.AccountVO;
-import edu.nju.lms.VO.PaymentVO;
-import edu.nju.lms.VO.PriceStrategyVO;
-import edu.nju.lms.VO.ReceiveVO;
-import edu.nju.lms.VO.RentVO;
-import edu.nju.lms.VO.SalaryVO;
-import edu.nju.lms.VO.SendVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
@@ -18,10 +9,7 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.CommonUtility;
-import edu.nju.lms.data.PaymentType;
 import edu.nju.lms.data.PersonType;
-import edu.nju.lms.data.ResultMessage;
 
 public class UIController {
 	private MainFrame frame;
@@ -55,18 +43,19 @@ public class UIController {
 		case ADMINISTRATOR:
 			break;
 		case COUNTER_INTERMEDIATE:
-			warehouseController = BusinessLogicFactory.createWarehouseController();
 		case COUNTER_BUSSINESS:
 		case COURIER:
 		case MANAGER:
 		case WAREHOUSE:
 		case FINANCIAL_ADVANCED:
 		case FINANCIAL_NORMAL:
-			personnelController = BusinessLogicFactory.createPersonnelController();
-			departmentController = BusinessLogicFactory.createDepartmentController();
-			warehouseController = BusinessLogicFactory.createWarehouseController();
-			transportController = BusinessLogicFactory.createTransportController();
-			financeController = BusinessLogicFactory.createFinanceController();
+			if(personnelController==null) {
+				personnelController = BusinessLogicFactory.createPersonnelController();
+				departmentController = BusinessLogicFactory.createDepartmentController();
+				warehouseController = BusinessLogicFactory.createWarehouseController();
+				transportController = BusinessLogicFactory.createTransportController();
+				financeController = BusinessLogicFactory.createFinanceController();
+			}
 			break;
 		}
 		addData();

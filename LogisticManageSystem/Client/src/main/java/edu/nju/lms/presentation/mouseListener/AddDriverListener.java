@@ -35,11 +35,11 @@ public class AddDriverListener extends ButtonListener{
 		MyTextField name = (MyTextField) units.get(1);
 		MyTextField idCard = (MyTextField) units.get(3);
 		MyTextField limit = (MyTextField) units.get(2);
-		MyTextField businesshall = (MyTextField) units.get(6);
+		MyTextField businesshall = (MyTextField) units.get(5);
 		MyTextField phone = (MyTextField) units.get(4);
 		DateChooser date = (DateChooser) units.get(0);
 		@SuppressWarnings("unchecked")
-		MyComboBox<String> sex = (MyComboBox<String>) units.get(5);
+		MyComboBox<String> sex = (MyComboBox<String>) units.get(6);
 		Calendar c = date.getCalendar();
 		String birth = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + "-" + c.get(Calendar.DATE);
 		DriverVO driver = new DriverVO("", name.getText(), birth, idCard.getText(), phone.getText(),

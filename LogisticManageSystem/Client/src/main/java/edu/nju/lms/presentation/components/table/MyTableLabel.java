@@ -16,6 +16,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
@@ -241,12 +242,20 @@ public class MyTableLabel extends JLabel  {
 				DepartmentController department = controller.getDepartmentController();
 				JTextField field = (JTextField) getComponents(2);
 				result = department.deleteDepartment(field.getText());
+			} else if (type.equals("driver")) {
+				TransportController transport = controller.getTransportController();
+				JTextField field = (JTextField) getComponents(0);
+				result = transport.deleteDriver(field.getText());
+			} else if (type.equals("vehicle")) {
+				TransportController transport = controller.getTransportController();
+				JTextField field = (JTextField) getComponents(1);
+				result = transport.deleteVehicle(field.getText());
 			}
 			if (result != null) {
 				if (result.isSuccess()) {
-					MyDialog dialog = new MyDialog("删除成功！", true);
+					new MyDialog("删除成功！", true);
 				} else {
-					MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+					new MyDialog(result.getErrorMessage(), true);
 				}
 			}
 			table.my_remove(label);
