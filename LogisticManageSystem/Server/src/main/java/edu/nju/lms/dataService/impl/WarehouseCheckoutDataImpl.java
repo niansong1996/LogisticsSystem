@@ -21,7 +21,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 	public ResultMessage addCheckout(CheckoutPO checkout) throws RemoteException {
 		if(findCheckout(checkout.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(checkout, checkout.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The checkout already exists!");
@@ -44,7 +44,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 		CheckoutPO checkout = findCheckout(id);
 		if(!(checkout==null)){
 			JDBC.ExecuteData("delete from checkoutpo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the checkout!");
@@ -55,7 +55,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 		CheckoutPO tempCheckout = findCheckout(checkout.getId());
 		if(!(tempCheckout==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(checkout, checkout.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the checkout!");

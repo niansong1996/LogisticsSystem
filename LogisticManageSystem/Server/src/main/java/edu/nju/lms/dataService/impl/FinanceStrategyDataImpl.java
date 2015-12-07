@@ -28,7 +28,7 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 			throws RemoteException {
 		if(findPriceStrategy()==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(PriceStrategy, PriceStrategy.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The price strategy already exists!");
@@ -52,7 +52,7 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 		PriceStrategyPO tempPriceStrategy = findPriceStrategy();
 		if(!(tempPriceStrategy==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(PriceStrategy, PriceStrategy.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the price strategy!");
@@ -63,7 +63,7 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 			throws RemoteException {
 		if(findSalaryStrategy(SalaryStrategy.getType())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(SalaryStrategy, SalaryStrategy.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The salary strategy already exists!");
@@ -87,7 +87,7 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 		SalaryStrategyPO tempSalaryStrategy = findSalaryStrategy(SalaryStrategy.getType());
 		if(!(tempSalaryStrategy==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(SalaryStrategy, SalaryStrategy.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the salary strategy!");

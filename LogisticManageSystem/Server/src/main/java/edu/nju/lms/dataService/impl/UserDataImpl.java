@@ -27,7 +27,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
 		if(findUser(user.getUserName())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(user, user.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The user already exists!");
@@ -50,7 +50,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 		UserPO user = findUser(id);
 		if(!(user==null)){
 			JDBC.ExecuteData("delete from userpo where userName = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the user!");
@@ -61,7 +61,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 		UserPO tempUser = findUser(user.getUserName());
 		if(!(tempUser==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(user, user.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the user!");

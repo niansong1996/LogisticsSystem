@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.CommodityPO;
 import edu.nju.lms.PO.DispatchPO;
-import edu.nju.lms.PO.LoadCarPO;
+import edu.nju.lms.PO.LoadcarPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
@@ -166,7 +166,7 @@ public class TransProcessblImpl{
 
 	public ResultMessage saveLoadCarList(LoadCarVO loadCarList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
-		LoadCarPO po=new LoadCarPO(loadCarList.getId(),loadCarList.getState().toString(),CommonUtility.String2Cal(loadCarList.getLoadDate()),
+		LoadcarPO po=new LoadcarPO(loadCarList.getId(),loadCarList.getState().toString(),CommonUtility.String2Cal(loadCarList.getLoadDate()),
 				loadCarList.getBusinessHallNum(),loadCarList.getMotorNum(),loadCarList.getDestiBusinessHall(),loadCarList.getVehicleNum(),
 				loadCarList.getDriverNum(),loadCarList.getCommodityNums(),loadCarList.getFreight());
 		try {
@@ -179,14 +179,14 @@ public class TransProcessblImpl{
 	
 	public ArrayList<LoadCarVO> findUnpaidLoadCar() {
 		ArrayList<LoadCarVO> result=new ArrayList<LoadCarVO>();
-		ArrayList<LoadCarPO> po=null;
+		ArrayList<LoadcarPO> po=null;
 		try {
 			po=list.findUnpaidLoadCar();
 		} catch (RemoteException e) {
 			return result;
 		}
 		if(po!=null){
-			for(LoadCarPO temp : po){
+			for(LoadcarPO temp : po){
 				LoadCarVO vo=new LoadCarVO(temp.getId(),CommonUtility.Cal2String(temp.getLoadDate()),
 				temp.getBusinessHallNum(),temp.getMotorNum(),temp.getBusinessHallNum(),
 				temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());

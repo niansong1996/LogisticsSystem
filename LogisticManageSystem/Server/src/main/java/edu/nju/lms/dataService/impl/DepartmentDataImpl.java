@@ -31,7 +31,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	public ResultMessage addDepartment(DepartmentPO department) throws RemoteException {
 		if(findDepartment(department.getDepartmentNum())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(department, department.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The department already exists!");
@@ -39,7 +39,6 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public DepartmentPO findDepartment(String id) throws RemoteException {
-		assert id.length()==6;
 		DepartmentPO department = null;
 		ResultSet result = JDBC.ExecuteQuery("select * from departmentpo where departmentNum = \""+id+"\";");
 		try{
@@ -51,11 +50,10 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		return department;	}
 
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
-		assert id.length()==6;
 		DepartmentPO department = findDepartment(id);
 		if(!(department==null)){
 			JDBC.ExecuteData("delete from departmentpo where departmentNum = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the department!");
@@ -66,7 +64,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		DepartmentPO tempDepartment = findDepartment(department.getDepartmentNum());
 		if(!(tempDepartment==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(department, department.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the department!");
@@ -76,7 +74,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	public ResultMessage addCity(CityPO city) throws RemoteException {
 		if(findCity(city.getId())==null){ 
 			JDBC.ExecuteData(POGenerator.generateInsertOp(city, city.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The city already exists!");
@@ -85,7 +83,6 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public CityPO findCity(String id) throws RemoteException {
-		assert id.length()==3;
 		CityPO city = null;
 		ResultSet result = JDBC.ExecuteQuery("select * from citypo where id = \""+id+"\";");
 		try{
@@ -98,11 +95,10 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 	public ResultMessage deleteCity(String id) throws RemoteException {
-		assert id.length()==3;
 		CityPO city = findCity(id);
 		if(!(city==null)){
 			JDBC.ExecuteData("delete from citypo where id = \""+id+"\";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the city!");
@@ -113,7 +109,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		CityPO tempCity = findCity(city.getId());
 		if(!(tempCity==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(city, city.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the city!");

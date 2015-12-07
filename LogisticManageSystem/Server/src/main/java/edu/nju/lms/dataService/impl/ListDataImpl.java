@@ -46,7 +46,7 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 		try {
 			if(!result.wasNull()){
 				JDBC.ExecuteData("update "+poName+" set state = "+state+" where id = "+id+" ;");
-				return new ResultMessage(true,null);
+				return new ResultMessage(true,"success");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,20 +70,27 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 		NumOccupancyPO tempNumOccupancy = getNumOccupancy();
 		if(!(tempNumOccupancy==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(numOccupancy, numOccupancy.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the numOccupancy!");
 		}
 	}
 
-	public ArrayList<ListPO> findAllList() throws RemoteException {
-		
-		return null;
-	}
-
-	public ListPO findListInfo(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public ListPO findList(ListType type, String id) throws RemoteException {
+		ListPO list = null;
+//		String tmp = "select * from "+type.toString().toLowerCase()+"po where id = "+id+" ;";
+		ResultSet result = JDBC.ExecuteQuery("select * from "+type.toString().toLowerCase()+"po where id = "+id+" ;");
+		String classType = type.toString();
+		classType = classType.charAt(0)+classType.substring(1).toLowerCase()+"PO";
+		try{
+			if(!result.wasNull())
+				list = (ListPO)POGenerator.generateObject(result, Class.forName("edu.nju.lms.PO."+classType).getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		};
+		return list;
 	}
 }

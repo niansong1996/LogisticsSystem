@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.DispatchPO;
-import edu.nju.lms.PO.LoadCarPO;
+import edu.nju.lms.PO.LoadcarPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
@@ -21,9 +21,9 @@ public interface TransportListDataService extends Remote{
 	public LoadPO findLoad(String id) throws RemoteException;
 	public ArrayList<LoadPO> findUnpaidLoad() throws RemoteException;
 	
-	public ResultMessage addLoadCar(LoadCarPO load) throws RemoteException;
-	public LoadCarPO findLoadCar(String id) throws RemoteException;
-	public ArrayList<LoadCarPO> findUnpaidLoadCar() throws RemoteException;
+	public ResultMessage addLoadCar(LoadcarPO load) throws RemoteException;
+	public LoadcarPO findLoadCar(String id) throws RemoteException;
+	public ArrayList<LoadcarPO> findUnpaidLoadCar() throws RemoteException;
 	
 	public ResultMessage addArrival(ArrivalPO arrival) throws RemoteException;
 	public ArrivalPO findArrival(String id) throws RemoteException;

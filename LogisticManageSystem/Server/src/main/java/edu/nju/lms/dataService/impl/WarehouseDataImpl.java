@@ -29,7 +29,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	public ResultMessage addWarehouse(WarehousePO warehouse)throws RemoteException {
 		if(findWarehouse(warehouse.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(warehouse, warehouse.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The warehouse already exists!");
@@ -52,7 +52,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 		WarehousePO warehouse = findWarehouse(id);
 		if(!(warehouse==null)){
 			JDBC.ExecuteData("delete from warehousepo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the warehouse!");
@@ -63,7 +63,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 		WarehousePO tempWarehouse = findWarehouse(warehouse.getId());
 		if(!(tempWarehouse==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(warehouse, warehouse.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the warehouse!");
@@ -86,7 +86,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	public ResultMessage addInventory(InventoryPO Inventory) throws RemoteException {
 		if(findInventory(Inventory.getExpressNum(),Inventory.getWarehouseId())!=null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(Inventory, Inventory.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 	}else{
 		return new ResultMessage(false,"The inventory already exists!");
 	}
@@ -134,7 +134,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 		InventoryPO Inventory = findInventory(expressNum,warehouseId);
 		if(!(Inventory==null)){
 			JDBC.ExecuteData("delete from Inventorypo where expressNum = "+expressNum+" and warehouseId = "+warehouseId+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the Inventory!");
@@ -145,7 +145,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 		InventoryPO tempInventory = findInventory(Inventory.getExpressNum(),Inventory.getWarehouseId());
 		if(!(tempInventory==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(Inventory, Inventory.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the Inventory!");

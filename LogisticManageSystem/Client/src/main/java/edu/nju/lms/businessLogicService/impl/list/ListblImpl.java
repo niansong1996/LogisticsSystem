@@ -14,9 +14,9 @@ import edu.nju.lms.dataService.ListDataService;
  *@date 2015年10月25日
  */
 public class ListblImpl{
-	
+
 	private ListDataService service;
-	
+
 	public ListblImpl(ListDataService service){
 		this.service=service;
 	}
@@ -24,7 +24,7 @@ public class ListblImpl{
 	public ArrayList<ListVO> getListInfo(ListType type) {
 		ArrayList<ListVO> result=new ArrayList<ListVO>();
 		ArrayList<ListPO> list=new ArrayList<ListPO>();
-		
+
 		try {
 			list=service.findList(type);
 		} catch (RemoteException e) {
@@ -37,22 +37,24 @@ public class ListblImpl{
 		}
 		return result;
 	}
-	
+
 	public ResultMessage changeList(ListVO List,ListType type) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
 		try {
-			result=service.updateList(List.getId(), List.getState(),type);
+			return service.updateList(List.getId(), List.getState(),type);
 		} catch (RemoteException e) {
-			// TODO 
+			return new ResultMessage(false,"网络未连接");
 		}	
-		return result;
 	}
-	
+
 	public ListVO getListInfo(String id){
 		ListVO result=null;
 		ListPO po=null;
 		try {
-			po = service.findListInfo(id);
+			for(int i=0;i<10;i++){
+				ListType type = ListType.values()[i];
+				po = service.findList(type,id);
+				if(po!=null) break;
+			}
 		} catch (RemoteException e) {
 		}
 		if(po!=null){

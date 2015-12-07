@@ -17,7 +17,7 @@ public class PersonnelDataTest {
 	PersonnelPO personnelPo1 = new PersonnelPO("8273847263","高露","827384",PersonType.COURIER,3000,40,1000);
 	PersonnelPO personnelPo2 = new PersonnelPO("5344235243","狗露","534423",PersonType.MANAGER,8000,20,5000);
 	
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	ResultMessage fail1 = new ResultMessage(false,"The personnel already exists!");
 	ResultMessage fail2 = new ResultMessage(false,"Could not find the personnel!");
 	

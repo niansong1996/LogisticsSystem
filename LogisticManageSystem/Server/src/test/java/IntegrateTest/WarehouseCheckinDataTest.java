@@ -16,7 +16,7 @@ import edu.nju.lms.dataService.impl.WarehouseCheckinDataImpl;
 
 public class WarehouseCheckinDataTest {
 	WarehouseCheckinDataService checkinData;
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	ResultMessage fail11 = new ResultMessage(false,"The checkin already exists!");
 	ResultMessage fail12 = new ResultMessage(false,"Could not find the checkin!");
 	Calendar cal1 = Calendar.getInstance();

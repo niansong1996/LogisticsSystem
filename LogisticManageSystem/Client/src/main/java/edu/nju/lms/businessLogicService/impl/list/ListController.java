@@ -3,6 +3,7 @@ package edu.nju.lms.businessLogicService.impl.list;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
@@ -61,5 +62,11 @@ public class ListController implements ListblService{
 	
 	public ListVO getListInfo(String id) {
 		return list.getListInfo(id);
+	}
+	
+	public static void main(String[] args){
+		ListController listController = BusinessLogicFactory.createListController();
+		ListVO list = listController.getListInfo("8736473827");
+		System.out.println(list.getId()+" "+list.getState());
 	}
 }

@@ -21,11 +21,11 @@ public class FinanceStrategyDataTest {
 	public SalaryStrategyPO  salaryStrategyPO1 = new SalaryStrategyPO(PersonType.ADMINISTRATOR,6000,30,2000);
 	public SalaryStrategyPO  salaryStrategyPO2 = new SalaryStrategyPO(PersonType.COUNTER_INTERMEDIATE,3000,25,500);
 	
-	public ResultMessage success1 = new ResultMessage(true,null);
+	public ResultMessage success1 = new ResultMessage(true,"success");
 	public ResultMessage fail11 = new ResultMessage(false,"The price strategy already exists!");
 	public ResultMessage fail12 = new ResultMessage(false,"Could not find the price strategy!");
 	
-	public ResultMessage success2 = new ResultMessage(true,null);
+	public ResultMessage success2 = new ResultMessage(true,"success");
 	public ResultMessage fail21 = new ResultMessage(false,"The salary strategy already exists!");
 	public ResultMessage fail22 = new ResultMessage(false,"Could not find the salary strategy!");
 	

@@ -9,10 +9,9 @@ import edu.nju.lms.dataService.ListDataService;
 
 public class ListDataTest {
 	ListDataService listData;
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	
 	@Test
 	public void testAddList() throws RemoteException{
 	}
-	
 }

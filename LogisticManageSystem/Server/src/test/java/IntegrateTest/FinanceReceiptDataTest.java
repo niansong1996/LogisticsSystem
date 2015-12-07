@@ -24,7 +24,7 @@ public class FinanceReceiptDataTest {
 	public ReceiptPO receipt1 = new ReceiptPO("7384736271",ListState.WAITING,cal1,873647.5,"9384736283",expressNums1);
 	public ReceiptPO receipt2 = new ReceiptPO("5374927463",ListState.WAITING,cal1,283626.5,"2326367483",expressNums1);
 	
-	public ResultMessage success = new ResultMessage(true,null);
+	public ResultMessage success = new ResultMessage(true,"success");
 	public ResultMessage fail1 = new ResultMessage(false,"The receipt already exists!");
 	public ResultMessage fail2 = new ResultMessage(false,"Could not find the receipt!");
 	

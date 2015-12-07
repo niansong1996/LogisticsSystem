@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.DispatchPO;
-import edu.nju.lms.PO.LoadCarPO;
+import edu.nju.lms.PO.LoadcarPO;
 import edu.nju.lms.PO.LoadPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
@@ -25,7 +25,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addSend(SendPO send) throws RemoteException {
 		//if(findSend(send.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(send, send.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 	//	}
 	//	else{
 	//		return new ResultMessage(false,"The send already exists!");
@@ -46,7 +46,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addLoad(LoadPO load) throws RemoteException {
 		if(findLoad(load.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(load, load.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The load already exists!");
@@ -67,7 +67,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addArrival(ArrivalPO arrival) throws RemoteException {
 		if(findArrival(arrival.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(arrival, arrival.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The arrival already exists!");
@@ -88,7 +88,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addDispatch(DispatchPO dispatch) throws RemoteException {
 		if(findDispatch(dispatch.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(dispatch, dispatch.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The dispatch already exists!");
@@ -109,7 +109,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addReceive(ReceivePO receive) throws RemoteException {
 		if(findReceive(receive.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(receive, receive.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The receive already exists!");
@@ -137,15 +137,15 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 		};
 		return loadList;
 	}
-	public ResultMessage addLoadCar(LoadCarPO load) throws RemoteException {
+	public ResultMessage addLoadCar(LoadcarPO load) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public LoadCarPO findLoadCar(String id) throws RemoteException {
+	public LoadcarPO findLoadCar(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public ArrayList<LoadCarPO> findUnpaidLoadCar() throws RemoteException {
+	public ArrayList<LoadcarPO> findUnpaidLoadCar() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

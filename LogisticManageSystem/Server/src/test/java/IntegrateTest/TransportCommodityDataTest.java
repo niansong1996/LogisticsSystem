@@ -17,7 +17,7 @@ public class TransportCommodityDataTest {
 	CommodityPO commodityPo1 = new CommodityPO("7876354637","RECEIPIENT","9837463526","[9837463526]","[9837463526]","9837463526","[9837463526]","[9837463526]","9837463526");
 	CommodityPO commodityPo2 = new CommodityPO("3984534242","DISPATCHING","9837463526","[9837463526]","[9837463526]","9837463526","[9837463526]","[9837463526]","9837463526");
 	
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	ResultMessage fail1 = new ResultMessage(false,"The commodity already exists!");
 	ResultMessage fail2 = new ResultMessage(false,"Could not find the commodity!");
 	

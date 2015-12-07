@@ -34,7 +34,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService{
 	 */
 	public ResultMessage addOperation(OperationPO operation) throws RemoteException {
 			JDBC.ExecuteData(POGenerator.generateInsertOp(operation, operation.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 	}
 
 	/**

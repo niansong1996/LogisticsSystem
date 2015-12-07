@@ -17,7 +17,7 @@ public class FinanceAccountDataTest {
 	public AccountPO accountPo1 = new AccountPO("6225887941959874",1212343.5);
 	public AccountPO accountPo2 = new AccountPO("6836474938271738",8736482.2);
 	
-	public ResultMessage success = new ResultMessage(true,null);
+	public ResultMessage success = new ResultMessage(true,"success");
 	public ResultMessage fail1 = new ResultMessage(false,"The account already exists!");
 	public ResultMessage fail2 = new ResultMessage(false,"Could not find the account!");
 	

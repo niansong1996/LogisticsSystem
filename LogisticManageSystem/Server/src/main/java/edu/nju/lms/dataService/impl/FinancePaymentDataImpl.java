@@ -28,7 +28,7 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 	public ResultMessage addPayment(PaymentPO payment) throws RemoteException {
 		if(findPayment(payment.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(payment, payment.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The payment already exists!");
@@ -64,7 +64,7 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 		PaymentPO payment = findPayment(id);
 		if(!(payment==null)){
 			JDBC.ExecuteData("delete from paymentpo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the payment!");
@@ -76,7 +76,7 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 		PaymentPO tempPayment = findPayment(payment.getId());
 		if(!(tempPayment==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(payment, payment.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the payment!");

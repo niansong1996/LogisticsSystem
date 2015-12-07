@@ -27,7 +27,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 	public ResultMessage addReceipt(ReceiptPO receipt) throws RemoteException {
 		if(findReceipt(receipt.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(receipt, receipt.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The receipt already exists!");
@@ -63,7 +63,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 		ReceiptPO receipt = findReceipt(id);
 		if(!(receipt==null)){
 			JDBC.ExecuteData("delete from receiptpo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the receipt!");
@@ -75,7 +75,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 		ReceiptPO tempReceipt = findReceipt(receipt.getId());
 		if(!(tempReceipt==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(receipt, receipt.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the receipt!");

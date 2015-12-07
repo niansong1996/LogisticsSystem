@@ -14,7 +14,7 @@ import edu.nju.lms.dataService.impl.UserDataImpl;
 
 public class UserDataTest {
 	UserDataService userData;
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	ResultMessage fail11 = new ResultMessage(false,"The user already exists!");
 	ResultMessage fail12 = new ResultMessage(false,"Could not find the user!");
 	

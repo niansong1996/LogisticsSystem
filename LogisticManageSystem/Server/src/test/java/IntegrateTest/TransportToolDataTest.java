@@ -16,11 +16,11 @@ import junit.framework.Assert;
 public class TransportToolDataTest {
 	TransportToolDataService transportToolData;
 	
-	public ResultMessage success1 = new ResultMessage(true,null);
+	public ResultMessage success1 = new ResultMessage(true,"success");
 	public ResultMessage fail11 = new ResultMessage(false,"The driver already exists!");
 	public ResultMessage fail12 = new ResultMessage(false,"Could not find the driver!");
 	
-	public ResultMessage success2 = new ResultMessage(true,null);
+	public ResultMessage success2 = new ResultMessage(true,"success");
 	public ResultMessage fail21 = new ResultMessage(false,"The vehicle already exists!");
 	public ResultMessage fail22 = new ResultMessage(false,"Could not find the vehicle!");
 	

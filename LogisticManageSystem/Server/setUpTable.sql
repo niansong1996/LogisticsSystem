@@ -125,6 +125,21 @@ destination varchar(10) not null,
 location varchar(20) not null
 );
 
+create table loadcarpo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
+loadDate datetime not null,
+businessHallNum varchar(12) not null,
+motorNum varchar(12) not null,
+destiBusinessHall varchar(12) not null,
+vehicleNum varchar(12) not null,
+driverNum varchar(12) not null,
+commodityNums text not null,
+freight double not null
+);
+
 create table loadpo
 (
 _id_ int unsigned not null auto_increment primary key,
@@ -233,6 +248,8 @@ bonus double not null
 create table sendpo
 (
 _id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+state varchar(20) not null,
 expressNum varchar(12) not null,
 baseInfor text not null,
 initialNum int not null,

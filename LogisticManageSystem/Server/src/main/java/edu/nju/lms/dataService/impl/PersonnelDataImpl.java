@@ -30,7 +30,7 @@ public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelD
 	public ResultMessage addPersonnel(PersonnelPO personnel) throws RemoteException {
 		if(findPersonnel(personnel.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(personnel, personnel.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The personnel already exists!");
@@ -65,7 +65,7 @@ public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelD
 		PersonnelPO personnel = findPersonnel(id);
 		if(!(personnel==null)){
 			JDBC.ExecuteData("delete from personnelpo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the personnel!");
@@ -76,7 +76,7 @@ public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelD
 		PersonnelPO tempPersonnel = findPersonnel(personnel.getId());
 		if(!(tempPersonnel==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(personnel, personnel.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the personnel!");

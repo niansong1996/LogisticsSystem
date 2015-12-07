@@ -21,7 +21,7 @@ public class WarehouseCheckinDataImpl extends UnicastRemoteObject implements War
 	public ResultMessage addCheckin(CheckinPO checkin) throws RemoteException {
 		if(findCheckin(checkin.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(checkin, checkin.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The checkin already exists!");
@@ -44,7 +44,7 @@ public class WarehouseCheckinDataImpl extends UnicastRemoteObject implements War
 		CheckinPO checkin = findCheckin(id);
 		if(!(checkin==null)){
 			JDBC.ExecuteData("delete from checkinpo where id = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the checkin!");
@@ -55,7 +55,7 @@ public class WarehouseCheckinDataImpl extends UnicastRemoteObject implements War
 		CheckinPO tempCheckin = findCheckin(checkin.getId());
 		if(!(tempCheckin==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(checkin, checkin.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the checkin!");

@@ -17,7 +17,7 @@ import edu.nju.lms.dataService.impl.WarehouseCheckoutDataImpl;
 
 public class WarehouseCheckoutDataTest {
 	WarehouseCheckoutDataService checkoutData;
-	ResultMessage success = new ResultMessage(true,null);
+	ResultMessage success = new ResultMessage(true,"success");
 	ResultMessage fail11 = new ResultMessage(false,"The checkout already exists!");
 	ResultMessage fail12 = new ResultMessage(false,"Could not find the checkout!");
 	Calendar cal1 = Calendar.getInstance();

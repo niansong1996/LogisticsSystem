@@ -28,13 +28,13 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 	
 	public ResultMessage addInitialInfo(InitialInfoPO initialInfo) throws RemoteException {
 			JDBC.ExecuteData(POGenerator.generateInsertOp(initialInfo, initialInfo.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 	}
 
 	public ResultMessage addAccount(AccountPO account) throws RemoteException {
 		if(findAccount(account.getName())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(account, account.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The account already exists!");
@@ -58,7 +58,7 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 		AccountPO account = findAccount(id);
 		if(!(account==null)){
 			JDBC.ExecuteData("delete from accountpo where name = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the account!");
@@ -69,7 +69,7 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 		AccountPO tempAccount = findAccount(account.getName());
 		if(!(tempAccount==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(account, account.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the account!");

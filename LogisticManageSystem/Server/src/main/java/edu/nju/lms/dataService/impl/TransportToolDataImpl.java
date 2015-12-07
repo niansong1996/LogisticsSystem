@@ -23,7 +23,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addVehicle(VehiclePO vehicle) throws RemoteException {
 		if(findVehicle(vehicle.getVehicleNum())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(vehicle, vehicle.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The vehicle already exists!");
@@ -46,7 +46,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		VehiclePO vehicle = findVehicle(id);
 		if(!(vehicle==null)){
 			JDBC.ExecuteData("delete from vehiclepo where vehicleNum = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the vehicle!");
@@ -57,7 +57,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		VehiclePO tempVehicle = findVehicle(vehicle.getVehicleNum());
 		if(!(tempVehicle==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(vehicle, vehicle.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the vehicle!");
@@ -67,7 +67,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 	public ResultMessage addDriver(DriverPO driver) throws RemoteException {
 		if(findDriver(driver.getDriverNum())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(driver, driver.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"The driver already exists!");
@@ -90,7 +90,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		DriverPO driver = findDriver(id);
 		if(!(driver==null)){
 			JDBC.ExecuteData("delete from driverpo where driverNum = "+id+";");
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the driver!");
@@ -101,7 +101,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		DriverPO tempDriver = findDriver(driver.getDriverNum());
 		if(!(tempDriver==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(driver, driver.getClass().getName()));
-			return new ResultMessage(true,null);
+			return new ResultMessage(true,"success");
 		}
 		else{
 			return new ResultMessage(false,"Could not find the driver!");
