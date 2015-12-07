@@ -20,6 +20,8 @@ public class BusinessLogicFactory {
 	private static WarehouseController warehouseController;
 	
 	public static DepartmentController createDepartmentController(){
+		if(departmentController!=null) return departmentController;
+		logController = createLogController();
 		departmentController = new DepartmentController();
 		return departmentController;
 	}
@@ -32,6 +34,10 @@ public class BusinessLogicFactory {
 	}
 	
 	public static FinanceController createFinanceController(){
+		if(financeController!=null) return financeController;
+		logController = createLogController();
+		listController = createListController();
+		personnelController = createPersonnelController();
 		financeController = new FinanceController();
 		return financeController;
 	}
@@ -44,6 +50,8 @@ public class BusinessLogicFactory {
 	}
 	
 	public static ListController createListController(){
+		if(listController!=null) return listController;
+		logController = createLogController();
 		listController = new ListController();
 		return listController;
 	}
@@ -56,6 +64,7 @@ public class BusinessLogicFactory {
 	}
 	
 	public static LogController createLogController(){
+		if(logController!=null) return logController;
 		logController = new LogController();
 		return logController;
 	}
@@ -68,6 +77,8 @@ public class BusinessLogicFactory {
 	}
 	
 	public static PersonnelController createPersonnelController(){
+		if(personnelController!=null) return personnelController;
+		logController = createLogController();
 		personnelController = new PersonnelController();
 		return personnelController;
 	}
@@ -80,6 +91,12 @@ public class BusinessLogicFactory {
 	}
 	
 	public static TransportController createTransportController(){
+		if(transportController!=null) return transportController;
+		logController = createLogController();
+		listController = createListController();
+		personnelController = createPersonnelController();
+		departmentController = createDepartmentController();
+		financeController = createFinanceController();
 		transportController = new TransportController();
 		return transportController;
 	}
@@ -92,6 +109,8 @@ public class BusinessLogicFactory {
 	}
 	
 	public static UserController createUserController(){
+		if(userController!=null) return userController;
+		logController = createLogController();
 		userController = new UserController();
 		return userController;
 	}
@@ -104,6 +123,7 @@ public class BusinessLogicFactory {
 	}
 	
 	public static WarehouseController createWarehouseController(){
+		if(warehouseController!=null) return warehouseController;
 		warehouseController = new WarehouseController();
 		return warehouseController;
 	}

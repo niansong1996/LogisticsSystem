@@ -240,6 +240,8 @@ volume double not null,
 goodsName varchar(20) not null,
 packingType varchar(20) not null,
 mode varchar(20) not null,
+senderCity varchar(20) not null,
+receiverCity varchar(20) not null,
 price double not null,
 time double not null,
 createTime double not null
