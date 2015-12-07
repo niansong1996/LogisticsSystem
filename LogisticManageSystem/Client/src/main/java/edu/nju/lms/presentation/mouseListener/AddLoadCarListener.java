@@ -33,7 +33,7 @@ public class AddLoadCarListener extends ButtonListener{
 		MyTable table = (MyTable) units.get(0);
 		ArrayList<String> commoditynums = new ArrayList<String>();
 		for(MyTableLabel label: table.getDataList()) {
-			MyTextField text = (MyTextField) label.getComponent(0);
+			MyTextField text = (MyTextField) label.getComponents(0);
 			String commodity = text.getText();
 			commoditynums.add(commodity);
 		}

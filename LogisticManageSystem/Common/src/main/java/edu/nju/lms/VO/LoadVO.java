@@ -20,7 +20,7 @@ public class LoadVO extends ListVO{
 		//qiyunbianhao
 		private String motorNum;
 		//destiny
-		private CityVO destiCity;
+		private String destiCity;
 		//the number of destiny businesshall
 		private String destiBusinessHall;
 		//cheliangdaihao
@@ -31,7 +31,7 @@ public class LoadVO extends ListVO{
 		
 		private double freight;
 
-		public LoadVO(String id,LoadType loadType,String loadDate, String businessHallNum, String motorNum, CityVO destiCity, String destiBusinessHall,
+		public LoadVO(String id,LoadType loadType,String loadDate, String businessHallNum, String motorNum, String destiCity, String destiBusinessHall,
 				String vehicleNum, String driverNum, ArrayList<String> commodityNums, double freight) {
 			super(id);
 			this.loadType = loadType;
@@ -75,11 +75,11 @@ public class LoadVO extends ListVO{
 			this.motorNum = motorNum;
 		}
 
-		public CityVO getDestiCity() {
+		public String getDestiCity() {
 			return destiCity;
 		}
 
-		public void setDestiCity(CityVO destiCity) {
+		public void setDestiCity(String destiCity) {
 			this.destiCity = destiCity;
 		}
 

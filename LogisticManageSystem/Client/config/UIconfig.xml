@@ -692,18 +692,18 @@
 			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="arrivalList" class = "Component" x="150" y="20" w="98" h="23"/>
 			<component name="addPanel" class = "Component" x="100" y="70" w="980" h="560"/>
-			<component name="date" class = "Component" x="185" y="120" w="150" h="27"/>
-			<component name="bussinessNum" class = "Component" x="155" y="200" w="150" h="27"/>
-			<component name="arrivalState" class = "Component" x="175" y="280" w="100" h="24"/>
-			<component name="start" class = "Component" x="178" y="360" w="83" h="25"/>
-			<component name="commodityNum" class = "Component" x="165" y="440" w="150" h="27"/>
-			<unit name ="receipt" class = "table.CommodityTable" x="590" y="160" w="400" h="400" type="2"/>
-			<unit name ="courierNum" class="MyTextField" x="320" y="200" w="180" h="33" type="0" textType="null"/>
-			<unit name ="commodityNum" class="MyTextField" x="320" y="440" w="180" h="33" type="0" textType="null"/>
-			<unit name ="date" class="DateChooser" x="320" y="115" w="150" h="30" type="0"/>
-			<unit name ="arrivalState" class = "MyComboBox" x="320" y="276" w="180" h="33" type="0" items="完整;破损;丢失"/>
-			<unit name ="start" class = "MyComboBox" x="320" y="356" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
-			<unit name ="add" class = "MainButton" x="290" y="520" w="112" h="34" type="1" listenerName="CommodityAddListener"/>
+			<component name="date" class = "Component" x="435" y="120" w="150" h="27"/>
+			<component name="bussinessNum" class = "Component" x="405" y="200" w="150" h="27"/>
+			<component name="arrivalState" class = "Component" x="425" y="280" w="100" h="24"/>
+			<component name="start" class = "Component" x="428" y="360" w="83" h="25"/>
+			<component name="commodityNum" class = "Component" x="415" y="440" w="150" h="27"/>
+			<component name="arrivalLoc" class = "Component" x="425" y="520" w="150" h="27"/>
+			<unit name ="courierNum" class="MyTextField" x="570" y="200" w="180" h="33" type="0" textType="null"/>
+			<unit name ="commodityNum" class="MyTextField" x="570" y="440" w="180" h="33" type="0" textType="null"/>
+			<unit name ="date" class="DateChooser" x="570" y="115" w="150" h="30" type="0"/>
+			<unit name ="arrivalState" class = "MyComboBox" x="570" y="276" w="180" h="33" type="0" items="完整;破损;丢失"/>
+			<unit name ="start" class = "MyComboBox" x="570" y="356" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
+			<unit name ="destination" class = "MyComboBox" x="570" y="516" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
 			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
 			<unit name ="guide_back" change="counterBussinessPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_loadList" change="loadListPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -835,13 +835,23 @@
 		<mainPanel name="arrivalPanel" class = "MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="arrivalList" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="arrivalPanel" class = "Component" x="100" y="100"  w="964" h="517"/>
+		    <component name="addPanel" class = "Component" x="100" y="70" w="980" h="560"/>
+			<component name="date" class = "Component" x="435" y="120" w="150" h="27"/>
+			<component name="institution" class = "Component" x="405" y="200" w="117" h="28"/>
+			<component name="arrivalState" class = "Component" x="425" y="280" w="100" h="24"/>
+			<component name="start" class = "Component" x="428" y="360" w="83" h="25"/>
+			<component name="commodityNum" class = "Component" x="415" y="440" w="150" h="27"/>
+			<component name="arrivalLoc" class = "Component" x="425" y="520" w="150" h="27"/>
 		    <unit name ="guide_back" change="counterInterPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_arrivalList" change="arrivalPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_load" change="loadPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="phone" class="MyTextField" x="550" y="240" w="148" h="23" type="0" textType="null"/>
-		    <unit name ="arrivalState" class = "MyComboBox" x="545" y="355" w="180" h="33" type="0" items="完整;破损;丢失"/>
-		    <unit name ="save" class = "MainButton" x="490" y="500" w="112" h="34" type="0" listenerName=""/>
+		    <unit name ="courierNum" class="MyTextField" x="570" y="200" w="180" h="33" type="0" textType="null"/>
+			<unit name ="commodityNum" class="MyTextField" x="570" y="440" w="180" h="33" type="0" textType="null"/>
+			<unit name ="date" class="DateChooser" x="570" y="115" w="150" h="30" type="0"/>
+			<unit name ="arrivalState" class = "MyComboBox" x="570" y="276" w="180" h="33" type="0" items="完整;破损;丢失"/>
+			<unit name ="start" class = "MyComboBox" x="570" y="356" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
+			<unit name ="destination" class = "MyComboBox" x="570" y="516" w="180" h="33" type="0" items="北京;南京;广州;上海"/>
+			<unit name ="save" class = "MainButton" x="920" y="630" w="112" h="34" type="0" listenerName=""/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
