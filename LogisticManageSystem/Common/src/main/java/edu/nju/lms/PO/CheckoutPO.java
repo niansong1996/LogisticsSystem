@@ -18,31 +18,34 @@ public class CheckoutPO extends ListPO{
 	private static final long serialVersionUID = -6939485649504767770L;
 	private ArrayList<String> expressNums;
 	private Calendar checkoutDate;
-	private String destination;//demonstrated by the citypo's id
+	private ArrayList<String> destination;//demonstrated by the hall's id
 	private LoadType loadType;
 	/**
 	 * the number of arrival list
 	 */
 	private String arrivalNum;
+	private String warehouseId;
 	/**
 	 * 汽运单编号
 	 */
 	private String motorNum;
 	
 	public CheckoutPO(String id,String state,String expressNums, String checkoutDate, String destination, String loadType,
-			String arrivalNum, String motorNum) {
+			String arrivalNum,String warehouseId, String motorNum) {
 		super(id,ListState.valueOf(state));
 		this.expressNums = new ArrayList<String>();
 		CommonUtility.String2Array(this.expressNums,expressNums);
 		this.checkoutDate = CommonUtility.String2Cal(checkoutDate);
-		this.destination = destination;
+		CommonUtility.String2Array(this.destination, destination);
 		this.loadType = LoadType.valueOf(loadType);
 		this.arrivalNum = arrivalNum;
+		this.warehouseId = warehouseId;
 		this.motorNum = motorNum;
 	}
 	
-	public CheckoutPO(String id,ListState state,ArrayList<String> expressNums, Calendar checkoutDate, String destination, LoadType loadType,
-			String arrivalNum, String motorNum) {
+
+	public CheckoutPO(String id,ListState state,ArrayList<String> expressNums, Calendar checkoutDate, ArrayList<String> destination, LoadType loadType,
+			String arrivalNum,String warehouseId, String motorNum) {
 		super(id,state);
 		this.expressNums = expressNums;
 		this.checkoutDate = checkoutDate;
@@ -76,11 +79,11 @@ public class CheckoutPO extends ListPO{
 		this.checkoutDate = checkoutDate;
 	}
 
-	public String getDestination() {
+	public ArrayList<String> getDestination() {
 		return destination;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(ArrayList<String> destination) {
 		this.destination = destination;
 	}
 
@@ -107,6 +110,15 @@ public class CheckoutPO extends ListPO{
 	public void setMotorNum(String motorNum) {
 		this.motorNum = motorNum;
 	}
+	
+	public String getWarehouseId() {
+		return warehouseId;
+	}
+
+	public void setWarehouseId(String warehouseId) {
+		this.warehouseId = warehouseId;
+	}
+
 	@Override
 	public boolean equals(Object object){
 		CheckoutPO checkout = (CheckoutPO)object;

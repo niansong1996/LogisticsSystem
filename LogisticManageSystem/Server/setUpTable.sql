@@ -36,9 +36,10 @@ id varchar(12) not null unique,
 state varchar(20) not null,
 expressNums text,
 checkoutDate datetime not null,
-destination varchar(20) not null,
+destination text not null,
 loadType varchar(20) not null,
 arrivalNum varchar(12) not null,
+warehouseId varchar(12) not null,
 motorNum varchar(12) not null
 );
 

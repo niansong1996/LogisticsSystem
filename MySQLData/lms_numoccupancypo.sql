@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.7.9
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,10 +30,11 @@ CREATE TABLE `numoccupancypo` (
   `CheckoutListNum` varchar(12) NOT NULL,
   `DispathcListNum` varchar(12) NOT NULL,
   `LoadListNum` varchar(12) NOT NULL,
-  `LoadCarListNum` varchar(12) NOT NULL,
   `PaymentListNum` varchar(12) NOT NULL,
   `ReceiptListNum` varchar(12) NOT NULL,
   `ReceiveListNum` varchar(12) NOT NULL,
+  `DriverNum` varchar(12) NOT NULL,
+  `CarNum` varchar(12) NOT NULL,
   PRIMARY KEY (`_id_`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,7 +45,7 @@ CREATE TABLE `numoccupancypo` (
 
 LOCK TABLES `numoccupancypo` WRITE;
 /*!40000 ALTER TABLE `numoccupancypo` DISABLE KEYS */;
-INSERT INTO `numoccupancypo` VALUES (1,'0100000000','0300000000','0000000000','0000000000','0400000000','0200000000','0000000000','0000000000','0000000000','0700000000');
+INSERT INTO `numoccupancypo` VALUES (1,'0100000000','0300000000','0500000000','0600000000','0400000000','0200000000','0900000000','0800000000','0700000000','000','000');
 /*!40000 ALTER TABLE `numoccupancypo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-06 17:49:40
+-- Dump completed on 2015-12-07 10:53:20

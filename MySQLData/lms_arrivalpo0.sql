@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `earningspo`
+-- Table structure for table `arrivalpo`
 --
 
-DROP TABLE IF EXISTS `earningspo`;
+DROP TABLE IF EXISTS `arrivalpo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `earningspo` (
+CREATE TABLE `arrivalpo` (
   `_id_` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `earnings` double NOT NULL,
-  `payment` double NOT NULL,
-  `profit` double NOT NULL,
-  `date` datetime NOT NULL,
-  `id` varchar(20) NOT NULL,
-  PRIMARY KEY (`_id_`)
+  `id` varchar(12) NOT NULL,
+  `expressNum` varchar(12) NOT NULL,
+  `arrivalState` varchar(12) NOT NULL,
+  `destination` varchar(12) NOT NULL,
+  `setOut` varchar(12) NOT NULL,
+  `arrivalData` date NOT NULL,
+  `transitNum` varchar(12) NOT NULL,
+  PRIMARY KEY (`_id_`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `expressNum` (`expressNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `earningspo`
+-- Dumping data for table `arrivalpo`
 --
 
-LOCK TABLES `earningspo` WRITE;
-/*!40000 ALTER TABLE `earningspo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `earningspo` ENABLE KEYS */;
+LOCK TABLES `arrivalpo` WRITE;
+/*!40000 ALTER TABLE `arrivalpo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `arrivalpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-06 17:49:41
+-- Dump completed on 2015-12-07 11:42:57

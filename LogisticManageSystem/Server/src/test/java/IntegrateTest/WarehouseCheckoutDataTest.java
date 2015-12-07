@@ -24,8 +24,12 @@ public class WarehouseCheckoutDataTest {
 	Calendar cal2 = Calendar.getInstance();
 	ArrayList<String> a1 = new ArrayList<String>();
 	ArrayList<String> a2 = new ArrayList<String>();
-	CheckoutPO checkoutPo1 = new CheckoutPO("8923234244",ListState.WAITING,a1,cal1,"Nanjing",LoadType.AIRPLANE,"8924729762","8937463526");
-	CheckoutPO checkoutPo2 = new CheckoutPO("7364534263",ListState.WAITING,a2,cal2,"Shanghai",LoadType.CAR,"2942732941","9420374621");
+	ArrayList<String> a3 = new ArrayList<String>();
+	ArrayList<String> a4 = new ArrayList<String>();
+	
+	
+	CheckoutPO checkoutPo1 = new CheckoutPO("8923234244",ListState.WAITING,a1,cal1,a3,LoadType.AIRPLANE,"8924729762","8924729762","8937463526");
+	CheckoutPO checkoutPo2 = new CheckoutPO("7364534263",ListState.WAITING,a2,cal2,a4,LoadType.CAR,"2942732941","8924729762","9420374621");
 	
 //	@Test
 	public void testAddCheckout() throws RemoteException{
