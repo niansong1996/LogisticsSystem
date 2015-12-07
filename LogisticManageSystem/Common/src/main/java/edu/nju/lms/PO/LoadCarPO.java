@@ -3,9 +3,10 @@ package edu.nju.lms.PO;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 
-public class LoadCarPO extends ListPO{
+public class LoadcarPO extends ListPO{
 	/**
 	 * 
 	 */
@@ -24,7 +25,23 @@ public class LoadCarPO extends ListPO{
 	
 	private double freight;
 	
-	public LoadCarPO(String id, String state,Calendar loadDate, String businessHallNum,
+	public LoadcarPO(String id, String state,String loadDate, String businessHallNum,
+			String motorNum, String destiBusinessHall,
+			String vehicleNum, String driverNum, String commodityNums,
+			String freight) {
+		super(id,ListState.valueOf(state));
+		this.commodityNums = new ArrayList<String>();
+		this.loadDate = CommonUtility.String2Cal(loadDate);
+		this.businessHallNum = businessHallNum;
+		this.motorNum = motorNum;
+		this.destiBusinessHall = destiBusinessHall;
+		this.vehicleNum = vehicleNum;
+		this.driverNum = driverNum;
+		CommonUtility.String2Array(this.commodityNums, commodityNums);
+		this.freight = Double.parseDouble(freight);
+	}
+	
+	public LoadcarPO(String id, String state,Calendar loadDate, String businessHallNum,
 			String motorNum, String destiBusinessHall,
 			String vehicleNum, String driverNum, ArrayList<String> commodityNums,
 			double freight) {
