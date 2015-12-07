@@ -41,7 +41,7 @@ public class AddDriverListener extends ButtonListener{
 		@SuppressWarnings("unchecked")
 		MyComboBox<String> sex = (MyComboBox<String>) units.get(5);
 		Calendar c = date.getCalendar();
-		String birth = c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DATE);
+		String birth = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + "-" + c.get(Calendar.DATE);
 		DriverVO driver = new DriverVO("", name.getText(), birth, idCard.getText(), phone.getText(),
 				sex.getSelectedIndex(), limit.getText(), businesshall.getText());
 		DriverVO finalDriver = transport.addDriver(driver);

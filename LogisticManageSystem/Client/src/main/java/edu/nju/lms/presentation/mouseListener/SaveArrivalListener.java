@@ -12,8 +12,12 @@ import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
-import edu.nju.lms.presentation.components.table.CommodityTable;
 
+/**
+ * save arival
+ * @author cuihao
+ * @date 2015-12-07 10:55:13
+ */
 public class SaveArrivalListener extends ButtonListener{
 
 	TransportController transport;

@@ -88,7 +88,7 @@ public class DateChooser extends JPanel {
 	}
 	
 	public DateChooser(Element element, UIController controller) {
-		this("yyyy/MM/dd");
+		this("yyyy-MM-dd");
 		setBounds(Integer.parseInt(element.attributeValue("x")), Integer.parseInt(element.attributeValue("y")),
 				Integer.parseInt(element.attributeValue("w")), Integer.parseInt(element.attributeValue("h")));
 	}
