@@ -10,8 +10,8 @@ import edu.nju.lms.VO.PartitionVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -25,14 +25,14 @@ public class WarehouseController implements WareHouseblService{
 	WarehouseManageblImpl warehouseManagebl;
 	WarehouseOpblImpl warehouseOpbl;
 	LogController logController;
-	TransportController transportController;
+	ListController listController;
 	WarehouseDataService warehouseData;
 	WarehouseCheckinDataService warehouseCheckinData;
 	WarehouseCheckoutDataService warehouseCheckoutData;
 	public WarehouseController(){
 		try {
 			logController=BusinessLogicFactory.getLogController();
-			transportController=BusinessLogicFactory.getTransportController();
+			listController=BusinessLogicFactory.getListController();
 			warehouseData=(WarehouseDataService) Naming.lookup("//127.0.0.1:1099/WarehouseDataService"); 
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class WarehouseController implements WareHouseblService{
 		
 
 		warehouseManagebl = new WarehouseManageblImpl(warehouseData);
-		warehouseOpbl = new WarehouseOpblImpl(warehouseCheckinData,warehouseCheckoutData,transportController);
+		warehouseOpbl = new WarehouseOpblImpl(warehouseCheckinData,warehouseCheckoutData,listController);
 
 
 

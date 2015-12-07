@@ -128,4 +128,6 @@ public interface TransProcessblService {
 	public ResultMessage saveReceiveList(ReceiveVO receiveList);
 	
 	public ReceiveVO findReceiveList(String id);
+	
+	
 }

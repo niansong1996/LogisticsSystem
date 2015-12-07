@@ -125,7 +125,7 @@ public class BusinessLogicFactory {
 	
 	public static WarehouseController createWarehouseController(){
 		if(warehouseController!=null) return warehouseController;
-		transportController = createTransportController();
+		listController = createListController();
 		warehouseController = new WarehouseController();
 		return warehouseController;
 	}

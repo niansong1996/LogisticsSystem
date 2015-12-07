@@ -6,7 +6,7 @@ import edu.nju.lms.PO.CheckinPO;
 import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
-import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
@@ -16,18 +16,20 @@ import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 public class WarehouseOpblImpl {
 	private CheckinPO checkinPO;
 	private CheckoutPO checkoutPO;
-	
+	private ListController listController;
 	private WarehouseCheckinDataService checkinData;
 	private WarehouseCheckoutDataService checkoutData;
 	
-	public WarehouseOpblImpl(WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,TransportController transportController){
+	public WarehouseOpblImpl(WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,ListController listController){
 		this.checkinData = checkinData;
 		this.checkoutData = checkoutData;
+		this.listController = listController;
 	}
 	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		baseMessage.setCheckinDate(CommonUtility.getTime());
-		for(String s : baseMessage.getExpresses()){
+		baseMessage.setExDestination(new ArrayList<String>());
+		for(String expressNum : baseMessage.getExpresses()){
 			
 		}
 		
