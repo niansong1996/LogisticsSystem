@@ -52,6 +52,7 @@ public class CheckoutPO extends ListPO{
 		this.destination = destination;
 		this.loadType = loadType;
 		this.arrivalNum = arrivalNum;
+		this.warehouseId = warehouseId;
 		this.motorNum = motorNum;
 	}
 	

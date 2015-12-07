@@ -25,6 +25,7 @@ public class WarehouseOpblImpl {
 	public WarehouseOpblImpl(WarehouseDataService warehouseData,WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,ListController listController){
 		this.checkinData = checkinData;
 		this.checkoutData = checkoutData;
+		this.listController = listController;
 	}
 	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
@@ -39,7 +40,8 @@ public class WarehouseOpblImpl {
 					checkinList.getExDestination().get(i),checkinList.getLocation().get(i).toString());
 				warehouseData.addInventory(inventory);
 		}
-		CheckinPO checkin = new CheckinPO(listController.applyListNum(ListType.CHECKIN),ListState.WAITING,checkinList.getExpresses(),CommonUtility.String2Cal(checkinList.getCheckinDate()));
+		String listNum = listController.applyListNum(ListType.CHECKIN);
+		CheckinPO checkin = new CheckinPO(listNum,ListState.WAITING,checkinList.getExpresses(),CommonUtility.String2Cal(checkinList.getCheckinDate()));
 		checkinData.addCheckin(checkin);
 		
 		} catch (RemoteException e) {

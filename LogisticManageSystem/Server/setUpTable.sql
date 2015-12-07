@@ -149,7 +149,7 @@ SendListNum varchar(12) not null,
 ArrivalListNum varchar(12) not null,
 CheckinListNum varchar(12) not null,
 CheckoutListNum varchar(12) not null,
-DispathcListNum varchar(12) not null,
+DispatchListNum varchar(12) not null,
 LoadListNum varchar(12) not null,
 PaymentListNum varchar(12) not null,
 ReceiptListNum varchar(12) not null,
@@ -265,7 +265,16 @@ serviceYears tinyint not null,
 businessHallNum varchar(20) not null
 );
 
-
+create table warehousepo
+(
+_id_ int unsigned not null auto_increment primary key,
+id varchar(12) not null unique,
+cordon double not null,
+expressNums text not null,
+checkInlists text not null,
+checkOutlists text not null,
+partitionInfor varchar(100) not null
+);
 
 
 
@@ -285,3 +294,6 @@ insert into PriceStrategyPO value(NULL,18,25,35,18,25,35);
 insert into NumOccupancyPO value(NULL,"0100000000","0300000000","0500000000","0600000000","0400000000","0200000000","0900000000","0800000000","0700000000","000","000");
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value("courier","200","200","300");
+insert into InventoryPO value(NULL,"1234567890","2424252422","2015-10-10","Shanghai","AIRPLANE 10 1");
+insert into InventoryPO value(NULL,"1234567890","9728752922","2015-11-10","Beijing","TRAIN 10 1");
+insert into WarehousePO value(NULL,"1234567890",0.9,"[2424252422, 9728752922]","[]","[]","[1000 1 1000 AIRPLANE, 500 1001 1500 TRAIN, 200 1501 1700 CAR, 300 1701 2000 FLEXIBLE]");

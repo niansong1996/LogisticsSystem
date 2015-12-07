@@ -1,6 +1,8 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
+import java.lang.reflect.Array;
 import java.rmi.Naming;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.CheckinVO;
@@ -12,6 +14,8 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.data.Partition;
+import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -22,18 +26,20 @@ import edu.nju.lms.dataService.WarehouseDataService;
  *@date 2015年11月15日
  */
 public class WarehouseController implements WareHouseblService{
-	WarehouseManageblImpl warehouseManagebl;
-	WarehouseOpblImpl warehouseOpbl;
-	LogController logController;
-	ListController listController;
-	WarehouseDataService warehouseData;
-	WarehouseCheckinDataService warehouseCheckinData;
-	WarehouseCheckoutDataService warehouseCheckoutData;
+	private WarehouseManageblImpl warehouseManagebl;
+	private WarehouseOpblImpl warehouseOpbl;
+	private LogController logController;
+	private ListController listController;
+	private WarehouseDataService warehouseData;
+	private WarehouseCheckinDataService warehouseCheckinData;
+	private WarehouseCheckoutDataService warehouseCheckoutData;
 	public WarehouseController(){
 		try {
 			logController=BusinessLogicFactory.getLogController();
 			listController=BusinessLogicFactory.getListController();
 			warehouseData=(WarehouseDataService) Naming.lookup("//127.0.0.1:1099/WarehouseDataService"); 
+			warehouseCheckinData = (WarehouseCheckinDataService) Naming.lookup("//127.0.0.1:1099/WarehouseCheckinDataService");
+			warehouseCheckoutData = (WarehouseCheckoutDataService) Naming.lookup("//127.0.0.1:1099/WarehouseCheckoutDataService");
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -86,5 +92,47 @@ public class WarehouseController implements WareHouseblService{
 	public ResultMessage initialize(PartitionVO partition, double cordon, String warehouseNum) {
 		return warehouseManagebl.initialize(partition, cordon, warehouseNum);
 	}
+/*//for test
 
+	public static void main(String[] args){
+//		WarehouseController warehouseController = BusinessLogicFactory.createWarehouseController();
+//		ArrayList<String> expresses = new ArrayList<String>();
+//		ArrayList<String> exdestination = new ArrayList<String>();
+//		ArrayList<Location> locations = new ArrayList<Location>();
+//		CheckoutVO checkin = new CheckoutVO("8765467687",expresses,exdestination,LoadType.AIRPLANE,"899884","232424");
+//		CheckoutVO tmp = warehouseController.createCheckoutList(checkin,"9876237262");
+//		warehouseController.saveCheckoutList(tmp, "8765467687");
+//		warehouseController.listController.saveListNum();
+		
+//		WarehouseController warehouseController = BusinessLogicFactory.createWarehouseController();
+//		InventoryExcelVO excel = warehouseController.checkWarehouseInfor(CommonUtility.String2Cal("2014-01-01 00:00:00"), CommonUtility.String2Cal("2016-01-01 00:00:00"), "1234567890");
+//		for(int i=0;i<excel.getDestination().size();i++){
+//			System.out.println(excel.getExpressNums().get(i)+" "+excel.getCheckinTime().get(i)+" "+excel.getCheckinTime().get(i)+" "+excel.getLocation().get(i));
+//		}
+//		PartitionVO partition = warehouseController.showPartition("1234567890");
+//		for(Partition p :partition.getPartitionInfor()){
+//			System.out.println(p);
+//		}
+		
+		WarehouseController warehouseController = BusinessLogicFactory.createWarehouseController();
+		Partition p1 = new Partition(999,2,1000,PartitionType.AIRPLANE);
+		Partition p2 = new Partition(1001,1500,500,PartitionType.TRAIN);
+		Partition p3 = new Partition(1501,1700,200,PartitionType.CAR);
+		Partition p4 = new Partition(1701,2000,300,PartitionType.FLEXIBLE);
+		ArrayList<Partition> partitionInfor = new ArrayList<Partition>();
+		partitionInfor.add(p1);
+		partitionInfor.add(p2);
+		partitionInfor.add(p3);
+		partitionInfor.add(p4);
+		
+		PartitionVO partition = new PartitionVO(partitionInfor);
+		
+//		warehouseController.modifyPartition(partition, "1234567890");
+		
+//		warehouseController.initialize(partition, 0.7, "1234567890");
+		
+		warehouseController.setCordon(0.5, "1234567890");
+	}
+	*/
+	
 }

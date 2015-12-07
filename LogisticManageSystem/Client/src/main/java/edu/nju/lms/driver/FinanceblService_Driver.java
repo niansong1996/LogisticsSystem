@@ -60,7 +60,7 @@ public class FinanceblService_Driver {
 //		System.out.println(svo);
 		
 		
-		ReceiptVO receipt=financeReceipt.createReceipt(null,"1234567");
+		ReceiptVO receipt=financeReceipt.createReceipt(null);
 		System.out.println(receipt);
 		
 //		result=financeReceipt.saveReceipt(null);
