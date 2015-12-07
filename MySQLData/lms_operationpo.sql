@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.7.9
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `operationpo` (
   `timing` varchar(20) NOT NULL,
   `username` varchar(12) NOT NULL,
   PRIMARY KEY (`_id_`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `operationpo` (
 
 LOCK TABLES `operationpo` WRITE;
 /*!40000 ALTER TABLE `operationpo` DISABLE KEYS */;
+INSERT INTO `operationpo` VALUES (1,'新增城市010的信息','2015-12-07 10:41:58','null'),(2,'新增城市021的信息','2015-12-07 10:42:38','null'),(3,'新增城市020的信息','2015-12-07 10:43:06','null'),(4,'新增城市025的信息','2015-12-07 10:43:34','null');
 /*!40000 ALTER TABLE `operationpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-06 17:49:41
+-- Dump completed on 2015-12-07 10:53:21
