@@ -25,8 +25,6 @@ public class DriverTable extends MyTable{
 	@Override
 	protected void getData() {
 		drivers = new ArrayList<DriverVO>();
-		DriverVO driver = new DriverVO("1234512345", "倪安松", "1996/01/02", "1234512345", "11012011900", 0, "10", "010101");
-		drivers.add(driver);
 		for(int i = 0; i < drivers.size(); i++) {
 			MyTableLabel label = createLabel(drivers.get(i));
 			addData(label);

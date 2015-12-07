@@ -30,9 +30,7 @@ public class VehicleTable extends MyTable{
 	@Override
 	protected void getData() {
 		transport = controller.getTransportController();
-		VehicleVO vehicle = new VehicleVO("123456", "sf216fu", "1234512345", 10);
-		vehicles = new ArrayList<VehicleVO>();
-		vehicles.add(vehicle);
+		vehicles = transport.showAllVehicle();
 		for(int i = 0; i < vehicles.size(); i++) {
 			MyTableLabel label = createLabel(vehicles.get(i));
 			addData(label);
