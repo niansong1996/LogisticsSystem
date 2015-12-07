@@ -1,58 +1,72 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
-import java.util.ArrayList;
+import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.CheckinPO;
 import edu.nju.lms.PO.CheckoutPO;
+import edu.nju.lms.PO.InventoryPO;
 import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
-import edu.nju.lms.data.PartitionType;
+import edu.nju.lms.data.ListState;
+import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
+import edu.nju.lms.dataService.WarehouseDataService;
 
 public class WarehouseOpblImpl {
-	private CheckinPO checkinPO;
-	private CheckoutPO checkoutPO;
-	private ListController listController;
 	private WarehouseCheckinDataService checkinData;
 	private WarehouseCheckoutDataService checkoutData;
+	private ListController listController;
+	private WarehouseDataService warehouseData;
 	
-	public WarehouseOpblImpl(WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,ListController listController){
+	public WarehouseOpblImpl(WarehouseDataService warehouseData,WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,ListController listController){
 		this.checkinData = checkinData;
 		this.checkoutData = checkoutData;
-		this.listController = listController;
 	}
 	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		baseMessage.setCheckinDate(CommonUtility.getTime());
-		baseMessage.setExDestination(new ArrayList<String>());
-		for(String expressNum : baseMessage.getExpresses()){
-			
-		}
-		
-		String[] expresses = {"124567895"};
-		String[] exDestination = {"Shanghai"};
-		return new CheckinVO("1234567990",null,null,"2015/4/6",null);
+		return baseMessage;
 	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
-		// TODO Auto-generated method stub
+		try{
+		for(int i=0;i<checkinList.getExpresses().size();i++){
+			InventoryPO inventory = new InventoryPO(warehouseNum,checkinList.getExpresses().get(i),checkinList.getCheckinDate(),
+					checkinList.getExDestination().get(i),checkinList.getLocation().get(i).toString());
+				warehouseData.addInventory(inventory);
+		}
+		CheckinPO checkin = new CheckinPO(listController.applyListNum(ListType.CHECKIN),ListState.WAITING,checkinList.getExpresses(),CommonUtility.String2Cal(checkinList.getCheckinDate()));
+		checkinData.addCheckin(checkin);
+		
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return new ResultMessage(true,null);
 	}
 
 	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
-		// TODO Auto-generated method stub
-		ArrayList<String> expressNums = new ArrayList<String>();
-		expressNums.add("145875610");
-		return new CheckoutVO("0124567890",expressNums,"2015/8/21","Peking",PartitionType.CAR,
-				"1234567895","5789412560");
+		baseMessage.setCheckoutDate(CommonUtility.getTime());
+		return baseMessage;
 	}
 
 	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum) {
-		// TODO Auto-generated method stub
-		return new ResultMessage(true,null);
+		try{
+			for(int i=0;i<checkoutList.getExpressNums().size();i++){
+					warehouseData.deleteInventory(checkoutList.getExpressNums().get(i), warehouseNum);
+			}
+			CheckoutPO checkout = new CheckoutPO(listController.applyListNum
+					(ListType.CHECKOUT),ListState.WAITING,checkoutList.getExpressNums(),
+					CommonUtility.String2Cal(checkoutList.getCheckoutDate()),
+					checkoutList.getDestination(),checkoutList.getLoadType(),
+					checkoutList.getArrivalNum(),warehouseNum,checkoutList.getMotorNum());
+			checkoutData.addCheckout(checkout);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return new ResultMessage(true,null);
 	}
 }

@@ -42,7 +42,7 @@ public class WarehouseController implements WareHouseblService{
 		
 
 		warehouseManagebl = new WarehouseManageblImpl(warehouseData);
-		warehouseOpbl = new WarehouseOpblImpl(warehouseCheckinData,warehouseCheckoutData,listController);
+		warehouseOpbl = new WarehouseOpblImpl(warehouseData,warehouseCheckinData,warehouseCheckoutData,listController);
 
 
 

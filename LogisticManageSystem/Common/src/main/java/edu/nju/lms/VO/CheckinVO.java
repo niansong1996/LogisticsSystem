@@ -19,10 +19,11 @@ public class CheckinVO extends ListVO{
 		 */
 		private ArrayList<String> exDestination;
 		private ArrayList<Location> location;
-		public CheckinVO(String id,ArrayList<Location> location,ArrayList<String>expresses){
+		public CheckinVO(String id,ArrayList<Location> location,ArrayList<String>expresses,ArrayList<String> exDestination){
 			super(id);
 			this.expresses = expresses;
 			this.location = location;
+			this.exDestination = exDestination;
 		}
 		public CheckinVO(String id,ArrayList<Location> location,ArrayList<String>expresses, String checkinDate, ArrayList<String> exDestination) {
 			super(id);

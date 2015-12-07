@@ -14,7 +14,7 @@ public class Location implements Serializable{
 	 */
 	private static final long serialVersionUID = -1458086638498867870L;
 	//partition number
-	private PartitionType partitionNum;
+	private PartitionType partitionType;
 	//排号
 	private int rowNum;
 	//位号
@@ -22,17 +22,17 @@ public class Location implements Serializable{
 	
 	public Location(PartitionType partitionNum, int rowNum, int item) {
 		super();
-		this.partitionNum = partitionNum;
+		this.partitionType = partitionNum;
 		this.rowNum = rowNum;
 		this.item = item;
 	}
 
-	public PartitionType getPartitionNum() {
-		return partitionNum;
+	public PartitionType getPartitionType() {
+		return partitionType;
 	}
 
-	public void setPartitionNum(PartitionType partitionNum) {
-		this.partitionNum = partitionNum;
+	public void setPartitionType(PartitionType partitionNum) {
+		this.partitionType = partitionNum;
 	}
 
 	public int getRowNum() {
@@ -50,6 +50,9 @@ public class Location implements Serializable{
 	public void setItem(int item) {
 		this.item = item;
 	}
-	
+	@Override
+	public String toString(){
+		return this.partitionType+" "+rowNum+" "+item;
+	}
 	
 }
