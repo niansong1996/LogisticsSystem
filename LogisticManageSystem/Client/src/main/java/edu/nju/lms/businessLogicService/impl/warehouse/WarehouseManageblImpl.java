@@ -51,6 +51,7 @@ public class WarehouseManageblImpl {
 			WarehousePO warehouse = warehouseData.findWarehouse(warehouseNum);
 			if(warehouse==null) return new ResultMessage(false,"Could not find the warehouse!");
 			warehouse.setCordon(cordon);
+			warehouseData.updateWarehouse(warehouse);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -108,7 +109,7 @@ public class WarehouseManageblImpl {
 		ArrayList<String> checkInlists = new ArrayList<String>();
 		ArrayList<String> checkOutlists = new ArrayList<String>();
 		
-		WarehousePO warehouse = new WarehousePO(cordon,warehouseNum,expressNums,checkInlists,checkOutlists,modifiedPartitionInfor);
+		WarehousePO warehouse = new WarehousePO(warehouseNum,cordon,expressNums,checkInlists,checkOutlists,modifiedPartitionInfor);
 		try {
 			ResultMessage result = warehouseData.addWarehouse(warehouse);
 			if(!result.isSuccess()) return result;

@@ -51,7 +51,10 @@ public class Partition{
 	public void setType(PartitionType type) {
 		this.type = type;
 	}
-	
+	@Override
+	public String toString(){
+		return this.capacity+" "+this.startRow+" "+this.endRow+" "+this.type;
+	}
 	
 
 }

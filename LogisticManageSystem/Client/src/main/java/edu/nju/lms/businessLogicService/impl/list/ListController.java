@@ -54,7 +54,11 @@ public class ListController implements ListblService{
 	public String applyListNum(ListType type){
 		return this.listNum.generateListNum(type);
 	}
-
+	
+	public void saveListNum(){
+		this.listNum.saveNumOccupancy();
+	}
+	
 	public ListVO getListInfo(String id) {
 		return list.getListInfo(id);
 	}

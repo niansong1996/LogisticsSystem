@@ -38,11 +38,11 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public WarehousePO findWarehouse(String id) throws RemoteException {
 		WarehousePO warehouse = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from warehousepo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from warehousepo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			warehouse = (WarehousePO)POGenerator.generateObject(result, WarehousePO.class.getName());
-		}catch (SQLException e) {
+		}catch (SQLException  e) {
 			e.printStackTrace();
 		};
 		return warehouse;
@@ -106,12 +106,12 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	
 	public ArrayList<InventoryPO> findInventory(Calendar start,Calendar end,String warehouseId){
 		ArrayList<InventoryPO> inventoryList = new ArrayList<InventoryPO>();
-		ResultSet result = JDBC.ExecuteQuery("select * from inventroypo where checkinTime between \""
+		ResultSet result = JDBC.ExecuteQuery("select * from inventorypo where checkinTime between \""
 				+ DataUtility.Cal2String(start)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\""+
 				" and warehouseId = "+warehouseId+" ;" );
 		try{
 		if(!result.wasNull())
-			POGenerator.generateMultiObject(inventoryList,result, ReceiptPO.class.getName());
+			POGenerator.generateMultiObject(inventoryList,result, InventoryPO.class.getName());
 		}catch (SQLException e) {
 			e.printStackTrace();
 		};
@@ -120,7 +120,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public ArrayList<InventoryPO> findInventory(String warehouseId){
 		ArrayList<InventoryPO> inventoryList = new ArrayList<InventoryPO>();
-		ResultSet result = JDBC.ExecuteQuery("select * from inventroypo where warehouseId = "+warehouseId+" ;" );
+		ResultSet result = JDBC.ExecuteQuery("select * from inventorypo where warehouseId = "+warehouseId+" ;" );
 		try{
 		if(!result.wasNull())
 			POGenerator.generateMultiObject(inventoryList,result, ReceiptPO.class.getName());
