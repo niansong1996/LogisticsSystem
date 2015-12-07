@@ -26,10 +26,8 @@ import edu.nju.lms.data.City;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.NumRound;
-import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.ShipState;
-import edu.nju.lms.data.TransportMode;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 
@@ -115,7 +113,7 @@ public class TransProcessblImpl{
 	public ResultMessage saveLoadList(LoadVO loadList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		LoadPO po=new LoadPO(loadList.getId(),loadList.getState().toString(),loadList.getLoadType(),CommonUtility.String2Cal(loadList.getLoadDate()),
-				loadList.getBusinessHallNum(),loadList.getMotorNum(),loadList.getDestiCity().getId(),loadList.getBusinessHallNum(),
+				loadList.getBusinessHallNum(),loadList.getMotorNum(),loadList.getDestiCity(),loadList.getBusinessHallNum(),
 				loadList.getVehicleNum(),loadList.getDriverNum(),loadList.getCommodityNums(),loadList.getFreight());
 		try {
 			result=list.addLoad(po);
@@ -147,9 +145,8 @@ public class TransProcessblImpl{
 		}
 		if(po!=null){
 			for(LoadPO temp : po){
-				CityVO city=departmentController.findCity(temp.getDestiCity());
 				LoadVO vo=new LoadVO(temp.getId(),temp.getLoadType(),CommonUtility.Cal2String(temp.getLoadDate()),
-						temp.getBusinessHallNum(),temp.getMotorNum(),city,temp.getBusinessHallNum(),
+						temp.getBusinessHallNum(),temp.getMotorNum(),temp.getDestiCity(),temp.getBusinessHallNum(),
 						temp.getVehicleNum(),temp.getDriverNum(),temp.getCommodityNums(),temp.getFreight());
 				result.add(vo);
 			}
@@ -320,9 +317,8 @@ public class TransProcessblImpl{
 	public double calculateFreight(LoadVO load){
 		double result=1;
 		CityVO current=departmentController.findCity(load.getBusinessHallNum().substring(0, 3));
-		CityVO destiny=load.getDestiCity();
 		
-		int temp=City.returnValue(destiny.getName());
+		int temp=City.returnValue(load.getDestiCity());
 		double distance=current.getDistance().get(temp-1);
 		
 		int commodityNum=load.getCommodityNums().size();

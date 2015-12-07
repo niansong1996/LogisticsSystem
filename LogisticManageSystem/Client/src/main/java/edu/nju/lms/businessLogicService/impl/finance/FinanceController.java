@@ -26,7 +26,6 @@ import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
