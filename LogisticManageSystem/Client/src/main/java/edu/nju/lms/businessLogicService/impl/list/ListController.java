@@ -58,11 +58,4 @@ public class ListController implements ListblService{
 	public ListVO getListInfo(String id) {
 		return list.getListInfo(id);
 	}
-
-	public static void main(String[] args){
-		LogController logController=BusinessLogicFactory.createLogController();
-		ListController listController=BusinessLogicFactory.createListController();
-		ArrayList<ListVO> result=listController.getListInfo(ListType.PAYMENT);
-		System.out.println(result.size());
-	}
 }
