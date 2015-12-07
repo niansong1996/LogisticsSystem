@@ -5,6 +5,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyLabel;
 
 /**
@@ -26,6 +27,9 @@ public class SumReceiptTable extends MyTable {
 		MyLabel courierNum = new MyLabel(vo.getCourierNum());
 		MyLabel amount = new MyLabel(vo.getAmount()+"");
 		MyLabel business = new MyLabel(businesshallNum);
+		courierNum.setSize(100,30);
+		amount.setSize(30,30);
+		business.setSize(100,30);
 		java.awt.Component[] component = { business, courierNum, amount};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;

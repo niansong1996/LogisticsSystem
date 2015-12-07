@@ -485,11 +485,15 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="sumManage" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="bussinessNum" class = "Component" x="428" y="60" w="140" h="25"/>
-		    <unit name ="sumReceiptTable" class = "table.SumReceiptTable" x="140" y="130" w="900" h="500" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		    <component name="showSumPanel" class = "Component" x="400" y="650" w="181" h="24"/>
+		    <unit name ="sumReceiptTable" class = "table.SumReceiptTable" x="140" y="160" w="900" h="450" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		    <unit name ="search" class = "MainButton" x="830" y="60" w="112" h="35" type="1" listenerName="FindReceiptListener"/>
 		    <unit name ="userName" class = "MyTextField" x="630" y="60" w="168" h="20" type="0" textType="null"/>
-		    <unit name ="sumReceipt" class = "MainButton" x="800" y="800" w="112" h="34" type="0" />
+		    <unit name ="sumLabel" class = "MyLabel" x="350" y="250" w="168" h="50" type="0" />
+		    <unit name ="accountID" class = "MyTextField" x="640" y="650" w="180" h="23" type="0" textType="null"/>
+		    <unit name ="confirmReceipt" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="ConfirmReceiptListener" />
+		    <unit name ="sumReceipt" class = "MainButton" x="150" y="110" w="175" h="57" type="1" listenerName="ShowSumReceiptListener"/>
 		    <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_sumManage" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
