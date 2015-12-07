@@ -22,10 +22,12 @@ public class SumReceiptTable extends MyTable {
 	@Override
 	protected void getData() {
 	}
-	public MyTableLabel createTabel(ReceiptVO vo,String businesshallNum){
+	public MyTableLabel createLabel(ReceiptVO vo,String businesshallNum){
 		MyLabel courierNum = new MyLabel(vo.getCourierNum());
 		MyLabel amount = new MyLabel(vo.getAmount()+"");
-		return null;
-		
+		MyLabel business = new MyLabel(businesshallNum);
+		java.awt.Component[] component = { business, courierNum, amount};
+		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
+		return label;
 	}
 }
