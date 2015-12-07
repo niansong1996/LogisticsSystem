@@ -38,6 +38,8 @@ public class BusinessLogicFactory {
 		logController = createLogController();
 		listController = createListController();
 		personnelController = createPersonnelController();
+		transportController = createTransportController();
+		warehouseController = createWarehouseController();
 		financeController = new FinanceController();
 		return financeController;
 	}
@@ -96,7 +98,6 @@ public class BusinessLogicFactory {
 		listController = createListController();
 		personnelController = createPersonnelController();
 		departmentController = createDepartmentController();
-		financeController = createFinanceController();
 		transportController = new TransportController();
 		return transportController;
 	}
@@ -124,6 +125,7 @@ public class BusinessLogicFactory {
 	
 	public static WarehouseController createWarehouseController(){
 		if(warehouseController!=null) return warehouseController;
+		transportController = createTransportController();
 		warehouseController = new WarehouseController();
 		return warehouseController;
 	}

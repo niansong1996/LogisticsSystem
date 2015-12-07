@@ -32,7 +32,7 @@ public class POGenerator {
 		for(int i=0;i<cons.length;i++){
 		constructor = cons[i];
 		paraNum = constructor.getParameterCount();
-		System.out.println(cls.getDeclaredFields().length);
+//		System.out.println(cls.getDeclaredFields().length);
 		boolean con1 = cls.getDeclaredFields().length-1!=paraNum;
 		boolean con2 = !checkConstructor(constructor);
 		if(con1||con2) continue;

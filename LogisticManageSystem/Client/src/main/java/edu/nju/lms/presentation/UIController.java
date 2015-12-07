@@ -62,7 +62,7 @@ public class UIController {
 		case WAREHOUSE:
 		case FINANCIAL_ADVANCED:
 		case FINANCIAL_NORMAL:
-			warehouseController = BusinessLogicFactory.createWarehouseController();
+//			warehouseController = BusinessLogicFactory.createWarehouseController();
 			personnelController = BusinessLogicFactory.createPersonnelController();
 			departmentController = BusinessLogicFactory.createDepartmentController();
 			transportController = BusinessLogicFactory.createTransportController();

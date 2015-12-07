@@ -1,6 +1,7 @@
 package edu.nju.lms.dataService.impl;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +16,15 @@ import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.data.utility.POGenerator;
 import edu.nju.lms.dataService.WarehouseDataService;
 
-public class WarehouseDataImpl implements WarehouseDataService{	
+public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseDataService{	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7919445550659045026L;
+
+	public WarehouseDataImpl() throws RemoteException {
+	}
 
 	public ResultMessage addWarehouse(WarehousePO warehouse)throws RemoteException {
 		if(findWarehouse(warehouse.getId())==null){

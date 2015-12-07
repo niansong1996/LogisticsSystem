@@ -7,7 +7,7 @@ public class JDBC {
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	public static ResultSet ExecuteQuery(String sql){
-		System.out.println(sql);
+//		System.out.println(sql);
 		ResultSet result = null;
 		try {
 			Statement statement = conn.createStatement();
