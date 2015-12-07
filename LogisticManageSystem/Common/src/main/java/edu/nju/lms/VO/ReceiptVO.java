@@ -10,7 +10,6 @@ public class ReceiptVO extends ListVO{
 	private String courierNum;
 	private double amount;
 	private ArrayList<String> expressNums;
-	private String account;
 	
 	public ReceiptVO(String id,String receiptDate, double amount, String courierNum, ArrayList<String> expressNums) {
 		super(id);
@@ -50,13 +49,4 @@ public class ReceiptVO extends ListVO{
 	public void setExpressNums(ArrayList<String> expressNums) {
 		this.expressNums = expressNums;
 	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
 }

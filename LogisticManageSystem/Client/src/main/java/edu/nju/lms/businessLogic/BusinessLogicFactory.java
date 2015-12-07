@@ -38,6 +38,7 @@ public class BusinessLogicFactory {
 		logController = createLogController();
 		listController = createListController();
 		personnelController = createPersonnelController();
+		departmentController = createDepartmentController();
 		transportController = createTransportController();
 		warehouseController = createWarehouseController();
 		financeController = new FinanceController();
