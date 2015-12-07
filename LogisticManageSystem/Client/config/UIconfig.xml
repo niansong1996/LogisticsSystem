@@ -781,8 +781,9 @@
 		    <unit name="partition" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="航运区;铁运区;汽运区;机动区" />
 		    <unit name ="checkinList" class = "table.CheckInTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
 		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
-		    <unit name ="add" class = "MainButton" x="200" y="600" w="112" h="34" type="1" listenerName="AddExpressListener"/>
-		    <unit name ="cancel" class = "MainButton" x="380" y="600" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
+		    <unit name="businessNum" class="MyTextField" x="380" y="610" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="add" class = "MainButton" x="200" y="680" w="112" h="34" type="1" listenerName="AddExpressListener"/>
+		    <unit name ="cancel" class = "MainButton" x="380" y="680" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
 		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckInListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -832,8 +833,9 @@
 		    <unit name="loadType" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="飞机;汽车;火车" />
 		    <unit name ="checkinList" class = "table.CheckoutTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
 		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
-		    <unit name ="add" class = "MainButton" x="200" y="600" w="112" h="34" type="1" listenerName="AddCheckoutListener"/>
-		    <unit name ="cancel" class = "MainButton" x="380" y="600" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
+		    <unit name="businessNum" class="MyTextField" x="380" y="610" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="add" class = "MainButton" x="200" y="680" w="112" h="34" type="1" listenerName="AddCheckoutListener"/>
+		    <unit name ="cancel" class = "MainButton" x="380" y="680" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
 		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckoutListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

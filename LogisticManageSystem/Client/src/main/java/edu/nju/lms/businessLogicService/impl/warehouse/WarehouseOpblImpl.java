@@ -26,6 +26,7 @@ public class WarehouseOpblImpl {
 		this.checkinData = checkinData;
 		this.checkoutData = checkoutData;
 		this.listController = listController;
+		this.warehouseData = warehouseData;
 	}
 	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
