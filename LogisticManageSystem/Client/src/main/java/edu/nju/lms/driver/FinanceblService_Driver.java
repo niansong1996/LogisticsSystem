@@ -96,8 +96,8 @@ public class FinanceblService_Driver {
 		SalaryVO salary = financePay.createSalary("1234567850");
 		System.out.println(salary.getAmount());
 		
-		EarningVO earning = financePay.showEarnings();
-		System.out.println(earning.getProfit());
+//		EarningVO earning = financePay.showEarnings();
+//		System.out.println(earning.getProfit());
 		
 		System.out.println(financePay.exportEarning(null));
 	}
