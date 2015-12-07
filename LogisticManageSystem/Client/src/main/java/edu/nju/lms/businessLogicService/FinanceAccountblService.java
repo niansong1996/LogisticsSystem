@@ -22,6 +22,8 @@ public interface FinanceAccountblService {
 
 	public ArrayList<AccountVO> showAllAccount();
 	
+	public ResultMessage addMoney(String accountName,double amount);
+	
 	//initial account,including the company's initial financial information
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial);

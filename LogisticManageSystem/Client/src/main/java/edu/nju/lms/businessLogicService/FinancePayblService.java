@@ -20,11 +20,11 @@ public interface FinancePayblService {
 	
 	public ResultMessage saveRent(RentVO rent);
 	
-	public FreightVO createFreight(String accountNum);
+	public FreightVO createFreight(String accountName);
 	
 	public ResultMessage saveFreight(FreightVO freight);
 	
-	public SalaryVO createSalary(String accountNum);
+	public SalaryVO createSalary(String accountName);
 	
 	public ResultMessage saveSalary(SalaryVO salary);
 	

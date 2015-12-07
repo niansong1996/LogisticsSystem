@@ -10,7 +10,6 @@ import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -105,6 +104,28 @@ public class FinanceAccountblImpl{
 				AccountVO vo=new AccountVO(temp.getName(),temp.getAmount());
 				result.add(vo);
 			}
+		}
+		return result;
+	}
+	
+	public ResultMessage addMoney(String accountNum,double money) {
+		ResultMessage result=new ResultMessage(false,"网络未连接");
+		AccountPO account=null;
+		try {
+			account=service.findAccount(accountNum);
+		} catch (RemoteException e) {
+			return result;
+		}
+		if(account==null){
+			result=new ResultMessage(false,"未找到对应账户！");
+			return result;
+		}
+		double currentMoney=account.getAmount();
+		currentMoney+=money;
+		account.setAmount(currentMoney);
+		try {
+			result=service.updateAccount(account);
+		} catch (RemoteException e) {
 		}
 		return result;
 	}

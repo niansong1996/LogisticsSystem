@@ -4,14 +4,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 
 /**
@@ -21,22 +19,19 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
 public class FinanceReceiptblImpl{
 	private FinanceReceiptDataService service;
 	ListController listController;
-	FinanceAccountDataService accountService;
 	
-	public FinanceReceiptblImpl(ListController listController,FinanceAccountDataService account,FinanceReceiptDataService service){
+	public FinanceReceiptblImpl(ListController listController,FinanceReceiptDataService service){
 		this.listController=listController;
-		this.accountService=account;
 		this.service=service;
 	}
 
 	/**
 	 * create the date and the id automatically
 	 */
-	public ReceiptVO createReceipt(ReceiptVO debit,String account) {
+	public ReceiptVO createReceipt(ReceiptVO debit) {
 		ReceiptVO result=debit;
 		result.setReceiptDate(CommonUtility.getTime());
 		result.setId(listController.applyListNum(ListType.RECEIPT));
-		result.setAccount(account);
 		return result;
 	}
 	
@@ -57,9 +52,6 @@ public class FinanceReceiptblImpl{
 			return result;
 		}
 		
-		if(result.isSuccess()){
-			result=addMoney(debit.getAccount(),debit.getAmount());
-		}
 		return result;
 	}
 
@@ -152,29 +144,6 @@ public class FinanceReceiptblImpl{
 		return sum;
 	}
 
-	public ResultMessage addMoney(String accountNum,double money) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
-		AccountPO account=null;
-		try {
-			account=accountService.findAccount(accountNum);
-		} catch (RemoteException e) {
-			return result;
-		}
-		if(account==null){
-			result=new ResultMessage(false,"未找到对应账户！");
-			return result;
-		}
-		double currentMoney=account.getAmount();
-		currentMoney+=money;
-		account.setAmount(currentMoney);
-		try {
-			result=accountService.updateAccount(account);
-		} catch (RemoteException e) {
-			return result;
-		}
-		return result;
-	}
-	
 	public ResultMessage idCheck(String id){
 		ResultMessage result=new ResultMessage(true,"");
 		if(id.length()!=10){

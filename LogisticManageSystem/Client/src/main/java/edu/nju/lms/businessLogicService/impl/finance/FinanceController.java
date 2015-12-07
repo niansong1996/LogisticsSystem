@@ -67,7 +67,7 @@ public class FinanceController
 			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
 			pay=new FinancePayblImpl(listController,personnelController,transportController,accountData,payData);
 			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
-			receipt=new FinanceReceiptblImpl(listController,accountData,receiptData);
+			receipt=new FinanceReceiptblImpl(listController,receiptData);
 			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
 			strategy=new FinanceStrategyblImpl(strategyData);
 		} catch (NoBusinessLogicException e) {
@@ -164,6 +164,14 @@ public class FinanceController
 		return result;
 	}
 	
+	public ResultMessage addMoney(String accountName, double amount) {
+		ResultMessage result=accountf.addMoney(accountName, amount);
+		if(result.isSuccess()){
+			logController.addLog("账户"+accountName+"收款"+amount+"元");
+		}
+		return result;
+	}
+	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		ResultMessage result=accountf.addInitialInfo(initial);
 		if(result.isSuccess()){
@@ -186,8 +194,8 @@ public class FinanceController
 		return result;
 	}
 
-	public ReceiptVO createReceipt(ReceiptVO debit,String account) {
-		return receipt.createReceipt(debit,account);
+	public ReceiptVO createReceipt(ReceiptVO debit) {
+		return receipt.createReceipt(debit);
 	}
 	public ResultMessage addReceipt(ReceiptVO debit) {
 		ResultMessage result=receipt.addReceipt(debit);
@@ -281,20 +289,6 @@ public class FinanceController
 	public ResultMessage exportEarning(EarningVO earnings) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	public static void main(String[] args){
-		LogController logController=BusinessLogicFactory.createLogController();
-		ListController listController=BusinessLogicFactory.createListController();
-		PersonnelController personnelController=BusinessLogicFactory.createPersonnelController();
-		DepartmentController departmentController=BusinessLogicFactory.createDepartmentController();
-		WarehouseController warehouseController=BusinessLogicFactory.createWarehouseController();
-		TransportController transportController=BusinessLogicFactory.createTransportController();
-		FinanceController f=BusinessLogicFactory.createFinanceController();
-//		AccountVO account=new AccountVO("1234567890000000",100000);
-//		System.out.println(f.addAccount(account).getErrorMessage());
-		RentVO rent=new RentVO("0100000000",CommonUtility.getTime(),"1234567890000000",100,2014);
-		System.out.println(f.saveRent(rent).isSuccess());
 	}
 
 }
