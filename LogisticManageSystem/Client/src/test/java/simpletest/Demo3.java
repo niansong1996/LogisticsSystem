@@ -74,7 +74,7 @@ public class Demo3 {
 		// 第六步，将文件存到指定位置  
 		try  
 		{  
-			FileOutputStream fout = new FileOutputStream("\\target\\students.xls");  
+			FileOutputStream fout = new FileOutputStream("target/students.xls");  
 			wb.write(fout);  
 			fout.close();  
 		}  
