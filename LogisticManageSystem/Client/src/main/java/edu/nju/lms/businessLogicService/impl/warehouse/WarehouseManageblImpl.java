@@ -57,6 +57,17 @@ public class WarehouseManageblImpl {
 		}
 		return new ResultMessage(true,null);
 	}
+	
+	public double getCordon(String warehouseNum){
+		try {
+			WarehousePO warehouse = warehouseData.findWarehouse(warehouseNum);
+			if(warehouse==null) return -1;
+			return warehouse.getCordon();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 	public PartitionVO showPartition(String warehouseNum) {
 		ArrayList<Partition> partition = new ArrayList<Partition>();

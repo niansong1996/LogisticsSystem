@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.PO.NumOccupancyPO;
+import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
@@ -43,5 +44,6 @@ public interface ListDataService extends Remote{
 	public NumOccupancyPO getNumOccupancy() throws RemoteException;
 	
 	public ResultMessage updateNumOccupancy(NumOccupancyPO numOccupancyPO) throws RemoteException;
+
 	
 }

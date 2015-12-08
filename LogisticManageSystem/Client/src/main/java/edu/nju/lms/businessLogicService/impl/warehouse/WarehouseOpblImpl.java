@@ -37,6 +37,7 @@ public class WarehouseOpblImpl {
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		try{
 		for(int i=0;i<checkinList.getExpresses().size();i++){
+			if(warehouseData.findSend(checkinList.getExpresses().get(i))==null) return new ResultMessage(false,"快递编号不存在!");
 			InventoryPO inventory = new InventoryPO(warehouseNum,checkinList.getExpresses().get(i),checkinList.getCheckinDate(),
 					checkinList.getExDestination().get(i),checkinList.getLocation().get(i).toString());
 				ResultMessage result = warehouseData.addInventory(inventory);

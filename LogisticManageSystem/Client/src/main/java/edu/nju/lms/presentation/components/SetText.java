@@ -6,17 +6,21 @@ import java.lang.reflect.Method;
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
+import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 
 /**
  *@author tj
  *@date 2015年12月1日
  */
 public class SetText {
-	public static String mySetText(String type){
+	private FinanceController finance ;
+	private WarehouseController warehouse;
+	
+	public String mySetText(String type,FinanceController finance){
+		this.finance = finance;
 		if(type.equals("null")){
 			return "";
 		}
-		FinanceController finance = new FinanceController();
 		/**
 		 * 对于salaryStrategy,传入的type通过;分割为三部分 如 "salaryStrategy;courier;getBasic"
 		 */
@@ -70,5 +74,13 @@ public class SetText {
 //			
 //		}
 		return result;
+	}
+	public String mySetText(String type,WarehouseController warehouse){
+		this.warehouse = warehouse;
+		if(type.equals("warningline")){
+		//TODO
+		}
+		return type;
+		
 	}
 }

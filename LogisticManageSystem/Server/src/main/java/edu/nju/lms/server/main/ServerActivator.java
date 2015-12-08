@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.DepartmentDataService;
@@ -49,6 +51,21 @@ public class ServerActivator
 {
 	public static void main( String[] args ){
 		ServerActivator activator = new ServerActivator();
+		try {
+			UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		activator.InitServerUI();
 	}
 	public void activateServer(String port,String user,String password){
