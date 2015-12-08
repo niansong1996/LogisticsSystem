@@ -1,6 +1,9 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.Font;
+
 import javax.swing.JComboBox;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
@@ -30,7 +33,7 @@ public class MyComboBox<T> extends JComboBox<T> {
 		}
 		setUI(new MyComboBoxUI());
 		setRenderer(new MyComboBoxRender<T>());
-
+		setFont(new Font("微软雅黑", Font.PLAIN, 16));
 		setEditable(false);
 		addMyItems();
 	}

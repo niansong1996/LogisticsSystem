@@ -59,7 +59,7 @@ public class MyComboBoxUI extends BasicComboBoxUI{
 		button.setIcon(new ImageIcon(PIC_NORMAL));
 		button.setRolloverEnabled(true);
 		button.setRolloverIcon(new ImageIcon(PIC_INTO));
-		button.setRolloverSelectedIcon(new ImageIcon(PIC_CLICKED));
+		//button.setRolloverSelectedIcon(new ImageIcon(PIC_CLICKED));
 		button.setBorder(null);
 		button.setContentAreaFilled(false);
 		button.setOpaque(false);
@@ -77,22 +77,22 @@ public class MyComboBoxUI extends BasicComboBoxUI{
 			paintCurrentValueBackground(g2, r, hasFocus);
 			paintCurrentValue(g2, r, hasFocus);
 		}
-		if (comboBox.isPopupVisible()) {
-			button.setIcon(new ImageIcon(PIC_INTO));
-		} else {
-			button.setIcon(new ImageIcon(PIC_NORMAL));
-		}
+//		if (comboBox.isPopupVisible()) {
+//			button.setIcon(new ImageIcon(PIC_INTO));
+//		} else {
+//			button.setIcon(new ImageIcon(PIC_NORMAL));
+//		}
 	}
 	
 	/**
 	 * paint text
 	 */
 	public void paintCurrentValue(Graphics g, Rectangle bounds, boolean hasFocus) {
-		Font oldFont = comboBox.getFont();
-		comboBox.setFont(new Font(font, Font.PLAIN, fontSize));
+//		Font oldFont = comboBox.getFont();
+//		comboBox.setFont(new Font(font, Font.PLAIN, fontSize));
 
 		super.paintCurrentValue(g, bounds, hasFocus);
-		comboBox.setFont(oldFont);
+//		comboBox.setFont(oldFont);
 	}
 
 	public Dimension getPreferredSize(JComponent c) {
