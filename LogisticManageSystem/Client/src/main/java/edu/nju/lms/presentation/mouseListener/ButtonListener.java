@@ -25,25 +25,25 @@ public abstract class ButtonListener implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		button.setIn(false);
 		button.setPressed(true);
-		button.repaint();
+		controller.getFrame().repaint();
 	}
 
 	public void mousePressed(MouseEvent e) {
 		button.setIn(false);
 		button.setPressed(true);
-		button.repaint();
+		controller.getFrame().repaint();
 	}
 
 	abstract public void mouseReleased(MouseEvent e);
 
 	public void mouseEntered(MouseEvent e) {
 		button.setIn(true);
-		button.repaint();
+		controller.getFrame().repaint();
 	}
 
 	public void mouseExited(MouseEvent e) {
 		button.setIn(false);
 		button.setPressed(false);
-		button.repaint();
+		controller.getFrame().repaint();
 	}
 }

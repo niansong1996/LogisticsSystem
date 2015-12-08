@@ -100,6 +100,10 @@ public class WarehouseController implements WareHouseblService{
 		logController.addLog("对仓库"+warehouseNum+"进行初始化");
 		return warehouseManagebl.initialize(partition, cordon, warehouseNum);
 	}
+	
+	public double getCordon(String warehouseNum) {
+		return warehouseManagebl.getCordon(warehouseNum);
+	}
 /*//for test
 
 	public static void main(String[] args){
@@ -142,5 +146,6 @@ public class WarehouseController implements WareHouseblService{
 		warehouseController.setCordon(0.5, "1234567890");
 	}
 	*/
+
 	
 }
