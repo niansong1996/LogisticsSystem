@@ -25,6 +25,7 @@ public class LoadcarPO extends ListPO{
 	
 	private double freight;
 	
+	
 	public LoadcarPO(String id, String state,String loadDate, String businessHallNum,
 			String motorNum, String destiBusinessHall,
 			String vehicleNum, String driverNum, String commodityNums,
@@ -111,7 +112,7 @@ public class LoadcarPO extends ListPO{
 	public void setCommodityNums(ArrayList<String> commodityNums) {
 		this.commodityNums = commodityNums;
 	}
-
+	
 	public double getFreight() {
 		return freight;
 	}
