@@ -889,7 +889,8 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="warning" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="setWarningPanel" class = "Component" x="105" y="80" w="950" h="459"/>
-		    <unit name="warning" class="MyTextField" x="640" y="285" w="168" h="33" type="0" textType="null"/>
+		    <unit name="warning" class="MyTextField" x="560" y="175" w="168" h="33" type="0" textType="null"/>
+		    <unit name="internum" class="MyTextField" x="560" y="295" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="confirm" class = "MainButton" x="400" y="400" w="112" h="34" type="1" listenerName="AddExpressListener"/>
 		    <unit name ="cancel" class = "MainButton" x="600" y="400" w="112" h="34" type="1" listenerName="CancelAddExpressListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
