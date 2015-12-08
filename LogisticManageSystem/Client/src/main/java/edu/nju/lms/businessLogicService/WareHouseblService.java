@@ -88,7 +88,6 @@ public interface WareHouseblService {
 	 * 
 	 * @author Cui last modified: 2015-10-25 11:23:07
 	 */
-	public interface WarehouseOpblService {
 
 		/**
 		 * create {@link CheckinVO}
@@ -133,6 +132,5 @@ public interface WareHouseblService {
 		 * @return {@link WarehouseInfoVO}
 		 */
 		public WarehouseInfoVO showWarehouseInfo(Calendar start,Calendar end,String warehouseNum);
-	}
 
 }

@@ -7,6 +7,7 @@ import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.VO.WarehouseInfoVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
@@ -49,9 +50,10 @@ public class WarehouseController implements WareHouseblService{
 
 
 	}
-//	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
-//		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
-//	}
+	
+	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
+		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
+	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"创建入库单");
@@ -99,6 +101,11 @@ public class WarehouseController implements WareHouseblService{
 	
 	public double getCordon(String warehouseNum) {
 		return warehouseManagebl.getCordon(warehouseNum);
+	}
+	
+	public WarehouseInfoVO showWarehouseInfo(Calendar start, Calendar end, String warehouseNum) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 /*//for test
 
