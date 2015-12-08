@@ -65,8 +65,6 @@ public class MyTextField extends JTextField {
     		return;
     	}else if(infos[0].equals("salaryStrategy")||infos[0].equals("freightStrategy")){
     		this.setText(myset.mySetText(type,controller.getFinanceController()));
-    	}else if(infos[0].equals("warningline")){
-    		this.setText(myset.mySetText(type, controller.getWarehouseController()));
     	}
     }
 	public void paintComponent(Graphics g) {

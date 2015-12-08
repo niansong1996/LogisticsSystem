@@ -18,7 +18,7 @@ public class WarehouseVO {
 	
 	public WarehouseVO(String id,ArrayList<CheckinPO> checkInlists,
 			ArrayList<CheckoutPO> checkOutlists, double cordon,
-			ArrayList<Partition> partitionInfor, Map<Long, Location> expressNums) {
+			ArrayList<Partition> partitionInfor,Map<Long,Location> expressNums) {
 		super();
 		this.id = id;
 		this.checkInlists = checkInlists;

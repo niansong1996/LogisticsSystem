@@ -7,6 +7,7 @@ import edu.nju.lms.VO.CheckinVO;
 import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.VO.WarehouseInfoVO;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -124,7 +125,14 @@ public interface WareHouseblService {
 		 * @return {@link ResultMessage}
 		 */
 		public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum);
-
+		/**
+		 * show{@link WarehouseInfoVO}
+		 * @param start
+		 * @param end
+		 * @param warehouseNum
+		 * @return {@link WarehouseInfoVO}
+		 */
+		public WarehouseInfoVO showWarehouseInfo(Calendar start,Calendar end,String warehouseNum);
 	}
 
 }
