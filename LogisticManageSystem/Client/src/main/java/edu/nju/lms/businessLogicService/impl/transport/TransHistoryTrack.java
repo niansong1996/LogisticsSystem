@@ -30,6 +30,7 @@ public class TransHistoryTrack {
 	
 	public OrderInforVO getTrack(String orderNum) throws RemoteException{
 			CommodityPO com =commodity.findCommodity(orderNum);
+			if(com==null) return null;
 			String expressNum = com.getId();
 			ArrayList<String> track = new ArrayList<String>();
 			ShipState state = ShipState.RECEIPIENT;
