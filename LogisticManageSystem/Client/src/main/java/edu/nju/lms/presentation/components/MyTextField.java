@@ -31,6 +31,7 @@ public class MyTextField extends JTextField {
 	private TexturePaint texture;
 	private BufferedImage img;
 	Element text;
+	private UIController controller;
 	public MyTextField(Element text, UIController controller) {
 		super();
 		this.text = text;
@@ -39,9 +40,10 @@ public class MyTextField extends JTextField {
 		x = Integer.parseInt(text.attributeValue("x"));
 		y = Integer.parseInt(text.attributeValue("y"));
 		setBounds(x, y, w, h);
-		setText(SetText.mySetText(text.attributeValue("textType")));
+		this.controller = controller;
 		this.setFocusable(true);
 		drawPic();
+		setInitial();
 	}
 
 	public MyTextField(String text) {
@@ -55,7 +57,18 @@ public class MyTextField extends JTextField {
 	public MyTextField(){
 		super();
 	}
-
+    public void setInitial(){
+    	String type = text.attributeValue("textType");
+    	String[] infos = type.split(";");
+    	SetText myset = new SetText();
+    	if(infos[0].equals("null")){
+    		return;
+    	}else if(infos[0].equals("salaryStrategy")||infos[0].equals("freightStrategy")){
+    		this.setText(myset.mySetText(type,controller.getFinanceController()));
+    	}else if(infos[0].equals("warningline")){
+    		this.setText(myset.mySetText(type, controller.getWarehouseController()));
+    	}
+    }
 	public void paintComponent(Graphics g) {
 		// 先画背景
 		Graphics2D g2 = (Graphics2D) g;
