@@ -51,21 +51,21 @@ public class ServerActivator
 {
 	public static void main( String[] args ){
 		ServerActivator activator = new ServerActivator();
-		try {
-			UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			UIManager.setLookAndFeel("com.alee.laf.WebLookAndFeel");
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (InstantiationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (UnsupportedLookAndFeelException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		activator.InitServerUI();
 	}
 	public void activateServer(String port,String user,String password){
