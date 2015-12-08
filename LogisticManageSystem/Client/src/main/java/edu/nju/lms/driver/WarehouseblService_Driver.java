@@ -13,8 +13,8 @@ import edu.nju.lms.data.PartitionType;
 
 public class WarehouseblService_Driver {
 	public static void main(String[] args){
-		WarehouseManageblImpl warehousemanagebl = new WarehouseManageblImpl();
-		WarehouseOpblImpl warehouseopbl = new WarehouseOpblImpl();
+	//	WarehouseManageblImpl warehousemanagebl = new WarehouseManageblImpl();
+	//	WarehouseOpblImpl warehouseopbl = new WarehouseOpblImpl();
 		
 		String warehouseNum = "5675467875";
 		String[] ss =  {"6787653456"};
@@ -27,21 +27,21 @@ public class WarehouseblService_Driver {
 		InventoryExcelVO excel = new InventoryExcelVO(null, null, null, null);
 		PartitionVO partition = new PartitionVO(null);
 		CheckinVO checkin = new CheckinVO(warehouseNum,null, null, warehouseNum, null);
-		CheckoutVO checkout = new CheckoutVO(warehouseNum, sa, "2015/10/23","Nanjing", PartitionType.AIRPLANE, "6738473847", "6738473847");
+	//	CheckoutVO checkout = new CheckoutVO(warehouseNum, sa, "2015/10/23","Nanjing", PartitionType.AIRPLANE, "6738473847", "6738473847");
 		
 		double cordon = 0.9;
 		
 		
-		warehousemanagebl.checkWarehouseInfor(c1, c2, warehouseNum);
-		warehousemanagebl.exportExcel(excel, warehouseNum);
-		warehousemanagebl.initialize(partition, cordon, warehouseNum);
-		warehousemanagebl.modifyPartition(partition, warehouseNum);
-		warehousemanagebl.setCordon(cordon, warehouseNum);
-		warehousemanagebl.showPartition(warehouseNum);
-		
-		warehouseopbl.createCheckinList(checkin, warehouseNum);
-		warehouseopbl.createCheckoutList(checkout, warehouseNum);
-		warehouseopbl.saveCheckinList(checkin, warehouseNum);
-		warehouseopbl.saveCheckoutList(checkout, warehouseNum);
+	//	warehousemanagebl.checkWarehouseInfor(c1, c2, warehouseNum);
+	//	warehousemanagebl.exportExcel(excel, warehouseNum);
+	//	warehousemanagebl.initialize(partition, cordon, warehouseNum);
+	//	warehousemanagebl.modifyPartition(partition, warehouseNum);
+//		warehousemanagebl.setCordon(cordon, warehouseNum);
+//		warehousemanagebl.showPartition(warehouseNum);
+//		
+//		warehouseopbl.createCheckinList(checkin, warehouseNum);
+//		warehouseopbl.createCheckoutList(checkout, warehouseNum);
+//		warehouseopbl.saveCheckinList(checkin, warehouseNum);
+//		warehouseopbl.saveCheckoutList(checkout, warehouseNum);
 	}
 }

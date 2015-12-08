@@ -45,7 +45,7 @@ public class SearchWareCheckListener extends ButtonListener{
 		if(inventory!=null) {
 			table.setDataList(table.createLabels(inventory));
 		}
-		WarehouseInfoVO vo = warehouse.showWarehouseInfo(start, end, wareNum.getText());
+		WarehouseInfoVO vo = warehouse.showWarehouseInfo(startDate, endDate, wareNum.getText());
 		// show information
 		JLabel label = (JLabel) units.get(4);
 		label.setText(vo.getCheckinNum() + "");

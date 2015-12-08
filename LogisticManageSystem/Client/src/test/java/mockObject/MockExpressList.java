@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.businessLogicService.impl.warehouse.ExpressItemInfo;
-import edu.nju.lms.businessLogicService.impl.warehouse.ExpressList;
 
 /**
  *@author tj
  *@date 2015年11月16日
  */
-public class MockExpressList extends ExpressList{
+public class MockExpressList {
 	private ArrayList<ExpressItemInfo>  expresses;
 	public MockExpressList(){
 		expresses = new ArrayList<ExpressItemInfo>();
