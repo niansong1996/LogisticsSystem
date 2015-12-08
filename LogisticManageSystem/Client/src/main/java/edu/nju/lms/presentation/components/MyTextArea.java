@@ -12,11 +12,14 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.mouseListener.InquireListener;
 
 /**
- * text area used to show inquireInfo
+ * Text area used to show <b>inquireInfo</b><br>
+ * <b>CANNOT</b> show other info.
  * @author cuihao
  * @date 2015-12-08 16:28:36
+ * @see OrderInforVO
  */
 public class MyTextArea extends JTextArea{
 
@@ -35,9 +38,15 @@ public class MyTextArea extends JTextArea{
 		setLmsInfo();
 	}
 	
+	/**
+	 * set {@link OrderInforVO} text
+	 */
 	private void setLmsInfo(){
 		String id = null;
 		try {
+			/**
+			 * read commodity number
+			 */
 			BufferedReader br = new BufferedReader(new FileReader("temp.lms"));
 			id = br.readLine();
 			br.close();
@@ -45,6 +54,9 @@ public class MyTextArea extends JTextArea{
 			e.printStackTrace();
 		}
 		if(id!=null) {
+			/**
+			 * find info
+			 */
 			OrderInforVO info = transport.checkOrderInfor(id);
 			if(info!=null) {
 				append("快递编号："+info.getExpressNum()+"\n");

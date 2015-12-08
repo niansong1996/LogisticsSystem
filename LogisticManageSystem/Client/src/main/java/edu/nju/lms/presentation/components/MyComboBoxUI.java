@@ -44,8 +44,6 @@ public class MyComboBoxUI extends BasicComboBoxUI{
 	 */
 	private final String PIC_NORMAL = "pictures/units/combobutton.png";
 	private final String PIC_INTO = "pictures/units/combobutton1.png";
-	private final String PIC_CLICKED = "pictures/units/combobutton2.png";
-	
 	public MyComboBoxUI() {
 		super();
 	}

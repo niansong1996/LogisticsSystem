@@ -42,21 +42,36 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
 
+/**
+ * Date chooser panel
+ * @author cuihao
+ * @date 2015-12-08 21:26:30
+ */
 public class DateChooser extends JPanel {
 
 	private static final long serialVersionUID = 4529266044762990227L;
 
 	private Date initDate;
 	private Calendar now = Calendar.getInstance();
+	/**
+	 * Calendar be selected
+	 */
 	private Calendar select;
-	private JPanel monthPanel;// 月历
-	private JP1 jp1;// 四块面板,组成
-	private JP2 jp2;
-	private JP3 jp3;
-	private JP4 jp4;
+	/**
+	 * main panel of date chooser
+	 */
+	private JPanel monthPanel;
+	/**
+	 * four panels consists of the chooser
+	 */
+	private Header header;
+	private WeekPanel week;
+	private DatePanel date;
+	private bottom bottom;
+	
 	private Font font = new Font("微软雅黑", Font.PLAIN, 20);
 	private final LabelManager lm = new LabelManager();
-	private JLabel showDate; // ,toSelect;
+	private JLabel showDate;
 	private SimpleDateFormat sdf;
 	private boolean isShow = false;
 	private Popup pop;
@@ -87,6 +102,11 @@ public class DateChooser extends JPanel {
 		initLabel();
 	}
 	
+	/**
+	 * main constructor
+	 * @param element
+	 * @param controller
+	 */
 	public DateChooser(Element element, UIController controller) {
 		this("yyyy-MM-dd");
 		setBounds(Integer.parseInt(element.attributeValue("x")), Integer.parseInt(element.attributeValue("y")),
@@ -94,7 +114,7 @@ public class DateChooser extends JPanel {
 	}
 
 	/**
-	 * 是否允许用户选择
+	 * whether allow user to select
 	 */
 	public void setEnabled(boolean b) {
 		super.setEnabled(b);
@@ -102,25 +122,35 @@ public class DateChooser extends JPanel {
 	}
 
 	/**
-	 * 得到当前选择框的日期
+	 * get date
 	 */
+	@Deprecated
 	public Date getDate() {
 		return select.getTime();
 	}
+	/**
+	 * get Calendar which user chooses
+	 * @return {@link Calendar}
+	 */
 	public Calendar getCalendar() {
 		return select;
 	}
 
-	// 根据初始化的日期,初始化面板
+	/**
+	 * initialize according to date
+	 */
 	private void initPanel() {
 		monthPanel = new JPanel(new BorderLayout());
 		monthPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		JPanel up = new JPanel(new BorderLayout());
-		up.add(jp1 = new JP1(), BorderLayout.NORTH);
-		up.add(jp2 = new JP2(), BorderLayout.CENTER);
-		monthPanel.add(jp3 = new JP3(), BorderLayout.CENTER);
+		up.add(header = new Header(), BorderLayout.NORTH);
+		week = new WeekPanel();
+		up.add(week, BorderLayout.CENTER);
+		date = new DatePanel();
+		monthPanel.add(date, BorderLayout.CENTER);
 		monthPanel.add(up, BorderLayout.NORTH);
-		monthPanel.add(jp4 = new JP4(), BorderLayout.SOUTH);
+		bottom = new bottom();
+		monthPanel.add(bottom, BorderLayout.SOUTH);
 		this.addAncestorListener(new AncestorListener() {
 			public void ancestorAdded(AncestorEvent event) {
 
@@ -130,14 +160,18 @@ public class DateChooser extends JPanel {
 
 			}
 
-			// 只要祖先组件一移动,马上就让popup消失
+			/**
+			 * hide if moved
+			 */
 			public void ancestorMoved(AncestorEvent event) {
 				hidePanel();
 			}
 		});
 	}
 
-	// 初始化标签
+	/**
+	 * initialize label
+	 */
 	private void initLabel() {
 		showDate = new JLabel(sdf.format(initDate));
 		showDate.setFont(font);
@@ -147,12 +181,8 @@ public class DateChooser extends JPanel {
 				showDate.requestFocusInWindow();
 			}
 		});
-		// toSelect=new JLabel(sdf.format(initDate));
-		// toSelect.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		// toSelect.setRequestFocusEnabled(true);
 		this.setBackground(Color.WHITE);
 		this.add(showDate, BorderLayout.CENTER);
-		// this.add(toSelect,BorderLayout.EAST);
 		this.setPreferredSize(new Dimension(90, 35));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		showDate.addMouseListener(new MouseAdapter() {
@@ -198,22 +228,22 @@ public class DateChooser extends JPanel {
 		});
 	}
 
-	// 根据新的日期刷新
 	private void refresh() {
-		jp1.updateDate();
-		jp3.updateDate();
+		header.updateDate();
+		date.updateDate();
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 
-	// 提交日期
 	private void commit() {
-		System.out.println("选中的日期是：" + sdf.format(select.getTime()));
+		//System.out.println("选中的日期是：" + sdf.format(select.getTime()));
 		showDate.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		showDate.setText(sdf.format(select.getTime()));
 		hidePanel();
 	}
 
-	// 隐藏日期选择面板
+	/**
+	 * hide chooser panel
+	 */
 	private void hidePanel() {
 		if (pop != null) {
 			isShow = false;
@@ -222,7 +252,10 @@ public class DateChooser extends JPanel {
 		}
 	}
 
-	// 显示日期选择面板
+	/**
+	 * show date chooser panel
+	 * @param owner: {@link Component}
+	 */
 	private void showPanel(Component owner) {
 		if (pop != null) {
 			pop.hide();
@@ -248,12 +281,14 @@ public class DateChooser extends JPanel {
 	}
 
 	/**
-	 * 最上面的面板用来显示月份的增减
+	 * Month and year chooser panel
 	 */
-	private class JP1 extends JPanel {
+	private class Header extends JPanel {
+
+		private static final long serialVersionUID = 1198203955759751635L;
 		JLabel yearleft, yearright, monthleft, monthright, center, centercontainer;
 
-		public JP1() {
+		public Header() {
 			super(new BorderLayout());
 			this.setBackground(Color.LIGHT_GRAY);
 			initJP1();
@@ -381,8 +416,15 @@ public class DateChooser extends JPanel {
 		}
 	}
 
-	private class JP2 extends JPanel {
-		public JP2() {
+	/**
+	 * show week
+	 * 
+	 */
+	private class WeekPanel extends JPanel {
+
+		private static final long serialVersionUID = 7610750394423589480L;
+
+		public WeekPanel() {
 			this.setPreferredSize(new Dimension(380, 40));
 		}
 
@@ -393,8 +435,16 @@ public class DateChooser extends JPanel {
 		}
 	}
 
-	private class JP3 extends JPanel {
-		public JP3() {
+	/**
+	 * show date
+	 * @author cuihao
+	 *
+	 */
+	private class DatePanel extends JPanel {
+
+		private static final long serialVersionUID = -7154857273073556762L;
+
+		public DatePanel() {
 			super(new GridLayout(6, 7));
 			this.setPreferredSize(new Dimension(380, 160));
 			initJP3();
@@ -427,6 +477,8 @@ public class DateChooser extends JPanel {
 	}
 
 	private class MyLabel extends JLabel implements Comparator<MyLabel>, MouseListener, MouseMotionListener {
+
+		private static final long serialVersionUID = 1962978395162795706L;
 		private int year, month, day;
 		private boolean isSelected;
 
@@ -460,7 +512,7 @@ public class DateChooser extends JPanel {
 				int temp = select.get(Calendar.MONTH);
 				select.set(year, month, day);
 				if (temp == month) {
-					SwingUtilities.updateComponentTreeUI(jp3);
+					SwingUtilities.updateComponentTreeUI(date);
 				} else {
 					refresh();
 				}
@@ -519,7 +571,7 @@ public class DateChooser extends JPanel {
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			Point p = SwingUtilities.convertPoint(this, e.getPoint(), jp3);
+			Point p = SwingUtilities.convertPoint(this, e.getPoint(), date);
 			lm.setSelect(p, false);
 			commit();
 		}
@@ -531,7 +583,7 @@ public class DateChooser extends JPanel {
 		}
 
 		public void mouseDragged(MouseEvent e) {
-			Point p = SwingUtilities.convertPoint(this, e.getPoint(), jp3);
+			Point p = SwingUtilities.convertPoint(this, e.getPoint(), date);
 			lm.setSelect(p, true);
 		}
 
@@ -564,16 +616,6 @@ public class DateChooser extends JPanel {
 
 		public void clear() {
 			list.clear();
-		}
-
-		public void setSelect(MyLabel my, boolean b) {
-			for (MyLabel m : list) {
-				if (m.equals(my)) {
-					m.setSelected(true, b);
-				} else {
-					m.setSelected(false, b);
-				}
-			}
 		}
 
 		public void setSelect(Point p, boolean b) {
@@ -615,8 +657,13 @@ public class DateChooser extends JPanel {
 
 	}
 
-	private class JP4 extends JPanel {
-		public JP4() {
+	private class bottom extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -8386513933920635380L;
+
+		public bottom() {
 			super(new BorderLayout());
 			this.setPreferredSize(new Dimension(295, 20));
 			this.setBackground(Color.LIGHT_GRAY);

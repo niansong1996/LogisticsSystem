@@ -1,16 +1,12 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.Graphics;
-import java.awt.event.MouseListener;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
 
 /**
@@ -18,6 +14,8 @@ import edu.nju.lms.presentation.UIController;
  *@date 2015年11月18日
  */
 public class MainButton extends JLabel{
+
+	private static final long serialVersionUID = 4647675998577572101L;
 	private int x;
 	private int y;
 	private int h;

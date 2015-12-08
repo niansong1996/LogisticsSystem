@@ -1,17 +1,12 @@
 package edu.nju.lms.presentation.components;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.lang.reflect.Constructor;
 
 import javax.swing.DefaultCellEditor;
-import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
@@ -21,6 +16,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.MainPanel;
@@ -38,9 +34,9 @@ public class MainTable extends JPanel{
 	private JTable table;
 	protected UIController controller;
 	protected Element element;
-	private MyScrollPane scrollpane;
+	private MyScrollPane<?> scrollpane;
 	private AbstractTableModel model;
-	private ComBoxRender box;
+	private ComBoxRender<?> box;
 	/**
 	 * create model and initialize table
 	 * @param element
@@ -104,7 +100,7 @@ public class MainTable extends JPanel{
 		/**
 		 * set JScrollpane
 		 */
-		scrollpane = new MyScrollPane();
+		scrollpane = new MyScrollPane<Object>();
         scrollpane.getViewport().setOpaque(false);
         scrollpane.setOpaque(false);
         scrollpane.setViewportView(table); 
@@ -137,7 +133,7 @@ public class MainTable extends JPanel{
 			try {
 				Class<?> myBox = Class.forName(MainPanel.packageName+"tableModel.ComBoxRender");
 				Constructor<?> ctr = myBox.getConstructor(MainTable.class,int.class);
-				box = (ComBoxRender) ctr.newInstance(this, 2);
+				box = (ComBoxRender<?>) ctr.newInstance(this, 2);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

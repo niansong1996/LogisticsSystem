@@ -3,7 +3,8 @@ package edu.nju.lms.presentation.config;
 import org.dom4j.Element;
 
 /**
- * config of a component
+ * Configure of a <b>picture</b><br>
+ * including x,y,width,height
  * @see Component
  * @author cuihao
  * last modified: 2015-11-17 22:40:59

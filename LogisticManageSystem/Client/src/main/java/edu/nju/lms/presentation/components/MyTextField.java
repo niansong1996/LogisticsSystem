@@ -1,6 +1,5 @@
 package edu.nju.lms.presentation.components;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,6 +23,8 @@ import edu.nju.lms.presentation.UIController;
  * @date 2015年11月19日
  */
 public class MyTextField extends JTextField {
+
+	private static final long serialVersionUID = 6547829686082743320L;
 	private int x;
 	private int y;
 	private int h;

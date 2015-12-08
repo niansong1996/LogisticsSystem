@@ -13,6 +13,7 @@ import edu.nju.lms.presentation.components.MyTextField;
  */
 public class CheckoutTable extends MyTable {
 
+	private static final long serialVersionUID = 3899628173207087186L;
 	public CheckoutTable(Element element, UIController controller) {
 		super(element, controller);
 	}

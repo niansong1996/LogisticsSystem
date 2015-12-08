@@ -9,6 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+/**
+ * 
+ * @author cuihao
+ *
+ * @param <T>
+ */
 public class MyComboBoxRender<T> implements ListCellRenderer<T>{
 	
 	private DefaultListCellRenderer render = new DefaultListCellRenderer();

@@ -1,11 +1,7 @@
 package edu.nju.lms.presentation.components.table;
 
-import java.util.ArrayList;
-
 import org.dom4j.Element;
 
-import edu.nju.lms.PO.Location;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyTextField;

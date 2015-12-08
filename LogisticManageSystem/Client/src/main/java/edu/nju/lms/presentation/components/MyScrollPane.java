@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.presentation.MainPanel;
 import edu.nju.lms.presentation.UIController;
 
 /**
@@ -22,6 +23,11 @@ public class MyScrollPane<T> extends JScrollPane{
 	protected Element element;
 	protected UIController controller;
 
+	/**
+	 * Main constructor used in {@link MainPanel}
+	 * @param element
+	 * @param controller
+	 */
 	public MyScrollPane(Element element, UIController controller) {
 		getVerticalScrollBar().setUI(new MyScrollPaneUI());
 		this.element = element;
@@ -30,12 +36,19 @@ public class MyScrollPane<T> extends JScrollPane{
 				Integer.parseInt(element.attributeValue("w")), Integer.parseInt(element.attributeValue("h")));
 	}
 	
+	/**
+	 * default model: list
+	 */
 	public MyScrollPane(){
 		list.setModel(model);
         getViewport().setView(list);
         getVerticalScrollBar().setUI(new MyScrollPaneUI());
 	}
 	
+	/**
+	 * The scroll pane will use data in the JList
+	 * @param list
+	 */
 	public MyScrollPane(JList<T> list){
 		this.list = list;
         getViewport().setView(list);

@@ -23,6 +23,8 @@ import edu.nju.lms.presentation.UIController;
  *@date 2015年11月19日
  */
 public class MyPasswordField extends JPasswordField{
+
+	private static final long serialVersionUID = -5174112793404643576L;
 	private int x;
 	private int y;
 	private int h;
@@ -41,10 +43,8 @@ public class MyPasswordField extends JPasswordField{
 		try {
 			img = ImageIO.read(new FileInputStream("pictures/textfield.png"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
 	    Rectangle rect = new Rectangle(0,0,img.getWidth(null),img.getHeight(null));  

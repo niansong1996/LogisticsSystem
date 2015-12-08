@@ -16,12 +16,16 @@ import edu.nju.lms.presentation.components.MyScrollPane;
 import edu.nju.lms.presentation.components.MyScrollPaneUI;
 
 /**
- * When create a table, you need to override a method to initialize data For
- * example, when create a personnelTable,you need to create
- * {@link PersonnelTable} and override addData method
+ * When create a table, you need to override two methods to initialize data For<br>
+ * example, when create a personnelTable,you need to create<br>
+ * {@link PersonnelTable} and override <b>getData</b> method and <b>deleteData</b> method.<br>
+ * <br>
+ * When override addData method, you can use method <b>addData(MyTableLabel)</b><br>
+ * to add a label to the table
  * 
  * @author cuihao
  * @see MyTableLabel
+ * @see #addData(MyTableLabel)
  * @date 2015-11-29 23:36:18
  */
 public abstract class MyTable extends MyScrollPane<MyTableLabel> implements MouseListener {
@@ -154,6 +158,10 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		controller.getFrame().repaint();
 	}
 
+	/**
+	 * get data list
+	 * @return ArrayList<MyTableLabel>
+	 */
 	public ArrayList<MyTableLabel> getDataList() {
 		return data;
 	}

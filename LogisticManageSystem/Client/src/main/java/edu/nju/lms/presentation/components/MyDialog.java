@@ -24,6 +24,8 @@ import edu.nju.lms.presentation.config.FrameConfig;
  * @date 2015年11月23日
  */
 public class MyDialog extends JFrame implements Runnable {
+
+	private static final long serialVersionUID = 17645107890724600L;
 	private FrameConfig config;
 	private String info;
 	private boolean is_str = false;
@@ -35,6 +37,11 @@ public class MyDialog extends JFrame implements Runnable {
 		t.start();
 	}
 
+	/**
+	 * show any String
+	 * @param info
+	 * @param is_str
+	 */
 	public MyDialog(String info, boolean is_str) {
 		this.info = info;
 		this.is_str = is_str;

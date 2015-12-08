@@ -26,7 +26,7 @@ import edu.nju.lms.presentation.components.MyScrollPane;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
- * general table label a table is composed of a {@link MyTable} extends
+ * General table label a table is composed of a {@link MyTable} extends
  * {@link MyScrollPane} and many table labels, this is a general table label
  * including {@link MyCheckBox} , {@link MyTextField}, and {@link MainButton}
  * 

@@ -13,6 +13,8 @@ import edu.nju.lms.presentation.UIController;
  *@date 2015年12月4日
  */
 public class MyLabel extends JLabel {
+
+	private static final long serialVersionUID = -6759882662343607401L;
 	private int x;
 	private int y;
 	private int h;
