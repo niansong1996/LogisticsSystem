@@ -984,9 +984,38 @@
 		</mainPanel> 
 		<mainPanel name="AdministratorPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back1" class = "Component" x="0" y="0" w="1080" h="720"/>
-		    <unit name ="userManage" change="UserManagePanel" class = "MainButton" x="230" y="200" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="powerManage" change="PowerManagePanel" class = "MainButton" x="594" y="200" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="userManage" change="UserManagePanel" class = "MainButton" x="400" y="200" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
 		   	<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		</mainPanel>
+		<mainPanel name="UserManagePanel" x="0" y="0"  w = "1080" h = "720">
+		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		   	<component name="userManage" class = "Component" x="150" y="20" w="98" h="23"/>
+		   	<unit name ="user" class = "table.UserTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+ 		   	<unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
+ 		   	<unit name ="add" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="AddUserListener"/>
+		    <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeleteUserListener"/>
+		    <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SaveUserListener"/>
+		    <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindUserListener"/>
+		   	<unit name ="guide_back" change="AdministratorPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_usermanage" change="UserManagePanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>    
+		</mainPanel>
+		<mainPanel name="AddUserPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
+			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
+		    <component name="userNum" class = "Component" x="350" y="100" w="144" h="40"/>
+		    <component name="userPassword" class = "Component" x="350" y="220" w="144" h="40"/>
+		    <component name="userPower" class = "Component" x="350" y="340" w="144" h="40"/>
+		    <unit name ="userID" class = "MyTextField" x="520" y="108" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="userPassword" class = "MyTextField" x="520" y="228" w="168" h="23" type="0" textType="null"/>
+		    <unit name ="userPower" class = "MyComboBox" x="520" y="348" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+		    <unit name ="add" class = "MainButton" x="420" y="610" w="112" h="34" type="1" listenerName="AddUserConfirmListener"/>
+			<unit name ="cancel" change="UserManagePanel" class = "MainButton" x="610" y="610" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_back" change="AdministratorPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_usermanage" change="UserManagePanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
 	</Frame>
