@@ -75,12 +75,4 @@ public class SetText {
 //		}
 		return result;
 	}
-	public String mySetText(String type,WarehouseController warehouse){
-		this.warehouse = warehouse;
-		if(type.equals("warningline")){
-		//TODO
-		}
-		return type;
-		
-	}
 }

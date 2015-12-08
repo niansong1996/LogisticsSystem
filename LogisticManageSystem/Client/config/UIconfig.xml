@@ -853,7 +853,14 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="lookWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="warehousePandian" class ="Component" x="105" y="80" w="950" h="600"/>
-		    <unit name ="confirm" class = "MainButton" x="550" y="600" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <component name="to" class = "Component" x="523" y="130" w="30" h="30"/>
+		    <unit name ="outNum" class="MyLabel" x="550" y="210" w="168" h="33" type="0" textType="warehouse;out"/>
+		    <unit name ="inNum" class="MyLabel" x="550" y="310" w="168" h="33" type="0" textType="warehouse;in"/>
+		    <unit name ="allNum" class="MyLabel" x="550" y="410" w="168" h="33" type="0" textType="warehouse;all"/>
+		    <unit name ="warehouseNum" class="MyTextField" x="570" y="510" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="start" class="DateChooser" x="300" y="130" w="180" h="33" type="0"/>
+		    <unit name ="end" class="DateChooser" x="580" y="130" w="180" h="33" type="0"/>
+		    <unit name ="show" class = "MainButton" x="770" y="510" w="112" h="34" type="1" listenerName="ShowWareInfoListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
