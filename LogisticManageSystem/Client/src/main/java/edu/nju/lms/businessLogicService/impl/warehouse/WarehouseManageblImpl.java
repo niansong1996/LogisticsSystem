@@ -41,7 +41,7 @@ public class WarehouseManageblImpl {
 	}
 
 	public ResultMessage exportExcel(InventoryExcelVO excel, String wareHouseNum) {
-		//TODO
+		
 		return null;
 	}
 
