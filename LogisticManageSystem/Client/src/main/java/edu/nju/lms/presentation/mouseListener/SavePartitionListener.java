@@ -43,7 +43,7 @@ public class SavePartitionListener extends ButtonListener {
 				new MyDialog("请输入合法数字",true);
 				return;
 			}
-			Partition partition = new Partition(capacity,startIndex,endIndex,PartitionType.values()[i-2]);
+			Partition partition = new Partition(capacity,startIndex,endIndex,PartitionType.values()[i]);
 			partitions.add(partition);
 		}
 		PartitionVO vo = new PartitionVO(partitions);
