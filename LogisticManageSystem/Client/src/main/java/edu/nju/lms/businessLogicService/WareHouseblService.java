@@ -51,7 +51,7 @@ public interface WareHouseblService {
 	 * @param warehouseNum
 	 * @return {@link ResultMessage}
 	 */
-	public ResultMessage getCordon(String warehouseNum);
+	public double getCordon(String warehouseNum);
 
 	/**
 	 * show {@link PartitionVO} information of the warehouse

@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.PO.InventoryPO;
 import edu.nju.lms.PO.ReceiptPO;
+import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;
@@ -152,4 +153,15 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 		}
 	}
 
+	public SendPO findSend(String expressNum)throws RemoteException{
+		SendPO send = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = "+expressNum+";");
+		try{
+		if(!result.wasNull())
+			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return send;
+	}
 }

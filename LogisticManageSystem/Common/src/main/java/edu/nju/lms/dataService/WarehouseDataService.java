@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.InventoryPO;
+import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.data.ResultMessage;
 /**
@@ -75,5 +76,7 @@ public interface WarehouseDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateInventory(InventoryPO warehouse) throws RemoteException;
+	
+	public SendPO findSend(String expressNum) throws RemoteException;
 }
 
