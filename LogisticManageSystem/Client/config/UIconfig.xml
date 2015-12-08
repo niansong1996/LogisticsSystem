@@ -969,9 +969,9 @@
 		    <component name="lookWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="warehousePandian" class ="Component" x="105" y="80" w="950" h="600"/>
 		    <component name="to" class = "Component" x="523" y="130" w="30" h="30"/>
-		    <unit name ="outNum" class="MyLabel" x="550" y="210" w="168" h="33" type="0" textType="warehouse;out"/>
-		    <unit name ="inNum" class="MyLabel" x="550" y="310" w="168" h="33" type="0" textType="warehouse;in"/>
-		    <unit name ="allNum" class="MyLabel" x="550" y="410" w="168" h="33" type="0" textType="warehouse;all"/>
+		    <unit name ="outNum" class="MyLabel" x="550" y="220" w="168" h="33" type="0" textType="warehouse;out"/>
+		    <unit name ="inNum" class="MyLabel" x="550" y="320" w="168" h="33" type="0" textType="warehouse;in"/>
+		    <unit name ="allNum" class="MyLabel" x="550" y="420" w="168" h="33" type="0" textType="warehouse;all"/>
 		    <unit name ="warehouseNum" class="MyTextField" x="570" y="510" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="start" class="DateChooser" x="300" y="130" w="180" h="33" type="0"/>
 		    <unit name ="end" class="DateChooser" x="580" y="130" w="180" h="33" type="0"/>
