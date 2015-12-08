@@ -49,7 +49,7 @@ public class AccountTable extends MyTable {
 
 	@Override
 	protected ResultMessage deleteData(MyTableLabel label) {
-		// TODO Auto-generated method stub
-		return null;
+		MyLabel name = (MyLabel) label.getComponents(0);
+		return control.deleteAccount(name.getText());
 	}
 }

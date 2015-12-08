@@ -41,7 +41,6 @@ public class LogTable extends MyTable {
 
 	@Override
 	protected ResultMessage deleteData(MyTableLabel label) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

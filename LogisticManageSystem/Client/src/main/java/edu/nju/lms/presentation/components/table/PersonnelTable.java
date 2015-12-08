@@ -69,7 +69,6 @@ public class PersonnelTable extends MyTable {
 
 	@Override
 	protected ResultMessage deleteData(MyTableLabel label) {
-		PersonnelController personnel = controller.getPersonnelController();
 		JTextField field = (JTextField) label.getComponents(0);
 		return personnel.deletePersonnel(field.getText());
 	}
