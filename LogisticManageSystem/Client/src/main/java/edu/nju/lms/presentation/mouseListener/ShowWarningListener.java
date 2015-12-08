@@ -27,7 +27,9 @@ public class ShowWarningListener extends ButtonListener {
 		if(warehouseNum.isEmpty()){
 			return;
 		}
-		
+		String warning = control.getCordon(warehouseNum)+"";
+		JTextField wa = (JTextField)units.get(1);
+		wa.setText(warning);
 	}
 
 }

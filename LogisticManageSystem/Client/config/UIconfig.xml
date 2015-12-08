@@ -801,6 +801,7 @@
 		    <component name="initialize" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="initializePanel" class ="Component" x="105" y="80" w="950" h="600"/>
 		    <unit name="warning" class="MyTextField" x="388" y="145" w="160" h="33" type="0" textType="null"/>
+		    <unit name="warehouseNum" class="MyTextField" x="430" y="600" w="168" h="33" type="0" textType="null"/>
 		    <unit name="airStart" class="MyTextField" x="380" y="245" w="80" h="33" type="0" textType="null"/>
 		    <unit name="airEnd" class="MyTextField" x="560" y="245" w="80" h="33" type="0" textType="null"/>
 		    <unit name="trainStart" class="MyTextField" x="380" y="342" w="80" h="33" type="0" textType="null"/>
@@ -809,8 +810,8 @@
 		    <unit name="moroEnd" class="MyTextField" x="560" y="440" w="80" h="33" type="0" textType="null"/>
 		    <unit name="flexStart" class="MyTextField" x="380" y="536" w="80" h="33" type="0" textType="null"/>
 		    <unit name="flexEnd" class="MyTextField" x="560" y="536" w="80" h="33" type="0" textType="null"/>
-		    <unit name ="confirm" class = "MainButton" x="400" y="600" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
-		    <unit name ="cancel" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -916,8 +917,9 @@
 		    <unit name="moroEnd" class="MyTextField" x="560" y="390" w="80" h="33" type="0" textType="null"/>
 		    <unit name="flexStart" class="MyTextField" x="380" y="485" w="80" h="33" type="0" textType="null"/>
 		    <unit name="flexEnd" class="MyTextField" x="560" y="485" w="80" h="33" type="0" textType="null"/>
-		    <unit name ="confirm" class = "MainButton" x="400" y="580" w="112" h="34" type="1" listenerName="SavePartitionListener"/>
-		    <unit name ="cancel" class = "MainButton" x="600" y="580" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
+		    <unit name="warehouseNum" class="MyTextField" x="430" y="580" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SavePartitionListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
