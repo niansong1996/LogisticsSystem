@@ -10,6 +10,7 @@ import javax.swing.ScrollPaneConstants;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyScrollPane;
 import edu.nju.lms.presentation.components.MyScrollPaneUI;
@@ -53,6 +54,9 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		data.add(label);
 	}
 
+	/**
+	 * reset location of table labels
+	 */
 	protected void setView() {
 		int width = 0;
 		int height = 0;
@@ -77,7 +81,59 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 	 * @see# addData
 	 */
 	protected abstract void getData();
+	
+	/**
+	 * delete data using business logic methods.
+	 * @return ResultMessage
+	 */
+	protected abstract ResultMessage deleteData(MyTableLabel label);
+	
+	/**
+	 * remove label in the table
+	 * @param component: {@link MyTableLabel}
+	 */
+	public void my_remove(MyTableLabel component) {
+		list.removeAll();
+		data.remove(component);
+		setView();
+		controller.getFrame().repaint();
+	}
 
+	/**
+	 * remove label in the table by index
+	 * @param index
+	 */
+	public void my_remove(int index) {
+		list.removeAll();
+		data.remove(index);
+		setView();
+		controller.getFrame().repaint();
+	}
+	
+	/**
+	 * set data list of the table
+	 * @param labels
+	 */
+	public void setDataList(ArrayList<MyTableLabel> labels) {
+		this.data = labels;
+		list.removeAll();
+		setView();
+		controller.getFrame().repaint();
+	}
+
+	/**
+	 * add a label
+	 * @param label
+	 */
+	public void myAddLabel(MyTableLabel label) {
+		if (label != null) {
+			data.add(label);
+			list.removeAll();
+			setView();
+			controller.getFrame().repaint();
+		}
+	}
+	
 	public void mouseClicked(MouseEvent e) {
 		controller.getFrame().repaint();
 	}
@@ -98,37 +154,8 @@ public abstract class MyTable extends MyScrollPane<MyTableLabel> implements Mous
 		controller.getFrame().repaint();
 	}
 
-	public void my_remove(MyTableLabel component) {
-		list.removeAll();
-		data.remove(component);
-		setView();
-		controller.getFrame().repaint();
-	}
-
-	public void my_remove(int index) {
-		list.removeAll();
-		data.remove(index);
-		setView();
-		controller.getFrame().repaint();
-	}
-
 	public ArrayList<MyTableLabel> getDataList() {
 		return data;
 	}
 
-	public void setDataList(ArrayList<MyTableLabel> labels) {
-		this.data = labels;
-		list.removeAll();
-		setView();
-		controller.getFrame().repaint();
-	}
-
-	public void myAddLabel(MyTableLabel label) {
-		if (label != null) {
-			data.add(label);
-			list.removeAll();
-			setView();
-			controller.getFrame().repaint();
-		}
-	}
 }

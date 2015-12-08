@@ -2,6 +2,7 @@ package edu.nju.lms.presentation.components.table;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 
 /**
@@ -19,6 +20,12 @@ public class WarehouseStoreTable extends MyTable {
 	protected void getData() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

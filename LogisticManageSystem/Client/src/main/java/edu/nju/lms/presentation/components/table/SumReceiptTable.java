@@ -4,6 +4,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyLabel;
@@ -33,5 +34,11 @@ public class SumReceiptTable extends MyTable {
 		java.awt.Component[] component = { business, courierNum, amount};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

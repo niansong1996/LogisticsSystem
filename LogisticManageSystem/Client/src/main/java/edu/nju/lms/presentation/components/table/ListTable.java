@@ -11,6 +11,7 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyLabel;
@@ -52,5 +53,11 @@ public class ListTable extends MyTable {
 		java.awt.Component[] component = { listType, listID, listState};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -2,14 +2,22 @@ package edu.nju.lms.presentation.components.table;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
 
+/**
+ * driver table
+ * @author cuihao
+ * @date 2015-12-08 08:37:50
+ */
 public class DriverTable extends MyTable{
 
 	private static final long serialVersionUID = 8158931247558228237L;
@@ -56,6 +64,13 @@ public class DriverTable extends MyTable{
 		java.awt.Component components[] = {driverNum, name, birth, id, phone, sex, year, hall};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, components, this);
 		return label;
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		TransportController transport = controller.getTransportController();
+		JTextField field = (JTextField) label.getComponents(0);
+		return transport.deleteDriver(field.getText());
 	}
 
 }

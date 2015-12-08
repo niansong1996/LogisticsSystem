@@ -2,12 +2,14 @@ package edu.nju.lms.presentation.components.table;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.data.DepartmentType;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
@@ -65,6 +67,13 @@ public class DepartmentTable extends MyTable {
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
 		
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		DepartmentController department = controller.getDepartmentController();
+		JTextField field = (JTextField) label.getComponents(2);
+		return department.deleteDepartment(field.getText());
 	}
 
 }

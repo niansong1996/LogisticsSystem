@@ -2,10 +2,13 @@ package edu.nju.lms.presentation.components.table;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -50,6 +53,13 @@ public class VehicleTable extends MyTable{
 		java.awt.Component component[] = {plateNum, vehicleNum, years, bussinesshall};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		TransportController transport = controller.getTransportController();
+		JTextField field = (JTextField) label.getComponents(1);
+		return transport.deleteVehicle(field.getText());
 	}
 
 }

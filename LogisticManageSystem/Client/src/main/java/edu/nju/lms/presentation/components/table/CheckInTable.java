@@ -6,6 +6,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.PO.Location;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyTextField;
 
@@ -45,5 +46,11 @@ public class CheckInTable extends MyTable {
 	public void addLabel(String expressNum,String partition,String row,String item,String destination) {
 		MyTableLabel label = createLabel(expressNum, partition, row, item, destination);
 		this.myAddLabel(label);
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

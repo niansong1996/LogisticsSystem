@@ -9,6 +9,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.PaymentVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.PaymentType;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.EnumTransformer;
@@ -45,6 +46,12 @@ public class PayListTable extends MyTable implements MouseListener{
 		java.awt.Component[] component = { typeLabel, idLabel, timeLabel,accountLabel,amountLabel};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

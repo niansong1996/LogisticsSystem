@@ -233,32 +233,15 @@ public class MyTableLabel extends JLabel  {
 
 		public void mouseReleased(MouseEvent e) {
 			String type = element.attributeValue("name");
-			ResultMessage result = null;
-			if (type.equals("personnel")) {
-				PersonnelController personnel = controller.getPersonnelController();
-				JTextField field = (JTextField) getComponents(0);
-				result = personnel.deletePersonnel(field.getText());
-			} else if (type.equals("department")) {
-				DepartmentController department = controller.getDepartmentController();
-				JTextField field = (JTextField) getComponents(2);
-				result = department.deleteDepartment(field.getText());
-			} else if (type.equals("driver")) {
-				TransportController transport = controller.getTransportController();
-				JTextField field = (JTextField) getComponents(0);
-				result = transport.deleteDriver(field.getText());
-			} else if (type.equals("vehicle")) {
-				TransportController transport = controller.getTransportController();
-				JTextField field = (JTextField) getComponents(1);
-				result = transport.deleteVehicle(field.getText());
-			}
+			ResultMessage result = table.deleteData(label);
 			if (result != null) {
 				if (result.isSuccess()) {
+					table.my_remove(label);
 					new MyDialog("删除成功！", true);
 				} else {
 					new MyDialog(result.getErrorMessage(), true);
 				}
 			}
-			table.my_remove(label);
 			table.repaint();
 		}
 
