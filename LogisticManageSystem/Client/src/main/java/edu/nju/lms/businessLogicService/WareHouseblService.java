@@ -45,6 +45,15 @@ public interface WareHouseblService {
 	public ResultMessage setCordon(double cordon, String warehouseNum);
 
 	/**
+	 * get the warning line of the warehouse
+	 * 
+	 * @param cordon
+	 * @param warehouseNum
+	 * @return {@link ResultMessage}
+	 */
+	public ResultMessage getCordon(String warehouseNum);
+
+	/**
 	 * show {@link PartitionVO} information of the warehouse
 	 * 
 	 * @param warehouseNum

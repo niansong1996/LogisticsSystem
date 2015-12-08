@@ -26,7 +26,6 @@ public class AddExpressListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		String[] info = new String[4];
-		ResultMessage result = null;
 		for (int i = 0; i < 4; i++) {
 			JTextField field = (JTextField) units.get(i);
 			if (field.getText().isEmpty()) {
