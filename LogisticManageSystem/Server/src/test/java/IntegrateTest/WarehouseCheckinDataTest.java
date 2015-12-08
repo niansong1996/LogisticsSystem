@@ -23,8 +23,8 @@ public class WarehouseCheckinDataTest {
 	Calendar cal2 = Calendar.getInstance();
 	ArrayList<String> a1 = new ArrayList<String>();
 	ArrayList<String> a2 = new ArrayList<String>();
-	CheckinPO checkinPo1 = new CheckinPO("8923234244",ListState.WAITING,a1,cal1);
-	CheckinPO checkinPo2 = new CheckinPO("7364534263",ListState.WAITING,a2,cal2);
+	CheckinPO checkinPo1 = new CheckinPO("8923234244",ListState.WAITING,a1,cal1,"8726372636");
+	CheckinPO checkinPo2 = new CheckinPO("7364534263",ListState.WAITING,a2,cal2,"8726372636");
 	
 	@Test
 	public void testAddCheckin() throws RemoteException{

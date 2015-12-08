@@ -1,13 +1,21 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
+import java.io.FileOutputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import edu.nju.lms.PO.InventoryPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
@@ -40,9 +48,45 @@ public class WarehouseManageblImpl {
 		return new InventoryExcelVO(expressNums, checkinTime, destination,location);
 	}
 
-	public ResultMessage exportExcel(InventoryExcelVO excel, String wareHouseNum) {
+	public ResultMessage exportExcel(InventoryExcelVO excel, String warehouseNum) {
+		ArrayList<String> rowArguments = new ArrayList<String>();
+		String s = "[快递编号, 入库时间, 目的地, 仓库位置]";
+		CommonUtility.String2Array(rowArguments, s);
 		
-		return null;
+		HSSFWorkbook wb = new HSSFWorkbook();   
+		HSSFSheet sheet = wb.createSheet("库存信息");   
+		HSSFRow row = sheet.createRow(0);   
+		HSSFCellStyle style = wb.createCellStyle();  
+		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式  
+
+		HSSFCell cell;
+		for(int i=0;i<rowArguments.size();i++){
+			cell = row.createCell(i);  
+			cell.setCellValue(rowArguments.get(i));  
+			cell.setCellStyle(style);  
+		} 
+
+		for (int i = 0; i < excel.getExpressNums().size(); i++)  
+		{  
+			row = sheet.createRow(i+1);   
+			// 第四步，创建单元格，并设置值  
+			row.createCell(0).setCellValue(excel.getExpressNums().get(i));  
+			row.createCell(1).setCellValue(CommonUtility.String2Cal(excel.getCheckinTime().get(i)));  
+			row.createCell(2).setCellValue(excel.getDestination().get(i));
+			row.createCell(3).setCellValue(excel.getLocation().get(i));
+		}  
+		// 第六步，将文件存到指定位置  
+		try  
+		{  
+			FileOutputStream fout = new FileOutputStream("target/"+warehouseNum+"_"+CommonUtility.getTime()+".xls");  
+			wb.write(fout);  
+			fout.close();  
+		}  
+		catch (Exception e)  
+		{  
+			e.printStackTrace();  
+		}   
+		return new ResultMessage(true,"success");
 	}
 
 	public ResultMessage setCordon(double cordon, String warehouseNum) {

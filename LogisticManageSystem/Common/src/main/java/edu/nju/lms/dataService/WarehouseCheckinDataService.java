@@ -2,6 +2,8 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import edu.nju.lms.PO.CheckinPO;
 import edu.nju.lms.data.ResultMessage;
@@ -40,5 +42,8 @@ public interface WarehouseCheckinDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateCheckin(CheckinPO checkin) throws RemoteException;
+	
+	public ArrayList<CheckinPO> findCheckin(Calendar start,Calendar end, String warehouseNum) throws RemoteException;
+	
 	
 }

@@ -104,8 +104,7 @@ public class WarehouseController implements WareHouseblService{
 	}
 	
 	public WarehouseInfoVO showWarehouseInfo(Calendar start, Calendar end, String warehouseNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return warehouseOpbl.showWarehouseInfo(start,end,warehouseNum);
 	}
 /*//for test
 

@@ -21,8 +21,9 @@ public class CheckinPO extends ListPO{
 	 */
 	private ArrayList<String> expresses;
 	private Calendar checkinDate;
+	private String warehouseNum;
 	
-	public CheckinPO(String id,String state,String expresses, String checkinDate) {
+	public CheckinPO(String id,String state,String expresses, String checkinDate,String warehouseId) {
 		super(id,ListState.valueOf(state));
 		this.expresses = new ArrayList<String>();
 		this.checkinDate = CommonUtility.String2Cal(checkinDate);
@@ -31,7 +32,7 @@ public class CheckinPO extends ListPO{
 	}
 	
 	
-	public CheckinPO(String id,ListState state,ArrayList<String> expresses, Calendar checkinDate) {
+	public CheckinPO(String id,ListState state,ArrayList<String> expresses, Calendar checkinDate,String warehouseNum) {
 		super(id,state);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
@@ -60,6 +61,17 @@ public class CheckinPO extends ListPO{
 	public void setCheckinDate(Calendar checkinDate) {
 		this.checkinDate = checkinDate;
 	}
+	
+	public String getWarehouseNum() {
+		return warehouseNum;
+	}
+
+
+	public void setWarehouseNum(String warehouseNum) {
+		this.warehouseNum = warehouseNum;
+	}
+
+
 	@Override 
 	public boolean equals(Object object){
 		CheckinPO checkin = (CheckinPO)object;

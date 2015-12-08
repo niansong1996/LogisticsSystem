@@ -2,6 +2,8 @@ package edu.nju.lms.dataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import edu.nju.lms.PO.CheckoutPO;
 import edu.nju.lms.data.ResultMessage;
@@ -40,4 +42,6 @@ public interface WarehouseCheckoutDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateCheckout(CheckoutPO checkout) throws RemoteException;
+	
+	public ArrayList<CheckoutPO> findCheckout(Calendar start,Calendar end,String warehouseNum) throws RemoteException;
 }

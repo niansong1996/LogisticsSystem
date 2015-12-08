@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService.impl.utility;
 
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -14,47 +15,32 @@ import simpletest.Demo3;
 import simpletest.Student;
 
 public class ExcelExporter {
-	public static void exportExcel(String[] args) throws Exception{
-		// 第一步，创建一个webbook，对应一个Excel文件  
-		HSSFWorkbook wb = new HSSFWorkbook();  
-		// 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet  
-		HSSFSheet sheet = wb.createSheet("学生表一");  
-		// 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short  
-		HSSFRow row = sheet.createRow((int) 0);  
-		// 第四步，创建单元格，并设置值表头 设置表头居中  
+	public static void exportExcel(String chartName,ArrayList<String> rowArguments) throws Exception{
+		HSSFWorkbook wb = new HSSFWorkbook();   
+		HSSFSheet sheet = wb.createSheet(chartName);   
+		HSSFRow row = sheet.createRow(0);   
 		HSSFCellStyle style = wb.createCellStyle();  
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式  
 
-		HSSFCell cell = row.createCell(0);  
-		cell.setCellValue("学号");  
-		cell.setCellStyle(style);  
-		
-		cell = row.createCell(1);  
-		cell.setCellValue("姓名");  
-		cell.setCellStyle(style); 
-		
-		cell = row.createCell(2);  
-		cell.setCellValue("年龄");  
-		cell.setCellStyle(style);  
-		
-		cell = row.createCell(3);  
-		cell.setCellValue("生日");  
-		cell.setCellStyle(style);  
-
-		// 第五步，写入实体数据 实际应用中这些数据从数据库得到，  
-		List list = Demo3.getStudent();  
-
-		for (int i = 0; i < list.size(); i++)  
-		{  
-			row = sheet.createRow(i+1);  
-			Student stu = (Student) list.get(i);  
-			// 第四步，创建单元格，并设置值  
-			row.createCell(0).setCellValue((double) stu.getId());  
-			row.createCell(1).setCellValue(stu.getName());  
-			row.createCell(2).setCellValue((double) stu.getAge());  
-			cell = row.createCell(3);  
-			cell.setCellValue(new SimpleDateFormat("yyyy-mm-dd").format(stu.getBirth()));  
-		}  
+		HSSFCell cell;
+		for(int i=0;i<rowArguments.size();i++){
+			cell = row.createCell(i);  
+			cell.setCellValue(rowArguments.get(i));  
+			cell.setCellStyle(style);  
+		} 
+//		List list = Demo3.getStudent();  
+//
+//		for (int i = 0; i < list.size(); i++)  
+//		{  
+//			row = sheet.createRow(i+1);  
+//			Student stu = (Student) list.get(i);  
+//			// 第四步，创建单元格，并设置值  
+//			row.createCell(0).setCellValue((double) stu.getId());  
+//			row.createCell(1).setCellValue(stu.getName());  
+//			row.createCell(2).setCellValue((double) stu.getAge());  
+//			cell = row.createCell(3);  
+//			cell.setCellValue(new SimpleDateFormat("yyyy-mm-dd").format(stu.getBirth()));  
+//		}  
 		// 第六步，将文件存到指定位置  
 		try  
 		{  
