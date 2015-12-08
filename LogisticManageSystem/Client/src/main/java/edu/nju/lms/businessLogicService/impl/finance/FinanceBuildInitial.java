@@ -11,7 +11,6 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 
 public class FinanceBuildInitial {
 	private DepartmentController departmentController;

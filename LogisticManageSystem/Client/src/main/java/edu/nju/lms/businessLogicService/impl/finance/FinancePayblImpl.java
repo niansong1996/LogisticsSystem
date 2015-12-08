@@ -178,7 +178,7 @@ public class FinancePayblImpl {
 	}
 
 	public ResultMessage exportEarning(EarningVO earnings) {
-		// TODO Auto-generated method stub
+		//TODO
 		return null;
 	}
 

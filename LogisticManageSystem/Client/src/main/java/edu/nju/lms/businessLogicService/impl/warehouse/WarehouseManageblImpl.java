@@ -48,6 +48,7 @@ public class WarehouseManageblImpl {
 		return new InventoryExcelVO(expressNums, checkinTime, destination,location);
 	}
 
+	@SuppressWarnings("resource")
 	public ResultMessage exportExcel(InventoryExcelVO excel, String warehouseNum) {
 		ArrayList<String> rowArguments = new ArrayList<String>();
 		String s = "[快递编号, 入库时间, 目的地, 仓库位置]";
