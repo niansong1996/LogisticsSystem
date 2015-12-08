@@ -9,8 +9,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /** 
- *basic property of a single picture
+ *basic property of a single <b>picture</b>
  *last modified:2015-11-17 22:30:50
+ *@author cuihao
  */
 public class Component {
 	private int x;
@@ -18,6 +19,9 @@ public class Component {
 	private int width;
 	private int height;
 	private String path="pictures/";
+	/**
+	 * <b>Picture</b> name
+	 */
 	private String name;
 	private String className;
 	public Component(int x,int y,int width,int height,String name,String className){
@@ -29,6 +33,11 @@ public class Component {
 		this.className = className;
 		path=path+name+".png";
 	}
+	
+	/**
+	 * Draw its own picture
+	 * @param g
+	 */
 	public void createComponent(Graphics g){
 		Image image;
 		try {

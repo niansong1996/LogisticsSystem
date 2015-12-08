@@ -16,7 +16,10 @@ import edu.nju.lms.data.PersonType;
  * @author tj
  * @date 2015年11月20日
  */
+@SuppressWarnings("unused")
 public class ATextField extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
+
+	private static final long serialVersionUID = 526268964891780022L;
 	MyTextField myText;
 	MainTable table;
 

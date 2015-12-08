@@ -14,13 +14,24 @@ import edu.nju.lms.presentation.config.FrameConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
 
 /**
+ * Main frame of client
  *@author tj cuihao
  *@date 2015-11-18 14:34:59
  */
 public class MainFrame extends JFrame{
-	FrameConfig config;
-	String panelName ;
-	MainPanel panel;
+
+	private static final long serialVersionUID = 3444411286661024461L;
+	
+	/**
+	 * configure of the frame
+	 */
+	private FrameConfig config;
+	private String panelName ;
+	/**
+	 * panel in the frame
+	 */
+	private MainPanel panel;
+	
 	private int winX,winY;
 	private int oldX,oldY;
 	private int x,y;
@@ -33,30 +44,41 @@ public class MainFrame extends JFrame{
 		initialize();
 	}
 	private void initialize() { 
+		//read configure
 		ConfigReader reader = new ConfigReader();
 		config = reader.readFrame("MainFrame");
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(config.getWidth(),config.getHeight());
-		
+		//in the middle
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screenSize.width - config.getWidth()) / 2,(screenSize.height-config.getHeight())/2);
 		setUndecorated(true);
+		//drag listener
 		MyListener listener = new MyListener();
 		addMouseMotionListener(listener);
 		addMouseListener(listener);
 	}
 	
+	/**
+	 * Change the panel in the frame
+	 * @param panel to change
+	 * @param UIController
+	 */
 	public void changeTo(String panel,UIController controller) {
 		if(panel.equals(panelName)){
 			return;
 		}
+		//read configure of the new panel
 		ConfigReader reader = new ConfigReader();
 		PanelConfig panelConfig = reader.readPanel(panel);
+		//create new panel
 		MainPanel mainPanel = new MainPanel(panelConfig,controller);
 		setPanel(mainPanel);
+		//remove old panel
 		getContentPane().setVisible(false);
+		//set new panel
 		setContentPane(mainPanel);
 		mainPanel.setVisible(true);
 		repaint();
@@ -67,6 +89,13 @@ public class MainFrame extends JFrame{
 	public void setPanel(MainPanel panel) {
 		this.panel = panel;
 	}
+	
+	/**
+	 * 
+	 * frame drag listener
+	 * @author tj
+	 *
+	 */
 	class MyListener implements MouseListener,MouseMotionListener{
 
 		public void mouseDragged(MouseEvent e) {
@@ -84,17 +113,14 @@ public class MainFrame extends JFrame{
 		}
 
 		public void mouseMoved(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
 		public void mousePressed(MouseEvent e) {
-			Rectangle rec = getBounds();
 			Point point = e.getPoint();		
 			tempX = (int)point.getX();
 			tempY = (int)point.getY();
@@ -104,17 +130,14 @@ public class MainFrame extends JFrame{
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 		

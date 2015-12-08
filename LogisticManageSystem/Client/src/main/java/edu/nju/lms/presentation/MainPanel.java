@@ -7,24 +7,24 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.components.Component;
-import edu.nju.lms.presentation.components.MainButton;
-import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.config.ComponentConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
 import edu.nju.lms.presentation.config.UnitConfig;
 
 /**
- * general panel
- * 
- * @author cuihao 2015-11-19 00:04:34
+ * General panel<br>
+ * The panel will show pictures and add components according to "UIConfig.xml"
+ * @author cuihao 
+ * @date 2015-11-19 00:04:34
  */
 public class MainPanel extends JPanel {
+	
+	private static final long serialVersionUID = 5802205870400021451L;
 	/**
 	 * configure info of this panel
 	 * 
@@ -81,17 +81,23 @@ public class MainPanel extends JPanel {
 
 	/**
 	 * initialize {@link java.awt.Component} using {@link UnitConfig} if
-	 * type==1, initialize Listener extends {@link MouseListener}
+	 * type==1, initialize Listener extends {@link MouseListener} or {@link ItemListener}
 	 */
 	private void createUnits() {
 		for (UnitConfig unit : config.getUnits()) {
 			try {
+				/**
+				 * create and initialize components(units)
+				 */
 				Class<?> myUnit = Class.forName(packageName + "components." + unit.getClassName());
 				java.awt.Component com;
 				Constructor<?> ctr = myUnit.getConstructor(Element.class, UIController.class);
 				com = (java.awt.Component) ctr.newInstance(unit.getElement(), controller);
 				add(com);
 				units.add(com);
+				/**
+				 * add listener
+				 */
 				if (unit.getElement().attributeValue("type").equals("1")) {
 					Class<?> listenner = Class
 							.forName(packageName + "mouseListener." + unit.getElement().attributeValue("listenerName"));
@@ -115,6 +121,10 @@ public class MainPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Create panel and add it to this panel
+	 * @param panelName
+	 */
 	public void createPanels(String panelName) {
 		for (PanelConfig panel : config.getPanels()) {
 			if (panel.getElement().attributeValue("name").equals(panelName)) {

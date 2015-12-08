@@ -9,10 +9,17 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.PersonType;
+import edu.nju.lms.presentation.config.ConfigReader;
+import edu.nju.lms.presentation.config.PanelConfig;
 
 public class UIController {
+	/**
+	 * frame of client
+	 */
 	private MainFrame frame;
+	/**
+	 * all the business logic controller
+	 */
 	private DepartmentController departmentController;
 	private FinanceController financeController;
 	private ListController listController;
@@ -25,8 +32,18 @@ public class UIController {
 	public UIController() {
 		initialize();
 		frame = new MainFrame();
+		ConfigReader r = new ConfigReader();
+		PanelConfig panelConfig = r.readPanel("MainPanel");
+		MainPanel mainPanel = new MainPanel(panelConfig,this);
+		frame.getContentPane().add(mainPanel);
+		frame.setVisible(true);
+		frame.setPanel(mainPanel);
 	}
 
+	/**
+	 * change to another panel
+	 * @param name of panel to change
+	 */
 	public void changeTo(String panel) {
 		frame.changeTo(panel, this);
 	}
