@@ -40,13 +40,13 @@ public class ShowWareInfoListener extends ButtonListener {
 		if (field.getText().isEmpty()) {
 			return;
 		}
-//		WarehouseInfoVO vo = control.showWarehouseInfo(start, end, field.getText());
-//		// show information
-//		JLabel label = (JLabel) units.get(0);
-//		label.setText(vo.getCheckinNum() + "");
-//		JLabel out = (JLabel)units.get(1);
-//		out.setText(vo.getCheckoutNum()+"");
-//		JLabel all = (JLabel)units.get(2);
-//		all.setText(vo.getTotalNum()+"");
+		WarehouseInfoVO vo = control.showWarehouseInfo(start, end, field.getText());
+		// show information
+		JLabel label = (JLabel) units.get(0);
+		label.setText(vo.getCheckinNum() + "");
+		JLabel out = (JLabel)units.get(1);
+		out.setText(vo.getCheckoutNum()+"");
+		JLabel all = (JLabel)units.get(2);
+		all.setText(vo.getTotalNum()+"");
 	}
 }

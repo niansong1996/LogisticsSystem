@@ -44,6 +44,7 @@ public class AddDepartConfirmListener extends ButtonListener {
 		} else if (t.equals("中转中心")) {
 			type = DepartmentType.TRANSITCENTER;
 		}
+		//根据界面得到的信息创建vo
 		DepartmentVO depart = new DepartmentVO(type, departmentNum, location);
 		DepartmentController control = controller.getDepartmentController();
 		if (control != null) {

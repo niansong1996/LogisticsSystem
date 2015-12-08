@@ -25,6 +25,7 @@ public class AddCheckoutListener extends ButtonListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		//存在字符串数组里 方便调用方法
 		String[] info = new String[4];
 		for (int i = 0; i < 4; i++) {
 			JTextField field = (JTextField) units.get(i);

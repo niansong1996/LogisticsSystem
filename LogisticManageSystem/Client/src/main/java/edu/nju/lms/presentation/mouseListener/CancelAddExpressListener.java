@@ -24,6 +24,8 @@ public class CancelAddExpressListener extends ButtonListener {
 			JTextField field = (JTextField)units.get(i);
 			field.setText("");
 		}
+		JTextField f = (JTextField)units.get(7);
+		f.setText("");
 	}
 
 }

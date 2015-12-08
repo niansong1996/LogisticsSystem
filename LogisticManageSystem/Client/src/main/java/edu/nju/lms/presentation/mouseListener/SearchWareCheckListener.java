@@ -45,14 +45,14 @@ public class SearchWareCheckListener extends ButtonListener{
 		if(inventory!=null) {
 			table.setDataList(table.createLabels(inventory));
 		}
-//		WarehouseInfoVO vo = warehouse.showWarehouseInfo(start, end, wareNum.getText());
-//		// show information
-//		JLabel label = (JLabel) units.get(4);
-//		label.setText(vo.getCheckinNum() + "");
-//		JLabel out = (JLabel)units.get(5);
-//		out.setText(vo.getCheckoutNum()+"");
-//		JLabel all = (JLabel)units.get(6);
-//		all.setText(vo.getTotalNum()+"");
+		WarehouseInfoVO vo = warehouse.showWarehouseInfo(start, end, wareNum.getText());
+		// show information
+		JLabel label = (JLabel) units.get(4);
+		label.setText(vo.getCheckinNum() + "");
+		JLabel out = (JLabel)units.get(5);
+		out.setText(vo.getCheckoutNum()+"");
+		JLabel all = (JLabel)units.get(6);
+		all.setText(vo.getTotalNum()+"");
 	}
 	
 	public InventoryExcelVO getInventoryVO(){

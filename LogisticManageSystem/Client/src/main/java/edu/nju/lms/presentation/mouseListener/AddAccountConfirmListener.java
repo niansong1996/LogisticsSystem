@@ -31,6 +31,7 @@ public class AddAccountConfirmListener extends ButtonListener {
 			new MyDialog("incomplete");
 			return;
 		}
+		//如果不是数字
 		if(!Numeric.isNumeric(balance.getText())){
 			new MyDialog("信息格式不正确",true);
 			return;
