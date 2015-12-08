@@ -36,7 +36,6 @@ public class SignInButtonListener extends ButtonListener {
 		n.setText("");
 		p.setText("");
 		if (userController == null||name.isEmpty()||password.isEmpty()) {
-			System.out.println(userController==null);
 			return;
 		}
 		UserVO info = userController.findUserInfo(name);
