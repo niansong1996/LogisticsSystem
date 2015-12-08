@@ -1,5 +1,7 @@
 package edu.nju.lms.presentation.components;
 
+import java.awt.Font;
+
 import javax.swing.JLabel;
 
 import org.dom4j.Element;
@@ -24,5 +26,6 @@ public class MyLabel extends JLabel {
 		x = Integer.parseInt(text.attributeValue("x"));
 		y = Integer.parseInt(text.attributeValue("y"));
 		setBounds(x, y, w, h);
+		setFont(new Font("微软雅黑", Font.PLAIN, 20));
 	}
 }

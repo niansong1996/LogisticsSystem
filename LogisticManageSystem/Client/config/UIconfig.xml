@@ -29,7 +29,7 @@
 			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="commodityNum" class = "Component" x="80" y="80" w="180" h="36"/>
 			<unit name ="commodityNum" class = "MyTextField" x="280" y="80" w="180" h="36" type="0" textType="null"/>
-			<unit name ="info" class = "MyTextField" x="80" y="150" w="900" h="450" type="0" textType="null"/>
+			<unit name ="info" class = "MyTextArea" x="80" y="150" w="900" h="450" type="0" textType="null"/>
 			<unit name ="return" change="MainPanel" class = "MainButton" x="780" y="650" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 			<unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
@@ -869,11 +869,16 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="warehouseStore" class = "Component" x="105" y="80" w="950" h="600"/>
 		    <component name="checkWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="to" class = "Component" x="680" y="100" w="30" h="30"/>
-		    <unit name ="start" class="DateChooser" x="500" y="100" w="180" h="33" type="0"/>
-		    <unit name ="end" class="DateChooser" x="730" y="100" w="180" h="33" type="0"/>
-		    <unit name ="warehouseStore" class = "table.WarehouseStoreTable" x="150" y="150" w="850" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
-		    <unit name ="search" class = "MainButton" x="920" y="100" w="112" h="34" type="1" listenerName="ExportWareExcelListener" />
+		    <component name="to" class = "Component" x="710" y="100" w="30" h="30"/>
+		    <component name="num" class = "Component" x="280" y="100" w="60" h="30"/>
+		    <unit name ="start" class="DateChooser" x="530" y="100" w="180" h="33" type="0"/>
+		    <unit name ="end" class="DateChooser" x="740" y="100" w="180" h="33" type="0"/>
+		    <unit name ="warehouseStore" class = "table.WarehouseStoreTable" x="150" y="150" w="850" h="430" type="2" />
+		    <unit name ="warehouseNum" class="MyTextField" x="355" y="100" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="outNum" class="MyLabel" x="325" y="610" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="inNum" class="MyLabel" x="630" y="610" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="sum" class="MyLabel" x="920" y="610" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="search" class = "MainButton" x="920" y="100" w="112" h="34" type="1" listenerName="SearchWareCheckListener" />
 		    <unit name ="export" class = "MainButton" x="150" y="100" w="112" h="34" type="1" listenerName="ExportWareExcelListener" />
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

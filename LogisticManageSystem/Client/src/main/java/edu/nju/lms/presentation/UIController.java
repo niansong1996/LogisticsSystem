@@ -23,9 +23,7 @@ public class UIController {
 	private PersonnelController personnelController;
 
 	public UIController() {
-		logController = BusinessLogicFactory.createLogController();
-		userController = BusinessLogicFactory.createUserController();
-		listController = BusinessLogicFactory.createListController();
+		initialize();
 		frame = new MainFrame();
 	}
 
@@ -34,68 +32,21 @@ public class UIController {
 	}
 
 	/**
-	 * initialize controller according to {@link PersonType}
-	 * 
-	 * @param type
+	 * initialize controller
 	 */
-	public void initialize(PersonType type) {
-		switch (type) {
-		case ADMINISTRATOR:
-			break;
-		case COUNTER_INTERMEDIATE:
-		case COUNTER_BUSSINESS:
-		case COURIER:
-		case MANAGER:
-		case WAREHOUSE:
-		case FINANCIAL_ADVANCED:
-		case FINANCIAL_NORMAL:
-			if(personnelController==null) {
-				personnelController = BusinessLogicFactory.createPersonnelController();
-				departmentController = BusinessLogicFactory.createDepartmentController();
-				warehouseController = BusinessLogicFactory.createWarehouseController();
-				transportController = BusinessLogicFactory.createTransportController();
-				financeController = BusinessLogicFactory.createFinanceController();
-			}
-			break;
+	public void initialize() {
+		if(logController==null) {
+			logController = BusinessLogicFactory.createLogController();
+			userController = BusinessLogicFactory.createUserController();
+			listController = BusinessLogicFactory.createListController();
+			personnelController = BusinessLogicFactory.createPersonnelController();
+			departmentController = BusinessLogicFactory.createDepartmentController();
+			warehouseController = BusinessLogicFactory.createWarehouseController();
+			transportController = BusinessLogicFactory.createTransportController();
+			financeController = BusinessLogicFactory.createFinanceController();
 		}
-		addData();
 	}
-
-	public void addData() {
-		// PersonnelVO vo = new PersonnelVO("1223014569", "tj", "025458963222",
-		// "总经理", 2000, 200, 200);
-		// personnelController.addPersonnel(vo);
-		// vo = new PersonnelVO("5223014569", "tj", "025458963222", "总经理", 2000,
-		// 200, 200);
-		// personnelController.addPersonnel(vo);
-		// vo = new PersonnelVO("1223014568", "tj", "025458963222", "总经理", 2000,
-		// 200, 200);
-		// personnelController.addPersonnel(vo);
-		// ArrayList<String> s = new ArrayList<String>();
-		// ArrayList<Double> x = new ArrayList<Double>();
-		// ResultMessage re1 = departmentController.addCity(new
-		// CityVO("015","NanJing",s,x));
-		// DepartmentVO so = new
-		// DepartmentVO(DepartmentType.BUSINESSHALL,"025456","015");
-		// ResultMessage re = departmentController.addDepartment(so);
-//		SalaryStrategyVO strategy = new SalaryStrategyVO("warehouse", 45, 45, 45);
-//		financeController.addSalaryStrategy(strategy);
-//		strategy = new SalaryStrategyVO("driver", 45, 45, 45);
-//		financeController.addSalaryStrategy(strategy);
-//		financeController.addPriceStrategy(100);
-//		SendVO vo = new SendVO("1256545696", null,null,2, 2,"hi", 5, 2,null);
-//		vo = transportController.createSendList(vo);
-//
-//		
-//		ResultMessage result = transportController.saveSendList(vo);
-//		System.out.println(result.getErrorMessage());
-		//financeController.addPriceStrategy(100);
-//		RentVO vo = new RentVO(null,CommonUtility.getTime(),"212545",20,10);
-//		vo = financeController.createRent(vo);
-//		ResultMessage me = financeController.saveRent(vo);
-//		System.out.println(me.getErrorMessage());
-	}
-
+	
 	public MainFrame getFrame() {
 		return frame;
 	}
