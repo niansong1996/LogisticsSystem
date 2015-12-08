@@ -2,10 +2,13 @@ package edu.nju.lms.presentation.components.table;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyComboBox;
@@ -47,6 +50,13 @@ public class UserTable extends MyTable{
 
 		return label;
 
+	}
+
+	@Override
+	protected ResultMessage deleteData(MyTableLabel label) {
+		UserController userController=controller.getUserController();
+		JTextField field = (JTextField) label.getComponents(0);
+		return userController.deleteUser(field.getText());
 	}
 	
 

@@ -35,7 +35,7 @@ public class DeleteUserListener extends ButtonListener{
 			if(check.isSelected()){
 				JTextField field = (JTextField) label.getComponents(0);
 				result=userController.deleteUser(field.getText());
-				System.out.println(result.getErrorMessage());
+				System.out.println(result.isSuccess()+result.getErrorMessage());
 				if(result.isSuccess()){
 					user.remove(i);
 					i--;
