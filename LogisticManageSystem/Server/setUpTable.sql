@@ -26,7 +26,8 @@ _id_ int unsigned not null auto_increment primary key,
 id varchar(12) not null unique,
 state varchar(20) not null,
 expresses text,
-checkinDate datetime not null
+checkinDate datetime not null,
+warehouseId varchar(12) not null
 );
 
 create table checkoutpo
