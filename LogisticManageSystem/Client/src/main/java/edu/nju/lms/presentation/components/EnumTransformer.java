@@ -3,6 +3,7 @@ package edu.nju.lms.presentation.components;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.PaymentType;
+import edu.nju.lms.data.PersonType;
 
 /**
  *@author tj
@@ -13,6 +14,20 @@ public class EnumTransformer {
 			"出库单","租金付款单","工资付款单","运费付款单"};
 	private static String[] my_state = {"通过","不通过","等待"};
 	private static String[] paymentTypes={"运费","租金","薪水"};
+	private static String[] userPower = {"总经理","高级财务人员","普通财务人员","管理员","中转中心业务员",
+		   "营业厅业务员","中转中心仓库管理人员","快递员","司机"};
+	/**
+	 * transform the PersonType to Chinese
+	 * @param type
+	 * @return
+	 * @see PersonType
+	 */
+	public static String PersonType2Str(PersonType type){
+		int t_loc = type.ordinal();
+		String t = userPower[t_loc];
+		return t;
+	}
+	
 	/**
 	 * transform the ListType to Chinese
 	 * @param type
@@ -36,6 +51,21 @@ public class EnumTransformer {
 		String s = my_state[s_loc];
 		return s;
 	}
+	
+	public static PersonType str2PersonType(String type){
+		int index = -1;
+		for(int i =0;i<userPower.length;i++){
+			if(type.equals(userPower[i])){
+				index = i;
+				break;
+			}
+		}
+		if(index!=-1){
+			return PersonType.values()[index];
+		}
+		return null;
+	}
+	
 	/**
 	 * transform the String to ListType
 	 * @param type

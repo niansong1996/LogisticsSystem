@@ -37,9 +37,11 @@ public class WarehouseOpblImpl {
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		try{
 		for(int i=0;i<checkinList.getExpresses().size();i++){
+			if(warehouseData.findSend(checkinList.getExpresses().get(i))==null) return new ResultMessage(false,"快递编号不存在!");
 			InventoryPO inventory = new InventoryPO(warehouseNum,checkinList.getExpresses().get(i),checkinList.getCheckinDate(),
 					checkinList.getExDestination().get(i),checkinList.getLocation().get(i).toString());
-				warehouseData.addInventory(inventory);
+				ResultMessage result = warehouseData.addInventory(inventory);
+				if(result.isSuccess()==false) return result;
 		}
 		String listNum = listController.applyListNum(ListType.CHECKIN);
 		CheckinPO checkin = new CheckinPO(listNum,ListState.WAITING,checkinList.getExpresses(),CommonUtility.String2Cal(checkinList.getCheckinDate()));
@@ -59,7 +61,8 @@ public class WarehouseOpblImpl {
 	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum) {
 		try{
 			for(int i=0;i<checkoutList.getExpressNums().size();i++){
-					warehouseData.deleteInventory(checkoutList.getExpressNums().get(i), warehouseNum);
+					ResultMessage result = warehouseData.deleteInventory(checkoutList.getExpressNums().get(i), warehouseNum);
+					if(result.isSuccess()==false) return result;
 			}
 			CheckoutPO checkout = new CheckoutPO(listController.applyListNum
 					(ListType.CHECKOUT),ListState.WAITING,checkoutList.getExpressNums(),

@@ -15,10 +15,9 @@ import edu.nju.lms.presentation.components.MyTextField;
  *@date 2015年12月7日
  */
 public class CheckInTable extends MyTable {
-	private WarehouseController control;
+	private static final long serialVersionUID = -5532756998227448564L;
 	public CheckInTable(Element element, UIController controller) {
 		super(element, controller);
-		this.control = controller.getWarehouseController();
 	}
 
 	@Override

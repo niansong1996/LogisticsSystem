@@ -44,7 +44,7 @@ public class FinanceAccountDataImpl extends UnicastRemoteObject implements Finan
 
 	public AccountPO findAccount(String id) throws RemoteException {
 		AccountPO account = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from accountpo where name = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from accountpo where name = "+id+";");
 		try{
 		if(!result.wasNull())
 			account = (AccountPO)POGenerator.generateObject(result, AccountPO.class.getName());

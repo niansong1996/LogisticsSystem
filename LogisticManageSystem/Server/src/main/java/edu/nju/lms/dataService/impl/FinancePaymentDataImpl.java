@@ -50,7 +50,7 @@ public class FinancePaymentDataImpl extends UnicastRemoteObject implements Finan
 
 	public PaymentPO findPayment(String id) throws RemoteException{
 		PaymentPO payment = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from paymentpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from paymentpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			payment = (PaymentPO)POGenerator.generateObject(result, PaymentPO.class.getName());

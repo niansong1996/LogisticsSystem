@@ -2,6 +2,7 @@ package edu.nju.lms.VO;
 
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
+import edu.nju.lms.data.LoadType;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.PaymentType;
@@ -19,7 +20,8 @@ public class EnumTransformer {
 	private static String[] packTypes = {"快递袋","木箱","纸箱"};
 	private static String[] transMode = {"标准快递","次晨快递","经济快递"};
 	private static String[] cities = {"南京","上海","广州","北京"};
-	private static String[] partitionTypes={"航运区","铁运区","汽运区","机动区"};
+	private static String[] partitionTypes = {"航运区","铁运区","汽运区","机动区"};
+	private static String[] loadTypes = {"飞机","汽车","火车"};
 	/**
 	 * transform the ListType to Chinese
 	 * @param type
@@ -126,7 +128,12 @@ public class EnumTransformer {
 		}
 		return null;	
 	}
-	
+	/**
+	 * transform the string to PartitionType
+	 * @param type
+	 * @return
+	 * @see PartitionType
+	 */
 	public static PartitionType str2PartitionType(String type){
 		int index = -1;
 		for(int i=0;i<partitionTypes.length;i++){
@@ -137,6 +144,25 @@ public class EnumTransformer {
 		}
 		if(index!=-1){
 			return PartitionType.values()[index];
+		}
+		return null;	
+	}
+	/**
+	 * transform the string to LoadType
+	 * @param type
+	 * @return
+	 * @see LoadType
+	 */
+	public static LoadType str2LoadType(String type){
+		int index = -1;
+		for(int i=0;i<loadTypes.length;i++){
+			if(type.equals(loadTypes[i])){
+				index = i;
+				break;
+			}
+		}
+		if(index!=-1){
+			return LoadType.values()[index];
 		}
 		return null;	
 	}

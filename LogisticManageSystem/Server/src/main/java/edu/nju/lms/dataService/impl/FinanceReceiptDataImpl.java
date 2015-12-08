@@ -49,7 +49,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 	
 	public ReceiptPO findReceipt(String id) throws RemoteException{
 		ReceiptPO receipt = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			receipt = (ReceiptPO)POGenerator.generateObject(result, ReceiptPO.class.getName());

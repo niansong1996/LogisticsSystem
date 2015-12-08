@@ -23,17 +23,17 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	private static final long serialVersionUID = 308924668395302280L;
 
 	public ResultMessage addSend(SendPO send) throws RemoteException {
-		//if(findSend(send.getId())==null){
+		if(findSend(send.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(send, send.getClass().getName()));
 			return new ResultMessage(true,"success");
-	//	}
-	//	else{
-	//		return new ResultMessage(false,"The send already exists!");
-	//	}
+		}
+		else{
+			return new ResultMessage(false,"The send already exists!");
+		}
 	}
 	public SendPO findSend(String id) throws RemoteException {
 		SendPO send = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());
@@ -54,7 +54,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	}
 	public LoadPO findLoad(String id) throws RemoteException {
 		LoadPO load = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from loadpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from loadpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			load = (LoadPO)POGenerator.generateObject(result, LoadPO.class.getName());
@@ -75,7 +75,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	}
 	public ArrivalPO findArrival(String id) throws RemoteException {
 		ArrivalPO arrival = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from arrivalpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from arrivalpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			arrival = (ArrivalPO)POGenerator.generateObject(result, ArrivalPO.class.getName());
@@ -96,7 +96,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	}
 	public DispatchPO findDispatch(String id) throws RemoteException {
 		DispatchPO dispatch = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from dispatchpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from dispatchpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			dispatch = (DispatchPO)POGenerator.generateObject(result, DispatchPO.class.getName());
@@ -117,7 +117,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	}
 	public ReceivePO findReceive(String id) throws RemoteException {
 		ReceivePO receive = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from receivepo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from receivepo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			receive = (ReceivePO)POGenerator.generateObject(result, ReceivePO.class.getName());

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.PersonnelDataService;
+import edu.nju.lms.presentation.components.EnumTransformer;
 
 /**
  *@author oppalu
@@ -31,7 +31,7 @@ public class PersonnelblImpl  {
 				PersonnelPO personPO=service.findPersonnel(id);
 				if(personPO!=null){
 					PersonnelVO person=new PersonnelVO(personPO.getId(),personPO.getName(),personPO.getDepartmentNum(),
-							changeToVO(personPO.getDuty()),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
+							EnumTransformer.PersonType2Str(personPO.getDuty()),personPO.getSalary(),personPO.getPerTime(),personPO.getBonus());
 					result.add(person);
 				}
 			} catch (RemoteException e) {
@@ -43,7 +43,7 @@ public class PersonnelblImpl  {
 				if(po.size()!=0){
 					for(PersonnelPO temp : po){
 						PersonnelVO person=new PersonnelVO(temp.getId(),temp.getName(),temp.getDepartmentNum(),
-								changeToVO(temp.getDuty()),temp.getSalary(),temp.getPerTime(),temp.getBonus());
+								EnumTransformer.PersonType2Str(temp.getDuty()),temp.getSalary(),temp.getPerTime(),temp.getBonus());
 						result.add(person);
 					}
 				}
@@ -76,7 +76,7 @@ public class PersonnelblImpl  {
 		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personPO=null;
 		personPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),Personnel.getDepartmentNum(),
-				changeToPO(Personnel.getDuty()),Personnel.getSalary(),Personnel.getPerTime(),Personnel.getBonus());
+				EnumTransformer.str2PersonType(Personnel.getDuty()),Personnel.getSalary(),Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.updatePersonnel(personPO);
 		} catch (RemoteException e) {
@@ -92,7 +92,7 @@ public class PersonnelblImpl  {
 		}
 		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personnelPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),
-				Personnel.getDepartmentNum(),changeToPO(Personnel.getDuty()),Personnel.getSalary(),
+				Personnel.getDepartmentNum(),EnumTransformer.str2PersonType(Personnel.getDuty()),Personnel.getSalary(),
 				Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.addPersonnel(personnelPO);
@@ -114,7 +114,7 @@ public class PersonnelblImpl  {
 		if(po!=null){
 			for(PersonnelPO person : po){
 				PersonnelVO vo=new PersonnelVO(person.getId(),person.getName(),person.getDepartmentNum(),
-						changeToVO(person.getDuty()),person.getSalary(),person.getPerTime(),person.getBonus());
+						EnumTransformer.PersonType2Str(person.getDuty()),person.getSalary(),person.getPerTime(),person.getBonus());
 				result.add(vo);
 			}
 		}
@@ -143,48 +143,4 @@ public class PersonnelblImpl  {
 		return result;
 	}
 	
-	public PersonType changeToPO(String duty){
-		if(duty.equals("管理员")){
-			return PersonType.ADMINISTRATOR;
-		}else if(duty.equals("总经理")){
-			return PersonType.MANAGER;
-		}else if(duty.equals("普通财务人员")){
-			return PersonType.FINANCIAL_NORMAL;
-		}else if(duty.equals("高级财务人员")){
-			return PersonType.FINANCIAL_ADVANCED;
-		}else if(duty.equals("中转中心仓库管理人员")){
-			return PersonType.WAREHOUSE;
-		}else if(duty.equals("中转中心业务员")){
-			return PersonType.COUNTER_INTERMEDIATE;
-		}else if(duty.equals("营业厅业务员")){
-			return PersonType.COUNTER_BUSSINESS;
-		}else if(duty.equals("快递员")){
-			return PersonType.COURIER;
-		}else{
-			return PersonType.DRIVER;
-		}
-	}
-	public String changeToVO(PersonType duty){
-		switch(duty){
-		case ADMINISTRATOR:
-			return "管理员";
-		case MANAGER:
-			return "总经理";
-		case FINANCIAL_NORMAL:
-			return "普通财务人员";
-		case FINANCIAL_ADVANCED:
-			return "高级财务人员";
-		case WAREHOUSE:
-			return "中转中心仓库管理人员";
-		case COUNTER_INTERMEDIATE:
-			return "中转中心业务员";
-		case COUNTER_BUSSINESS:
-			return "营业厅业务员";
-		case COURIER:
-			return "快递员";
-		case DRIVER:
-			return "司机";
-		}
-		return null;
-	}
 }

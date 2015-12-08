@@ -36,7 +36,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
 	public UserPO findUser(String id) throws RemoteException {
 		UserPO user = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from userpo where userName = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from userpo where userName = "+id+";");
 		try{
 		if(!result.wasNull())
 			user = (UserPO)POGenerator.generateObject(result, UserPO.class.getName());

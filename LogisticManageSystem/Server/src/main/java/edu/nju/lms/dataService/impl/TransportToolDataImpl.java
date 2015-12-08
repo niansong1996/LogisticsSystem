@@ -32,7 +32,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 
 	public VehiclePO findVehicle(String id) throws RemoteException {
 		VehiclePO vehicle = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from vehiclepo where vehicleNum = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from vehiclepo where vehicleNum = "+id+";");
 		try{
 		if(!result.wasNull())
 			vehicle = (VehiclePO)POGenerator.generateObject(result, VehiclePO.class.getName());
@@ -76,7 +76,7 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 
 	public DriverPO findDriver(String id) throws RemoteException {
 		DriverPO driver = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from driverpo where driverNum = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from driverpo where driverNum = "+id+";");
 		try{
 		if(!result.wasNull())
 			driver = (DriverPO)POGenerator.generateObject(result, DriverPO.class.getName());

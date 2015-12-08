@@ -30,7 +30,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 
 	public CheckoutPO findCheckout(String id) throws RemoteException {
 		CheckoutPO checkout = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from checkoutpo where id = "+id);
+		ResultSet result = JDBC.ExecuteQuery("select * from checkoutpo where id = "+id+";");
 		try{
 		if(!result.wasNull())
 			checkout = (CheckoutPO)POGenerator.generateObject(result, CheckoutPO.class.getName());
