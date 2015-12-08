@@ -1,8 +1,6 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
-import java.lang.reflect.Array;
 import java.rmi.Naming;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.CheckinVO;
@@ -14,8 +12,6 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.Partition;
-import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -53,9 +49,9 @@ public class WarehouseController implements WareHouseblService{
 
 
 	}
-	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
-		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
-	}
+//	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
+//		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
+//	}
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"创建入库单");
