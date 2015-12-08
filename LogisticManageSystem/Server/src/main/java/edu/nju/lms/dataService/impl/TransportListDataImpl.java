@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.ArrivalPO;
 import edu.nju.lms.PO.DispatchPO;
-import edu.nju.lms.PO.LoadcarPO;
 import edu.nju.lms.PO.LoadPO;
+import edu.nju.lms.PO.LoadcarPO;
 import edu.nju.lms.PO.ReceivePO;
 import edu.nju.lms.PO.SendPO;
 import edu.nju.lms.data.ResultMessage;
@@ -137,17 +137,36 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 		};
 		return loadList;
 	}
-	public ResultMessage addLoadCar(LoadcarPO load) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage addLoadCar(LoadcarPO loadcar) throws RemoteException {
+		if(findLoadCar(loadcar.getId())==null){
+			JDBC.ExecuteData(POGenerator.generateInsertOp(loadcar, loadcar.getClass().getName()));
+			return new ResultMessage(true,"success");
+		}
+		else{
+			return new ResultMessage(false,"The loadcar already exists!");
+		}
 	}
 	public LoadcarPO findLoadCar(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		LoadcarPO loadcar = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from loadcarpo where id = "+id+";");
+		try{
+		if(!result.wasNull())
+			loadcar = (LoadcarPO)POGenerator.generateObject(result, LoadcarPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return loadcar;
 	}
 	public ArrayList<LoadcarPO> findUnpaidLoadCar() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<LoadcarPO> loadcarList = new ArrayList<LoadcarPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from loadcarpo where state = \"PASS\" ;" );
+		try{
+		if(!result.wasNull())
+			POGenerator.generateMultiObject(loadcarList,result, LoadcarPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return loadcarList;
 	}
 
 }
