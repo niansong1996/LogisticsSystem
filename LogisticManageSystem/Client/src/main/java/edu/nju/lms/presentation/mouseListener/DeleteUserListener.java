@@ -37,7 +37,7 @@ public class DeleteUserListener extends ButtonListener{
 				result=userController.deleteUser(field.getText());
 				System.out.println(result.isSuccess()+result.getErrorMessage());
 				if(result.isSuccess()){
-					user.remove(i);
+					user.my_remove(i);
 					i--;
 				}
 			}
