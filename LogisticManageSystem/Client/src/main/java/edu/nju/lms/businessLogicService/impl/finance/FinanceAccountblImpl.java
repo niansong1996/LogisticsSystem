@@ -24,13 +24,11 @@ public class FinanceAccountblImpl{
 	PersonnelController personnelController;
 	TransportController transportController;
 	DepartmentController departmentController;
-	//WarehouseController warehouseController;
 	
 	public FinanceAccountblImpl(DepartmentController departmentController,PersonnelController personnelController,TransportController transportController,FinanceAccountDataService service){
 		this.personnelController=personnelController;
 		this.departmentController=departmentController;
 		this.transportController=transportController;
-		//this.warehouseController=warehouseController;
 		this.service=service;
 	}
 

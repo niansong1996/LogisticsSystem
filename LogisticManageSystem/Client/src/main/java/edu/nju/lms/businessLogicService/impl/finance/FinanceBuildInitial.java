@@ -17,13 +17,11 @@ public class FinanceBuildInitial {
 	private FinanceController financeController;
 	private PersonnelController personnelController;
 	private TransportController transportController;
-	//private WarehouseController warehouseController;
 	
 	public FinanceBuildInitial(DepartmentController departmentController,PersonnelController personnelController,TransportController transportController){
 		this.departmentController=departmentController;
 		this.personnelController=personnelController;
 		this.transportController=transportController;
-		//this.warehouseController=warehouseController;
 		try {
 			financeController=BusinessLogicFactory.getFinanceController();
 		} catch (NoBusinessLogicException e) {
@@ -78,10 +76,13 @@ public class FinanceBuildInitial {
 	
 	public ArrayList<String> getWarehouse(){
 		ArrayList<String> result=new ArrayList<String>();
-//		ArrayList<WarehouseVO> temp=warehouse.showAllWarehouse();
-//		for(WarehouseVO vo : temp){
-//			result.add(vo.getId());
-//		}
+		ArrayList<DepartmentVO> temp=departmentController.showAllDepartments();
+		if(temp!=null){
+			for(DepartmentVO vo : temp){
+				if(vo.getType().toString().equals("TRANSITCENTER"))
+					result.add(vo.getDepartmentNum());
+			}
+		}
 		return result;
 	}
 }

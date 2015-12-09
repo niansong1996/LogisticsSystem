@@ -39,7 +39,7 @@ public class DataServiceFactory {
 		return (DepartmentDataService) DataServiceFactory.getDataService("DepartmentDataService");
 	}
 	public static FinanceAccountDataService getFinanceAccountDataService(){
-		return (FinanceAccountDataService) DataServiceFactory.getDataService("DepartmentDataService");
+		return (FinanceAccountDataService) DataServiceFactory.getDataService("FinanceAccountDataService");
 	}
 	public static FinancePaymentDataService getFinancePaymentDataService(){
 		return (FinancePaymentDataService) DataServiceFactory.getDataService("FinancePaymentDataService");
