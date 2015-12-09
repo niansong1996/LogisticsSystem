@@ -23,9 +23,9 @@ public class UserblImpl{
 	
 	public UserVO findUserInfo(String id) {
 		UserPO userPO = null;
-		UserVO user = new UserVO("", "", null);
+		UserVO user = null;
 		if(!idCheck(id).isSuccess()) {
-			user.setUserName(null);
+			return user;
 		}
 		try {
 			userPO = dataService.findUser(id);
