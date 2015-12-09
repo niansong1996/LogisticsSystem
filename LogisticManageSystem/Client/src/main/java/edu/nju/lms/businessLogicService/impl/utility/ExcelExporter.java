@@ -1,18 +1,13 @@
 package edu.nju.lms.businessLogicService.impl.utility;
 
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
-import simpletest.Demo3;
-import simpletest.Student;
 
 public class ExcelExporter {
 	public static void exportExcel(String chartName,ArrayList<String> rowArguments) throws Exception{

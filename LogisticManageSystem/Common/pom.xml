@@ -6,4 +6,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>Common</artifactId>
+  <groupId>edu.nju.lms</groupId>
+  <version>1.0-SNAPSHOT</version>
 </project>
