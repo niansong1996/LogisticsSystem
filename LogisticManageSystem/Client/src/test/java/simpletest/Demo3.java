@@ -26,7 +26,7 @@ public class Demo3 {
 		
 	}
 	public static void getExcel(String type) throws Exception{
-		Statisitic sta = new Statisitic(COMMON);
+		Statisitic sta = new Statisitic(type);
 		// 第一步，创建一个webbook，对应一个Excel文件  
 		HSSFWorkbook wb = new HSSFWorkbook();  
 		// 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet  
@@ -38,7 +38,7 @@ public class Demo3 {
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式  
 
 		HSSFCell cell = row.createCell(0);  
-		cell.setCellValue("姓名");  
+		cell.setCellValue("类名");  
 		cell.setCellStyle(style);  
 		
 		cell = row.createCell(1);  

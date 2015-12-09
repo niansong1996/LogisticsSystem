@@ -49,9 +49,9 @@ public class MyPasswordField extends JPasswordField {
 		Graphics2D g2 = (Graphics2D) g;
 		try {
 			if (isIn) {
-				img = ImageIO.read(new FileInputStream("pictures/textfield1.png"));
+				img = ImageIO.read(new FileInputStream("src/main/resources/pictures/textfield1.png"));
 			} else {
-				img = ImageIO.read(new FileInputStream("pictures/textfield.png"));
+				img = ImageIO.read(new FileInputStream("src/main/resources/pictures/textfield.png"));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -75,7 +75,7 @@ public class MyPasswordField extends JPasswordField {
 		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setFont(new Font("微软雅黑", Font.ITALIC, 23));
 		try {
-			img = ImageIO.read(new FileInputStream("pictures/textfield.png"));
+			img = ImageIO.read(new FileInputStream("src/main/resources/pictures/textfield.png"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

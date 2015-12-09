@@ -15,8 +15,8 @@ public class MyCheckBox extends JCheckBox{
 	
 	private static final long serialVersionUID = -8600958515428523132L;
 	
-	private static final String PIC_PLAIN = "pictures/units/checkBox.png";
-	private static final String PIC_SELECTED = "pictures/units/checkBox1.png";
+	private static final String PIC_PLAIN = "src/main/resources/pictures/units/checkBox.png";
+	private static final String PIC_SELECTED = "src/main/resources/pictures/units/checkBox1.png";
 	
 	public MyCheckBox() {
 		this("",new ImageIcon(PIC_PLAIN), false);

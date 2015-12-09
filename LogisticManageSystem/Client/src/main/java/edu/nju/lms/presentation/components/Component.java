@@ -18,7 +18,7 @@ public class Component {
 	private int y;
 	private int width;
 	private int height;
-	private String path="pictures/";
+	private String path="src/main/resources/pictures/";
 	/**
 	 * <b>Picture</b> name
 	 */

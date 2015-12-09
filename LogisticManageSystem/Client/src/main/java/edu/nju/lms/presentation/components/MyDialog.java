@@ -73,7 +73,7 @@ public class MyDialog extends JFrame implements Runnable {
 				(screenSize.height - config.getHeight()) / 2 +200);
 				setSize(700,44);
 			} else {
-				image = ImageIO.read(new FileInputStream("pictures/" + info + ".png"));
+				image = ImageIO.read(new FileInputStream("src/main/resources/pictures/" + info + ".png"));
 				g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
 			}
 		} catch (FileNotFoundException e) {

@@ -41,7 +41,7 @@ public class Statisitic {
 			List<?> cace = packageElement.elements("Metrics");
 			Iterator<?> cacei = cace.iterator();
 			
-			double CA=0,CE=0,NOC=0;
+			double CA=0,CE=0;
 			while(cacei.hasNext()) {
 				Element caceElement = (Element) cacei.next();
 				List<?> metrix = caceElement.elements("Metric");
@@ -53,9 +53,6 @@ public class Statisitic {
 					}
 					if(meMetrix.attributeValue("id").equals("CE")) {
 						CE = Double.parseDouble(meMetrix.attributeValue("value"));
-					}
-					if(meMetrix.attributeValue("id").equals("NSC")) {
-						NOC = Double.parseDouble(meMetrix.attributeValue("value"));
 					}
 				}
 			}
@@ -71,6 +68,7 @@ public class Statisitic {
 					double LCOM = 0;
 					double VG = 0;
 					double DIT = 0;
+					double NOC = 0;
 					List<?> metrixs = singleClass.elements("Metrics");
 					Iterator<?> metrixsIterator = metrixs.iterator();
 					while(metrixsIterator.hasNext()) {
@@ -91,6 +89,9 @@ public class Statisitic {
 							}
 							if(id.equals("DIT")) {
 								DIT = Double.parseDouble(m.attributeValue("value"));
+							}
+							if(id.equals("NSC")) {
+								NOC = Double.parseDouble(m.attributeValue("value"));
 							}
 						}
 					}

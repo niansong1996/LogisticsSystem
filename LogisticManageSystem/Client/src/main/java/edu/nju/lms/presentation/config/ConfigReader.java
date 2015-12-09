@@ -16,7 +16,7 @@ public class ConfigReader {
 	private String path;
 	private Element root;
 	public ConfigReader() {
-		this("config/UIconfig.xml");
+		this("src/main/resources/config/UIConfig.xml");
 	}
 	
 	/**

@@ -41,11 +41,11 @@ public class MainButton extends JLabel{
 	public void paintComponent(Graphics g){
 		String path = "";
 		if(isIn){
-			path = "pictures/buttons/"+name+"1.png";
+			path = "src/main/resources/pictures/buttons/"+name+"1.png";
 		}else if(isPressed){
-			path = "pictures/buttons/"+name+"2.png";
+			path = "src/main/resources/pictures/buttons/"+name+"2.png";
 		}else{
-			path = "pictures/buttons/"+name+".png";
+			path = "src/main/resources/pictures/buttons/"+name+".png";
 		}
 		g.drawImage(new ImageIcon(path).getImage(), 0,0,this.getWidth(),this.getHeight(), this);
 	}

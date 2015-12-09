@@ -29,9 +29,9 @@ public class MyScrollPaneUI extends BasicScrollBarUI{
 	/**
 	 * pictures
 	 */
-	private final String PIC_BAR = "pictures/units/bar.png";
-	private final String PIC_UP = "pictures/units/up.png";
-	private final String PIC_DOWN = "pictures/units/down.png";
+	private final String PIC_BAR = "src/main/resources/pictures/units/bar.png";
+	private final String PIC_UP = "src/main/resources/pictures/units/up.png";
+	private final String PIC_DOWN = "src/main/resources/pictures/units/down.png";
 	
 	/**
 	 * draw scroll bar
