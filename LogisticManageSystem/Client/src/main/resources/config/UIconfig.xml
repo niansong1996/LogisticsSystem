@@ -41,7 +41,7 @@
 		    <unit name ="InstitutionManage" change="InstitutionManage" class = "MainButton" x="560" y="100" w="256" h="257" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="log" change="checkLogPanel" class = "MainButton" x="300" y="230" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="receiptList" change="SumReceiptPanel" class = "MainButton" x="430" y="230" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="addCity" changte="" class = "MainButton" x="300" y="100" w="258" h="128" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="addCity" changte="" class = "MainButton" x="300" y="100" w="258" h="128" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="freightStrategy" change="FreightStrategy" class = "MainButton" x="430" y="360" w="128" h="128" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="salaryStrategy" change="SalaryStrategy" class = "MainButton" x="300" y="360" w="128" h="128" type="1" listenerName = "ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
@@ -57,7 +57,7 @@
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -88,7 +88,7 @@
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
 		    <unit name ="cancel" change="PersonnelManagePanel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -109,7 +109,7 @@
 		    <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindDepartButtonListener"/>
 		    <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -129,10 +129,10 @@
 		    <unit name ="departID" class = "MyTextField" x="520" y="156" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="location" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="institutionType" class = "MyComboBox" x="520" y="354" w="168" h="23" type="0" items="营业厅;中转中心"/>
-		    <unit name ="confirm" change="AddDepartmentPanel" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="confirm"  class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddDepartConfirmListener"/>
 		    <unit name ="cancel" change="InstitutionManage" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -193,7 +193,7 @@
 		    <unit name ="driver" class="MyTextField" x="910" y="550" w="168" h="23" type="0" textType="salaryStrategy;driver;getBonus"/>
 		    <unit name ="manager" class="MyTextField" x="910" y="620" w="168" h="23" type="0" textType="salaryStrategy;manager;getBonus"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -212,7 +212,7 @@
 		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="freightStrategy" />
 		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveFreightStrategyButtonListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -236,7 +236,7 @@
 		     <unit name ="pass" class = "MainButton" x="700" y="650" w="112" h="34" type="1" listenerName="PassSingleListListener"/>
 		     <unit name ="fail" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="FailSingleListListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -256,7 +256,7 @@
 		     <unit name ="logTable" class = "table.LogTable" x="150" y="130" w="850" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		     <unit name ="search" class = "MainButton" x="600" y="60" w="112" h="34" type="1" listenerName="SearchLogButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -280,7 +280,7 @@
 		     <unit name ="export" class = "MainButton" x="900" y="60" w="112" h="34" type="1" listenerName="ExportListButtonListener"/>
 		     <unit name ="search" class = "MainButton" x="590" y="60" w="112" h="34" type="1" listenerName="SearchProfitListButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

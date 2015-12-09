@@ -42,7 +42,6 @@ public class CreateSendListListener extends ButtonListener {
 				return;
 			}
 			baseInfo.add(field.getText());
-			field.setText("");
 		}
 		//city
 		MyComboBox<?> cb = (MyComboBox<?>) units.get(3);
@@ -51,8 +50,8 @@ public class CreateSendListListener extends ButtonListener {
 		String senderCity = (String) combo.getSelectedItem();
 		// transform date to string
 		DateChooser dateChooser = (DateChooser) units.get(0);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String date = sdf.format(dateChooser.getCalendar());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String date = sdf.format(dateChooser.getCalendar().getTime());
 		// packType
 		MyComboBox<?> box = (MyComboBox<?>) units.get(1);
 		PackingType packType = EnumTransformer.str2PackType((String) box.getSelectedItem());
@@ -67,7 +66,7 @@ public class CreateSendListListener extends ButtonListener {
 		}
 		// create SendVo
 		boolean isNumeric = true;
-		for(int i =1;i<3;i++){
+		for(int i =1;i<4;i++){
 			if(!Numeric.isNumeric(other[i])){
 				isNumeric = false;
 				break;
@@ -80,14 +79,15 @@ public class CreateSendListListener extends ButtonListener {
 		}
 		vo = new SendVO(other[0], null, baseInfo, senderCity,receiverCity,Integer.parseInt(other[1]), Double.parseDouble(other[2]),
 				Double.parseDouble(other[3]), other[4], packType, transMode, 0, 0, date);
-		completeInfo(control.createSendList(vo));
+		completeInfo();
 	}
 
-	public void completeInfo(SendVO result) {
+	public void completeInfo() {
+		vo = control.createSendList(vo);
 		MyLabel priceLabel = (MyLabel) units.get(19);
-		priceLabel.setText(result.getPrice() + "");
+		priceLabel.setText(vo.getPrice() + "");
 		MyLabel timeLabel = (MyLabel) units.get(20);
-		timeLabel.setText(result.getTime() + "");
+		timeLabel.setText(vo.getTime() + "");
 	}
 
 	public SendVO getVo() {
