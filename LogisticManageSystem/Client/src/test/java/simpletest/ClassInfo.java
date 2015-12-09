@@ -2,26 +2,23 @@ package simpletest;
 
 public class ClassInfo {
 	String name;
-	double complexity;
 	int lineOfCode;
-	int lineOfExlanation;
-	double CBO;
-	double DAC;
+	double CA;
+	double CE;
 	double NOC;
 	double DIT;
-	double LCOM;
-	public ClassInfo(String name, double complexity, int lineOfCode, int lineOfExlanation, double cBO, double dAC,
-			double nOC, double dIT, double lCOM) {
+	double LCOM;	
+	double VG;
+	public ClassInfo(String name, int lineOfCode,  double cA, double cE,
+			 double nOC, double dIT, double lCOM, double vG) {
+		super();
 		this.name = name;
-		this.complexity = complexity;
 		this.lineOfCode = lineOfCode;
-		this.lineOfExlanation = lineOfExlanation;
-		CBO = cBO;
-		DAC = dAC;
+		CA = cA;
+		CE = cE;
 		NOC = nOC;
 		DIT = dIT;
 		LCOM = lCOM;
-	}
-
-
+		VG = vG;
+	}	
 }
