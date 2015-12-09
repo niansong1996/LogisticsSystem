@@ -38,9 +38,11 @@ public class SignInButtonListener extends ButtonListener {
 		if (userController == null||name.isEmpty()||password.isEmpty()) {
 			return;
 		}
-		UserVO info = userController.findUserInfo(name);
-		if (info.getUserName() == null) {
+		UserVO info = null;
+		info = userController.findUserInfo(name);
+		if (info==null) {
 			MyDialog error = new MyDialog("notExist");
+			return;
 		} else if (info.getPassword().equals(password)) {
 			controller.setLogID(name);
 			switch (info.getPower()) {
@@ -71,7 +73,6 @@ public class SignInButtonListener extends ButtonListener {
 
 			}
 		} else {
-			
 			MyDialog error = new MyDialog("passwordError");
 		}
 
