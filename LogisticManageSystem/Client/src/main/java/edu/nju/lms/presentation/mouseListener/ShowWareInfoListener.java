@@ -13,7 +13,7 @@ import edu.nju.lms.VO.WarehouseInfoVO;
 import edu.nju.lms.VO.WarehouseVO;
 import edu.nju.lms.businessLogicService.WareHouseblService;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 
 /**

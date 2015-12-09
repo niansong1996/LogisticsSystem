@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 
 /**

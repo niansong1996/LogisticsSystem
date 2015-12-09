@@ -19,8 +19,8 @@ import javax.swing.table.TableModel;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.MainPanel;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.frame.MainPanel;
 
 /**
  * General table class

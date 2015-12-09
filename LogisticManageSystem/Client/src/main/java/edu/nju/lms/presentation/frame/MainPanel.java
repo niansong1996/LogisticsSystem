@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation;
+package edu.nju.lms.presentation.frame;
 
 import java.awt.Graphics;
 import java.awt.ItemSelectable;
@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import org.dom4j.Element;
 
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.Component;
 import edu.nju.lms.presentation.config.ComponentConfig;
 import edu.nju.lms.presentation.config.PanelConfig;

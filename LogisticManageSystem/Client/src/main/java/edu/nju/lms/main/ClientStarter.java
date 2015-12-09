@@ -1,6 +1,6 @@
 package edu.nju.lms.main;
 
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 
 /**
  * Client starter

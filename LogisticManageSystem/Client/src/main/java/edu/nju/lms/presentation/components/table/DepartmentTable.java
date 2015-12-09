@@ -10,7 +10,7 @@ import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
 

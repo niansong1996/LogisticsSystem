@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 
 /**

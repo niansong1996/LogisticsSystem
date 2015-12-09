@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 
 /**
  *@author tj

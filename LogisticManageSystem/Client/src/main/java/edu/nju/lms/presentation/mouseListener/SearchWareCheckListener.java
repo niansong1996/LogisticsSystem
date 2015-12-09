@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.WarehouseInfoVO;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.MyTextField;
 import edu.nju.lms.presentation.components.table.WarehouseStoreTable;

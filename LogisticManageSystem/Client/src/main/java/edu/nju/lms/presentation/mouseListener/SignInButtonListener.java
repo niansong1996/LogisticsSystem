@@ -10,10 +10,10 @@ import javax.swing.JTextField;
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.data.PersonType;
-import edu.nju.lms.presentation.ConfirmFrame;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.components.MyDialog;
+import edu.nju.lms.presentation.frame.ConfirmFrame;
 
 /**
  * @author tj

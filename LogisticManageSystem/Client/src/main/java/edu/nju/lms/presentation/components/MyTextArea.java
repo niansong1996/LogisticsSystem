@@ -10,7 +10,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 
 /**
  * Text area used to show <b>inquireInfo</b><br>

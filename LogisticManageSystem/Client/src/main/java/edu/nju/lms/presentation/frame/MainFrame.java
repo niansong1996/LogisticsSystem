@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation;
+package edu.nju.lms.presentation.frame;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -9,6 +9,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
+
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
 import edu.nju.lms.presentation.config.PanelConfig;

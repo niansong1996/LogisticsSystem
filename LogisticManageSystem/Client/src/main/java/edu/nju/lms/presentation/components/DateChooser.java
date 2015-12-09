@@ -40,7 +40,7 @@ import javax.swing.event.AncestorListener;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 
 /**
  * Date chooser panel

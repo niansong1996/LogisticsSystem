@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.data.ListState;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 

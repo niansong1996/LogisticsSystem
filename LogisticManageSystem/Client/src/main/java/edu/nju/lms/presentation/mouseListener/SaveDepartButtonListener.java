@@ -12,7 +12,7 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.DepartmentTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;

@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation;
+package edu.nju.lms.presentation.UIController;
 
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
@@ -11,6 +11,8 @@ import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.PanelConfig;
+import edu.nju.lms.presentation.frame.MainFrame;
+import edu.nju.lms.presentation.frame.MainPanel;
 
 public class UIController {
 	/**

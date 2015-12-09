@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.VO.OperationVO;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyLabel;

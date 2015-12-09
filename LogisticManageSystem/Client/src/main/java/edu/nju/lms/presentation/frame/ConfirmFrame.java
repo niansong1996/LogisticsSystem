@@ -1,4 +1,4 @@
-package edu.nju.lms.presentation;
+package edu.nju.lms.presentation.frame;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

@@ -10,7 +10,7 @@ import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
-import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
