@@ -54,7 +54,7 @@ public class Statisitic {
 					if(meMetrix.attributeValue("id").equals("CE")) {
 						CE = Double.parseDouble(meMetrix.attributeValue("value"));
 					}
-					if(meMetrix.attributeValue("id").equals("NOC")) {
+					if(meMetrix.attributeValue("id").equals("NSC")) {
 						NOC = Double.parseDouble(meMetrix.attributeValue("value"));
 					}
 				}

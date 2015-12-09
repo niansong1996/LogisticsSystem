@@ -1,10 +1,7 @@
 package simpletest;
 
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Iterator;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -13,28 +10,27 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class Demo3 {
-  
-	
-	private static List<Student> getStudent() throws Exception  
-    {  
-        List list = new ArrayList();  
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");  
-  
-        Student user1 = new Student(1, "张三", 16, df.parse("1997-03-12"));  
-        Student user2 = new Student(2, "李四", 17, df.parse("1996-08-12"));  
-        Student user3 = new Student(3, "王五", 26, df.parse("1985-11-12"));  
-        list.add(user1);  
-        list.add(user2);  
-        list.add(user3);  
-  
-        return list;  
-    }  
-	
-	public static void main(String[] args) throws Exception{
+   
+	public static final String CLIENT = "../../Documentations/Metrics_Client.xml";
+	public static final String COMMON = "../../Documentations/Metrics_Common.xml";
+	public static final String SERVER = "../../Documentations/Metrics_Server.xml";
+	public static void main(String[] args){
+		try {
+			getExcel(CLIENT);
+			getExcel(COMMON);
+			getExcel(SERVER);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public static void getExcel(String type) throws Exception{
+		Statisitic sta = new Statisitic(COMMON);
 		// 第一步，创建一个webbook，对应一个Excel文件  
 		HSSFWorkbook wb = new HSSFWorkbook();  
 		// 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet  
-		HSSFSheet sheet = wb.createSheet("学生表一");  
+		HSSFSheet sheet = wb.createSheet("度量数据");  
 		// 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short  
 		HSSFRow row = sheet.createRow((int) 0);  
 		// 第四步，创建单元格，并设置值表头 设置表头居中  
@@ -42,39 +38,57 @@ public class Demo3 {
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式  
 
 		HSSFCell cell = row.createCell(0);  
-		cell.setCellValue("学号");  
+		cell.setCellValue("姓名");  
 		cell.setCellStyle(style);  
 		
 		cell = row.createCell(1);  
-		cell.setCellValue("姓名");  
+		cell.setCellValue("代码行数LOC");  
 		cell.setCellStyle(style); 
 		
 		cell = row.createCell(2);  
-		cell.setCellValue("年龄");  
+		cell.setCellValue("所属包传入耦合CA");  
 		cell.setCellStyle(style);  
 		
 		cell = row.createCell(3);  
-		cell.setCellValue("生日");  
-		cell.setCellStyle(style);  
+		cell.setCellValue("所属包传出耦合CE");  
+		cell.setCellStyle(style); 
+		
+		cell = row.createCell(4);  
+		cell.setCellValue("子类数量NOC");  
+		cell.setCellStyle(style);
+		
+		cell = row.createCell(5);  
+		cell.setCellValue("继承深度DIT");  
+		cell.setCellStyle(style);
+		
+		cell = row.createCell(6);  
+		cell.setCellValue("方法行数LCOM");  
+		cell.setCellStyle(style);
+		
+		cell = row.createCell(7);  
+		cell.setCellValue("圈复杂度VG");  
+		cell.setCellStyle(style);
 
 		// 第五步，写入实体数据 实际应用中这些数据从数据库得到，  
-		List list = Demo3.getStudent();  
+		Iterator<ClassInfo> it = sta.startStatistic();  
 
-		for (int i = 0; i < list.size(); i++)  
+		for (int i = 0;it.hasNext(); i++)  
 		{  
+			ClassInfo cls = it.next();
 			row = sheet.createRow(i+1);  
-			Student stu = (Student) list.get(i);  
-			// 第四步，创建单元格，并设置值  
-			row.createCell(0).setCellValue((double) stu.getId());  
-			row.createCell(1).setCellValue(stu.getName());  
-			row.createCell(2).setCellValue((double) stu.getAge());  
-			cell = row.createCell(3);  
-			cell.setCellValue(new SimpleDateFormat("yyyy-mm-dd").format(stu.getBirth()));  
+			row.createCell(0).setCellValue(cls.name.split("\\{")[1].split("\\[")[0].split("\\.")[0]);  
+			row.createCell(1).setCellValue(cls.lineOfCode);  
+			row.createCell(2).setCellValue(cls.CA);
+			row.createCell(3).setCellValue(cls.CE);
+			row.createCell(4).setCellValue(cls.NOC);
+			row.createCell(5).setCellValue(cls.DIT);
+			row.createCell(6).setCellValue(cls.LCOM);
+			row.createCell(7).setCellValue(cls.VG);
 		}  
 		// 第六步，将文件存到指定位置  
 		try  
 		{  
-			FileOutputStream fout = new FileOutputStream("target/students.xls");  
+			FileOutputStream fout = new FileOutputStream("target/"+type.split("\\/")[3].split("\\.")[0].split("_")[1]+"_Measurement.xls");  
 			wb.write(fout);  
 			fout.close();  
 		}  
