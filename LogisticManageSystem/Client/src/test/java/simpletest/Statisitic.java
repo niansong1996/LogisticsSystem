@@ -110,15 +110,14 @@ public class Statisitic {
 		Iterator<?> i = packageRs.iterator();
 		while(i.hasNext()) {
 			Element element = (Element) i.next();
-			if(element.attributeValue("name").equals("java")) {
+			if(element.attributeValue("name").equals("java")&&element.attributeValue("handle").contains("main")) {
 				packages = element.elements("Package");
-				break;
 			}
 		}
 	}
 	
 	public static void main(String[] args) {
-		Statisitic s = new Statisitic(Statisitic.CLIENT);
+		Statisitic s = new Statisitic(Statisitic.COMMON);
 		Iterator<ClassInfo> i = s.startStatistic();
 		while(i.hasNext()) {
 			ClassInfo info = i.next();
