@@ -15,9 +15,9 @@ public class Statisitic {
 	private List<Element> packages;
 	private ArrayList<ClassInfo> infos;
 	
-	public static final String CLIENT = "F:/Github/LogisticsSystem/Documentations/Metrics_Client.xml";
-	public static final String COMMON = "F:/Github/LogisticsSystem/Documentations/Metrics_Common.xml";
-	public static final String SERVER = "F:/Github/LogisticsSystem/Documentations/Metrics_Server.xml";
+	public static final String CLIENT = "../../Documentations/Metrics_Client.xml";
+	public static final String COMMON = "../../Documentations/Metrics_Common.xml";
+	public static final String SERVER = "../../Documentations/Metrics_Server.xml";
 	
 	public Statisitic(String path) {
 		SAXReader reader = new SAXReader();
