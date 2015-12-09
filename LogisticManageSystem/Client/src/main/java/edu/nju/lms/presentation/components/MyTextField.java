@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController;
+import edu.nju.lms.presentation.mouseListener.TextFieldListener;
 
 /**
  * @author tj
@@ -33,6 +34,8 @@ public class MyTextField extends JTextField {
 	private BufferedImage img;
 	Element text;
 	private UIController controller;
+	private boolean isIn;
+
 	public MyTextField(Element text, UIController controller) {
 		super();
 		this.text = text;
@@ -45,6 +48,7 @@ public class MyTextField extends JTextField {
 		this.setFocusable(true);
 		drawPic();
 		setInitial();
+		this.addFocusListener(new TextFieldListener(this));
 	}
 
 	public MyTextField(String text) {
@@ -54,30 +58,46 @@ public class MyTextField extends JTextField {
 		drawPic();
 		setFont(new Font("微软雅黑", Font.PLAIN, 16));
 		setEditable(false);
+		this.addFocusListener(new TextFieldListener(this));
 	}
-	public MyTextField(){
+
+	public MyTextField() {
 		super();
+		this.addFocusListener(new TextFieldListener(this));
 	}
-    public void setInitial(){
-    	String type = text.attributeValue("textType");
-    	String[] infos = type.split(";");
-    	SetText myset = new SetText();
-    	if(infos[0].equals("null")){
-    		return;
-    	}else if(infos[0].equals("salaryStrategy")||infos[0].equals("freightStrategy")){
-    		this.setText(myset.mySetText(type,controller.getFinanceController()));
-    	}
-    }
+
+	public void setInitial() {
+		String type = text.attributeValue("textType");
+		String[] infos = type.split(";");
+		SetText myset = new SetText();
+		if (infos[0].equals("null")) {
+			return;
+		} else if (infos[0].equals("salaryStrategy") || infos[0].equals("freightStrategy")) {
+			this.setText(myset.mySetText(type, controller.getFinanceController()));
+		}
+	}
+
 	public void paintComponent(Graphics g) {
 		// 先画背景
 		Graphics2D g2 = (Graphics2D) g;
+		try {
+			if (isIn) {
+				img = ImageIO.read(new FileInputStream("pictures/textfield1.png"));
+			} else {
+				img = ImageIO.read(new FileInputStream("pictures/textfield.png"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Rectangle rect = new Rectangle(0, 0, getWidth(), getHeight());
+		texture = new TexturePaint(img, rect);
 		g2.setPaint(texture);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		// 然后画控件，不然控件内容就被背景覆盖了
 		super.paintComponent(g);
 	}
-	
-	public void drawPic(){
+
+	public void drawPic() {
 		setOpaque(false);
 		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setFont(new Font("微软雅黑", Font.ITALIC, 23));
@@ -91,8 +111,13 @@ public class MyTextField extends JTextField {
 		Rectangle rect = new Rectangle(0, 0, img.getWidth(null), img.getHeight(null));
 		texture = new TexturePaint(img, rect);
 	}
+
 	@Override
-	public String getName(){
+	public String getName() {
 		return text.attributeValue("name");
+	}
+
+	public void setIn(boolean isIn) {
+		this.isIn = isIn;
 	}
 }

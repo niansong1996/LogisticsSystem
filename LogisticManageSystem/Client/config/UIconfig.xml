@@ -7,8 +7,8 @@
 			<component name="password" class = "Component" x="620" y="360" w="78" h="25"/>
 			<component name="loginback1" class = "Component" x="560" y="120" w="400" h="500"/>
 			<unit name ="SignIn" class = "MainButton" x="685" y="500" w="150" h="32" type="1" listenerName="SignInButtonListener"/>
-			<unit name ="userName" class = "MyTextField" x="715" y="270" w="168" h="23" type="0" textType="null"/>
-			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="168" h="23" type="0"/>
+			<unit name ="userName" class = "MyTextField" x="715" y="270" w="182" h="25" type="0" textType="null" listenerName="TextFieldListener"/>
+			<unit name ="password" class = "MyPasswordField" x="715" y="360" w="182" h="25" type="0" listenerName="PasswordFieldListener"/>
 			<unit name ="loginButton" class = "MainButton" x="565" y="130" w="195" h="44" type="0"/>
 			<unit name ="inquireButton1" class = "MainButton" x="760" y="130" w="195" h="44" type="1" listenerName="InquireListener"/>
 			<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
