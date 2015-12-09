@@ -266,12 +266,4 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return process.findUnpaidLoadCar();
 	}
 	
-	public static void main(String[] args){
-		LogController logController=BusinessLogicFactory.createLogController();
-		ListController listController=BusinessLogicFactory.createListController();
-		DepartmentController departmentController=BusinessLogicFactory.createDepartmentController();
-		PersonnelController personnelController=BusinessLogicFactory.createPersonnelController();
-		TransportController t=BusinessLogicFactory.createTransportController();
-		
-	}
 }
