@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -25,6 +24,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -61,19 +61,16 @@ public class FinanceController
 			departmentController=BusinessLogicFactory.getDepartmentController();
 			warehouseController=BusinessLogicFactory.getWarehouseController();
 			
-			accountData=(FinanceAccountDataService) Naming.lookup("//127.0.0.1:1099/FinanceAccountDataService");
+			accountData=DataServiceFactory.getFinanceAccountDataService();
 			accountf=new FinanceAccountblImpl(departmentController,personnelController,transportController,accountData);
-			payData=(FinancePaymentDataService) Naming.lookup("//127.0.0.1:1099/FinancePaymentDataService");
+			payData=DataServiceFactory.getFinancePaymentDataService();
 			pay=new FinancePayblImpl(listController,personnelController,transportController,accountData,payData);
-			receiptData=(FinanceReceiptDataService) Naming.lookup("//127.0.0.1:1099/FinanceReceiptDataService");
+			receiptData=DataServiceFactory.getFinanceReceiptDataService();
 			receipt=new FinanceReceiptblImpl(listController,receiptData);
-			strategyData=(FinanceStrategyDataService) Naming.lookup("//127.0.0.1:1099/FinanceStrategyDataService");
+			strategyData=DataServiceFactory.getFinanceStrategyDataService();
 			strategy=new FinanceStrategyblImpl(strategyData);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch(Exception e1){
-			System.err.println("网络未连接");
-	    	System.exit(0);
 		}
 	}
 	

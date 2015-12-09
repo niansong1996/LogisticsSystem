@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.department;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.CityVO;
@@ -8,13 +7,15 @@ import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.DepartmentblService;
-import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
-import edu.nju.lms.data.City;
-import edu.nju.lms.data.CommonUtility;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
-
+/**
+ * 
+ * @author nians
+ *
+ */
 public class DepartmentController implements DepartmentblService{
 	DepartmentDataService departService;
 	DepartmentblImpl department;
@@ -24,13 +25,10 @@ public class DepartmentController implements DepartmentblService{
 	public DepartmentController(){
 		try {
 			logController=BusinessLogicFactory.getLogController();
-			departService=(DepartmentDataService) Naming.lookup("//127.0.0.1:1099/DepartmentDataService");
+			departService=DataServiceFactory.getDepartmentDataService();
 			department=new DepartmentblImpl(departService);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch(Exception e1){
-			System.err.println("网络未连接");
-	    	System.exit(0);
 		}
 	}
 	

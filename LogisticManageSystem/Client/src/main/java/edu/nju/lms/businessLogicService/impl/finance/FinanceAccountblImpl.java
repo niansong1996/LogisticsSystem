@@ -10,6 +10,7 @@ import edu.nju.lms.VO.InitialInfoVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
@@ -38,12 +39,11 @@ public class FinanceAccountblImpl{
 		if(!result.isSuccess()){
 			return result;
 		} 
-		result=new ResultMessage(false,"网络未连接");
 		AccountPO accountPO=new AccountPO(account.getID(),account.getAmount());
 		try {
 			result=service.addAccount(accountPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -54,7 +54,7 @@ public class FinanceAccountblImpl{
 		try {
 			accountPO=service.findAccount(id);
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(accountPO!=null){
 			result=new AccountVO(accountPO.getName(),accountPO.getAmount());
@@ -67,11 +67,10 @@ public class FinanceAccountblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deleteAccount(id);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -81,12 +80,11 @@ public class FinanceAccountblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		AccountPO accountPO=new AccountPO(account.getID(),account.getAmount());
 		try {
 			result=service.updateAccount(accountPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -109,38 +107,31 @@ public class FinanceAccountblImpl{
 	}
 	
 	public ResultMessage addMoney(String accountNum,double money) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
 		AccountPO account=null;
 		try {
 			account=service.findAccount(accountNum);
-		} catch (RemoteException e) {
-			return result;
-		}
 		if(account==null){
-			result=new ResultMessage(false,"未找到对应账户！");
-			return result;
+			return new ResultMessage(false,"未找到对应账户！");
 		}
 		double currentMoney=account.getAmount();
 		currentMoney+=money;
 		account.setAmount(currentMoney);
-		try {
-			result=service.updateAccount(account);
+
+			return service.updateAccount(account);
 		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
 		initial.setDate(CommonUtility.getTime());
 		InitialInfoPO po=new InitialInfoPO(CommonUtility.String2Cal(initial.getDate()),initial.getDepartments(),
 				initial.getPersonnel(),initial.getCars(),initial.getWarehouses(),initial.getAccounts());
 		try {
-			result=service.addInitialInfo(po);
+			return service.addInitialInfo(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 
 	public ResultMessage initialInfo() {
@@ -158,7 +149,7 @@ public class FinanceAccountblImpl{
 		try {
 			po=service.findInitialInfo();
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
 			for(InitialInfoPO temp : po){

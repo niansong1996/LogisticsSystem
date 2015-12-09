@@ -7,12 +7,13 @@ import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.PO.DepartmentPO;
 import edu.nju.lms.VO.CityVO;
 import edu.nju.lms.VO.DepartmentVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.DepartmentDataService;
 
 /**
- *@author tj
- *@date 2015年10月25日
+ *@author nians
+ *@date 2015年12月09日
  */
 public class DepartmentblImpl{
 	DepartmentDataService service = null;
@@ -27,6 +28,7 @@ public class DepartmentblImpl{
 		try {
 			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(departmentPO!=null) {
 			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
@@ -39,11 +41,10 @@ public class DepartmentblImpl{
 		if(!message.isSuccess()){
 			return message;
 		}
-		message = new ResultMessage(false, "网络未连接");
 		try {
 			message=service.deleteDepartment(id);
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return message;
 	}
@@ -53,7 +54,6 @@ public class DepartmentblImpl{
 		if(!message.isSuccess()){
 			return message;
 		}
-		message = new ResultMessage(false, "网络未连接");
 		CityPO city = null;
 		DepartmentPO departmentPO = null;
 		try {
@@ -65,7 +65,7 @@ public class DepartmentblImpl{
 				message = service.updateDepartment(departmentPO);
 			}
 		} catch (RemoteException e) {
-			new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return message;
 	}
@@ -75,7 +75,6 @@ public class DepartmentblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result = new ResultMessage(false, "网络未连接");
 		CityPO city = null;
 		DepartmentPO departmentPO = null;
 		try {
@@ -94,7 +93,7 @@ public class DepartmentblImpl{
 				}
 			}
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -105,6 +104,7 @@ public class DepartmentblImpl{
 		try {
 			po=service.showAllDepartments();
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
 			for(DepartmentPO department : po){
@@ -120,12 +120,11 @@ public class DepartmentblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 		try {
 			result=service.addCity(cityPO);
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -136,6 +135,7 @@ public class DepartmentblImpl{
 		try {
 			cityPO=service.findCity(id);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(cityPO!=null){
 			city=new CityVO(cityPO.getId(),cityPO.getName(),cityPO.getBusinessNums(),cityPO.getDistance());
@@ -150,7 +150,7 @@ public class DepartmentblImpl{
 		try {
 			result=service.deleteCity(id);
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -160,12 +160,11 @@ public class DepartmentblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 		try {
 			result=service.updateCity(cityPO);
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -176,6 +175,7 @@ public class DepartmentblImpl{
 		try {
 			po=service.showAllCities();
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		for(CityPO city : po){
 			CityVO vo=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
