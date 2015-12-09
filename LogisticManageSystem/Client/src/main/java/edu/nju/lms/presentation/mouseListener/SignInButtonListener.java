@@ -54,7 +54,7 @@ public class SignInButtonListener extends ButtonListener {
 				controller.changeTo("FinancialCommonPanel");
 				break;
 			case ADMINISTRATOR:
-				controller.changeTo("UserManagePanel");
+				controller.changeTo("AdministratorPanel");
 				break;
 			case COUNTER_INTERMEDIATE:
 				controller.changeTo("counterInterPanel");

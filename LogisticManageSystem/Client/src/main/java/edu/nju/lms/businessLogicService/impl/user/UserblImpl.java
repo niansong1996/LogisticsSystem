@@ -136,8 +136,10 @@ public class UserblImpl{
 		}
 		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
 		for(UserPO user: users) {
-			UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
-			usersVO.add(userVO);
+			if(!user.getUserName().equals("admin")){
+				UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
+				usersVO.add(userVO);
+			}
 		}
 		return usersVO;
 	}

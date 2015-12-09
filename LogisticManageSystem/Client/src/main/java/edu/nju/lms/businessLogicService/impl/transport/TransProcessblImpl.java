@@ -174,6 +174,18 @@ public class TransProcessblImpl{
 		} catch (RemoteException e) {
 			return result;
 		}
+		if(result.isSuccess()){
+			ArrayList<String> temp=loadCarList.getCommodityNums(); 
+			for(String num : temp){
+				try {
+					CommodityPO c=commodity.findCommodity(num);
+					ArrayList<String> loading=c.getLoad();
+					loading.add(loadCarList.getId());
+					c.setLoad(loading);
+					commodity.updateCommodity(c);
+				} catch (RemoteException e) {}
+			}
+		}
 		return result;
 	}
 	
@@ -256,7 +268,7 @@ public class TransProcessblImpl{
 		if(result.isSuccess()){
 			try {
 				CommodityPO c=commodity.findCommodity(dipatchList.getExpressNum());
-				c.setDispatch(dipatchList.getId());;
+				c.setDispatch(dipatchList.getId());
 				commodity.updateCommodity(c);
 			} catch (RemoteException e) {}
 		}
