@@ -1,18 +1,15 @@
 package mockObject;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-
-import edu.nju.lms.businessLogicService.impl.warehouse.ExpressItemInfo;
 
 /**
  *@author tj
  *@date 2015年11月16日
  */
 public class MockExpressList {
-	private ArrayList<ExpressItemInfo>  expresses;
+//	private ArrayList<ExpressItemInfo>  expresses;
 	public MockExpressList(){
-		expresses = new ArrayList<ExpressItemInfo>();
+//		expresses = new ArrayList<ExpressItemInfo>();
 	}
 	/**
 	 * when add a check in list, add an express information object into the list
