@@ -4,8 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import edu.nju.lms.VO.CityVO;

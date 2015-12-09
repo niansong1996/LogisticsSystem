@@ -1,9 +1,9 @@
 package simpleTest;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import edu.nju.lms.data.ResultMessage;
-import junit.framework.Assert;
 
 public class test {
 	ResultMessage result1 = new ResultMessage(true,null);
