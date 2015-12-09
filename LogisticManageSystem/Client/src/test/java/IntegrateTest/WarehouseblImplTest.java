@@ -1,29 +1,21 @@
 package IntegrateTest;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import mockObject.MockExpressItemInfo;
-import mockObject.MockExpressList;
 
 import org.junit.Test;
 
 import edu.nju.lms.PO.Location;
 import edu.nju.lms.VO.CheckinVO;
-import edu.nju.lms.VO.CheckoutVO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
-import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseManageblImpl;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseOpblImpl;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
-import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
+import mockObject.MockExpressItemInfo;
+import mockObject.MockExpressList;
 
 /**
  *@author tj

@@ -1,7 +1,5 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -9,7 +7,6 @@ import org.junit.Test;
 
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceReceiptblImpl;
-import edu.nju.lms.data.ResultMessage;
 import junit.framework.Assert;
 
 /**

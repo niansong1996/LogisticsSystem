@@ -2,11 +2,8 @@ package IntegrateTest;
 
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
-import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 
 /**

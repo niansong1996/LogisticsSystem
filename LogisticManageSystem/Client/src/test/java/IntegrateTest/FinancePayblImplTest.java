@@ -1,16 +1,8 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-import edu.nju.lms.VO.EarningVO;
-import edu.nju.lms.VO.FreightVO;
-import edu.nju.lms.VO.RentVO;
-import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinancePayblImpl;
-import edu.nju.lms.data.ResultMessage;
-import junit.framework.Assert;
 
 /**
  *@author tj

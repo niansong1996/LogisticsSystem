@@ -1,14 +1,6 @@
 package IntegrateTest;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import edu.nju.lms.VO.DriverVO;
-import edu.nju.lms.VO.VehicleVO;
-import edu.nju.lms.businessLogicService.impl.transport.TransManageblImpl;
-import edu.nju.lms.data.ResultMessage;
-import junit.framework.Assert;
 
 public class TransManageblImplTest {
 

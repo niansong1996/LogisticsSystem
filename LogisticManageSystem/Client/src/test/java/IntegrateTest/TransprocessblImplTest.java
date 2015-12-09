@@ -2,15 +2,12 @@ package IntegrateTest;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 import edu.nju.lms.VO.ArrivalVO;
 import edu.nju.lms.VO.DispatchVO;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
-import edu.nju.lms.businessLogicService.impl.transport.TransProcessblImpl;
 import edu.nju.lms.data.ArrivalState;
 import edu.nju.lms.data.ShipState;
 import edu.nju.lms.dataService.TransportCommodityDataService;
