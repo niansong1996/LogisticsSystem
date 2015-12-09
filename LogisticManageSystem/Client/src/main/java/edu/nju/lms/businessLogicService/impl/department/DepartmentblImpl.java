@@ -24,7 +24,7 @@ public class DepartmentblImpl{
 	
 	public DepartmentVO getDepartInfo(String id) {
 		DepartmentPO departmentPO = null;
-		DepartmentVO result=new DepartmentVO(null,"","");
+		DepartmentVO result=null;
 		try {
 			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
@@ -131,7 +131,7 @@ public class DepartmentblImpl{
 
 	public CityVO findCity(String id) {
 		CityPO cityPO=null;
-		CityVO city=new CityVO("","",null,null);
+		CityVO city=null;
 		try {
 			cityPO=service.findCity(id);
 		} catch (RemoteException e) {

@@ -45,7 +45,7 @@ public class FinanceStrategyblImpl {
 	}
 
 	public PriceStrategyVO findPriceStrategy() {
-		PriceStrategyVO result = new PriceStrategyVO(0,0,0);
+		PriceStrategyVO result = null;
 		try {
 			PriceStrategyPO po = service.findPriceStrategy();
 			if (po != null)
