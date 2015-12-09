@@ -89,7 +89,7 @@ public class Statisitic {
 							if(id.equals("VG")) {
 								VG = Double.parseDouble(m.attributeValue("avg"));
 							}
-							if(id.equals("MLOC")) {
+							if(id.equals("DIT")) {
 								DIT = Double.parseDouble(m.attributeValue("value"));
 							}
 						}
