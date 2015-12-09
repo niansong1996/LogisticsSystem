@@ -30,11 +30,7 @@ public class UserController implements UserblService{
 	}
 	
 	public UserVO findUserInfo(String id) {
-		UserVO result=user.findUserInfo(id);
-		
-		logController.addLog("查看用户"+id+"的信息");
-
-		return result;
+		return user.findUserInfo(id);
 	}
 
 	public ResultMessage deleteUser(String id) {
