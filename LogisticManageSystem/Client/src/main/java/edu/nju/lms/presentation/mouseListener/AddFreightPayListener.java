@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import edu.nju.lms.VO.FreightVO;
-import edu.nju.lms.VO.RentVO;
-import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;

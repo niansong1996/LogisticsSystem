@@ -56,7 +56,7 @@ public class DepartmentTable extends MyTable {
 			type = "中转中心";
 			break;
 		}
-		MyComboBox box = new MyComboBox(element, controller);
+		MyComboBox<?> box = new MyComboBox<Object>(element, controller);
 		box.setSelectedItem(type);
 		box.setSize(150,30);
 		MyTextField location = new MyTextField(department.getLocation());

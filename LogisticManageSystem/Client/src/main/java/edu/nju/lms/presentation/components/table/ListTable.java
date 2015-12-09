@@ -1,21 +1,12 @@
 package edu.nju.lms.presentation.components.table;
 
-import java.util.ArrayList;
-
-import javax.swing.JLabel;
-
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.ListVO;
-import edu.nju.lms.VO.PersonnelVO;
-import edu.nju.lms.businessLogicService.impl.list.ListController;
-import edu.nju.lms.data.ListState;
-import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyLabel;
-import edu.nju.lms.presentation.components.MyTextField;
 
 /**
  *@author tj
@@ -23,22 +14,12 @@ import edu.nju.lms.presentation.components.MyTextField;
  */
 public class ListTable extends MyTable {
 	private static final long serialVersionUID = 3558909374998616690L;
-	private ArrayList<ListVO> lists;
-	private ListController listControl;
 	public ListTable(Element element, UIController controller) {
 		super(element, controller);
-		this.listControl = controller.getListController();
-		lists = new ArrayList<ListVO>();
 	}
 
 	@Override
 	protected void getData() {
-		this.listControl = controller.getListController();
-//		lists = listControl.getAllList();
-//		for (int i = 0; i < lists.size(); i++) {
-//			MyTableLabel label = createLabel(lists.get(i));
-//			addData(label);
-//		}
 	}
 	public MyTableLabel createLabel(ListVO list) {
 	    String type = EnumTransformer.listType2Str(list.getType());

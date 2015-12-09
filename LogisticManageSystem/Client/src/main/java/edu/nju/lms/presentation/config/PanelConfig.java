@@ -8,7 +8,7 @@ import org.dom4j.Element;
 import edu.nju.lms.presentation.components.Component;
 
 /**
- * configure info of a panel, including all the component configures
+ * Configure info of a panel, including all the component configures
  * @author cuihao
  * 2015-11-18 14:33:21
  */
@@ -56,6 +56,11 @@ public class PanelConfig {
 		setPanels(getPanelConfigures(panel));
 	}
 
+	/**
+	 * get picture configures
+	 * @param Element
+	 * @return list of {@link ComponentConfig}
+	 */
 	private ArrayList<ComponentConfig> getComponentConfigures(Element panel) {
 		List<Element> elements = panel.elements("component");
 		ArrayList<ComponentConfig> configs = new ArrayList<ComponentConfig>(elements.size());
@@ -66,6 +71,11 @@ public class PanelConfig {
 		return configs;
 	}
 
+	/**
+	 * get component configures
+	 * @param panel
+	 * @return list of {@link UnitConfig}
+	 */
 	private ArrayList<UnitConfig> getUnitConfigures(Element panel) {
 		List<Element> elements = panel.elements("unit");
 		ArrayList<UnitConfig> configs = new ArrayList<UnitConfig>(elements.size());
@@ -76,6 +86,11 @@ public class PanelConfig {
 		return configs;
 	}
 	
+	/**
+	 * get panel configure
+	 * @param panel
+	 * @return list of {@link PanelConfig}
+	 */
 	private ArrayList<PanelConfig> getPanelConfigures(Element panel) {
 		List<Element> elements = panel.elements("myPanel");
 		ArrayList<PanelConfig> configs = new ArrayList<PanelConfig>(elements.size());

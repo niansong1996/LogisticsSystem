@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import edu.nju.lms.VO.RentVO;
 import edu.nju.lms.VO.SalaryVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
@@ -14,6 +13,7 @@ import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 
 /**
+ * Add salary pay list
  * @author tj
  * @date 2015年12月6日
  */

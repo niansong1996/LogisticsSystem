@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import edu.nju.lms.presentation.UIController;
 
 /**
+ * Clear text
  *@author tj
  *@date 2015年12月7日
  */

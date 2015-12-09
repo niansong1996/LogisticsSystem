@@ -11,11 +11,9 @@ import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.components.MainTable;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 import edu.nju.lms.presentation.components.table.PersonnelTable;
-import edu.nju.lms.presentation.tableModel.PersonnelTableModel;
 
 /**
  * @author tj

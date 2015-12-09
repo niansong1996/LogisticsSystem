@@ -4,8 +4,6 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JTextField;
-
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
@@ -45,9 +43,9 @@ public class DeleteAccountListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			MyDialog dialog = new MyDialog("删除成功！", true);
+			new MyDialog("删除成功！", true);
 		} else {
-			MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true);
 		}
 	}
 

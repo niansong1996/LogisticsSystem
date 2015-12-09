@@ -5,18 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import org.dom4j.Element;
 
-import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
-import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
-import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
@@ -81,13 +75,6 @@ public class MyTableLabel extends JLabel  {
 	private MyTable table;
 
 	/**
-	 * used to repaint
-	 */
-	private UIController controller;
-	private Element element;
-	// private boolean clicked = false;
-
-	/**
 	 * @param element
 	 *            of the <b>table</b>
 	 * @param height
@@ -101,12 +88,10 @@ public class MyTableLabel extends JLabel  {
 	public MyTableLabel(Element element, UIController controller, int height, java.awt.Component[] components,
 			MyTable table) {
 		setLayout(null);
-		this.element = element;
 		width = Integer.parseInt(element.attributeValue("w"));
 		this.height = height;
 		this.components = components;
 		this.table = table;
-		this.controller = controller;
 		setPreferredSize(new Dimension(width, height));
 		initializeComponents();
 	}
@@ -232,7 +217,6 @@ public class MyTableLabel extends JLabel  {
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			String type = element.attributeValue("name");
 			ResultMessage result = table.deleteData(label);
 			if (result != null) {
 				if (result.isSuccess()) {

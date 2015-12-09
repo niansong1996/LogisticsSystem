@@ -1,7 +1,6 @@
 package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
-import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 

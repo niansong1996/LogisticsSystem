@@ -18,12 +18,9 @@ import edu.nju.lms.presentation.components.table.ListTable;
  * @date 2015年12月5日
  */
 public class FailSingleListListener extends ButtonListener {
-	private ListController control;
 
 	public FailSingleListListener(ArrayList<Component> units, UIController controller, Component button) {
-		super(units, controller, button);
-		this.control = controller.getListController();
-		
+		super(units, controller, button);		
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import edu.nju.lms.presentation.components.table.MyTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
 /**
- * 
+ * add loadCar list
  * @author cuihao
  *
  */
@@ -30,6 +30,9 @@ public class AddLoadCarListener extends ButtonListener{
 		if(transport==null) {
 			return;
 		}
+		/*
+		 * get data
+		 */
 		MyTable table = (MyTable) units.get(0);
 		ArrayList<String> commoditynums = new ArrayList<String>();
 		for(MyTableLabel label: table.getDataList()) {
@@ -47,7 +50,9 @@ public class AddLoadCarListener extends ButtonListener{
 		String carNumStr = carNum.getText();
 		MyTextField driverNum = (MyTextField) units.get(7);
 		String driverNumStr = driverNum.getText();
-		
+		/*
+		 * create and save list
+		 */
 		LoadCarVO vo = new LoadCarVO("", "", businessHallStr, motorNumStr, destinationStr, carNumStr, driverNumStr, commoditynums, 0);
 		LoadCarVO loadCarVO = transport.createLoadCarList(vo);
 		ResultMessage result = transport.saveLoadCarList(loadCarVO);

@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JList;
 import javax.swing.JTextField;
 
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
@@ -30,17 +29,6 @@ public class DeletePersonButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		// PersonnelTableModel model = (PersonnelTableModel) table.getModel();
-		// for(int i = 0; i < model.getRowCount(); i++) {
-		// if(model.getValueAt(i, 0).equals(true)){
-		// String id = (String) model.getValueAt(i, 1);
-		// PersonnelController control = controller.getPersonnelController();
-		// control.deletePersonnel(id);
-		// model.removeRow(i);
-		// i--;
-		// }
-		// }
-		// table.repaint();
 		ArrayList<MyTableLabel> data = table.getDataList();
 		ResultMessage result = null;
 		for (int i = 0; i < data.size(); i++) {
@@ -56,9 +44,9 @@ public class DeletePersonButtonListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			MyDialog dialog = new MyDialog("删除成功！", true);
+			new MyDialog("删除成功！", true);
 		} else {
-			MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true);
 		}
 	}
 

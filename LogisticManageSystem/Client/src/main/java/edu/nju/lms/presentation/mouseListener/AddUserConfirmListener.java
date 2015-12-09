@@ -15,6 +15,11 @@ import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyDialog;
 
+/**
+ * Add a user of the system
+ * @author oppalu
+ * @date 2015-12-09 15:19:24
+ */
 public class AddUserConfirmListener extends ButtonListener{
 
 	public AddUserConfirmListener(ArrayList<Component> units,UIController controller, Component button) {
@@ -28,10 +33,10 @@ public class AddUserConfirmListener extends ButtonListener{
 		JTextField pass=(JTextField) units.get(1);
 		String password=pass.getText();
 		if (name.isEmpty() || password.isEmpty()) {
-			MyDialog error = new MyDialog("incomplete");
+			new MyDialog("incomplete");
 			return;
 		}
-		JComboBox box = (JComboBox) units.get(2);
+		JComboBox<?> box = (JComboBox<?>) units.get(2);
 		String t = (String) box.getSelectedItem();
 		PersonType type = EnumTransformer.str2PersonType(t);
 		
@@ -43,9 +48,9 @@ public class AddUserConfirmListener extends ButtonListener{
 			if(result.isSuccess()){
 				nam.setText("");
 				pass.setText("");
-				MyDialog error=new MyDialog("addSuccess");
+				new MyDialog("addSuccess");
 			}else{
-				MyDialog error=new MyDialog(result.getErrorMessage(),true);
+				new MyDialog(result.getErrorMessage(),true);
 			}
 		}
 	}

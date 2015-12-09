@@ -11,11 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import org.dom4j.Element;
-
-import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
 

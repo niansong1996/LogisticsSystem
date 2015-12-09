@@ -2,7 +2,6 @@ package edu.nju.lms.presentation.components;
 
 import java.awt.Font;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import javax.swing.JTextArea;
@@ -12,7 +11,6 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController;
-import edu.nju.lms.presentation.mouseListener.InquireListener;
 
 /**
  * Text area used to show <b>inquireInfo</b><br>

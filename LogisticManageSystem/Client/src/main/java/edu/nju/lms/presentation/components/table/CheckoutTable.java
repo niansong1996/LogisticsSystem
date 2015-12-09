@@ -33,7 +33,7 @@ public class CheckoutTable extends MyTable {
 		moto.setSize(30,30);
 		MyTextField desti = new MyTextField(destination);
 		desti.setSize(50,30);
-		MyComboBox box = new MyComboBox(element, controller);
+		MyComboBox<?> box = new MyComboBox<Object>(element, controller);
 		box.setSelectedItem(loadType);
 		box.setSize(70,30);
 		java.awt.Component[] component = {num,arrival,moto,desti,box};

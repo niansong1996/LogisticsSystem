@@ -48,7 +48,7 @@ public class CreateCheckoutListener extends ButtonListener {
 		arrivalNum = a.getText();
 		JTextField b = (JTextField) lab.getComponents(2);
 		motoNum = b.getText();
-		MyComboBox box = (MyComboBox) lab.getComponents(4);
+		MyComboBox<?> box = (MyComboBox<?>) lab.getComponents(4);
 		loadType = (String) box.getSelectedItem();
 		boolean isConsist = true;
 		for (MyTableLabel label : labels) {
@@ -67,7 +67,7 @@ public class CreateCheckoutListener extends ButtonListener {
 			}
 			JTextField desti = (JTextField) label.getComponents(3);
 			exDestination.add(desti.getText());
-			MyComboBox bo = (MyComboBox) label.getComponents(4);
+			MyComboBox<?> bo = (MyComboBox<?>) label.getComponents(4);
 			String type = (String) bo.getSelectedItem();
 			if (!type.equals(loadType)) {
 				isConsist = false;

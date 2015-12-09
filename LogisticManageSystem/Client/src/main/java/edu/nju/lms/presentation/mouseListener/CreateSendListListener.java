@@ -45,19 +45,19 @@ public class CreateSendListListener extends ButtonListener {
 			field.setText("");
 		}
 		//city
-		MyComboBox cb = (MyComboBox) units.get(3);
+		MyComboBox<?> cb = (MyComboBox<?>) units.get(3);
 		String receiverCity = (String) cb.getSelectedItem();
-		MyComboBox combo = (MyComboBox) units.get(4);
+		MyComboBox<?> combo = (MyComboBox<?>) units.get(4);
 		String senderCity = (String) combo.getSelectedItem();
 		// transform date to string
 		DateChooser dateChooser = (DateChooser) units.get(0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String date = sdf.format(dateChooser.getDate());
+		String date = sdf.format(dateChooser.getCalendar());
 		// packType
-		MyComboBox box = (MyComboBox) units.get(1);
+		MyComboBox<?> box = (MyComboBox<?>) units.get(1);
 		PackingType packType = EnumTransformer.str2PackType((String) box.getSelectedItem());
 		// transMode
-		MyComboBox box1 = (MyComboBox) units.get(2);
+		MyComboBox<?> box1 = (MyComboBox<?>) units.get(2);
 		TransportMode transMode = EnumTransformer.str2TransMode((String) box1.getSelectedItem());
 		// expressNum number weight volume inName size
 		String[] other = new String[6];

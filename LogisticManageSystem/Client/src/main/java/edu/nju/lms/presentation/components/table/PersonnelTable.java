@@ -44,7 +44,7 @@ public class PersonnelTable extends MyTable {
 
 	public MyTableLabel createLabel(PersonnelVO person) {
 		String type = person.getDuty();
-		MyComboBox box = new MyComboBox(element, controller);
+		MyComboBox<?> box = new MyComboBox<Object>(element, controller);
 		box.setSize(150, 30);
 		box.setSelectedItem(type);
 		MyTextField personID = new MyTextField(person.getId());

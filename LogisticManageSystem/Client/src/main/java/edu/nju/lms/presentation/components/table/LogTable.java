@@ -1,11 +1,8 @@
 package edu.nju.lms.presentation.components.table;
 
-import java.util.ArrayList;
-
 import org.dom4j.Element;
 
 import edu.nju.lms.VO.OperationVO;
-import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyLabel;
@@ -16,12 +13,8 @@ import edu.nju.lms.presentation.components.MyLabel;
  */
 public class LogTable extends MyTable {
 	private static final long serialVersionUID = -6644727278256120348L;
-	private ArrayList<OperationVO> logs;
-	private LogController control;
 	public LogTable(Element element, UIController controller) {
 		super(element, controller);
-		logs = new ArrayList<OperationVO>();
-		control = controller.getLogController();
 	}
 
 	@Override

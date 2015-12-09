@@ -33,10 +33,10 @@ public class ConfirmReceiptListener extends ButtonListener {
 			return;
 		}
 		DateChooser choose = (DateChooser) units.get(1);
-		Calendar date = Calendar.getInstance();
-		date.setTime(choose.getDate());
+		Calendar date = choose.getCalendar();
 		double sum = control.getReceiptSum(date);
 		MyLabel sumLabel = (MyLabel) units.get(4);
+		sumLabel.setText(sum+"");
 		ResultMessage result = control.addMoney(field.getText(), sum);
 		if(result.isSuccess()){
 			new MyDialog("收款成功！",true);

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.table.CheckoutTable;
 
 /**
+ * Add check out data.
  * @author tj
  * @date 2015年12月7日
  */
@@ -34,8 +34,11 @@ public class AddCheckoutListener extends ButtonListener {
 			}
 			info[i] = field.getText();
 		}
-		MyComboBox box = (MyComboBox) units.get(4);
+		MyComboBox<?> box = (MyComboBox<?>) units.get(4);
 		String partition = (String) box.getSelectedItem();
+		/*
+		 * Add a label to check out table
+		 */
 		table.addLabel(info[0], partition, info[1], info[2], info[3]);
 	}
 

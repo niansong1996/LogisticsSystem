@@ -12,9 +12,9 @@ import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
 
 /**
- * 
+ * Add dispatch list
  * @author cuihao
- *
+ * @date 2015-12-06 15:06:49
  */
 public class AddDispatchListener extends ButtonListener{
 
@@ -29,7 +29,13 @@ public class AddDispatchListener extends ButtonListener{
 		MyTextField person = (MyTextField) units.get(1);
 		MyTextField commodity = (MyTextField) units.get(2);
 		DispatchVO vo = new DispatchVO("", person.getText(), "", commodity.getText());
+		/*
+		 * firstly, complete dispatch list
+		 */
 		DispatchVO dispatch = transport.createDispatchList(vo);
+		/*
+		 * save list
+		 */
 		ResultMessage result = transport.saveDispatchList(dispatch);
 		if(result.isSuccess()) {
 			new MyDialog("addSuccess");

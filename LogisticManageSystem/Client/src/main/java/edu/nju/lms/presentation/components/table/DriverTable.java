@@ -23,11 +23,9 @@ public class DriverTable extends MyTable{
 	private static final long serialVersionUID = 8158931247558228237L;
 	
 	private ArrayList<DriverVO> drivers;
-	private TransportController transport;
-
 	public DriverTable(Element element, UIController controller) {
 		super(element, controller);
-		transport = controller.getTransportController();
+		controller.getTransportController();
 	}
 
 	@Override

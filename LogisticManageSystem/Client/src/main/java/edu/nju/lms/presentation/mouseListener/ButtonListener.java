@@ -9,8 +9,9 @@ import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MainButton;
 
 /**
- *@author tj
- *@date 2015年11月18日
+ * General <b>MouseListener</b> used to change picture of the button
+ * @author tj
+ * @date 2015年11月18日
  */
 public abstract class ButtonListener implements MouseListener{
 	protected ArrayList<java.awt.Component> units;

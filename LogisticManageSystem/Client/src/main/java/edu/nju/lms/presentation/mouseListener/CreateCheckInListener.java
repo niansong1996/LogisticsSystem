@@ -86,7 +86,7 @@ public class CreateCheckInListener extends ButtonListener {
 			return null;
 		}
 		String item = ite.getText();
-		MyComboBox box = (MyComboBox) units.get(4);
+		MyComboBox<?> box = (MyComboBox<?>) units.get(4);
 		String str = (String) box.getSelectedItem();
 		PartitionType type = EnumTransformer.str2PartitionType(str);
 		Location loc = new Location(type,Integer.parseInt(lineNum),Integer.parseInt(item));

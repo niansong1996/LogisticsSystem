@@ -42,7 +42,7 @@ public class UserTable extends MyTable{
 		MyTextField password=new MyTextField(user.getPassword());
 		password.setSize(150, 30);
 		String type = EnumTransformer.PersonType2Str(user.getPower());
-		MyComboBox userPower = new MyComboBox(element, controller);
+		MyComboBox<?> userPower = new MyComboBox<Object>(element, controller);
 		userPower.setSize(150, 30);
 		userPower.setSelectedItem(type);
 		java.awt.Component components[] = {userName, password, userPower};

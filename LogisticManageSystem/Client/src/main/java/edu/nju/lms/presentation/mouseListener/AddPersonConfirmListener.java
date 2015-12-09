@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import edu.nju.lms.VO.PersonnelVO;
@@ -15,6 +14,7 @@ import edu.nju.lms.presentation.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 
 /**
+ * Add a person to database
  *@author tj
  *@date 2015年11月22日
  */
@@ -22,20 +22,26 @@ public class AddPersonConfirmListener extends ButtonListener {
 
 	public AddPersonConfirmListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
-		// TODO Auto-generated constructor stub
 	}
 	public void mouseReleased(MouseEvent e) {
+		/*
+		 * get and check data
+		 */
 		String[] info = new String[6];
 		for(int i = 0;i<6;i++){
 			JTextField text=(JTextField)units.get(i);
 			info[i]=text.getText();
 			if(info[i].isEmpty()){
-				MyDialog error = new MyDialog("incomplete");
+				new MyDialog("incomplete");
 				return;
 			}
 		}
-		JComboBox box = (JComboBox)units.get(6);
+		JComboBox<?> box = (JComboBox<?>)units.get(6);
 		String duty = (String) box.getSelectedItem();
+
+		/*
+		 * save data
+		 */
 		PersonnelVO person = new PersonnelVO(info[0],info[1],info[2],duty,(Double.parseDouble(info[3])),
 				(Double.parseDouble(info[4])),(Double.parseDouble(info[5])));
 		PersonnelController personControl = controller.getPersonnelController();
@@ -46,9 +52,9 @@ public class AddPersonConfirmListener extends ButtonListener {
 					JTextField text=(JTextField)units.get(i);
 					text.setText("");
 				}
-				MyDialog error = new MyDialog("addSuccess");
+				new MyDialog("addSuccess");
 			}else{
-				MyDialog error = new MyDialog(result.getErrorMessage(),true);
+				new MyDialog(result.getErrorMessage(),true);
 			}
 		}
 	}
