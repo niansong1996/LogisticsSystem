@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.list;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.ListVO;
@@ -8,6 +7,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.ListblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.ListDataService;
@@ -22,14 +22,11 @@ public class ListController implements ListblService{
 	public ListController(){
 		try {
 			logController=BusinessLogicFactory.getLogController();
-			listService=(ListDataService) Naming.lookup("//127.0.0.1:1099/ListDataService");
+			listService= DataServiceFactory.getListDataService();
 			list=new ListblImpl(listService);
 			listNum = new ListNumOccupancy(listService);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch(Exception e1){
-			System.err.println("网络未连接");
-	    	System.exit(0);
 		}
 	}
 

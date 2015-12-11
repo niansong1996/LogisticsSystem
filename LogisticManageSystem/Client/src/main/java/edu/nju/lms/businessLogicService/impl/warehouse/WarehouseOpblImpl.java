@@ -52,9 +52,9 @@ public class WarehouseOpblImpl {
 		checkinData.addCheckin(checkin);
 		
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return new ResultMessage(true,null);
+		return new ResultMessage(true,"success");
 	}
 
 	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
@@ -75,7 +75,7 @@ public class WarehouseOpblImpl {
 					checkoutList.getArrivalNum(),warehouseNum,checkoutList.getMotorNum());
 			checkoutData.addCheckout(checkout);
 			} catch (RemoteException e) {
-				e.printStackTrace();
+				return RemoteExceptionHandler.handleRemoteException(e);
 			}
 			return new ResultMessage(true,null);
 	}

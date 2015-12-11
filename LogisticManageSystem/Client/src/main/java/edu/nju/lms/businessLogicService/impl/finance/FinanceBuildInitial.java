@@ -25,6 +25,7 @@ public class FinanceBuildInitial {
 		try {
 			financeController=BusinessLogicFactory.getFinanceController();
 		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -35,8 +36,7 @@ public class FinanceBuildInitial {
 			for(DepartmentVO vo : temp){
 				result.add(vo.getDepartmentNum());
 			}
-		}
-		
+		}		
 		return result;
 	}
 	

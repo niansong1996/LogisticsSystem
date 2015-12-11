@@ -24,16 +24,14 @@ public class DepartmentblImpl{
 	
 	public DepartmentVO getDepartInfo(String id) {
 		DepartmentPO departmentPO = null;
-		DepartmentVO result=null;
 		try {
 			departmentPO = service.findDepartment(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(departmentPO!=null) {
-			result=new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
-		}
-		return result;
+			return new DepartmentVO(departmentPO.getType(), departmentPO.getDepartmentNum(), departmentPO.getLocation());
+		}else return null;
 	}
 
 	public ResultMessage deleteDepartment(String id) {

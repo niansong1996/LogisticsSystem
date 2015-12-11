@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.ListPO;
 import edu.nju.lms.VO.ListVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.ListDataService;
@@ -42,7 +43,7 @@ public class ListblImpl{
 		try {
 			return service.updateList(List.getId(), List.getState(),type);
 		} catch (RemoteException e) {
-			return new ResultMessage(false,"网络未连接");
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}	
 	}
 
