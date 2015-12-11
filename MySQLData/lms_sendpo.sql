@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9
+-- Server version	5.7.9-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,6 +24,8 @@ DROP TABLE IF EXISTS `sendpo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sendpo` (
   `_id_` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` varchar(12) NOT NULL,
+  `state` varchar(20) NOT NULL,
   `expressNum` varchar(12) NOT NULL,
   `baseInfor` text NOT NULL,
   `initialNum` int(11) NOT NULL,
@@ -37,7 +39,8 @@ CREATE TABLE `sendpo` (
   `price` double NOT NULL,
   `time` double NOT NULL,
   `createTime` double NOT NULL,
-  PRIMARY KEY (`_id_`)
+  PRIMARY KEY (`_id_`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -59,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-07 10:53:20
+-- Dump completed on 2015-12-11 20:31:51

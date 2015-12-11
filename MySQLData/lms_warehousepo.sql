@@ -16,31 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `dispatchpo`
+-- Table structure for table `warehousepo`
 --
 
-DROP TABLE IF EXISTS `dispatchpo`;
+DROP TABLE IF EXISTS `warehousepo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dispatchpo` (
+CREATE TABLE `warehousepo` (
   `_id_` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id` varchar(12) NOT NULL,
-  `state` varchar(20) NOT NULL,
-  `dispatchPerson` varchar(20) NOT NULL,
-  `arrivalDate` datetime NOT NULL,
-  `expressNum` varchar(12) NOT NULL,
+  `cordon` double NOT NULL,
+  `expressNums` text NOT NULL,
+  `checkInlists` text NOT NULL,
+  `checkOutlists` text NOT NULL,
+  `partitionInfor` varchar(100) NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `dispatchpo`
+-- Dumping data for table `warehousepo`
 --
 
-LOCK TABLES `dispatchpo` WRITE;
-/*!40000 ALTER TABLE `dispatchpo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dispatchpo` ENABLE KEYS */;
+LOCK TABLES `warehousepo` WRITE;
+/*!40000 ALTER TABLE `warehousepo` DISABLE KEYS */;
+INSERT INTO `warehousepo` VALUES (1,'1234567890',0.9,'[2424252422, 9728752922]','[]','[]','[1000 1 1000 AIRPLANE, 500 1001 1500 TRAIN, 200 1501 1700 CAR, 300 1701 2000 FLEXIBLE]');
+/*!40000 ALTER TABLE `warehousepo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-07 11:42:56
+-- Dump completed on 2015-12-11 20:31:51

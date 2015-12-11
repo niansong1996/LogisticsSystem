@@ -16,35 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `commoditypo`
+-- Table structure for table `loadcarpo`
 --
 
-DROP TABLE IF EXISTS `commoditypo`;
+DROP TABLE IF EXISTS `loadcarpo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `commoditypo` (
+CREATE TABLE `loadcarpo` (
   `_id_` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id` varchar(12) NOT NULL,
-  `shipState` varchar(20) NOT NULL,
-  `send` varchar(12) NOT NULL,
-  `loading` varchar(12) NOT NULL,
-  `arrival` varchar(12) NOT NULL,
-  `dispatch` varchar(12) NOT NULL,
-  `checkin` varchar(12) NOT NULL,
-  `checkout` varchar(12) NOT NULL,
-  `receive` varchar(12) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `loadDate` datetime NOT NULL,
+  `businessHallNum` varchar(12) NOT NULL,
+  `motorNum` varchar(12) NOT NULL,
+  `destiBusinessHall` varchar(12) NOT NULL,
+  `vehicleNum` varchar(12) NOT NULL,
+  `driverNum` varchar(12) NOT NULL,
+  `commodityNums` text NOT NULL,
+  `freight` double NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `commoditypo`
+-- Dumping data for table `loadcarpo`
 --
 
-LOCK TABLES `commoditypo` WRITE;
-/*!40000 ALTER TABLE `commoditypo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `commoditypo` ENABLE KEYS */;
+LOCK TABLES `loadcarpo` WRITE;
+/*!40000 ALTER TABLE `loadcarpo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `loadcarpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-07 11:42:59
+-- Dump completed on 2015-12-11 20:31:51

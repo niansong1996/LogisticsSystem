@@ -102,7 +102,7 @@ _id_ int unsigned not null auto_increment primary key,
 earnings double not null,
 payment double not null,
 profit double not null,
-date datetime not null,
+date datetime not null
 );
 
 create table initialinforpo

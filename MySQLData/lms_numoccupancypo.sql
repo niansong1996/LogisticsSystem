@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9
+-- Server version	5.7.9-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `numoccupancypo` (
   `ArrivalListNum` varchar(12) NOT NULL,
   `CheckinListNum` varchar(12) NOT NULL,
   `CheckoutListNum` varchar(12) NOT NULL,
-  `DispathcListNum` varchar(12) NOT NULL,
+  `DispatchListNum` varchar(12) NOT NULL,
   `LoadListNum` varchar(12) NOT NULL,
   `PaymentListNum` varchar(12) NOT NULL,
   `ReceiptListNum` varchar(12) NOT NULL,
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-07 10:53:20
+-- Dump completed on 2015-12-11 20:31:51
