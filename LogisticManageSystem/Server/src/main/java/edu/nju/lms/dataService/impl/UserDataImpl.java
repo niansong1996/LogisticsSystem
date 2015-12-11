@@ -49,7 +49,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	public ResultMessage deleteUser(String id) throws RemoteException {
 		UserPO user = findUser(id);
 		if(!(user==null)){
-			JDBC.ExecuteData("delete from userpo where userName = "+id+";");
+			JDBC.ExecuteData("delete from userpo where userName = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{

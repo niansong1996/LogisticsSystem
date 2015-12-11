@@ -52,7 +52,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	public ResultMessage deleteDepartment(String id) throws RemoteException {
 		DepartmentPO department = findDepartment(id);
 		if(!(department==null)){
-			JDBC.ExecuteData("delete from departmentpo where departmentNum = "+id+";");
+			JDBC.ExecuteData("delete from departmentpo where departmentNum = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{

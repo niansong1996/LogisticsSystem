@@ -39,7 +39,7 @@ public class PersonnelDataImpl extends UnicastRemoteObject implements PersonnelD
 
 	public PersonnelPO findPersonnel(String id) throws RemoteException {
 		PersonnelPO personnel = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from personnelpo where id = "+id+" ;");
+		ResultSet result = JDBC.ExecuteQuery("select * from personnelpo where id = \""+id+"\" ;");
 		try{
 		if(!result.wasNull())
 			personnel = (PersonnelPO)POGenerator.generateObject(result, PersonnelPO.class.getName());

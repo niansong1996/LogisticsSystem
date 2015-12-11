@@ -33,7 +33,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 
 	public CheckoutPO findCheckout(String id) throws RemoteException {
 		CheckoutPO checkout = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from checkoutpo where id = "+id+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from checkoutpo where id = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			checkout = (CheckoutPO)POGenerator.generateObject(result, CheckoutPO.class.getName());
@@ -46,7 +46,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 	public ResultMessage deleteCheckout(String id) throws RemoteException {
 		CheckoutPO checkout = findCheckout(id);
 		if(!(checkout==null)){
-			JDBC.ExecuteData("delete from checkoutpo where id = "+id+";");
+			JDBC.ExecuteData("delete from checkoutpo where id = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{

@@ -33,7 +33,7 @@ public class WarehouseCheckinDataImpl extends UnicastRemoteObject implements War
 
 	public CheckinPO findCheckin(String id) throws RemoteException {
 		CheckinPO checkin = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from checkinpo where id = "+id+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from checkinpo where id = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			checkin = (CheckinPO)POGenerator.generateObject(result, CheckinPO.class.getName());
@@ -46,7 +46,7 @@ public class WarehouseCheckinDataImpl extends UnicastRemoteObject implements War
 	public ResultMessage deleteCheckin(String id) throws RemoteException {
 		CheckinPO checkin = findCheckin(id);
 		if(!(checkin==null)){
-			JDBC.ExecuteData("delete from checkinpo where id = "+id+";");
+			JDBC.ExecuteData("delete from checkinpo where id = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{

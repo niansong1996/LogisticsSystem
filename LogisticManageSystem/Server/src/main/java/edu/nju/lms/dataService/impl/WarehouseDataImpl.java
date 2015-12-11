@@ -39,7 +39,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public WarehousePO findWarehouse(String id) throws RemoteException {
 		WarehousePO warehouse = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from warehousepo where id = "+id+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from warehousepo where id = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			warehouse = (WarehousePO)POGenerator.generateObject(result, WarehousePO.class.getName());
@@ -52,7 +52,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	public ResultMessage deleteWarehouse(String id) throws RemoteException {
 		WarehousePO warehouse = findWarehouse(id);
 		if(!(warehouse==null)){
-			JDBC.ExecuteData("delete from warehousepo where id = "+id+";");
+			JDBC.ExecuteData("delete from warehousepo where id = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{
@@ -95,7 +95,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public InventoryPO findInventory(String expressNum,String warehouseId) throws RemoteException {
 		InventoryPO Inventory = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from Inventorypo where expressNum = "+expressNum+" and warehouseId = "+warehouseId+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from Inventorypo where expressNum = \""+expressNum+"\" and warehouseId = \""+warehouseId+"\";");
 		try{
 		if(!result.wasNull())
 			Inventory = (InventoryPO)POGenerator.generateObject(result, InventoryPO.class.getName());
@@ -121,7 +121,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public ArrayList<InventoryPO> findInventory(String warehouseId){
 		ArrayList<InventoryPO> inventoryList = new ArrayList<InventoryPO>();
-		ResultSet result = JDBC.ExecuteQuery("select * from inventorypo where warehouseId = "+warehouseId+" ;" );
+		ResultSet result = JDBC.ExecuteQuery("select * from inventorypo where warehouseId = \""+warehouseId+"\" ;" );
 		try{
 		if(!result.wasNull())
 			POGenerator.generateMultiObject(inventoryList,result, ReceiptPO.class.getName());
@@ -134,7 +134,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	public ResultMessage deleteInventory(String expressNum,String warehouseId) throws RemoteException {
 		InventoryPO Inventory = findInventory(expressNum,warehouseId);
 		if(!(Inventory==null)){
-			JDBC.ExecuteData("delete from Inventorypo where expressNum = "+expressNum+" and warehouseId = "+warehouseId+";");
+			JDBC.ExecuteData("delete from Inventorypo where expressNum = "+expressNum+" and warehouseId = \""+warehouseId+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{
@@ -155,7 +155,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public SendPO findSend(String expressNum)throws RemoteException{
 		SendPO send = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = "+expressNum+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = \""+expressNum+"\";");
 		try{
 		if(!result.wasNull())
 			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());

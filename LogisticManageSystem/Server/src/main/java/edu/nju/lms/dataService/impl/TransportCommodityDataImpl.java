@@ -35,7 +35,7 @@ public class TransportCommodityDataImpl extends UnicastRemoteObject implements T
 
 	public CommodityPO findCommodity(String id) throws RemoteException {
 		CommodityPO commodity = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from commoditypo where id = "+id+";");
+		ResultSet result = JDBC.ExecuteQuery("select * from commoditypo where id = \""+id+"\";");
 		try{
 		if(!result.wasNull())
 			commodity = (CommodityPO)POGenerator.generateObject(result, CommodityPO.class.getName());
@@ -48,7 +48,7 @@ public class TransportCommodityDataImpl extends UnicastRemoteObject implements T
 	public ResultMessage deleteCommodity(String id) throws RemoteException {
 		CommodityPO commodity = findCommodity(id);
 		if(!(commodity==null)){
-			JDBC.ExecuteData("delete from commoditypo where id = "+id+";");
+			JDBC.ExecuteData("delete from commoditypo where id = \""+id+"\";");
 			return new ResultMessage(true,"success");
 		}
 		else{
