@@ -29,6 +29,7 @@ public class MyCheckBox extends JCheckBox{
 	public MyCheckBox(String s, ImageIcon icon, boolean isSelected) {
 		super(s, icon, isSelected);
 		addItemListener(new MyCheckBoxListener());
+		setOpaque(false);
 	}
 	
 	class MyCheckBoxListener implements ItemListener {

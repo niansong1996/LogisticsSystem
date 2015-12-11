@@ -50,7 +50,7 @@ public class MyTableLabel extends JLabel  {
 	/**
 	 * path of picture background (white default)
 	 */
-	private String picPath = "pictures/white.png";
+	private String picPath = "src/main/resources/pictures/white.png";
 
 	/**
 	 * delete button of the label
@@ -106,7 +106,7 @@ public class MyTableLabel extends JLabel  {
 		 */
 		MyCheckBox check = new MyCheckBox("");
 		int checkWidth = column / 2;
-		check.setBounds((checkWidth-22)/2, (height-20)/2, 22, 20);
+		check.setBounds((checkWidth-25)/2, (height-17)/2, 25, 17);
 		add(check);
 		/**
 		 * add data components
@@ -123,12 +123,12 @@ public class MyTableLabel extends JLabel  {
 		 * add delete button and edit button
 		 */
 		deleteButton = new MainButton("tabledelete");
-		deleteButton.setBounds(checkWidth + components.length * column, height / 3, height / 3 + 15, height / 3);
+		deleteButton.setBounds(checkWidth + components.length * column+(checkWidth-height*3/8)/2, height*5/16+height/30, height*3/8,height*3/8);
 		deleteButton.setVisible(true);
 		add(deleteButton);
 		editButton = new MainButton("change");
-		editButton.setBounds(checkWidth + components.length * column + height / 3 + 20, height / 3, height / 3 + 15,
-				height / 3);
+		editButton.setBounds(checkWidth + components.length * column + (checkWidth-height / 4)*3/2, height / 4, height / 2 ,
+				height / 2);
 		editButton.setVisible(true);
 		add(editButton);
 		editButton.addMouseListener(new TableEditListener(editButton));
@@ -176,11 +176,11 @@ public class MyTableLabel extends JLabel  {
 	}
 
 	public void changeGrey() {
-		picPath = "pictures/addPath.png";
+		picPath = "src/main/resources/pictures/addPath.png";
 	}
 
 	public void changeWhite() {
-		picPath = "pictures/white.png";
+		picPath = "src/main/resources/pictures/white.png";
 	}
 
 	/**
@@ -255,13 +255,6 @@ public class MyTableLabel extends JLabel  {
 		}
 
 		public void mouseExited(MouseEvent e) {
-			// for(int i = 0; i < getColumnNum(); i++) {
-			// java.awt.Component c = components[i];
-			// if(c instanceof MyTextField) {
-			// MyTextField text = (MyTextField)c;
-			// text.setEditable(false);
-			// }
-			// }
 			button.setIn(false);
 			button.repaint();
 		}
@@ -273,11 +266,16 @@ public class MyTableLabel extends JLabel  {
 		 * set editable
 		 */
 		public void mouseReleased(MouseEvent e) {
+			boolean focus = false;
 			for (int i = 0; i < getColumnNum(); i++) {
 				java.awt.Component c = components[i];
 				if (c instanceof MyTextField) {
 					MyTextField text = (MyTextField) c;
 					text.setEditable(true);
+					if (!focus) {
+						text.requestFocus();
+						focus = true;
+					}
 				}
 			}
 		}
