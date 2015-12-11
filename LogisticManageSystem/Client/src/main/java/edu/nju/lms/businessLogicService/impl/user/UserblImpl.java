@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.UserPO;
 import edu.nju.lms.VO.UserVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 
@@ -23,18 +24,19 @@ public class UserblImpl{
 	
 	public UserVO findUserInfo(String id) {
 		UserPO userPO = null;
-		UserVO user = null;
 		if(!idCheck(id).isSuccess()) {
-			return user;
+			return null;
 		}
 		try {
 			userPO = dataService.findUser(id);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if (userPO != null) {
-			user = new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
+			return new UserVO(userPO.getUserName(), userPO.getPassword(), userPO.getPower());
+		}else{
+			return null;
 		}
-		return user;
 	}
 
 	public ResultMessage deleteUser(String id) {
@@ -42,11 +44,10 @@ public class UserblImpl{
 		if(!result.isSuccess()) {
 			return result;
 		}
-		result = new ResultMessage(false, "网络未连接");
 		try {
 			result = dataService.deleteUser(id);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -60,12 +61,11 @@ public class UserblImpl{
 		if(!result.isSuccess()) {
 			return result;
 		}
-		result = new ResultMessage(false, "网络未连接");
 		UserPO userPO = new UserPO(user.getUserName(), user.getPassword(), user.getPower());
 		try {
 			result = dataService.updateUser(userPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -79,12 +79,11 @@ public class UserblImpl{
 		if(!result.isSuccess()) {
 			return result;
 		}
-		result = new ResultMessage(false, "网络未连接");
 		UserPO userPO = new UserPO(User.getUserName(), User.getPassword(), User.getPower());
 		try {
 			result = dataService.addUser(userPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}

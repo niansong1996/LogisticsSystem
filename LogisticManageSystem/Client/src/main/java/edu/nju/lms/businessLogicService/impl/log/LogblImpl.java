@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import edu.nju.lms.PO.OperationPO;
 import edu.nju.lms.VO.OperationVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.LogDataService;
 
@@ -32,7 +33,7 @@ public class LogblImpl {
 		try {
 			temp=logData.findOperation(begin, end);
 		} catch (RemoteException e) {
-			return log;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(temp!=null){
 			for(OperationPO opPO: temp){
@@ -54,7 +55,7 @@ public class LogblImpl {
 		try {
 			result=logData.addOperation(opPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}

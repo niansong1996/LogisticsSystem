@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.personnel;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.PersonnelVO;
@@ -8,6 +7,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.PersonnelblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.PersonnelDataService;
 
@@ -24,13 +24,10 @@ public class PersonnelController implements PersonnelblService{
 	public PersonnelController(){
 		try {
 			logController=BusinessLogicFactory.getLogController();
-			personService=(PersonnelDataService)Naming.lookup("//127.0.0.1:1099/PersonnelDataService");
+			personService=DataServiceFactory.getPersonnelDataService();
 			personbl=new PersonnelblImpl(personService);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch(Exception e1){
-			System.err.println("网络未连接");
-	    	System.exit(0);
 		}
 	}
 	

@@ -22,6 +22,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.City;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
@@ -51,7 +52,7 @@ public class TransProcessblImpl{
 		try {
 			return historyTrack.getTrack(orderNum);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			RemoteExceptionHandler.handleRemoteException(e);
 			return null;
 		}
 	}
@@ -72,7 +73,7 @@ public class TransProcessblImpl{
 		try {
 			result=list.addSend(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(result.isSuccess()){
 			ArrayList<String> loading=new ArrayList<String>();
@@ -88,18 +89,16 @@ public class TransProcessblImpl{
 	}
 
 	public SendVO findSendList(String expressNum) {
-		SendVO result=null;
 		SendPO po=null;
 		try {
 			po=list.findSend(expressNum);
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
-			result=new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getSenderCity(),po.getReceiverCity(),po.getInitialNum(),po.getWeight(),
+			return new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getSenderCity(),po.getReceiverCity(),po.getInitialNum(),po.getWeight(),
 					po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime(),CommonUtility.Cal2String(po.getCreateTime()));
-		}
-		return result;
+		}else return null;
 	}
 
 	public LoadVO createLoadList(LoadVO baseMessage) {
@@ -117,20 +116,18 @@ public class TransProcessblImpl{
 				loadList.getVehicleNum(),loadList.getDriverNum(),loadList.getCommodityNums(),loadList.getFreight());
 		try {
 			result=list.addLoad(po);
-		} catch (RemoteException e) {
-			return result;
-		}
-		if(result.isSuccess()){
-			ArrayList<String> temp=loadList.getCommodityNums(); 
-			for(String num : temp){
-				try {
+			if(result.isSuccess()){
+				ArrayList<String> temp=loadList.getCommodityNums(); 
+				for(String num : temp){
 					CommodityPO c=commodity.findCommodity(num);
 					ArrayList<String> loading=c.getLoad();
 					loading.add(loadList.getId());
 					c.setLoad(loading);
 					commodity.updateCommodity(c);
-				} catch (RemoteException e) {}
+				}
 			}
+		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -171,20 +168,18 @@ public class TransProcessblImpl{
 				loadCarList.getDriverNum(),loadCarList.getCommodityNums(),loadCarList.getFreight());
 		try {
 			result=list.addLoadCar(po);
-		} catch (RemoteException e) {
-			return result;
-		}
-		if(result.isSuccess()){
-			ArrayList<String> temp=loadCarList.getCommodityNums(); 
-			for(String num : temp){
-				try {
+			if(result.isSuccess()){
+				ArrayList<String> temp=loadCarList.getCommodityNums(); 
+				for(String num : temp){
 					CommodityPO c=commodity.findCommodity(num);
 					ArrayList<String> loading=c.getLoad();
 					loading.add(loadCarList.getId());
 					c.setLoad(loading);
 					commodity.updateCommodity(c);
-				} catch (RemoteException e) {}
+				}
 			}
+		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -221,33 +216,31 @@ public class TransProcessblImpl{
 				arrivalList.getDestination(),arrivalList.getSetOut(),CommonUtility.String2Cal(arrivalList.getArrivalDate()));
 		try {
 			result=list.addArrival(po);
-		} catch (RemoteException e) {
-			return result;
-		}
-		if(result.isSuccess()){
-			try {
+			if(result.isSuccess()){
 				CommodityPO c=commodity.findCommodity(arrivalList.getExpressNum());
 				ArrayList<String> arrival=c.getArrival();
 				arrival.add(arrivalList.getId());
 				c.setArrival(arrival);
 				commodity.updateCommodity(c);
-			} catch (RemoteException e) {}
+			}
+		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
 
 	public ArrivalVO findArrivalList(String id) {
-		ArrivalVO result=null;
 		ArrivalPO po=null;
 		try {
 			po=list.findArrival(id);
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
-			result=new ArrivalVO(po.getId(),po.getArrivalState(), po.getExpressNum(), po.getDestination(),po.getSetOut(), CommonUtility.Cal2String(po.getArrivalDate()));
+			return new ArrivalVO(po.getId(),po.getArrivalState(), po.getExpressNum(), po.getDestination(),po.getSetOut(), CommonUtility.Cal2String(po.getArrivalDate()));
+		}else{
+			return null;
 		}
-		return result;
 	}
 
 	public DispatchVO createDispatchList(DispatchVO dispatchList) {
@@ -262,31 +255,27 @@ public class TransProcessblImpl{
 		DispatchPO po=new DispatchPO(dipatchList.getId(),dipatchList.getState().toString(),dipatchList.getDispatchPerson(),CommonUtility.String2Cal(dipatchList.getArrivalDate()),dipatchList.getExpressNum());
 		try {
 			result=list.addDispatch(po);
-		} catch (RemoteException e1) {
-			return result;
-		}
-		if(result.isSuccess()){
-			try {
+			if(result.isSuccess()){
 				CommodityPO c=commodity.findCommodity(dipatchList.getExpressNum());
 				c.setDispatch(dipatchList.getId());
 				commodity.updateCommodity(c);
-			} catch (RemoteException e) {}
+			}
+		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
 
 	public DispatchVO findDispatchList(String id) {
-		DispatchVO result=null;
 		DispatchPO po=null;
 		try {
 			po=list.findDispatch(id);
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
-			result=new DispatchVO(po.getId(),po.getDispatchPerson(),CommonUtility.Cal2String(po.getArrivalDate()),po.getExpressNum());
-		}
-		return result;
+			return new DispatchVO(po.getId(),po.getDispatchPerson(),CommonUtility.Cal2String(po.getArrivalDate()),po.getExpressNum());
+		}else return null;
 	}
 	
 	public ReceiveVO createReceiveList(ReceiveVO receiveList) {
@@ -300,30 +289,28 @@ public class TransProcessblImpl{
 		ReceivePO po=new ReceivePO(receiveList.getId(),receiveList.getState().toString(),receiveList.getReceiverName(),CommonUtility.String2Cal(receiveList.getReceiveTime()),receiveList.getExpressNum());
 		try {
 			result=list.addReceive(po);
-		} catch (RemoteException e) {
-			return result;
-		}
-		if(result.isSuccess()){
-			try {
+			if(result.isSuccess()){
 				CommodityPO c=commodity.findCommodity(receiveList.getExpressNum());
 				c.setReceive(receiveList.getId());
 				commodity.updateCommodity(c);
-			} catch (RemoteException e) {}
+			}
+		} catch (RemoteException e) {
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
 	public ReceiveVO findReceiveList(String id) {
-		ReceiveVO receive=null;
 		ReceivePO po=null;
 		try {
 			po=list.findReceive(id);
 		} catch (RemoteException e) {
-			return receive;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
-			receive=new ReceiveVO(po.getId(),po.getReceiverName(),CommonUtility.Cal2String(po.getReceiveTime()),po.getExpressNum());
+			return new ReceiveVO(po.getId(),po.getReceiverName(),CommonUtility.Cal2String(po.getReceiveTime()),po.getExpressNum());
+		}else{
+			return null;
 		}
-		return receive;
 	}
 	
 	public double calculateFreight(LoadVO load){

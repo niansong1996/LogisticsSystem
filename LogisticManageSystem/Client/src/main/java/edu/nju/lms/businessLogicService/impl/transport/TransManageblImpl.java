@@ -12,6 +12,7 @@ import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
@@ -42,13 +43,12 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		VehiclePO po=new VehiclePO(vehicle.getVehicleNum(),vehicle.getPlateNum(),
 				vehicle.getBusinessHallNum(),vehicle.getServiceYears());
 		try {
 			result=service.addVehicle(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -58,11 +58,10 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deleteVehicle(vehicleNum);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -72,13 +71,12 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		VehiclePO po=new VehiclePO(modified.getVehicleNum(),modified.getPlateNum(),
 				modified.getBusinessHallNum(),modified.getServiceYears());
 		try {
 			result=service.updateVehicle(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -93,7 +91,7 @@ public class TransManageblImpl{
 				po.getBusinessHallNum(),po.getServiceYears());
 			}
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -104,7 +102,7 @@ public class TransManageblImpl{
 		try {
 			po=service.showAllVihicle();
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
 			for(VehiclePO temp : po){
@@ -127,14 +125,12 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
-
 		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),CommonUtility.String2Cal(driver.getBirth()),
 				driver.getIdNum(),driver.getPhoneNum(),driver.getSex(),CommonUtility.String2Cal(driver.getDrivingLimit()),driver.getBusinesshallNum());
 		try {
 			result=service.addDriver(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		//add the driver into the personnel
 		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),"司机",0,0,0);
@@ -147,11 +143,10 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deleteDriver(driverNum);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		personnelController.deletePersonnel(driverNum);
 		return result;
@@ -162,14 +157,13 @@ public class TransManageblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 	
 		DriverPO po=new DriverPO(driver.getDriverNum(),driver.getDriverName(),CommonUtility.String2Cal(driver.getBirth()),
 				driver.getIdNum(),driver.getPhoneNum(),driver.getSex(),CommonUtility.String2Cal(driver.getDrivingLimit()),driver.getBusinesshallNum());
 		try {
 			result=service.addDriver(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		PersonnelVO personnel=new PersonnelVO(driver.getDriverNum(),driver.getDriverName(),driver.getBusinesshallNum(),"司机",0,0,0);
 		personnelController.updatePersonnel(personnel);
@@ -186,7 +180,7 @@ public class TransManageblImpl{
 						po.getIdNum(),po.getPhoneNum(),po.getSex(),CommonUtility.Cal2String(po.getDrivingLimit()),po.getBusinesshallNum());
 			}
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}

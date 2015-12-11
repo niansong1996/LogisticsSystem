@@ -51,10 +51,7 @@ public class TransHistoryTrack {
 			case 3: state = ShipState.STRANSIT; track.add(CommonUtility.Cal2String(arrivalList.get(0).getArrivalDate())+" "+"发送地中转中心已收入");
 			case 2: track.add(CommonUtility.Cal2String(loadList.get(0).getLoadDate())+" "+"快件已发往中转中心");
 			case 1: state = ShipState.SBUSINESSH; track.add(CommonUtility.getTime()+" "+"营业厅收件成功");break;
-			case 0: track.add(CommonUtility.getTime()+" "+"暂无物流信息");break;
-			
-			
-			
+			case 0: track.add(CommonUtility.getTime()+" "+"暂无物流信息");break;	
 			}
 			
 			return new OrderInforVO(state,track,expressNum);

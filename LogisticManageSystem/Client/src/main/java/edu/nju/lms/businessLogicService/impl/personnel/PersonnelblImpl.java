@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.lms.PO.PersonnelPO;
 import edu.nju.lms.VO.PersonnelVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.PersonnelDataService;
 import edu.nju.lms.presentation.components.EnumTransformer;
@@ -35,7 +36,7 @@ public class PersonnelblImpl  {
 					result.add(person);
 				}
 			} catch (RemoteException e) {
-				return result;
+				RemoteExceptionHandler.handleRemoteException(e);
 			}
 		}else{
 			try {
@@ -48,7 +49,7 @@ public class PersonnelblImpl  {
 					}
 				}
 			} catch (RemoteException e) {
-				return result;
+				RemoteExceptionHandler.handleRemoteException(e);
 			}
 		}
 		return result;
@@ -59,11 +60,10 @@ public class PersonnelblImpl  {
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deletePersonnel(id);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -73,14 +73,13 @@ public class PersonnelblImpl  {
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personPO=null;
 		personPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),Personnel.getDepartmentNum(),
 				EnumTransformer.str2PersonType(Personnel.getDuty()),Personnel.getSalary(),Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.updatePersonnel(personPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -90,14 +89,13 @@ public class PersonnelblImpl  {
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		PersonnelPO personnelPO=new PersonnelPO(Personnel.getId(),Personnel.getName(),
 				Personnel.getDepartmentNum(),EnumTransformer.str2PersonType(Personnel.getDuty()),Personnel.getSalary(),
 				Personnel.getPerTime(),Personnel.getBonus());
 		try {
 			result=service.addPersonnel(personnelPO);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -109,7 +107,7 @@ public class PersonnelblImpl  {
 		try {
 			po=service.showAllPersonnel();
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
 			for(PersonnelPO person : po){

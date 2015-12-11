@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.transport;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.ArrivalVO;
@@ -20,6 +19,7 @@ import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
@@ -41,25 +41,22 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	public TransportController(){
 		try {
-			toolData=(TransportToolDataService) Naming.lookup("//127.0.0.1:1099/TransportToolDataService");
+			toolData=DataServiceFactory.getTransportToolDataService();
 			personnelController=BusinessLogicFactory.getPersonnelController();
 			listController = BusinessLogicFactory.getListController();
 			departmentController=BusinessLogicFactory.getDepartmentController();
 		
 			manage=new TransManageblImpl(personnelController,departmentController,listController,toolData);
 			
-			listData=(TransportListDataService) Naming.lookup("//127.0.0.1:1099/TransportListDataService");
-			commodityData=(TransportCommodityDataService) Naming.lookup("//127.0.0.1:1099/TransportCommodityDataService");
+			listData=DataServiceFactory.getTransportListDataService();
+			commodityData=DataServiceFactory.getTransportCommodityDataService();
 			
 			process=new TransProcessblImpl(listController,departmentController,commodityData,listData);
 			
 			logController=BusinessLogicFactory.getLogController();
 		}catch(NoBusinessLogicException e1){
 			e1.printStackTrace();
-		}catch (Exception e) {
-			System.err.println("网络未连接");
-	    	System.exit(0);
-		} 
+		}
 	}
 	
 	public VehicleVO addVehicle(VehicleVO plateNum) {	

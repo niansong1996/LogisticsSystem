@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.user;
 
-import java.rmi.Naming;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.UserVO;
@@ -8,6 +7,7 @@ import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.UserblService;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.UserDataService;
 public class UserController implements UserblService{
@@ -19,13 +19,10 @@ public class UserController implements UserblService{
 	public UserController(){
 		try{
 			logController=BusinessLogicFactory.getLogController();
-			userService=(UserDataService) Naming.lookup("//127.0.0.1:1099/UserDataService"); 
+			userService=DataServiceFactory.getUserDataService();
 			user=new UserblImpl(userService);
 	    } catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch(Exception e1){
-			System.err.println("网络未连接");
-	    	System.exit(0);
 		}
 	}
 	
