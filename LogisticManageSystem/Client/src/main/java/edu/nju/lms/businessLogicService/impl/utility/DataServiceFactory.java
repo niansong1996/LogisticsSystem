@@ -77,7 +77,7 @@ public class DataServiceFactory {
 	public static WarehouseCheckoutDataService getWarehouseCheckoutDataService(){
 		return (WarehouseCheckoutDataService) DataServiceFactory.getDataService("WarehouseCheckoutDataService");
 	}
-	public static WarehouseDataService getWarehouseCheckDataService(){
-		return (WarehouseDataService) DataServiceFactory.getDataService("WarehouseCheckDataService");
+	public static WarehouseDataService getWarehouseDataService(){
+		return (WarehouseDataService) DataServiceFactory.getDataService("WarehouseDataService");
 	}
 }

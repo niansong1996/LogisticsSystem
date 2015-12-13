@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
-import java.rmi.Naming;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.CheckinVO;
@@ -35,7 +34,7 @@ public class WarehouseController implements WareHouseblService{
 		try {
 			logController=BusinessLogicFactory.getLogController();
 			listController=BusinessLogicFactory.getListController();
-			warehouseData= DataServiceFactory.getWarehouseCheckDataService();
+			warehouseData= DataServiceFactory.getWarehouseDataService();
 			warehouseCheckinData = DataServiceFactory.getWarehouseCheckinDataService();
 			warehouseCheckoutData = DataServiceFactory.getWarehouseCheckoutDataService();
 		} catch (NoBusinessLogicException e) {
