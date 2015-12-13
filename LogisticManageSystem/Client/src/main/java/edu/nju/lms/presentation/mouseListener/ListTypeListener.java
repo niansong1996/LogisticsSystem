@@ -12,6 +12,7 @@ import edu.nju.lms.data.ListType;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyComboBox;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.ListTable;
 import edu.nju.lms.presentation.components.table.MyTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
@@ -40,6 +41,10 @@ public class ListTypeListener implements ItemListener {
 			ListType type = EnumTransformer.str2ListType((String) e.getItem());
 			if (listControl != null) {
 				ArrayList<ListVO> lists = listControl.getListInfo(type);
+				if(lists.isEmpty()){
+					new MyDialog("单据不存在",true);
+					return;
+				}
 				ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
 				for (int i = 0; i < lists.size(); i++) {
 					ListVO list = lists.get(i);

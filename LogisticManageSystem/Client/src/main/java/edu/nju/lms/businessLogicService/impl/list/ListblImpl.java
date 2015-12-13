@@ -34,7 +34,7 @@ public class ListblImpl{
 			if(po.getState().toString().equals("WAITING")){
 				ListVO temp=new ListVO(po.getId());
 				result.add(temp);
-			}
+		}
 		}
 		return result;
 	}
