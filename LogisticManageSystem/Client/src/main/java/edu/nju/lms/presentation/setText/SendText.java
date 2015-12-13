@@ -1,6 +1,5 @@
 package edu.nju.lms.presentation.setText;
 
-import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController.UIController;
 
@@ -9,8 +8,8 @@ import edu.nju.lms.presentation.UIController.UIController;
  * @date 2015年12月13日
  */
 public class SendText extends Text {
-	private ListController control;
 	private String id;
+	private TransportController control;
 
 	public SendText(String id) {
 		this.id = id;
@@ -18,8 +17,8 @@ public class SendText extends Text {
 
 	@Override
 	public String get(UIController controller) {
-		String result = "";
-
+		this.control = controller.getTransportController();
+		String result="\n";
 		return null;
 	}
 
