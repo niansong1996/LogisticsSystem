@@ -33,6 +33,7 @@ public class ListblImpl{
 		for(ListPO po : list){
 			if(po.getState().toString().equals("WAITING")){
 				ListVO temp=new ListVO(po.getId());
+				temp.setType(type);
 				result.add(temp);
 		}
 		}
@@ -49,10 +50,11 @@ public class ListblImpl{
 
 	public ListVO getListInfo(String id){
 		ListVO result=null;
+		ListType type=null;
 		ListPO po=null;
 		try {
 			for(int i=0;i<10;i++){
-				ListType type = ListType.values()[i];
+				type = ListType.values()[i];
 				po = service.findList(type,id);
 				if(po!=null) break;
 			}
@@ -60,6 +62,7 @@ public class ListblImpl{
 		}
 		if(po!=null){
 			result=new ListVO(po.getId());
+			result.setType(type);
 		}
 		return result;
 	}

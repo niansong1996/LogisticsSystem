@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
@@ -22,7 +23,7 @@ public class PassChoosedListListener extends ChangeChoosedListListener {
 		MyLabel id = (MyLabel) label.getComponents(1);
 		ListVO vo = new ListVO(id.getText());
 		MyLabel type = (MyLabel) label.getComponents(0);
-		vo.setType(type.getText());
+		vo.setType(EnumTransformer.str2ListType(type.getText()));
 		vo.setState(ListState.PASS);
 		return vo;
 	}
