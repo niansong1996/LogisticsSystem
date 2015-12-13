@@ -257,5 +257,13 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public ArrayList<LoadCarVO> findUnpaidLoadCar() {
 		return process.findUnpaidLoadCar();
 	}
+
+	public LoadVO findLoadList(String id) {
+		return process.findLoadList(id);
+	}
+
+	public LoadCarVO findLoadCarList(String id) {
+		return process.findLoadCarList(id);
+	}
 	
 }

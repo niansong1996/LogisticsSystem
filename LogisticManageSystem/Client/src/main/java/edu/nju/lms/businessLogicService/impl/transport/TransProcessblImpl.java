@@ -366,5 +366,29 @@ public class TransProcessblImpl{
 		money=NumRound.round(money);
 		return money;
 	}
+
+	public LoadVO findLoadList(String id) {
+		LoadVO result = null;
+		try {
+			LoadPO po = list.findLoad(id);
+			result = new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),po.getDestiCity(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		return result;
+	}
+	
+	public LoadCarVO findLoadCarList(String id) {
+		LoadCarVO result = null;
+		try {
+			LoadcarPO po = list.findLoadCar(id);
+			result = new LoadCarVO(po.getId(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		return result;
+	}
 	
 }

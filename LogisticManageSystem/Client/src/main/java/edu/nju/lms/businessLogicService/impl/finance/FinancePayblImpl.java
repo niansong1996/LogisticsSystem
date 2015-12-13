@@ -20,6 +20,7 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.data.ListType;
@@ -59,20 +60,17 @@ public class FinancePayblImpl {
 	}
 
 	public ResultMessage saveRent(RentVO rent) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PaymentPO po = new PaymentPO(rent.getId(), rent.getState(),
 				PaymentType.RENT, CommonUtility.String2Cal(rent.getPayTime()),
 				rent.getAccount(), rent.getAmount());
 		try {
-			result = service.addPayment(po);
+			ResultMessage result = service.addPayment(po);
+			if (result.isSuccess()) {
+				return payMoney(rent.getAccount(), rent.getAmount());
+			}else return result;
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-
-		if (result.isSuccess()) {
-			result = payMoney(rent.getAccount(), rent.getAmount());
-		}
-		return result;
 	}
 
 	public FreightVO createFreight(String accountNum) {
@@ -85,21 +83,18 @@ public class FinancePayblImpl {
 	}
 
 	public ResultMessage saveFreight(FreightVO freight) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PaymentPO po = new PaymentPO(freight.getId(), freight.getState(),
 				PaymentType.FREIGHT, CommonUtility.String2Cal(freight
 						.getPayTime()), freight.getAccount(),
 				freight.getAmount());
 		try {
-			result = service.addPayment(po);
+			ResultMessage result = service.addPayment(po);
+			if (result.isSuccess()) {
+				return payMoney(freight.getAccount(), freight.getAmount());
+			}else return result;
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-
-		if (result.isSuccess()) {
-			result = payMoney(freight.getAccount(), freight.getAmount());
-		}
-		return result;
 	}
 
 	public SalaryVO createSalary(String accountNum) {
@@ -112,21 +107,17 @@ public class FinancePayblImpl {
 	}
 
 	public ResultMessage saveSalary(SalaryVO salary) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PaymentPO po = new PaymentPO(salary.getId(), salary.getState(),
 				PaymentType.SALARY, CommonUtility.String2Cal(salary
 						.getPayTime()), salary.getAccount(), salary.getAmount());
 		try {
-			result = service.addPayment(po);
+			ResultMessage result = service.addPayment(po);
+			if (result.isSuccess()) {
+				result = payMoney(salary.getAccount(), salary.getAmount());
+			}return result;
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-
-		if (result.isSuccess()) {
-			result = payMoney(salary.getAccount(), salary.getAmount());
-		}
-
-		return result;
 	}
 
 	public ArrayList<PaymentVO> showAllPayment(Calendar start, Calendar end) {
@@ -135,6 +126,7 @@ public class FinancePayblImpl {
 		try {
 			po = service.showAllPayment(start, end);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 			return result;
 		}
 		if (po != null) {
@@ -212,30 +204,28 @@ public class FinancePayblImpl {
 	}
 
 	public ResultMessage payMoney(String accountNum, double money) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		AccountPO account = null;
 		try {
 			account = accountService.findAccount(accountNum);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if (account == null) {
-			result = new ResultMessage(false, "未找到对应账户！");
-			return result;
+			return new ResultMessage(false, "未找到对应账户！");
+			
 		}
 
 		double currentMoney = account.getAmount();
 		if (currentMoney < money) {
-			result = new ResultMessage(false, "该账户余额不足！");
-			return result;
+			return new ResultMessage(false, "该账户余额不足！");
+			
 		}
 		currentMoney -= money;
 		account.setAmount(currentMoney);
 		try {
-			result = accountService.updateAccount(account);
+			return accountService.updateAccount(account);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 }

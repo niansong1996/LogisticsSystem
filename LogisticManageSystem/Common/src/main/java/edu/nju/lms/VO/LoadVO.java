@@ -1,9 +1,7 @@
 package edu.nju.lms.VO;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-import edu.nju.lms.PO.CityPO;
 import edu.nju.lms.data.LoadType;
 
 /**

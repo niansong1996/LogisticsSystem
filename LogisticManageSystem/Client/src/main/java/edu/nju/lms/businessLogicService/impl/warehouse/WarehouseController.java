@@ -13,6 +13,7 @@ import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.WareHouseblService;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
+import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -34,20 +35,15 @@ public class WarehouseController implements WareHouseblService{
 		try {
 			logController=BusinessLogicFactory.getLogController();
 			listController=BusinessLogicFactory.getListController();
-			warehouseData=(WarehouseDataService) Naming.lookup("//127.0.0.1:1099/WarehouseDataService"); 
-			warehouseCheckinData = (WarehouseCheckinDataService) Naming.lookup("//127.0.0.1:1099/WarehouseCheckinDataService");
-			warehouseCheckoutData = (WarehouseCheckoutDataService) Naming.lookup("//127.0.0.1:1099/WarehouseCheckoutDataService");
+			warehouseData= DataServiceFactory.getWarehouseCheckDataService();
+			warehouseCheckinData = DataServiceFactory.getWarehouseCheckinDataService();
+			warehouseCheckoutData = DataServiceFactory.getWarehouseCheckoutDataService();
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
-			System.err.println("网络未连接");
 		}
 		
-
 		warehouseManagebl = new WarehouseManageblImpl(warehouseData);
 		warehouseOpbl = new WarehouseOpblImpl(warehouseData,warehouseCheckinData,warehouseCheckoutData,listController);
-
-
 
 	}
 	
@@ -106,6 +102,15 @@ public class WarehouseController implements WareHouseblService{
 	public WarehouseInfoVO showWarehouseInfo(Calendar start, Calendar end, String warehouseNum) {
 		return warehouseOpbl.showWarehouseInfo(start,end,warehouseNum);
 	}
+	
+	public CheckinVO findCheckinList(String id) {
+		return warehouseOpbl.findCheckinList(id);
+	}
+
+	public CheckoutVO findCheckoutList(String id) {
+		return warehouseOpbl.findCheckoutList(id);
+	}
+	
 /*//for test
 
 	public static void main(String[] args){
@@ -148,6 +153,8 @@ public class WarehouseController implements WareHouseblService{
 		warehouseController.setCordon(0.5, "1234567890");
 	}
 	*/
+
+	
 
 	
 }

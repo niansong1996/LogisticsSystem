@@ -15,6 +15,7 @@ import edu.nju.lms.PO.InventoryPO;
 import edu.nju.lms.PO.WarehousePO;
 import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.PartitionVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
@@ -23,11 +24,11 @@ import edu.nju.lms.dataService.WarehouseDataService;
 
 public class WarehouseManageblImpl {
 	WarehouseDataService warehouseData = null;
-	
+
 	public WarehouseManageblImpl(WarehouseDataService warehouseData){
-			this.warehouseData = warehouseData;
+		this.warehouseData = warehouseData;
 	}
-	
+
 	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
 		ArrayList<String> expressNums = new ArrayList<String>();
 		ArrayList<String> checkinTime = new ArrayList<String>();
@@ -37,7 +38,7 @@ public class WarehouseManageblImpl {
 		try {
 			inventoryList = warehouseData.findInventory(start, end, warehouseNum);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		for(InventoryPO inventory : inventoryList){
 			expressNums.add(inventory.getExpressNum());
@@ -53,7 +54,7 @@ public class WarehouseManageblImpl {
 		ArrayList<String> rowArguments = new ArrayList<String>();
 		String s = "[快递编号, 入库时间, 目的地, 仓库位置]";
 		CommonUtility.String2Array(rowArguments, s);
-		
+
 		HSSFWorkbook wb = new HSSFWorkbook();   
 		HSSFSheet sheet = wb.createSheet("库存信息");   
 		HSSFRow row = sheet.createRow(0);   
@@ -67,8 +68,7 @@ public class WarehouseManageblImpl {
 			cell.setCellStyle(style);  
 		} 
 
-		for (int i = 0; i < excel.getExpressNums().size(); i++)  
-		{  
+		for(int i = 0; i < excel.getExpressNums().size(); i++){  
 			row = sheet.createRow(i+1);   
 			// 第四步，创建单元格，并设置值  
 			row.createCell(0).setCellValue(excel.getExpressNums().get(i));  
@@ -77,14 +77,12 @@ public class WarehouseManageblImpl {
 			row.createCell(3).setCellValue(excel.getLocation().get(i));
 		}  
 		// 第六步，将文件存到指定位置  
-		try  
-		{  
+		try{  
 			FileOutputStream fout = new FileOutputStream("target/"+warehouseNum+"_"+CommonUtility.getTime()+".xls");  
 			wb.write(fout);  
 			fout.close();  
 		}  
-		catch (Exception e)  
-		{  
+		catch (Exception e){  
 			e.printStackTrace();  
 		}   
 		return new ResultMessage(true,"success");
@@ -98,11 +96,11 @@ public class WarehouseManageblImpl {
 			warehouse.setCordon(cordon);
 			warehouseData.updateWarehouse(warehouse);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return new ResultMessage(true,null);
 	}
-	
+
 	public double getCordon(String warehouseNum){
 		try {
 			WarehousePO warehouse = warehouseData.findWarehouse(warehouseNum);
@@ -121,10 +119,10 @@ public class WarehouseManageblImpl {
 			warehouse = warehouseData.findWarehouse(warehouseNum);
 			if(warehouse == null) return null;
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		ArrayList<String> Spartition = warehouse.getPartitionInfor();
-		
+
 		for(String s : Spartition){
 			String[] part = s.split(" ");
 			Partition partitionTmp = new Partition
@@ -139,18 +137,13 @@ public class WarehouseManageblImpl {
 		try {
 			warehouse = warehouseData.findWarehouse(warehouseNum);
 			if(warehouse == null) return new ResultMessage(false,"Could not find the warehouse");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		ArrayList<String> modifiedPartitionInfor = new ArrayList<String>();
-		for(Partition p : modified.getPartitionInfor()){
-			modifiedPartitionInfor.add(p.getCapacity()+" "+p.getStartRow()+" "+p.getEndRow()+" "+p.getType());
-		}
-		warehouse.setPartitionInfor(modifiedPartitionInfor);
-		try {
+			ArrayList<String> modifiedPartitionInfor = new ArrayList<String>();
+			for(Partition p : modified.getPartitionInfor()){
+				modifiedPartitionInfor.add(p.getCapacity()+" "+p.getStartRow()+" "+p.getEndRow()+" "+p.getType());
+			}
 			warehouseData.updateWarehouse(warehouse);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return new ResultMessage(true, null);
 	}
@@ -160,18 +153,18 @@ public class WarehouseManageblImpl {
 		for(Partition p : partition.getPartitionInfor()){
 			modifiedPartitionInfor.add(p.getCapacity()+" "+p.getStartRow()+" "+p.getEndRow()+" "+p.getType());
 		}
-		
+
 		ArrayList<String> expressNums = new ArrayList<String>();
 		ArrayList<String> checkInlists = new ArrayList<String>();
 		ArrayList<String> checkOutlists = new ArrayList<String>();
-		
+
 		WarehousePO warehouse = new WarehousePO(warehouseNum,cordon,expressNums,checkInlists,checkOutlists,modifiedPartitionInfor);
 		try {
 			ResultMessage result = warehouseData.addWarehouse(warehouse);
 			if(!result.isSuccess()) return result;
-			
+
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return new ResultMessage(true, null);
 	}	

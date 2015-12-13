@@ -6,6 +6,7 @@ import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
@@ -23,25 +24,21 @@ public class FinanceStrategyblImpl {
 	}
 
 	public ResultMessage addPriceStrategy(double std) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PriceStrategyPO po = new PriceStrategyPO(std);
 		try {
-			result = service.addPriceStrategy(po);
+			return service.addPriceStrategy(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 
 	public ResultMessage updatePriceStrategy(double std) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PriceStrategyPO po = new PriceStrategyPO(std);
 		try {
-			result = service.updatePriceStrategy(po);
+			return service.updatePriceStrategy(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 
 	public PriceStrategyVO findPriceStrategy() {
@@ -51,22 +48,21 @@ public class FinanceStrategyblImpl {
 			if (po != null)
 				result = new PriceStrategyVO(po.getStandard(), po.getExpress(), po.getEconomic());
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
+			return null;
 		}
 		return result;
 	}
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());
 		try {
-			result = service.addSalaryStrategy(po);
+			return service.addSalaryStrategy(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 
 	public SalaryStrategyVO findSalaryStrategy(String type) {
@@ -79,21 +75,20 @@ public class FinanceStrategyblImpl {
 				result = new SalaryStrategyVO(VOtype, po.getBasic(), po.getPerTime(), po.getBonus());
 			}
 		} catch (RemoteException e) {
-			return result;
+			RemoteExceptionHandler.handleRemoteException(e);
+			return null;
 		}
 		return result;
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		ResultMessage result = new ResultMessage(false, "网络未连接");
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());
 		try {
-			result = service.updateSalaryStrategy(po);
+			return service.updateSalaryStrategy(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		return result;
 	}
 }

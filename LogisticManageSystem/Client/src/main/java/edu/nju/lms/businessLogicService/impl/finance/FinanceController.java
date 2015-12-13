@@ -287,4 +287,8 @@ public class FinanceController
 		return null;
 	}
 
+	public ReceiptVO findReceipt(String id) {
+		return receipt.findReceipt(id);
+	}
+
 }

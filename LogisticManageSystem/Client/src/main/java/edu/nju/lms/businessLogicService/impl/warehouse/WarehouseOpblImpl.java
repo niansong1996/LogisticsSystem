@@ -95,4 +95,30 @@ public class WarehouseOpblImpl {
 		}
 		return new WarehouseInfoVO(checkinNum,checkoutNum,totalNum);
 	}
+
+	
+	public CheckinVO findCheckinList(String id) {
+		CheckinVO result = null;
+		try {
+			CheckinPO po = checkinData.findCheckin(id);
+			//TODO can't actually pass null here
+			result = new CheckinVO(po.getId(),null,po.getExpresses(),CommonUtility.Cal2String(po.getCheckinDate()),null);
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		return result;
+	}
+
+	
+	public CheckoutVO findCheckoutList(String id) {
+		CheckoutVO result = null;
+		try {
+			CheckoutPO po = checkoutData.findCheckout(id);
+			result = new CheckoutVO(po.getId(),po.getExpressNums(),CommonUtility.Cal2String(po.getCheckoutDate()),po.getDestination(),po.getLoadType(),po.getArrivalNum(),po.getMotorNum());
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		
+		return result;
+	}
 }

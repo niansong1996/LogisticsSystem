@@ -132,5 +132,9 @@ public interface WareHouseblService {
 		 * @return {@link WarehouseInfoVO}
 		 */
 		public WarehouseInfoVO showWarehouseInfo(Calendar start,Calendar end,String warehouseNum);
+		
+		public CheckinVO findCheckinList(String id);
+		
+		public CheckoutVO findCheckoutList(String id);
 
 }

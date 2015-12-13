@@ -18,6 +18,8 @@ public interface FinanceReceiptblService {
 	
 	public ResultMessage deleteReceipt(String id);
 	
+	public ReceiptVO findReceipt(String id);
+	
 	public ResultMessage updateReceipt(ReceiptVO debit);
 
 	public ArrayList<ReceiptVO> showReceiptList (Calendar date, String department);

@@ -29,6 +29,7 @@ public class ListblImpl{
 		try {
 			list=service.findList(type);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		for(ListPO po : list){
 			if(po.getState().toString().equals("WAITING")){
@@ -59,6 +60,7 @@ public class ListblImpl{
 				if(po!=null) break;
 			}
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(po!=null){
 			result=new ListVO(po.getId());

@@ -59,6 +59,10 @@ public interface TransProcessblService {
 	*/
 	public ResultMessage saveLoadList(LoadVO loadList);
 	
+	public LoadVO findLoadList(String id);
+	
+	public LoadCarVO findLoadCarList(String id);
+	
 	public ArrayList<LoadVO> findUnpaidLoad();
 	
 	/**

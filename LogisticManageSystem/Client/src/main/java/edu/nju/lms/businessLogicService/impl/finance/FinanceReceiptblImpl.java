@@ -7,6 +7,7 @@ import java.util.Calendar;
 import edu.nju.lms.PO.ReceiptPO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.data.ResultMessage;
@@ -44,15 +45,12 @@ public class FinanceReceiptblImpl{
 	}
 
 	public ResultMessage addReceipt(ReceiptVO debit) {
-		ResultMessage result=new ResultMessage(false,"网络未连接");
 		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
-			result=service.addReceipt(po);
+			return service.addReceipt(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
-		
-		return result;
 	}
 
 	public ResultMessage deleteReceipt(String id) {
@@ -156,5 +154,16 @@ public class FinanceReceiptblImpl{
 			result.setErrorMessage("输入编号格式不正确！");
 		}
 		return result;
+	}
+
+	public ReceiptVO findReceipt(String id) {
+		ReceiptVO result = null;
+		try {
+			ReceiptPO po = service.findReceipt(id);
+			result = new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+		} catch (RemoteException e) {
+			
+		}
+		return null;
 	}
 }
