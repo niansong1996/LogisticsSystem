@@ -1316,7 +1316,7 @@
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>  
 		<mainPanel name="SEND" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
+		    <unit name ="info" class = "MyTextArea" x="500" y="110" w="900" h="450" type="0" textType="SendListText"/>
 		</mainPanel> 
 		<mainPanel name="RECEIVE" class="MainPanel" x="600" y="110"  w = "400" h = "500">
 		    

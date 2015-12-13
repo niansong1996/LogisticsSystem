@@ -48,6 +48,7 @@ public class FindListListener extends ButtonListener {
 				return;
 			}
 			for(int i=0;i<lists.size();i++){
+				lists.get(i).setType(listType);
 				MyTableLabel label = table.createLabel(lists.get(i));
 				labels.add(label);
 			}

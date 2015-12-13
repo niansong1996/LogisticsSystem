@@ -48,6 +48,7 @@ public class ListTypeListener implements ItemListener {
 				ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
 				for (int i = 0; i < lists.size(); i++) {
 					ListVO list = lists.get(i);
+					list.setType(type);
 					MyTableLabel label = table.createLabel(list);
 					labels.add(label);
 				}
