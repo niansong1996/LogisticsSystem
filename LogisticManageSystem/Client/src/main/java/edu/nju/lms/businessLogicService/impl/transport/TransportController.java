@@ -265,5 +265,9 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public LoadCarVO findLoadCarList(String id) {
 		return process.findLoadCarList(id);
 	}
+
+	public SendVO findSendListById(String expressNum) {
+		return process.findSendListById(expressNum);
+	}
 	
 }

@@ -33,4 +33,5 @@ public interface TransportListDataService extends Remote{
 	
 	public ResultMessage addReceive(ReceivePO receive) throws RemoteException;
 	public ReceivePO findReceive(String id) throws RemoteException;
+	public SendPO findSendById(String id) throws RemoteException;
 }

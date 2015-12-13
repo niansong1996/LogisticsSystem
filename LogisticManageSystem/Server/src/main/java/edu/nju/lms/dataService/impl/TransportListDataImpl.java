@@ -31,9 +31,9 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 			return new ResultMessage(false,"The send already exists!");
 		}
 	}
-	public SendPO findSend(String id) throws RemoteException {
+	public SendPO findSend(String expressNum) throws RemoteException {
 		SendPO send = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = \""+id+"\";");
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where expressNum = \""+expressNum+"\";");
 		try{
 		if(!result.wasNull())
 			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());
@@ -167,6 +167,17 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 			e.printStackTrace();
 		};
 		return loadcarList;
+	}
+	public SendPO findSendById(String id) throws RemoteException {
+		SendPO send = null;
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = \""+id+"\";");
+		try{
+		if(!result.wasNull())
+			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return send;
 	}
 
 }

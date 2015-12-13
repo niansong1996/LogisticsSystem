@@ -44,6 +44,7 @@ public interface TransProcessblService {
 	
 	public SendVO findSendList(String expressNum);
 	
+	public SendVO findSendListById(String expressNum);
 	/**
 	 * complete {@link LoadVO}
 	 * @param baseMessage
@@ -81,6 +82,7 @@ public interface TransProcessblService {
 	public ResultMessage saveLoadCarList(LoadCarVO loadCarList);
 	
 	public ArrayList<LoadCarVO> findUnpaidLoadCar();
+
 	
 	/**
 	 * complete {@link ArrivalVO}

@@ -83,7 +83,9 @@ public class TransProcessblImpl{
 			CommodityPO c=new CommodityPO(sendList.getExpressNum(),ShipState.RECEIPIENT,sendList.getId(),loading,arrival,"",checkin,checkout,"");
 			try {
 				commodity.addCommodity(c);
-			} catch (RemoteException e) {}
+			} catch (RemoteException e) {
+				return RemoteExceptionHandler.handleRemoteException(e);
+			}
 		}
 		return result;
 	}
@@ -389,6 +391,19 @@ public class TransProcessblImpl{
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
+	}
+
+	public SendVO findSendListById(String expressNum) {
+		SendPO po=null;
+		try {
+			po=list.findSendById(expressNum);
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			return new SendVO(po.getExpressNum(),po.getId(),po.getBaseInfor(),po.getSenderCity(),po.getReceiverCity(),po.getInitialNum(),po.getWeight(),
+					po.getVolume(),po.getGoodsName(),po.getPackingType(),po.getMode(),po.getPrice(),po.getTime(),CommonUtility.Cal2String(po.getCreateTime()));
+		}else return null;
 	}
 	
 }
