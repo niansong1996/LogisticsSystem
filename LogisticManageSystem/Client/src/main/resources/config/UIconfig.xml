@@ -50,7 +50,8 @@
 		<mainPanel name="PersonnelManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="PersonnelManage" class = "Component" x="150" y="20" w="98" h="23"/>
- 		     <unit name ="personnel" class = "table.PersonnelTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+		     <component name="table_personnel" class = "Component" x="150" y="100" w="900" h="40"/>
+ 		     <unit name ="personnel" class = "table.PersonnelTable" x="150" y="140" w="900" h="420" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
 		     <unit name ="add" change="AddPersonPanel" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeletePersonButtonListener"/>
 		     <unit name ="save" class = "MainButton" x="780" y="600" w="112" h="34" type="1" listenerName="SavePersonButtonListener"/>
@@ -252,9 +253,10 @@
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="log" class = "Component" x="150" y="20" w="98" h="23"/>
 		     <component name="to" class = "Component" x="345" y="60" w="31" h="29"/>
+		      <component name="table_log" class = "Component" x="150" y="130" w="850" h="40"/>
 		     <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		     <unit name ="end" class="DateChooser" x="395" y="60" w="180" h="33" type="0"/>
-		     <unit name ="logTable" class = "table.LogTable" x="150" y="130" w="850" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="logTable" class = "table.LogTable" x="150" y="170" w="850" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		     <unit name ="search" class = "MainButton" x="600" y="60" w="112" h="34" type="1" listenerName="SearchLogButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
