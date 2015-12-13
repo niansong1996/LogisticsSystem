@@ -16,7 +16,7 @@ public class OrderInfoText extends Text{
 
 	@Override
 	public String get(UIController controller) {
-		String infoText = "";
+		String infoText = "\n";
 		TransportController transport = controller.getTransportController();
 		String id = null;
 		try {
@@ -35,16 +35,16 @@ public class OrderInfoText extends Text{
 			 */
 			OrderInforVO info = transport.checkOrderInfor(id);
 			if(info!=null) {
-				infoText+=("快递编号："+info.getExpressNum()+"\n");
-				infoText+=("快递状态："+info.getShipState().toString()+"\n");
+				infoText+=("  快递编号："+info.getExpressNum()+"\n");
+				infoText+=("  快递状态："+info.getShipState().toString()+"\n");
 				for(String s:info.getTrack()) {
 					infoText+=(s+"\n");
 				}
 			} else {
-				infoText+=("快递不存在！");
+				infoText+=("  快递不存在！");
 			}
 		}else{
-			infoText+=("文件读写错误！");
+			infoText+=("  文件读写错误！");
 		}
 	
 		return infoText;
