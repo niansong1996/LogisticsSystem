@@ -18,6 +18,7 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.mouseListener.TextFieldListener;
+import edu.nju.lms.presentation.setText.MySetText;
 
 /**
  * @author tj
@@ -47,7 +48,9 @@ public class MyTextField extends JTextField {
 		this.controller = controller;
 		this.setFocusable(true);
 		drawPic();
-		setInitial();
+		//setInitial();
+		MySetText settext = new MySetText(text, controller);
+		setText(settext.getText());
 		this.addFocusListener(new TextFieldListener(this));
 	}
 

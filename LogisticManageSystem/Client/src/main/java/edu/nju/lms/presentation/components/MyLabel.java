@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.setText.MySetText;
 
 /**
  *@author tj
@@ -29,5 +30,7 @@ public class MyLabel extends JLabel {
 		y = Integer.parseInt(text.attributeValue("y"));
 		setBounds(x, y, w, h);
 		setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		MySetText settext = new MySetText(text, controller);
+		setText(settext.getText());
 	}
 }
