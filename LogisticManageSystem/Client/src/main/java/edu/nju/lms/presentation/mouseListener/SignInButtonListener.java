@@ -4,16 +4,8 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
-import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.presentation.UIController.UIController;
-import edu.nju.lms.presentation.components.MainButton;
-import edu.nju.lms.presentation.components.MyDialog;
-import edu.nju.lms.presentation.frame.ConfirmFrame;
 
 /**
  * @author tj
@@ -29,7 +21,7 @@ public class SignInButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		controller.changeTo("ManagerPanel");
+		controller.fadeTo(10,0.04f,"ManagerPanel");
 //		JTextField n = (JTextField) units.get(1);
 //		JTextField p = (JTextField) units.get(2);
 //		String name = n.getText();

@@ -49,6 +49,17 @@ public class UIController {
 	public void changeTo(String panel) {
 		frame.changeTo(panel, this);
 	}
+	
+	/**
+	 * fade out and change to a panel and fade in
+	 * @param delay
+	 * @param speed
+	 * @param panel
+	 * @see #changeTo(String)
+	 */
+	public void fadeTo(int delay, float speed, String panel){
+		frame.fadeTo(delay, speed, panel, this);
+	}
 
 	/**
 	 * initialize controller
