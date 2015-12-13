@@ -1315,6 +1315,36 @@
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>  
+		<mainPanel name="SEND" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel> 
+		<mainPanel name="RECEIVE" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel> 
+		<mainPanel name="LOAD" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel> 
+		<mainPanel name="LOADCAR" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel> 
+		<mainPanel name="RECEIPT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel> 
+		<mainPanel name="ARRIVAL" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel>
+		<mainPanel name="DISPATCH" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel>
+		<mainPanel name="CHECKIN" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel>
+		<mainPanel name="CHECKOUT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel>
+		<mainPanel name="PAYMENT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
+		    
+		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
 	<Frame name="ConfirmFrame" class="ConfirmFrame" x="0" y="0" width="361" height="220"/>

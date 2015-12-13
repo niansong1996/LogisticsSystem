@@ -18,6 +18,7 @@ import edu.nju.lms.presentation.components.MyCheckBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyScrollPane;
 import edu.nju.lms.presentation.components.MyTextField;
+import edu.nju.lms.presentation.mouseListener.LabelListener;
 
 /**
  * General table label a table is composed of a {@link MyTable} extends
@@ -94,6 +95,7 @@ public class MyTableLabel extends JLabel  {
 		this.table = table;
 		setPreferredSize(new Dimension(width, height));
 		initializeComponents();
+		this.addMouseListener(new LabelListener(this,controller));
 	}
 
 	/**

@@ -34,14 +34,22 @@ public class CreateSendListListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// get base information
+		boolean isComplete = true;
 		ArrayList<String> baseInfo = new ArrayList<String>();
 		for (int i = 5; i < 13; i++) {
 			JTextField field = (JTextField) units.get(i);
 			if(field.getText().isEmpty()){
-				new MyDialog("incomplete");
-				return;
+				if(i==8||i==12){
+					break;
+				}else{
+					isComplete = true;
+				}
 			}
 			baseInfo.add(field.getText());
+		}
+		if(!isComplete){
+			new MyDialog("incomplete");
+			return;
 		}
 		//city
 		MyComboBox<?> cb = (MyComboBox<?>) units.get(3);
@@ -68,11 +76,18 @@ public class CreateSendListListener extends ButtonListener {
 		boolean isNumeric = true;
 		for(int i =1;i<4;i++){
 			if(!Numeric.isNumeric(other[i])){
+				if(other[i].isEmpty()){
+					break;
+				}
 				isNumeric = false;
 				break;
 			}
 		}
-		
+		if(!Numeric.isNumeric(other[5])){
+			if(!other[5].isEmpty()){
+				isNumeric = false;
+			}
+		}
 		if(!isNumeric){
 			new MyDialog("信息格式不正确",true);
 			return;
