@@ -11,7 +11,7 @@ import edu.nju.lms.data.PersonType;
  */
 public class EnumTransformer {
 	private static String[] my_types = {"寄件单","收件单","装车单","装运单","收款单","到达单","派件单","入库单",
-			"出库单","租金付款单","工资付款单","运费付款单"};
+			"出库单","付款单"};
 	private static String[] my_state = {"通过","不通过","等待"};
 	private static String[] paymentTypes={"运费","租金","薪水"};
 	private static String[] userPower = {"总经理","高级财务人员","普通财务人员","管理员","中转中心业务员",
