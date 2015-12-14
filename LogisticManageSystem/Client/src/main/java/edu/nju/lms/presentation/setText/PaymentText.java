@@ -1,5 +1,7 @@
 package edu.nju.lms.presentation.setText;
 
+import edu.nju.lms.VO.PaymentVO;
+import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController.UIController;
 
 /**
@@ -7,11 +9,18 @@ import edu.nju.lms.presentation.UIController.UIController;
  *@date 2015年12月13日
  */
 public class PaymentText extends Text {
-
+	private String id;
+	private FinanceController control;
+	public PaymentText(String id){
+		this.id = id;
+	}
 	@Override
 	public String get(UIController controller) {
-		// TODO Auto-generated method stub
-		return null;
+		this.control = controller.getFinanceController();
+		String result="\n";
+		PaymentVO vo ;
+		//TODO
+		return result;
 	}
 
 }

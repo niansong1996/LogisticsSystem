@@ -235,8 +235,6 @@
 		     <unit name ="findPerson" class = "MainButton" x="570" y="84" w="53" h="23" type="1" listenerName="FindListListener"/>
 		     <unit name ="pass" class = "MainButton" x="200" y="650" w="112" h="34" type="1" listenerName="PassChoosedListListener"/>
 		     <unit name ="fail" class = "MainButton" x="380" y="650" w="112" h="34" type="1" listenerName="FailChoosedListListener"/>
-		     <unit name ="pass" class = "MainButton" x="700" y="650" w="112" h="34" type="1" listenerName="PassSingleListListener"/>
-		     <unit name ="fail" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="FailSingleListListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
