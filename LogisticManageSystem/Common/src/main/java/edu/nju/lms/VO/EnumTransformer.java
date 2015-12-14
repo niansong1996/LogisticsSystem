@@ -6,6 +6,7 @@ import edu.nju.lms.data.LoadType;
 import edu.nju.lms.data.PackingType;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.PaymentType;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.TransportMode;
 
 /**
@@ -22,6 +23,8 @@ public class EnumTransformer {
 	private static String[] cities = {"南京","上海","广州","北京"};
 	private static String[] partitionTypes = {"航运区","铁运区","汽运区","机动区"};
 	private static String[] loadTypes = {"飞机","汽车","火车"};
+	private static String[] personTypes ={"总经理","高级财务人员","普通财务人员","管理员","中转中心业务员","营业厅业务员","仓库管理人员",
+			"快递员","司机"};
 	/**
 	 * transform the ListType to Chinese
 	 * @param type
@@ -163,6 +166,24 @@ public class EnumTransformer {
 		}
 		if(index!=-1){
 			return LoadType.values()[index];
+		}
+		return null;	
+	}
+	/**
+	 * transform the string to PersonType
+	 * @param type
+	 * @return PersonType
+	 */
+	public static PersonType str2PersonType(String type){
+		int index = -1;
+		for(int i=0;i<personTypes.length;i++){
+			if(type.equals(personTypes[i])){
+				index = i;
+				break;
+			}
+		}
+		if(index!=-1){
+			return PersonType.values()[index];
 		}
 		return null;	
 	}

@@ -25,31 +25,31 @@ public class SaveSalaryStrategyButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		FinanceController control = controller.getFinanceController();
-		ResultMessage result = null;
-		for (int i = 0; i < 8; i++) {
-			String type = units.get(i).getName();
-			JTextField basicField = (JTextField) units.get(i);
-			JTextField perTimeField = (JTextField) units.get(i + 8);
-			JTextField bonusField = (JTextField) units.get(i + 16);
-			if (basicField.getText().isEmpty() || perTimeField.getText().isEmpty() || bonusField.getText().isEmpty()) {
-				MyDialog error = new MyDialog("incomplete");
-				return;
-			}
-			double basic = Double.parseDouble(basicField.getText());
-			double perTime = Double.parseDouble(perTimeField.getText());
-			double bonus = Double.parseDouble(bonusField.getText());
-			SalaryStrategyVO vo = new SalaryStrategyVO(type, basic, perTime, bonus);
-			if (control.findSalaryStrategy(type) == null) {
-				result = control.addSalaryStrategy(vo);
-			} else {
-				result = control.updateSalaryStrategy(vo);
-			}
-		}
-		if (result.isSuccess()) {
-			MyDialog error = new MyDialog("addSuccess");
-		} else {
-			MyDialog error = new MyDialog(result.getErrorMessage(), true);
-		}
+//		FinanceController control = controller.getFinanceController();
+//		ResultMessage result = null;
+//		for (int i = 0; i < 8; i++) {
+//			String type = units.get(i).getName();
+//			JTextField basicField = (JTextField) units.get(i);
+//			JTextField perTimeField = (JTextField) units.get(i + 8);
+//			JTextField bonusField = (JTextField) units.get(i + 16);
+//			if (basicField.getText().isEmpty() || perTimeField.getText().isEmpty() || bonusField.getText().isEmpty()) {
+//				MyDialog error = new MyDialog("incomplete");
+//				return;
+//			}
+//			double basic = Double.parseDouble(basicField.getText());
+//			double perTime = Double.parseDouble(perTimeField.getText());
+//			double bonus = Double.parseDouble(bonusField.getText());
+//			SalaryStrategyVO vo = new SalaryStrategyVO(type, basic, perTime, bonus);
+//			if (control.findSalaryStrategy(type) == null) {
+//				result = control.addSalaryStrategy(vo);
+//			} else {
+//				result = control.updateSalaryStrategy(vo);
+//			}
+//		}
+//		if (result.isSuccess()) {
+//			MyDialog error = new MyDialog("addSuccess");
+//		} else {
+//			MyDialog error = new MyDialog(result.getErrorMessage(), true);
+//		}
 	}
 }

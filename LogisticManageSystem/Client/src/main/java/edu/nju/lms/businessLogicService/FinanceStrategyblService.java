@@ -2,6 +2,7 @@ package edu.nju.lms.businessLogicService;
 
 import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.VO.SalaryStrategyVO;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 
 /**
@@ -18,7 +19,7 @@ public interface FinanceStrategyblService {
 	//薪水策略
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy);
 	
-	public SalaryStrategyVO findSalaryStrategy(String type);
+	public SalaryStrategyVO findSalaryStrategy(PersonType type);
 	
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy);
 }

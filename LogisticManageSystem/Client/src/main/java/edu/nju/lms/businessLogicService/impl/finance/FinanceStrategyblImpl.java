@@ -65,9 +65,9 @@ public class FinanceStrategyblImpl {
 		}
 	}
 
-	public SalaryStrategyVO findSalaryStrategy(String type) {
+	public SalaryStrategyVO findSalaryStrategy(PersonType type) {
 		SalaryStrategyVO result = null;
-		PersonType POtype = PersonType.valueOf(type.toUpperCase());
+		PersonType POtype = type;
 		try {
 			SalaryStrategyPO po = service.findSalaryStrategy(POtype);
 			if (po != null) {

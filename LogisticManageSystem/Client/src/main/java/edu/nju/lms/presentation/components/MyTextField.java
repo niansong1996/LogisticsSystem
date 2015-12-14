@@ -69,17 +69,6 @@ public class MyTextField extends JTextField {
 		this.addFocusListener(new TextFieldListener(this));
 	}
 
-	public void setInitial() {
-		String type = text.attributeValue("textType");
-		String[] infos = type.split(";");
-		SetText myset = new SetText();
-		if (infos[0].equals("null")) {
-			return;
-		} else if (infos[0].equals("salaryStrategy") || infos[0].equals("freightStrategy")) {
-			this.setText(myset.mySetText(type, controller.getFinanceController()));
-		}
-	}
-
 	public void paintComponent(Graphics g) {
 		// 先画背景
 		Graphics2D g2 = (Graphics2D) g;

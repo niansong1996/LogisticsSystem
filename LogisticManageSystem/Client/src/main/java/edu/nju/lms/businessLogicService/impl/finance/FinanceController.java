@@ -26,6 +26,7 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
+import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.FinancePaymentDataService;
@@ -104,8 +105,8 @@ public class FinanceController
 		return result;
 	}
 
-	public SalaryStrategyVO findSalaryStrategy(String type) {
-		SalaryStrategyVO result=strategy.findSalaryStrategy(type);
+	public SalaryStrategyVO findSalaryStrategy(PersonType personType) {
+		SalaryStrategyVO result=strategy.findSalaryStrategy(personType);
 		logController.addLog("查看薪水策略");
 		return result;
 	}
