@@ -18,8 +18,14 @@ public class PaymentText extends Text {
 	public String get(UIController controller) {
 		this.control = controller.getFinanceController();
 		String result="\n";
-		PaymentVO vo ;
-		//TODO
+		PaymentVO vo = control.findPayment(id);
+		if(vo!=null){
+			result+="  单据编号："+vo.getId()+"\n";
+			result+="  付款单类型："+vo.getPaymentType()+"\n";
+			result+="  付款时间："+vo.getPayTime()+"\n";
+			result+="  付款账户："+vo.getAccount()+"\n";
+			result+="  付款金额："+vo.getAmount()+"\n";
+		}
 		return result;
 	}
 

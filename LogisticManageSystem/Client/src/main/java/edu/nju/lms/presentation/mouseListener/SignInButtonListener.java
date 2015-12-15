@@ -21,7 +21,7 @@ public class SignInButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		controller.fadeTo(10,0.04f,"ManagerPanel");
+		controller.fadeTo(10,0.04f,"warehousePanel");
 //		JTextField n = (JTextField) units.get(1);
 //		JTextField p = (JTextField) units.get(2);
 //		String name = n.getText();
