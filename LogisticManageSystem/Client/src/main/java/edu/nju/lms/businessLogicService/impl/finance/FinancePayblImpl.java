@@ -38,7 +38,7 @@ public class FinancePayblImpl {
 	ListController listController;
 	PersonnelController personnelController;
 	TransportController transportController;
-	FinancePaymentDataService service;
+	FinancePaymentDataService paymentData;
 	FinanceAccountDataService accountService;
 
 	public FinancePayblImpl(ListController listController,
@@ -49,7 +49,7 @@ public class FinancePayblImpl {
 		this.personnelController = personnelController;
 		this.transportController = transportController;
 		this.accountService = account;
-		this.service = service;
+		this.paymentData = service;
 	}
 
 	public RentVO createRent(RentVO rent) {
@@ -64,7 +64,7 @@ public class FinancePayblImpl {
 				PaymentType.RENT, CommonUtility.String2Cal(rent.getPayTime()),
 				rent.getAccount(), rent.getAmount());
 		try {
-			ResultMessage result = service.addPayment(po);
+			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
 				return payMoney(rent.getAccount(), rent.getAmount());
 			}else return result;
@@ -88,7 +88,7 @@ public class FinancePayblImpl {
 						.getPayTime()), freight.getAccount(),
 				freight.getAmount());
 		try {
-			ResultMessage result = service.addPayment(po);
+			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
 				return payMoney(freight.getAccount(), freight.getAmount());
 			}else return result;
@@ -111,7 +111,7 @@ public class FinancePayblImpl {
 				PaymentType.SALARY, CommonUtility.String2Cal(salary
 						.getPayTime()), salary.getAccount(), salary.getAmount());
 		try {
-			ResultMessage result = service.addPayment(po);
+			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
 				result = payMoney(salary.getAccount(), salary.getAmount());
 			}return result;
@@ -124,7 +124,7 @@ public class FinancePayblImpl {
 		ArrayList<PaymentVO> result = new ArrayList<PaymentVO>();
 		ArrayList<PaymentPO> po = null;
 		try {
-			po = service.showAllPayment(start, end);
+			po = paymentData.showAllPayment(start, end);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 			return result;
@@ -227,5 +227,16 @@ public class FinancePayblImpl {
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
+	}
+	
+	public PaymentVO findPayment(String id) {
+		PaymentVO result = null;
+		try {
+			PaymentPO po = paymentData.findPayment(id);
+			result = new PaymentVO(po.getId(),po.getPaymentType(),CommonUtility.Cal2String(po.getPayTime()),po.getAccount(),po.getAmount());
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		return result;
 	}
 }

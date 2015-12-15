@@ -284,12 +284,15 @@ public class FinanceController
 	}
 
 	public ResultMessage exportEarning(EarningVO earnings) {
-		// TODO Auto-generated method stub
-		return null;
+		return pay.exportEarning(earnings);
 	}
 
 	public ReceiptVO findReceipt(String id) {
 		return receipt.findReceipt(id);
+	}
+
+	public PaymentVO findPayment(String id) {
+		return pay.findPayment(id);
 	}
 
 }

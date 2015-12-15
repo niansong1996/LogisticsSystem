@@ -164,6 +164,6 @@ public class FinanceReceiptblImpl{
 		} catch (RemoteException e) {
 			
 		}
-		return null;
+		return result;
 	}
 }

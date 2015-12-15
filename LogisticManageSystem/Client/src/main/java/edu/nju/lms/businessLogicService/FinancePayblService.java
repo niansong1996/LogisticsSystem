@@ -33,5 +33,7 @@ public interface FinancePayblService {
 	public EarningVO showEarnings(Calendar start,Calendar end);
 	
 	public ResultMessage exportEarning(EarningVO earnings);
+	
+	public PaymentVO findPayment(String id);
 
 }
