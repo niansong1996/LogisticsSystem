@@ -35,16 +35,22 @@ public class SavePersonButtonListener extends ButtonListener {
 		}
 		ArrayList<MyTableLabel> labels = table.getDataList();
 		ResultMessage result = null;
+		boolean inComplete = false;
 		for (int i = 0; i < labels.size(); i++) {
 			MyTableLabel label = labels.get(i);
+			//为了创建vo方便把一些信息放在了string数组里
 			String[] info = new String[6];
 			for (int j = 0; j < 6; j++) {
 				JTextField f = (JTextField) label.getComponents(j);
 				if (f.getText().isEmpty()) {
-					MyDialog dialog = new MyDialog("incomplete");
-					return;
+					inComplete = true;
 				}
 				info[j] = f.getText();
+			}
+			// 这样可以只弹出一个对话框...
+			if (inComplete) {
+				new MyDialog("incomplete");
+				return;
 			}
 			JComboBox box = (JComboBox) label.getComponents(6);
 			String duty = box.getSelectedItem().toString();
@@ -52,20 +58,14 @@ public class SavePersonButtonListener extends ButtonListener {
 					Double.parseDouble(info[4]), Double.parseDouble(info[5]));
 			ArrayList<PersonnelVO> finds = personnel.findPersonInfo(info[0]);
 			PersonnelVO find = finds.get(0);
-			if (find!=null) {
+			if (find != null) {
 				result = personnel.updatePersonnel(vo);
 			}
 		}
 		if (result.isSuccess()) {
-			MyDialog dialog = new MyDialog("保存成功！", true);
+			new MyDialog("保存成功！", true);
 		} else {
-			MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true);
 		}
-		// PersonnelTableModel model = (PersonnelTableModel) table.getModel();
-		// ArrayList<PersonnelVO> persons = model.getChanged();
-		// PersonnelController control = controller.getPersonnelController();
-		// for (PersonnelVO changed : persons) {
-		// control.updatePersonnel(changed);
-		// }
 	}
 }

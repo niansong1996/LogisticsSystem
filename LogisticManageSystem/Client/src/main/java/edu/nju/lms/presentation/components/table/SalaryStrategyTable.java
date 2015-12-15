@@ -49,13 +49,8 @@ public class SalaryStrategyTable extends MyTable {
 				"按次提成","计次"};
 		MyLabel label = new MyLabel(personTypes[i]);
 		label.setSize(100,50);
-		MyComboBox<String> box = new MyComboBox<String>();
-		box.setSize(150, 30);
-		String[] items = {"月薪","计次","按次提成"};
-		for(int j =0;j<items.length;j++){
-			box.addItem(items[j]);
-		}
-		box.setSelectedItem(personItems[i]);
+		MyLabel typeLabel = new MyLabel(personItems[i]);
+		typeLabel.setSize(100, 50);
 		SalaryStrategyVO vo = control.findSalaryStrategy(EnumTransformer.str2PersonType(personTypes[i]));
 		if(vo==null){
 			MyTextField basicField = new MyTextField("");
@@ -64,7 +59,7 @@ public class SalaryStrategyTable extends MyTable {
 			bonusField.setSize(100,30);
 			MyTextField perTimeField = new MyTextField("");
 			perTimeField.setSize(100,30);
-			java.awt.Component[] component = {label,box,basicField,bonusField,perTimeField};
+			java.awt.Component[] component = {label,typeLabel,basicField,bonusField,perTimeField};
 			MyTableLabel lab = new MyTableLabel(element, controller, 50, component, this);
 			return lab;
 		}
@@ -74,7 +69,7 @@ public class SalaryStrategyTable extends MyTable {
 		bonusField.setSize(100,30);
 		MyTextField perTimeField = new MyTextField(vo.getPerTime()+"");
 		perTimeField.setSize(100,30);
-		java.awt.Component[] component = {label,box,basicField,bonusField,perTimeField};
+		java.awt.Component[] component = {label,typeLabel,basicField,bonusField,perTimeField};
 		MyTableLabel lab = new MyTableLabel(element, controller, 50, component, this);
 		return lab;
 	}
