@@ -18,16 +18,21 @@ public class LogController implements LogblService{
 	
 	public LogController(){
 		logService=DataServiceFactory.getLogDataService();
-		log=new LogblImpl(logService);
+		log=new LogblImpl();
+	}
+	
+	public void reconnect(){
+		logService=DataServiceFactory.getLogDataService();
+		log=new LogblImpl();
 	}
 	
 	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end) {
-		return log.getLogInfo(begin, end);
+		return log.getLogInfo(begin, end,this.logService);
 	}
 
 	public ResultMessage addLog(String explain) {
 		OperationVO op=new OperationVO(CommonUtility.getTime(),logId,explain);
-		return log.addLog(op);
+		return log.addLog(op,this.logService);
 	}
 
 	public String getLogId() {

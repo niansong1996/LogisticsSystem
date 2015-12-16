@@ -3,6 +3,7 @@ package edu.nju.lms.businessLogicService.impl.list;
 import java.rmi.RemoteException;
 
 import edu.nju.lms.PO.NumOccupancyPO;
+import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.dataService.ListDataService;
 /**
@@ -19,7 +20,9 @@ public class ListNumOccupancy {
 		try {
 			this.numOccupancy = listService.getNumOccupancy();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			RemoteExceptionHandler.handleRemoteException(e);
+		} catch(Exception e){
+			System.err.println("can't get list num occupancy!!!");
 		}
 	}
 	String generateListNum(ListType listType){

@@ -28,13 +28,25 @@ public class DataServiceFactory {
 			return Naming.lookup("//"+IPAddress+":"+portNum+"/"+dataServiceName);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			System.err.println("Other Exception:\n");
 			e.printStackTrace();
 		}
 		return null;
 	}
+	
+	public static boolean verifyConnection(){
+		try {
+			Naming.lookup("//"+IPAddress+":"+portNum+"/"+"LogDataService");
+		} catch (RemoteException e) {
+			return false;
+		} catch (Exception e) {
+			System.err.println("Other Exception:\n");
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 	public static DepartmentDataService getDepartmentDataService(){
 		return (DepartmentDataService) DataServiceFactory.getDataService("DepartmentDataService");
 	}
