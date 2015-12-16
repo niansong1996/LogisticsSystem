@@ -24,7 +24,7 @@ public class LogblImpl {
 	 * @param end
 	 * @return
 	 */
-	public ArrayList<OperationVO> getLogInfo(LogDataService logData,Calendar begin, Calendar end) {
+	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end,LogDataService logData) {
 		ArrayList<OperationVO> log = new ArrayList<OperationVO>();
 		ArrayList<OperationPO> temp=null;
 		try {
@@ -46,7 +46,7 @@ public class LogblImpl {
 	 * @param op
 	 * @return
 	 */
-	public ResultMessage addLog(LogDataService logData,OperationVO op) {
+	public ResultMessage addLog(OperationVO op,LogDataService logData) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		OperationPO opPO=new OperationPO(op.getExplain(),op.getTime(),op.getUser());
 		try {

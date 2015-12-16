@@ -17,9 +17,10 @@ import edu.nju.lms.dataService.UserDataService;
 public class UserblImpl{
 	
 	public UserblImpl() {
+		
 	}
 	
-	public UserVO findUserInfo(UserDataService dataService,String id) {
+	public UserVO findUserInfo(String id,UserDataService dataService) {
 		UserPO userPO = null;
 		if(!idCheck(id).isSuccess()) {
 			return null;
@@ -36,7 +37,7 @@ public class UserblImpl{
 		}
 	}
 
-	public ResultMessage deleteUser(UserDataService dataService,String id) {
+	public ResultMessage deleteUser(String id,UserDataService dataService) {
 		ResultMessage  result = idCheck(id);
 		if(!result.isSuccess()) {
 			return result;
@@ -49,7 +50,7 @@ public class UserblImpl{
 		return result;
 	}
 
-	public ResultMessage updateUser(UserDataService dataService,UserVO user) {
+	public ResultMessage updateUser(UserVO user,UserDataService dataService) {
 		ResultMessage  result = idCheck(user.getUserName());
 		if(!result.isSuccess()) {
 			return result;
@@ -67,7 +68,7 @@ public class UserblImpl{
 		return result;
 	}
 
-	public ResultMessage addUser(UserDataService dataService,UserVO User) {
+	public ResultMessage addUser(UserVO User,UserDataService dataService) {
 		ResultMessage result = idCheck(User.getUserName());
 		if(!result.isSuccess()) {
 			return result;

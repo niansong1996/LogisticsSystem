@@ -7,9 +7,6 @@ import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.InitialInfoPO;
 import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.InitialInfoVO;
-import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
-import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
-import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
@@ -20,19 +17,11 @@ import edu.nju.lms.dataService.FinanceAccountDataService;
  *@date 2015年10月25日
  */
 public class FinanceAccountblImpl{
-	private FinanceAccountDataService service;
-	PersonnelController personnelController;
-	TransportController transportController;
-	DepartmentController departmentController;
 	
-	public FinanceAccountblImpl(DepartmentController departmentController,PersonnelController personnelController,TransportController transportController,FinanceAccountDataService service){
-		this.personnelController=personnelController;
-		this.departmentController=departmentController;
-		this.transportController=transportController;
-		this.service=service;
+	public FinanceAccountblImpl(){
 	}
 
-	public ResultMessage addAccount(AccountVO account) {
+	public ResultMessage addAccount(AccountVO account,FinanceAccountDataService service) {
 		ResultMessage result=idCheck(account.getID());
 		if(!result.isSuccess()){
 			return result;
@@ -46,7 +35,7 @@ public class FinanceAccountblImpl{
 		return result;
 	}
 
-	public AccountVO showAccount(String id) {
+	public AccountVO showAccount(String id,FinanceAccountDataService service) {
 		AccountVO result=null;
 		AccountPO accountPO=null;
 		try {
@@ -60,7 +49,7 @@ public class FinanceAccountblImpl{
 		return result;
 	}
 
-	public ResultMessage deleteAccount(String id) {
+	public ResultMessage deleteAccount(String id,FinanceAccountDataService service) {
 		ResultMessage result=idCheck(id);
 		if(!result.isSuccess()){
 			return result;
@@ -73,7 +62,7 @@ public class FinanceAccountblImpl{
 		return result;
 	}
 
-	public ResultMessage updateAccount(AccountVO account){
+	public ResultMessage updateAccount(AccountVO account,FinanceAccountDataService service){
 		ResultMessage result=idCheck(account.getID());
 		if(!result.isSuccess()){
 			return result;
@@ -87,7 +76,7 @@ public class FinanceAccountblImpl{
 		return result;
 	}
 	
-	public ArrayList<AccountVO> showAllAccount() {
+	public ArrayList<AccountVO> showAllAccount(FinanceAccountDataService service) {
 		ArrayList<AccountVO> result=new ArrayList<AccountVO>();
 		ArrayList<AccountPO> po=null;
 		try {
@@ -104,7 +93,7 @@ public class FinanceAccountblImpl{
 		return result;
 	}
 	
-	public ResultMessage addMoney(String accountNum,double money) {
+	public ResultMessage addMoney(String accountNum,double money,FinanceAccountDataService service) {
 		AccountPO account=null;
 		try {
 			account=service.findAccount(accountNum);
@@ -121,7 +110,7 @@ public class FinanceAccountblImpl{
 		}
 	}
 	
-	public ResultMessage addInitialInfo(InitialInfoVO initial) {
+	public ResultMessage addInitialInfo(InitialInfoVO initial,FinanceAccountDataService service) {
 		initial.setDate(CommonUtility.getTime());
 		InitialInfoPO po=new InitialInfoPO(CommonUtility.String2Cal(initial.getDate()),initial.getDepartments(),
 				initial.getPersonnel(),initial.getCars(),initial.getWarehouses(),initial.getAccounts());
@@ -131,17 +120,9 @@ public class FinanceAccountblImpl{
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 	}
-
-	public ResultMessage initialInfo() {
-		ResultMessage result=new ResultMessage(false,"");
-		FinanceBuildInitial initial=new FinanceBuildInitial(departmentController,personnelController,transportController);
-		InitialInfoVO vo=new InitialInfoVO("",initial.getDepartments(),initial.getPersonnel(),
-				initial.getCars(),initial.getWarehouse(),initial.getAccounts());
-		result=addInitialInfo(vo);
-		return result;
-	}
-
-	public ArrayList<InitialInfoVO> findInitialInfo() {
+	
+	
+	public ArrayList<InitialInfoVO> findInitialInfo(FinanceAccountDataService service) {
 		ArrayList<InitialInfoVO> result=new ArrayList<InitialInfoVO>();
 		ArrayList<InitialInfoPO> po=null;
 		try {
