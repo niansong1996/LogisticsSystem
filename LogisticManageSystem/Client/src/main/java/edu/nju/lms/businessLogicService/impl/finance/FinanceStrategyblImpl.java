@@ -54,6 +54,10 @@ public class FinanceStrategyblImpl {
 	}
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy,FinanceStrategyDataService service) {
+		ResultMessage result=checkStrategy(salaryStrategy);
+		if (!result.isSuccess()) {
+			return result;
+		}
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());
@@ -81,6 +85,10 @@ public class FinanceStrategyblImpl {
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy,FinanceStrategyDataService service) {
+		ResultMessage result=checkStrategy(salaryStrategy);
+		if (!result.isSuccess()) {
+			return result;
+		}
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());
@@ -89,5 +97,15 @@ public class FinanceStrategyblImpl {
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
+	}
+	
+	private ResultMessage checkStrategy(SalaryStrategyVO salaryStrategy){
+		if(!(salaryStrategy.getType().equals("COURIER")||salaryStrategy.getType().equals("DRIVER"))&&salaryStrategy.getPerTime()!=0){
+			return new ResultMessage(false, "工资类型与输入数据矛盾！");
+		}
+		if((salaryStrategy.getType().equals("COURIER")||salaryStrategy.getType().equals("DRIVER"))&&salaryStrategy.getPerTime()==0){
+			return new ResultMessage(false, "工资类型与输入数据矛盾！");
+		}
+		return new ResultMessage(true, "");
 	}
 }
