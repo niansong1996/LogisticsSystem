@@ -148,7 +148,8 @@
 		<mainPanel name="SalaryStrategy" class="MainPanel" x="0" y="0" w="1080" h="720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="salaryStrategy" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <unit name ="salaryStrategyTable" class = "table.SalaryStrategyTable" x="144" y="110" w="900" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		    <component name="table_salaryStrategy" class = "Component" x="144" y="110" w="900" h="40"/>
+		    <unit name ="salaryStrategyTable" class = "table.SalaryStrategyTable" x="144" y="150" w="900" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_addcity" change="ManagerPanel" class="MainButton" x="0" y="72" w="100" h="70" type="0" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -1074,10 +1075,11 @@
 		   	<unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>
-		<mainPanel name="UserManagePanel" x="0" y="0"  w = "1080" h = "720">
+		<mainPanel name="UserManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		   	<component name="userManage" class = "Component" x="150" y="20" w="98" h="23"/>
-		   	<unit name ="user" class = "table.UserTable" x="150" y="100" w="900" h="460" type="2" dataType = "UserVO" rw = "23" cw = "168" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+		   	<component name="table_user" class = "Component" x="150" y="100" w="900" h="40"/>
+		   	<unit name ="user" class = "table.UserTable" x="150" y="140" w="900" h="420" type="2" dataType = "UserVO" rw = "23" cw = "168" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
  		   	<unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
  		   	<unit name ="add" change="AddUserPanel" class = "MainButton" x="150" y="60" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="delete" class = "MainButton" x="600" y="600" w="112" h="34" type="1" listenerName="DeleteUserListener"/>
