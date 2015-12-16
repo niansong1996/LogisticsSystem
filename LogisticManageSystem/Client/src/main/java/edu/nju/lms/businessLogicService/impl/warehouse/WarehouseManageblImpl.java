@@ -23,13 +23,11 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseDataService;
 
 public class WarehouseManageblImpl {
-	WarehouseDataService warehouseData = null;
 
-	public WarehouseManageblImpl(WarehouseDataService warehouseData){
-		this.warehouseData = warehouseData;
+	public WarehouseManageblImpl(){
 	}
 
-	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
+	public InventoryExcelVO checkWarehouseInfor(WarehouseDataService warehouseData,Calendar start, Calendar end, String warehouseNum) {
 		ArrayList<String> expressNums = new ArrayList<String>();
 		ArrayList<String> checkinTime = new ArrayList<String>();
 		ArrayList<String> destination = new ArrayList<String>();
@@ -88,7 +86,7 @@ public class WarehouseManageblImpl {
 		return new ResultMessage(true,"success");
 	}
 
-	public ResultMessage setCordon(double cordon, String warehouseNum) {
+	public ResultMessage setCordon(WarehouseDataService warehouseData,double cordon, String warehouseNum) {
 		if(cordon>1||cordon<0) return new ResultMessage(false,"The cordon don't lie between 0~1!");
 		try {
 			WarehousePO warehouse = warehouseData.findWarehouse(warehouseNum);
@@ -101,7 +99,7 @@ public class WarehouseManageblImpl {
 		return new ResultMessage(true,null);
 	}
 
-	public double getCordon(String warehouseNum){
+	public double getCordon(WarehouseDataService warehouseData,String warehouseNum){
 		try {
 			WarehousePO warehouse = warehouseData.findWarehouse(warehouseNum);
 			if(warehouse==null) return -1;
@@ -112,7 +110,7 @@ public class WarehouseManageblImpl {
 		return -1;
 	}
 
-	public PartitionVO showPartition(String warehouseNum) {
+	public PartitionVO showPartition(WarehouseDataService warehouseData,String warehouseNum) {
 		ArrayList<Partition> partition = new ArrayList<Partition>();
 		WarehousePO warehouse = null;
 		try {
@@ -132,7 +130,7 @@ public class WarehouseManageblImpl {
 		return new PartitionVO(partition);
 	}
 
-	public ResultMessage modifyPartition(PartitionVO modified, String warehouseNum) {
+	public ResultMessage modifyPartition(WarehouseDataService warehouseData,PartitionVO modified, String warehouseNum) {
 		WarehousePO warehouse = null;
 		try {
 			warehouse = warehouseData.findWarehouse(warehouseNum);
@@ -148,7 +146,7 @@ public class WarehouseManageblImpl {
 		return new ResultMessage(true, null);
 	}
 
-	public ResultMessage initialize(PartitionVO partition, double cordon, String warehouseNum) {
+	public ResultMessage initialize(WarehouseDataService warehouseData,PartitionVO partition, double cordon, String warehouseNum) {
 		ArrayList<String> modifiedPartitionInfor = new ArrayList<String>();
 		for(Partition p : partition.getPartitionInfor()){
 			modifiedPartitionInfor.add(p.getCapacity()+" "+p.getStartRow()+" "+p.getEndRow()+" "+p.getType());

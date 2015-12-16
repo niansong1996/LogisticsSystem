@@ -41,8 +41,8 @@ public class WarehouseController implements WareHouseblService{
 			e.printStackTrace();
 		}
 		
-		warehouseManagebl = new WarehouseManageblImpl(warehouseData);
-		warehouseOpbl = new WarehouseOpblImpl(warehouseData,warehouseCheckinData,warehouseCheckoutData,listController);
+		warehouseManagebl = new WarehouseManageblImpl();
+		warehouseOpbl = new WarehouseOpblImpl();
 
 	}
 	
@@ -52,7 +52,7 @@ public class WarehouseController implements WareHouseblService{
 
 	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"创建入库单");
-		return warehouseOpbl.saveCheckinList(checkinList, warehouseNum);
+		return warehouseOpbl.saveCheckinList(warehouseData,warehouseCheckinData,checkinList, warehouseNum,listController);
 	}
 
 	public CheckoutVO createCheckoutList(CheckoutVO baseMessage, String warehouseNum) {
@@ -61,12 +61,12 @@ public class WarehouseController implements WareHouseblService{
 
 	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"创建出库单");
-		return warehouseOpbl.saveCheckoutList(checkoutList, warehouseNum);
+		return warehouseOpbl.saveCheckoutList(warehouseData,warehouseCheckoutData,checkoutList, warehouseNum,listController);
 	}
 
 	public InventoryExcelVO checkWarehouseInfor(Calendar start, Calendar end, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"查看库存信息");
-		return warehouseManagebl.checkWarehouseInfor(start, end, warehouseNum);
+		return warehouseManagebl.checkWarehouseInfor(warehouseData,start, end, warehouseNum);
 	}
 
 	public ResultMessage exportExcel(InventoryExcelVO excel, String warehouseNum) {
@@ -76,38 +76,38 @@ public class WarehouseController implements WareHouseblService{
 
 	public ResultMessage setCordon(double cordon, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"设置警戒值");
-		return warehouseManagebl.setCordon(cordon, warehouseNum);
+		return warehouseManagebl.setCordon(warehouseData,cordon, warehouseNum);
 	}
 
 	public PartitionVO showPartition(String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"查看分区");
-		return warehouseManagebl.showPartition(warehouseNum);
+		return warehouseManagebl.showPartition(warehouseData,warehouseNum);
 	}
 
 	public ResultMessage modifyPartition(PartitionVO modified, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"修改分区");
-		return warehouseManagebl.modifyPartition(modified, warehouseNum);
+		return warehouseManagebl.modifyPartition(warehouseData,modified, warehouseNum);
 	}
 
 	public ResultMessage initialize(PartitionVO partition, double cordon, String warehouseNum) {
 		logController.addLog("对仓库"+warehouseNum+"进行初始化");
-		return warehouseManagebl.initialize(partition, cordon, warehouseNum);
+		return warehouseManagebl.initialize(warehouseData,partition, cordon, warehouseNum);
 	}
 	
 	public double getCordon(String warehouseNum) {
-		return warehouseManagebl.getCordon(warehouseNum);
+		return warehouseManagebl.getCordon(warehouseData,warehouseNum);
 	}
 	
 	public WarehouseInfoVO showWarehouseInfo(Calendar start, Calendar end, String warehouseNum) {
-		return warehouseOpbl.showWarehouseInfo(start,end,warehouseNum);
+		return warehouseOpbl.showWarehouseInfo(warehouseData,warehouseCheckinData,warehouseCheckoutData,start,end,warehouseNum);
 	}
 	
 	public CheckinVO findCheckinList(String id) {
-		return warehouseOpbl.findCheckinList(id);
+		return warehouseOpbl.findCheckinList(warehouseCheckinData,id);
 	}
 
 	public CheckoutVO findCheckoutList(String id) {
-		return warehouseOpbl.findCheckoutList(id);
+		return warehouseOpbl.findCheckoutList(warehouseCheckoutData,id);
 	}
 	
 /*//for test

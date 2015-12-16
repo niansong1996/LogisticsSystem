@@ -16,13 +16,10 @@ import edu.nju.lms.dataService.ListDataService;
  */
 public class ListblImpl{
 
-	private ListDataService service;
-
-	public ListblImpl(ListDataService service){
-		this.service=service;
+	public ListblImpl(){
 	}
 
-	public ArrayList<ListVO> getListInfo(ListType type) {
+	public ArrayList<ListVO> getListInfo(ListDataService service,ListType type) {
 		ArrayList<ListVO> result=new ArrayList<ListVO>();
 		ArrayList<ListPO> list=new ArrayList<ListPO>();
 
@@ -41,7 +38,7 @@ public class ListblImpl{
 		return result;
 	}
 
-	public ResultMessage changeList(ListVO List,ListType type) {
+	public ResultMessage changeList(ListDataService service,ListVO List,ListType type) {
 		try {
 			return service.updateList(List.getId(), List.getState(),type);
 		} catch (RemoteException e) {
@@ -49,7 +46,7 @@ public class ListblImpl{
 		}	
 	}
 
-	public ListVO getListInfo(String id){
+	public ListVO getListInfo(ListDataService service,String id){
 		ListVO result=null;
 		ListType type=null;
 		ListPO po=null;

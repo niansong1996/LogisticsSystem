@@ -21,16 +21,8 @@ import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 import edu.nju.lms.dataService.WarehouseDataService;
 
 public class WarehouseOpblImpl {
-	private WarehouseCheckinDataService checkinData;
-	private WarehouseCheckoutDataService checkoutData;
-	private ListController listController;
-	private WarehouseDataService warehouseData;
 	
-	public WarehouseOpblImpl(WarehouseDataService warehouseData,WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,ListController listController){
-		this.checkinData = checkinData;
-		this.checkoutData = checkoutData;
-		this.listController = listController;
-		this.warehouseData = warehouseData;
+	public WarehouseOpblImpl(){
 	}
 	
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
@@ -38,7 +30,7 @@ public class WarehouseOpblImpl {
 		return baseMessage;
 	}
 
-	public ResultMessage saveCheckinList(CheckinVO checkinList, String warehouseNum) {
+	public ResultMessage saveCheckinList(WarehouseDataService warehouseData,WarehouseCheckinDataService checkinData,CheckinVO checkinList, String warehouseNum,ListController listController) {
 		try{
 		for(int i=0;i<checkinList.getExpresses().size();i++){
 			if(warehouseData.findSend(checkinList.getExpresses().get(i))==null) return new ResultMessage(false,"快递编号不存在!");
@@ -62,7 +54,7 @@ public class WarehouseOpblImpl {
 		return baseMessage;
 	}
 
-	public ResultMessage saveCheckoutList(CheckoutVO checkoutList, String warehouseNum){
+	public ResultMessage saveCheckoutList(WarehouseDataService warehouseData,WarehouseCheckoutDataService checkoutData,CheckoutVO checkoutList, String warehouseNum,ListController listController){
 		try{
 			for(int i=0;i<checkoutList.getExpressNums().size();i++){
 					ResultMessage result = warehouseData.deleteInventory(checkoutList.getExpressNums().get(i), warehouseNum);
@@ -80,7 +72,7 @@ public class WarehouseOpblImpl {
 			return new ResultMessage(true,null);
 	}
 	
-	public WarehouseInfoVO showWarehouseInfo(Calendar start,Calendar end,String warehouseNum){
+	public WarehouseInfoVO showWarehouseInfo(WarehouseDataService warehouseData,WarehouseCheckinDataService checkinData,WarehouseCheckoutDataService checkoutData,Calendar start,Calendar end,String warehouseNum){
 		int checkinNum=0;
 		int checkoutNum=0;
 		int totalNum=0;
@@ -97,7 +89,7 @@ public class WarehouseOpblImpl {
 	}
 
 	
-	public CheckinVO findCheckinList(String id) {
+	public CheckinVO findCheckinList(WarehouseCheckinDataService checkinData,String id) {
 		CheckinVO result = null;
 		try {
 			CheckinPO po = checkinData.findCheckin(id);
@@ -110,7 +102,7 @@ public class WarehouseOpblImpl {
 	}
 
 	
-	public CheckoutVO findCheckoutList(String id) {
+	public CheckoutVO findCheckoutList(WarehouseCheckoutDataService checkoutData,String id) {
 		CheckoutVO result = null;
 		try {
 			CheckoutPO po = checkoutData.findCheckout(id);

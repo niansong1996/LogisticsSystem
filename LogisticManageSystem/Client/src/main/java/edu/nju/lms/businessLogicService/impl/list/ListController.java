@@ -23,7 +23,7 @@ public class ListController implements ListblService{
 		try {
 			logController=BusinessLogicFactory.getLogController();
 			listService= DataServiceFactory.getListDataService();
-			list=new ListblImpl(listService);
+			list=new ListblImpl();
 			listNum = new ListNumOccupancy(listService);
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
@@ -31,7 +31,7 @@ public class ListController implements ListblService{
 	}
 
 	public ArrayList<ListVO> getListInfo(ListType type) {
-		ArrayList<ListVO> result=list.getListInfo(type);
+		ArrayList<ListVO> result=list.getListInfo(listService,type);
 
 		logController.addLog("查看类型为"+type.toString()+"的单据信息");
 
@@ -39,7 +39,7 @@ public class ListController implements ListblService{
 	}
 
 	public ResultMessage changeList(ListVO List,ListType type) {
-		ResultMessage result=list.changeList(List,type);
+		ResultMessage result=list.changeList(listService,List,type);
 
 		if(result.isSuccess()){
 			logController.addLog("审批类型为"+type.toString()+"的单据信息");
@@ -57,7 +57,7 @@ public class ListController implements ListblService{
 	}
 	
 	public ListVO getListInfo(String id) {
-		return list.getListInfo(id);
+		return list.getListInfo(listService,id);
 	}
 //	public static void main(String[] args){
 //		ListController listController = BusinessLogicFactory.createListController();

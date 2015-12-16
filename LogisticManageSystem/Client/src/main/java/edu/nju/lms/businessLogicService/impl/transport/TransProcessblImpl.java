@@ -33,40 +33,31 @@ import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
 
 public class TransProcessblImpl{
-	TransportCommodityDataService commodity;
-	TransportListDataService list;
-	
-	ListController listController;
-	DepartmentController departmentController;
 	FinanceController financeController;
-	
-	public TransProcessblImpl(ListController listController,DepartmentController departmentController,TransportCommodityDataService commodity,TransportListDataService list){
-		this.listController = listController;
-		this.departmentController=departmentController;
-		this.commodity=commodity;
-		this.list=list;
+
+	public TransProcessblImpl(){
 	}
 
-	public OrderInforVO checkOrderInfor(String orderNum){
-		TransHistoryTrack historyTrack = new TransHistoryTrack(commodity,list);
+	public OrderInforVO checkOrderInfor(TransportListDataService list,TransportCommodityDataService commodity,String orderNum){
+		TransHistoryTrack historyTrack = new TransHistoryTrack();
 		try {
-			return historyTrack.getTrack(orderNum);
+			return historyTrack.getTrack(list,commodity,orderNum);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 			return null;
 		}
 	}
 
-	public SendVO createSendList(SendVO baseMessage) {
+	public SendVO createSendList(ListController listController,DepartmentController departmentController,SendVO baseMessage) {
 		SendVO result=baseMessage;
 		result.setId(listController.applyListNum(ListType.SEND));
 		result.setCreateTime(CommonUtility.getTime());
-		result.setPrice(calculateMoney(baseMessage));
+		result.setPrice(calculateMoney(departmentController,baseMessage));
 		result.setTime(NumRound.round(Math.random()*3+1));
 		return result;
 	}
 
-	public ResultMessage saveSendList(SendVO sendList) {
+	public ResultMessage saveSendList(TransportListDataService list,TransportCommodityDataService commodity,SendVO sendList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getSenderCity(),sendList.getReceiverCity(),sendList.getInitialNum(),sendList.getWeight(),
 				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),CommonUtility.String2Cal(sendList.getCreateTime()));
@@ -90,7 +81,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public SendVO findSendList(String expressNum) {
+	public SendVO findSendList(TransportListDataService list,String expressNum) {
 		SendPO po=null;
 		try {
 			po=list.findSend(expressNum);
@@ -103,15 +94,15 @@ public class TransProcessblImpl{
 		}else return null;
 	}
 
-	public LoadVO createLoadList(LoadVO baseMessage) {
+	public LoadVO createLoadList(ListController listController,DepartmentController departmentController,LoadVO baseMessage) {
 		LoadVO result=baseMessage;
-		result.setId(this.listController.applyListNum(ListType.LOAD));
+		result.setId(listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
-		result.setFreight(calculateFreight(result));
+		result.setFreight(calculateFreight(departmentController,result));
 		return result;
 	}
 	
-	public ResultMessage saveLoadList(LoadVO loadList) {
+	public ResultMessage saveLoadList(TransportListDataService list,TransportCommodityDataService commodity,LoadVO loadList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		LoadPO po=new LoadPO(loadList.getId(),loadList.getState().toString(),loadList.getLoadType(),CommonUtility.String2Cal(loadList.getLoadDate()),
 				loadList.getBusinessHallNum(),loadList.getMotorNum(),loadList.getDestiCity(),loadList.getBusinessHallNum(),
@@ -134,7 +125,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public ArrayList<LoadVO> findUnpaidLoad() {
+	public ArrayList<LoadVO> findUnpaidLoad(TransportListDataService list) {
 		ArrayList<LoadVO> result=new ArrayList<LoadVO>();
 		ArrayList<LoadPO> po=null;
 		try {
@@ -153,7 +144,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public LoadCarVO createLoadCarList(LoadCarVO baseMessage) {
+	public LoadCarVO createLoadCarList(ListController listController,LoadCarVO baseMessage) {
 		LoadCarVO result=baseMessage;
 		result.setId(listController.applyListNum(ListType.LOAD));
 		result.setLoadDate(CommonUtility.getTime());
@@ -163,7 +154,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public ResultMessage saveLoadCarList(LoadCarVO loadCarList) {
+	public ResultMessage saveLoadCarList(TransportListDataService list,TransportCommodityDataService commodity,LoadCarVO loadCarList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		LoadcarPO po=new LoadcarPO(loadCarList.getId(),loadCarList.getState().toString(),CommonUtility.String2Cal(loadCarList.getLoadDate()),
 				loadCarList.getBusinessHallNum(),loadCarList.getMotorNum(),loadCarList.getDestiBusinessHall(),loadCarList.getVehicleNum(),
@@ -186,7 +177,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public ArrayList<LoadCarVO> findUnpaidLoadCar() {
+	public ArrayList<LoadCarVO> findUnpaidLoadCar(TransportListDataService list) {
 		ArrayList<LoadCarVO> result=new ArrayList<LoadCarVO>();
 		ArrayList<LoadcarPO> po=null;
 		try {
@@ -205,14 +196,14 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public ArrivalVO createArrivalList(ArrivalVO arrivalList) {
+	public ArrivalVO createArrivalList(ListController listController,ArrivalVO arrivalList) {
 		ArrivalVO result=arrivalList;
-		result.setId(this.listController.applyListNum(ListType.ARRIVAL));
+		result.setId(listController.applyListNum(ListType.ARRIVAL));
 		result.setArrivalDate(CommonUtility.getTime());
 		return result;
 	}
 
-	public ResultMessage saveArrivalList(ArrivalVO arrivalList) {
+	public ResultMessage saveArrivalList(TransportListDataService list,TransportCommodityDataService commodity,ArrivalVO arrivalList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		ArrivalPO po=new ArrivalPO(arrivalList.getId(),arrivalList.getState().toString(),arrivalList.getArrivalState(),arrivalList.getExpressNum(),
 				arrivalList.getDestination(),arrivalList.getSetOut(),CommonUtility.String2Cal(arrivalList.getArrivalDate()));
@@ -231,7 +222,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public ArrivalVO findArrivalList(String id) {
+	public ArrivalVO findArrivalList(TransportListDataService list,String id) {
 		ArrivalPO po=null;
 		try {
 			po=list.findArrival(id);
@@ -245,14 +236,14 @@ public class TransProcessblImpl{
 		}
 	}
 
-	public DispatchVO createDispatchList(DispatchVO dispatchList) {
+	public DispatchVO createDispatchList(ListController listController,DispatchVO dispatchList) {
 		DispatchVO result=dispatchList;
-		result.setId(this.listController.applyListNum(ListType.DISPATCH));
+		result.setId(listController.applyListNum(ListType.DISPATCH));
 		result.setArrivalDate(CommonUtility.getTime());
 		return result;
 	}
 
-	public ResultMessage saveDispatchList(DispatchVO dipatchList) {
+	public ResultMessage saveDispatchList(TransportListDataService list,TransportCommodityDataService commodity,DispatchVO dipatchList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		DispatchPO po=new DispatchPO(dipatchList.getId(),dipatchList.getState().toString(),dipatchList.getDispatchPerson(),CommonUtility.String2Cal(dipatchList.getArrivalDate()),dipatchList.getExpressNum());
 		try {
@@ -268,7 +259,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public DispatchVO findDispatchList(String id) {
+	public DispatchVO findDispatchList(TransportListDataService list,String id) {
 		DispatchPO po=null;
 		try {
 			po=list.findDispatch(id);
@@ -280,13 +271,13 @@ public class TransProcessblImpl{
 		}else return null;
 	}
 	
-	public ReceiveVO createReceiveList(ReceiveVO receiveList) {
+	public ReceiveVO createReceiveList(ListController listController,ReceiveVO receiveList) {
 		ReceiveVO result=receiveList;
-		result.setId(this.listController.applyListNum(ListType.RECEIVE));
+		result.setId(listController.applyListNum(ListType.RECEIVE));
 		result.setReceiveTime(CommonUtility.getTime());
 		return result;
 	}
-	public ResultMessage saveReceiveList(ReceiveVO receiveList) {
+	public ResultMessage saveReceiveList(TransportListDataService list,TransportCommodityDataService commodity,ReceiveVO receiveList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		ReceivePO po=new ReceivePO(receiveList.getId(),receiveList.getState().toString(),receiveList.getReceiverName(),CommonUtility.String2Cal(receiveList.getReceiveTime()),receiveList.getExpressNum());
 		try {
@@ -301,7 +292,7 @@ public class TransProcessblImpl{
 		}
 		return result;
 	}
-	public ReceiveVO findReceiveList(String id) {
+	public ReceiveVO findReceiveList(TransportListDataService list,String id) {
 		ReceivePO po=null;
 		try {
 			po=list.findReceive(id);
@@ -315,7 +306,7 @@ public class TransProcessblImpl{
 		}
 	}
 	
-	public double calculateFreight(LoadVO load){
+	public double calculateFreight(DepartmentController departmentController,LoadVO load){
 		double result=1;
 		CityVO current=departmentController.findCity(load.getBusinessHallNum().substring(0, 3));
 		
@@ -335,7 +326,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public double calculateMoney(SendVO send){
+	public double calculateMoney(DepartmentController departmentController,SendVO send){
 		double money=0;
 		double temp=0;
 		CityVO current=departmentController.findCity(CommonUtility.cityNameToNum(send.getSenderCity()));
@@ -369,7 +360,7 @@ public class TransProcessblImpl{
 		return money;
 	}
 
-	public LoadVO findLoadList(String id) {
+	public LoadVO findLoadList(TransportListDataService list,String id) {
 		LoadVO result = null;
 		try {
 			LoadPO po = list.findLoad(id);
@@ -381,7 +372,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 	
-	public LoadCarVO findLoadCarList(String id) {
+	public LoadCarVO findLoadCarList(TransportListDataService list,String id) {
 		LoadCarVO result = null;
 		try {
 			LoadcarPO po = list.findLoadCar(id);
@@ -393,7 +384,7 @@ public class TransProcessblImpl{
 		return result;
 	}
 
-	public SendVO findSendListById(String expressNum) {
+	public SendVO findSendListById(TransportListDataService list,String expressNum) {
 		SendPO po=null;
 		try {
 			po=list.findSendById(expressNum);

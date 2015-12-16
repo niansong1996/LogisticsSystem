@@ -21,14 +21,11 @@ import edu.nju.lms.dataService.TransportListDataService;
  *
  */
 public class TransHistoryTrack {
-	TransportCommodityDataService commodity;
-	TransportListDataService list;
-	public TransHistoryTrack(TransportCommodityDataService commodity, TransportListDataService list){
-		this.commodity = commodity;
-		this.list = list;
+	
+	public TransHistoryTrack(){
 	}
 	
-	public OrderInforVO getTrack(String orderNum) throws RemoteException{
+	public OrderInforVO getTrack(TransportListDataService list,TransportCommodityDataService commodity,String orderNum) throws RemoteException{
 			CommodityPO com =commodity.findCommodity(orderNum);
 			if(com==null) return null;
 			String expressNum = com.getId();

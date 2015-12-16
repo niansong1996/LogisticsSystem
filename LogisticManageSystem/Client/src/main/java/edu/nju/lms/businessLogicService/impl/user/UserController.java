@@ -20,18 +20,18 @@ public class UserController implements UserblService{
 		try{
 			logController=BusinessLogicFactory.getLogController();
 			userService=DataServiceFactory.getUserDataService();
-			user=new UserblImpl(userService);
+			user=new UserblImpl();
 	    } catch (NoBusinessLogicException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public UserVO findUserInfo(String id) {
-		return user.findUserInfo(id);
+		return user.findUserInfo(userService,id);
 	}
 
 	public ResultMessage deleteUser(String id) {
-		ResultMessage result=user.deleteUser(id);
+		ResultMessage result=user.deleteUser(userService,id);
 		
 		if(result.isSuccess()){
 			logController.addLog("删除用户"+id+"的信息");
@@ -41,7 +41,7 @@ public class UserController implements UserblService{
 	}
 
 	public ResultMessage updateUser(UserVO User) {
-		ResultMessage result=user.updateUser(User);
+		ResultMessage result=user.updateUser(userService,User);
 		
 		if(result.isSuccess()){
 			logController.addLog("更新用户"+User.getUserName()+"的信息");
@@ -51,7 +51,7 @@ public class UserController implements UserblService{
 	}
 
 	public ResultMessage addUser(UserVO User) {
-		ResultMessage result=user.addUser(User);
+		ResultMessage result=user.addUser(userService,User);
 
 		if(result.isSuccess()){
 			logController.addLog("新增用户"+User.getUserName()+"的信息");
@@ -61,7 +61,7 @@ public class UserController implements UserblService{
 	}
 
 	public ArrayList<UserVO> findAllUser() {
-		ArrayList<UserVO> result=user.findAllUser();
+		ArrayList<UserVO> result=user.findAllUser(userService);
 
 		logController.addLog("查看所有用户的信息");
 		

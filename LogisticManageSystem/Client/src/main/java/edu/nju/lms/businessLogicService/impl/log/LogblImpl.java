@@ -16,10 +16,7 @@ import edu.nju.lms.dataService.LogDataService;
  */
 public class LogblImpl {
 	
-	private LogDataService logData=null;
-	
-	public LogblImpl(LogDataService logService){
-		this.logData=logService;
+	public LogblImpl(){
 	}
 	/**
 	 * get the info of log in valid time
@@ -27,7 +24,7 @@ public class LogblImpl {
 	 * @param end
 	 * @return
 	 */
-	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end) {
+	public ArrayList<OperationVO> getLogInfo(LogDataService logData,Calendar begin, Calendar end) {
 		ArrayList<OperationVO> log = new ArrayList<OperationVO>();
 		ArrayList<OperationPO> temp=null;
 		try {
@@ -49,7 +46,7 @@ public class LogblImpl {
 	 * @param op
 	 * @return
 	 */
-	public ResultMessage addLog(OperationVO op) {
+	public ResultMessage addLog(LogDataService logData,OperationVO op) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
 		OperationPO opPO=new OperationPO(op.getExplain(),op.getTime(),op.getUser());
 		try {

@@ -15,17 +15,15 @@ import edu.nju.lms.presentation.components.EnumTransformer;
  *@date 2015/11/20
  */
 public class PersonnelblImpl  {
-	private PersonnelDataService service=null;
 	
-	public PersonnelblImpl(PersonnelDataService service){
-		this.service=service;
+	public PersonnelblImpl(){
 	}
 	/**
 	 * can use both the person's id and his departmentNum to find his info
 	 * @param id
 	 * @return
 	 */
-	public ArrayList<PersonnelVO> findPersonInfo(String id) {
+	public ArrayList<PersonnelVO> findPersonInfo(PersonnelDataService service,String id) {
 		ArrayList<PersonnelVO> result=new ArrayList<PersonnelVO>();
 		if(id.length()==10){
 			try {
@@ -55,7 +53,7 @@ public class PersonnelblImpl  {
 		return result;
 	}
 
-	public ResultMessage deletePersonnel(String id) {
+	public ResultMessage deletePersonnel(PersonnelDataService service,String id) {
 		ResultMessage result=idCheck(id);
 		if(!result.isSuccess()){
 			return result;
@@ -68,7 +66,7 @@ public class PersonnelblImpl  {
 		return result;
 	}
 
-	public ResultMessage updatePersonnel(PersonnelVO Personnel) {
+	public ResultMessage updatePersonnel(PersonnelDataService service,PersonnelVO Personnel) {
 		ResultMessage result=idCheck(Personnel.getId());
 		if(!result.isSuccess()){
 			return result;
@@ -84,7 +82,8 @@ public class PersonnelblImpl  {
 		return result;
 	}
 
-	public ResultMessage addPersonnel(PersonnelVO Personnel) {
+	public ResultMessage addPersonnel(PersonnelDataService service,PersonnelVO Personnel) {
+		System.out.println(EnumTransformer.str2PersonType(Personnel.getDuty()));
 		ResultMessage result=idCheck(Personnel.getId());
 		if(!result.isSuccess()){
 			return result;
@@ -100,7 +99,7 @@ public class PersonnelblImpl  {
 		return result;
 	}
 	
-	public ArrayList<PersonnelVO> showAllPersonnel() {
+	public ArrayList<PersonnelVO> showAllPersonnel(PersonnelDataService service) {
 		ArrayList<PersonnelVO> result=new ArrayList<PersonnelVO>();
 		ArrayList<PersonnelPO> po=null;
 		
@@ -128,15 +127,15 @@ public class PersonnelblImpl  {
 		return result;
 	}
 
-	public ResultMessage updatePerTime(String id,double amount){
+	public ResultMessage updatePerTime(PersonnelDataService service,String id,double amount){
 		ResultMessage result=new ResultMessage(false,"");
-		ArrayList<PersonnelVO> list=findPersonInfo(id);
+		ArrayList<PersonnelVO> list=findPersonInfo(service,id);
 		PersonnelVO temp=list.get(0);
 		if(temp!=null){
 			Double currentAmount=temp.getPerTime();
 			amount+=currentAmount;
 			temp.setPerTime(amount);
-			result=updatePersonnel(temp);
+			result=updatePersonnel(service,temp);
 		}
 		return result;
 	}

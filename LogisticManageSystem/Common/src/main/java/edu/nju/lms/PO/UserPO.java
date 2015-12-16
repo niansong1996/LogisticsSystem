@@ -19,6 +19,7 @@ public class UserPO implements Serializable{
 	
 	public UserPO(String userName, String password, String power) {
 		super();
+		System.out.println(userName+" "+password+" "+power);
 		this.userName = userName;
 		this.password = password;
 		this.power = PersonType.valueOf(power);

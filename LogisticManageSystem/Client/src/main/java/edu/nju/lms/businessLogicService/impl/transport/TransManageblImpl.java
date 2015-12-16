@@ -19,27 +19,18 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportToolDataService;
 
 public class TransManageblImpl{
-
-	TransportToolDataService service;
-	PersonnelController personnelController;
-	DepartmentController departmentController;
-	ListController listController;
 	
-	public TransManageblImpl(PersonnelController personnelController,DepartmentController departmentController,ListController listController,TransportToolDataService tool){
-		this.personnelController=personnelController;
-		this.departmentController=departmentController;
-		this.listController=listController;
-		this.service=tool;
+	public TransManageblImpl(){
 	}
 	
-	public VehicleVO addVehicle(VehicleVO vehicle) {
+	public VehicleVO addVehicle(ListController listController,VehicleVO vehicle) {
 		VehicleVO car=vehicle;
 		car.setVehicleNum(vehicle.getBusinessHallNum()+listController.applyListNum(ListType.CAR));
 		return car;
 	}
 
-	public ResultMessage saveVehicleInfor(VehicleVO vehicle) {
-		ResultMessage result=check(vehicle.getBusinessHallNum());
+	public ResultMessage saveVehicleInfor(DepartmentController departmentController,TransportToolDataService service,VehicleVO vehicle) {
+		ResultMessage result=check(departmentController,vehicle.getBusinessHallNum());
 		if(!result.isSuccess()){
 			return result;
 		}
@@ -53,7 +44,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ResultMessage deleteVehicle(String vehicleNum) {
+	public ResultMessage deleteVehicle(TransportToolDataService service,String vehicleNum) {
 		ResultMessage result=idCheck(vehicleNum);
 		if(!result.isSuccess()){
 			return result;
@@ -66,7 +57,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ResultMessage updateVehicle(VehicleVO modified) {
+	public ResultMessage updateVehicle(TransportToolDataService service,VehicleVO modified) {
 		ResultMessage result=idCheck(modified.getVehicleNum(),modified.getBusinessHallNum());
 		if(!result.isSuccess()){
 			return result;
@@ -81,7 +72,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public VehicleVO findVehicle(String vehicleNum) {
+	public VehicleVO findVehicle(TransportToolDataService service,String vehicleNum) {
 		VehicleVO result=null;
 		VehiclePO po=null;
 		try {
@@ -96,7 +87,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ArrayList<VehicleVO> showAllVehicles(){
+	public ArrayList<VehicleVO> showAllVehicles(TransportToolDataService service){
 		ArrayList<VehicleVO> result=new ArrayList<VehicleVO>();
 		ArrayList<VehiclePO> po=null;
 		try {
@@ -114,14 +105,14 @@ public class TransManageblImpl{
 		return result;
 	}
 	
-	public DriverVO addDriver(DriverVO driver) {
+	public DriverVO addDriver(ListController listController,DriverVO driver) {
 		DriverVO result=driver;
 		result.setDriverNum(driver.getBusinesshallNum()+listController.applyListNum(ListType.DRIVER));
 		return result;
 	}
 
-	public ResultMessage saveDriverInfor(DriverVO driver) {
-		ResultMessage result=check(driver.getBusinesshallNum());
+	public ResultMessage saveDriverInfor(PersonnelController personnelController,DepartmentController departmentController,TransportToolDataService service,DriverVO driver) {
+		ResultMessage result=check(departmentController,driver.getBusinesshallNum());
 		if(!result.isSuccess()){
 			return result;
 		}
@@ -138,7 +129,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ResultMessage deleteDriver(String driverNum) {
+	public ResultMessage deleteDriver(PersonnelController personnelController,TransportToolDataService service,String driverNum) {
 		ResultMessage result=idCheck(driverNum);
 		if(!result.isSuccess()){
 			return result;
@@ -152,7 +143,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ResultMessage updateDriver(DriverVO driver) {
+	public ResultMessage updateDriver(PersonnelController personnelController,TransportToolDataService service,DriverVO driver) {
 		ResultMessage result=idCheck(driver.getDriverNum(),driver.getBusinesshallNum());
 		if(!result.isSuccess()){
 			return result;
@@ -170,7 +161,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public DriverVO findDriver(String vehicleNum) {
+	public DriverVO findDriver(TransportToolDataService service,String vehicleNum) {
 		DriverVO result=null;
 		DriverPO po=null;
 		try {
@@ -185,7 +176,7 @@ public class TransManageblImpl{
 		return result;
 	}
 
-	public ResultMessage check(String businessNum){
+	public ResultMessage check(DepartmentController departmentController,String businessNum){
 		ResultMessage result=new ResultMessage(true,"");
 		DepartmentVO depart=departmentController.getDepartInfo(businessNum);
 		if(depart==null){
