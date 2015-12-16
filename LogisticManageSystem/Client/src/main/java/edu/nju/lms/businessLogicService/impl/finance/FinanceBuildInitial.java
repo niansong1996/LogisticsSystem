@@ -2,34 +2,19 @@ package edu.nju.lms.businessLogicService.impl.finance;
 
 import java.util.ArrayList;
 
-import edu.nju.lms.VO.AccountVO;
 import edu.nju.lms.VO.DepartmentVO;
 import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.VehicleVO;
-import edu.nju.lms.businessLogic.BusinessLogicFactory;
-import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 
 public class FinanceBuildInitial {
-	private DepartmentController departmentController;
-	private FinanceController financeController;
-	private PersonnelController personnelController;
-	private TransportController transportController;
 	
-	public FinanceBuildInitial(DepartmentController departmentController,PersonnelController personnelController,TransportController transportController){
-		this.departmentController=departmentController;
-		this.personnelController=personnelController;
-		this.transportController=transportController;
-		try {
-			financeController=BusinessLogicFactory.getFinanceController();
-		} catch (NoBusinessLogicException e) {
-			e.printStackTrace();
-		}
+	public FinanceBuildInitial(){
 	}
 	
-	public ArrayList<String> getDepartments(){
+	public ArrayList<String> getDepartments(DepartmentController departmentController){
 		ArrayList<String> result=new ArrayList<String>();
 		ArrayList<DepartmentVO> temp=departmentController.showAllDepartments();
 		if(temp!=null){
@@ -40,18 +25,7 @@ public class FinanceBuildInitial {
 		return result;
 	}
 	
-	public ArrayList<String> getAccounts(){
-		ArrayList<String> result=new ArrayList<String>();
-		ArrayList<AccountVO> temp=financeController.showAllAccount();
-		if(temp!=null){
-			for(AccountVO vo : temp){
-				result.add(vo.getID());
-			}
-		}
-		return result;
-	}
-	
-	public ArrayList<String> getPersonnel(){
+	public ArrayList<String> getPersonnel(PersonnelController personnelController){
 		ArrayList<String> result=new ArrayList<String>();
 		ArrayList<PersonnelVO> temp=personnelController.showAllPersonnel();
 		if(temp!=null){
@@ -62,7 +36,7 @@ public class FinanceBuildInitial {
 		return result;
 	}
 	
-	public ArrayList<String> getCars(){
+	public ArrayList<String> getCars(TransportController transportController){
 		ArrayList<String> result=new ArrayList<String>();
 		ArrayList<VehicleVO> temp=transportController.showAllVehicle();
 		if(temp!=null){
@@ -74,7 +48,7 @@ public class FinanceBuildInitial {
 	}
 	
 	
-	public ArrayList<String> getWarehouse(){
+	public ArrayList<String> getWarehouse(DepartmentController departmentController){
 		ArrayList<String> result=new ArrayList<String>();
 		ArrayList<DepartmentVO> temp=departmentController.showAllDepartments();
 		if(temp!=null){

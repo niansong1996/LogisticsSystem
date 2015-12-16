@@ -16,13 +16,11 @@ import edu.nju.lms.dataService.DepartmentDataService;
  *@date 2015年12月09日
  */
 public class DepartmentblImpl{
-	DepartmentDataService service = null;
 
-	public DepartmentblImpl(DepartmentDataService service) {
-		this.service = service;
+	public DepartmentblImpl() {
 	}
 	
-	public DepartmentVO getDepartInfo(String id) {
+	public DepartmentVO getDepartInfo(String id,DepartmentDataService service) {
 		DepartmentPO departmentPO = null;
 		try {
 			departmentPO = service.findDepartment(id);
@@ -34,7 +32,7 @@ public class DepartmentblImpl{
 		}else return null;
 	}
 
-	public ResultMessage deleteDepartment(String id) {
+	public ResultMessage deleteDepartment(String id,DepartmentDataService service) {
 		ResultMessage message = idCheck(id);
 		if(!message.isSuccess()){
 			return message;
@@ -47,7 +45,7 @@ public class DepartmentblImpl{
 		return message;
 	}
 
-	public ResultMessage updateDepartment(DepartmentVO department) {
+	public ResultMessage updateDepartment(DepartmentVO department,DepartmentDataService service) {
 		ResultMessage message = idCheck(department.getDepartmentNum());
 		if(!message.isSuccess()){
 			return message;
@@ -68,7 +66,7 @@ public class DepartmentblImpl{
 		return message;
 	}
 
-	public ResultMessage addDepartment(DepartmentVO department) {
+	public ResultMessage addDepartment(DepartmentVO department,DepartmentDataService service) {
 		ResultMessage result=idCheck(department.getDepartmentNum());
 		if(!result.isSuccess()){
 			return result;
@@ -87,7 +85,7 @@ public class DepartmentblImpl{
 				if(department.getType().toString().equals("BUSINESSHALL")){
 					CityVO temp=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
 					temp.getBusinessNums().add(department.getDepartmentNum());
-					updateCity(temp);
+					updateCity(temp,service);
 				}
 			}
 		} catch (RemoteException e) {
@@ -96,7 +94,7 @@ public class DepartmentblImpl{
 		return result;
 	}
 
-	public ArrayList<DepartmentVO> showAllDepartments() {
+	public ArrayList<DepartmentVO> showAllDepartments(DepartmentDataService service) {
 		ArrayList<DepartmentVO> result=new ArrayList<DepartmentVO>();
 		ArrayList<DepartmentPO> po=null;
 		try {
@@ -113,7 +111,7 @@ public class DepartmentblImpl{
 		return result;
 	}
 	
-	public ResultMessage addCity(CityVO city) {
+	public ResultMessage addCity(CityVO city,DepartmentDataService service) {
 		ResultMessage result=cityIdCheck(city.getId());
 		if(!result.isSuccess()){
 			return result;
@@ -127,7 +125,7 @@ public class DepartmentblImpl{
 		return result;
 	}
 
-	public CityVO findCity(String id) {
+	public CityVO findCity(String id,DepartmentDataService service) {
 		CityPO cityPO=null;
 		CityVO city=null;
 		try {
@@ -140,7 +138,7 @@ public class DepartmentblImpl{
 		}
 		return city;
 	}
-	public ResultMessage deleteCity(String id){
+	public ResultMessage deleteCity(String id,DepartmentDataService service){
 		ResultMessage result=cityIdCheck(id);
 		if(!result.isSuccess()){
 			return result;
@@ -153,7 +151,7 @@ public class DepartmentblImpl{
 		return result;
 	}
 	
-	public ResultMessage updateCity(CityVO city){
+	public ResultMessage updateCity(CityVO city,DepartmentDataService service){
 		ResultMessage result=cityIdCheck(city.getId());
 		if(!result.isSuccess()){
 			return result;
@@ -167,7 +165,7 @@ public class DepartmentblImpl{
 		return result;
 	}
 	
-	public ArrayList<CityVO> showAllCities(){
+	public ArrayList<CityVO> showAllCities(DepartmentDataService service){
 		ArrayList<CityVO> result=new ArrayList<CityVO>();
 		ArrayList<CityPO> po=null;
 		try {

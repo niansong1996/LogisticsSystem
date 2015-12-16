@@ -36,7 +36,7 @@ import edu.nju.lms.dataService.FinanceStrategyDataService;
 public class FinanceController
 		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
 
-	FinanceAccountblImpl accountf;
+	FinanceAccountblImpl account;
 	FinancePayblImpl pay;
 	FinanceReceiptblImpl receipt;
 	FinanceStrategyblImpl strategy;
@@ -63,20 +63,20 @@ public class FinanceController
 			warehouseController=BusinessLogicFactory.getWarehouseController();
 			
 			accountData=DataServiceFactory.getFinanceAccountDataService();
-			accountf=new FinanceAccountblImpl(departmentController,personnelController,transportController,accountData);
+			account=new FinanceAccountblImpl();
 			payData=DataServiceFactory.getFinancePaymentDataService();
-			pay=new FinancePayblImpl(listController,personnelController,transportController,accountData,payData);
+			pay=new FinancePayblImpl();
 			receiptData=DataServiceFactory.getFinanceReceiptDataService();
-			receipt=new FinanceReceiptblImpl(listController,receiptData);
+			receipt=new FinanceReceiptblImpl();
 			strategyData=DataServiceFactory.getFinanceStrategyDataService();
-			strategy=new FinanceStrategyblImpl(strategyData);
+			strategy=new FinanceStrategyblImpl();
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public ResultMessage addPriceStrategy(double std) {
-		ResultMessage result=strategy.addPriceStrategy(std);
+		ResultMessage result=strategy.addPriceStrategy(std, strategyData);
 		if(result.isSuccess()){
 			logController.addLog("增加运费策略");
 		}
@@ -84,7 +84,7 @@ public class FinanceController
 	}
 
 	public ResultMessage updatePriceStrategy(double std) {
-		ResultMessage result=strategy.updatePriceStrategy(std);
+		ResultMessage result=strategy.updatePriceStrategy(std, strategyData);
 		if(result.isSuccess()){
 			logController.addLog("更新运费策略");
 		}
@@ -92,13 +92,13 @@ public class FinanceController
 	}
 
 	public PriceStrategyVO findPriceStrategy() {
-		PriceStrategyVO result=strategy.findPriceStrategy();
+		PriceStrategyVO result=strategy.findPriceStrategy(strategyData);
 		logController.addLog("查看运费策略");
 		return result;
 	}
 
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		ResultMessage result=strategy.addSalaryStrategy(salaryStrategy);
+		ResultMessage result=strategy.addSalaryStrategy(salaryStrategy, strategyData);
 		if(result.isSuccess()){
 			logController.addLog("增加薪水策略");
 		}
@@ -106,37 +106,37 @@ public class FinanceController
 	}
 
 	public SalaryStrategyVO findSalaryStrategy(PersonType personType) {
-		SalaryStrategyVO result=strategy.findSalaryStrategy(personType);
+		SalaryStrategyVO result=strategy.findSalaryStrategy(personType, strategyData);
 		logController.addLog("查看薪水策略");
 		return result;
 	}
 
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
-		ResultMessage result=strategy.updateSalaryStrategy(salaryStrategy);
+		ResultMessage result=strategy.updateSalaryStrategy(salaryStrategy, strategyData);
 		if(result.isSuccess()){
 			logController.addLog("更新薪水策略");
 		}
 		return result;
 	}
 
-	public ResultMessage addAccount(AccountVO account) {
-		ResultMessage result=accountf.addAccount(account);
+	public ResultMessage addAccount(AccountVO accountvo) {
+		ResultMessage result=account.addAccount(accountvo, accountData);
 		
 		if(result.isSuccess()){
-			logController.addLog("增加账户"+account.getID()+"的信息");
+			logController.addLog("增加账户"+accountvo.getID()+"的信息");
 		}
 		
 		return result;
 	}
 	
 	public AccountVO showAccount(String id) {
-		AccountVO result=accountf.showAccount(id);
+		AccountVO result=account.showAccount(id, accountData);
 		logController.addLog("查看账户"+id+"的信息");
 		return result;
 	}
 	
 	public ResultMessage deleteAccount(String id) {
-		ResultMessage result=accountf.deleteAccount(id);
+		ResultMessage result=account.deleteAccount(id, accountData);
 		
 		if(result.isSuccess()){
 			logController.addLog("删除账户"+id+"的信息");
@@ -145,24 +145,24 @@ public class FinanceController
 		return result;
 	}
 	
-	public ResultMessage updateAccount(AccountVO account) {
-		ResultMessage result=accountf.updateAccount(account);
+	public ResultMessage updateAccount(AccountVO accountvo) {
+		ResultMessage result=account.updateAccount(accountvo, accountData);
 		
 		if(result.isSuccess()){
-			logController.addLog("更新账户"+account.getID()+"的信息");
+			logController.addLog("更新账户"+accountvo.getID()+"的信息");
 		}
 		
 		return result;
 	}
 	
 	public ArrayList<AccountVO> showAllAccount() {
-		ArrayList<AccountVO> result=accountf.showAllAccount();
+		ArrayList<AccountVO> result=account.showAllAccount(accountData);
 		logController.addLog("显示所有账户信息");
 		return result;
 	}
 	
 	public ResultMessage addMoney(String accountName, double amount) {
-		ResultMessage result=accountf.addMoney(accountName, amount);
+		ResultMessage result=account.addMoney(accountName, amount, accountData);
 		if(result.isSuccess()){
 			logController.addLog("账户"+accountName+"收款"+amount+"元");
 		}
@@ -170,79 +170,71 @@ public class FinanceController
 	}
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
-		ResultMessage result=accountf.addInitialInfo(initial);
+		ResultMessage result=account.addInitialInfo(initial, accountData);
 		if(result.isSuccess()){
 			logController.addLog("系统初期初始化成功！");
 		}
 		return result;
 	}
 
-	public ResultMessage initialInfo() {
-		ResultMessage result=accountf.initialInfo();
-		if(result.isSuccess()){
-			logController.addLog("期初建账成功！");
-		}
-		return result;
-	}
-
 	public ArrayList<InitialInfoVO> findInitialInfo() {
-		ArrayList<InitialInfoVO> result=accountf.findInitialInfo();
+		ArrayList<InitialInfoVO> result=account.findInitialInfo(accountData);
 		logController.addLog("查看期初建账的信息");
 		return result;
 	}
 
 	public ReceiptVO createReceipt(ReceiptVO debit) {
-		return receipt.createReceipt(debit);
+		return receipt.createReceipt(debit, listController);
 	}
 	public ResultMessage addReceipt(ReceiptVO debit) {
-		ResultMessage result=receipt.addReceipt(debit);
+		ResultMessage result=receipt.addReceipt(debit, receiptData);
 		if(result.isSuccess()){
 			logController.addLog("增加收款单"+debit.getId()+"的信息");
 		}
 		return result;
 	}
 	public ResultMessage deleteReceipt(String id) {
-		ResultMessage result=receipt.deleteReceipt(id);
+		ResultMessage result=receipt.deleteReceipt(id, receiptData);
 		if(result.isSuccess()){
 			logController.addLog("删除收款单"+id+"的信息");
 		}
 		return result;
 	}
 	public ResultMessage updateReceipt(ReceiptVO debit) {
-		ResultMessage result=receipt.updateReceipt(debit);
+		ResultMessage result=receipt.updateReceipt(debit, receiptData);
 		if(result.isSuccess()){
 			logController.addLog("更新收款单"+debit.getId()+"的信息");
 		}
 		return result;
 	}
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department) {
-		ArrayList<ReceiptVO> result=receipt.showReceiptList(date, department);
+		ArrayList<ReceiptVO> result=receipt.showReceiptList(date, department, receiptData);
 		logController.addLog("查看收款单信息");
 		return result;
 	}
 	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
-		ArrayList<ReceiptVO> result=receipt.showReceiptList(date);
+		ArrayList<ReceiptVO> result=receipt.showReceiptList(date, receiptData);
 		logController.addLog("查看收款单信息");
 		return result;
 	}
 	public ArrayList<ReceiptVO> showReceiptList(Calendar start, Calendar end) {
-		ArrayList<ReceiptVO> result=receipt.showReceiptList(start,end);
+		ArrayList<ReceiptVO> result=receipt.showReceiptList(start,end,receiptData);
 		logController.addLog("查看收款单信息");
 		return result;
 	}
 	
 	public double getReceiptSum(Calendar date) {
-		double result=receipt.getReceiptSum(date);
+		double result=receipt.getReceiptSum(date, receiptData);
 		logController.addLog("计算收款总额");
 		return result;
 	}
 
 	public RentVO createRent(RentVO rent) {
-		return pay.createRent(rent);
+		return pay.createRent(rent, listController);
 	}
 	
 	public ResultMessage saveRent(RentVO rent) {
-		ResultMessage result=pay.saveRent(rent);
+		ResultMessage result=pay.saveRent(rent, payData, accountData);
 		if(result.isSuccess()){
 			logController.addLog("新建租金付款单");
 		}
@@ -250,11 +242,11 @@ public class FinanceController
 	}
 
 	public FreightVO createFreight(String accountNum) {
-		return pay.createFreight(accountNum);
+		return pay.createFreight(accountNum, listController, transportController);
 	}
 
 	public ResultMessage saveFreight(FreightVO freight) {
-		ResultMessage result=pay.saveFreight(freight);
+		ResultMessage result=pay.saveFreight(freight, payData, accountData);
 		if(result.isSuccess()){
 			logController.addLog("新建运费付款单");
 		}
@@ -262,11 +254,11 @@ public class FinanceController
 	}
 
 	public SalaryVO createSalary(String accountNum) {
-		return pay.createSalary(accountNum);
+		return pay.createSalary(accountNum, listController, personnelController);
 	}
 
 	public ResultMessage saveSalary(SalaryVO salary) {
-		ResultMessage result=pay.saveSalary(salary);
+		ResultMessage result=pay.saveSalary(salary, payData, accountData);
 		if(result.isSuccess()){
 			logController.addLog("新建工资付款单");
 		}
@@ -274,7 +266,7 @@ public class FinanceController
 	}
 
 	public ArrayList<PaymentVO> showAllPayment(Calendar start, Calendar end) {
-		return pay.showAllPayment(start, end);
+		return pay.showAllPayment(start, end, payData);
 	}
 
 	public EarningVO showEarnings(Calendar start,Calendar end) {
@@ -284,15 +276,15 @@ public class FinanceController
 	}
 
 	public ResultMessage exportEarning(EarningVO earnings) {
-		return pay.exportEarning(earnings);
+		return pay.exportEarning(earnings, personnelController);
 	}
 
 	public ReceiptVO findReceipt(String id) {
-		return receipt.findReceipt(id);
+		return receipt.findReceipt(id, receiptData);
 	}
 
 	public PaymentVO findPayment(String id) {
-		return pay.findPayment(id);
+		return pay.findPayment(id, payData);
 	}
 
 }

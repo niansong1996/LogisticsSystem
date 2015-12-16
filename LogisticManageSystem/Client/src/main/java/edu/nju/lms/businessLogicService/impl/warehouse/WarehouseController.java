@@ -1,5 +1,6 @@
 package edu.nju.lms.businessLogicService.impl.warehouse;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.VO.CheckinVO;
@@ -13,6 +14,7 @@ import edu.nju.lms.businessLogicService.WareHouseblService;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
+import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -110,6 +112,19 @@ public class WarehouseController implements WareHouseblService{
 		return warehouseOpbl.findCheckoutList(warehouseCheckoutData,id);
 	}
 	
+	public String getCurrentWarehouseNum(){
+		return logController.getLogId();
+	}
+	
+	public int getTotalRowNum(){
+		PartitionVO vo = warehouseManagebl.showPartition(warehouseData,getCurrentWarehouseNum());
+		ArrayList<Partition> info = vo.getPartitionInfor();
+		int result = 0;
+		for(Partition p :info){
+			result+=p.getCapacity();
+		}
+		return result;
+	}
 /*//for test
 
 	public static void main(String[] args){

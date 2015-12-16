@@ -137,4 +137,7 @@ public interface WareHouseblService {
 		
 		public CheckoutVO findCheckoutList(String id);
 
+		public String getCurrentWarehouseNum();
+		
+		public int getTotalRowNum();
 }

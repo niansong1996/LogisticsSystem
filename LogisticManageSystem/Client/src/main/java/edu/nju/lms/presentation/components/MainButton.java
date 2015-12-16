@@ -40,12 +40,15 @@ public class MainButton extends JLabel{
 	
 	public void paintComponent(Graphics g){
 		String path = "";
+		String str = name;
 		if(isIn){
-			path = "src/main/resources/pictures/buttons/"+name+"1.png";
+			if(name.contains("guide")&&name.contains("3")) str = name.substring(0, name.length()-1);
+			path = "src/main/resources/pictures/buttons/"+str+"1.png";
 		}else if(isPressed){
-			path = "src/main/resources/pictures/buttons/"+name+"2.png";
+			if(name.contains("guide")&&name.contains("3")) str = name.substring(0, name.length()-1);
+			path = "src/main/resources/pictures/buttons/"+str+"2.png";
 		}else{
-			path = "src/main/resources/pictures/buttons/"+name+".png";
+			path = "src/main/resources/pictures/buttons/"+str+".png";
 		}
 		g.drawImage(new ImageIcon(path).getImage(), 0,0,this.getWidth(),this.getHeight(), this);
 	}

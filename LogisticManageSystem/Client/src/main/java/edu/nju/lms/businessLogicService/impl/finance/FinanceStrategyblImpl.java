@@ -17,13 +17,12 @@ import edu.nju.lms.dataService.FinanceStrategyDataService;
  */
 public class FinanceStrategyblImpl {
 
-	private FinanceStrategyDataService service;
+//	private ,FinanceStrategyDataService service;
 
-	public FinanceStrategyblImpl(FinanceStrategyDataService service) {
-		this.service = service;
+	public FinanceStrategyblImpl() {
 	}
 
-	public ResultMessage addPriceStrategy(double std) {
+	public ResultMessage addPriceStrategy(double std,FinanceStrategyDataService service) {
 		PriceStrategyPO po = new PriceStrategyPO(std);
 		try {
 			return service.addPriceStrategy(po);
@@ -32,7 +31,7 @@ public class FinanceStrategyblImpl {
 		}
 	}
 
-	public ResultMessage updatePriceStrategy(double std) {
+	public ResultMessage updatePriceStrategy(double std,FinanceStrategyDataService service) {
 		PriceStrategyPO po = new PriceStrategyPO(std);
 		try {
 			return service.updatePriceStrategy(po);
@@ -41,7 +40,7 @@ public class FinanceStrategyblImpl {
 		}
 	}
 
-	public PriceStrategyVO findPriceStrategy() {
+	public PriceStrategyVO findPriceStrategy(FinanceStrategyDataService service) {
 		PriceStrategyVO result = null;
 		try {
 			PriceStrategyPO po = service.findPriceStrategy();
@@ -54,11 +53,15 @@ public class FinanceStrategyblImpl {
 		return result;
 	}
 
+<<<<<<< HEAD
 	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy) {
 		ResultMessage result=checkStrategy(salaryStrategy);
 		if(!result.isSuccess()){
 			return result;
 		}
+=======
+	public ResultMessage addSalaryStrategy(SalaryStrategyVO salaryStrategy,FinanceStrategyDataService service) {
+>>>>>>> origin/master
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());
@@ -69,7 +72,7 @@ public class FinanceStrategyblImpl {
 		}
 	}
 
-	public SalaryStrategyVO findSalaryStrategy(PersonType type) {
+	public SalaryStrategyVO findSalaryStrategy(PersonType type,FinanceStrategyDataService service) {
 		SalaryStrategyVO result = null;
 		PersonType POtype = type;
 		try {
@@ -85,11 +88,15 @@ public class FinanceStrategyblImpl {
 		return result;
 	}
 
+<<<<<<< HEAD
 	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy) {
 		ResultMessage result=checkStrategy(salaryStrategy);
 		if(!result.isSuccess()){
 			return result;
 		}
+=======
+	public ResultMessage updateSalaryStrategy(SalaryStrategyVO salaryStrategy,FinanceStrategyDataService service) {
+>>>>>>> origin/master
 		PersonType type = PersonType.valueOf(salaryStrategy.getType().toUpperCase());
 		SalaryStrategyPO po = new SalaryStrategyPO(type, salaryStrategy.getBasic(), salaryStrategy.getPerTime(),
 				salaryStrategy.getBonus());

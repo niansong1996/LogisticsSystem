@@ -18,18 +18,14 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
  *@date 2015年10月25日
  */
 public class FinanceReceiptblImpl{
-	private FinanceReceiptDataService service;
-	ListController listController;
 	
-	public FinanceReceiptblImpl(ListController listController,FinanceReceiptDataService service){
-		this.listController=listController;
-		this.service=service;
+	public FinanceReceiptblImpl(){
 	}
 
 	/**
 	 * create the date and the id automatically
 	 */
-	public ReceiptVO createReceipt(ReceiptVO debit) {
+	public ReceiptVO createReceipt(ReceiptVO debit,ListController listController) {
 		ReceiptVO result=debit;
 		result.setReceiptDate(CommonUtility.getTime());
 		result.setId(listController.applyListNum(ListType.RECEIPT));
@@ -44,7 +40,7 @@ public class FinanceReceiptblImpl{
 		return result;
 	}
 
-	public ResultMessage addReceipt(ReceiptVO debit) {
+	public ResultMessage addReceipt(ReceiptVO debit,FinanceReceiptDataService service) {
 		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			return service.addReceipt(po);
@@ -53,7 +49,7 @@ public class FinanceReceiptblImpl{
 		}
 	}
 
-	public ResultMessage deleteReceipt(String id) {
+	public ResultMessage deleteReceipt(String id,FinanceReceiptDataService service) {
 		ResultMessage result=idCheck(id);
 		if(!result.isSuccess()){
 			return result;
@@ -67,7 +63,7 @@ public class FinanceReceiptblImpl{
 		return result;
 	}
 
-	public ResultMessage updateReceipt(ReceiptVO debit) {
+	public ResultMessage updateReceipt(ReceiptVO debit,FinanceReceiptDataService service) {
 		ResultMessage result=idCheck(debit.getId());
 		if(!result.isSuccess()){
 			return result;
@@ -82,7 +78,7 @@ public class FinanceReceiptblImpl{
 		return result;
 	}
 
-	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department) {
+	public ArrayList<ReceiptVO> showReceiptList(Calendar date, String department,FinanceReceiptDataService service) {
 		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
 		try {
@@ -98,7 +94,7 @@ public class FinanceReceiptblImpl{
 		return listVO;
 	}
 
-	public ArrayList<ReceiptVO> showReceiptList(Calendar date) {
+	public ArrayList<ReceiptVO> showReceiptList(Calendar date,FinanceReceiptDataService service) {
 		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
 		try {
@@ -115,7 +111,7 @@ public class FinanceReceiptblImpl{
 		return listVO;
 	}
 
-	public ArrayList<ReceiptVO> showReceiptList(Calendar start, Calendar end) {
+	public ArrayList<ReceiptVO> showReceiptList(Calendar start, Calendar end,FinanceReceiptDataService service) {
 		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
 		try {
@@ -131,8 +127,8 @@ public class FinanceReceiptblImpl{
 		return listVO;
 	}
 	
-	public double getReceiptSum(Calendar date) {
-		ArrayList<ReceiptVO> listVO=showReceiptList(date);
+	public double getReceiptSum(Calendar date,FinanceReceiptDataService service) {
+		ArrayList<ReceiptVO> listVO=showReceiptList(date,service);
 		double sum=0;
 		if(listVO!=null){
 			for(ReceiptVO vo : listVO){
@@ -156,7 +152,7 @@ public class FinanceReceiptblImpl{
 		return result;
 	}
 
-	public ReceiptVO findReceipt(String id) {
+	public ReceiptVO findReceipt(String id,FinanceReceiptDataService service) {
 		ReceiptVO result = null;
 		try {
 			ReceiptPO po = service.findReceipt(id);

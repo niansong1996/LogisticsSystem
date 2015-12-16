@@ -3,6 +3,8 @@ package edu.nju.lms.presentation.frame;
 import java.awt.Graphics;
 import java.awt.ItemSelectable;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -13,9 +15,11 @@ import org.dom4j.Element;
 
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.Component;
+import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.config.ComponentConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
 import edu.nju.lms.presentation.config.UnitConfig;
+import edu.nju.lms.presentation.mouseListener.ButtonListener;
 
 /**
  * General panel<br>
@@ -66,6 +70,7 @@ public class MainPanel extends JPanel {
 		setBounds(x, y, w, h);
 		createComponents();
 		createUnits();
+		addKeyListener(new MyKeyListener());
 	}
 
 	/**
@@ -95,6 +100,7 @@ public class MainPanel extends JPanel {
 				Constructor<?> ctr = myUnit.getConstructor(Element.class, UIController.class);
 				com = (java.awt.Component) ctr.newInstance(unit.getElement(), controller);
 				add(com);
+				com.addKeyListener(new MyKeyListener());
 				units.add(com);
 				/**
 				 * add listener
@@ -172,5 +178,142 @@ public class MainPanel extends JPanel {
 
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * <b>ShortCut</b>:<br>
+	 * <b>VK_UP</b>: last guide_button<br>
+	 * <b>VK_DOWN</b>: last guide_button<br>
+	 * <b>VK_CTRL+VK_S</b>: save
+	 * <b>VK_ENTER</b>: confirm
+	 * @function Keyboard shortcut listener.
+	 * @author cuihao
+	 * @date 2015-12-16 14:42:58
+	 */
+	class MyKeyListener implements KeyListener {
+		
+		/**
+		 * first guide button.
+		 */
+		private int first = -1; 
+		/**
+		 * last guide button.
+		 */
+		private int end = -1;
+		/**
+		 * index of save button.
+		 */
+		private int save = -1;
+		/**
+		 * index of confirm button.
+		 */
+		private int confirm = -1;
+		/**
+		 * all the components of the panel.
+		 */
+		ArrayList<java.awt.Component> units;
+		
+		/**
+		 * logic of keyboard listener
+		 */
+		public void keyPressed(KeyEvent e) {
+			units = getUnits();
+			calIndex();
+			int index = -1;
+			switch(e.getKeyCode()){
+			case KeyEvent.VK_UP: index = 0; break;
+			case KeyEvent.VK_DOWN:index = 1; break;
+			case KeyEvent.VK_ESCAPE:index = 2; break;
+			case KeyEvent.VK_ENTER:index = 3; break;
+			case KeyEvent.VK_S: index = e.isControlDown()?4:-1; break;
+			}
+			if(!(index<0)) doOperation(index);
+		}
+		public void keyReleased(KeyEvent e) {
+		}
+		public void keyTyped(KeyEvent e) {}
+		
+		/**
+		 * find first and last guide button
+		 */
+		private void calIndex(){
+			boolean find = false;
+			boolean isEnd = false;
+			end = units.size();
+			for(int i = 0; i < units.size(); i++) {
+				java.awt.Component c = units.get(i);
+				if(c instanceof MainButton) {
+					String name  = "";
+					if((name = ((MainButton) c).getName()).contains("guide_")){
+						if(!find) {
+							first = i;
+							find = true;
+						}
+					}else if(find&&!isEnd){
+						end = i-1;
+						isEnd = true;
+					}
+					if(name.contains("confirm")||name.contains("SignIn")||name.contains("create")){
+						confirm = i;
+					}
+					if(name.contains("save")){
+						save = i;
+					}
+				}
+			}
+		}
+		
+		/**
+		 * find guide button to next panel
+		 * @return index of next button
+		 */
+		private int getNext(){
+			if(first<0||end<0) return -1;
+			int result = first;
+			for(int i = first; i <= end; i++) {
+				MainButton button = (MainButton) units.get(i);
+				if(button.getName().contains("3")){
+					result = i;
+				}
+			}
+			if(result<end){
+				return result+1;
+			}else{
+				return first+1;
+			}
+		}
+		
+		/**
+		 * Find guide button to last panel
+		 * @return index of last button.
+		 */
+		private int getBefore(){
+			if(first<0||end<0) return -1;
+			int result = first;
+			for(int i = first; i <= end; i++) {
+				MainButton button = (MainButton) units.get(i);
+				if(button.getName().contains("3")){
+					result = i;
+				}
+			}
+			if(result>first+1){
+				return result-1;
+			}else{
+				return end;
+			}
+		}		
+		
+		/**
+		 * Get mouselistener and do short cut operation.
+		 * @param index
+		 */
+		private void doOperation(int index){
+			int indexArray[] = {getBefore(), getNext() ,first,confirm,save};
+			int op = indexArray[index];
+			if(op < 0) return;
+			MainButton button = (MainButton) units.get(op);
+			ButtonListener listener = (ButtonListener) button.getMouseListeners()[0];
+			listener.mouseReleased(null);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package edu.nju.lms.businessLogicService.impl.utility;
 
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -21,20 +22,36 @@ import edu.nju.lms.dataService.WarehouseCheckoutDataService;
 import edu.nju.lms.dataService.WarehouseDataService;
 
 public class DataServiceFactory {
-	private static String IPAddress = "127.0.0.1";
+	private static String IPAddress = "114.212.42.136";
 	private static String portNum = "1099";
 	private static Remote getDataService(String dataServiceName){
 		try {
 			return Naming.lookup("//"+IPAddress+":"+portNum+"/"+dataServiceName);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			System.err.println("Other Exception:\n");
 			e.printStackTrace();
 		}
 		return null;
 	}
+	
+	public static boolean verifyConnection(){
+		try {
+			Naming.lookup("//"+IPAddress+":"+portNum+"/"+"LogDataService");
+			return true;
+		} catch (RemoteException e) {
+			return false;
+		} catch (NotBoundException e) {
+			System.err.println("NotBoundException");
+			return false;
+		} catch (Exception e) {
+			System.err.println("Other Exception:\n");
+			e.printStackTrace();
+		}
+		return false;	
+	}
+	
 	public static DepartmentDataService getDepartmentDataService(){
 		return (DepartmentDataService) DataServiceFactory.getDataService("DepartmentDataService");
 	}
