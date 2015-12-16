@@ -16,10 +16,10 @@ import edu.nju.lms.presentation.UIController.UIController;
 public class MainButton extends JLabel{
 
 	private static final long serialVersionUID = 4647675998577572101L;
-	private int x;
-	private int y;
-	private int h;
-	private int w;
+	protected int x;
+	protected int y;
+	protected int h;
+	protected int w;
 	private String name;
 	private boolean isIn;
 	private boolean isPressed;

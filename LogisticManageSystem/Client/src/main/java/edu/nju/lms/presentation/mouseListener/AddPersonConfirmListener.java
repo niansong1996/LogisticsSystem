@@ -36,9 +36,8 @@ public class AddPersonConfirmListener extends ButtonListener {
 				return;
 			}
 		}
-		JComboBox<?> box = (JComboBox<?>)units.get(6);
+		JComboBox<String> box = (JComboBox<String>)units.get(6);
 		String duty = (String) box.getSelectedItem();
-
 		/*
 		 * save data
 		 */

@@ -67,11 +67,11 @@ public class SaveSalaryStrategyButtonListener extends ButtonListener {
 			}else{
 				result = control.addSalaryStrategy(vo);
 			}
-		}
-		if (result.isSuccess()) {
-			new MyDialog("保存成功！", true);
-		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			if (result.isSuccess()) {
+				new MyDialog("保存成功！", true);
+			} else {
+				new MyDialog(result.getErrorMessage(), true);
+			}
 		}
 	}
 }

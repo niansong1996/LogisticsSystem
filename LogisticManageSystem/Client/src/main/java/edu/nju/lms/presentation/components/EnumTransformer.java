@@ -15,7 +15,7 @@ public class EnumTransformer {
 	private static String[] my_state = {"通过","不通过","等待"};
 	private static String[] paymentTypes={"运费","租金","薪水"};
 	private static String[] userPower = {"总经理","高级财务人员","普通财务人员","管理员","中转中心业务员",
-		   "营业厅业务员","中转中心仓库管理人员","快递员","司机"};
+		   "营业厅业务员","仓库管理人员","快递员","司机"};
 	/**
 	 * transform the PersonType to Chinese
 	 * @param type
