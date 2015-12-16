@@ -35,54 +35,40 @@ import edu.nju.lms.dataService.FinancePaymentDataService;
  */
 public class FinancePayblImpl {
 
-	ListController listController;
-	PersonnelController personnelController;
-	TransportController transportController;
-	FinancePaymentDataService paymentData;
-	FinanceAccountDataService accountService;
-
-	public FinancePayblImpl(ListController listController,
-			PersonnelController personnelController,
-			TransportController transportController,
-			FinanceAccountDataService account, FinancePaymentDataService service) {
-		this.listController = listController;
-		this.personnelController = personnelController;
-		this.transportController = transportController;
-		this.accountService = account;
-		this.paymentData = service;
+	public FinancePayblImpl(){
 	}
 
-	public RentVO createRent(RentVO rent) {
+	public RentVO createRent(RentVO rent,ListController listController) {
 		RentVO result = rent;
 		result.setId(listController.applyListNum(ListType.PAYMENT));
 		result.setPayTime(CommonUtility.getTime());
 		return result;
 	}
 
-	public ResultMessage saveRent(RentVO rent) {
+	public ResultMessage saveRent(RentVO rent,FinancePaymentDataService paymentData,FinanceAccountDataService accountService) {
 		PaymentPO po = new PaymentPO(rent.getId(), rent.getState(),
 				PaymentType.RENT, CommonUtility.String2Cal(rent.getPayTime()),
 				rent.getAccount(), rent.getAmount());
 		try {
 			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
-				return payMoney(rent.getAccount(), rent.getAmount());
+				return payMoney(rent.getAccount(), rent.getAmount(),accountService);
 			}else return result;
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 	}
 
-	public FreightVO createFreight(String accountNum) {
+	public FreightVO createFreight(String accountNum,ListController listController,TransportController transportController) {
 		FreightVO result = new FreightVO("", "", "", 0);
 		result.setId(listController.applyListNum(ListType.PAYMENT));
 		result.setAccount(accountNum);
 		result.setPayTime(CommonUtility.getTime());
-		result.setAmount(calculateFreight());
+		result.setAmount(calculateFreight(transportController));
 		return result;
 	}
 
-	public ResultMessage saveFreight(FreightVO freight) {
+	public ResultMessage saveFreight(FreightVO freight,FinancePaymentDataService paymentData,FinanceAccountDataService accountService) {
 		PaymentPO po = new PaymentPO(freight.getId(), freight.getState(),
 				PaymentType.FREIGHT, CommonUtility.String2Cal(freight
 						.getPayTime()), freight.getAccount(),
@@ -90,37 +76,37 @@ public class FinancePayblImpl {
 		try {
 			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
-				return payMoney(freight.getAccount(), freight.getAmount());
+				return payMoney(freight.getAccount(), freight.getAmount(),accountService);
 			}else return result;
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 	}
 
-	public SalaryVO createSalary(String accountNum) {
+	public SalaryVO createSalary(String accountNum,ListController listController,PersonnelController personnelController) {
 		SalaryVO result = new SalaryVO("", "", "", 0);
 		result.setId(listController.applyListNum(ListType.PAYMENT));
 		result.setPayTime(CommonUtility.getTime());
 		result.setAccount(accountNum);
-		result.setAmount(calculateSalary());
+		result.setAmount(calculateSalary(personnelController));
 		return result;
 	}
 
-	public ResultMessage saveSalary(SalaryVO salary) {
+	public ResultMessage saveSalary(SalaryVO salary,FinancePaymentDataService paymentData,FinanceAccountDataService accountService) {
 		PaymentPO po = new PaymentPO(salary.getId(), salary.getState(),
 				PaymentType.SALARY, CommonUtility.String2Cal(salary
 						.getPayTime()), salary.getAccount(), salary.getAmount());
 		try {
 			ResultMessage result = paymentData.addPayment(po);
 			if (result.isSuccess()) {
-				result = payMoney(salary.getAccount(), salary.getAmount());
+				result = payMoney(salary.getAccount(), salary.getAmount(),accountService);
 			}return result;
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 	}
 
-	public ArrayList<PaymentVO> showAllPayment(Calendar start, Calendar end) {
+	public ArrayList<PaymentVO> showAllPayment(Calendar start, Calendar end,FinancePaymentDataService paymentData) {
 		ArrayList<PaymentVO> result = new ArrayList<PaymentVO>();
 		ArrayList<PaymentPO> po = null;
 		try {
@@ -169,12 +155,12 @@ public class FinancePayblImpl {
 		return null;
 	}
 
-	public ResultMessage exportEarning(EarningVO earnings) {
+	public ResultMessage exportEarning(EarningVO earnings,PersonnelController personnelController) {
 		//TODO
 		return null;
 	}
 
-	public double calculateSalary() {
+	public double calculateSalary(PersonnelController personnelController) {
 		double amount = 0;
 		double each = 0;
 		ArrayList<PersonnelVO> persons = personnelController.showAllPersonnel();
@@ -188,7 +174,7 @@ public class FinancePayblImpl {
 		return amount;
 	}
 
-	public double calculateFreight() {
+	public double calculateFreight(TransportController transportController) {
 		double result = 0;
 		ArrayList<LoadVO> load = transportController.findUnpaidLoad();
 		ArrayList<LoadCarVO> loadCar = transportController.findUnpaidLoadCar();
@@ -203,7 +189,7 @@ public class FinancePayblImpl {
 		return result;
 	}
 
-	public ResultMessage payMoney(String accountNum, double money) {
+	public ResultMessage payMoney(String accountNum, double money,FinanceAccountDataService accountService) {
 		AccountPO account = null;
 		try {
 			account = accountService.findAccount(accountNum);
@@ -212,13 +198,13 @@ public class FinancePayblImpl {
 		}
 		if (account == null) {
 			return new ResultMessage(false, "未找到对应账户！");
-			
+
 		}
 
 		double currentMoney = account.getAmount();
 		if (currentMoney < money) {
 			return new ResultMessage(false, "该账户余额不足！");
-			
+
 		}
 		currentMoney -= money;
 		account.setAmount(currentMoney);
@@ -228,8 +214,8 @@ public class FinancePayblImpl {
 			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 	}
-	
-	public PaymentVO findPayment(String id) {
+
+	public PaymentVO findPayment(String id,FinancePaymentDataService paymentData) {
 		PaymentVO result = null;
 		try {
 			PaymentPO po = paymentData.findPayment(id);

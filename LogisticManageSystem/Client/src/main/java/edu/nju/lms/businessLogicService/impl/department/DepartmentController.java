@@ -26,20 +26,20 @@ public class DepartmentController implements DepartmentblService{
 		try {
 			logController=BusinessLogicFactory.getLogController();
 			departService=DataServiceFactory.getDepartmentDataService();
-			department=new DepartmentblImpl(departService);
+			department=new DepartmentblImpl();
 		} catch (NoBusinessLogicException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public DepartmentVO getDepartInfo(String id) {
-		DepartmentVO result=department.getDepartInfo(id); 
+		DepartmentVO result=department.getDepartInfo(id,departService); 
 		logController.addLog("查看机构"+id+"的信息");
 		return result;
 	}
 
 	public ResultMessage deleteDepartment(String id) {
-		ResultMessage result=department.deleteDepartment(id);
+		ResultMessage result=department.deleteDepartment(id,departService);
 
 		if(result.isSuccess()){
 			logController.addLog("删除机构"+id+"的信息");
@@ -49,7 +49,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 
 	public ResultMessage updateDepartment(DepartmentVO Department) {
-		ResultMessage result=department.updateDepartment(Department);
+		ResultMessage result=department.updateDepartment(Department,departService);
 
 		if(result.isSuccess()){
 			logController.addLog("更新机构"+Department.getDepartmentNum()+"的信息");
@@ -59,7 +59,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 
 	public ResultMessage addDepartment(DepartmentVO Department) {
-		ResultMessage result=department.addDepartment(Department);
+		ResultMessage result=department.addDepartment(Department,departService);
 
 		if(result.isSuccess()){
 			logController.addLog("新增机构"+Department.getDepartmentNum()+"的信息");
@@ -69,7 +69,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 
 	public ResultMessage addCity(CityVO city) {
-		ResultMessage result=department.addCity(city);
+		ResultMessage result=department.addCity(city,departService);
 
 		if(result.isSuccess()){
 			logController.addLog("新增城市"+city.getId()+"的信息");
@@ -79,7 +79,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 
 	public CityVO findCity(String id) {
-		CityVO result=department.findCity(id);
+		CityVO result=department.findCity(id,departService);
 
 		logController.addLog("查看城市"+id+"的信息");
 		
@@ -87,7 +87,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 	
 	public ResultMessage updateCity(CityVO city){
-		ResultMessage result=department.updateCity(city);
+		ResultMessage result=department.updateCity(city,departService);
 
 		if(result.isSuccess()){
 			logController.addLog("更新城市"+city.getId()+"的信息");
@@ -97,7 +97,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 	
 	public ResultMessage deleteCity(String id) {
-		ResultMessage result=department.deleteCity(id);
+		ResultMessage result=department.deleteCity(id,departService);
 		
 		if(result.isSuccess()){
 			logController.addLog("删除城市"+id+"的信息");
@@ -107,7 +107,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 	
 	public ArrayList<CityVO> showAllCities(){
-		ArrayList<CityVO> result=department.showAllCities();
+		ArrayList<CityVO> result=department.showAllCities(departService);
 		
 		logController.addLog("查看所有城市的信息");
 		
@@ -115,7 +115,7 @@ public class DepartmentController implements DepartmentblService{
 	}
 
 	public ArrayList<DepartmentVO> showAllDepartments() {
-		ArrayList<DepartmentVO> result=department.showAllDepartments();
+		ArrayList<DepartmentVO> result=department.showAllDepartments(departService);
 		logController.addLog("查看所有机构的信息");
 		return result;
 	}

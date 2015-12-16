@@ -28,7 +28,5 @@ public interface FinanceAccountblService {
 	
 	public ResultMessage addInitialInfo(InitialInfoVO initial);
 	
-	public ResultMessage initialInfo();
-	
 	public ArrayList<InitialInfoVO> findInitialInfo();
 }
