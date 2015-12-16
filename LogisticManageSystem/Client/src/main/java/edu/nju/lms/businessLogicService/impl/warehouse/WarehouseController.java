@@ -110,6 +110,10 @@ public class WarehouseController implements WareHouseblService{
 		return warehouseOpbl.findCheckoutList(id);
 	}
 	
+	public String getCurrentWarehouseNum(){
+		return logController.getLogId();
+	}
+	
 /*//for test
 
 	public static void main(String[] args){

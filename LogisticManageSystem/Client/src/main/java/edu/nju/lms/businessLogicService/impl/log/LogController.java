@@ -19,7 +19,6 @@ public class LogController implements LogblService{
 	public LogController(){
 		logService=DataServiceFactory.getLogDataService();
 		log=new LogblImpl(logService);
-
 	}
 	
 	public ArrayList<OperationVO> getLogInfo(Calendar begin, Calendar end) {

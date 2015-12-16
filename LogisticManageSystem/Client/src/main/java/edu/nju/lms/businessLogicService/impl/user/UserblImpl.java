@@ -16,10 +16,8 @@ import edu.nju.lms.dataService.UserDataService;
  */
 public class UserblImpl{
 	
-	private UserDataService dataService = null;
-	
 	public UserblImpl(UserDataService service) {
-		this.dataService=service;
+		
 	}
 	
 	public UserVO findUserInfo(String id) {
