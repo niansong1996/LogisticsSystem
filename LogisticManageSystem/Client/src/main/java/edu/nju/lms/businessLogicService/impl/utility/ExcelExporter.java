@@ -46,6 +46,7 @@ public class ExcelExporter {
 		catch (Exception e)  
 		{  
 			e.printStackTrace();  
-		}   
+		}  
+		wb.close();
 	}
 }

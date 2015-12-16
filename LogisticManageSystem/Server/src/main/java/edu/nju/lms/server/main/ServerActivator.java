@@ -148,6 +148,7 @@ public class ServerActivator {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user = text1.getText();
+				@SuppressWarnings("deprecation")
 				String password = text2.getText();
 				if(user.equals(userID)&&password.equals(userPassword)){
 					activateServer();

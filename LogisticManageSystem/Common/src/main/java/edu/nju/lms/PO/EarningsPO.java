@@ -1,10 +1,11 @@
 package edu.nju.lms.PO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import edu.nju.lms.data.CommonUtility;
 
-public class EarningsPO{
+public class EarningsPO implements Serializable{
 	/**
 	 * have been modified by sql
 	 */
