@@ -174,9 +174,9 @@
 		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy3" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_transportstrategy3" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		</mainPanel>  
@@ -555,16 +555,16 @@
 		<mainPanel name="sumManage" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="sumManage" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="bussinessNum" class = "Component" x="428" y="60" w="140" h="25"/>
-		    <component name="showSumPanel" class = "Component" x="400" y="650" w="181" h="24"/>
+		    <component name="bussinessNum" class = "Component" x="488" y="65" w="140" h="25"/>
+		    <component name="showSumPanel" class = "Component" x="480" y="655" w="181" h="24"/>
 		    <unit name ="sumReceiptTable" class = "table.SumReceiptTable" x="140" y="160" w="900" h="450" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		    <unit name ="search" class = "MainButton" x="830" y="60" w="112" h="35" type="1" listenerName="FindReceiptListener"/>
-		    <unit name ="userName" class = "MyTextField" x="630" y="60" w="168" h="20" type="0" textType="null"/>
+		    <unit name ="businessName" class = "MyTextField" x="650" y="61" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="sumLabel" class = "MyLabel" x="350" y="250" w="168" h="50" type="0" />
-		    <unit name ="accountID" class = "MyTextField" x="640" y="650" w="180" h="23" type="0" textType="null"/>
+		    <unit name ="accountID" class = "MyTextField" x="680" y="650" w="180" h="33" type="0" textType="null"/>
 		    <unit name ="confirmReceipt" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="ConfirmReceiptListener" />
-		    <unit name ="sumReceipt" class = "MainButton" x="150" y="110" w="175" h="57" type="1" listenerName="ShowSumReceiptListener"/>
+		    <unit name ="sumReceipt" class = "MainButton" x="150" y="635" w="175" h="57" type="1" listenerName="ShowSumReceiptListener"/>
 		    <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_sumManage3" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
