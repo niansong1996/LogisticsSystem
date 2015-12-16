@@ -21,8 +21,8 @@ import edu.nju.lms.dataService.TransportListDataService;
  *
  */
 public class TransHistoryTrack {
-	TransportCommodityDataService commodity;
-	TransportListDataService list;
+		TransportCommodityDataService commodity;
+		TransportListDataService list;
 	public TransHistoryTrack(TransportCommodityDataService commodity, TransportListDataService list){
 		this.commodity = commodity;
 		this.list = list;
