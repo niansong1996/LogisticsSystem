@@ -12,7 +12,7 @@ import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.Partition;
 import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.presentation.UIController.UIController;
-import edu.nju.lms.presentation.mouseListener.ChangePartitionListener;
+import edu.nju.lms.presentation.mouseListener.ChangeAirListener;
 
 /**
  * @author tj
@@ -76,4 +76,13 @@ public class CircleButton extends MainButton {
 		setBounds(x,y,w,h);
 		ui.getFrame().repaint();
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

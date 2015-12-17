@@ -1,6 +1,7 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -34,7 +35,7 @@ public class CircleBase extends JLabel {
 	private ArrayList<Partition> lists;
 	private PartitionType type;
 	private String warehouseNum;
-
+	private double cordon;
 	public CircleBase(Element element, UIController controller) {
 		this.control = controller.getWarehouseController();
 		w = Integer.parseInt(element.attributeValue("w"));
@@ -53,10 +54,15 @@ public class CircleBase extends JLabel {
 		g.drawOval(0, 0, getWidth() - 1, getHeight() - 1);
 		g.drawOval(10, 10, getWidth() - 20, getHeight() - 20);
 		g2d.setStroke(new BasicStroke(10));
+		double percent = arc/360.0;
+		if(percent>cordon){
+			g2d.setColor(Color.RED);
+		}
 		g2d.drawArc(5, 5, getWidth() - 10, getHeight() - 10, 90, arc);
 	}
 
 	public void initializeArc() {
+//		cordon = control.getCordon(warehouseNum);
 //		warehouseNum = control.getCurrentWarehouseNum();
 //		vo = control.showPartition(warehouseNum);
 //		if(vo==null){
@@ -91,4 +97,9 @@ public class CircleBase extends JLabel {
 	public int getCircleY(){
 		return y+100;
 	}
+
+	public int getArc() {
+		return arc;
+	}
+	
 }
