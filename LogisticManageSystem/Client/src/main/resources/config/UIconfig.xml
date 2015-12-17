@@ -529,8 +529,6 @@
 		    <component name="paymentPanel" class = "Component" x="140" y="80" w="793" h="500"/>
 		    <component name="table_account" class = "Component" x="160" y="130" w="720" h="40"/>
 		    <unit name ="AccountTable" class = "table.AccountTable" x="160" y="170" w="720" h="360" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
-		    <component name="paymentPanel" class = "Component" x="140" y="80" w="880" h="620"/>
-		    <unit name ="AccountTable" class = "table.AccountTable" x="160" y="190" w="820" h="400" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="findPerson" class = "MainButton" x="800" y="100" w="53" h="20" type="1" listenerName="FindAccountButtonListener"/>
 		    <unit name ="userName" class = "MyTextField" x="615" y="100" w="168" h="20" type="0" textType="null"/>
 		    <unit name ="delete" class = "MainButton" x="820" y="620" w="112" h="34" type="1" listenerName="DeleteAccountListener"/>
