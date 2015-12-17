@@ -207,7 +207,7 @@
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="log" class = "Component" x="150" y="20" w="98" h="23"/>
 		     <component name="to" class = "Component" x="345" y="60" w="31" h="29"/>
-		      <component name="table_log" class = "Component" x="150" y="130" w="850" h="40"/>
+		     <component name="table_log" class = "Component" x="150" y="130" w="850" h="40"/>
 		     <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		     <unit name ="end" class="DateChooser" x="395" y="60" w="180" h="33" type="0"/>
 		     <unit name ="logTable" class = "table.LogTable" x="150" y="170" w="850" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
@@ -480,9 +480,10 @@
 		     <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		     <component name="log" class = "Component" x="150" y="20" w="98" h="23"/>
 		     <component name="to" class = "Component" x="345" y="60" w="31" h="29"/>
+		     <component name="table_log" class = "Component" x="150" y="130" w="850" h="40"/>
 		     <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		     <unit name ="end" class="DateChooser" x="395" y="60" w="180" h="33" type="0"/>
-		     <unit name ="logTable" class = "table.LogTable" x="150" y="130" w="850" h="520" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		     <unit name ="logTable" class = "table.LogTable" x="150" y="170" w="850" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		     <unit name ="search" class = "MainButton" x="600" y="60" w="112" h="34" type="1" listenerName="SearchLogButtonListener"/>
 		     <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_sumManage" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -520,7 +521,8 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="accountManage" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="paymentPanel" class = "Component" x="140" y="80" w="793" h="500"/>
-		    <unit name ="AccountTable" class = "table.AccountTable" x="160" y="130" w="720" h="400" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		    <component name="table_account" class = "Component" x="160" y="130" w="720" h="40"/>
+		    <unit name ="AccountTable" class = "table.AccountTable" x="160" y="170" w="720" h="360" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="findPerson" class = "MainButton" x="800" y="100" w="53" h="20" type="1" listenerName="FindAccountButtonListener"/>
 		    <unit name ="userName" class = "MyTextField" x="615" y="100" w="168" h="20" type="0" textType="null"/>
 		    <unit name ="delete" class = "MainButton" x="820" y="570" w="112" h="34" type="1" listenerName="DeleteAccountListener"/>
@@ -658,7 +660,8 @@
 			<component name="carNum" class = "Component" x="150" y="420" w="150" h="27"/>
 			<component name="driverNum" class = "Component" x="150" y="500" w="150" h="27"/>
 			<component name="commodityNum" class = "Component" x="560" y="550" w="150" h="27"/>
-			<unit name ="load" class = "table.CommodityTable" x="590" y="130" w="400" h="400" type="2"/>
+			<component name="table_list" class = "Component" x="590" y="130" w="400" h="40"/>
+			<unit name ="load" class = "table.CommodityTable" x="590" y="170" w="400" h="360" type="2"/>
 			<unit name="date" class="DateChooser" x="340" y="90" w="180" h="33" type="0"/>
 			<unit name="commodityNum" class="MyTextField" x="700" y="550" w="180" h="33" type="0" textType="null"/>
 			<unit name="bussinessNum" class="MyTextField" x="340" y="170" w="180" h="33" type="0" textType="null"/>
@@ -786,7 +789,8 @@
 			<component name="courierNum" class = "Component" x="165" y="220" w="135" h="28"/>
 			<component name="receiptMoney" class = "Component" x="165" y="320" w="115" h="27"/>
 			<component name="commodityNum" class = "Component" x="165" y="420" w="150" h="27"/>
-			<unit name ="receipt" class = "table.CommodityTable" x="590" y="160" w="400" h="400" type="2"/>
+			<component name="table_list" class = "Component" x="590" y="160" w="400" h="40"/>
+			<unit name ="receipt" class = "table.CommodityTable" x="590" y="200" w="400" h="360" type="2"/>
 			<unit name="date" class="DateChooser" x="320" y="115" w="150" h="30" type="0"/>
 			<unit name="commodityNum" class="MyTextField" x="165" y="480" w="300" h="33" type="0" textType="null"/>
 			<unit name="courierNum" class="MyTextField" x="320" y="220" w="180" h="33" type="0" textType="null"/>
@@ -1042,7 +1046,8 @@
 			<component name="loadPanel" class = "Component" x="100" y="100"  w="964" h="517"/>
 			<component name="load" class = "Component" x="150" y="20" w="98" h="23"/>
 			<component name="commodityNum" class = "Component" x="595" y="525" w="120" h="25"/>
-			<unit name ="load" class = "table.CommodityTable" x="610" y="120" w="400" h="360" type="2"/>
+			<component name="table_list" class = "Component" x="610" y="120" w="400" h="40"/>
+			<unit name ="load" class = "table.CommodityTable" x="610" y="160" w="400" h="320" type="2"/>
 			<unit name="date" class="DateChooser" x="280" y="143" w="180" h="33" type="0"/>
 			<unit name="commodityNum" class="MyTextField" x="700" y="520" w="180" h="33" type="0" textType="null"/>
 			<unit name="hangyunbianhao" class="MyTextField" x="400" y="260" w="180" h="33" type="0" textType="null"/>
