@@ -1,6 +1,8 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -39,6 +41,8 @@ public class MainButton extends JLabel{
 	}
 	
 	public void paintComponent(Graphics g){
+		Graphics2D g2D = (Graphics2D) g;
+		g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
 		String path = "";
 		String str = name;
 		if(isIn){
@@ -50,7 +54,7 @@ public class MainButton extends JLabel{
 		}else{
 			path = "src/main/resources/pictures/buttons/"+str+".png";
 		}
-		g.drawImage(new ImageIcon(path).getImage(), 0,0,this.getWidth(),this.getHeight(), this);
+		g2D.drawImage(new ImageIcon(path).getImage(), 0,0,this.getWidth(),this.getHeight(), this);
 	}
 	public void setIn(boolean isIn){
 		this.isIn = isIn;
