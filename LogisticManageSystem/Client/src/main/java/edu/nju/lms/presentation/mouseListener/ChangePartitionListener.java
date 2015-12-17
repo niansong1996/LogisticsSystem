@@ -58,21 +58,21 @@ public class ChangePartitionListener extends ButtonListener implements MouseMoti
 		double mysin = (y-c_y)/distance;
 		double mycos = (x-c_x)/distance;
 		//左上
-		if(e.getX()<0&&e.getY()<0){
-			base.setArc((int)(Math.asin(mysin)/(2*Math.PI)*360));
+		if(x-c_x<0&&y-c_y<0){
+			base.setArc(-(int)(Math.asin(mycos)/(2*Math.PI)*360));
 			button.setLocation((int)(c_x+mycos*100-10),(int)(c_y+mysin*100-10));
 		//左下
-		}else if(e.getX()<=0&&e.getY()>=0){
-			base.setArc(-(int)(Math.asin(mysin)/(2*Math.PI)*360)+90);
-			button.setLocation((int)(c_x+mycos*100-10),(int)(c_y+mysin*100-13));
-		//右下
-		}else if(e.getX()>=0&&e.getY()<=0){
-			base.setArc(-(int)(Math.asin(mysin)/(2*Math.PI)*360)+180);
-			button.setLocation((int)(c_x+mycos*100-13),(int)(c_y+mysin*100-13));
+		}else if(x-c_x<=0&&y-c_y>=0){
+			base.setArc((int)(Math.asin(mysin)/(2*Math.PI)*360)+90);
+			button.setLocation((int)(c_x+mycos*100-10),(int)(c_y+mysin*100-15));
 		//右上
-		}else if(e.getX()>=0&&e.getY()>=0){
-			base.setArc((int)(Math.asin(mysin)/(2*Math.PI)*360)+270);
-			button.setLocation((int)(c_x+mycos*100-13),(int)(c_y+mysin*100-10));
+		}else if(x-c_x>=0&&y-c_y<=0){
+			base.setArc(-(int)(Math.asin(mysin)/(2*Math.PI)*360)+270);
+			button.setLocation((int)(c_x+mycos*100-15),(int)(c_y+mysin*100-15));
+		//右下
+		}else if(x-c_x>=0&&y-c_y>=0){
+			base.setArc((int)(Math.asin(mycos)/(2*Math.PI)*360)+180);
+			button.setLocation((int)(c_x+mycos*100-15),(int)(c_y+mysin*100-10));
 		}
 	}
 

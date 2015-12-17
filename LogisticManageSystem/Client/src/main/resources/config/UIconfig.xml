@@ -85,7 +85,7 @@
 		    <unit name ="salary" class = "MyTextField" x="520" y="256" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="perTime" class = "MyTextField" x="520" y="306" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="bonus" class = "MyTextField" x="520" y="356" w="168" h="23" type="0" textType="null"/>
-		    <unit name ="personDuty" class = "MyComboBox" x="520" y="414" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员"/>
+		    <unit name ="personDuty" class = "MyComboBox" x="520" y="414" w="168" h="23" type="0" items="总经理;高级财务人员;普通财务人员;中转中心业务员;营业厅业务员;仓库管理人员;快递员;司机"/>
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
 		    <unit name ="cancel" change="PersonnelManagePanel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -992,16 +992,8 @@
 		<mainPanel name="PartitionPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="partition" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="changePartition" class ="Component" x="105" y="80" w="950" h="600"/>
-		    <unit name="airStart" class="MyTextField" x="380" y="200" w="80" h="33" type="0" textType="null"/>
-		    <unit name="airEnd" class="MyTextField" x="560" y="200" w="80" h="33" type="0" textType="null"/>
-		    <unit name="trainStart" class="MyTextField" x="380" y="295" w="80" h="33" type="0" textType="null"/>
-		    <unit name="trainEnd" class="MyTextField" x="560" y="295" w="80" h="33" type="0" textType="null"/>
-		    <unit name="motoStart" class="MyTextField" x="380" y="390" w="80" h="33" type="0" textType="null"/>
-		    <unit name="moroEnd" class="MyTextField" x="560" y="390" w="80" h="33" type="0" textType="null"/>
-		    <unit name="flexStart" class="MyTextField" x="380" y="485" w="80" h="33" type="0" textType="null"/>
-		    <unit name="flexEnd" class="MyTextField" x="560" y="485" w="80" h="33" type="0" textType="null"/>
-		    <unit name="warehouseNum" class="MyTextField" x="430" y="580" w="168" h="33" type="0" textType="null"/>
+		    <unit name="CircleButton" class ="CircleButton" x="200" y="200" w="27" h="27" type="1" listenerName="ChangePartitionListener" belong="AIRPLANE"/>
+		    <unit name ="AIRPLANE" class = "CircleBase" x="200" y="200" w="200" h="200" type="0"/>
 		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SavePartitionListener"/>
 		    <unit name ="cancel" class = "MainButton" x="600" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
