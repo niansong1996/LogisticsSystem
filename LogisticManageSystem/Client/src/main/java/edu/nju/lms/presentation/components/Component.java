@@ -1,7 +1,9 @@
 package edu.nju.lms.presentation.components;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -39,10 +41,12 @@ public class Component {
 	 * @param g
 	 */
 	public void createComponent(Graphics g){
+		Graphics2D g2D = (Graphics2D) g;
+		g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
 		Image image;
 		try {
 			image = ImageIO.read(new FileInputStream(path));
-			g.drawImage(image, x, y, width,height,null);
+			g2D.drawImage(image, x, y, width,height,null);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
