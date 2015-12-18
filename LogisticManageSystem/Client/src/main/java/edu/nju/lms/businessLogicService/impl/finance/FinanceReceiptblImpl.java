@@ -82,7 +82,9 @@ public class FinanceReceiptblImpl{
 		ArrayList<ReceiptVO> listVO=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> listPO=new ArrayList<ReceiptPO>();
 		try {
+			System.out.println(CommonUtility.Cal2String(date)+" "+department);
 			listPO=service.findReceipt(date, department);
+			System.out.println(listPO.size());
 		} catch (RemoteException e) {
 		}
 		if(listPO!=null){

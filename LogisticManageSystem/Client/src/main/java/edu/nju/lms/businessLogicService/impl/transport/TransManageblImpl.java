@@ -188,7 +188,6 @@ public class TransManageblImpl{
 			for(DriverPO temp : po){
 				DriverVO driver=new DriverVO(temp.getDriverNum(), temp.getDriverName(), CommonUtility.Cal2String(temp.getBirth()), 
 						temp.getIdNum(), temp.getPhoneNum(), temp.getSex(), CommonUtility.Cal2String(temp.getDrivingLimit()), temp.getBusinesshallNum());
-				System.out.println(driver.getDriverName());
 				result.add(driver);
 			}
 		}

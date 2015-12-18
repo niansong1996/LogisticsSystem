@@ -35,7 +35,6 @@ public class DriverTable extends MyTable{
 		drivers = new ArrayList<DriverVO>();
 		transportController = controller.getTransportController();
 		drivers = transportController.findAllDrivers();
-		System.out.println(drivers.isEmpty());
 		for(int i = 0; i < drivers.size(); i++) {
 			MyTableLabel label = createLabel(drivers.get(i));
 			addData(label);
