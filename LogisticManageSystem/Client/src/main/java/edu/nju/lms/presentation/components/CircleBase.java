@@ -35,7 +35,6 @@ public class CircleBase extends JLabel {
 	private ArrayList<Partition> lists;
 	private PartitionType type;
 	private String warehouseNum;
-	private double cordon;
 	public CircleBase(Element element, UIController controller) {
 		this.control = controller.getWarehouseController();
 		w = Integer.parseInt(element.attributeValue("w"));
@@ -55,9 +54,6 @@ public class CircleBase extends JLabel {
 		g.drawOval(10, 10, getWidth() - 20, getHeight() - 20);
 		g2d.setStroke(new BasicStroke(10));
 		double percent = arc/360.0;
-		if(percent>cordon){
-			g2d.setColor(Color.RED);
-		}
 		g2d.drawArc(5, 5, getWidth() - 10, getHeight() - 10, 90, arc);
 	}
 
