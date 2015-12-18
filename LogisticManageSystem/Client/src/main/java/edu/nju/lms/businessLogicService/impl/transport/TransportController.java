@@ -269,5 +269,15 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public SendVO findSendListById(String expressNum) {
 		return process.findSendListById(listData,expressNum);
 	}
+
+	public ArrayList<DriverVO> findAllDrivers() {
+		ArrayList<DriverVO> result=manage.findAllDrivers(toolData);
+		try {
+			logController=BusinessLogicFactory.getLogController();
+		} catch (NoBusinessLogicException e) {
+		}
+		logController.addLog("查看所有司机的信息");
+		return result;
+	}
 	
 }

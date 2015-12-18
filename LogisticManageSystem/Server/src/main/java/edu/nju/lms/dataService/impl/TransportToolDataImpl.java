@@ -121,4 +121,16 @@ public class TransportToolDataImpl extends UnicastRemoteObject implements Transp
 		return vehicleList;
 	}
 
+	public ArrayList<DriverPO> showAllDrivers() throws RemoteException {
+		ArrayList<DriverPO> driverList = new ArrayList<DriverPO>();
+		ResultSet result = JDBC.ExecuteQuery("select * from driverpo;");
+		try{
+		if(!result.wasNull()){
+			POGenerator.generateMultiObject(driverList,result, DriverPO.class.getName());
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		};
+		return driverList;
+	}
 }

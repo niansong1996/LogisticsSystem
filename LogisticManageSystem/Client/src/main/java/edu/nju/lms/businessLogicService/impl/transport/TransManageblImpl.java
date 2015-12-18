@@ -175,6 +175,24 @@ public class TransManageblImpl{
 		}
 		return result;
 	}
+	
+	public ArrayList<DriverVO> findAllDrivers(TransportToolDataService service){
+		ArrayList<DriverVO> result=new ArrayList<DriverVO>();
+		ArrayList<DriverPO> po=null;
+		try {
+			po=service.showAllDrivers();
+		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			for(DriverPO temp : po){
+				DriverVO vo=new DriverVO(temp.getDriverNum(),temp.getDriverName(),CommonUtility.Cal2String(temp.getBirth()),
+						temp.getIdNum(),temp.getPhoneNum(),temp.getSex(),CommonUtility.Cal2String(temp.getDrivingLimit()),temp.getBusinesshallNum());
+				result.add(vo);
+			}
+		}
+		return result;
+	}
 
 	public ResultMessage check(DepartmentController departmentController,String businessNum){
 		ResultMessage result=new ResultMessage(true,"");

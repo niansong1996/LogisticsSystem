@@ -95,5 +95,5 @@ public interface TransManageblService {
 	 */
 	public DriverVO findDriver(String vehicleNum);
 	
-	
+	public ArrayList<DriverVO> findAllDrivers();
 }
