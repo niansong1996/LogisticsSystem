@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.7.9
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `userpo` (
   `power` varchar(20) NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `userName` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `userpo` (
 
 LOCK TABLES `userpo` WRITE;
 /*!40000 ALTER TABLE `userpo` DISABLE KEYS */;
-INSERT INTO `userpo` VALUES (1,'1000000999','12345678','COURIER'),(2,'1000000037','123456','ADMINISTRATOR');
+INSERT INTO `userpo` VALUES (3,'admin','admin','ADMINISTRATOR'),(12,'1000000020','123456','MANAGER'),(13,'0101010001','123456','COURIER'),(14,'0101017001','123456','COUNTER_BUSSINESS'),(18,'1000000037','123456','FINANCIAL_ADVANCED'),(19,'0250010001','123456','COUNTER_INTERMEDIATE'),(20,'0250011000','123456','WAREHOUSE');
 /*!40000 ALTER TABLE `userpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-11 20:31:51
+-- Dump completed on 2015-12-18 20:09:10

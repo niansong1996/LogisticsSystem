@@ -9,6 +9,7 @@ import org.dom4j.Element;
 import edu.nju.lms.VO.DriverVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
+import edu.nju.lms.dataService.TransportToolDataService;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyTextField;
@@ -23,14 +24,18 @@ public class DriverTable extends MyTable{
 	private static final long serialVersionUID = 8158931247558228237L;
 	
 	private ArrayList<DriverVO> drivers;
+	private TransportController transportController;
 	public DriverTable(Element element, UIController controller) {
 		super(element, controller);
-		controller.getTransportController();
+		transportController = controller.getTransportController();
 	}
 
 	@Override
 	protected void getData() {
 		drivers = new ArrayList<DriverVO>();
+		transportController = controller.getTransportController();
+		drivers = transportController.findAllDrivers();
+		System.out.println(drivers.isEmpty());
 		for(int i = 0; i < drivers.size(); i++) {
 			MyTableLabel label = createLabel(drivers.get(i));
 			addData(label);

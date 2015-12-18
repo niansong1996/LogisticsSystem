@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.7.9
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `salarystrategypo` (
   `bonus` double NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `type` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `salarystrategypo` (
 
 LOCK TABLES `salarystrategypo` WRITE;
 /*!40000 ALTER TABLE `salarystrategypo` DISABLE KEYS */;
+INSERT INTO `salarystrategypo` VALUES (1,'MANAGER',20000,0,0),(2,'FINANCIAL_ADVANCED',10000,0,0),(3,'FINANCIAL_NORMAL',8000,0,0),(4,'ADMINISTRATOR',7000,0,0),(5,'COUNTER_INTERMEDIATE',5000,0,0),(6,'COUNTER_BUSSINESS',5000,0,0),(7,'WAREHOUSE',4000,0,0),(8,'COURIER',3000,30,0),(9,'DRIVER',2000,50,0);
 /*!40000 ALTER TABLE `salarystrategypo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-11 20:31:51
+-- Dump completed on 2015-12-18 20:09:10

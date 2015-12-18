@@ -186,9 +186,10 @@ public class TransManageblImpl{
 		}
 		if(po!=null){
 			for(DriverPO temp : po){
-				DriverVO vo=new DriverVO(temp.getDriverNum(),temp.getDriverName(),CommonUtility.Cal2String(temp.getBirth()),
-						temp.getIdNum(),temp.getPhoneNum(),temp.getSex(),CommonUtility.Cal2String(temp.getDrivingLimit()),temp.getBusinesshallNum());
-				result.add(vo);
+				DriverVO driver=new DriverVO(temp.getDriverNum(), temp.getDriverName(), CommonUtility.Cal2String(temp.getBirth()), 
+						temp.getIdNum(), temp.getPhoneNum(), temp.getSex(), CommonUtility.Cal2String(temp.getDrivingLimit()), temp.getBusinesshallNum());
+				System.out.println(driver.getDriverName());
+				result.add(driver);
 			}
 		}
 		return result;

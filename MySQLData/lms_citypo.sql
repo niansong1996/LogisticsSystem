@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: lms
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.7.9
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `citypo` (
 
 LOCK TABLES `citypo` WRITE;
 /*!40000 ALTER TABLE `citypo` DISABLE KEYS */;
-INSERT INTO `citypo` VALUES (1,'010','北京','[30.0, 1064.7, 1888.8, 900.0]','[]'),(2,'021','上海','[1064.7, 30.0, 1213.0, 266.0]','[]'),(3,'020','广州','[188.8, 1213.0, 30.0, 1132.0]','[]'),(4,'025','南京','[900.0, 266.0, 1132.0, 30.0]','[]');
+INSERT INTO `citypo` VALUES (1,'010','北京','[30.0, 1064.7, 1888.8, 900.0]','[010101]'),(2,'021','上海','[1064.7, 30.0, 1213.0, 266.0]','[]'),(3,'020','广州','[188.8, 1213.0, 30.0, 1132.0]','[]'),(4,'025','南京','[900.0, 266.0, 1132.0, 30.0]','[]');
 /*!40000 ALTER TABLE `citypo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-11 20:31:52
+-- Dump completed on 2015-12-18 20:09:11
