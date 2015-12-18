@@ -20,6 +20,7 @@ public class CommonUtility {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 		try {
+			if(s.length()==10) s+=" 12:00:00"; 
 			cal.setTime(sdf.parse(s));
 		} catch (ParseException e) {System.out.println("parse failed!!!");}
 		return cal;
