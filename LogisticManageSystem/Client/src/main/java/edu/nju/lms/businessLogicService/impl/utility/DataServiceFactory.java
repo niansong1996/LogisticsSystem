@@ -23,7 +23,7 @@ import edu.nju.lms.dataService.WarehouseDataService;
 
 public class DataServiceFactory {
 	// "114.212.42.136";
-	private static String IPAddress = "114.212.42.136";
+	private static String IPAddress = "127.0.0.1";
 	private static String portNum = "1099";
 	private static Remote getDataService(String dataServiceName){
 		try {
