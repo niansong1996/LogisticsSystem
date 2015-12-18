@@ -280,4 +280,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return result;
 	}
 
+	public String getCurrentHallNum(){
+		return logController.getLogId().substring(0, 6);
+	}
+
 }
