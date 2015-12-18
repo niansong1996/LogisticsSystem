@@ -362,24 +362,30 @@ public class TransProcessblImpl{
 
 	public LoadVO findLoadList(TransportListDataService list,String id) {
 		LoadVO result = null;
+		LoadPO po=null;
 		try {
-			LoadPO po = list.findLoad(id);
-			result = new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),po.getDestiCity(),
-					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+			po = list.findLoad(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),po.getDestiCity(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
 		}
 		return result;
 	}
 	
 	public LoadCarVO findLoadCarList(TransportListDataService list,String id) {
 		LoadCarVO result = null;
+		LoadcarPO po=null;
 		try {
-			LoadcarPO po = list.findLoadCar(id);
-			result = new LoadCarVO(po.getId(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),
-					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+			po = list.findLoadCar(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new LoadCarVO(po.getId(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
 		}
 		return result;
 	}

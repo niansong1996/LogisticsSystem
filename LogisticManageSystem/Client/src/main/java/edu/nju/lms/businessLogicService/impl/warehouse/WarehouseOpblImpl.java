@@ -91,12 +91,14 @@ public class WarehouseOpblImpl {
 	
 	public CheckinVO findCheckinList(WarehouseCheckinDataService checkinData,String id) {
 		CheckinVO result = null;
+		CheckinPO po = null;
 		try {
-			CheckinPO po = checkinData.findCheckin(id);
-			//TODO can't actually pass null here
-			result = new CheckinVO(po.getId(),null,po.getExpresses(),CommonUtility.Cal2String(po.getCheckinDate()),null);
+			po = checkinData.findCheckin(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new CheckinVO(po.getId(),null,po.getExpresses(),CommonUtility.Cal2String(po.getCheckinDate()),null);
 		}
 		return result;
 	}
@@ -104,13 +106,15 @@ public class WarehouseOpblImpl {
 	
 	public CheckoutVO findCheckoutList(WarehouseCheckoutDataService checkoutData,String id) {
 		CheckoutVO result = null;
+		CheckoutPO po = null;
 		try {
-			CheckoutPO po = checkoutData.findCheckout(id);
-			result = new CheckoutVO(po.getId(),po.getExpressNums(),CommonUtility.Cal2String(po.getCheckoutDate()),po.getDestination(),po.getLoadType(),po.getArrivalNum(),po.getMotorNum());
+			po = checkoutData.findCheckout(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
-		
+		if(po!=null){
+			result = new CheckoutVO(po.getId(),po.getExpressNums(),CommonUtility.Cal2String(po.getCheckoutDate()),po.getDestination(),po.getLoadType(),po.getArrivalNum(),po.getMotorNum());
+		}
 		return result;
 	}
 }

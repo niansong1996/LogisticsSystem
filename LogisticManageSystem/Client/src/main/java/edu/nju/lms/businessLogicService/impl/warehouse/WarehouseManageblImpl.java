@@ -38,11 +38,13 @@ public class WarehouseManageblImpl {
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
-		for(InventoryPO inventory : inventoryList){
-			expressNums.add(inventory.getExpressNum());
-			checkinTime.add(inventory.getCheckinTime());
-			destination.add(inventory.getDestination());
-			location.add(inventory.getLocation());
+		if(inventoryList!=null){
+			for(InventoryPO inventory : inventoryList){
+				expressNums.add(inventory.getExpressNum());
+				checkinTime.add(inventory.getCheckinTime());
+				destination.add(inventory.getDestination());
+				location.add(inventory.getLocation());
+			}
 		}
 		return new InventoryExcelVO(expressNums, checkinTime, destination,location);
 	}

@@ -132,10 +132,12 @@ public class UserblImpl{
 		} catch (RemoteException e) {
 		}
 		ArrayList<UserVO> usersVO = new ArrayList<UserVO>();
-		for(UserPO user: users) {
-			if(!user.getUserName().equals("admin")){
-				UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
-				usersVO.add(userVO);
+		if(users!=null){
+			for(UserPO user: users) {
+				if(!user.getUserName().equals("admin")){
+					UserVO userVO = new UserVO(user.getUserName(), user.getPassword(), user.getPower());
+					usersVO.add(userVO);
+				}
 			}
 		}
 		return usersVO;
