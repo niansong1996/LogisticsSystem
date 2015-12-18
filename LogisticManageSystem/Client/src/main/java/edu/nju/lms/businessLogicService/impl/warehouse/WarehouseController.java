@@ -113,7 +113,7 @@ public class WarehouseController implements WareHouseblService{
 	}
 	
 	public String getCurrentWarehouseNum(){
-		return logController.getLogId();
+		return logController.getLogId().substring(0, 6);
 	}
 	
 	public int getTotalRowNum(){
