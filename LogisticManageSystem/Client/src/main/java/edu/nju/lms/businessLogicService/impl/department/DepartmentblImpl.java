@@ -173,9 +173,11 @@ public class DepartmentblImpl{
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
-		for(CityPO city : po){
-			CityVO vo=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
-			result.add(vo);
+		if(po!=null){
+			for(CityPO city : po){
+				CityVO vo=new CityVO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
+				result.add(vo);
+			}
 		}
 		return result;
 	}

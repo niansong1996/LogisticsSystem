@@ -59,8 +59,10 @@ public class TransProcessblImpl{
 
 	public ResultMessage saveSendList(TransportListDataService list,TransportCommodityDataService commodity,SendVO sendList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
+		System.out.println(sendList.getCreateTime());
 		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getSenderCity(),sendList.getReceiverCity(),sendList.getInitialNum(),sendList.getWeight(),
 				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),CommonUtility.String2Cal(sendList.getCreateTime()));
+		System.out.println(po.getCreateTime().getTime());
 		try {
 			result=list.addSend(po);
 		} catch (RemoteException e) {
@@ -362,24 +364,30 @@ public class TransProcessblImpl{
 
 	public LoadVO findLoadList(TransportListDataService list,String id) {
 		LoadVO result = null;
+		LoadPO po=null;
 		try {
-			LoadPO po = list.findLoad(id);
-			result = new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),po.getDestiCity(),
-					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+			po = list.findLoad(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new LoadVO(po.getId(),po.getLoadType(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),po.getDestiCity(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
 		}
 		return result;
 	}
 	
 	public LoadCarVO findLoadCarList(TransportListDataService list,String id) {
 		LoadCarVO result = null;
+		LoadcarPO po=null;
 		try {
-			LoadcarPO po = list.findLoadCar(id);
-			result = new LoadCarVO(po.getId(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),
-					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
+			po = list.findLoadCar(id);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new LoadCarVO(po.getId(),CommonUtility.Cal2String(po.getLoadDate()),po.getBusinessHallNum(),po.getMotorNum(),
+					po.getDestiBusinessHall(),po.getVehicleNum(),po.getDriverNum(),po.getCommodityNums(),po.getFreight());
 		}
 		return result;
 	}

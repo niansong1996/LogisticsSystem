@@ -3,7 +3,6 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.JTextField;
 
@@ -13,7 +12,6 @@ import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.DepartmentTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
-import edu.nju.lms.presentation.components.table.PersonnelTable;
 
 /**
  * @author tj
@@ -35,7 +33,7 @@ public class FindDepartButtonListener extends ButtonListener {
 		if (id != "" && departControl != null) {
 			DepartmentVO found = departControl.getDepartInfo(id);
 			if (found == null) {
-				MyDialog error = new MyDialog("notExist");
+				new MyDialog("notExist");
 				return;
 			}
 			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

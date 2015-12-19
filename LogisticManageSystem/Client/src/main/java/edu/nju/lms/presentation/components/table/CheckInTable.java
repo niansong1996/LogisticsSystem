@@ -45,6 +45,6 @@ public class CheckInTable extends MyTable {
 
 	@Override
 	protected ResultMessage deleteData(MyTableLabel label) {
-		return null;
+		return new ResultMessage(true, "");
 	}
 }

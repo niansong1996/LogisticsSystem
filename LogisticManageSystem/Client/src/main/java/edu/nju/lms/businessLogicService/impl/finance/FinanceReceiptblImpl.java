@@ -54,11 +54,10 @@ public class FinanceReceiptblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		try {
 			result=service.deleteReceipt(id);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -68,12 +67,11 @@ public class FinanceReceiptblImpl{
 		if(!result.isSuccess()){
 			return result;
 		}
-		result=new ResultMessage(false,"网络未连接");
 		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			result=service.updateReceipt(po);
 		} catch (RemoteException e) {
-			return result;
+			return RemoteExceptionHandler.handleRemoteException(e);
 		}
 		return result;
 	}
@@ -84,6 +82,7 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(date, department);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(listPO!=null){
 			for(ReceiptPO po : listPO){
@@ -100,6 +99,7 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(date);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		
 		if(listPO!=null){
@@ -117,6 +117,7 @@ public class FinanceReceiptblImpl{
 		try {
 			listPO=service.findReceipt(start,end);
 		} catch (RemoteException e) {
+			RemoteExceptionHandler.handleRemoteException(e);
 		}
 		if(listPO!=null){
 			for(ReceiptPO po : listPO){
@@ -154,11 +155,14 @@ public class FinanceReceiptblImpl{
 
 	public ReceiptVO findReceipt(String id,FinanceReceiptDataService service) {
 		ReceiptVO result = null;
+		ReceiptPO po=null;
 		try {
-			ReceiptPO po = service.findReceipt(id);
-			result = new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
+			po = service.findReceipt(id);
 		} catch (RemoteException e) {
-			
+			RemoteExceptionHandler.handleRemoteException(e);
+		}
+		if(po!=null){
+			result = new ReceiptVO(po.getId(),CommonUtility.Cal2String(po.getReceiptDate()),po.getAmount(),po.getCourierNum(),po.getExpressNums());
 		}
 		return result;
 	}

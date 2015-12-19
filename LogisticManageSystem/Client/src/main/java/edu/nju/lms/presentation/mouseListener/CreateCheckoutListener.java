@@ -54,6 +54,7 @@ public class CreateCheckoutListener extends ButtonListener {
 		for (MyTableLabel label : labels) {
 			JTextField field = (JTextField) label.getComponents(0);
 			if (field.getText().isEmpty()) {
+				new MyDialog("incomplete");
 				return;
 			}
 			expressNums.add(field.getText());

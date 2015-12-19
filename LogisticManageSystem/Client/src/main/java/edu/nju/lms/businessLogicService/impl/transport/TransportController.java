@@ -279,9 +279,9 @@ public class TransportController implements TransManageblService,TransProcessblS
 		logController.addLog("查看所有司机的信息");
 		return result;
 	}
-	
+
 	public String getCurrentHallNum(){
 		return logController.getLogId().substring(0, 6);
 	}
-	
+
 }

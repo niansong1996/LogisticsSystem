@@ -22,18 +22,19 @@ public class ListblImpl{
 	public ArrayList<ListVO> getListInfo(ListDataService service,ListType type) {
 		ArrayList<ListVO> result=new ArrayList<ListVO>();
 		ArrayList<ListPO> list=new ArrayList<ListPO>();
-
 		try {
 			list=service.findList(type);
 		} catch (RemoteException e) {
 			RemoteExceptionHandler.handleRemoteException(e);
 		}
-		for(ListPO po : list){
-			if(po.getState().toString().equals("WAITING")){
-				ListVO temp=new ListVO(po.getId());
-				temp.setType(type);
-				result.add(temp);
-		}
+		if(list!=null){
+			for(ListPO po : list){
+				if(po.getState().toString().equals("WAITING")){
+					ListVO temp=new ListVO(po.getId());
+					temp.setType(type);
+					result.add(temp);
+				}
+			}
 		}
 		return result;
 	}

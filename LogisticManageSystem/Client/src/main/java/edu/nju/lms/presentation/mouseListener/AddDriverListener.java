@@ -36,6 +36,10 @@ public class AddDriverListener extends ButtonListener{
 		MyTextField limit = (MyTextField) units.get(2);
 		MyTextField businesshall = (MyTextField) units.get(5);
 		MyTextField phone = (MyTextField) units.get(4);
+		if(name.getText().isEmpty()||idCard.getText().isEmpty()||limit.getText().isEmpty()||
+				businesshall.getText().isEmpty()||phone.getText().isEmpty()){
+			new MyDialog("incomplete");
+		}
 		DateChooser date = (DateChooser) units.get(0);
 		@SuppressWarnings("unchecked")
 		MyComboBox<String> sex = (MyComboBox<String>) units.get(6);

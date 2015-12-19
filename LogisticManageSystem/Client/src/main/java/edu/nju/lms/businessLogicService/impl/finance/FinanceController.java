@@ -287,5 +287,9 @@ public class FinanceController
 	public PaymentVO findPayment(String id) {
 		return pay.findPayment(id, payData);
 	}
-
+	
+	public static void main(String[] args) {
+		FinanceController f=BusinessLogicFactory.createFinanceController();
+		f.updatePriceStrategy(46);
+	}
 }

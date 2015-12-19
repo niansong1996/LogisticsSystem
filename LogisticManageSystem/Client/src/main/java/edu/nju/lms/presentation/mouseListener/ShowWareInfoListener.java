@@ -8,13 +8,11 @@ import java.util.Calendar;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import edu.nju.lms.VO.InventoryExcelVO;
 import edu.nju.lms.VO.WarehouseInfoVO;
-import edu.nju.lms.VO.WarehouseVO;
 import edu.nju.lms.businessLogicService.WareHouseblService;
-import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
+import edu.nju.lms.presentation.components.MyDialog;
 
 /**
  * @author tj
@@ -30,14 +28,13 @@ public class ShowWareInfoListener extends ButtonListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Calendar start = Calendar.getInstance();
-		Calendar end = Calendar.getInstance();
 		DateChooser c = (DateChooser) units.get(4);
-		start.setTime(c.getDate());
 		DateChooser d = (DateChooser) units.get(5);
-		end.setTime(d.getDate());
+		Calendar start = c.getCalendar();
+		Calendar end = d.getCalendar();
 		JTextField field = (JTextField) units.get(3);
 		if (field.getText().isEmpty()) {
+			new MyDialog("incomplete");
 			return;
 		}
 		WarehouseInfoVO vo = control.showWarehouseInfo(start, end, field.getText());

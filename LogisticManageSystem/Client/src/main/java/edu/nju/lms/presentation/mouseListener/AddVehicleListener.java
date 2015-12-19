@@ -33,6 +33,7 @@ public class AddVehicleListener extends ButtonListener{
 		MyTextField business = (MyTextField) units.get(2);
 		if (plateNum.getText().equals("") || years.getText().equals("") || business.getText().equals("")) {
 			new MyDialog("incomplete");
+			return;
 		}
 		VehicleVO vehicle = new VehicleVO("", plateNum.getText(), business.getText(),
 				Integer.parseInt(years.getText()));

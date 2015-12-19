@@ -30,6 +30,7 @@ public class ConfirmReceiptListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField field = (JTextField) units.get(5);
 		if(field.getText().isEmpty()){
+			new MyDialog("incomplete");
 			return;
 		}
 		DateChooser choose = (DateChooser) units.get(1);

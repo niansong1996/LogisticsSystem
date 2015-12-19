@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 
@@ -22,13 +21,12 @@ public class InitialAddButtonListener extends ButtonListener {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		FinanceController finance = controller.getFinanceController();
 		String content[] = new String[6];
 		for(int i =0;i<6;i++){
 			JTextField text = (JTextField) units.get(i);
 			String c = text.getText();
 			if(c.isEmpty()){
-				MyDialog d = new MyDialog("incomplete");
+				new MyDialog("incomplete");
 				return;
 			}
 			content[i]=c;

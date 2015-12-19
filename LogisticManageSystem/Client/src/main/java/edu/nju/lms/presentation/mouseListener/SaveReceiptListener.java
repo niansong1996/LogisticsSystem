@@ -32,6 +32,10 @@ public class SaveReceiptListener extends ButtonListener{
 		MyTextField courier = (MyTextField) units.get(3);
 		MyTextField money = (MyTextField) units.get(4);
 		CommodityTable table = (CommodityTable) units.get(0);
+		if(courier.getText().isEmpty()||money.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		ArrayList<String> express = new ArrayList<String>();
 		for(MyTableLabel label: table.getDataList()) {
 			MyTextField commodity = (MyTextField) label.getComponents(0);
