@@ -37,6 +37,10 @@ public class SaveArrivalListener extends ButtonListener{
 		MyTextField courierNum = (MyTextField) units.get(0);
 		MyTextField commodityNum = (MyTextField) units.get(1);
 		MyComboBox destination = (MyComboBox) units.get(5);
+		if(courierNum.getText().isEmpty()||commodityNum.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		ArrivalVO arrival = new ArrivalVO("", state[stateBox.getSelectedIndex()], commodityNum.getText(),city[destination.getSelectedIndex()] , city[setOutBox.getSelectedIndex()],"",courierNum.getText());
 		ArrivalVO finalArrival = transport.createArrivalList(arrival);
 		ResultMessage result = transport.saveArrivalList(finalArrival);

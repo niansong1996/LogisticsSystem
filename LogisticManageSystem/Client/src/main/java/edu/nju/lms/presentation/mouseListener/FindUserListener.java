@@ -29,6 +29,10 @@ public class FindUserListener extends ButtonListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id=(MyTextField)units.get(1);
+		if(id.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		UserVO user=userController.findUserInfo(id.getText());
 		logController.addLog("查看用户"+id+"的信息");
 		id.setText("");

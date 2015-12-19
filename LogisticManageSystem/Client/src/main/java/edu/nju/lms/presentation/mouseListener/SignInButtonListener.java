@@ -28,6 +28,10 @@ public class SignInButtonListener extends ButtonListener {
 //		controller.fadeTo(10,0.04f,"warehousePanel");
 		JTextField n = (JTextField) units.get(1);
 		JTextField p = (JTextField) units.get(2);
+		if(n.getText().isEmpty()||p.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		String name = n.getText();
 		String password = p.getText();
 		n.setText("");
@@ -38,7 +42,7 @@ public class SignInButtonListener extends ButtonListener {
 		UserVO info = null;
 		info = userController.findUserInfo(name);
 		if (info==null) {
-			MyDialog error = new MyDialog("notExist");
+			new MyDialog("notExist");
 			return;
 		} else if (info.getPassword().equals(password)) {
 			controller.setLogID(name);
@@ -70,7 +74,7 @@ public class SignInButtonListener extends ButtonListener {
 
 			}
 		} else {
-			MyDialog error = new MyDialog("passwordError");
+			new MyDialog("passwordError");
 		}
 
 	}

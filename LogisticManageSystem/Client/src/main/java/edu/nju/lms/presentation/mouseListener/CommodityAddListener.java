@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
 import edu.nju.lms.presentation.components.table.CommodityTable;
 
@@ -28,6 +29,10 @@ public class CommodityAddListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		MyTextField num = (MyTextField) units.get(2);
 		String text = num.getText();
+		if(text.isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		num.setText("");
 		table.addCommodity(text);
 	}

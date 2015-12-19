@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import edu.nju.lms.VO.UserVO;
 import edu.nju.lms.businessLogicService.impl.user.UserController;
-import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
@@ -55,9 +54,9 @@ loop:	for(int i=0;i<labels.size();i++){
 			result=userController.updateUser(user);
 		}
 		if (result.isSuccess()) {
-			MyDialog dialog = new MyDialog("保存成功！", true);
+			new MyDialog("保存成功！", true);
 		} else {
-			MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true);
 		}
 	}
 

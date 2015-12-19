@@ -12,6 +12,7 @@ import edu.nju.lms.VO.WarehouseInfoVO;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
 import edu.nju.lms.presentation.components.table.WarehouseStoreTable;
 
@@ -39,6 +40,7 @@ public class SearchWareCheckListener extends ButtonListener{
 		Calendar endDate = end.getCalendar();
 		MyTextField wareNum = (MyTextField) units.get(3);
 		if(wareNum.getText().isEmpty()){
+			new MyDialog("incomplete");
 			return;
 		}
 		inventory = warehouse.checkWarehouseInfor(startDate, endDate, wareNum.getText());

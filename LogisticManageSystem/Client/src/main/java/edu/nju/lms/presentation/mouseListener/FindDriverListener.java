@@ -31,6 +31,10 @@ public class FindDriverListener extends ButtonListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id = (MyTextField) units.get(1);
+		if(id.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		DriverVO driver = transport.findDriver(id.getText());
 		id.setText("");
 		if(driver==null) {

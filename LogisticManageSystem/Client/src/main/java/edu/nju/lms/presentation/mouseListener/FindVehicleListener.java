@@ -31,6 +31,10 @@ public class FindVehicleListener extends ButtonListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id = (MyTextField) units.get(5);
+		if(id.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		VehicleVO vehicle = transport.findVehicle(id.getText());
 		id.setText("");
 		if(vehicle==null) {

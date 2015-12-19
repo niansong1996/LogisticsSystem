@@ -1,6 +1,5 @@
 package edu.nju.lms.presentation.mouseListener;
 
-import java.awt.Button;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -26,8 +25,7 @@ public class ShowSumReceiptListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		DateChooser choose = (DateChooser) units.get(1);
-		Calendar date = Calendar.getInstance();
-		date.setTime(choose.getDate());
+		Calendar date = choose.getCalendar();
 		sum = control.getReceiptSum(date);
 		MyLabel sumLabel = (MyLabel) units.get(4);
 		sumLabel.setText("当日成本收益为：" + sum + "");

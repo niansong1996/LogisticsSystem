@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.MyDialog;
 
 /**
  *@author tj
@@ -23,6 +24,10 @@ public class ShowWarningListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		JTextField field = (JTextField)units.get(0);
+		if(field.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		String warehouseNum = field.getText();
 		if(warehouseNum.isEmpty()){
 			return;

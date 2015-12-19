@@ -41,6 +41,12 @@ public class SaveLoadListener extends ButtonListener{
 		MyTextField destibusiness = (MyTextField) units.get(5);
 		MyTextField person = (MyTextField) units.get(6);
 		MyTextField vehicle = (MyTextField) units.get(7);
+		if(businesshallNum.getText().isEmpty()||motorNUm.getText().isEmpty()
+				||destibusiness.getText().isEmpty()||person.getText().isEmpty()
+				||vehicle.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		CommodityTable table = (CommodityTable) units.get(0);
 		ArrayList<String> express = new ArrayList<String>();
 		for (MyTableLabel label : table.getDataList()) {

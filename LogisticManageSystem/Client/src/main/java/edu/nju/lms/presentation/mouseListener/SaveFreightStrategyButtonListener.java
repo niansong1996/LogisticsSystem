@@ -29,17 +29,18 @@ public class SaveFreightStrategyButtonListener extends ButtonListener {
 			JTextField pricef = (JTextField) units.get(0);
 			String price = pricef.getText();
 			if(price.isEmpty()){
-				MyDialog d = new MyDialog("incomplete");
+				new MyDialog("incomplete");
 				return;
 			}
 			// MyDialog result = new MyDialog("修改后的经济、标准和次晨快递之比为：",true);
 			ResultMessage re = finance.updatePriceStrategy(Double.parseDouble(price));
 			PriceStrategyVO vo = finance.findPriceStrategy();
 			if (re.isSuccess()) {
-				MyDialog result = new MyDialog(
-						"修改运费策略成功", true);
+				MyDialog result =
+				new MyDialog(
+						"修改后的经济、标准和次晨快递之比为：" + vo.getEconomic() + ":" + vo.getStandard() + ":" + vo.getExpress(), true);
 			} else {
-				MyDialog result = new MyDialog(re.getErrorMessage(),true);
+				new MyDialog(re.getErrorMessage(),true);
 			}
 		}
 	}
