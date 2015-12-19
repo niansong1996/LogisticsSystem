@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import edu.nju.lms.PO.PriceStrategyPO;
 import edu.nju.lms.PO.SalaryStrategyPO;
+import edu.nju.lms.VO.PriceStrategyVO;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
@@ -49,7 +50,8 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 
 	public ResultMessage updatePriceStrategy(PriceStrategyPO PriceStrategy)
 			throws RemoteException {
-		PriceStrategyPO tempPriceStrategy = findPriceStrategy();
+		PriceStrategyPO tempPriceStrategy = null;
+		tempPriceStrategy = findPriceStrategy();
 		if(!(tempPriceStrategy==null)){
 			JDBC.ExecuteData(POGenerator.generateUpdateOp(PriceStrategy, PriceStrategy.getClass().getName()));
 			return new ResultMessage(true,"success");

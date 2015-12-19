@@ -263,7 +263,7 @@ senderCity varchar(20) not null,
 receiverCity varchar(20) not null,
 price double not null,
 time double not null,
-createTime double not null
+createTime varchar(20) not null
 );
 
 create table userpo
@@ -308,7 +308,7 @@ partitionInfor varchar(100) not null
 
 
 insert into UserPO value(NULL,"1000000999","12345678","COURIER");
-insert into PriceStrategyPO value(NULL,18,25,35,18,25,35);
+insert into PriceStrategyPO value(NULL,23,18,35,23,18,35);
 insert into NumOccupancyPO value(NULL,"0100000000","0300000000","0500000000","0600000000","0400000000","0200000000","0900000000","0800000000","0700000000","000","000");
 insert into UserPO value(NULL, "1000000037", "123456", "ADMINISTRATOR");
 insert into SalaryStrategyPO value(NULL,"COURIER","200","200","300");

@@ -37,7 +37,7 @@ public class SaveFreightStrategyButtonListener extends ButtonListener {
 			PriceStrategyVO vo = finance.findPriceStrategy();
 			if (re.isSuccess()) {
 				MyDialog result = new MyDialog(
-						"修改后的经济、标准和次晨快递之比为：" + vo.getEconomic() + ":" + vo.getStandard() + ":" + vo.getExpress(), true);
+						"修改运费策略成功", true);
 			} else {
 				MyDialog result = new MyDialog(re.getErrorMessage(),true);
 			}

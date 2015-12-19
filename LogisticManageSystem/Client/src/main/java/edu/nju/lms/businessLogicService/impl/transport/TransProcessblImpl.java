@@ -59,8 +59,10 @@ public class TransProcessblImpl{
 
 	public ResultMessage saveSendList(TransportListDataService list,TransportCommodityDataService commodity,SendVO sendList) {
 		ResultMessage result=new ResultMessage(false,"网络未连接");
+		System.out.println(sendList.getCreateTime());
 		SendPO po=new SendPO(sendList.getExpressNum(),sendList.getState(),sendList.getId(),sendList.getBaseInfor(),sendList.getSenderCity(),sendList.getReceiverCity(),sendList.getInitialNum(),sendList.getWeight(),
 				sendList.getVolume(),sendList.getGoodsName(),sendList.getPackingType(),sendList.getMode(),sendList.getPrice(),sendList.getTime(),CommonUtility.String2Cal(sendList.getCreateTime()));
+		System.out.println(po.getCreateTime().getTime());
 		try {
 			result=list.addSend(po);
 		} catch (RemoteException e) {
