@@ -28,6 +28,10 @@ public class AddDispatchListener extends ButtonListener{
 		if(transport==null) return;
 		MyTextField person = (MyTextField) units.get(1);
 		MyTextField commodity = (MyTextField) units.get(2);
+		if(person.getText().isEmpty()||person.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		DispatchVO vo = new DispatchVO("", person.getText(), "", commodity.getText());
 		/*
 		 * firstly, complete dispatch list

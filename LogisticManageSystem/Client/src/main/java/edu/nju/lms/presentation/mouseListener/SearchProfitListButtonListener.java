@@ -3,11 +3,8 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import edu.nju.lms.VO.PaymentVO;
-import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController.UIController;
@@ -15,7 +12,6 @@ import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 import edu.nju.lms.presentation.components.table.PayListTable;
-import edu.nju.lms.presentation.components.table.PersonnelTable;
 import edu.nju.lms.presentation.components.table.ReceiptTable;
 
 /**

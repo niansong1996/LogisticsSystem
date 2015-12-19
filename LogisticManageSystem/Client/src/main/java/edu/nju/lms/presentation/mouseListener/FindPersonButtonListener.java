@@ -29,11 +29,15 @@ public class FindPersonButtonListener extends ButtonListener {
 		JTextField idField = (JTextField) units.get(5);
 		String id = "";
 		id = idField.getText();
+		if(id.isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		idField.setText("");
 		if (id != "" && personControl != null) {
 			ArrayList<PersonnelVO> found = personControl.findPersonInfo(id);
 			if (found.isEmpty()) {
-				MyDialog error = new MyDialog("notExist");
+				new MyDialog("notExist");
 				return;
 			}
 			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

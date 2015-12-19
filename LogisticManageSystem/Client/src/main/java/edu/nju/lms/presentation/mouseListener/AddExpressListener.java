@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyComboBox;
+import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.CheckInTable;
 
 /**
@@ -29,6 +30,7 @@ public class AddExpressListener extends ButtonListener {
 		for (int i = 0; i < 4; i++) {
 			JTextField field = (JTextField) units.get(i);
 			if (field.getText().isEmpty()) {
+				new MyDialog("incomplete");
 				return;
 			}
 			info[i] = field.getText();

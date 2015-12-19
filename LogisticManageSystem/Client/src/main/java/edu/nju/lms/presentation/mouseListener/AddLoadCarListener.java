@@ -50,6 +50,11 @@ public class AddLoadCarListener extends ButtonListener{
 		String carNumStr = carNum.getText();
 		MyTextField driverNum = (MyTextField) units.get(7);
 		String driverNumStr = driverNum.getText();
+		if(businessHallStr.isEmpty()||motorNumStr.isEmpty()||destinationStr.isEmpty()
+				||carNumStr.isEmpty()||driverNumStr.isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		/*
 		 * create and save list
 		 */

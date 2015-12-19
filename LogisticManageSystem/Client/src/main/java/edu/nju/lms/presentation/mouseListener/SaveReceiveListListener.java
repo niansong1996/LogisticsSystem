@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import edu.nju.lms.VO.ReceiveVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.MyDialog;
 
 /**
  *@author tj
@@ -25,6 +26,10 @@ public class SaveReceiveListListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField field = (JTextField) units.get(7);
 		String receiverName = field.getText();
+		if(receiverName.isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		field = (JTextField) units.get(3);
 		String expressNum = field.getText();
 		ReceiveVO vo = new ReceiveVO(null,receiverName,null,expressNum);

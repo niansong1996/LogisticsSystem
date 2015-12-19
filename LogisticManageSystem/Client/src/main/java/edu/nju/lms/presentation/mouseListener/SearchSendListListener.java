@@ -29,6 +29,7 @@ public class SearchSendListListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		String expressNum = field.getText();
 		if(expressNum.isEmpty()){
+			new MyDialog("incomplete");
 			return;
 		}
 		SendVO vo = control.findSendList(expressNum);

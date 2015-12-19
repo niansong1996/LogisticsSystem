@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
@@ -21,6 +20,10 @@ public class SetWarningListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		MyTextField warning  = (MyTextField) units.get(0);
 		MyTextField num = (MyTextField) units.get(1);
+		if(warning.getText().isEmpty()||num.getText().isEmpty()){
+			new MyDialog("incomplete");
+			return;
+		}
 		WarehouseController warehouse = controller.getWarehouseController();
 		ResultMessage result = warehouse.setCordon(Integer.parseInt(warning.getText())/100.0, num.getText());
 		if(result.isSuccess()) {

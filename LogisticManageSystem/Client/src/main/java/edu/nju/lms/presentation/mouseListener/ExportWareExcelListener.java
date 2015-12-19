@@ -30,6 +30,9 @@ public class ExportWareExcelListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		MainButton button = (MainButton) units.get(7);
 		MyTextField wareNum = (MyTextField) units.get(3);
+		if(wareNum.getText().isEmpty()){
+			new MyDialog("incomplete");
+		}
 		SearchWareCheckListener listener = (SearchWareCheckListener) button.getMouseListeners()[0];
 		InventoryExcelVO excelvo = listener.getInventoryVO();
 		if(excelvo!=null) {

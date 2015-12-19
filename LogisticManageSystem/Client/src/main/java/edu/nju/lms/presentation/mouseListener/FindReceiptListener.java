@@ -1,6 +1,5 @@
 package edu.nju.lms.presentation.mouseListener;
 
-import java.awt.Button;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -34,10 +33,10 @@ public class FindReceiptListener extends ButtonListener {
 		JTextField id = (JTextField) units.get(3);
 		DateChooser date = (DateChooser) units.get(1);
 		if(id.getText().isEmpty()){
+			new MyDialog("incomplete");
 			return;
 		}
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date.getDate());
+		Calendar cal = date.getCalendar();
 		ArrayList<ReceiptVO> receipts = control.showReceiptList(cal, id.getText());
 		if(receipts.isEmpty()){
 			new MyDialog("不存在对应收款单",true);

@@ -10,7 +10,6 @@ import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
 import edu.nju.lms.presentation.components.MyDialog;
-import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.table.LogTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
@@ -35,13 +34,11 @@ public class SearchLogButtonListener extends ButtonListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Calendar s = Calendar.getInstance();
-		s.setTime(start.getDate());
-		Calendar d = Calendar.getInstance();
-		d.setTime(end.getDate());
+		Calendar s = start.getCalendar();
+		Calendar d = end.getCalendar();
 		logs = control.getLogInfo(s, d);
 		if(logs.isEmpty()){
-			MyDialog x = new MyDialog("此段时间无操作记录",true);
+			new MyDialog("此段时间无操作记录",true);
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
 		for(int i =0;i<logs.size();i++){
