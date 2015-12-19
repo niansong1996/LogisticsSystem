@@ -51,7 +51,8 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 			throws RemoteException {
 		PriceStrategyPO tempPriceStrategy = findPriceStrategy();
 		if(!(tempPriceStrategy==null)){
-			JDBC.ExecuteData(POGenerator.generateUpdateOp(PriceStrategy, PriceStrategy.getClass().getName()));
+			JDBC.ExecuteData("update pricestrategypo set standard="+PriceStrategy.getStandard()
+			+", express="+PriceStrategy.getExpress()+", economic="+PriceStrategy.getEconomic()+" where rate1=18"+";");
 			return new ResultMessage(true,"success");
 		}
 		else{

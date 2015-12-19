@@ -30,14 +30,14 @@ public class POGenerator {
 		Constructor<?> constructor = cons[0];
 		int paraNum = 0;int i = 0;
 		for(;i<cons.length;i++){
-		constructor = cons[i];
-		paraNum = constructor.getParameterCount();
-		System.out.println(cls.getDeclaredFields().length);
-		int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
-		boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
-		boolean con2 = !checkConstructor(constructor);
-		if(con1||con2) continue;
-		else break;
+			constructor = cons[i];
+			paraNum = constructor.getParameterCount();
+			System.out.println(cls.getDeclaredFields().length);
+			int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
+			boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
+			boolean con2 = !checkConstructor(constructor);
+			if(con1||con2) continue;
+			else break;
 		}
 		if(i==cons.length) System.out.println("no matching constructor found!");
 		if(rs.next())
@@ -68,14 +68,14 @@ public class POGenerator {
 			Constructor<?> constructor = cons[0];
 			int paraNum = 0;int i = 0;
 			for(;i<cons.length;i++){
-			constructor = cons[i];
-			paraNum = constructor.getParameterCount();
-			System.out.println(cls.getDeclaredFields().length);
-			int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
-			boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
-			boolean con2 = !checkConstructor(constructor);
-			if(con1||con2) continue;
-			else break;
+				constructor = cons[i];
+				paraNum = constructor.getParameterCount();
+				System.out.println(cls.getDeclaredFields().length);
+				int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
+				boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
+				boolean con2 = !checkConstructor(constructor);
+				if(con1||con2) continue;
+				else break;
 			}
 			if(i==cons.length) System.out.println("no matching constructor found!");
 
@@ -166,7 +166,8 @@ public class POGenerator {
 				fd2 = object.getClass().getField(fatherField[0].getName());
 			}
 			fd2.setAccessible(true);
-			result+="where "+fd2.getName()+"=\""+fd2.get(object)+"\";";
+			if(!fd2.getType().getSimpleName().equals("String")) result+="where "+fd2.getName()+"="+fd2.get(object)+";";
+			else result+="where "+fd2.getName()+"=\""+fd2.get(object)+"\";";
 		} catch (Exception e) {
 			System.err.println("Get field elements failed!!!");
 			e.printStackTrace();
@@ -219,10 +220,10 @@ public class POGenerator {
 		} catch (Exception e) {
 			System.err.println("Get field elements failed!!!");
 		}
-//		System.out.println(result);
+		//		System.out.println(result);
 		return result;
 	}  
-	
+
 	public static boolean checkConstructor(Constructor<?> constructor){
 		for(Class<?> cls : constructor.getParameterTypes()){
 			if(!cls.getSimpleName().equals("String")) return false;
