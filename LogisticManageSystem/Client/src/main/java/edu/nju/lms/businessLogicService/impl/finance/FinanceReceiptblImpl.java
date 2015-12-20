@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.ReceiptPO;
+import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.ReceiptVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
+import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.utility.RemoteExceptionHandler;
 import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ListType;
@@ -32,16 +37,27 @@ public class FinanceReceiptblImpl{
 		return result;
 	}
 	
-	public ResultMessage checkComplete(ReceiptVO debit){
-		ResultMessage result=new ResultMessage(true,"");
-		if(debit.getAmount()==0 || debit.getCourierNum().equals("") || debit.getExpressNums()==null){
-			result=new ResultMessage(false,"信息填写不完整！");
+	public ResultMessage check(ReceiptVO debit){
+		PersonnelController d=null;
+		try {
+			d=BusinessLogicFactory.getPersonnelController();
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
 		}
-		return result;
+		if(d.findPersonInfo(debit.getCourierNum()).size()==0){
+			return new ResultMessage(false, "未找到该快递员！");	
+		}
+		return new ResultMessage(true,"success");
 	}
 
+	
 	public ResultMessage addReceipt(ReceiptVO debit,FinanceReceiptDataService service) {
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ResultMessage result=check(debit);
+		System.out.println(result.getErrorMessage());
+		if(!result.isSuccess()){
+			return result;
+		}
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(CommonUtility.getTime()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
 		try {
 			return service.addReceipt(po);
 		} catch (RemoteException e) {
@@ -166,4 +182,5 @@ public class FinanceReceiptblImpl{
 		}
 		return result;
 	}
+	
 }

@@ -4,6 +4,9 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import edu.nju.lms.VO.SendVO;
+import edu.nju.lms.businessLogicService.impl.transport.TransportController;
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
@@ -18,6 +21,7 @@ public class CommodityAddListener extends ButtonListener{
 
 	CommodityTable table;
 	ArrayList<Component> units;
+	TransportController t=null;
 	
 	public CommodityAddListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
@@ -27,6 +31,7 @@ public class CommodityAddListener extends ButtonListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		t=controller.getTransportController();
 		MyTextField num = (MyTextField) units.get(2);
 		String text = num.getText();
 		if(text.isEmpty()){
@@ -34,7 +39,12 @@ public class CommodityAddListener extends ButtonListener{
 			return;
 		}
 		num.setText("");
-		table.addCommodity(text);
+		if(t.findSendList(text)==null){
+			new MyDialog("未找到该订单",true);
+		}else{
+			table.addCommodity(text);
+		}
+		
 	}
 
 }

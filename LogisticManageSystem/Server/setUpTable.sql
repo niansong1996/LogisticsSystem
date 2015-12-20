@@ -221,7 +221,7 @@ create table receiptpo
 _id_ int unsigned not null auto_increment primary key,
 id varchar(12) not null unique,
 state varchar(20) not null,
-receiptDate datetime not null,
+receiptDate varchar(20) not null,
 amount double not null,
 courierNum varchar(12) not null,
 expressNums text not null
