@@ -30,7 +30,7 @@ public class UIController {
 	private UserController userController;
 	private WarehouseController warehouseController;
 	private PersonnelController personnelController;
-
+	private String id;
 	public UIController() {
 		initialize();
 		frame = new MainFrame();
@@ -142,6 +142,7 @@ public class UIController {
 	}
 
 	public void setLogID(String id) {
+		this.id = id;
 		logController.setLogId(id);
 	}
 
@@ -151,5 +152,8 @@ public class UIController {
 
 	public void setPersonnelController(PersonnelController personnelController) {
 		this.personnelController = personnelController;
+	}
+	public String getID(){
+		return id;
 	}
 }

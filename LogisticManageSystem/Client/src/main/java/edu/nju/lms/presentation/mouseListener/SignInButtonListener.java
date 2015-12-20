@@ -48,28 +48,28 @@ public class SignInButtonListener extends ButtonListener {
 			controller.setLogID(name);
 			switch (info.getPower()) {
 			case MANAGER:
-				controller.changeTo("ManagerPanel");
+				controller.fadeTo(10,0.04f,"ManagerPanel");
 				break;
 			case FINANCIAL_ADVANCED:
-				controller.changeTo("FinancialAdvancedPanel");
+				controller.fadeTo(10,0.04f,"FinancialAdvancedPanel");
 				break;
 			case FINANCIAL_NORMAL:
-				controller.changeTo("FinancialCommonPanel");
+				controller.fadeTo(10,0.04f,"FinancialCommonPanel");
 				break;
 			case ADMINISTRATOR:
-				controller.changeTo("AdministratorPanel");
+				controller.fadeTo(10,0.04f,"AdministratorPanel");
 				break;
 			case COUNTER_INTERMEDIATE:
-				controller.changeTo("counterInterPanel");
+				controller.fadeTo(10,0.04f,"counterInterPanel");
 				break;
 			case COUNTER_BUSSINESS:
-				controller.changeTo("counterBussinessPanel");
+				controller.fadeTo(10,0.04f,"counterBussinessPanel");
 				break;
 			case WAREHOUSE:
-				controller.changeTo("warehousePanel");
+				controller.fadeTo(10,0.04f,"warehousePanel");
 				break;
 			case COURIER:
-				controller.changeTo("courierPanel");
+				controller.fadeTo(10,0.04f,"courierPanel");
 				break;
 
 			}
