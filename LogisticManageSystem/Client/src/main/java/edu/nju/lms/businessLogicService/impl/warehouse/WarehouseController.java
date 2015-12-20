@@ -125,6 +125,99 @@ public class WarehouseController implements WareHouseblService{
 		}
 		return result;
 	}
+	
+	public int getAirRowNum(){
+		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		return partitions.getPartitionInfor().get(0).getCapacity();
+	}
+	
+	public int getTrainRowNum(){
+		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		return partitions.getPartitionInfor().get(1).getCapacity();
+	}
+	
+	public int getCarRowNum(){
+		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		return partitions.getPartitionInfor().get(2).getCapacity();
+	}
+	
+	public int getFlexibleRowNum(){
+		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		return partitions.getPartitionInfor().get(3).getCapacity();
+	}
+	/**
+	 * 调整航空区的容量 会造成机动区进行响应地调整，其他两个区不变 如果超出库存总排数 返回error
+	 * 默认航空区排数从0开始，机动区最后
+	 * 不用写调整机动区的方法
+	 * @param capacity
+	 */
+	public ResultMessage setAirRowNum(int capacity){
+		if(capacity<0||capacity>=this.getAirRowNum()+this.getTrainRowNum()+this.getCarRowNum()+this.getFlexibleRowNum())
+			return new ResultMessage(false,"输入数字非法");
+		int bias = capacity-this.getAirRowNum();
+		if(bias>this.getFlexibleRowNum())
+			return new ResultMessage(false,"空间不足以调整");
+		PartitionVO partitions = this.showPartition(this.getCurrentWarehouseNum());
+		Partition air = partitions.getPartitionInfor().get(0);
+		Partition train	= partitions.getPartitionInfor().get(1);
+		Partition car = partitions.getPartitionInfor().get(2);
+		Partition flexible = partitions.getPartitionInfor().get(3);
+		air.setEndRow(air.getEndRow()+bias);
+		air.setCapacity(capacity);
+		train.setStartRow(train.getStartRow()+bias);
+		train.setEndRow(train.getEndRow()+bias);
+		car.setStartRow(car.getStartRow()+bias);
+		car.setEndRow(car.getEndRow()+bias);
+		flexible.setStartRow(flexible.getStartRow()+bias);
+		flexible.setEndRow(flexible.getEndRow()+bias);
+		flexible.setCapacity(flexible.getCapacity()-bias);
+		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
+		return new ResultMessage(true,"success");
+	}
+	
+	public ResultMessage setTrainRowNum(int capacity){
+		if(capacity<0||capacity>=this.getAirRowNum()+this.getTrainRowNum()+this.getCarRowNum()+this.getFlexibleRowNum())
+			return new ResultMessage(false,"输入数字非法");
+		int bias = capacity-this.getTrainRowNum();
+		if(bias>this.getFlexibleRowNum())
+			return new ResultMessage(false,"空间不足以调整");
+		PartitionVO partitions = this.showPartition(this.getCurrentWarehouseNum());
+		Partition train	= partitions.getPartitionInfor().get(1);
+		Partition car = partitions.getPartitionInfor().get(2);
+		Partition flexible = partitions.getPartitionInfor().get(3);
+		train.setCapacity(capacity);
+		train.setEndRow(train.getEndRow()+bias);
+		car.setStartRow(car.getStartRow()+bias);
+		car.setEndRow(car.getEndRow()+bias);
+		flexible.setStartRow(flexible.getStartRow()+bias);
+		flexible.setEndRow(flexible.getEndRow()+bias);
+		flexible.setCapacity(flexible.getCapacity()-bias);
+		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
+		return new ResultMessage(true,"success");
+	}
+	
+	public ResultMessage setCarRowNum(int capacity){
+		if(capacity<0||capacity>=this.getAirRowNum()+this.getTrainRowNum()+this.getCarRowNum()+this.getFlexibleRowNum())
+			return new ResultMessage(false,"输入数字非法");
+		int bias = capacity-this.getCarRowNum();
+		if(bias>this.getFlexibleRowNum())
+			return new ResultMessage(false,"空间不足以调整");
+		PartitionVO partitions = this.showPartition(this.getCurrentWarehouseNum());
+
+		Partition car = partitions.getPartitionInfor().get(2);
+		Partition flexible = partitions.getPartitionInfor().get(3);
+
+		car.setCapacity(capacity);
+		car.setEndRow(car.getEndRow()+bias);
+		flexible.setStartRow(flexible.getStartRow()+bias);
+		flexible.setEndRow(flexible.getEndRow()+bias);
+		flexible.setCapacity(flexible.getCapacity()-bias);
+		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
+		return new ResultMessage(true,"success");
+	}
+	
+
+	
 /*//for test
 
 	public static void main(String[] args){

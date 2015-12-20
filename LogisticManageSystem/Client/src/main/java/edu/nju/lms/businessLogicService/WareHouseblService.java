@@ -140,4 +140,18 @@ public interface WareHouseblService {
 		public String getCurrentWarehouseNum();
 		
 		public int getTotalRowNum();
+		
+		public int getAirRowNum();
+		
+		public int getTrainRowNum();
+		
+		public int getCarRowNum();
+		
+		public int getFlexibleRowNum();
+		
+		public ResultMessage setAirRowNum(int capacity);
+		
+		public ResultMessage setTrainRowNum(int capacity);
+		
+		public ResultMessage setCarRowNum(int capacity);
 }
