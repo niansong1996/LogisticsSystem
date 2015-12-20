@@ -195,8 +195,6 @@ public class POGenerator {
 
 		Field[] field = object.getClass().getDeclaredFields();
 
-
-
 		try {
 
 			if(isList(object.getClass())){
@@ -216,8 +214,10 @@ public class POGenerator {
 					result += ", "+ fd1.get(object)+"";
 				else if(fd1.getType().getSimpleName().equals("integer"))
 					result += ", "+ fd1.get(object)+"";
-				else if(fd1.getType().getSimpleName().equals("Calendar"))
-					result += ",\""+ CommonUtility.Cal2String((Calendar)fd1.get(object))+"\"";
+				else if(fd1.getType().getSimpleName().equals("Calendar")){
+					System.out.println(CommonUtility.Cal2Str((Calendar)fd1.get(object)));
+					result += ",\""+ CommonUtility.Cal2Str((Calendar)fd1.get(object))+"\"";
+				}
 				else
 					result += ", \""+ fd1.get(object)+"\"";
 			}
@@ -225,7 +225,6 @@ public class POGenerator {
 		} catch (Exception e) {
 			System.err.println("Get field elements failed!!!");
 		}
-		//		System.out.println(result);
 		return result;
 	}  
 

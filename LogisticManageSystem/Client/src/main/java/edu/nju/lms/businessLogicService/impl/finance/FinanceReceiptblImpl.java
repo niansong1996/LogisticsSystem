@@ -32,7 +32,6 @@ public class FinanceReceiptblImpl{
 	 */
 	public ReceiptVO createReceipt(ReceiptVO debit,ListController listController) {
 		ReceiptVO result=debit;
-		result.setReceiptDate(CommonUtility.getTime());
 		result.setId(listController.applyListNum(ListType.RECEIPT));
 		return result;
 	}
@@ -53,11 +52,11 @@ public class FinanceReceiptblImpl{
 	
 	public ResultMessage addReceipt(ReceiptVO debit,FinanceReceiptDataService service) {
 		ResultMessage result=check(debit);
-		System.out.println(result.getErrorMessage());
 		if(!result.isSuccess()){
 			return result;
 		}
-		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(CommonUtility.getTime()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		ReceiptPO po=new ReceiptPO(debit.getId(),debit.getState(),CommonUtility.String2Cal(debit.getReceiptDate()),debit.getAmount(),debit.getCourierNum(),debit.getExpressNums());
+		System.out.println(po.getReceiptDate().getTime());
 		try {
 			return service.addReceipt(po);
 		} catch (RemoteException e) {
@@ -162,7 +161,7 @@ public class FinanceReceiptblImpl{
 			result.setErrorMessage("输入编号位数不正确！");
 			return result;
 		}
-		if(!(id.substring(0, 2).equals("08"))){
+		if(!(id.substring(0, 2).equals("80"))){
 			result.setSuccess(false);
 			result.setErrorMessage("输入编号格式不正确！");
 		}
