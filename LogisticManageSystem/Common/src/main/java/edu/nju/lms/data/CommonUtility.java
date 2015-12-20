@@ -16,6 +16,11 @@ public class CommonUtility {
 		return sdf.format(((Calendar)cal).getTime());
 	}
 	
+	public static String Cal2Str(Object cal){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return sdf.format(((Calendar)cal).getTime());
+	}
+	
 	public static Calendar String2Cal(String s){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
@@ -53,4 +58,5 @@ public class CommonUtility {
 		}
 		return null;
 	}
+	
 }
