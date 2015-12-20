@@ -59,7 +59,7 @@ public class SaveLoadListener extends ButtonListener{
 		LoadVO finalLoad = transport.createLoadList(load);
 		ResultMessage result = transport.saveLoadList(finalLoad);
 		if(result.isSuccess()) {
-			new MyDialog("addSucess");
+			new MyDialog("addSuccess");
 		}else{
 			new MyDialog(result.getErrorMessage(),true);
 		}
