@@ -37,10 +37,6 @@ public class FindListListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField idField = (JTextField) units.get(2);
 		String id = idField.getText();
-		if(id.isEmpty()){
-			new MyDialog("incomplete");
-			return;
-		}
 		idField.setText("");
 		if(id.isEmpty()){
 			MyComboBox box = (MyComboBox) units.get(1);
