@@ -283,11 +283,5 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public String getCurrentHallNum(){
 		return logController.getLogId().substring(0, 6);
 	}
-	
-	public static void main(String[] args) {
-		TransportController t=BusinessLogicFactory.createTransportController();
-		SendVO send = t.findSendList("1234567890");
-		System.out.println(send==null);
-	}
 
 }
