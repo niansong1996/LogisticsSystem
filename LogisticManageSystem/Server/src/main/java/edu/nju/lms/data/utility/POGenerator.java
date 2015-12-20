@@ -32,8 +32,8 @@ public class POGenerator {
 		for(;i<cons.length;i++){
 			constructor = cons[i];
 			paraNum = constructor.getParameterCount();
-			System.out.println(cls.getDeclaredFields().length);
 			int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
+			System.out.println(cls.getDeclaredFields().length-bias);
 			boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
 			boolean con2 = !checkConstructor(constructor);
 			if(con1||con2) continue;
@@ -53,6 +53,7 @@ public class POGenerator {
 			case 9: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));break;
 			case 10: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));break;
 			case 11: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));break;
+			case 15: result = constructor.newInstance(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16));break;
 			}
 		return result;
 	}

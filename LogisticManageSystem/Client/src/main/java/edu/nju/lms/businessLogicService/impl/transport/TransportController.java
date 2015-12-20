@@ -286,7 +286,8 @@ public class TransportController implements TransManageblService,TransProcessblS
 	
 	public static void main(String[] args) {
 		TransportController t=BusinessLogicFactory.createTransportController();
-		
+		SendVO send = t.findSendList("1234567890");
+		System.out.println(send.getId());
 	}
 
 }

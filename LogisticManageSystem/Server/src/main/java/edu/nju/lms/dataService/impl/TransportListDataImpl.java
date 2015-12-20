@@ -23,7 +23,7 @@ public class TransportListDataImpl extends UnicastRemoteObject implements Transp
 	private static final long serialVersionUID = 308924668395302280L;
 
 	public ResultMessage addSend(SendPO send) throws RemoteException {
-		if(findSend(send.getId())==null){
+		if(findSendById(send.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(send, send.getClass().getName()));
 			return new ResultMessage(true,"success");
 		}

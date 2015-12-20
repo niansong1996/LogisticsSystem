@@ -48,8 +48,8 @@ public class SendPO extends ListPO {
 	private double time;
 	private Calendar createTime;
 	//constructor for reflection
-	public SendPO(String expressNum,String state,String id,String baseInfor,String senderCity,String receiverCity,String initialNum, String weight, String volume, String goodsName,
-			String packingType, String mode, String price, String time,String createTime) {
+	public SendPO(String id,String state,String expressNum,String baseInfor,String initialNum,String weight,String volume, String goodsName,String packingType, String mode,
+			String senderCity,String receiverCity,String price, String time,String createTime) {
 		super(id,ListState.valueOf(state));
 		this.expressNum = expressNum;
 		this.baseInfor = new ArrayList<String>();
