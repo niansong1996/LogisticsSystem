@@ -37,6 +37,10 @@ public class SaveReceiptListener extends ButtonListener{
 			return;
 		}
 		ArrayList<String> express = new ArrayList<String>();
+		if(table.getDataList().isEmpty()){
+			new MyDialog("请先添加",true);
+			return;
+		}
 		for(MyTableLabel label: table.getDataList()) {
 			MyTextField commodity = (MyTextField) label.getComponents(0);
 			express.add(commodity.getText());

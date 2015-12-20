@@ -15,6 +15,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.Partition;
+import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -118,12 +119,25 @@ public class WarehouseController implements WareHouseblService{
 	
 	public int getTotalRowNum(){
 		PartitionVO vo = warehouseManagebl.showPartition(warehouseData,getCurrentWarehouseNum());
+		if(vo==null){
+			return -1;
+		}
 		ArrayList<Partition> info = vo.getPartitionInfor();
 		int result = 0;
 		for(Partition p :info){
 			result+=p.getCapacity();
 		}
 		return result;
+	}
+	public ResultMessage setTotalRowNum(int num){
+		int per = num/4;
+		ArrayList<Partition> lists = new ArrayList<Partition>();
+		lists.add(new Partition(per,0,per-1,PartitionType.AIRPLANE));
+		lists.add(new Partition(per,per,2*per-1,PartitionType.TRAIN));
+		lists.add(new Partition(per,2*per,3*per-1,PartitionType.CAR));
+		lists.add(new Partition(per,3*per,num-3*per-1,PartitionType.FLEXIBLE));
+		PartitionVO vo =  new PartitionVO(lists);
+		return this.initialize(vo, 90 , this.getCurrentWarehouseNum());
 	}
 	
 	public int getAirRowNum(){

@@ -23,6 +23,7 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 	public ChangePartitionListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		button.addMouseMotionListener(this);
+		this.control = controller.getWarehouseController();
 	}
 
 	@Override
@@ -64,6 +65,8 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 
 	public abstract void initialize();
 
-	// 调用逻辑层方法
+	/**
+	 *  调用逻辑层方法
+	 */
 	public abstract void change();
 }

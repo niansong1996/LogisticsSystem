@@ -5,15 +5,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.CircleBase;
 import edu.nju.lms.presentation.components.CircleButton;
+import edu.nju.lms.presentation.components.MyDialog;
 
 /**
- *@author tj
- *@date 2015年12月17日
+ * @author tj
+ * @date 2015年12月17日
  */
-public class ChangeTrainListener extends ChangePartitionListener{
+public class ChangeTrainListener extends ChangePartitionListener {
 
 	public ChangeTrainListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
@@ -23,13 +25,21 @@ public class ChangeTrainListener extends ChangePartitionListener{
 	public void initialize() {
 		button = (CircleButton) units.get(5);
 		base = (CircleBase) units.get(8);
-		this.name = button.getName();	
+		this.name = button.getName();
 	}
 
 	@Override
 	public void change() {
-		// TODO Auto-generated method stub
-		
+		double division = button.getDivision();
+		if (control.getTotalRowNum() != -1) {
+			int tranNum = (int) (division * control.getTotalRowNum());
+			ResultMessage result = control.setTrainRowNum(tranNum);
+			if (!result.isSuccess()) {
+				new MyDialog(result.getErrorMessage(), true);
+			}
+		} else {
+			new MyDialog("请输入仓库总排数", true);
+		}
 	}
 
 }
