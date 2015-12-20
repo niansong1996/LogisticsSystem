@@ -32,12 +32,14 @@ public class FindReceiptListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField id = (JTextField) units.get(3);
 		DateChooser date = (DateChooser) units.get(1);
-		if(id.getText().isEmpty()){
-			new MyDialog("incomplete");
-			return;
-		}
 		Calendar cal = date.getCalendar();
-		ArrayList<ReceiptVO> receipts = control.showReceiptList(cal, id.getText());
+		System.out.println(cal.getTime());
+		ArrayList<ReceiptVO> receipts = new ArrayList<ReceiptVO>();
+		if(id.getText().isEmpty()){
+			receipts = control.showReceiptList(cal);
+		}else{
+			receipts = control.showReceiptList(cal, id.getText());
+		}
 		if(receipts.isEmpty()){
 			new MyDialog("不存在对应收款单",true);
 			return;

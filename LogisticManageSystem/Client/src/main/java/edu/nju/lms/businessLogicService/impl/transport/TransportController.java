@@ -20,6 +20,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
+import edu.nju.lms.data.LoadType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.TransportCommodityDataService;
 import edu.nju.lms.dataService.TransportListDataService;
@@ -284,4 +285,13 @@ public class TransportController implements TransManageblService,TransProcessblS
 		return logController.getLogId().substring(0, 6);
 	}
 
+	public static void main(String[] args) {
+		TransportController t=BusinessLogicFactory.createTransportController();
+		ArrayList<String> a=new ArrayList<String>();
+		a.add("1234567890");
+		LoadVO temp=new LoadVO("", LoadType.CAR, "", "010101", "025001201512200000", "北京", "025001", "123456", "1234567890", a, 0);
+		LoadVO load=t.createLoadList(temp);
+		ResultMessage r=t.saveLoadList(load);
+		System.out.println(r.getErrorMessage());
+	}
 }
