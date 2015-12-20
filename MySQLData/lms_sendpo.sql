@@ -38,10 +38,10 @@ CREATE TABLE `sendpo` (
   `receiverCity` varchar(20) NOT NULL,
   `price` double NOT NULL,
   `time` double NOT NULL,
-  `createTime` double NOT NULL,
+  `createTime` varchar(20) NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,6 +50,7 @@ CREATE TABLE `sendpo` (
 
 LOCK TABLES `sendpo` WRITE;
 /*!40000 ALTER TABLE `sendpo` DISABLE KEYS */;
+INSERT INTO `sendpo` VALUES (1,'100000001','WAITING','1234567890','[欧巴, 13401271096, 仙林大道163号, 南大仙林校区, 傻狗, 13401212345, 复旦, 复旦大学]',1,1,1,'1','CARTON','CHEAP','北京','南京',37.4,2.6,'2015-12-20');
 /*!40000 ALTER TABLE `sendpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-18 20:09:09
+-- Dump completed on 2015-12-20 10:23:36

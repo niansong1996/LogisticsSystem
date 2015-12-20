@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pricestrategypo`
+-- Table structure for table `priceStrategypo`
 --
 
-DROP TABLE IF EXISTS `pricestrategypo`;
+DROP TABLE IF EXISTS `priceStrategypo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pricestrategypo` (
+CREATE TABLE `priceStrategypo` (
   `_id_` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `standard` double NOT NULL,
   `express` double NOT NULL,
@@ -35,13 +35,13 @@ CREATE TABLE `pricestrategypo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pricestrategypo`
+-- Dumping data for table `priceStrategypo`
 --
 
-LOCK TABLES `pricestrategypo` WRITE;
-/*!40000 ALTER TABLE `pricestrategypo` DISABLE KEYS */;
-INSERT INTO `pricestrategypo` VALUES (1,18,25,35,18,25,35);
-/*!40000 ALTER TABLE `pricestrategypo` ENABLE KEYS */;
+LOCK TABLES `priceStrategypo` WRITE;
+/*!40000 ALTER TABLE `priceStrategypo` DISABLE KEYS */;
+INSERT INTO `priceStrategypo` VALUES (1,46,50,36,23,18,35);
+/*!40000 ALTER TABLE `priceStrategypo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-18 20:09:11
+-- Dump completed on 2015-12-20 10:23:36

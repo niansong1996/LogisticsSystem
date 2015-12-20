@@ -53,8 +53,8 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 		PriceStrategyPO tempPriceStrategy = null;
 		tempPriceStrategy = findPriceStrategy();
 		if(!(tempPriceStrategy==null)){
-			JDBC.ExecuteData("update pricestrategypo set standard="+PriceStrategy.getStandard()
-			+", express="+PriceStrategy.getExpress()+", economic="+PriceStrategy.getEconomic()+" where rate1=18"+";");
+			JDBC.ExecuteData("update priceStrategypo set standard="+PriceStrategy.getStandard()
+			+", express="+PriceStrategy.getExpress()+", economic="+PriceStrategy.getEconomic()+" where rate1=23"+";");
 			return new ResultMessage(true,"success");
 		}
 		else{
