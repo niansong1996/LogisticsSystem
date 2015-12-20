@@ -28,18 +28,18 @@ public class ListNumOccupancy {
 	String generateListNum(ListType listType){
 		String result = "";
 		switch(listType){
-		case ARRIVAL:numOccupancy.increaseArrivalListNum();result = numOccupancy.getArrivalListNum();
-		case CHECKIN:numOccupancy.increaseCheckinListNum();result = numOccupancy.getCheckinListNum();
-		case CHECKOUT:numOccupancy.increaseCheckoutListNum();result = numOccupancy.getCheckoutListNum();
-		case DISPATCH:numOccupancy.increaseDispatchListNum();result = numOccupancy.getDispatchListNum();
-		case LOAD:numOccupancy.increaseLoadListNum();result = numOccupancy.getLoadListNum();
-		case PAYMENT:numOccupancy.increasePaymentListNum();result = numOccupancy.getPaymentListNum();
-		case RECEIPT:numOccupancy.increaseReceiptListNum();result = numOccupancy.getReceiptListNum();
-		case RECEIVE:numOccupancy.increaseReceiveListNum();result = numOccupancy.getReceiveListNum();
-		case SEND:numOccupancy.increaseSendListNum();result = numOccupancy.getSendListNum();
-		case DRIVER:numOccupancy.increaseDriverNum();result = numOccupancy.getDriverNum();
-		case CAR:numOccupancy.increaseCarNum();result = numOccupancy.getCarNum();
-		default:System.err.println("The listType not match!!!");result = "error";
+		case ARRIVAL:numOccupancy.increaseArrivalListNum();result = numOccupancy.getArrivalListNum();break;
+		case CHECKIN:numOccupancy.increaseCheckinListNum();result = numOccupancy.getCheckinListNum();break;
+		case CHECKOUT:numOccupancy.increaseCheckoutListNum();result = numOccupancy.getCheckoutListNum();break;
+		case DISPATCH:numOccupancy.increaseDispatchListNum();result = numOccupancy.getDispatchListNum();break;
+		case LOAD:numOccupancy.increaseLoadListNum();result = numOccupancy.getLoadListNum();break;
+		case PAYMENT:numOccupancy.increasePaymentListNum();result = numOccupancy.getPaymentListNum();break;
+		case RECEIPT:numOccupancy.increaseReceiptListNum();result = numOccupancy.getReceiptListNum();break;
+		case RECEIVE:numOccupancy.increaseReceiveListNum();result = numOccupancy.getReceiveListNum();break;
+		case SEND:numOccupancy.increaseSendListNum();result = numOccupancy.getSendListNum();break;
+		case DRIVER:numOccupancy.increaseDriverNum();result = numOccupancy.getDriverNum();break;
+		case CAR:numOccupancy.increaseCarNum();result = numOccupancy.getCarNum();break;
+		default:System.err.println("The listType not match!!!");result = "error";break;
 		}
 		saveNumOccupancy();
 		return result;
