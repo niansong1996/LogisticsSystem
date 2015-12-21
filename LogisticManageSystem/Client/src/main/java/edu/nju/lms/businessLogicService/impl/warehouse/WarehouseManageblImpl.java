@@ -141,6 +141,7 @@ public class WarehouseManageblImpl {
 			for(Partition p : modified.getPartitionInfor()){
 				modifiedPartitionInfor.add(p.getCapacity()+" "+p.getStartRow()+" "+p.getEndRow()+" "+p.getType());
 			}
+			warehouse.setPartitionInfor(modifiedPartitionInfor);
 			warehouseData.updateWarehouse(warehouse);
 		} catch (RemoteException e) {
 			return RemoteExceptionHandler.handleRemoteException(e);

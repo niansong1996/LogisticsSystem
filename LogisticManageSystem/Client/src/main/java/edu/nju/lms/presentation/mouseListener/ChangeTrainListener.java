@@ -34,7 +34,7 @@ public class ChangeTrainListener extends ChangePartitionListener {
 		if (control.getTotalRowNum() != -1) {
 			int tranNum = (int) (division * control.getTotalRowNum());
 			ResultMessage result = control.setTrainRowNum(tranNum);
-			double division2 = control.getFlexibleRowNum()/control.getTotalRowNum();
+			double division2 = 1.0*control.getFlexibleRowNum()/control.getTotalRowNum();
 			flexible.setArc((int)(division2*360));
 			if (!result.isSuccess()) {
 				new MyDialog(result.getErrorMessage(), true);
