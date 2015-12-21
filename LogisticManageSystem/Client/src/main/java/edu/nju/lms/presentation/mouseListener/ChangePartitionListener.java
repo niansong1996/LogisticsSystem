@@ -21,6 +21,7 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 	protected String name;
 	protected double division;
 	protected CircleBase flexible;
+
 	public ChangePartitionListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		button.addMouseMotionListener(this);
@@ -42,25 +43,33 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 		double mycos = (x - c_x) / distance;
 		// 左上
 		if (x - c_x < 0 && y - c_y < 0) {
-			base.setArc(-(int) (Math.asin(mycos) / (2 * Math.PI) * 360));
-			button.setLocation((int) (c_x + mycos * 100 - 10), (int) (c_y + mysin * 100 - 10));
+			division = -Math.asin(mycos) / (2 * Math.PI);
+			if (change()) {
+				base.setArc((int) (division * 360));
+				button.setLocation((int) (c_x + mycos * 100 - 10), (int) (c_y + mysin * 100 - 10));
+			}
 			// 左下
 		} else if (x - c_x <= 0 && y - c_y >= 0) {
-			base.setArc((int) (Math.asin(mysin) / (2 * Math.PI) * 360) + 90);
-			button.setLocation((int) (c_x + mycos * 100 - 10), (int) (c_y + mysin * 100 - 15));
+			division = Math.asin(mysin) / (2 * Math.PI) + 0.25;
+			if (change()) {
+				base.setArc((int) (division * 360));
+				button.setLocation((int) (c_x + mycos * 100 - 10), (int) (c_y + mysin * 100 - 15));
+			}
 			// 右上
 		} else if (x - c_x >= 0 && y - c_y <= 0) {
-			base.setArc(-(int) (Math.asin(mysin) / (2 * Math.PI) * 360) + 270);
-			button.setLocation((int) (c_x + mycos * 100 - 15), (int) (c_y + mysin * 100 - 15));
+			division = -Math.asin(mysin) / (2 * Math.PI) + 0.75;
+			if (change()) {
+				base.setArc((int) (division * 360));
+				button.setLocation((int) (c_x + mycos * 100 - 15), (int) (c_y + mysin * 100 - 15));
+			}
 			// 右下
 		} else if (x - c_x >= 0 && y - c_y >= 0) {
-			base.setArc((int) (Math.asin(mycos) / (2 * Math.PI) * 360) + 180);
-			button.setLocation((int) (c_x + mycos * 100 - 15), (int) (c_y + mysin * 100 - 10));
+			division = Math.asin(mycos) / (2 * Math.PI) + 0.5;
+			if (change()) {
+				base.setArc((int) (division * 360));
+				button.setLocation((int) (c_x + mycos * 100 - 15), (int) (c_y + mysin * 100 - 10));
+			}
 		}
-		this.division = base.getArc()/360.0;
-		
-		change();
-
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -69,7 +78,7 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 	public abstract void initialize();
 
 	/**
-	 *  调用逻辑层方法
+	 * 调用逻辑层方法
 	 */
-	public abstract void change();
+	public abstract boolean change();
 }

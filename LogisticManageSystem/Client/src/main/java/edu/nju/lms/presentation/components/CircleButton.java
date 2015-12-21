@@ -24,35 +24,31 @@ public class CircleButton extends MainButton {
 	private String name;
 	private UIController ui;
 	private double division;
-	private String isInit;
 
 	public CircleButton(Element button, UIController controller) {
 		super(button, controller);
 		this.control = controller.getWarehouseController();
 		this.name = button.attributeValue("belong");
-		this.isInit = button.attributeValue("isInit");
 		setInitialLoc();
 		setBounds(x, y, w, h);
 		this.ui = controller;
 	}
 
 	public void setInitialLoc() {
-		if (isInit.equals("true")) {
-			division = 0;
-		} else {
-			int num = 0;
-			if (name.equals("AIRPLANE")) {
-				num = control.getAirRowNum();
-			} else if (name.equals("TRAIN")) {
-				num = control.getTrainRowNum();
-			} else if (name.equals("CAR")) {
-				num = control.getCarRowNum();
-			} else if (name.equals("FLEXIBLE")) {
-				num = control.getFlexibleRowNum();
-			}
-			division = num / control.getTotalRowNum();
+		int num = 0;
+		if (name.equals("AIRPLANE")) {
+			num = control.getAirRowNum();
+		} else if (name.equals("TRAIN")) {
+			num = control.getTrainRowNum();
+		} else if (name.equals("CAR")) {
+			num = control.getCarRowNum();
+		} else if (name.equals("FLEXIBLE")) {
+			num = control.getFlexibleRowNum();
 		}
-		x-=7;
+
+		division =1.0* num / control.getTotalRowNum();
+
+		x -= 7;
 		int d_x = 100 - (int) (Math.sin(2 * division * Math.PI) * 100);
 		int d_y = 100 - (int) (Math.cos(2 * division * Math.PI) * 100);
 		x += d_x;
@@ -88,12 +84,8 @@ public class CircleButton extends MainButton {
 		return this.division;
 	}
 
-	public String getIsInit() {
-		return isInit;
-	}
-
 	public void setDivision(double division) {
 		this.division = division;
 	}
-	
+
 }

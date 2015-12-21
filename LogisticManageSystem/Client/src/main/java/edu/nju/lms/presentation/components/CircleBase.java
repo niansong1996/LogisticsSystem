@@ -31,11 +31,9 @@ public class CircleBase extends JLabel {
 	private int arc;
 	private String name;
 	private WarehouseController control;
-	private String isInit;
 
 	public CircleBase(Element element, UIController controller) {
 		this.control = controller.getWarehouseController();
-		this.isInit = element.attributeValue("isInit");
 		w = Integer.parseInt(element.attributeValue("w"));
 		h = Integer.parseInt(element.attributeValue("h"));
 		x = Integer.parseInt(element.attributeValue("x"));
@@ -57,22 +55,16 @@ public class CircleBase extends JLabel {
 	public void initializeArc() {
 		double division = 0;
 		int num = 0;
-		if (isInit.equals("false")) {
-			if (name.equals("AIRPLANE")) {
-				num = control.getAirRowNum();
-			} else if (name.equals("TRAIN")) {
-				num = control.getTrainRowNum();
-			} else if (name.equals("CAR")) {
-				num = control.getCarRowNum();
-			} else if (name.equals("FLEXIBLE")) {
-				num = control.getFlexibleRowNum();
-			}
-		} else {
-			if(name.equals("FLEXIBLE")){
-				num = control.getFlexibleRowNum();
-			}
+		if (name.equals("AIRPLANE")) {
+			num = control.getAirRowNum();
+		} else if (name.equals("TRAIN")) {
+			num = control.getTrainRowNum();
+		} else if (name.equals("CAR")) {
+			num = control.getCarRowNum();
+		} else if (name.equals("FLEXIBLE")) {
+			num = control.getFlexibleRowNum();
 		}
-		division = 1.0*num / control.getTotalRowNum();
+		division = 1.0 * num / control.getTotalRowNum();
 		setArc((int) (division * 360));
 	}
 

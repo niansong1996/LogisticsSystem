@@ -957,9 +957,9 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="initialize" class = "Component" x="150" y="20" w="98" h="23"/>
 		   	<unit name ="air" class="MyLabel" x="280" y="185" w="168" h="33" type="0" textType="AirText"/>
-		    <unit name ="train" class="MyLabel" x="680" y="200" w="168" h="33" type="0" textType="TrainText"/>
-		    <unit name ="car" class="MyLabel" x="280" y="460" w="168" h="33" type="0" textType="CarText"/>
-		    <unit name ="flexible" class="MyLabel" x="680" y="460" w="168" h="33" type="0" textType="FlexibleText"/>
+		    <unit name ="train" class="MyLabel" x="680" y="185" w="168" h="33" type="0" textType="TrainText"/>
+		    <unit name ="car" class="MyLabel" x="280" y="445" w="168" h="33" type="0" textType="CarText"/>
+		    <unit name ="flexible" class="MyLabel" x="680" y="445" w="168" h="33" type="0" textType="FlexibleText"/>
 		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="true"/>
 		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="true"/>
 		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="true"/>
@@ -1093,9 +1093,9 @@
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="partition" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <unit name ="air" class="MyLabel" x="280" y="185" w="168" h="33" type="0" textType="AirText"/>
-		    <unit name ="train" class="MyLabel" x="680" y="200" w="168" h="33" type="0" textType="TrainText"/>
-		    <unit name ="car" class="MyLabel" x="280" y="460" w="168" h="33" type="0" textType="CarText"/>
-		    <unit name ="flexible" class="MyLabel" x="680" y="460" w="168" h="33" type="0" textType="FlexibleText"/>
+		    <unit name ="train" class="MyLabel" x="680" y="185" w="168" h="33" type="0" textType="TrainText"/>
+		    <unit name ="car" class="MyLabel" x="280" y="445" w="168" h="33" type="0" textType="CarText"/>
+		    <unit name ="flexible" class="MyLabel" x="680" y="445" w="168" h="33" type="0" textType="FlexibleText"/>
 		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="false"/>
 		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="false"/>
 		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="false"/>
