@@ -1102,7 +1102,7 @@
 		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0" isInit="false"/>
 		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0" isInit="false"/>
 		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0" isInit="false"/>
-		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0"/>
+		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0" isInit="false"/>
 		    <unit name ="cancel" class = "MainButton" x="500" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

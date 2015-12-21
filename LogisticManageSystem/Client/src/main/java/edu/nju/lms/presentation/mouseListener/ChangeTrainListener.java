@@ -25,15 +25,17 @@ public class ChangeTrainListener extends ChangePartitionListener {
 	public void initialize() {
 		button = (CircleButton) units.get(5);
 		base = (CircleBase) units.get(8);
+		this.flexible = (CircleBase) units.get(10);
 		this.name = button.getName();
 	}
 
 	@Override
 	public void change() {
-		double division = button.getDivision();
 		if (control.getTotalRowNum() != -1) {
 			int tranNum = (int) (division * control.getTotalRowNum());
 			ResultMessage result = control.setTrainRowNum(tranNum);
+			double division2 = control.getFlexibleRowNum()/control.getTotalRowNum();
+			flexible.setArc((int)(division2*360));
 			if (!result.isSuccess()) {
 				new MyDialog(result.getErrorMessage(), true);
 			}

@@ -130,33 +130,44 @@ public class WarehouseController implements WareHouseblService{
 		return result;
 	}
 	public ResultMessage setTotalRowNum(int num){
-		int per = num/4;
 		ArrayList<Partition> lists = new ArrayList<Partition>();
-		lists.add(new Partition(per,0,per-1,PartitionType.AIRPLANE));
-		lists.add(new Partition(per,per,2*per-1,PartitionType.TRAIN));
-		lists.add(new Partition(per,2*per,3*per-1,PartitionType.CAR));
-		lists.add(new Partition(per,3*per,num-3*per-1,PartitionType.FLEXIBLE));
+		lists.add(new Partition(0,0,0,PartitionType.AIRPLANE));
+		lists.add(new Partition(0,0,0,PartitionType.TRAIN));
+		lists.add(new Partition(0,0,0,PartitionType.CAR));
+		lists.add(new Partition(num,0,num-1,PartitionType.FLEXIBLE));
 		PartitionVO vo =  new PartitionVO(lists);
 		return this.initialize(vo, 90 , this.getCurrentWarehouseNum());
 	}
 	
 	public int getAirRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(0).getCapacity();
 	}
 	
 	public int getTrainRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(1).getCapacity();
 	}
 	
 	public int getCarRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(2).getCapacity();
 	}
 	
 	public int getFlexibleRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(3).getCapacity();
 	}
 	/**
@@ -185,8 +196,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 	public ResultMessage setTrainRowNum(int capacity){
@@ -206,8 +216,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 	public ResultMessage setCarRowNum(int capacity){
@@ -226,8 +235,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 

@@ -51,13 +51,13 @@ public class CircleBase extends JLabel {
 		g2d.drawOval(0, 0, getWidth() - 1, getHeight() - 1);
 		g2d.drawOval(10, 10, getWidth() - 20, getHeight() - 20);
 		g2d.setStroke(new BasicStroke(10));
-		g2d.drawArc(5, 5, getWidth() - 10, getHeight() - 10, 90, -arc);
+		g2d.drawArc(5, 5, getWidth() - 10, getHeight() - 10, 90, arc);
 	}
 
 	public void initializeArc() {
 		double division = 0;
+		int num = 0;
 		if (isInit.equals("false")) {
-			int num = 0;
 			if (name.equals("AIRPLANE")) {
 				num = control.getAirRowNum();
 			} else if (name.equals("TRAIN")) {
@@ -67,8 +67,12 @@ public class CircleBase extends JLabel {
 			} else if (name.equals("FLEXIBLE")) {
 				num = control.getFlexibleRowNum();
 			}
-			division = num / control.getTotalRowNum();
+		} else {
+			if(name.equals("FLEXIBLE")){
+				num = control.getFlexibleRowNum();
+			}
 		}
+		division = 1.0*num / control.getTotalRowNum();
 		setArc((int) (division * 360));
 	}
 

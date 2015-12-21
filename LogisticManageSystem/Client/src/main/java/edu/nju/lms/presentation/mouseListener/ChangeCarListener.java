@@ -25,15 +25,17 @@ public class ChangeCarListener extends ChangePartitionListener {
 	public void initialize() {
 		button = (CircleButton) units.get(6);
 		base = (CircleBase) units.get(9);
+		this.flexible = (CircleBase) units.get(10);
 		this.name = button.getName();
 	}
 
 	@Override
 	public void change() {
-		double division = button.getDivision();
 		if (control.getTotalRowNum() != -1) {
 			int tranNum = (int) (division * control.getTotalRowNum());
 			ResultMessage result = control.setCarRowNum(tranNum);
+			double division2 = 1.0*control.getFlexibleRowNum()/control.getTotalRowNum();
+			flexible.setArc((int)(division2*360));
 			if (!result.isSuccess()) {
 				new MyDialog(result.getErrorMessage(), true);
 			}

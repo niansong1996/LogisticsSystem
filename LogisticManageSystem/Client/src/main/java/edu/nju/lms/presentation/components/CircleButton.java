@@ -52,7 +52,7 @@ public class CircleButton extends MainButton {
 			}
 			division = num / control.getTotalRowNum();
 		}
-		x -= 5;
+		x-=7;
 		int d_x = 100 - (int) (Math.sin(2 * division * Math.PI) * 100);
 		int d_y = 100 - (int) (Math.cos(2 * division * Math.PI) * 100);
 		x += d_x;
@@ -90,6 +90,10 @@ public class CircleButton extends MainButton {
 
 	public String getIsInit() {
 		return isInit;
+	}
+
+	public void setDivision(double division) {
+		this.division = division;
 	}
 	
 }
