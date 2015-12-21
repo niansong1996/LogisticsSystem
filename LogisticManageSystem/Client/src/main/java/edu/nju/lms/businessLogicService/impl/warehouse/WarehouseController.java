@@ -15,6 +15,7 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.Partition;
+import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.WarehouseCheckinDataService;
 import edu.nju.lms.dataService.WarehouseCheckoutDataService;
@@ -118,6 +119,9 @@ public class WarehouseController implements WareHouseblService{
 	
 	public int getTotalRowNum(){
 		PartitionVO vo = warehouseManagebl.showPartition(warehouseData,getCurrentWarehouseNum());
+		if(vo==null){
+			return -1;
+		}
 		ArrayList<Partition> info = vo.getPartitionInfor();
 		int result = 0;
 		for(Partition p :info){
@@ -125,24 +129,45 @@ public class WarehouseController implements WareHouseblService{
 		}
 		return result;
 	}
+	public ResultMessage setTotalRowNum(int num){
+		ArrayList<Partition> lists = new ArrayList<Partition>();
+		lists.add(new Partition(0,0,0,PartitionType.AIRPLANE));
+		lists.add(new Partition(0,0,0,PartitionType.TRAIN));
+		lists.add(new Partition(0,0,0,PartitionType.CAR));
+		lists.add(new Partition(num,0,num-1,PartitionType.FLEXIBLE));
+		PartitionVO vo =  new PartitionVO(lists);
+		return this.initialize(vo, 90 , this.getCurrentWarehouseNum());
+	}
 	
 	public int getAirRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(0).getCapacity();
 	}
 	
 	public int getTrainRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(1).getCapacity();
 	}
 	
 	public int getCarRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(2).getCapacity();
 	}
 	
 	public int getFlexibleRowNum(){
 		PartitionVO partitions = warehouseManagebl.showPartition(warehouseData,this.getCurrentWarehouseNum());
+		if(partitions==null){
+			return 0;
+		}
 		return partitions.getPartitionInfor().get(3).getCapacity();
 	}
 	/**
@@ -171,8 +196,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 	public ResultMessage setTrainRowNum(int capacity){
@@ -192,8 +216,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 	public ResultMessage setCarRowNum(int capacity){
@@ -212,8 +235,7 @@ public class WarehouseController implements WareHouseblService{
 		flexible.setStartRow(flexible.getStartRow()+bias);
 		flexible.setEndRow(flexible.getEndRow()+bias);
 		flexible.setCapacity(flexible.getCapacity()-bias);
-		this.modifyPartition(partitions, this.getCurrentWarehouseNum());
-		return new ResultMessage(true,"success");
+		return this.modifyPartition(partitions, this.getCurrentWarehouseNum());
 	}
 	
 

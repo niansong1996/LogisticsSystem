@@ -3,11 +3,14 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import edu.nju.lms.VO.ReceiptVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.DateChooser;
+import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
 import edu.nju.lms.presentation.components.table.CommodityTable;
@@ -36,12 +39,19 @@ public class SaveReceiptListener extends ButtonListener{
 			new MyDialog("incomplete");
 			return;
 		}
+		DateChooser date = (DateChooser) units.get(1);
+		Calendar c = date.getCalendar();
+		String time = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + "-" + c.get(Calendar.DATE);
 		ArrayList<String> express = new ArrayList<String>();
+		if(table.getDataList().isEmpty()){
+			new MyDialog("请先添加",true);
+			return;
+		}
 		for(MyTableLabel label: table.getDataList()) {
 			MyTextField commodity = (MyTextField) label.getComponents(0);
 			express.add(commodity.getText());
 		}
-		ReceiptVO receipt = new ReceiptVO("", "", Double.parseDouble(money.getText()), courier.getText(), express);
+		ReceiptVO receipt = new ReceiptVO("", time, Double.parseDouble(money.getText()), courier.getText(), express);
 		ReceiptVO finalReceipt = finance.createReceipt(receipt);
 		ResultMessage result = finance.addReceipt(finalReceipt);
 		if(result.isSuccess()) {

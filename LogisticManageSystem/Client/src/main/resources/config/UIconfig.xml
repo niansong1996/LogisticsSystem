@@ -960,13 +960,13 @@
 		    <unit name ="train" class="MyLabel" x="680" y="200" w="168" h="33" type="0" textType="TrainText"/>
 		    <unit name ="car" class="MyLabel" x="280" y="460" w="168" h="33" type="0" textType="CarText"/>
 		    <unit name ="flexible" class="MyLabel" x="680" y="460" w="168" h="33" type="0" textType="FlexibleText"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE"/>
-		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR"/>
-		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0"/>
-		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0"/>
-		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0"/>
-		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="true"/>
+		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0" isInit="true"/>
 		    <unit name ="warning" class="MyLabel" x="830" y="75" w="168" h="33" type="0" textType="WarningText"/>
 		    <unit name ="warning" class="MyTextField" x="900" y="75" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
@@ -983,6 +983,9 @@
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
+		    <unit name ="pleaseInput" class = "MyLabel" x="110" y="68" w="280" h="20" type="0" textType="InputTotalText"/>
+		    <unit name ="totalNum" class="MyTextField" x="350" y="65" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SetTotalRowListener"/>
 		</mainPanel>
 		<mainPanel name="checkOutPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
@@ -1093,13 +1096,13 @@
 		    <unit name ="train" class="MyLabel" x="680" y="200" w="168" h="33" type="0" textType="TrainText"/>
 		    <unit name ="car" class="MyLabel" x="280" y="460" w="168" h="33" type="0" textType="CarText"/>
 		    <unit name ="flexible" class="MyLabel" x="680" y="460" w="168" h="33" type="0" textType="FlexibleText"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE"/>
-		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR"/>
-		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0"/>
-		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0"/>
-		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0"/>
-		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="false"/>
+		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="false"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="false"/>
+		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0" isInit="false"/>
+		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0" isInit="false"/>
+		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0" isInit="false"/>
+		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0" isInit="false"/>
 		    <unit name ="cancel" class = "MainButton" x="500" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>

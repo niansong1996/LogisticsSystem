@@ -19,10 +19,12 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 	protected CircleButton button;
 	protected CircleBase base;
 	protected String name;
-
+	protected double division;
+	protected CircleBase flexible;
 	public ChangePartitionListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		button.addMouseMotionListener(this);
+		this.control = controller.getWarehouseController();
 	}
 
 	@Override
@@ -55,6 +57,8 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 			base.setArc((int) (Math.asin(mycos) / (2 * Math.PI) * 360) + 180);
 			button.setLocation((int) (c_x + mycos * 100 - 15), (int) (c_y + mysin * 100 - 10));
 		}
+		this.division = base.getArc()/360.0;
+		
 		change();
 
 	}
@@ -64,6 +68,8 @@ public abstract class ChangePartitionListener extends ButtonListener implements 
 
 	public abstract void initialize();
 
-	// 调用逻辑层方法
+	/**
+	 *  调用逻辑层方法
+	 */
 	public abstract void change();
 }

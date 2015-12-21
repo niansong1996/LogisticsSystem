@@ -1,5 +1,6 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -290,6 +291,9 @@ public class FinanceController
 	
 	public static void main(String[] args) {
 		FinanceController f=BusinessLogicFactory.createFinanceController();
-		f.updatePriceStrategy(46);
+		ArrayList<String> temp=new ArrayList<String>();
+		temp.add("1234567890");
+		ReceiptVO r=new ReceiptVO("", "", 100, "0101010001", temp);
+		f.addReceipt(f.createReceipt(r));
 	}
 }

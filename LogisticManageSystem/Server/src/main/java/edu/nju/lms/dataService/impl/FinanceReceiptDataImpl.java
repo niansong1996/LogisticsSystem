@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.ReceiptPO;
+import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;
 import edu.nju.lms.data.utility.JDBC;
@@ -25,6 +26,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 	}
 	
 	public ResultMessage addReceipt(ReceiptPO receipt) throws RemoteException {
+		System.out.println("showing"+receipt.getReceiptDate().getTime());
 		if(findReceipt(receipt.getId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(receipt, receipt.getClass().getName()));
 			return new ResultMessage(true,"success");

@@ -6,38 +6,40 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import edu.nju.lms.VO.PartitionVO;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.Partition;
-import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 
 /**
  *@author tj
- *@date 2015年12月7日
+ *@date 2015年12月20日
  */
-public class SaveWareInitialListener extends ButtonListener {
+public class SetTotalRowListener extends ButtonListener {
 	private WarehouseController control;
-	public SaveWareInitialListener(ArrayList<Component> units, UIController controller, Component button) {
+	private JTextField field;
+	public SetTotalRowListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		this.control = controller.getWarehouseController();
+		this.field = (JTextField) units.get(28);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		JTextField cordon = (JTextField)units.get(12);
-		if(!Numeric.isNumeric(cordon.getText())){
-			new MyDialog("请输入合法数字",true);
+		if(field.getText().isEmpty()){
+			new MyDialog("请输入仓库总排数",true);
 			return;
 		}
-		ResultMessage result = control.setCordon(Double.parseDouble(cordon.getText()),control.getCurrentWarehouseNum());
-		if(result.isSuccess()){
-			new MyDialog("初始化成功",true);
-		}else{
+		String num = field.getText();
+		if(!Numeric.isNumeric(num)){
+			new MyDialog("请输入数字",true);
+			return;
+		}
+		ResultMessage result = control.setTotalRowNum(Integer.parseInt(num));
+		if(!result.isSuccess()){
 			new MyDialog(result.getErrorMessage(),true);
 		}
+		
 	}
 
 }
