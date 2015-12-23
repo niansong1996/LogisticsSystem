@@ -368,12 +368,12 @@
 		    <component name="initialAccount" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="addPath" class = "Component" x="160" y="100" w="850" h="520"/>
 		    <component name="initialBuild" class = "Component" x="160" y="100" w="850" h="520"/>
-		    <unit name ="add" change="AddAccountPanel" class = "MainButton" x="260" y="300" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="add" change="AddInitialAccountPanel" class = "MainButton" x="260" y="300" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="add" change="AddDepartmentFinancialPanel" class = "MainButton" x="260" y="514" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="add" change="addVehicleFinancialPanel" class = "MainButton" x="770" y="514" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="add" change="addDriverFinancialPanel" class = "MainButton" x="770" y="514" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="add" change="AddPersonFinancialPanel" class = "MainButton" x="520" y="514" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="add" change="addWareHousePanel" class = "MainButton" x="770" y="300" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="add" change="addDriverFinancialPanel" class = "MainButton" x="520" y="300" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="add" change="addVehicleFinancialPanel" class = "MainButton" x="520" y="300" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_sumManage" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -389,21 +389,20 @@
 		<mainPanel name="addWareHousePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="initialize" class = "Component" x="150" y="20" w="98" h="23"/>
-		   	<unit name ="air" class="MyLabel" x="280" y="185" w="168" h="33" type="0" textType="AirText"/>
-		    <unit name ="train" class="MyLabel" x="680" y="200" w="168" h="33" type="0" textType="TrainText"/>
-		    <unit name ="car" class="MyLabel" x="280" y="460" w="168" h="33" type="0" textType="CarText"/>
-		    <unit name ="flexible" class="MyLabel" x="680" y="460" w="168" h="33" type="0" textType="FlexibleText"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE"/>
-		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR"/>
-		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0"/>
-		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0"/>
-		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0"/>
-		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0"/>
-		    <unit name ="warning" class="MyLabel" x="830" y="75" w="168" h="33" type="0" textType="WarningText"/>
-		    <unit name ="warning" class="MyTextField" x="900" y="75" w="168" h="33" type="0" textType="null"/>
-		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
-		    <unit name ="cancel" class = "MainButton" x="600" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="initialAccountPanel"/>
+		   	<unit name ="air" class="MyLabel" x="280" y="285" w="168" h="33" type="0" textType="AirText"/>
+		    <unit name ="train" class="MyLabel" x="680" y="285" w="168" h="33" type="0" textType="TrainText"/>
+		    <unit name ="car" class="MyLabel" x="280" y="545" w="168" h="33" type="0" textType="CarText"/>
+		    <unit name ="flexible" class="MyLabel" x="680" y="545" w="168" h="33" type="0" textType="FlexibleText"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="200" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="650" y="200" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="460" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="true"/>
+		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="200" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="TRAIN" class = "CircleBase" x="650" y="200" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="CAR" class = "CircleBase" x="250" y="460" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="460" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="warning" class="MyLabel" x="110" y="105" w="168" h="33" type="0" textType="WarningText"/>
+		    <unit name ="warning" class="MyTextField" x="200" y="105" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="totalNum" class="MyTextField" x="350" y="65" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_sumManage" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -415,6 +414,9 @@
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
+		    <unit name ="pleaseInput" class = "MyLabel" x="110" y="68" w="280" h="20" type="0" textType="InputTotalText"/>
+		    <unit name ="confirm" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SetTotalRowListener"/>
+		    <unit name ="save" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
 		</mainPanel>
 		<mainPanel name="addDriverFinancialPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
@@ -507,6 +509,27 @@
 		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_initial3" change="initialAccountPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_accountManage" change="accountManage" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_statistic" change="SumReceiptFiancePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogFinancePanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
+		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
+		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
+		</mainPanel>
+		<mainPanel name="AddInitialAccountPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
+		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="accountManage" class = "Component" x="150" y="20" w="98" h="23"/>
+		    <component name="addPath" class = "Component" x="150" y="90" w="850" h="560"/>
+		    <component name="addAccountPanel" class = "Component" x="150" y="90" w="850" h="560"/>
+		    <unit name ="accountID" class = "MyTextField" x="630" y="290" w="200" h="33" type="0" textType="null"/>
+		    <unit name ="balance" class = "MyTextField" x="630" y="390" w="200" h="33" type="0" textType="null"/>
+		    <unit name ="confirm" class = "MainButton" x="400" y="500" w="112" h="34" type="1" listenerName="AddAccountConfirmListener"/>
+		    <unit name ="cancel" class = "MainButton" x="600" y="500" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="initialAccountPanel"/>
+		    <unit name ="guide_back" change="FinancialAdvancedPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_sumManage" change="sumManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_payManage" change="PayManagePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_initial" change="initialAccountPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_accountManage3" change="accountManage" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_statistic" change="SumReceiptFiancePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_loginfo" change="checkLogFinancePanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
@@ -970,6 +993,7 @@
 		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="460" w="200" h="200" type="0" isInit="true"/>
 		    <unit name ="warning" class="MyLabel" x="110" y="105" w="168" h="33" type="0" textType="WarningText"/>
 		    <unit name ="warning" class="MyTextField" x="200" y="105" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="totalNum" class="MyTextField" x="350" y="65" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -983,7 +1007,6 @@
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		    <unit name ="pleaseInput" class = "MyLabel" x="110" y="68" w="280" h="20" type="0" textType="InputTotalText"/>
-		    <unit name ="totalNum" class="MyTextField" x="350" y="65" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="confirm" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SetTotalRowListener"/>
 		    <unit name ="save" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
 		</mainPanel>
