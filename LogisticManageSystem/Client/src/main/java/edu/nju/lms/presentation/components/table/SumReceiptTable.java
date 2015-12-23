@@ -25,7 +25,7 @@ public class SumReceiptTable extends MyTable {
 		MyLabel amount = new MyLabel(vo.getAmount()+"");
 		MyLabel business = new MyLabel(businesshallNum);
 		courierNum.setSize(100,30);
-		amount.setSize(30,30);
+		amount.setSize(100,30);
 		business.setSize(100,30);
 		java.awt.Component[] component = { business, courierNum, amount};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);

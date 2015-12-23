@@ -1,10 +1,14 @@
 package IntegrateTest;
 
-import static org.junit.Assert.fail;
+import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 
+import edu.nju.lms.VO.ListVO;
+import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
+import edu.nju.lms.data.ListType;
 
 /**
  * @author oppalu
@@ -13,27 +17,16 @@ import edu.nju.lms.businessLogicService.impl.list.ListController;
  */
 public class ListblImplTest {
 	
-	ListController listController=new ListController();
+	ListController listController=BusinessLogicFactory.createListController();
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-	
 	@Test
 	public void testGetListInfo(){
-//		ArrayList<ListVO> list=listController.getListInfo();
-//	    System.out.println("**********start testing getListInfo**********");
-//		for(int i=0;i<list.size();i++){
-//			System.out.println(list.get(i).getId()+" "+list.get(i).getType()+" "+list.get(i).getState());
-//		}
-//		System.out.println("**********end testing**********");
-	}
-	
-	@Test
-	public void testChangeList(){
-		//TODO
-		//don't know some existent list info
+		
 	}
 
+	@Test
+	public void testGetList(){
+		ArrayList<ListVO> result=listController.getListInfo(ListType.RECEIPT);
+		Assert.assertEquals(expected, actual);
+	}
 }
