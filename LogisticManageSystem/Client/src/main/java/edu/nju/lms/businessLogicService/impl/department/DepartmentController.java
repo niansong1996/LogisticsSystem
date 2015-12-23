@@ -68,16 +68,6 @@ public class DepartmentController implements DepartmentblService{
 		return result;
 	}
 
-	public ResultMessage addCity(CityVO city) {
-		ResultMessage result=department.addCity(city,departService);
-
-		if(result.isSuccess()){
-			logController.addLog("新增城市"+city.getId()+"的信息");
-		}
-		
-		return result;
-	}
-
 	public CityVO findCity(String id) {
 		CityVO result=department.findCity(id,departService);
 

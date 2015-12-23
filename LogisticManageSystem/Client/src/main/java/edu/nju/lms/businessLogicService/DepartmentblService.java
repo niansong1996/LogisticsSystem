@@ -22,8 +22,6 @@ public interface DepartmentblService {
 	
 	public ArrayList<DepartmentVO> showAllDepartments();
 	
-	public ResultMessage addCity(CityVO city);
-	
 	public CityVO findCity(String id);
 	
 	public ResultMessage updateCity(CityVO  city);
