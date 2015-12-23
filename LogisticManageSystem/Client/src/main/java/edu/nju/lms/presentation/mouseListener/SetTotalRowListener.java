@@ -21,7 +21,7 @@ public class SetTotalRowListener extends ButtonListener {
 	public SetTotalRowListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		this.control = controller.getWarehouseController();
-		this.field = (JTextField) units.get(28);
+		this.field = (JTextField) units.get(26);
 	}
 
 	@Override

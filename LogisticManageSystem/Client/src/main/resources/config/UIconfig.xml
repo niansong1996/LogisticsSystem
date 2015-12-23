@@ -249,7 +249,7 @@
 		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_statistic3" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -683,9 +683,9 @@
 		    <unit name ="guide_send" change="sendPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_receive3" change="receivePanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="expressNum" class="MyTextField" x="315" y="172" w="168" h="23" type="0" textType="null"/>
-		    <unit name ="receiver" class="MyLabel" x="280" y="260" w="168" h="30" type="0" textType="null"/>
-		    <unit name ="phone" class="MyLabel" x="650" y="260" w="168" h="30" type="0" textType="null"/>
-		    <unit name ="address" class="MyLabel" x="250" y="349" w="168" h="30" type="0" textType="null"/>
+		    <unit name ="receiver" class="MyLabel" x="280" y="250" w="168" h="30" type="0" textType="null"/>
+		    <unit name ="phone" class="MyLabel" x="650" y="250" w="168" h="30" type="0" textType="null"/>
+		    <unit name ="address" class="MyLabel" x="250" y="339" w="168" h="30" type="0" textType="null"/>
 		    <unit name ="Truereceiver" class="MyTextField" x="330" y="435" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="contactMode" class="MyTextField" x="730" y="435" w="168" h="23" type="0" textType="null"/>
 		    <unit name ="confirm" class = "MainButton" x="300" y="550" w="112" h="34" type="1" listenerName="SaveReceiveListListener"/>
@@ -957,21 +957,19 @@
 		<mainPanel name="initializePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="initialize" class = "Component" x="150" y="20" w="98" h="23"/>
-		   	<unit name ="air" class="MyLabel" x="280" y="185" w="168" h="33" type="0" textType="AirText"/>
-		    <unit name ="train" class="MyLabel" x="680" y="185" w="168" h="33" type="0" textType="TrainText"/>
-		    <unit name ="car" class="MyLabel" x="280" y="445" w="168" h="33" type="0" textType="CarText"/>
-		    <unit name ="flexible" class="MyLabel" x="680" y="445" w="168" h="33" type="0" textType="FlexibleText"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="100" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="true"/>
-		    <unit name="CircleButton" class ="CircleButton" x="650" y="100" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="true"/>
-		    <unit name="CircleButton" class ="CircleButton" x="250" y="360" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="true"/>
-		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="100" w="200" h="200" type="0" isInit="true"/>
-		    <unit name ="TRAIN" class = "CircleBase" x="650" y="100" w="200" h="200" type="0" isInit="true"/>
-		    <unit name ="CAR" class = "CircleBase" x="250" y="360" w="200" h="200" type="0" isInit="true"/>
-		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="360" w="200" h="200" type="0" isInit="true"/>
-		    <unit name ="warning" class="MyLabel" x="830" y="75" w="168" h="33" type="0" textType="WarningText"/>
-		    <unit name ="warning" class="MyTextField" x="900" y="75" w="168" h="33" type="0" textType="null"/>
-		    <unit name ="confirm" class = "MainButton" x="400" y="670" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
-		    <unit name ="cancel" class = "MainButton" x="600" y="670" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
+		   	<unit name ="air" class="MyLabel" x="280" y="285" w="168" h="33" type="0" textType="AirText"/>
+		    <unit name ="train" class="MyLabel" x="680" y="285" w="168" h="33" type="0" textType="TrainText"/>
+		    <unit name ="car" class="MyLabel" x="280" y="545" w="168" h="33" type="0" textType="CarText"/>
+		    <unit name ="flexible" class="MyLabel" x="680" y="545" w="168" h="33" type="0" textType="FlexibleText"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="200" w="27" h="27" type="1" listenerName="ChangeAirListener" belong="AIRPLANE" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="650" y="200" w="27" h="27" type="1" listenerName="ChangeTrainListener" belong="TRAIN" isInit="true"/>
+		    <unit name="CircleButton" class ="CircleButton" x="250" y="460" w="27" h="27" type="1" listenerName="ChangeCarListener" belong="CAR" isInit="true"/>
+		    <unit name ="AIRPLANE" class = "CircleBase" x="250" y="200" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="TRAIN" class = "CircleBase" x="650" y="200" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="CAR" class = "CircleBase" x="250" y="460" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="FLEXIBLE" class = "CircleBase" x="650" y="460" w="200" h="200" type="0" isInit="true"/>
+		    <unit name ="warning" class="MyLabel" x="110" y="105" w="168" h="33" type="0" textType="WarningText"/>
+		    <unit name ="warning" class="MyTextField" x="200" y="105" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -987,6 +985,7 @@
 		    <unit name ="pleaseInput" class = "MyLabel" x="110" y="68" w="280" h="20" type="0" textType="InputTotalText"/>
 		    <unit name ="totalNum" class="MyTextField" x="350" y="65" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="confirm" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SetTotalRowListener"/>
+		    <unit name ="save" class = "MainButton" x="550" y="65" w="112" h="34" type="1" listenerName="SaveWareInitialListener"/>
 		</mainPanel>
 		<mainPanel name="checkOutPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>

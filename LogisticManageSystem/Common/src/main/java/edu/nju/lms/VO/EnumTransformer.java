@@ -112,6 +112,11 @@ public class EnumTransformer {
 		}
 		return null;
 	}
+	public static String PackType2Str(PackingType type){
+		int t_loc = type.ordinal();
+		String t = packTypes[t_loc];
+		return t;
+	}
 	/**
 	 * transform the string to TransportMode
 	 * @param mode
@@ -168,6 +173,11 @@ public class EnumTransformer {
 			return LoadType.values()[index];
 		}
 		return null;	
+	}
+	public static String loadType2Str(LoadType type){
+		int t_loc = type.ordinal();
+		String t = loadTypes[t_loc];
+		return t;
 	}
 	/**
 	 * transform the string to PersonType

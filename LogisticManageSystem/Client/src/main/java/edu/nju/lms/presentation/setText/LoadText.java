@@ -1,5 +1,6 @@
 package edu.nju.lms.presentation.setText;
 
+import edu.nju.lms.VO.EnumTransformer;
 import edu.nju.lms.VO.LoadVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController.UIController;
@@ -20,8 +21,9 @@ public class LoadText extends Text {
 		String result="\n";
 		LoadVO vo = control.findLoadList(id);
 		if(vo!=null){
+			String type = EnumTransformer.loadType2Str(vo.getLoadType());
 			result+="  单据编号："+vo.getId()+"\n";
-			result+="  装运种类："+vo.getLoadType()+"(意会就好...)"+"\n";
+			result+="  装运种类："+type+"\n";
 			result+="  装运日期："+vo.getLoadDate()+"\n";
 			result+="  营业厅编号："+vo.getBusinessHallNum()+"\n";
 			result+="  汽运编号："+vo.getMotorNum()+"\n";

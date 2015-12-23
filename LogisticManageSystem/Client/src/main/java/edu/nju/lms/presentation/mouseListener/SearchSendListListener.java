@@ -40,7 +40,7 @@ public class SearchSendListListener extends ButtonListener {
 		ArrayList<String> baseInfo = vo.getBaseInfor();
 		for(int i =0;i<3;i++){
 			String str = baseInfo.get(i);
-			MyLabel label = (MyLabel) units.get(i+5);
+			MyLabel label = (MyLabel) units.get(i+4);
 			label.setText(str);
 		}	
 	}

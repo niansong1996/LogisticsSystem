@@ -22,7 +22,7 @@ public class ArrivalText extends Text {
 		if(vo!=null){
 			result+="  单据编号："+vo.getId()+"\n";
 			result+="  快递编号："+vo.getExpressNum()+"\n";
-			result+="  到达状态："+vo.getArrivalState()+"(什么意思...意会就好)"+"\n";
+			result+="  到达状态："+vo.getArrivalState()+"\n";
 			result+="  目的地："+vo.getDestination()+"\n";
 			result+="  出发地："+vo.getSetOut()+"\n";
 			result+="  到达日期："+vo.getArrivalDate()+"\n";

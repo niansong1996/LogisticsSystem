@@ -252,6 +252,7 @@ public class TransProcessblImpl{
 			result=list.addDispatch(po);
 			if(result.isSuccess()){
 				CommodityPO c=commodity.findCommodity(dipatchList.getExpressNum());
+				if(c==null) return new ResultMessage(false,"未找到该快递");
 				c.setDispatch(dipatchList.getId());
 				commodity.updateCommodity(c);
 			}
