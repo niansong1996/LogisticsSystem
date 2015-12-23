@@ -27,7 +27,7 @@ CREATE TABLE `commoditypo` (
   `id` varchar(12) NOT NULL,
   `shipState` varchar(20) NOT NULL,
   `send` varchar(12) NOT NULL,
-  `loading` varchar(12) NOT NULL,
+  `loading` text NOT NULL,
   `arrival` varchar(12) NOT NULL,
   `dispatch` varchar(12) NOT NULL,
   `checkin` varchar(12) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `commoditypo` (
 
 LOCK TABLES `commoditypo` WRITE;
 /*!40000 ALTER TABLE `commoditypo` DISABLE KEYS */;
-INSERT INTO `commoditypo` VALUES (1,'1234567890','RECEIPIENT','100000001','[]','[]','','[]','[]','700000001');
+INSERT INTO `commoditypo` VALUES (1,'0000000001','RECEIPIENT','100000002','[200000010, 200000011]','[]','','[]','[]','');
 /*!40000 ALTER TABLE `commoditypo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-20 10:23:37
+-- Dump completed on 2015-12-23 19:52:09
