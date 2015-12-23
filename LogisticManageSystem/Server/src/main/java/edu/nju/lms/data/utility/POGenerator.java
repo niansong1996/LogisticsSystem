@@ -33,7 +33,7 @@ public class POGenerator {
 			constructor = cons[i];
 			paraNum = constructor.getParameterCount();
 			int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
-			System.out.println(cls.getDeclaredFields().length-bias);
+//			System.out.println(cls.getDeclaredFields().length-bias);
 			boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
 			boolean con2 = !checkConstructor(constructor);
 			if(con1||con2) continue;
@@ -71,7 +71,7 @@ public class POGenerator {
 			for(;i<cons.length;i++){
 				constructor = cons[i];
 				paraNum = constructor.getParameterCount();
-				System.out.println(cls.getDeclaredFields().length);
+//				System.out.println(cls.getDeclaredFields().length);
 				int bias = (cls.getSuperclass().getSimpleName().equals("ListPO"))?-1:1;
 				boolean con1 = cls.getDeclaredFields().length-bias!=paraNum;	
 				boolean con2 = !checkConstructor(constructor);
