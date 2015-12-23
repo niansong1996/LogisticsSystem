@@ -23,6 +23,7 @@ public class ReceiptPO extends ListPO {
 	
 	public ReceiptPO(String id,String state,String receiptDate, String amount, String courierNum, String expressNums) {
 		super(id,ListState.valueOf(state));
+		this.expressNums = new ArrayList<String>();
 		this.receiptDate = CommonUtility.String2Cal(receiptDate);
 		this.amount = Double.parseDouble(amount);
 		this.courierNum = courierNum;
