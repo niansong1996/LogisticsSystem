@@ -287,11 +287,5 @@ public class FinanceController
 	public PaymentVO findPayment(String id) {
 		return pay.findPayment(id, payData);
 	}
-	
-	public static void main(String[] args) {
-		FinanceController f=BusinessLogicFactory.createFinanceController();
-		Calendar c=CommonUtility.String2Cal("2015-12-20");
-		ArrayList<ReceiptVO> result=f.showReceiptList(c, "010101");
-		System.out.println(result.size());
-	}
+
 }

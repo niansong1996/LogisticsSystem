@@ -111,20 +111,6 @@ public class DepartmentblImpl{
 		return result;
 	}
 	
-	public ResultMessage addCity(CityVO city,DepartmentDataService service) {
-		ResultMessage result=cityIdCheck(city.getId());
-		if(!result.isSuccess()){
-			return result;
-		}
-		CityPO cityPO=new CityPO(city.getId(),city.getName(),city.getBusinessNums(),city.getDistance());
-		try {
-			result=service.addCity(cityPO);
-		} catch (RemoteException e) {
-			return RemoteExceptionHandler.handleRemoteException(e);
-		}
-		return result;
-	}
-
 	public CityVO findCity(String id,DepartmentDataService service) {
 		CityPO cityPO=null;
 		CityVO city=null;
