@@ -11,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.TransportToolDataService;
 import edu.nju.lms.dataService.impl.TransportToolDataImpl;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class TransportToolDataTest {
 	TransportToolDataService transportToolData;

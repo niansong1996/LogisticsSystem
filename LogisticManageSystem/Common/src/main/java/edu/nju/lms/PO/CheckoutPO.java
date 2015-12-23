@@ -34,6 +34,7 @@ public class CheckoutPO extends ListPO{
 			String arrivalNum,String warehouseId, String motorNum) {
 		super(id,ListState.valueOf(state));
 		this.expressNums = new ArrayList<String>();
+		this.destination = new ArrayList<String>();
 		CommonUtility.String2Array(this.expressNums,expressNums);
 		this.checkoutDate = CommonUtility.String2Cal(checkoutDate);
 		CommonUtility.String2Array(this.destination, destination);

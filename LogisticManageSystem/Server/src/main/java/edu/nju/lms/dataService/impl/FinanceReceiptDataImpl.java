@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import edu.nju.lms.PO.ReceiptPO;
-import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.DataUtility;
 import edu.nju.lms.data.utility.JDBC;
@@ -89,7 +88,7 @@ public class FinanceReceiptDataImpl extends UnicastRemoteObject implements Finan
 		ArrayList<ReceiptPO> receiptList = new ArrayList<ReceiptPO>();
 		ResultSet result = JDBC.ExecuteQuery("select * from receiptpo where receiptDate between \""
 				+ DataUtility.Cal2String(date)+" 00:00:00\" and \""+DataUtility.Cal2String(date)+" 23:59:59\""+
-				" and courierNum like "+department+" ;" );
+				" and courierNum like \"%"+department+"%\" ;" );
 		try{
 		if(!result.wasNull())
 			POGenerator.generateMultiObject(receiptList,result, ReceiptPO.class.getName());

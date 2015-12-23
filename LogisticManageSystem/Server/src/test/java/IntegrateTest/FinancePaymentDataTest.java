@@ -13,7 +13,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinancePaymentDataService;
 import edu.nju.lms.dataService.impl.FinancePaymentDataImpl;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class FinancePaymentDataTest {
 	public FinancePaymentDataService financePaymentData;
@@ -45,7 +45,7 @@ public class FinancePaymentDataTest {
 		Assert.assertEquals(fail1, financePaymentData.addPayment(paymentPo1));
 		Assert.assertEquals(success, financePaymentData.addPayment(paymentPo2));
 	}
-//	@Test
+	@Test
 	public void testDeletePayment() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -54,7 +54,7 @@ public class FinancePaymentDataTest {
 		Assert.assertEquals(success, financePaymentData.deletePayment(paymentPo1.getId()));
 		Assert.assertEquals(fail2, financePaymentData.deletePayment(paymentPo1.getId()));
 	}
-//	@Test
+	@Test
 	public void testFindPayment_num() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -63,7 +63,7 @@ public class FinancePaymentDataTest {
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(paymentPo2.getId()));
 		Assert.assertEquals(null, financePaymentData.findPayment(paymentPo1.getId()));
 	}
-	//@Test 
+	@Test 
 	public void testFindPayment_time() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -72,7 +72,7 @@ public class FinancePaymentDataTest {
 		Assert.assertEquals(paymentPo2, financePaymentData.findPayment(cal2).get(0));
 		Assert.assertEquals(true, financePaymentData.findPayment(cal1).isEmpty());
 	}
-//	@Test
+	@Test
 	public void testUpdatePayment() throws RemoteException{
 		financePaymentData = new FinancePaymentDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -82,7 +82,7 @@ public class FinancePaymentDataTest {
 		Assert.assertEquals(fail2, financePaymentData.updatePayment(paymentPo1));
 	}
 
-//	@Test
+	@Test
 	public void testFindEarnings() throws RemoteException{
 		
 	}

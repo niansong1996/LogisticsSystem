@@ -2,6 +2,7 @@ package IntegrateTest;
 
 import java.rmi.RemoteException;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import edu.nju.lms.PO.AccountPO;
@@ -9,7 +10,6 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceAccountDataService;
 import edu.nju.lms.dataService.impl.FinanceAccountDataImpl;
-import junit.framework.Assert;
 
 public class FinanceAccountDataTest {
 	public FinanceAccountDataService financeAccountData;

@@ -12,7 +12,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.impl.FinanceReceiptDataImpl;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class FinanceReceiptDataTest {
 	public FinanceReceiptDataService financeReceiptData;

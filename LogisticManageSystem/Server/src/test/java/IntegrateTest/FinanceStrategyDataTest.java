@@ -11,7 +11,7 @@ import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.data.utility.JDBC;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 import edu.nju.lms.dataService.impl.FinanceStrategyDataImpl;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class FinanceStrategyDataTest {
 	public FinanceStrategyDataService financeStrategyData;

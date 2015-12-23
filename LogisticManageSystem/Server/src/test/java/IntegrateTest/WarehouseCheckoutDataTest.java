@@ -31,7 +31,7 @@ public class WarehouseCheckoutDataTest {
 	CheckoutPO checkoutPo1 = new CheckoutPO("8923234244",ListState.WAITING,a1,cal1,a3,LoadType.AIRPLANE,"8924729762","8924729762","8937463526");
 	CheckoutPO checkoutPo2 = new CheckoutPO("7364534263",ListState.WAITING,a2,cal2,a4,LoadType.CAR,"2942732941","8924729762","9420374621");
 	
-//	@Test
+	@Test
 	public void testAddCheckout() throws RemoteException{
 		checkoutData = new WarehouseCheckoutDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -40,7 +40,7 @@ public class WarehouseCheckoutDataTest {
 		Assert.assertEquals(fail11,checkoutData.addCheckout(checkoutPo1));
 		Assert.assertEquals(success, checkoutData.addCheckout(checkoutPo2));
 	}
-//	@Test
+	@Test
 	public void testDeleteCheckout() throws RemoteException{
 		checkoutData = new WarehouseCheckoutDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");
@@ -49,7 +49,7 @@ public class WarehouseCheckoutDataTest {
 		Assert.assertEquals(success, checkoutData.deleteCheckout(checkoutPo1.getId()));
 		Assert.assertEquals(fail12, checkoutData.deleteCheckout(checkoutPo1.getId()));
 	}
-//	@Test
+	@Test
 	public void testFindCheckout() throws RemoteException{
 		checkoutData = new WarehouseCheckoutDataImpl();
 		JDBC.createJDBC("jdbc:mysql://127.0.0.1:3306/lms","root","9990");

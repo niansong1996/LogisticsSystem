@@ -171,7 +171,8 @@ public class POGenerator {
 				fd2 = object.getClass().getField(fatherField[0].getName());
 			}
 			fd2.setAccessible(true);
-			if(!fd2.getType().getSimpleName().equals("String")) result+="where "+fd2.getName()+"="+fd2.get(object)+";";
+			if(fd2.getType().getSimpleName().equals("Double")||
+					fd2.getType().getSimpleName().equals("Integer")) result+="where "+fd2.getName()+"="+fd2.get(object)+";";
 			else result+="where "+fd2.getName()+"=\""+fd2.get(object)+"\";";
 		} catch (Exception e) {
 			System.err.println("Get field elements failed!!!");
