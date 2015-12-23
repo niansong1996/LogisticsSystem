@@ -1,6 +1,5 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -27,7 +26,6 @@ import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.CommonUtility;
 import edu.nju.lms.data.PersonType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.dataService.FinanceAccountDataService;

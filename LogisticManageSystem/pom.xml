@@ -42,6 +42,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-		<defaultGoal>install -DskipTests</defaultGoal>
+		<defaultGoal>install -X -DskipTests</defaultGoal>
 	</build>
 </project>
