@@ -31,6 +31,7 @@ public class UIController {
 	private WarehouseController warehouseController;
 	private PersonnelController personnelController;
 	private String id;
+	
 	public UIController() {
 		initialize();
 		frame = new MainFrame();
@@ -64,7 +65,7 @@ public class UIController {
 	/**
 	 * initialize controller
 	 */
-	public void initialize() {
+	private void initialize() {
 		if(logController==null) {
 			logController = BusinessLogicFactory.createLogController();
 			userController = BusinessLogicFactory.createUserController();
@@ -81,64 +82,36 @@ public class UIController {
 		return frame;
 	}
 
-	public void setFrame(MainFrame frame) {
-		this.frame = frame;
-	}
-
 	public DepartmentController getDepartmentController() {
 		return departmentController;
-	}
-
-	public void setDepartmentController(DepartmentController departmentController) {
-		this.departmentController = departmentController;
 	}
 
 	public FinanceController getFinanceController() {
 		return financeController;
 	}
 
-	public void setFinanceController(FinanceController financeController) {
-		this.financeController = financeController;
-	}
-
 	public ListController getListController() {
 		return listController;
-	}
-
-	public void setListController(ListController listController) {
-		this.listController = listController;
 	}
 
 	public LogController getLogController() {
 		return logController;
 	}
 
-	public void setLogController(LogController logController) {
-		this.logController = logController;
-	}
-
 	public TransportController getTransportController() {
 		return transportController;
-	}
-
-	public void setTransportController(TransportController transportController) {
-		this.transportController = transportController;
 	}
 
 	public UserController getUserController() {
 		return userController;
 	}
 
-	public void setUserController(UserController userController) {
-		this.userController = userController;
-	}
-
 	public WarehouseController getWarehouseController() {
 		return warehouseController;
 	}
 
-	public void setWarehouseController(WarehouseController warehouseController) {
-		this.warehouseController = warehouseController;
+	public PersonnelController getPersonnelController() {
+		return personnelController;
 	}
 
 	public void setLogID(String id) {
@@ -146,13 +119,6 @@ public class UIController {
 		logController.setLogId(id);
 	}
 
-	public PersonnelController getPersonnelController() {
-		return personnelController;
-	}
-
-	public void setPersonnelController(PersonnelController personnelController) {
-		this.personnelController = personnelController;
-	}
 	public String getID(){
 		return id;
 	}

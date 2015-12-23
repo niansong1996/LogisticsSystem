@@ -129,28 +129,6 @@ public class MainPanel extends JPanel {
 	}
 
 	/**
-	 * Create panel and add it to this panel
-	 * @param panelName
-	 */
-	public void createPanels(String panelName) {
-		for (PanelConfig panel : config.getPanels()) {
-			if (panel.getElement().attributeValue("name").equals(panelName)) {
-				try {
-					Class<?> myUnit = Class.forName(packageName + "MainPanel");
-					java.awt.Component com;
-					Constructor<?> ctr = myUnit.getConstructor(PanelConfig.class, UIController.class);
-					com = (java.awt.Component) ctr.newInstance(panel, controller);
-					com.setVisible(true);
-					add(com);
-					units.add(com);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	/**
 	 * draw pictures
 	 */
 	@Override
