@@ -71,9 +71,7 @@ public class ReceiptPO extends ListPO {
 	@Override 
 	public boolean equals(Object object){
 		ReceiptPO receipt = (ReceiptPO)object;
-			if(this.receiptDate.getTime().getYear()==receipt.receiptDate.getTime().getYear())
-				if(this.receiptDate.getTime().getMonth()==receipt.receiptDate.getTime().getMonth())
-					if(this.receiptDate.getTime().getDay()==receipt.receiptDate.getTime().getDay())
+			if(CommonUtility.Calequals(this.receiptDate, receipt.receiptDate))
 				if(this.courierNum.equals(receipt.courierNum))
 					if(this.amount==receipt.amount)
 //						if(this.expressNums.toString().equals(receipt.expressNums.toString()))

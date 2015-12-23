@@ -70,9 +70,7 @@ public class PaymentPO extends ListPO {
 	public boolean equals(Object object){
 		PaymentPO payment = (PaymentPO)object;
 		if(this.paymentType==payment.paymentType)
-			if(this.payTime.getTime().getYear()==payment.payTime.getTime().getYear())
-				if(this.payTime.getTime().getMonth()==payment.payTime.getTime().getMonth())
-					if(this.payTime.getTime().getDay()==payment.payTime.getTime().getDay())
+			if(CommonUtility.Calequals(this.payTime, payment.payTime))
 				if(this.account.equals(payment.account))
 					if(this.amount==payment.amount)
 						return true;
