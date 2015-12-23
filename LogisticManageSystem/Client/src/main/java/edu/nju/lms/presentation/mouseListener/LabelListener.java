@@ -26,6 +26,7 @@ public class LabelListener implements MouseListener {
 	private UIController controller;
 	private MainPanel panel;
 	private MyTextArea area;
+	private boolean showing;
 	public LabelListener(MyTableLabel label, UIController controller) {
 		this.label = label;
 		this.controller = controller;
@@ -36,7 +37,8 @@ public class LabelListener implements MouseListener {
 		String str = null;
 		MyLabel idLabel = null;
 		if (e.getClickCount() == 2) {
-			if (panel == null) {
+			if (!showing) {
+				showing = true;
 				this.panel = controller.getFrame().getPanel();
 				// get the list type id
 				typeLabel = (MyLabel) label.getComponents(0);
@@ -52,28 +54,27 @@ public class LabelListener implements MouseListener {
 				panel.add(area);
 				panel.repaint();
 			}else{
+				showing = false;
 				area.setVisible(false);
 			}
 		}
 	}
 
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+	
 
+	public MyTextArea getArea() {
+		return area;
+	}
+
+	public void mousePressed(MouseEvent e) {
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 }
