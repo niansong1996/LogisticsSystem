@@ -609,11 +609,12 @@
 		    <component name="showSumPanel" class = "Component" x="480" y="655" w="181" h="24"/>
 		    <component name="rectangle" class = "Component" x="634" y="61" w="170" h="34"/>
 		    <component name="rectangle" class = "Component" x="680" y="650" w="180" h="34"/>
-		    <unit name ="sumReceiptTable" class = "table.SumReceiptTable" x="140" y="160" w="900" h="450" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
+		    <component name="table_receipt" class = "Component" x="140" y="160" w="900" h="40"/>
+		    <unit name ="sumReceiptTable" class = "table.SumReceiptTable" x="140" y="200" w="900" h="410" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="start" class="DateChooser" x="150" y="60" w="180" h="33" type="0"/>
 		    <unit name ="search" class = "MainButton" x="830" y="60" w="112" h="35" type="1" listenerName="FindReceiptListener"/>
 		    <unit name ="businessName" class = "MyTextField" x="635" y="61" w="168" h="33" type="0" textType="null"/>
-		    <unit name ="sumLabel" class = "MyLabel" x="350" y="250" w="168" h="50" type="0" />
+		    <unit name ="sumLabel" class = "MyLabel" x="150" y="100" w="250" h="50" type="0" />
 		    <unit name ="accountID" class = "MyTextField" x="680" y="650" w="180" h="33" type="0" textType="null"/>
 		    <unit name ="confirmReceipt" class = "MainButton" x="880" y="650" w="112" h="34" type="1" listenerName="ConfirmReceiptListener" />
 		    <unit name ="sumReceipt" class = "MainButton" x="150" y="635" w="175" h="57" type="1" listenerName="ShowSumReceiptListener"/>

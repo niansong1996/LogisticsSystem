@@ -45,7 +45,7 @@ public class ListDataImpl extends UnicastRemoteObject implements  ListDataServic
 		ResultSet result = JDBC.ExecuteQuery("select * from "+poName+" where id = \""+id+"\";");
 		try {
 			if(!result.wasNull()){
-				JDBC.ExecuteData("update "+poName+" set state = "+state+" where id = \""+id+"\" ;");
+				JDBC.ExecuteData("update "+poName+" set state = \""+state+"\" where id = \""+id+"\" ;");
 				return new ResultMessage(true,"success");
 			}
 		} catch (SQLException e) {
