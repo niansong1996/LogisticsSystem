@@ -82,12 +82,8 @@ public class CreateCheckoutListener extends ButtonListener {
 	private void createVO(){
 		CheckoutVO vo = new CheckoutVO(null,expressNums,exDestination,EnumTransformer.str2LoadType(loadType),
 				arrivalNum,motoNum);
-		JTextField field = (JTextField) units.get(7);
-		if (field.getText().isEmpty()) {
-			return;
-		}
-		vo = control.createCheckoutList(vo, field.getText());
-		ResultMessage result = control.saveCheckoutList(vo, field.getText());
+		vo = control.createCheckoutList(vo,control.getCurrentWarehouseNum());
+		ResultMessage result = control.saveCheckoutList(vo, control.getCurrentWarehouseNum());
 		if(result.isSuccess()){
 			new MyDialog("出库成功",true);
 		}else{

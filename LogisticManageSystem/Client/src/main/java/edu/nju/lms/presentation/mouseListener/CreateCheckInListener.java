@@ -62,12 +62,8 @@ public class CreateCheckInListener extends ButtonListener {
 			location.add(loc);
 		}
 		CheckinVO vo = new CheckinVO(null, location, expressNums, exDestination);
-		JTextField field = (JTextField) units.get(7);
-		if (field.getText().isEmpty()) {
-			return;
-		}
-		vo = control.createCheckinList(vo, field.getText());
-		ResultMessage result = control.saveCheckinList(vo, field.getText());
+		vo = control.createCheckinList(vo, control.getCurrentWarehouseNum());
+		ResultMessage result = control.saveCheckinList(vo, control.getCurrentWarehouseNum());
 		if(result.isSuccess()){
 			new MyDialog("入库成功",true);
 		}else{

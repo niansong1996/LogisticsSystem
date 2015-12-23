@@ -72,7 +72,7 @@
 		     <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddPersonPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
-		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
 		    <component name="id" class = "Component" x="350" y="100" w="144" h="35"/>
 		    <component name="personName" class = "Component" x="350" y="150" w="144" h="35"/>
@@ -127,7 +127,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddDepartmentPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
-		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		    <component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
 		    <component name="institution" class = "Component" x="350" y="150" w="144" h="35"/>
 		    <component name="location" class = "Component" x="350" y="250" w="144" h="35"/>
@@ -605,7 +605,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddAccountPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+		   	<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="accountManage" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="addPath" class = "Component" x="150" y="90" w="850" h="560"/>
 		    <component name="addAccountPanel" class = "Component" x="150" y="90" w="850" h="560"/>
@@ -813,7 +813,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="addVehicleManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="addVehicle" class = "Component" x="120" y="0" w="930" h="720"/>
 			<unit name="plateNum" class="MyTextField" x="550" y="160" w="180" h="33" type="0" textType="null"/>
 			<unit name="years" class="MyTextField" x="550" y="275" w="180" h="33" type="0" textType="null"/>
@@ -855,7 +855,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="addDriverManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="addDriver" class = "Component" x="120" y="0" w="930" h="720"/>
 			<unit name="date" class="DateChooser" x="545" y="280" w="150" h="30" type="0"/>
 			<unit name="name" class="MyTextField" x="480" y="105" w="90" h="33" type="0" textType="null"/>
@@ -960,7 +960,6 @@
 		    <unit name="partition" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="航运区;铁运区;汽运区;机动区" />
 		    <unit name ="checkinList" class = "table.CheckInTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel"/>
 		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
-		    <unit name="businessNum" class="MyTextField" x="380" y="610" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="add" class = "MainButton" x="200" y="680" w="112" h="34" type="1" listenerName="AddExpressListener"/>
 		    <unit name ="cancel" class = "MainButton" x="380" y="680" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckInListener"/>
@@ -1021,7 +1020,6 @@
 		    <unit name="loadType" class="MyComboBox" x="350" y="240" w="168" h="33" type="0" items="飞机;汽车;火车" />
 		    <unit name ="checkinList" class = "table.CheckoutTable" x="580" y="150" w="450" h="430" type="2" dataType = "UserVO" rw = "23" cw = "168" model = "PersonnelTableModel" items="飞机;汽车;火车"/>
 		    <unit name ="date" class="DateChooser" x="580" y="110" w="180" h="33" type="0"/>
-		    <unit name="businessNum" class="MyTextField" x="380" y="610" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="add" class = "MainButton" x="200" y="680" w="112" h="34" type="1" listenerName="AddCheckoutListener"/>
 		    <unit name ="cancel" class = "MainButton" x="380" y="680" w="112" h="34" type="1" listenerName="ButtonChangeListener" change="warehousePanel"/>
 		    <unit name ="create" class = "MainButton" x="900" y="600" w="112" h="34" type="1" listenerName="CreateCheckoutListener"/>
@@ -1041,15 +1039,14 @@
 		<mainPanel name="lookWarehousePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="lookWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="warehousePandian" class ="Component" x="105" y="80" w="950" h="600"/>
+		    <component name="warehousePandian" class ="Component" x="270" y="200" w="464" h="302"/>
 		    <component name="to" class = "Component" x="523" y="130" w="30" h="30"/>
-		    <unit name ="outNum" class="MyLabel" x="550" y="220" w="168" h="33" type="0" textType="null"/>
-		    <unit name ="inNum" class="MyLabel" x="550" y="320" w="168" h="33" type="0" textType="null"/>
-		    <unit name ="allNum" class="MyLabel" x="550" y="420" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="outNum" class="MyLabel" x="550" y="220" w="168" h="33" type="0" textType="CheckoutNumText"/>
+		    <unit name ="inNum" class="MyLabel" x="550" y="320" w="168" h="33" type="0" textType="CheckinNumText"/>
+		    <unit name ="allNum" class="MyLabel" x="550" y="420" w="168" h="33" type="0" textType="WareSumText"/>
 		    <unit name ="warehouseNum" class="MyTextField" x="570" y="510" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="start" class="DateChooser" x="300" y="130" w="180" h="33" type="0"/>
 		    <unit name ="end" class="DateChooser" x="580" y="130" w="180" h="33" type="0"/>
-		    <unit name ="show" class = "MainButton" x="770" y="510" w="112" h="34" type="1" listenerName="ShowWareInfoListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -1227,7 +1224,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddUserPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
-			<component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
 		    <component name="userNum" class = "Component" x="350" y="100" w="144" h="40"/>
 		    <component name="userPassword" class = "Component" x="350" y="220" w="144" h="40"/>
@@ -1429,36 +1426,6 @@
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>  
-		<mainPanel name="SEND" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    <unit name ="info" class = "MyTextArea" x="500" y="110" w="900" h="450" type="0" textType="SendListText"/>
-		</mainPanel> 
-		<mainPanel name="RECEIVE" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel> 
-		<mainPanel name="LOAD" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel> 
-		<mainPanel name="LOADCAR" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel> 
-		<mainPanel name="RECEIPT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel> 
-		<mainPanel name="ARRIVAL" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel>
-		<mainPanel name="DISPATCH" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel>
-		<mainPanel name="CHECKIN" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel>
-		<mainPanel name="CHECKOUT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel>
-		<mainPanel name="PAYMENT" class="MainPanel" x="600" y="110"  w = "400" h = "500">
-		    
-		</mainPanel>
 	</Frame>
 	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
 	<Frame name="ConfirmFrame" class="ConfirmFrame" x="0" y="0" width="361" height="220"/>
