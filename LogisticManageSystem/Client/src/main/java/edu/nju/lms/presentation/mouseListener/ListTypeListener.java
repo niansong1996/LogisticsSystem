@@ -6,7 +6,6 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import edu.nju.lms.VO.ListVO;
-import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.presentation.UIController.UIController;
@@ -14,7 +13,6 @@ import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.ListTable;
-import edu.nju.lms.presentation.components.table.MyTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
 /**
@@ -24,14 +22,14 @@ import edu.nju.lms.presentation.components.table.MyTableLabel;
 public class ListTypeListener implements ItemListener {
 	protected ArrayList<java.awt.Component> units;
 	protected UIController controller;
-	protected MyComboBox box;
+	protected MyComboBox<?> box;
 	private ListController listControl;
 	private ListTable table;
 
 	public ListTypeListener(ArrayList<java.awt.Component> units, UIController controller, Component box) {
 		this.units = units;
 		this.controller = controller;
-		this.box = (MyComboBox) box;
+		this.box = (MyComboBox<?>) box;
 		this.listControl = controller.getListController();
 		this.table = (ListTable) units.get(0);
 	}
