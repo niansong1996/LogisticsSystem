@@ -290,8 +290,7 @@ public class FinanceController
 	
 	public static void main(String[] args) {
 		FinanceController f=BusinessLogicFactory.createFinanceController();
-		Calendar c=CommonUtility.String2Cal("2015-12-20");
-		ArrayList<ReceiptVO> result=f.showReceiptList(c, "010101");
-		System.out.println(result.size());
+		EarningVO vo = new EarningVO(1000,100,900,CommonUtility.getTime());
+		f.exportEarning(vo);
 	}
 }

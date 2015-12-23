@@ -78,12 +78,12 @@ public class WarehouseManageblImpl {
 		}  
 		// 第六步，将文件存到指定位置  
 		try{  
-			FileOutputStream fout = new FileOutputStream("target/"+warehouseNum+"_"+CommonUtility.getTime()+".xls");  
+			FileOutputStream fout = new FileOutputStream("target/"+warehouseNum+"_"+CommonUtility.getDate()+".xls");  
 			wb.write(fout);  
 			fout.close();  
 		}  
 		catch (Exception e){  
-			e.printStackTrace();  
+			System.err.println("Export Excel Failed!!!");
 		}   
 		return new ResultMessage(true,"success");
 	}

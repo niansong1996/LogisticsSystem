@@ -1,8 +1,15 @@
 package edu.nju.lms.businessLogicService.impl.finance;
 
+import java.io.FileOutputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import edu.nju.lms.PO.AccountPO;
 import edu.nju.lms.PO.PaymentPO;
@@ -155,9 +162,44 @@ public class FinancePayblImpl {
 		return null;
 	}
 
-	public ResultMessage exportEarning(EarningVO earnings,PersonnelController personnelController) {
-		//TODO
-		return null;
+	@SuppressWarnings("resource")
+	public ResultMessage exportEarning(EarningVO excel,PersonnelController personnelController) {
+		ArrayList<String> rowArguments = new ArrayList<String>();
+		String s = "[日期, 收益, 成本, 利润]";
+		CommonUtility.String2Array(rowArguments, s);
+
+		HSSFWorkbook wb = new HSSFWorkbook();   
+		HSSFSheet sheet = wb.createSheet("成本收益表");   
+		HSSFRow row = sheet.createRow(0);   
+		HSSFCellStyle style = wb.createCellStyle();  
+		style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式  
+
+		HSSFCell cell;
+		for(int i=0;i<rowArguments.size();i++){
+			cell = row.createCell(i);  
+			cell.setCellValue(rowArguments.get(i));  
+			cell.setCellStyle(style);  
+		} 
+ 
+			row = sheet.createRow(1);   
+			// 第四步，创建单元格，并设置值  
+			row.createCell(0).setCellValue(excel.getDate());  
+			row.createCell(1).setCellValue(excel.getEarnings());  
+			row.createCell(2).setCellValue(excel.getPayment());
+			row.createCell(3).setCellValue(excel.getProfit());
+		
+		// 第六步，将文件存到指定位置  
+		try{  
+			FileOutputStream fout = new FileOutputStream("target/"+"Earnings_"+CommonUtility.getDate()+".xls");  
+			wb.write(fout);  
+			fout.close();  
+		}  
+		catch (Exception e){  
+			System.err.println("Export Excel Failed!!!");
+			e.printStackTrace();
+		}   
+		return new ResultMessage(true,"success");
+
 	}
 
 	public double calculateSalary(PersonnelController personnelController) {
