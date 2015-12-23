@@ -8,8 +8,6 @@ public class DepartmentblService_Driver {
 	public void drive(DepartmentblService service) {
 		DepartmentVO department = service.getDepartInfo("0001000");
 		System.out.println(department.getType());
-		ResultMessage result1 = service.addCity(service.findCity("0001000"));
-		System.out.println(result1.isSuccess());
 		ResultMessage result2 = service.deleteDepartment("0000000");
 		System.out.println(result2.isSuccess());
 		ResultMessage result3 = service.updateDepartment(department);
