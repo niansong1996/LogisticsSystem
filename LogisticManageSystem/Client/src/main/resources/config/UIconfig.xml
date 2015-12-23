@@ -59,13 +59,13 @@
 		     <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindPersonButtonListener"/>
 		     <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		     <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -91,13 +91,13 @@
 		    <unit name ="confirm" class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddPersonConfirmListener"/>
 		    <unit name ="cancel" change="PersonnelManagePanel" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -114,13 +114,13 @@
 		    <unit name ="findPerson" class = "MainButton" x="800" y="60" w="53" h="20" type="1" listenerName="FindDepartButtonListener"/>
 		    <unit name ="userName" class = "MyTextField" x="575" y="60" w="168" h="20" type="0" textType="null"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_department3" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_department3" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+	        <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+	        <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -138,13 +138,13 @@
 		    <unit name ="confirm"  class = "MainButton" x="420" y="480" w="112" h="34" type="1" listenerName="AddDepartConfirmListener"/>
 		    <unit name ="cancel" change="InstitutionManage" class = "MainButton" x="540" y="480" w="112" h="34" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_department3" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_department3" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -156,13 +156,13 @@
 		    <component name="table_salaryStrategy" class = "Component" x="144" y="110" w="900" h="40"/>
 		    <unit name ="salaryStrategyTable" class = "table.SalaryStrategyTable" x="144" y="150" w="900" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy3" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_salarystrategy3" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+	        <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="save" class = "MainButton" x="950" y="670" w="112" h="34" type="1" listenerName="SaveSalaryStrategyButtonListener"/>
@@ -176,13 +176,13 @@
 		    <unit name ="price" class="MyTextField" x="320" y="270" w="168" h="23" type="0" textType="FreightStrategyText" />
 		    <unit name ="save" class = "MainButton" x="650" y="450" w="112" h="34" type="1" listenerName="SaveFreightStrategyButtonListener"/>
 		    <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		    <unit name ="guide_transportstrategy3" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+	        <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		    <unit name ="guide_transportstrategy3" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		    <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		    <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		    <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -199,13 +199,13 @@
 		     <unit name ="pass" class = "MainButton" x="200" y="650" w="112" h="34" type="1" listenerName="PassChoosedListListener"/>
 		     <unit name ="fail" class = "MainButton" x="380" y="650" w="112" h="34" type="1" listenerName="FailChoosedListListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_list3" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_list3" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		     <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -221,13 +221,13 @@
 		     <unit name ="logTable" class = "table.LogTable" x="150" y="170" w="850" h="480" type="2" dataType = "ComBox" rw = "23" cw = "168" model = "DepartmentTableModel"/>
 		     <unit name ="search" class = "MainButton" x="600" y="60" w="112" h="34" type="1" listenerName="SearchLogButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_loginfo3" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_loginfo3" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_statistic" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		     <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>
@@ -246,13 +246,13 @@
 		     <unit name ="export" class = "MainButton" x="900" y="60" w="112" h="34" type="1" listenerName="ExportListButtonListener"/>
 		     <unit name ="search" class = "MainButton" x="590" y="60" w="112" h="34" type="1" listenerName="SearchProfitListButtonListener"/>
 		     <unit name ="guide_back" change="ManagerPanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_personnel" change="PersonnelManagePanel" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_statistic3" change="SumReceiptPanel" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
-		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="576" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_department" change="InstitutionManage" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_list" change="checkListPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_loginfo" change="checkLogPanel" class="MainButton" x="0" y="216" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_personnel3" change="PersonnelManagePanel" class="MainButton" x="0" y="288" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_salarystrategy" change="SalaryStrategy" class="MainButton" x="0" y="360" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_statistic3" change="SumReceiptPanel" class="MainButton" x="0" y="432" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
+		     <unit name ="guide_transportstrategy" change="FreightStrategy" class="MainButton" x="0" y="504" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 		     <unit name ="exit" class = "MainButton" x="1025" y="0" w="52" h="21" type="1" listenerName="ExitButtonListener"/>
 		     <unit name ="minimize" class = "MainButton" x="995" y="0" w="21" h="21" type="1" listenerName="MiniButtonListener"/>
 		     <unit name ="logOut" change="MainPanel" class = "MainButton" x="940" y="10" w="38" h="18" type="1" listenerName="ButtonChangeListener"/>

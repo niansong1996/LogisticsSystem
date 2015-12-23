@@ -95,6 +95,7 @@ public class MyTableLabel extends JLabel  {
 		this.table = table;
 		setPreferredSize(new Dimension(width, height));
 		initializeComponents();
+		if(element.attributeValue("class").equals("table.ListTable"))
 		this.addMouseListener(new LabelListener(this,controller));
 	}
 

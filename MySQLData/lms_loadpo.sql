@@ -29,7 +29,7 @@ CREATE TABLE `loadpo` (
   `loadType` varchar(20) NOT NULL,
   `loadDate` datetime NOT NULL,
   `businessHallNum` varchar(12) NOT NULL,
-  `motorNum` varchar(12) NOT NULL,
+  `motorNum` text NOT NULL,
   `destiCity` varchar(12) NOT NULL,
   `destiBusinessHall` varchar(12) NOT NULL,
   `vehicleNum` varchar(12) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `loadpo` (
   `freight` double NOT NULL,
   PRIMARY KEY (`_id_`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,6 +47,7 @@ CREATE TABLE `loadpo` (
 
 LOCK TABLES `loadpo` WRITE;
 /*!40000 ALTER TABLE `loadpo` DISABLE KEYS */;
+INSERT INTO `loadpo` VALUES (1,'200000011','WAITING','AIRPLANE','2015-12-20 00:00:00','025001','025001201512201111','北京','025001','12345','欧巴','[0000000001]',180);
 /*!40000 ALTER TABLE `loadpo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-20 10:23:37
+-- Dump completed on 2015-12-23 19:52:09

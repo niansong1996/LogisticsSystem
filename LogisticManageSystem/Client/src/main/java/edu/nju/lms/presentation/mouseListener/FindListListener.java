@@ -39,19 +39,8 @@ public class FindListListener extends ButtonListener {
 		String id = idField.getText();
 		idField.setText("");
 		if(id.isEmpty()){
-			MyComboBox box = (MyComboBox) units.get(1);
-			String type = (String) box.getSelectedItem();
-			ListType listType = EnumTransformer.str2ListType(type);
-			lists = control.getListInfo(listType);
-			if(lists.isEmpty()){
-				new MyDialog("单据不存在",true);
-				return;
-			}
-			for(int i=0;i<lists.size();i++){
-				lists.get(i).setType(listType);
-				MyTableLabel label = table.createLabel(lists.get(i));
-				labels.add(label);
-			}
+			new MyDialog("请输入单据编号",true);
+			return;
 		}else{
 			ListVO vo = control.getListInfo(id);
 			if(vo==null){

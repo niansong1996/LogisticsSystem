@@ -6,25 +6,18 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import org.dom4j.Element;
-
 import edu.nju.lms.presentation.UIController.UIController;
-import edu.nju.lms.presentation.components.MainButton;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
 import edu.nju.lms.presentation.config.PanelConfig;
-import edu.nju.lms.presentation.mouseListener.ButtonChangeListener;
 
 /**
  * Main frame of client

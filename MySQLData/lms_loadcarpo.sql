@@ -28,7 +28,7 @@ CREATE TABLE `loadcarpo` (
   `state` varchar(20) NOT NULL,
   `loadDate` datetime NOT NULL,
   `businessHallNum` varchar(12) NOT NULL,
-  `motorNum` varchar(12) NOT NULL,
+  `motorNum` text NOT NULL,
   `destiBusinessHall` varchar(12) NOT NULL,
   `vehicleNum` varchar(12) NOT NULL,
   `driverNum` varchar(12) NOT NULL,
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-20 10:23:36
+-- Dump completed on 2015-12-23 19:52:08

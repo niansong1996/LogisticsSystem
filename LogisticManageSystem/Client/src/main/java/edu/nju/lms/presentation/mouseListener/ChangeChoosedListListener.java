@@ -14,12 +14,13 @@ import edu.nju.lms.presentation.components.table.ListTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
 /**
- *@author tj
- *@date 2015年12月5日
+ * @author tj
+ * @date 2015年12月5日
  */
 public abstract class ChangeChoosedListListener extends ButtonListener {
 	protected ListController control;
 	protected ListTable table;
+
 	public ChangeChoosedListListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
 		this.control = controller.getListController();
@@ -29,7 +30,7 @@ public abstract class ChangeChoosedListListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		ArrayList<MyTableLabel> data = table.getDataList();
-		if(data.isEmpty()){
+		if (data.isEmpty()) {
 			return;
 		}
 		ResultMessage result = null;
@@ -37,11 +38,20 @@ public abstract class ChangeChoosedListListener extends ButtonListener {
 			MyTableLabel label = data.get(i);
 			MyCheckBox check = (MyCheckBox) label.getComponent(0);
 			if (check.isSelected()) {
-				ListVO vo = createVO(label);	
-				result = control.changeList(vo,vo.getType());
+				ListVO vo = createVO(label);
+				result = control.changeList(vo, vo.getType());
 				if (result.isSuccess()) {
 					table.my_remove(i);
 					i--;
+				}
+				// 把之前双击显示的单据具体信息从界面上去掉
+				LabelListener listener = (LabelListener) label.getMouseListeners()[0];
+				if (listener != null) {
+					Component area = listener.getArea();
+					if (area != null) {
+						area.setVisible(false);
+						controller.getFrame().getPanel().repaint();
+					}
 				}
 			}
 		}
@@ -52,5 +62,12 @@ public abstract class ChangeChoosedListListener extends ButtonListener {
 		}
 
 	}
+
+	/**
+	 * 返回修改审批状态后的{@link ListVO}
+	 * 
+	 * @param label
+	 * @return
+	 */
 	public abstract ListVO createVO(MyTableLabel label);
 }
