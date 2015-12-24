@@ -8,7 +8,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import edu.nju.lms.VO.DepartmentVO;
-import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
 import edu.nju.lms.data.DepartmentType;
 import edu.nju.lms.data.ResultMessage;
@@ -16,7 +15,6 @@ import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.table.DepartmentTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
-import edu.nju.lms.presentation.components.table.PersonnelTable;
 
 /**
  *@author tj
@@ -44,7 +42,7 @@ public class SaveDepartButtonListener extends ButtonListener {
 			String location = loc.getText();
 			JTextField num = (JTextField)label.getComponents(2);
 			String number = num.getText();
-			JComboBox box = (JComboBox) label.getComponents(1);
+			JComboBox<?> box = (JComboBox<?>) label.getComponents(1);
 			String t = box.getSelectedItem().toString();
 			DepartmentType type = null;
 			if(t.equals("营业厅")){
@@ -59,9 +57,9 @@ public class SaveDepartButtonListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			MyDialog dialog = new MyDialog("保存成功！", true);
+			new MyDialog("保存成功！", true,controller);
 		} else {
-			MyDialog dialog = new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 		
 	}

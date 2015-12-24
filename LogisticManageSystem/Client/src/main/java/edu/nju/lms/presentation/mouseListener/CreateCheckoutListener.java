@@ -54,7 +54,7 @@ public class CreateCheckoutListener extends ButtonListener {
 		for (MyTableLabel label : labels) {
 			JTextField field = (JTextField) label.getComponents(0);
 			if (field.getText().isEmpty()) {
-				new MyDialog("incomplete");
+				new MyDialog("incomplete",controller);
 				return;
 			}
 			expressNums.add(field.getText());
@@ -75,7 +75,7 @@ public class CreateCheckoutListener extends ButtonListener {
 			}
 		}
 		if (!isConsist) {
-			new MyDialog("请保持所有到达单号、汽运编号和装运形式一致", true);
+			new MyDialog("请保持所有到达单号、汽运编号和装运形式一致", true,controller);
 		}
 		createVO();
 	}
@@ -85,9 +85,9 @@ public class CreateCheckoutListener extends ButtonListener {
 		vo = control.createCheckoutList(vo,control.getCurrentWarehouseNum());
 		ResultMessage result = control.saveCheckoutList(vo, control.getCurrentWarehouseNum());
 		if(result.isSuccess()){
-			new MyDialog("出库成功",true);
+			new MyDialog("出库成功",true,controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

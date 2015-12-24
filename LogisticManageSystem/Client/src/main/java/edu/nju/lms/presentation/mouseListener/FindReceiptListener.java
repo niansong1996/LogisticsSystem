@@ -41,7 +41,7 @@ public class FindReceiptListener extends ButtonListener {
 			receipts = control.showReceiptList(cal, id.getText());
 		}
 		if(receipts.isEmpty()){
-			new MyDialog("不存在对应收款单",true);
+			new MyDialog("不存在对应收款单",true,controller);
 			return;
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

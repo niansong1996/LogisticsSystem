@@ -60,11 +60,11 @@ public class SaveDriverListener extends ButtonListener {
 					info[6], info[7]);
 			result = transport.updateDriver(driver);
 			if (!result.isSuccess()) {
-				new MyDialog(result.getErrorMessage(), true);
+				new MyDialog(result.getErrorMessage(), true,controller);
 				return;
 			}
 		}
-		new MyDialog("保存成功", true);
+		new MyDialog("保存成功", true,controller);
 	}
 
 }

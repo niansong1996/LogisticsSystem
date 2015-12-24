@@ -3,8 +3,6 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.Component;
 import java.util.ArrayList;
 
-import org.apache.poi.poifs.crypt.EncryptionMode;
-
 import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.data.ListState;
 import edu.nju.lms.presentation.UIController.UIController;

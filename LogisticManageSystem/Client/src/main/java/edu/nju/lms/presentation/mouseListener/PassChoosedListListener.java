@@ -8,7 +8,6 @@ import edu.nju.lms.data.ListState;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.EnumTransformer;
 import edu.nju.lms.presentation.components.MyLabel;
-import edu.nju.lms.presentation.components.table.ListTable;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
 
 /**

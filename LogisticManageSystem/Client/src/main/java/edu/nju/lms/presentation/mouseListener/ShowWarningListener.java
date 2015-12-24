@@ -25,7 +25,7 @@ public class ShowWarningListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField field = (JTextField)units.get(0);
 		if(field.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		String warehouseNum = field.getText();

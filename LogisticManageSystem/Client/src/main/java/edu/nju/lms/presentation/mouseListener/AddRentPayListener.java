@@ -35,13 +35,13 @@ public class AddRentPayListener extends ButtonListener {
 			JTextField field = (JTextField) units.get(i + 3);
 			info[i] = field.getText();
 			if(info[i].isEmpty()){
-				new MyDialog("incomplete");
+				new MyDialog("incomplete", controller);
 				return;
 			}
 			field.setText("");
 		}
 		if (!Numeric.isNumeric(info[1]) || !Numeric.isNumeric(info[3])) {
-			new MyDialog("信息格式不正确", true);
+			new MyDialog("信息格式不正确", true,controller);
 			return;
 		}
 		/*
@@ -51,9 +51,9 @@ public class AddRentPayListener extends ButtonListener {
 		vo = control.createRent(vo);
 		ResultMessage result = control.saveRent(vo);
 		if (result.isSuccess()) {
-			new MyDialog("付款成功", true);
+			new MyDialog("付款成功", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

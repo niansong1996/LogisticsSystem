@@ -56,9 +56,9 @@ public abstract class ChangeChoosedListListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			new MyDialog("审批通过！", true);
+			new MyDialog("审批通过！", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 
 	}

@@ -29,7 +29,7 @@ import edu.nju.lms.presentation.mouseListener.LabelListener;
  * @date 2015-11-29 23:23:49
  */
 public class MyTableLabel extends JLabel  {
-
+	private UIController controller;
 	private static final long serialVersionUID = 420418378988671847L;
 
 	/**
@@ -93,6 +93,7 @@ public class MyTableLabel extends JLabel  {
 		this.height = height;
 		this.components = components;
 		this.table = table;
+		this.controller = controller;
 		setPreferredSize(new Dimension(width, height));
 		initializeComponents();
 		if(element.attributeValue("class").equals("table.ListTable"))
@@ -224,9 +225,9 @@ public class MyTableLabel extends JLabel  {
 			if (result != null) {
 				if (result.isSuccess()) {
 					table.my_remove(label);
-					new MyDialog("删除成功！", true);
+					new MyDialog("删除成功！", true,controller);
 				} else {
-					new MyDialog(result.getErrorMessage(), true);
+					new MyDialog(result.getErrorMessage(), true,controller);
 				}
 			}
 			table.repaint();

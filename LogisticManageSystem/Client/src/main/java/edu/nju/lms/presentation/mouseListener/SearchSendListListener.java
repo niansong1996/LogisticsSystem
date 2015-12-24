@@ -29,12 +29,12 @@ public class SearchSendListListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		String expressNum = field.getText();
 		if(expressNum.isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		SendVO vo = control.findSendList(expressNum);
 		if(vo==null){
-			new MyDialog("查找不到对应单据！",true);
+			new MyDialog("查找不到对应单据！",true,controller);
 			return;
 		}
 		ArrayList<String> baseInfo = vo.getBaseInfor();

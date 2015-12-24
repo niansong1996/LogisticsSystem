@@ -32,22 +32,22 @@ public class SaveArrivalListener extends ButtonListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(transport==null) return;
-		MyComboBox stateBox = (MyComboBox) units.get(3);
-		MyComboBox setOutBox = (MyComboBox) units.get(4);
+		MyComboBox<?> stateBox = (MyComboBox<?>) units.get(3);
+		MyComboBox<?> setOutBox = (MyComboBox<?>) units.get(4);
 		MyTextField courierNum = (MyTextField) units.get(0);
 		MyTextField commodityNum = (MyTextField) units.get(1);
-		MyComboBox destination = (MyComboBox) units.get(5);
+		MyComboBox<?> destination = (MyComboBox<?>) units.get(5);
 		if(courierNum.getText().isEmpty()||commodityNum.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		ArrivalVO arrival = new ArrivalVO("", state[stateBox.getSelectedIndex()], commodityNum.getText(),city[destination.getSelectedIndex()] , city[setOutBox.getSelectedIndex()],"",courierNum.getText());
 		ArrivalVO finalArrival = transport.createArrivalList(arrival);
 		ResultMessage result = transport.saveArrivalList(finalArrival);
 		if (result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess", controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

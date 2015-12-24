@@ -40,7 +40,7 @@ public class SearchWareCheckListener extends ButtonListener{
 		Calendar endDate = end.getCalendar();
 		MyTextField wareNum = (MyTextField) units.get(3);
 		if(wareNum.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		inventory = warehouse.checkWarehouseInfor(startDate, endDate, wareNum.getText());

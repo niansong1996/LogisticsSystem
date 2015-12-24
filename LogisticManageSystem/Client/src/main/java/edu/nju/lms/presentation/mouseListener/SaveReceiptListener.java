@@ -10,7 +10,6 @@ import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.DateChooser;
-import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyTextField;
 import edu.nju.lms.presentation.components.table.CommodityTable;
@@ -36,7 +35,7 @@ public class SaveReceiptListener extends ButtonListener{
 		MyTextField money = (MyTextField) units.get(4);
 		CommodityTable table = (CommodityTable) units.get(0);
 		if(courier.getText().isEmpty()||money.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		DateChooser date = (DateChooser) units.get(1);
@@ -44,7 +43,7 @@ public class SaveReceiptListener extends ButtonListener{
 		String time = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + "-" + c.get(Calendar.DATE);
 		ArrayList<String> express = new ArrayList<String>();
 		if(table.getDataList().isEmpty()){
-			new MyDialog("请先添加",true);
+			new MyDialog("请先添加",true,controller);
 			return;
 		}
 		for(MyTableLabel label: table.getDataList()) {
@@ -55,9 +54,9 @@ public class SaveReceiptListener extends ButtonListener{
 		ReceiptVO finalReceipt = finance.createReceipt(receipt);
 		ResultMessage result = finance.addReceipt(finalReceipt);
 		if(result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess", controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

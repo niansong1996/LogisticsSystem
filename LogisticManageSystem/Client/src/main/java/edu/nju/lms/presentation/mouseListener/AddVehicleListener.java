@@ -32,7 +32,7 @@ public class AddVehicleListener extends ButtonListener{
 		MyTextField years = (MyTextField) units.get(1);
 		MyTextField business = (MyTextField) units.get(2);
 		if (plateNum.getText().equals("") || years.getText().equals("") || business.getText().equals("")) {
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		VehicleVO vehicle = new VehicleVO("", plateNum.getText(), business.getText(),
@@ -40,9 +40,9 @@ public class AddVehicleListener extends ButtonListener{
 		VehicleVO finalVehicle = transport.addVehicle(vehicle);
 		ResultMessage result = transport.saveVehicleInfor(finalVehicle);
 		if (result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess",controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

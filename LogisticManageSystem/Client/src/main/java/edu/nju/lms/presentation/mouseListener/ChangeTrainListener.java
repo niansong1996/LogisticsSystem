@@ -1,8 +1,6 @@
 package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -42,7 +40,7 @@ public class ChangeTrainListener extends ChangePartitionListener {
 			double division2 = 1.0*control.getFlexibleRowNum()/control.getTotalRowNum();
 			flexible.setArc((int)(division2*360));
 			if (!result.isSuccess()) {
-				new MyDialog(result.getErrorMessage(), true);
+				new MyDialog(result.getErrorMessage(), true,controller);
 				return false;
 			}
 			double f1 = division*100;
@@ -54,7 +52,7 @@ public class ChangeTrainListener extends ChangePartitionListener {
 			f2 = b1.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
 			flexibleLabel.setText("机动区："+f2+"%");
 		} else {
-			new MyDialog("请输入仓库总排数", true);
+			new MyDialog("请输入仓库总排数", true,controller);
 			return false;
 		}
 		return true;

@@ -4,10 +4,8 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import edu.nju.lms.VO.PersonnelVO;
 import edu.nju.lms.VO.VehicleVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.data.ResultMessage;
@@ -50,11 +48,11 @@ loop:	for (int i = 0; i < labels.size(); i++) {
 			VehicleVO vehicle = new VehicleVO(info[1], info[0], info[3], Integer.parseInt(info[2]));
 			result = transport.updateVehicle(vehicle);
 			if (!result.isSuccess()) {
-				new MyDialog(result.getErrorMessage(), true);
+				new MyDialog(result.getErrorMessage(), true,controller);
 				return;
 			}
 		}
-		new MyDialog("保存成功",true);
+		new MyDialog("保存成功",true,controller);
 	}
 
 }

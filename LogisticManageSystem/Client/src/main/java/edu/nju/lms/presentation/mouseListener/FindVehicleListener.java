@@ -32,13 +32,13 @@ public class FindVehicleListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id = (MyTextField) units.get(5);
 		if(id.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		VehicleVO vehicle = transport.findVehicle(id.getText());
 		id.setText("");
 		if(vehicle==null) {
-			new MyDialog("notExist");
+			new MyDialog("notExist", controller);
 			return;
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>(1);

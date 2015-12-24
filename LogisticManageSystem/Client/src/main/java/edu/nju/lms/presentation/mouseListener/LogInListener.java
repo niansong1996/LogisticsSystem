@@ -2,7 +2,6 @@ package edu.nju.lms.presentation.mouseListener;
 
 import java.awt.Component;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import edu.nju.lms.presentation.UIController.UIController;
@@ -21,8 +20,6 @@ public class LogInListener extends ButtonListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

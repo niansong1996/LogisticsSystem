@@ -26,7 +26,7 @@ public class InitialAddButtonListener extends ButtonListener {
 			JTextField text = (JTextField) units.get(i);
 			String c = text.getText();
 			if(c.isEmpty()){
-				new MyDialog("incomplete");
+				new MyDialog("incomplete", controller);
 				return;
 			}
 			content[i]=c;

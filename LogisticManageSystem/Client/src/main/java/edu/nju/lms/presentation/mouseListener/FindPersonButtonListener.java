@@ -30,14 +30,14 @@ public class FindPersonButtonListener extends ButtonListener {
 		String id = "";
 		id = idField.getText();
 		if(id.isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		idField.setText("");
 		if (id != "" && personControl != null) {
 			ArrayList<PersonnelVO> found = personControl.findPersonInfo(id);
 			if (found.isEmpty()) {
-				new MyDialog("notExist");
+				new MyDialog("notExist", controller);
 				return;
 			}
 			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
@@ -48,24 +48,6 @@ public class FindPersonButtonListener extends ButtonListener {
 				labels.add(label);
 			}
 			table.setDataList(labels);
-				// Vector<Object[]> persons = new Vector<Object[]>();
-			
-			// PersonnelVO p = new PersonnelVO("123457", "cuiods", "01", "总经理",
-			// 20000, 0, 100000);
-			// PersonnelVO p1 = new PersonnelVO("12345724", "goulu", "01",
-			// "总经理", 20000, 0, 100000);
-			// for (PersonnelVO p1 : found) {
-			// Object[] rowData = { new Boolean(false), p1.getId(),
-			// p1.getName(), p1.getDepartmentNum(), p1.getDuty(),
-			// new Double(p1.getSalary()), new Double(p1.getPerTime()), new
-			// Double(p1.getBonus()), "", "" };
-			// persons.add(rowData);
-			// PersonnelTable table = (PersonnelTable) units.get(0);
-			// PersonnelTableModel model = (PersonnelTableModel)
-			// table.getModel();
-			// model.setData(persons);
-			// table.repaint();
-			// }
 		}
 	}
 }

@@ -32,13 +32,13 @@ public class FindDriverListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id = (MyTextField) units.get(1);
 		if(id.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		DriverVO driver = transport.findDriver(id.getText());
 		id.setText("");
 		if(driver==null) {
-			new MyDialog("notExist");
+			new MyDialog("notExist", controller);
 			return;
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>(1);

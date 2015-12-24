@@ -35,7 +35,7 @@ public class FindAccountButtonListener extends ButtonListener {
 			idField.setText("");
 			AccountVO vo = control.showAccount(id);
 			if(vo==null){
-				new MyDialog("账户不存在",true);
+				new MyDialog("账户不存在",true,controller);
 				return;
 			}
 			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

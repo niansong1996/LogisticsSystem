@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import edu.nju.lms.VO.EnumTransformer;
@@ -12,7 +11,6 @@ import edu.nju.lms.VO.SalaryStrategyVO;
 import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
-import edu.nju.lms.presentation.components.MyComboBox;
 import edu.nju.lms.presentation.components.MyDialog;
 import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
@@ -54,7 +52,7 @@ public class SaveSalaryStrategyButtonListener extends ButtonListener {
 			}
 			// 这样可以只弹出一个对话框...
 			if (inComplete) {
-				new MyDialog("信息格式有误", true);
+				new MyDialog("信息格式有误", true,controller);
 				return;
 			}
 			// 把人员种类中文转成英文
@@ -68,9 +66,9 @@ public class SaveSalaryStrategyButtonListener extends ButtonListener {
 				result = control.addSalaryStrategy(vo);
 			}
 			if (result.isSuccess()) {
-				new MyDialog("保存成功！", true);
+				new MyDialog("保存成功！", true,controller);
 			} else {
-				new MyDialog(result.getErrorMessage(), true);
+				new MyDialog(result.getErrorMessage(), true,controller);
 			}
 		}
 	}

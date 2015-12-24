@@ -29,7 +29,7 @@ public class SaveReceiveListListener extends ButtonListener {
 		JTextField namefield = (JTextField) units.get(7);
 		String receiverName = namefield.getText();
 		if(receiverName.isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		JTextField field = (JTextField) units.get(3);
@@ -38,7 +38,7 @@ public class SaveReceiveListListener extends ButtonListener {
 		vo = control.createReceiveList(vo);
 		ResultMessage result = control.saveReceiveList(vo);
 		if(result.isSuccess()){
-			new MyDialog("收件成功",true);
+			new MyDialog("收件成功",true,controller);
 			field.setText("");
 			namefield.setText("");
 			JTextField express = (JTextField) units.get(3);
@@ -50,7 +50,7 @@ public class SaveReceiveListListener extends ButtonListener {
 				label.setText("");
 			}
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

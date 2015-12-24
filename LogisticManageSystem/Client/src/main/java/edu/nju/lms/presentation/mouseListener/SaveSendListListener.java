@@ -32,9 +32,9 @@ public class SaveSendListListener extends ButtonListener {
 		SendVO vo = createListener.getVo();
 		ResultMessage result = control.saveSendList(vo);
 		if(result.isSuccess()){
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess",controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 }

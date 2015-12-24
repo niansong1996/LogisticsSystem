@@ -38,7 +38,7 @@ public class AddDriverListener extends ButtonListener{
 		MyTextField phone = (MyTextField) units.get(4);
 		if(name.getText().isEmpty()||idCard.getText().isEmpty()||limit.getText().isEmpty()||
 				businesshall.getText().isEmpty()||phone.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 		}
 		DateChooser date = (DateChooser) units.get(0);
 		@SuppressWarnings("unchecked")
@@ -50,9 +50,9 @@ public class AddDriverListener extends ButtonListener{
 		DriverVO finalDriver = transport.addDriver(driver);
 		ResultMessage result = transport.saveDriverInfor(finalDriver);
 		if (result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess",controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

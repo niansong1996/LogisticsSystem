@@ -27,17 +27,17 @@ public class SetTotalRowListener extends ButtonListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(field.getText().isEmpty()){
-			new MyDialog("请输入仓库总排数",true);
+			new MyDialog("请输入仓库总排数",true,controller);
 			return;
 		}
 		String num = field.getText();
 		if(!Numeric.isNumeric(num)){
-			new MyDialog("请输入数字",true);
+			new MyDialog("请输入数字",true,controller);
 			return;
 		}
 		ResultMessage result = control.setTotalRowNum(Integer.parseInt(num));
 		if(!result.isSuccess()){
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 		
 	}

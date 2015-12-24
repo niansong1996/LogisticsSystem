@@ -1039,14 +1039,14 @@
 		<mainPanel name="lookWarehousePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
 		    <component name="back2" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="lookWarehouse" class = "Component" x="150" y="20" w="98" h="23"/>
-		    <component name="warehousePandian" class ="Component" x="270" y="200" w="464" h="302"/>
+		    <component name="warehousePandian" class ="Component" x="300" y="200" w="464" h="302"/>
 		    <component name="to" class = "Component" x="523" y="130" w="30" h="30"/>
-		    <unit name ="outNum" class="MyLabel" x="550" y="220" w="168" h="33" type="0" textType="CheckoutNumText"/>
-		    <unit name ="inNum" class="MyLabel" x="550" y="320" w="168" h="33" type="0" textType="CheckinNumText"/>
-		    <unit name ="allNum" class="MyLabel" x="550" y="420" w="168" h="33" type="0" textType="WareSumText"/>
-		    <unit name ="warehouseNum" class="MyTextField" x="570" y="510" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="outNum" class="MyLabel" x="620" y="207" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="inNum" class="MyLabel" x="620" y="333" w="168" h="33" type="0" textType="null"/>
+		    <unit name ="allNum" class="MyLabel" x="620" y="466" w="168" h="33" type="0" textType="null"/>
 		    <unit name ="start" class="DateChooser" x="300" y="130" w="180" h="33" type="0"/>
 		    <unit name ="end" class="DateChooser" x="580" y="130" w="180" h="33" type="0"/>
+		    <unit name ="show" class = "MainButton" x="780" y="130" w="112" h="34" type="1" listenerName="ShowWareInfoListener"/>
 		    <unit name ="guide_back" change="warehousePanel" class="MainButton" x="0" y="0" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkIn" change="checkInPanel" class="MainButton" x="0" y="72" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
 			<unit name ="guide_checkOut" change="checkOutPanel" class="MainButton" x="0" y="144" w="100" h="70" type="1" listenerName="ButtonChangeListener"/>
@@ -1427,6 +1427,6 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>  
 	</Frame>
-	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="200" height="44"/>
+	<Frame name="MyDialog" class="MyDialog" x="0" y="0" width="150" height="44"/>
 	<Frame name="ConfirmFrame" class="ConfirmFrame" x="0" y="0" width="361" height="220"/>
 </presentation> 

@@ -21,15 +21,15 @@ public class SetWarningListener extends ButtonListener{
 		MyTextField warning  = (MyTextField) units.get(0);
 		MyTextField num = (MyTextField) units.get(1);
 		if(warning.getText().isEmpty()||num.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		WarehouseController warehouse = controller.getWarehouseController();
 		ResultMessage result = warehouse.setCordon(Integer.parseInt(warning.getText())/100.0, num.getText());
 		if(result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess", controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

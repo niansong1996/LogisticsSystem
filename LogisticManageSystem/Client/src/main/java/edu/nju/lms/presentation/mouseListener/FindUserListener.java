@@ -30,14 +30,14 @@ public class FindUserListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		MyTextField id=(MyTextField)units.get(1);
 		if(id.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		UserVO user=userController.findUserInfo(id.getText());
 		logController.addLog("查看用户"+id+"的信息");
 		id.setText("");
 		if(user==null){
-			new MyDialog("notExist");
+			new MyDialog("notExist", controller);
 			return;
 		}
 		ArrayList<MyTableLabel> labels=new ArrayList<MyTableLabel>(1);

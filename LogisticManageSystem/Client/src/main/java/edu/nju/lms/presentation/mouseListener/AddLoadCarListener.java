@@ -52,7 +52,7 @@ public class AddLoadCarListener extends ButtonListener{
 		String driverNumStr = driverNum.getText();
 		if(businessHallStr.isEmpty()||motorNumStr.isEmpty()||destinationStr.isEmpty()
 				||carNumStr.isEmpty()||driverNumStr.isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		/*
@@ -62,9 +62,9 @@ public class AddLoadCarListener extends ButtonListener{
 		LoadCarVO loadCarVO = transport.createLoadCarList(vo);
 		ResultMessage result = transport.saveLoadCarList(loadCarVO);
 		if(result.isSuccess()){
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess", controller);
 		}else{
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

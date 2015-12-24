@@ -30,7 +30,7 @@ public class ConfirmReceiptListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField field = (JTextField) units.get(5);
 		if(field.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		DateChooser choose = (DateChooser) units.get(1);
@@ -40,9 +40,9 @@ public class ConfirmReceiptListener extends ButtonListener {
 		sumLabel.setText(sum+"");
 		ResultMessage result = control.addMoney(field.getText(), sum);
 		if(result.isSuccess()){
-			new MyDialog("收款成功！",true);
+			new MyDialog("收款成功！",true,controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

@@ -31,16 +31,16 @@ public class ExportWareExcelListener extends ButtonListener {
 		MainButton button = (MainButton) units.get(7);
 		MyTextField wareNum = (MyTextField) units.get(3);
 		if(wareNum.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 		}
 		SearchWareCheckListener listener = (SearchWareCheckListener) button.getMouseListeners()[0];
 		InventoryExcelVO excelvo = listener.getInventoryVO();
 		if(excelvo!=null) {
 			ResultMessage result = warehouse.exportExcel(excelvo, wareNum.getText());
 			if(result.isSuccess()) {
-				new MyDialog("导出成功",true);
+				new MyDialog("导出成功",true,controller);
 			}else{
-				new MyDialog(result.getErrorMessage(),true);
+				new MyDialog(result.getErrorMessage(),true,controller);
 			}
 		}
 	}

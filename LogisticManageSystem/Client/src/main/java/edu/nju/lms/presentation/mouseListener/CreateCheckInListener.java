@@ -65,9 +65,9 @@ public class CreateCheckInListener extends ButtonListener {
 		vo = control.createCheckinList(vo, control.getCurrentWarehouseNum());
 		ResultMessage result = control.saveCheckinList(vo, control.getCurrentWarehouseNum());
 		if(result.isSuccess()){
-			new MyDialog("入库成功",true);
+			new MyDialog("入库成功",true,controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

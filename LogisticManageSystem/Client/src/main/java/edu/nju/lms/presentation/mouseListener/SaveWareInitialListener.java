@@ -6,10 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
-import edu.nju.lms.VO.PartitionVO;
 import edu.nju.lms.businessLogicService.impl.warehouse.WarehouseController;
-import edu.nju.lms.data.Partition;
-import edu.nju.lms.data.PartitionType;
 import edu.nju.lms.data.ResultMessage;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyDialog;
@@ -29,14 +26,14 @@ public class SaveWareInitialListener extends ButtonListener {
 	public void mouseReleased(MouseEvent e) {
 		JTextField cordon = (JTextField)units.get(12);
 		if(!Numeric.isNumeric(cordon.getText())){
-			new MyDialog("请输入合法数字",true);
+			new MyDialog("请输入合法数字",true,controller);
 			return;
 		}
 		ResultMessage result = control.setCordon(Double.parseDouble(cordon.getText()),control.getCurrentWarehouseNum());
 		if(result.isSuccess()){
-			new MyDialog("初始化成功",true);
+			new MyDialog("初始化成功",true,controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

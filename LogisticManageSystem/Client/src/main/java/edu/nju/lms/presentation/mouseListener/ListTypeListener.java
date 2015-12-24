@@ -40,7 +40,7 @@ public class ListTypeListener implements ItemListener {
 			if (listControl != null) {
 				ArrayList<ListVO> lists = listControl.getListInfo(type);
 				if(lists.isEmpty()){
-					new MyDialog("单据不存在",true);
+					new MyDialog("单据不存在",true,controller);
 					return;
 				}
 				ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

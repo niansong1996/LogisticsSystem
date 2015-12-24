@@ -30,7 +30,7 @@ public class AddExpressListener extends ButtonListener {
 		for (int i = 0; i < 4; i++) {
 			JTextField field = (JTextField) units.get(i);
 			if (field.getText().isEmpty()) {
-				new MyDialog("incomplete");
+				new MyDialog("incomplete",controller);
 				return;
 			}
 			info[i] = field.getText();

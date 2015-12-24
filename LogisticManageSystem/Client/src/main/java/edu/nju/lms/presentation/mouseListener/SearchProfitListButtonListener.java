@@ -39,7 +39,7 @@ public class SearchProfitListButtonListener extends ButtonListener {
 		lists = finance.showAllPayment(start.getCalendar(), end.getCalendar());
 		receipts = finance.showReceiptList(start.getCalendar(),end.getCalendar());
 		if(lists.isEmpty()&&receipts.isEmpty()){
-			new MyDialog("此段时间无账单",true);
+			new MyDialog("此段时间无账单",true,controller);
 			return;
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

@@ -37,7 +37,7 @@ public class AddDepartConfirmListener extends ButtonListener {
 		 * check empty
 		 */
 		if (location.isEmpty() || departmentNum.isEmpty()) {
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		JComboBox<?> box = (JComboBox<?>) units.get(2);
@@ -59,9 +59,9 @@ public class AddDepartConfirmListener extends ButtonListener {
 			if (re.isSuccess()) {
 				num.setText("");
 				loc.setText("");
-				new MyDialog("addSuccess");
+				new MyDialog("addSuccess",controller);
 			} else {
-				new MyDialog(re.getErrorMessage(),true);
+				new MyDialog(re.getErrorMessage(),true,controller);
 			}
 		}
 	}

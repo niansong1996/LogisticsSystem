@@ -33,7 +33,7 @@ public class FindDepartButtonListener extends ButtonListener {
 		if (id != "" && departControl != null) {
 			DepartmentVO found = departControl.getDepartInfo(id);
 			if (found == null) {
-				new MyDialog("notExist");
+				new MyDialog("notExist", controller);
 				return;
 			}
 			ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();

@@ -34,17 +34,17 @@ public class SaveLoadListener extends ButtonListener{
 	public void mouseReleased(MouseEvent e) {
 		if (transport == null)
 			return;
-		MyComboBox loadtypeBox = (MyComboBox) units.get(10);
+		MyComboBox<?> loadtypeBox = (MyComboBox<?>) units.get(10);
 		MyTextField businesshallNum = (MyTextField) units.get(4);
 		MyTextField motorNUm = (MyTextField) units.get(3);
-		MyComboBox desticity = (MyComboBox) units.get(8);
+		MyComboBox<?> desticity = (MyComboBox<?>) units.get(8);
 		MyTextField destibusiness = (MyTextField) units.get(5);
 		MyTextField person = (MyTextField) units.get(6);
 		MyTextField vehicle = (MyTextField) units.get(7);
 		if(businesshallNum.getText().isEmpty()||motorNUm.getText().isEmpty()
 				||destibusiness.getText().isEmpty()||person.getText().isEmpty()
 				||vehicle.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete", controller);
 			return;
 		}
 		CommodityTable table = (CommodityTable) units.get(0);
@@ -59,9 +59,9 @@ public class SaveLoadListener extends ButtonListener{
 		LoadVO finalLoad = transport.createLoadList(load);
 		ResultMessage result = transport.saveLoadList(finalLoad);
 		if(result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess", controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

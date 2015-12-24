@@ -20,7 +20,6 @@ public class SaveFreightStrategyButtonListener extends ButtonListener {
 
 	public SaveFreightStrategyButtonListener(ArrayList<Component> units, UIController controller, Component button) {
 		super(units, controller, button);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -28,19 +27,18 @@ public class SaveFreightStrategyButtonListener extends ButtonListener {
 		if (finance != null) {
 			JTextField pricef = (JTextField) units.get(0);
 			String price = pricef.getText();
-			if(price.isEmpty()){
-				new MyDialog("incomplete");
+			if (price.isEmpty()) {
+				new MyDialog("incomplete", controller);
 				return;
 			}
 			// MyDialog result = new MyDialog("修改后的经济、标准和次晨快递之比为：",true);
 			ResultMessage re = finance.updatePriceStrategy(Double.parseDouble(price));
 			PriceStrategyVO vo = finance.findPriceStrategy();
 			if (re.isSuccess()) {
-				MyDialog result =
-				new MyDialog(
-						"修改后的经济、标准和次晨快递之比为：" + vo.getEconomic() + ":" + vo.getStandard() + ":" + vo.getExpress(), true);
+				new MyDialog("修改后的经济、标准和次晨快递之比为：" + vo.getEconomic() + ":" + vo.getStandard() + ":" + vo.getExpress(),
+						true,controller);
 			} else {
-				new MyDialog(re.getErrorMessage(),true);
+				new MyDialog(re.getErrorMessage(), true,controller);
 			}
 		}
 	}

@@ -48,7 +48,7 @@ public class CreateSendListListener extends ButtonListener {
 			baseInfo.add(field.getText());
 		}
 		if(!isComplete){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		//city
@@ -74,11 +74,11 @@ public class CreateSendListListener extends ButtonListener {
 		}
 		// create SendVo
 		boolean isNumeric = true;
+		int rowNum = 0;
+		double weight = 0;
+		double volumn = 0;
 		for(int i =1;i<4;i++){
 			if(!Numeric.isNumeric(other[i])){
-				if(other[i].isEmpty()){
-					break;
-				}
 				isNumeric = false;
 				break;
 			}
@@ -89,11 +89,14 @@ public class CreateSendListListener extends ButtonListener {
 			}
 		}
 		if(!isNumeric){
-			new MyDialog("信息格式不正确",true);
+			new MyDialog("信息格式不正确",true,controller);
 			return;
 		}
-		vo = new SendVO(other[0], null, baseInfo, senderCity,receiverCity,Integer.parseInt(other[1]), Double.parseDouble(other[2]),
-				Double.parseDouble(other[3]), other[4], packType, transMode, 0, 0, date);
+		rowNum = Integer.parseInt(other[1]);
+		weight = Double.parseDouble(other[2]);
+		volumn = Double.parseDouble(other[3]);
+		vo = new SendVO(other[0], null, baseInfo, senderCity,receiverCity,rowNum, weight,
+				volumn, other[4], packType, transMode, 0, 0, date);
 		completeInfo();
 	}
 

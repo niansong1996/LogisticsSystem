@@ -29,7 +29,7 @@ public class AddDispatchListener extends ButtonListener{
 		MyTextField person = (MyTextField) units.get(1);
 		MyTextField commodity = (MyTextField) units.get(2);
 		if(person.getText().isEmpty()||commodity.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		DispatchVO vo = new DispatchVO("", person.getText(), "", commodity.getText());
@@ -42,9 +42,9 @@ public class AddDispatchListener extends ButtonListener{
 		 */
 		ResultMessage result = transport.saveDispatchList(dispatch);
 		if(result.isSuccess()) {
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess",controller);
 		}else{
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

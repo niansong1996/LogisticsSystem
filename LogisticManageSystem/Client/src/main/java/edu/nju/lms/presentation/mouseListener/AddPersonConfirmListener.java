@@ -32,10 +32,11 @@ public class AddPersonConfirmListener extends ButtonListener {
 			JTextField text=(JTextField)units.get(i);
 			info[i]=text.getText();
 			if(info[i].isEmpty()){
-				new MyDialog("incomplete");
+				new MyDialog("incomplete", controller);
 				return;
 			}
 		}
+		@SuppressWarnings("unchecked")
 		JComboBox<String> box = (JComboBox<String>)units.get(6);
 		String duty = (String) box.getSelectedItem();
 		/*
@@ -51,9 +52,9 @@ public class AddPersonConfirmListener extends ButtonListener {
 					JTextField text=(JTextField)units.get(i);
 					text.setText("");
 				}
-				new MyDialog("addSuccess");
+				new MyDialog("addSuccess", controller);
 			}else{
-				new MyDialog(result.getErrorMessage(),true);
+				new MyDialog(result.getErrorMessage(),true,controller);
 			}
 		}
 	}

@@ -12,7 +12,6 @@ public class FreightStrategyText extends Text {
 
 	@Override
 	public String get(UIController controller) {
-		String result="";
 		FinanceController control = controller.getFinanceController();
 		PriceStrategyVO vo = control.findPriceStrategy();
 		return vo.getStandard()+"";

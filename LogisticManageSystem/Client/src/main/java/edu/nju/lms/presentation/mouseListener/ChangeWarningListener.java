@@ -29,13 +29,13 @@ public class ChangeWarningListener extends ButtonListener {
 		JTextField f = (JTextField)units.get(1);
 		String warning = f.getText();
 		if(!Numeric.isNumeric(warning)){
-			new MyDialog("信息格式错误",true);
+			new MyDialog("信息格式错误",true,controller);
 		}
 		ResultMessage result = control.setCordon(Double.parseDouble(warning), warehouseNum);
 		if(result.isSuccess()){
-			new MyDialog("修改成功",true);
+			new MyDialog("修改成功",true,controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

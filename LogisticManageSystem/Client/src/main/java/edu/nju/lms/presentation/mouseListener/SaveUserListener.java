@@ -48,15 +48,16 @@ loop:	for(int i=0;i<labels.size();i++){
 					continue loop;
 				info[j] = f.getText();
 			}
+			@SuppressWarnings("unchecked")
 			MyComboBox<String> power = (MyComboBox<String>) label.getComponents(2);
 			info[2]=power.getSelectedItem().toString();
 			UserVO user=new UserVO(info[0],info[1],EnumTransformer.str2PersonType(info[2]));
 			result=userController.updateUser(user);
 		}
 		if (result.isSuccess()) {
-			new MyDialog("保存成功！", true);
+			new MyDialog("保存成功！", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

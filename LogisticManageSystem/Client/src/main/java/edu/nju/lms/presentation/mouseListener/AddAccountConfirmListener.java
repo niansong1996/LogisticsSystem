@@ -36,14 +36,14 @@ public class AddAccountConfirmListener extends ButtonListener {
 		 * check input
 		 */
 		if(account.getText().isEmpty()||account.getText().isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		/*
 		 * whether is number
 		 */
 		if(!Numeric.isNumeric(balance.getText())){
-			new MyDialog("信息格式不正确",true);
+			new MyDialog("信息格式不正确",true,controller);
 			return;
 		}
 		/*
@@ -60,9 +60,9 @@ public class AddAccountConfirmListener extends ButtonListener {
 			 */
 			account.setText("");
 			balance.setText("");
-			new MyDialog("addSuccess");
+			new MyDialog("addSuccess",controller);
 		}else{
-			new MyDialog(result.getErrorMessage(),true);
+			new MyDialog(result.getErrorMessage(),true,controller);
 		}
 	}
 

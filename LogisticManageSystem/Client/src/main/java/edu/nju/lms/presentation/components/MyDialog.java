@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,8 +13,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
+import edu.nju.lms.presentation.frame.MainFrame;
 
 /**
  * @author tj
@@ -26,7 +29,9 @@ public class MyDialog extends JFrame implements Runnable {
 	private String info;
 	private boolean is_str = false;
 	private Dimension screenSize;
-	public MyDialog(String info) {
+	private Point frameLoc;
+	public MyDialog(String info,UIController controller) {
+		frameLoc = controller.getFrame().getLocation();
 		this.info = info;
 		initialize();
 		Thread t = new Thread(this);
@@ -38,7 +43,8 @@ public class MyDialog extends JFrame implements Runnable {
 	 * @param info
 	 * @param is_str
 	 */
-	public MyDialog(String info, boolean is_str) {
+	public MyDialog(String info, boolean is_str,UIController controller) {
+		frameLoc = controller.getFrame().getLocation();
 		this.info = info;
 		this.is_str = is_str;
 		initialize();
@@ -56,8 +62,7 @@ public class MyDialog extends JFrame implements Runnable {
 		setSize(config.getWidth(), config.getHeight());
 
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((screenSize.width - config.getWidth()) / 2 + 430,
-				(screenSize.height - config.getHeight()) / 2 + 300);
+		setLocation(frameLoc.x+450,frameLoc.y+300);
 		setVisible(true);
 		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.6f);
 	}
@@ -69,9 +74,7 @@ public class MyDialog extends JFrame implements Runnable {
 			if (is_str) {
 				g.setFont(new Font("微软雅黑", Font.BOLD, 23));
 				g.drawString(info, 23, 23);
-				setLocation((screenSize.width - config.getWidth()) / 2 -200,
-				(screenSize.height - config.getHeight()) / 2 +200);
-				setSize(700,44);
+				setSize(info.length()*32,40);
 			} else {
 				image = ImageIO.read(new FileInputStream("src/main/resources/pictures/" + info + ".png"));
 				g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
@@ -83,6 +86,7 @@ public class MyDialog extends JFrame implements Runnable {
 		}
 	}
 
+	@SuppressWarnings("restriction")
 	public void run() {
 		int time = 100;
 		for (int i = time; i > 0; i--) {
@@ -90,7 +94,6 @@ public class MyDialog extends JFrame implements Runnable {
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

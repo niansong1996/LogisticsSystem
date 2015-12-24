@@ -30,16 +30,16 @@ public class AddSalaryPayListener extends ButtonListener {
 		JTextField field = (JTextField) units.get(5);
 		String account = field.getText();
 		if(account.isEmpty()){
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 
 		SalaryVO vo =  control.createSalary(account);
 		ResultMessage result = control.saveSalary(vo);
 		if (result.isSuccess()) {
-			new MyDialog("付款成功", true);
+			new MyDialog("付款成功", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 		JTextField payTime = (JTextField) units.get(3);
 		payTime.setText(vo.getPayTime());

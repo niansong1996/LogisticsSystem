@@ -38,7 +38,7 @@ public class SearchLogButtonListener extends ButtonListener {
 		Calendar d = end.getCalendar();
 		logs = control.getLogInfo(s, d);
 		if(logs.isEmpty()){
-			new MyDialog("此段时间无操作记录",true);
+			new MyDialog("此段时间无操作记录",true,controller);
 		}
 		ArrayList<MyTableLabel> labels = new ArrayList<MyTableLabel>();
 		for(int i =0;i<logs.size();i++){

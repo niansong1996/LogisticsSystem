@@ -33,7 +33,7 @@ public class AddUserConfirmListener extends ButtonListener{
 		JTextField pass=(JTextField) units.get(1);
 		String password=pass.getText();
 		if (name.isEmpty() || password.isEmpty()) {
-			new MyDialog("incomplete");
+			new MyDialog("incomplete",controller);
 			return;
 		}
 		JComboBox<?> box = (JComboBox<?>) units.get(2);
@@ -48,9 +48,9 @@ public class AddUserConfirmListener extends ButtonListener{
 			if(result.isSuccess()){
 				nam.setText("");
 				pass.setText("");
-				new MyDialog("addSuccess");
+				new MyDialog("addSuccess",controller);
 			}else{
-				new MyDialog(result.getErrorMessage(),true);
+				new MyDialog(result.getErrorMessage(),true,controller);
 			}
 		}
 	}

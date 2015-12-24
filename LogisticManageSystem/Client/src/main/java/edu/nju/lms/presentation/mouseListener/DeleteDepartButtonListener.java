@@ -45,9 +45,9 @@ public class DeleteDepartButtonListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			new MyDialog("删除成功！", true);
+			new MyDialog("删除成功！", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 

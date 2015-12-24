@@ -1,7 +1,6 @@
 package edu.nju.lms.presentation.setText;
 
 import edu.nju.lms.VO.ReceiveVO;
-import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController.UIController;
 

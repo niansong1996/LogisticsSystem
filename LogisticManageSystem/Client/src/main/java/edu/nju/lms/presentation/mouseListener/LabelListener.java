@@ -3,18 +3,12 @@ package edu.nju.lms.presentation.mouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import edu.nju.lms.VO.EnumTransformer;
 import edu.nju.lms.data.ListType;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.components.MyLabel;
 import edu.nju.lms.presentation.components.MyTextArea;
 import edu.nju.lms.presentation.components.table.MyTableLabel;
-import edu.nju.lms.presentation.config.ConfigReader;
-import edu.nju.lms.presentation.config.PanelConfig;
 import edu.nju.lms.presentation.frame.MainPanel;
 
 /**

@@ -49,10 +49,10 @@ public class SavePersonButtonListener extends ButtonListener {
 			}
 			// 这样可以只弹出一个对话框...
 			if (inComplete) {
-				new MyDialog("incomplete");
+				new MyDialog("incomplete", controller);
 				return;
 			}
-			JComboBox box = (JComboBox) label.getComponents(6);
+			JComboBox<?> box = (JComboBox<?>) label.getComponents(6);
 			String duty = box.getSelectedItem().toString();
 			PersonnelVO vo = new PersonnelVO(info[0], info[1], info[2], duty, Double.parseDouble(info[3]),
 					Double.parseDouble(info[4]), Double.parseDouble(info[5]));
@@ -63,9 +63,9 @@ public class SavePersonButtonListener extends ButtonListener {
 			}
 		}
 		if (result.isSuccess()) {
-			new MyDialog("保存成功！", true);
+			new MyDialog("保存成功！", true,controller);
 		} else {
-			new MyDialog(result.getErrorMessage(), true);
+			new MyDialog(result.getErrorMessage(), true,controller);
 		}
 	}
 }
