@@ -42,6 +42,7 @@ public class JDBC {
 			System.err.println("Sorry,can`t find the Driver!"); 
 		} catch(SQLException e) {
 			System.err.println("The MySql can't be connected!");
+			e.printStackTrace();
 		} catch(Exception e) {
 			System.err.println("Create JDBC failed due to UNKNOWN reason");
 		} 

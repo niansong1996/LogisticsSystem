@@ -1,28 +1,37 @@
 package connectionTest;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
-import edu.nju.lms.PO.AccountPO;
-import edu.nju.lms.PO.DepartmentPO;
-import edu.nju.lms.data.DepartmentType;
-import edu.nju.lms.dataService.DepartmentDataService;
+import edu.nju.lms.dataService.UserDataService;
 
 public class connectionTest {
-	public static DepartmentPO depart=new DepartmentPO(DepartmentType.BUSINESSHALL,"025101","025");
-	public static AccountPO accountPo1 = new AccountPO("6225887941959874",1212343.5);
-	public static AccountPO accountPo2 = new AccountPO("6225887941959874",33.5);
 	public static void main(String[] args){    
-	      try{    
-	         DepartmentDataService financeAccountData = (DepartmentDataService) Naming.lookup("//127.0.0.1:1099/DepartmentDataService");    
-	             
-	         //如果要从另一台启动了RMI注册服务的机器上查找hello实例    
-	         //HelloInterface hello = (HelloInterface)Naming.lookup("//192.168.1.105:1099/Hello");    
-//	            financeAccountData.addAccount(accountPo1);
-	            financeAccountData.findCity("025");
-	      }    
-	      catch (Exception e){    
-	         System.out.println("HelloClient exception: " + e);    
-	      }    
-	   }    
+		connectionTest test = new connectionTest();
+		test.run();
+	} 
+
 	
+	public void run(){
+		String remoteHost = "139.129.40.103";   //公网IP或局域网IP
+		int rmiServerPort=8400;  //查找服务端口 8400
+		String bindName = "UserDataService";   //RMI服务名称
+		int revCount = 0;
+		UserDataService userData=null;
+		try{
+			//	      if(System.getSecurityManager()==null){
+			//	        System.setSecurityManager(new RMISecurityManager());
+			//	      }
+			String bindUrl = "//"+remoteHost+":"+ rmiServerPort +"/"+bindName;
+			System.out.println("请求的远程服务URL="+bindUrl);
+			System.out.println(userData.findUser("0101017001").getPower());
+			//	      System.out.print("远程remoteObject="+remoteObject);
+		}
+		catch (RemoteException re) {
+			System.out.println("RemoteException:" + re);
+		}
+	}
+
 }
