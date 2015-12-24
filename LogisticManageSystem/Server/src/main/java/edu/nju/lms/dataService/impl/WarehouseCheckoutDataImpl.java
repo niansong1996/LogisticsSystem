@@ -83,7 +83,7 @@ public class WarehouseCheckoutDataImpl extends UnicastRemoteObject implements Wa
 		ArrayList<CheckoutPO> checkoutList = new ArrayList<CheckoutPO>();
 		ResultSet result = JDBC.ExecuteQuery("select * from checkoutpo where checkoutDate between \""
 				+ DataUtility.Cal2String(start)+" 00:00:00\" and \""+DataUtility.Cal2String(end)+" 23:59:59\""
-						+ "and warehouseNum = "+warehouseNum+" ;" );
+						+ "and warehouseId = "+warehouseNum+" ;" );
 		try{
 		if(!result.wasNull())
 			POGenerator.generateMultiObject(checkoutList,result, CheckoutPO.class.getName());

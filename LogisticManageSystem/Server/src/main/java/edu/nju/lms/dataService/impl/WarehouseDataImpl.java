@@ -85,7 +85,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 	}
 
 	public ResultMessage addInventory(InventoryPO Inventory) throws RemoteException {
-		if(findInventory(Inventory.getExpressNum(),Inventory.getWarehouseId())!=null){
+		if(findInventory(Inventory.getExpressNum(),Inventory.getWarehouseId())==null){
 			JDBC.ExecuteData(POGenerator.generateInsertOp(Inventory, Inventory.getClass().getName()));
 			return new ResultMessage(true,"success");
 	}else{
@@ -155,7 +155,7 @@ public class WarehouseDataImpl extends UnicastRemoteObject implements WarehouseD
 
 	public SendPO findSend(String expressNum)throws RemoteException{
 		SendPO send = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where id = \""+expressNum+"\";");
+		ResultSet result = JDBC.ExecuteQuery("select * from sendpo where expressNum = \""+expressNum+"\";");
 		try{
 		if(!result.wasNull())
 			send = (SendPO)POGenerator.generateObject(result, SendPO.class.getName());

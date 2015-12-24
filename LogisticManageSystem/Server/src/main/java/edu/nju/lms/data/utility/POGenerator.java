@@ -104,9 +104,6 @@ public class POGenerator {
 		}
 	}
 
-	public static Object generateContainerObject(Class<?> cls,ResultSet rs){
-		return null;
-	}
 	public static boolean isList(Class<?> cls){
 		if(cls.getSuperclass().getSimpleName().equals("ListPO")) return true;
 		return false;
@@ -134,7 +131,7 @@ public class POGenerator {
 	public static String generateUpdateOp(Object object ,String className){
 		String[] classSatter = className.split("\\.");
 		String poName = classSatter[classSatter.length-1];
-		String result = "update "+poName+" set ";
+		String result = "update "+poName.toLowerCase()+" set ";
 		try {
 			object = Class.forName(className).cast(object);
 		} catch (ClassNotFoundException e) {
@@ -187,7 +184,7 @@ public class POGenerator {
 	public static String generateInsertOp(Object object ,String className){
 		String[] classSatter = className.split("\\.");
 		String poName = classSatter[classSatter.length-1];
-		String result = "insert into "+poName+" value(NULL";
+		String result = "insert into "+poName.toLowerCase()+" value(NULL";
 		try {
 			object = Class.forName(className).cast(object);
 		} catch (ClassNotFoundException e) {
