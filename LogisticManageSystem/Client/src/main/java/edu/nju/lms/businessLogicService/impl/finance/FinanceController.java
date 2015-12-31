@@ -20,6 +20,7 @@ import edu.nju.lms.businessLogicService.FinancePayblService;
 import edu.nju.lms.businessLogicService.FinanceReceiptblService;
 import edu.nju.lms.businessLogicService.FinanceStrategyblService;
 import edu.nju.lms.businessLogicService.impl.department.DepartmentController;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentblImpl;
 import edu.nju.lms.businessLogicService.impl.list.ListController;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.personnel.PersonnelController;
@@ -35,25 +36,25 @@ import edu.nju.lms.dataService.FinanceReceiptDataService;
 import edu.nju.lms.dataService.FinanceStrategyDataService;
 
 public class FinanceController
-		implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
+implements FinanceAccountblService, FinancePayblService, FinanceReceiptblService, FinanceStrategyblService {
 
 	FinanceAccountblImpl account;
 	FinancePayblImpl pay;
 	FinanceReceiptblImpl receipt;
 	FinanceStrategyblImpl strategy;
-	
+
 	FinanceAccountDataService accountData;
 	FinancePaymentDataService payData;
 	FinanceReceiptDataService receiptData;
 	FinanceStrategyDataService strategyData;
-	
+
 	ListController listController;
 	LogController logController;
 	PersonnelController personnelController;
 	TransportController transportController;
 	DepartmentController departmentController;
 	WarehouseController warehouseController;
-	
+
 	public FinanceController(){
 		try {
 			listController=BusinessLogicFactory.getListController();
@@ -62,7 +63,7 @@ public class FinanceController
 			transportController=BusinessLogicFactory.getTransportController();
 			departmentController=BusinessLogicFactory.getDepartmentController();
 			warehouseController=BusinessLogicFactory.getWarehouseController();
-			
+
 			accountData=DataServiceFactory.getFinanceAccountDataService();
 			account=new FinanceAccountblImpl();
 			payData=DataServiceFactory.getFinancePaymentDataService();
@@ -75,7 +76,28 @@ public class FinanceController
 			e.printStackTrace();
 		}
 	}
-	
+	public void reconnect(){
+		try {
+			listController=BusinessLogicFactory.getListController();
+
+			logController=BusinessLogicFactory.getLogController();
+			personnelController=BusinessLogicFactory.getPersonnelController();
+			transportController=BusinessLogicFactory.getTransportController();
+			departmentController=BusinessLogicFactory.getDepartmentController();
+			warehouseController=BusinessLogicFactory.getWarehouseController();
+
+			accountData=DataServiceFactory.getFinanceAccountDataService();
+			account=new FinanceAccountblImpl();
+			payData=DataServiceFactory.getFinancePaymentDataService();
+			pay=new FinancePayblImpl();
+			receiptData=DataServiceFactory.getFinanceReceiptDataService();
+			receipt=new FinanceReceiptblImpl();
+			strategyData=DataServiceFactory.getFinanceStrategyDataService();
+			strategy=new FinanceStrategyblImpl();
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		}
+	}
 	public ResultMessage addPriceStrategy(double std) {
 		ResultMessage result=strategy.addPriceStrategy(std, strategyData);
 		if(result.isSuccess()){
@@ -122,46 +144,46 @@ public class FinanceController
 
 	public ResultMessage addAccount(AccountVO accountvo) {
 		ResultMessage result=account.addAccount(accountvo, accountData);
-		
+
 		if(result.isSuccess()){
 			logController.addLog("增加账户"+accountvo.getID()+"的信息");
 		}
-		
+
 		return result;
 	}
-	
+
 	public AccountVO showAccount(String id) {
 		AccountVO result=account.showAccount(id, accountData);
 		logController.addLog("查看账户"+id+"的信息");
 		return result;
 	}
-	
+
 	public ResultMessage deleteAccount(String id) {
 		ResultMessage result=account.deleteAccount(id, accountData);
-		
+
 		if(result.isSuccess()){
 			logController.addLog("删除账户"+id+"的信息");
 		}
-		
+
 		return result;
 	}
-	
+
 	public ResultMessage updateAccount(AccountVO accountvo) {
 		ResultMessage result=account.updateAccount(accountvo, accountData);
-		
+
 		if(result.isSuccess()){
 			logController.addLog("更新账户"+accountvo.getID()+"的信息");
 		}
-		
+
 		return result;
 	}
-	
+
 	public ArrayList<AccountVO> showAllAccount() {
 		ArrayList<AccountVO> result=account.showAllAccount(accountData);
 		logController.addLog("显示所有账户信息");
 		return result;
 	}
-	
+
 	public ResultMessage addMoney(String accountName, double amount) {
 		ResultMessage result=account.addMoney(accountName, amount, accountData);
 		if(result.isSuccess()){
@@ -169,7 +191,7 @@ public class FinanceController
 		}
 		return result;
 	}
-	
+
 	public ResultMessage addInitialInfo(InitialInfoVO initial) {
 		ResultMessage result=account.addInitialInfo(initial, accountData);
 		if(result.isSuccess()){
@@ -223,7 +245,7 @@ public class FinanceController
 		logController.addLog("查看收款单信息");
 		return result;
 	}
-	
+
 	public double getReceiptSum(Calendar date) {
 		double result=receipt.getReceiptSum(date, receiptData);
 		logController.addLog("计算收款总额");
@@ -233,7 +255,7 @@ public class FinanceController
 	public RentVO createRent(RentVO rent) {
 		return pay.createRent(rent, listController);
 	}
-	
+
 	public ResultMessage saveRent(RentVO rent) {
 		ResultMessage result=pay.saveRent(rent, payData, accountData);
 		if(result.isSuccess()){
@@ -287,7 +309,7 @@ public class FinanceController
 	public PaymentVO findPayment(String id) {
 		return pay.findPayment(id, payData);
 	}
-	
+
 	public static void main(String[] args) {
 		FinanceController f=BusinessLogicFactory.createFinanceController();
 		EarningVO vo = new EarningVO(1000,100,900,CommonUtility.getTime());

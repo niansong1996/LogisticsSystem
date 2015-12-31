@@ -26,11 +26,18 @@ public class connectionTest {
 			//	      }
 			String bindUrl = "//"+remoteHost+":"+ rmiServerPort +"/"+bindName;
 			System.out.println("请求的远程服务URL="+bindUrl);
+			userData = (UserDataService) Naming.lookup(bindUrl);
 			System.out.println(userData.findUser("0101017001").getPower());
 			//	      System.out.print("远程remoteObject="+remoteObject);
 		}
 		catch (RemoteException re) {
 			System.out.println("RemoteException:" + re);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -6,6 +6,7 @@ import edu.nju.lms.VO.ListVO;
 import edu.nju.lms.businessLogic.BusinessLogicFactory;
 import edu.nju.lms.businessLogic.NoBusinessLogicException;
 import edu.nju.lms.businessLogicService.ListblService;
+import edu.nju.lms.businessLogicService.impl.department.DepartmentblImpl;
 import edu.nju.lms.businessLogicService.impl.log.LogController;
 import edu.nju.lms.businessLogicService.impl.utility.DataServiceFactory;
 import edu.nju.lms.data.ListType;
@@ -29,7 +30,16 @@ public class ListController implements ListblService{
 			e.printStackTrace();
 		}
 	}
-
+	public void reconnect(){
+		try {
+			logController=BusinessLogicFactory.getLogController();
+			listService= DataServiceFactory.getListDataService();
+			list=new ListblImpl();
+			listNum = new ListNumOccupancy(listService);
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		}
+	}
 	public ArrayList<ListVO> getListInfo(ListType type) {
 		ArrayList<ListVO> result=list.getListInfo(listService,type);
 

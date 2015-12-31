@@ -23,8 +23,9 @@ import edu.nju.lms.dataService.WarehouseDataService;
 
 public class DataServiceFactory {
 	// "114.212.42.136";
-	private static String IPAddress = "139.129.40.103";
-	private static String portNum = "8400";
+	//"139.129.40.103""8400"
+	private static String IPAddress = "127.0.0.1";
+	private static String portNum = "1099";
 //	private static Remote getDataService(String dataServiceName){
 //		try {
 //			return Naming.lookup("//"+IPAddress+":"+portNum+"/"+dataServiceName);

@@ -30,7 +30,15 @@ public class PersonnelController implements PersonnelblService{
 			e.printStackTrace();
 		}
 	}
-	
+	public void reconnect(){
+		try {
+			logController=BusinessLogicFactory.getLogController();
+			personService=DataServiceFactory.getPersonnelDataService();
+			personbl=new PersonnelblImpl();
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		}
+	}
 	public ArrayList<PersonnelVO> findPersonInfo(String id) {
 		ArrayList<PersonnelVO> result=personbl.findPersonInfo(personService,id);
 

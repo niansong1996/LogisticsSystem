@@ -59,7 +59,25 @@ public class TransportController implements TransManageblService,TransProcessblS
 			e1.printStackTrace();
 		}
 	}
-	
+	public void reconnect(){
+		try {
+			toolData=DataServiceFactory.getTransportToolDataService();
+			personnelController=BusinessLogicFactory.getPersonnelController();
+			listController = BusinessLogicFactory.getListController();
+			departmentController=BusinessLogicFactory.getDepartmentController();
+		
+			manage=new TransManageblImpl();
+			
+			listData=DataServiceFactory.getTransportListDataService();
+			commodityData=DataServiceFactory.getTransportCommodityDataService();
+			
+			process=new TransProcessblImpl();
+			
+			logController=BusinessLogicFactory.getLogController();
+		}catch(NoBusinessLogicException e1){
+			e1.printStackTrace();
+		}
+	}
 	public VehicleVO addVehicle(VehicleVO plateNum) {	
 		return manage.addVehicle(listController,plateNum);
 	}
@@ -284,7 +302,7 @@ public class TransportController implements TransManageblService,TransProcessblS
 	public String getCurrentHallNum(){
 		return logController.getLogId().substring(0, 6);
 	}
-
+	
 	public static void main(String[] args) {
 		TransportController t=BusinessLogicFactory.createTransportController();
 		ArrayList<String> a=new ArrayList<String>();

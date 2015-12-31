@@ -48,7 +48,21 @@ public class WarehouseController implements WareHouseblService{
 		warehouseOpbl = new WarehouseOpblImpl();
 
 	}
-	
+	public void reconnect(){
+		try {
+			logController=BusinessLogicFactory.getLogController();
+			listController=BusinessLogicFactory.getListController();
+			warehouseData= DataServiceFactory.getWarehouseDataService();
+			warehouseCheckinData = DataServiceFactory.getWarehouseCheckinDataService();
+			warehouseCheckoutData = DataServiceFactory.getWarehouseCheckoutDataService();
+		} catch (NoBusinessLogicException e) {
+			e.printStackTrace();
+		}
+		
+		warehouseManagebl = new WarehouseManageblImpl();
+		warehouseOpbl = new WarehouseOpblImpl();
+
+	}
 	public CheckinVO createCheckinList(CheckinVO baseMessage, String warehouseNum) {
 		return warehouseOpbl.createCheckinList(baseMessage, warehouseNum);
 	}

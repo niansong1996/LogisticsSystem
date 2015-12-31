@@ -5,7 +5,6 @@ import edu.nju.lms.data.ResultMessage;
 public class RemoteExceptionHandler {
 	public static boolean reconnectRunning = false;
 	public static ResultMessage handleRemoteException(Exception e){
-		e.printStackTrace();
 		if(!reconnectRunning){
 			System.out.println("网络中断！");
 			Reconnector rc = new Reconnector();

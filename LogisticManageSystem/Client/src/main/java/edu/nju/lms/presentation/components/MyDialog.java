@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import edu.nju.lms.presentation.UIController.UIController;
 import edu.nju.lms.presentation.config.ConfigReader;
 import edu.nju.lms.presentation.config.FrameConfig;
-import edu.nju.lms.presentation.frame.MainFrame;
 
 /**
  * @author tj
@@ -37,7 +36,15 @@ public class MyDialog extends JFrame implements Runnable {
 		Thread t = new Thread(this);
 		t.start();
 	}
-
+	public MyDialog(String info) {
+		this.is_str = true;
+		frameLoc = new Point(0,0);
+		this.info = info;
+		initialize();
+		Thread t = new Thread(this);
+		t.start();
+	}
+	
 	/**
 	 * show any String
 	 * @param info
@@ -52,6 +59,7 @@ public class MyDialog extends JFrame implements Runnable {
 		t.start();
 	}
 
+	
 	@SuppressWarnings("restriction")
 	public void initialize() {
 		setUndecorated(true);
