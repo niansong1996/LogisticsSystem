@@ -22,6 +22,7 @@ public class CommonUtility {
 	}
 	
 	public static Calendar String2Cal(String s){
+		System.out.println("the string you gave me is "+s);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 		try {

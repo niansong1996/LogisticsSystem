@@ -38,66 +38,72 @@ public class NumOccupancyPO implements Serializable{
 		return SendListNum;
 	}
 	public void increaseSendListNum() {
-		SendListNum = String.valueOf(Long.parseLong(SendListNum)+1L);
+		SendListNum = ensureDigit(String.valueOf(Long.parseLong(SendListNum)+1L),10);
 	}
 	public String getArrivalListNum() {
 		return ArrivalListNum;
 	}
 	public void increaseArrivalListNum() {
-		ArrivalListNum = String.valueOf(Long.parseLong(ArrivalListNum)+1L);
+		ArrivalListNum = ensureDigit(String.valueOf(Long.parseLong(ArrivalListNum)+1L),10);
 	}
 	public String getCheckinListNum() {
 		return CheckinListNum;
 	}
 	public void increaseCheckinListNum() {
-		CheckinListNum = String.valueOf(Long.parseLong(CheckinListNum)+1L);
+		CheckinListNum = ensureDigit(String.valueOf(Long.parseLong(CheckinListNum)+1L),10);
 	}
 	public String getCheckoutListNum() {
 		return CheckoutListNum;
 	}
 	public void increaseCheckoutListNum() {
-		CheckoutListNum = String.valueOf(Long.parseLong(CheckoutListNum)+1L);
+		CheckoutListNum = ensureDigit(String.valueOf(Long.parseLong(CheckoutListNum)+1L),10);
 	}
 	public String getDispatchListNum() {
 		return DispatchListNum;
 	}
 	public void increaseDispatchListNum() {
-		DispatchListNum = String.valueOf(Long.parseLong(DispatchListNum)+1L);
+		DispatchListNum = ensureDigit(String.valueOf(Long.parseLong(DispatchListNum)+1L),10);
 	}
 	public String getLoadListNum() {
 		return LoadListNum;
 	}
 	public void increaseLoadListNum() {
-		LoadListNum = String.valueOf(Long.parseLong(LoadListNum)+1L);
+		LoadListNum = ensureDigit(String.valueOf(Long.parseLong(LoadListNum)+1L),10);
 	}
 	public String getPaymentListNum() {
 		return PaymentListNum;
 	}
 	public void increasePaymentListNum() {
-		PaymentListNum = String.valueOf(Long.parseLong(PaymentListNum)+1L);
+		PaymentListNum = ensureDigit(String.valueOf(Long.parseLong(PaymentListNum)+1L), 10);
 	}
 	public String getReceiptListNum() {
 		return ReceiptListNum;
 	}
 	public void increaseReceiptListNum() {
-		ReceiptListNum = String.valueOf(Long.parseLong(ReceiptListNum)+1L);
+		ReceiptListNum = ensureDigit(String.valueOf(Long.parseLong(ReceiptListNum)+1L), 10);
 	}
 	public String getReceiveListNum() {
 		return ReceiveListNum;
 	}
 	public void increaseReceiveListNum() {
-		ReceiveListNum = String.valueOf(Long.parseLong(ReceiveListNum)+1L);
+		ReceiveListNum = ensureDigit(String.valueOf(Long.parseLong(ReceiveListNum)+1L), 10);
 	}
 	public String getDriverNum() {
 		return DriverNum;
 	}
 	public void increaseDriverNum() {
-		ReceiveListNum = String.valueOf(Long.parseLong(DriverNum)+1L);
+		DriverNum = ensureDigit(String.valueOf(Long.parseLong(DriverNum)+1L), 3);
 	}
 	public String getCarNum() {
 		return CarNum;
 	}
 	public void increaseCarNum() {
-		CarNum = String.valueOf(Long.parseLong(CarNum)+1L);
+		CarNum = ensureDigit(String.valueOf(Long.parseLong(CarNum)+1L), 3);
+	}
+	public String ensureDigit(String s,int num){
+		while(s.length()<num){
+			s = "0"+s;
+		}
+		return s;
 	}
 }

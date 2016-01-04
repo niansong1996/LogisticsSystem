@@ -59,7 +59,9 @@ public class ListController implements ListblService{
 	}
 
 	public String applyListNum(ListType type){
-		return this.listNum.generateListNum(type);
+		String result = this.listNum.generateListNum(type);
+		System.out.println("*********List type"+type+" "+result);
+		return result;
 	}
 	
 	public void saveListNum(){

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import edu.nju.lms.VO.OrderInforVO;
 import edu.nju.lms.businessLogicService.impl.transport.TransportController;
 import edu.nju.lms.presentation.UIController.UIController;
+import edu.nju.lms.presentation.components.EnumTransformer;
 
 /**
  * get orderinfo text
@@ -36,7 +37,7 @@ public class OrderInfoText extends Text{
 			OrderInforVO info = transport.checkOrderInfor(id);
 			if(info!=null) {
 				infoText+=("  快递编号："+info.getExpressNum()+"\n");
-				infoText+=("  快递状态："+info.getShipState().toString()+"\n");
+				infoText+=("  快递状态："+EnumTransformer.shipState2Str(info.getShipState())+"\n");
 				for(String s:info.getTrack()) {
 					infoText+=(s+"\n");
 				}
