@@ -38,9 +38,9 @@ public class UserTable extends MyTable{
 	
 	public MyTableLabel createLabel(UserVO user) {
 		MyTextField userName=new MyTextField(user.getUserName());
-		userName.setSize(180, 50);
+		userName.setSize(180, 30);
 		MyTextField password=new MyTextField(user.getPassword());
-		password.setSize(180, 50);
+		password.setSize(180, 30);
 		String type = EnumTransformer.PersonType2Str(user.getPower());
 		MyComboBox<?> userPower = new MyComboBox<Object>(element, controller);
 		userPower.setSize(150, 30);
