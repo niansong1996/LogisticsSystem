@@ -38,7 +38,8 @@ public class OrderInfoText extends Text{
 			if(info!=null) {
 				infoText+=("  快递编号："+info.getExpressNum()+"\n");
 				infoText+=("  快递状态："+EnumTransformer.shipState2Str(info.getShipState())+"\n");
-				for(String s:info.getTrack()) {
+				for(int i = info.getTrack().size()-1; i >= 0; i--) {
+					String s = info.getTrack().get(i);
 					infoText+=(s+"\n");
 				}
 			} else {
