@@ -75,7 +75,7 @@ public class FinanceStrategyDataImpl extends UnicastRemoteObject implements Fina
 
 	public SalaryStrategyPO findSalaryStrategy(PersonType type) throws RemoteException {
 		SalaryStrategyPO salaryStrategy = null;
-		ResultSet result = JDBC.ExecuteQuery("select * from salaryStrategypo where type = \""+type+"\";");
+		ResultSet result = JDBC.ExecuteQuery("select * from salarystrategypo where type = \""+type+"\";");
 		try{
 		if(!result.wasNull())
 			salaryStrategy = (SalaryStrategyPO)POGenerator.generateObject(result, SalaryStrategyPO.class.getName());
