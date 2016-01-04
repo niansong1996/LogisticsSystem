@@ -15,7 +15,7 @@ public class ArrivalPO extends ListPO implements Serializable{
 	/**
 	 * have been modified by sql
 	 */
-	private static final long serialVersionUID = 5411187468179303952L;
+	private static final long serialVersionUID = 5411187468179303952L; 
 	private String expressNum;
 	private ArrivalState arrivalState;
 	private String destination;
@@ -25,7 +25,7 @@ public class ArrivalPO extends ListPO implements Serializable{
 	//optional  中转中心编号,只有在中转中心到达时才有 
     private String transitNum;
 	
-    public ArrivalPO(String id,String state,String arrivalState, String expressNum, String destination,String setOut, String arrivalDate,String transmitnum) {
+    public ArrivalPO(String id,String state,String expressNum,String arrivalState, String destination,String setOut, String arrivalDate,String transmitnum) {
 		super(id,ListState.valueOf(state));
 		this.arrivalState = ArrivalState.valueOf(arrivalState);
 		this.expressNum = expressNum;
