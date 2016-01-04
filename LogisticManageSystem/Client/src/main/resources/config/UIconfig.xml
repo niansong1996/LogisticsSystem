@@ -605,7 +605,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddAccountPanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-		   	<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
+		   	<component name="accountGao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="accountManage" class = "Component" x="150" y="20" w="98" h="23"/>
 		    <component name="addPath" class = "Component" x="150" y="90" w="850" h="560"/>
 		    <component name="addAccountPanel" class = "Component" x="150" y="90" w="850" h="560"/>
@@ -813,7 +813,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="addVehicleManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="vehicleGao" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="addVehicle" class = "Component" x="120" y="0" w="930" h="720"/>
 			<unit name="plateNum" class="MyTextField" x="550" y="160" w="180" h="33" type="0" textType="null"/>
 			<unit name="years" class="MyTextField" x="550" y="275" w="180" h="33" type="0" textType="null"/>
@@ -855,7 +855,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="addDriverManagePanel" class="MainPanel" x="0" y="0"  w = "1080" h = "720">
-			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="vehicleGao" class = "Component" x="0" y="0" w="1080" h="720"/>
 			<component name="addDriver" class = "Component" x="120" y="0" w="930" h="720"/>
 			<unit name="date" class="DateChooser" x="545" y="280" w="150" h="30" type="0"/>
 			<unit name="name" class="MyTextField" x="480" y="105" w="90" h="33" type="0" textType="null"/>
@@ -1224,7 +1224,7 @@
 		    <unit name ="userName" class = "MyLabel" x="700" y="10" w="200" h="20" type="0" textType="UserNameText"/>
 		</mainPanel>
 		<mainPanel name="AddUserPanel" class="MainPanel" x="0" y="0" w="1080" h="720">
-			<component name="gao" class = "Component" x="0" y="0" w="1080" h="720"/>
+			<component name="userGao" class = "Component" x="0" y="0" w="1080" h="720"/>
 		    <component name="addPanel" class = "Component" x="300" y="50" w="470" h="530"/>
 		    <component name="userNum" class = "Component" x="350" y="100" w="144" h="40"/>
 		    <component name="userPassword" class = "Component" x="350" y="220" w="144" h="40"/>
