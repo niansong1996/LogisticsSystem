@@ -52,6 +52,7 @@ public class ExportListButtonListener extends ButtonListener {
 		}else{
 			new MyDialog(result.getErrorMessage(),true,controller);
 		}
+
 	}
 
 }
