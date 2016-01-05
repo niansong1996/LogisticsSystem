@@ -36,18 +36,18 @@ public class OrderInfoText extends Text{
 			 */
 			OrderInforVO info = transport.checkOrderInfor(id);
 			if(info!=null) {
-				infoText+=("  快递编号："+info.getExpressNum()+"\n");
-				infoText+=("  快递状态："+EnumTransformer.shipState2Str(info.getShipState())+"\n");
-				for(int i = info.getTrack().size()-1; i >= 0; i--) {
+				infoText+=("   快递编号："+info.getExpressNum()+"\n");
+				infoText+=("   快递状态："+EnumTransformer.shipState2Str(info.getShipState())+"\n");
+				for(int i = 0; i < info.getTrack().size(); i++) {
 					String s = info.getTrack().get(i);
-					infoText+=(s+"\n");
+					infoText+=("   "+s+"\n");
 				}
 			} else {
-				infoText+=("  快递不存在！");
+				infoText+=("   快递不存在！");
 			}
 		}else{
-			infoText+=("  文件读写错误！");
-		}
+			infoText+=("   文件读写错误！");
+		} 
 	
 		return infoText;
 	}
