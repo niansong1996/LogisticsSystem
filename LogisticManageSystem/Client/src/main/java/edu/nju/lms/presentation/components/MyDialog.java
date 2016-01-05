@@ -38,7 +38,7 @@ public class MyDialog extends JFrame implements Runnable {
 	}
 	public MyDialog(String info) {
 		this.is_str = true;
-		frameLoc = new Point(0,0);
+		frameLoc = new Point(300,0);
 		this.info = info;
 		initialize();
 		Thread t = new Thread(this);
@@ -70,7 +70,7 @@ public class MyDialog extends JFrame implements Runnable {
 		setSize(config.getWidth(), config.getHeight());
 
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(frameLoc.x+450,frameLoc.y+300);
+		setLocation(frameLoc.x,frameLoc.y+720-44);
 		setVisible(true);
 		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.6f);
 	}
@@ -82,7 +82,7 @@ public class MyDialog extends JFrame implements Runnable {
 			if (is_str) {
 				g.setFont(new Font("微软雅黑", Font.BOLD, 23));
 				g.drawString(info, 23, 23);
-				setSize(info.length()*32,40);
+				setSize(720,44);
 			} else {
 				image = ImageIO.read(new FileInputStream("src/main/resources/pictures/" + info + ".png"));
 				g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
