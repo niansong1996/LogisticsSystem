@@ -41,7 +41,7 @@ public class AccountTable extends MyTable {
 		MyLabel name = new MyLabel(vo.getID());
 		name.setSize(200,30);
 		MyLabel balance = new MyLabel(vo.getAmount()+"");
-		balance.setSize(50,30);
+		balance.setSize(100,30);
 		java.awt.Component[] component = {name, balance};
 		MyTableLabel label = new MyTableLabel(element, controller, 50, component, this);
 		return label;
