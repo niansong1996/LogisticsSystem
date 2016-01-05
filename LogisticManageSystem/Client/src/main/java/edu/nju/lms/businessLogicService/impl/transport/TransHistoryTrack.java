@@ -55,15 +55,15 @@ public class TransHistoryTrack {
 		ReceivePO receive = list.findReceive(com.getReceive());
 
 		switch(this.getStage(send,loadList,arrivalList,dispatch,receive)){
-		case 9 : track.add(CommonUtility.Cal2String(receive.getReceiveTime())+" "+"快件已签收！");
-		case 8: track.add(CommonUtility.Cal2String(dispatch.getArrivalDate())+" "+"派件中，快递员将很快联系您！");
-		case 7: track.add(CommonUtility.Cal2String(arrivalList.get(2).getArrivalDate())+" "+"目的地营业厅已收入");
-		case 6: track.add(CommonUtility.Cal2String(loadList.get(2).getLoadDate())+" "+"快件发往目的地营业厅");
-		case 5: track.add(CommonUtility.Cal2String(arrivalList.get(1).getArrivalDate())+" "+"目的地中转中心已收入");
-		case 4: track.add(CommonUtility.Cal2String(loadList.get(1).getLoadDate())+" "+"快件已发往目的地中转中心");
-		case 3: track.add(CommonUtility.Cal2String(arrivalList.get(0).getArrivalDate())+" "+"发送地中转中心已收入");
-		case 2: track.add(CommonUtility.Cal2String(loadList.get(0).getLoadDate())+" "+"快件已发往中转中心");
-		case 1: track.add(CommonUtility.getTime()+" "+"营业厅收件成功");break;
+		case 9 : track.add(CommonUtility.Cal2Str(receive.getReceiveTime())+" "+"快件已签收！");
+		case 8: track.add(CommonUtility.Cal2Str(dispatch.getArrivalDate())+" "+"派件中，快递员将很快联系您！");
+		case 7: track.add(CommonUtility.Cal2Str(arrivalList.get(2).getArrivalDate())+" "+"目的地营业厅已收入");
+		case 6: track.add(CommonUtility.Cal2Str(loadList.get(2).getLoadDate())+" "+"快件发往目的地营业厅");
+		case 5: track.add(CommonUtility.Cal2Str(arrivalList.get(1).getArrivalDate())+" "+"目的地中转中心已收入");
+		case 4: track.add(CommonUtility.Cal2Str(loadList.get(1).getLoadDate())+" "+"快件已发往目的地中转中心");
+		case 3: track.add(CommonUtility.Cal2Str(arrivalList.get(0).getArrivalDate())+" "+"发送地中转中心已收入");
+		case 2: track.add(CommonUtility.Cal2Str(loadList.get(0).getLoadDate())+" "+"快件已发往中转中心");
+		case 1: track.add(CommonUtility.Cal2Str(send.getCreateTime())+" "+"营业厅收件成功");break;
 		case 0: track.add(CommonUtility.getTime()+" "+"暂无物流信息");break;	
 		}
 		switch(this.getStage(send,loadList,arrivalList,dispatch,receive)){

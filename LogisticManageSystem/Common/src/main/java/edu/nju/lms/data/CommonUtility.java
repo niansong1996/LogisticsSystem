@@ -29,6 +29,7 @@ public class CommonUtility {
 			if(s.length()==10) s+=" 12:00:00"; 
 			cal.setTime(sdf.parse(s));
 		} catch (ParseException e) {System.out.println("parse failed!!!");}
+		System.out.println("So,the string I give you is "+s);
 		return cal;
 	}
 	
