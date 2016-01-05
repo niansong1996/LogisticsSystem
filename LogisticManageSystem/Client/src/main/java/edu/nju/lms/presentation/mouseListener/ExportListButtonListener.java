@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import edu.nju.lms.businessLogicService.impl.finance.FinanceController;
 import edu.nju.lms.presentation.UIController.UIController;
 
 /**
@@ -19,8 +20,8 @@ public class ExportListButtonListener extends ButtonListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		FinanceController finance = controller.getFinanceController();
+		finance.exportEarning(earnings)
 	}
 
 }

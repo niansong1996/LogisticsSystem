@@ -27,8 +27,9 @@ public class CheckinPO extends ListPO{
 		super(id,ListState.valueOf(state));
 		this.expresses = new ArrayList<String>();
 		this.checkinDate = CommonUtility.String2Cal(checkinDate);
-		CommonUtility.String2Array(this.expresses, expresses);;
+		CommonUtility.String2Array(this.expresses, expresses);
 		this.checkinDate = CommonUtility.String2Cal(checkinDate);
+		this.warehouseNum = warehouseId;
 	}
 	
 	
@@ -36,6 +37,7 @@ public class CheckinPO extends ListPO{
 		super(id,state);
 		this.expresses = expresses;
 		this.checkinDate = checkinDate;
+		this.warehouseNum = warehouseNum;
 	}
     
 	public String getId() {
