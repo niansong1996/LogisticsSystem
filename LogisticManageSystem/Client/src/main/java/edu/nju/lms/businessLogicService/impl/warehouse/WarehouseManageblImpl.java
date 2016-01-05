@@ -72,7 +72,7 @@ public class WarehouseManageblImpl {
 			row = sheet.createRow(i+1);   
 			// 第四步，创建单元格，并设置值  
 			row.createCell(0).setCellValue(excel.getExpressNums().get(i));  
-			row.createCell(1).setCellValue(CommonUtility.String2Cal(excel.getCheckinTime().get(i)));  
+			row.createCell(1).setCellValue(excel.getCheckinTime().get(i));  
 			row.createCell(2).setCellValue(excel.getDestination().get(i));
 			row.createCell(3).setCellValue(excel.getLocation().get(i));
 		}  
