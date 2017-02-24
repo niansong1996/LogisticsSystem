@@ -49,13 +49,13 @@ public class ServerActivator_Aliyun {
 	}
 	public void activateServer(){
 		String url = "jdbc:mysql://127.0.0.1:3306/lms?useUnicode=true&characterEncoding=utf8";
-		JDBC.createJDBC(url,"root","9990");
+		JDBC.createJDBC(url,"root","0194ccbbhh");
 
 		try{    
 
 			String hostIP = InetAddress.getLocalHost().getHostAddress();
 			int rmiServerPort = 8400;  //数据传输服务为8400
-			System.setProperty("java.rmi.server.hostname","139.129.40.103");
+			System.setProperty("java.rmi.server.hostname","192.168.31.53");
 			RMISocketFactory.setSocketFactory(new SMRMISocket());  //定义数据传输端口 8500
 			LocateRegistry.createRegistry(rmiServerPort); //定义服务注册与查找服务端口 8400
  
